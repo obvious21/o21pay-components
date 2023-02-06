@@ -1,0 +1,12 @@
+## editors
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+.npmrc
+
+publish.sh

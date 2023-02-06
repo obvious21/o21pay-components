@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Samples O21Pay Components</title>
+    <link rel="icon" type="image/svg+xml" href="assets/o21pay.png" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    
+    <!-- Define O21Pay Components -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/o21pay-components@latest/dist/all.js"></script>
+    <!--script type="module" src="./dist/all.js"></script-->
+    <script type="text/javascript">      
+
+      function handleDisplayO21Pay() {
+        let merchant_id = document.querySelector("#merchant_id").value;
+        if (!merchant_id || !merchant_id.length) {
+          alert("Missing Merchand ID");
+          return;
+        }
+        localStorage.setItem("merchant_id", merchant_id);
+
+        let el = document.querySelector("o21pay-payment");
+        el.merchant_id = merchant_id;
+        el.secretkey = document.querySelector("#secretkey").value;
+        document.querySelector("o21pay-payment").hidden = false;
+      }
+
+      function handleDisplayQR() {
+        let url = document.querySelector("#url").value;
+        if (!url || !url.length) {
+          alert("Missing URL");
+          return;
+        }
+        const el = document.querySelector("o21pay-qr");
+        if (el) {
+          el.url = url;
+        }
+      }
+
+      function handleOpenDialog() {
+        let url = document.querySelector("#url").value;
+        if (!url || !url.length) {
+          alert("Missing URL");
+          return;
+        }
+        const modal = document.querySelector("o21pay-dialog");
+        if (modal) {
+          let width = document.querySelector("#dialog-width").value;
+          let height = document.querySelector("#dialog-height").value;
+          let mode = document.querySelector("#dialog-mode").value;
+          modal.init(url, width, height, mode);
+          modal.events = (payload) => {
+            let message = payload.message;
+            console.log(message);
+            if (message === "o21pay_mounted") {
+            } else if (message === "o21pay_ready") {
+              modal.hideSpinner = true;
+            } else if (message === "o21pay_closed") {
+              modal.open = false;
+              document.getElementById("container").hidden = false;
+              document.querySelector("o21pay-payment").hidden = false;
+              document.querySelector("o21pay-qr").hidden = false;
+            } else if (message === "o21pay_payment_success") {
+            } else if (message === "o21pay_payment_error") {
+            } else if (message === "o21pay_payment_cancelled") {
+            }
+          };
+          document.getElementById("container").hidden = true;
+          document.querySelector("o21pay-qr").hidden = true;
+          document.querySelector("o21pay-payment").hidden = true;
+          modal.open = true;
+        }
+      }
+
+      addEventListener("o21pay_payment_request", function (e) {
+        document.querySelector("#url").value = e.detail.url;
+      });
+
+      addEventListener("o21pay_QRclick", function (e) {
+        document.querySelector("#url").value = e.detail.url;
+        this.handleOpenDialog();
+      });
+    </script>
+  </head>
+
+  <body>
+    <div
+      class="mx-auto w-4/6 p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700"
+    >
+      <h2 class="font-semibold text-3xl pt-1 mb-5">Samples O21Pay SDK</h2>
+      <p>
+        To use this demo, you must create an account on dashboard.o21.io and
+        create a store to which you will be assigned a "MerchantID" and a
+        "SecretKey".
+        <br /><br />The Secret Key is not necessary if you have set 'IP
+        Whitelist' parameter in the dashboard
+        <div id="container" class="mt-1 text-center text-2xl">
+          <input
+            id="merchant_id"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="text"
+            placeholder="Merchant ID"
+            style="width: 28%"
+          />
+          <input
+            id="secretkey"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="text"
+            placeholder="Secret Key"
+            style="width: 28%"
+          />
+          <br />
+          <input
+            id="url"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="text"
+            placeholder="URL O21Pay"
+            value=""
+            style="margin-top: 5px; min-width: 80%"
+          />
+          
+          <button class="mt-2 buttonDemo" onclick="handleDisplayO21Pay()">
+            Display O21Pay
+          </button>
+          <button class="mt-2 buttonDemo" onclick="handleDisplayQR()">Display QR</button>
+          <button class="mt-2 buttonDemo" onclick="handleOpenDialog()">
+            Open O21Pay Dialog
+          </button>
+          &nbsp;
+          <input
+            id="dialog-width"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+            type="text"
+            value="375px"
+            placeholder="Width"
+            style="width: 80px; height: 36px"
+          />
+          <input
+            id="dialog-height"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="text"
+            value="560px"
+            placeholder="Height"
+            style="width: 80px; height: 36px"
+          />
+          <select
+            id="dialog-mode"
+            class="inline-block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="dialog">Dialog</option>
+            <option value="drawer-left">Drawer Left</option>
+            <option value="drawer-right">Drawer Right</option>
+            <option value="fullscreen">Full Screen</option>
+          </select>
+        </div>
+      </p>
+    </div>
+    <br />
+    <script type="module">
+      await window.O21PayComponents.waitLoaded()
+      //await new Promise((resolve) => setTimeout(resolve, 500))
+
+      // O21Pay components are registered now! Add
+      // the `ready` class so the UI fades in.
+      document.body.classList.add("ready");
+
+      // Restore Data
+      document.querySelector("#merchant_id").value =
+        localStorage.getItem("merchant_id");
+    </script>
+
+    <o21pay-qr
+      size="320"
+      theme="light"
+      shadow
+      style="padding-left: 10px; float: left; position: absolute"
+    ></o21pay-qr>
+
+    <div class="mx-auto w-3/6 p-6 text-center">
+      <o21pay-payment
+        merchant_id=""
+        secretkey=""
+        amount=""
+        order_ref=""
+        full
+        hidden
+      ></o21pay-payment>
+
+      <o21pay-dialog></o21pay-dialog>
+    </div>
+  </body>
+</html>
