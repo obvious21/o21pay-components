@@ -96,7 +96,7 @@ Display/Allows access to payment
 -   Example
 
 ```html
-<o21pay-payment merchant_id="" secretkey="" amount="" order_ref="" full></o21pay-payment>
+<o21pay-payment merchant_id="xxxx" amount="20" order_ref="1234556789" form readonly></o21pay-payment>
 ```
 
 ```javascript
@@ -182,7 +182,10 @@ Display process payment from url payment
 -   Example
 
 ```html
-<o21pay-dialog url="" width="420px" height="560px" mode="drawer-right"></o21pay-dialog>
+<o21pay-dialog url="" width="420px" height="560px" mode="dialog"></o21pay-dialog>
+<o21pay-dialog url="" width="420px" mode="drawer-left"></o21pay-dialog>
+<o21pay-dialog url="" width="420px" mode="drawer-right"></o21pay-dialog>
+<o21pay-dialog url="" mode="fullscreen"></o21pay-dialog>
 ```
 
 ```javascript
