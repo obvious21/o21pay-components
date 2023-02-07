@@ -74,13 +74,17 @@ Display/Allows access to payment
 
 -   Attributs
 
-    | Name        | Description                   |
-    | ----------- | ----------------------------- |
-    | merchant_id | Merchant ID                   |
-    | secretkey   | Secret key (only for Testing) |
-    | amount      | Amount of payment             |
-    | order_ref   | Your Order Reference          |
-    | form        | Form or only Button           |
+    | Name             | Description                   | Mandatory |
+    | ---------------- | ----------------------------- | :-------: |
+    | merchant_id      | Merchant ID                   |     Y     |
+    | secretkey        | Secret key (only for Testing) |     N     |
+    | form             | Form or only Button           |     N     |
+    | readonly         | Readonly (only Form)          |     N     |
+    | disabled         | Disabled (only Form)          |     N     |
+    | amount           | Amount of payment             |     N     |
+    | order_ref        | Your Order Reference          |     N     |
+    | hidden_order_ref | Hidden Order Reference        |     N     |
+    | suggestion       | List of amount: "10,50,100"   |     N     |
 
 -   Events
 
@@ -111,11 +115,11 @@ Display QR-Code
 
 -   Attributs
 
-    | Name   | Description            |
-    | ------ | ---------------------- |
-    | size   | width/hight of QR-Code |
-    | theme  | light/dark             |
-    | shadow | Display shadow window  |
+    | Name   | Description            | Mandatory |
+    | ------ | ---------------------- | :-------: |
+    | size   | width/hight of QR-Code |     N     |
+    | theme  | light/dark             |     N     |
+    | shadow | Display shadow window  |     N     |
 
 -   Events
 
@@ -155,12 +159,12 @@ Display process payment from url payment
 
 -   Attributs
 
-    | Name   | Description                                                  |
-    | ------ | ------------------------------------------------------------ |
-    | url    | url payment                                                  |
-    | width  | width of window)                                             |
-    | height | height of window                                             |
-    | mode   | Display mode (dialog, drawer-left, drawer-right, fullscreen) |
+    | Name   | Description                                                  | Mandatory |
+    | ------ | ------------------------------------------------------------ | :-------: |
+    | url    | url payment                                                  |     Y     |
+    | width  | width of window)                                             |     N     |
+    | height | height of window                                             |     N     |
+    | mode   | Display mode (dialog, drawer-left, drawer-right, fullscreen) |     N     |
 
 -   Events
 

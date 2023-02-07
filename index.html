@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="./styles.css" />
     
     <!-- Define O21Pay Components -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/o21pay-components@latest/dist/all.js"></script>
-    <!--script type="module" src="./dist/all.js"></script-->
+    <!--script type="module" src="https://cdn.jsdelivr.net/npm/o21pay-components@latest/dist/all.js"></script-->
+    <script type="module" src="./dist/all.js"></script>
     <script type="text/javascript">      
 
       function handleDisplayO21Pay() {
@@ -185,8 +185,10 @@
         secretkey=""
         amount=""
         order_ref=""
-        full
-        hidden
+        hidden_order_ref
+        suggestion="10,50,100,1000"        
+        form
+        hidden        
       ></o21pay-payment>
 
       <o21pay-dialog></o21pay-dialog>
