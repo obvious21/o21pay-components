@@ -78,7 +78,7 @@ Display/Allows access to payment
     | ---------------- | ----------------------------- | :-------: |
     | merchant_id      | Merchant ID                   |     Y     |
     | secretkey        | Secret key (only for Testing) |     N     |
-    | form             | Form or only Button           |     N     |
+    | form             | Form or Button                |     N     |
     | readonly         | Readonly (only Form)          |     N     |
     | disabled         | Disabled (only Form)          |     N     |
     | amount           | Amount of payment             |     N     |
