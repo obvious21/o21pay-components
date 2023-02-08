@@ -8,12 +8,15 @@
     <link rel="icon" type="image/svg+xml" href="assets/o21pay.png" />
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="./styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script-->
     
     <!-- Define O21Pay Components -->
     <!--script type="module" src="https://cdn.jsdelivr.net/npm/o21pay-components@latest/dist/all.js"></script-->
     <script type="module" src="./dist/all.js"></script>
     <script type="text/javascript">      
-
+   
       function handleDisplayO21Pay() {
         let merchant_id = document.querySelector("#merchant_id").value;
         if (!merchant_id || !merchant_id.length) {
@@ -87,8 +90,9 @@
   </head>
 
   <body>
+
     <div
-      class="mx-auto w-4/6 p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700"
+      class="mt-2 mx-auto w-4/6 p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700"
     >
       <h2 class="font-semibold text-3xl pt-1 mb-5">Samples O21Pay SDK</h2>
       <p>
@@ -157,16 +161,22 @@
           </select>
         </div>
       </p>
+      <!--div class="relative">
+        <input type="text" id="small_outlined" class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+        <label for="small_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-gray-100 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 left-1">Small outlined</label>
+      </div-->
     </div>
     <br />
     <script type="module">
       await window.O21PayComponents.waitLoaded()
-      //await new Promise((resolve) => setTimeout(resolve, 500))
+      //await new Promise((resolve) => setTimeout(resolve, 700))
 
       // O21Pay components are registered now! Add
       // the `ready` class so the UI fades in.
-      document.body.classList.add("ready");
-
+      //document.body.classList.add("ready");
+      setTimeout(function() {
+        document.body.classList.add("ready");
+      }, 400)
       // Restore Data
       document.querySelector("#merchant_id").value =
         localStorage.getItem("merchant_id");
