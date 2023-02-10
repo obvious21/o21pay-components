@@ -26,6 +26,10 @@ At O21Pay-Components is a boilerplate-killing component base class that provides
   <img src="./.github/assets/wallets.png" alt="" border="0">
 </p>
 
+## Getting Started
+
+-   Read about [O21Pay](https://github.com/obvious21/o21pay)
+
 ## Installation
 
 To install from npm:
