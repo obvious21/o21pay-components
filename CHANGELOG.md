@@ -1,3 +1,10 @@
+## <small>0.6.37 (2023-02-11)</small>
+
+* update ([2fd7ca3](https://github.com/obvious21/o21pay-components/commit/2fd7ca3))
+* update ([89a4b96](https://github.com/obvious21/o21pay-components/commit/89a4b96))
+
+
+
 ## <small>0.6.36 (2023-02-10)</small>
 
 
