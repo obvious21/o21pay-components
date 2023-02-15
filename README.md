@@ -219,6 +219,12 @@ if (modal) {
 
 See the full documentation for O21Pay at [o21.io](https://o21.io/business).
 
+## Browser Support
+
+| ![chrome_48x48](./.github/assets/chrome.png) | ![firefox_48x48](./.github/assets/firefox.png) | ![edge_48x48](./.github/assets/edge.png) | ![opera_48x48](./.github/assets/opera.png) | ![safari_48x48](./.github/assets/safari.png) |
+| -------------------------------------------- | ---------------------------------------------- | ---------------------------------------- | ------------------------------------------ | -------------------------------------------- |
+| Latest ✔                                     | Latest ✔                                       | Latest ✔                                 | Latest ✔                                   | Latest ✔                                     |
+
 ## License
 
 Copyright (c) Obvious21 SAS All rights reserved.
