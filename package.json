@@ -1,7 +1,7 @@
 {
     "name": "o21pay-components",
     "description": "O21Pay is an easy and secure payment service that requires no card or app to use. Scan the QR code on the merchant site, select the currency of your choice, choose to offset your purchase and pay with your crypto wallet or banking app. It's that easy!",
-    "version": "0.6.41",
+    "version": "0.6.42",
     "type": "module",
     "scripts": {
         "dev": "vite",
