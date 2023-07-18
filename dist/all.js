@@ -17699,7 +17699,7 @@ const ma = window.customElements;
 ma && !ma.get(Xr) && ma.define(Xr, ze);
 import("https://unpkg.com/vue@2/dist/vue.js");
 window.O21PayComponents = {
-  version: "0.6.1",
+  version: "0.6.2",
   components: [{
     name: "O21Pay",
     component: Ia,
