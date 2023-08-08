@@ -1,22 +1,22 @@
-import { css as Zr, svg as Ye } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
+import { css as tt, svg as Qe } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 /**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const ke = window, Ea = ke.ShadowRoot && (ke.ShadyCSS === void 0 || ke.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Na = Symbol(), Ga = /* @__PURE__ */ new WeakMap();
-let et = class {
+const we = window, Sa = we.ShadowRoot && (we.ShadyCSS === void 0 || we.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Pa = Symbol(), ja = /* @__PURE__ */ new WeakMap();
+let ot = class {
   constructor(e, a, t) {
-    if (this._$cssResult$ = !0, t !== Na)
+    if (this._$cssResult$ = !0, t !== Pa)
       throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e, this.t = a;
   }
   get styleSheet() {
     let e = this.o;
     const a = this.t;
-    if (Ea && e === void 0) {
+    if (Sa && e === void 0) {
       const t = a !== void 0 && a.length === 1;
-      t && (e = Ga.get(a)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), t && Ga.set(a, e));
+      t && (e = ja.get(a)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), t && ja.set(a, e));
     }
     return e;
   }
@@ -24,7 +24,7 @@ let et = class {
     return this.cssText;
   }
 };
-const Ut = (r) => new et(typeof r == "string" ? r : r + "", void 0, Na), Aa = (r, ...e) => {
+const Yt = (r) => new ot(typeof r == "string" ? r : r + "", void 0, Pa), ge = (r, ...e) => {
   const a = r.length === 1 ? r[0] : e.reduce((t, o, i) => t + ((n) => {
     if (n._$cssResult$ === !0)
       return n.cssText;
@@ -32,29 +32,29 @@ const Ut = (r) => new et(typeof r == "string" ? r : r + "", void 0, Na), Aa = (r
       return n;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(o) + r[i + 1], r[0]);
-  return new et(a, r, Na);
-}, Gt = (r, e) => {
-  Ea ? r.adoptedStyleSheets = e.map((a) => a instanceof CSSStyleSheet ? a : a.styleSheet) : e.forEach((a) => {
-    const t = document.createElement("style"), o = ke.litNonce;
+  return new ot(a, r, Pa);
+}, Kt = (r, e) => {
+  Sa ? r.adoptedStyleSheets = e.map((a) => a instanceof CSSStyleSheet ? a : a.styleSheet) : e.forEach((a) => {
+    const t = document.createElement("style"), o = we.litNonce;
     o !== void 0 && t.setAttribute("nonce", o), t.textContent = a.cssText, r.appendChild(t);
   });
-}, Ha = Ea ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((e) => {
+}, Ya = Sa ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((e) => {
   let a = "";
   for (const t of e.cssRules)
     a += t.cssText;
-  return Ut(a);
+  return Yt(a);
 })(r) : r;
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var je;
-const _e = window, Va = _e.trustedTypes, Ht = Va ? Va.emptyScript : "", Ya = _e.reactiveElementPolyfillSupport, ua = {
+var Je;
+const Ne = window, Ka = Ne.trustedTypes, Qt = Ka ? Ka.emptyScript : "", Qa = Ne.reactiveElementPolyfillSupport, fa = {
   toAttribute(r, e) {
     switch (e) {
       case Boolean:
-        r = r ? Ht : null;
+        r = r ? Qt : null;
         break;
       case Object:
       case Array:
@@ -81,12 +81,12 @@ const _e = window, Va = _e.trustedTypes, Ht = Va ? Va.emptyScript : "", Ya = _e.
     }
     return a;
   }
-}, at = (r, e) => e !== r && (e == e || r == r), Ke = {
+}, it = (r, e) => e !== r && (e == e || r == r), qe = {
   attribute: !0,
   type: String,
-  converter: ua,
+  converter: fa,
   reflect: !1,
-  hasChanged: at
+  hasChanged: it
 };
 let Y = class extends HTMLElement {
   constructor() {
@@ -104,7 +104,7 @@ let Y = class extends HTMLElement {
       o !== void 0 && (this._$Ev.set(o, t), e.push(o));
     }), e;
   }
-  static createProperty(e, a = Ke) {
+  static createProperty(e, a = qe) {
     if (a.state && (a.attribute = !1), this.finalize(), this.elementProperties.set(e, a), !a.noAccessor && !this.prototype.hasOwnProperty(e)) {
       const t = typeof e == "symbol" ? Symbol() : "__" + e, o = this.getPropertyDescriptor(e, t, a);
       o !== void 0 && Object.defineProperty(this.prototype, e, o);
@@ -124,7 +124,7 @@ let Y = class extends HTMLElement {
     };
   }
   static getPropertyOptions(e) {
-    return this.elementProperties.get(e) || Ke;
+    return this.elementProperties.get(e) || qe;
   }
   static finalize() {
     if (this.hasOwnProperty("finalized"))
@@ -143,9 +143,9 @@ let Y = class extends HTMLElement {
     if (Array.isArray(e)) {
       const t = new Set(e.flat(1 / 0).reverse());
       for (const o of t)
-        a.unshift(Ha(o));
+        a.unshift(Ya(o));
     } else
-      e !== void 0 && a.push(Ha(e));
+      e !== void 0 && a.push(Ya(e));
     return a;
   }
   static _$Ep(e, a) {
@@ -172,7 +172,7 @@ let Y = class extends HTMLElement {
   createRenderRoot() {
     var e;
     const a = (e = this.shadowRoot) !== null && e !== void 0 ? e : this.attachShadow(this.constructor.shadowRootOptions);
-    return Gt(a, this.constructor.elementStyles), a;
+    return Kt(a, this.constructor.elementStyles), a;
   }
   connectedCallback() {
     var e;
@@ -193,11 +193,11 @@ let Y = class extends HTMLElement {
   attributeChangedCallback(e, a, t) {
     this._$AK(e, t);
   }
-  _$EO(e, a, t = Ke) {
+  _$EO(e, a, t = qe) {
     var o;
     const i = this.constructor._$Ep(e, t);
     if (i !== void 0 && t.reflect === !0) {
-      const n = (((o = t.converter) === null || o === void 0 ? void 0 : o.toAttribute) !== void 0 ? t.converter : ua).toAttribute(a, t.type);
+      const n = (((o = t.converter) === null || o === void 0 ? void 0 : o.toAttribute) !== void 0 ? t.converter : fa).toAttribute(a, t.type);
       this._$El = e, n == null ? this.removeAttribute(i) : this.setAttribute(i, n), this._$El = null;
     }
   }
@@ -207,13 +207,13 @@ let Y = class extends HTMLElement {
     if (i !== void 0 && this._$El !== i) {
       const n = o.getPropertyOptions(i), d = typeof n.converter == "function" ? {
         fromAttribute: n.converter
-      } : ((t = n.converter) === null || t === void 0 ? void 0 : t.fromAttribute) !== void 0 ? n.converter : ua;
+      } : ((t = n.converter) === null || t === void 0 ? void 0 : t.fromAttribute) !== void 0 ? n.converter : fa;
       this._$El = i, this[i] = d.fromAttribute(a, n.type), this._$El = null;
     }
   }
   requestUpdate(e, a, t) {
     let o = !0;
-    e !== void 0 && (((t = t || this.constructor.getPropertyOptions(e)).hasChanged || at)(this[e], a) ? (this._$AL.has(e) || this._$AL.set(e, a), t.reflect === !0 && this._$El !== e && (this._$EC === void 0 && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e, t))) : o = !1), !this.isUpdatePending && o && (this._$E_ = this._$Ej());
+    e !== void 0 && (((t = t || this.constructor.getPropertyOptions(e)).hasChanged || it)(this[e], a) ? (this._$AL.has(e) || this._$AL.set(e, a), t.reflect === !0 && this._$El !== e && (this._$EC === void 0 && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e, t))) : o = !1), !this.isUpdatePending && o && (this._$E_ = this._$Ej());
   }
   async _$Ej() {
     this.isUpdatePending = !0;
@@ -276,42 +276,42 @@ let Y = class extends HTMLElement {
 };
 Y.finalized = !0, Y.elementProperties = /* @__PURE__ */ new Map(), Y.elementStyles = [], Y.shadowRootOptions = {
   mode: "open"
-}, Ya == null || Ya({
+}, Qa == null || Qa({
   ReactiveElement: Y
-}), ((je = _e.reactiveElementVersions) !== null && je !== void 0 ? je : _e.reactiveElementVersions = []).push("1.6.1");
+}), ((Je = Ne.reactiveElementVersions) !== null && Je !== void 0 ? Je : Ne.reactiveElementVersions = []).push("1.6.1");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var Qe;
-const Ce = window, Q = Ce.trustedTypes, ja = Q ? Q.createPolicy("lit-html", {
+var We;
+const Ae = window, Q = Ae.trustedTypes, Ja = Q ? Q.createPolicy("lit-html", {
   createHTML: (r) => r
-}) : void 0, O = `lit$${(Math.random() + "").slice(9)}$`, rt = "?" + O, Vt = `<${rt}>`, J = document, le = (r = "") => J.createComment(r), se = (r) => r === null || typeof r != "object" && typeof r != "function", tt = Array.isArray, Yt = (r) => tt(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", te = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ka = /-->/g, Qa = />/g, H = RegExp(`>|[ 	
+}) : void 0, L = `lit$${(Math.random() + "").slice(9)}$`, nt = "?" + L, Jt = `<${nt}>`, J = document, se = (r = "") => J.createComment(r), ce = (r) => r === null || typeof r != "object" && typeof r != "function", dt = Array.isArray, qt = (r) => dt(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", oe = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, qa = /-->/g, Wa = />/g, H = RegExp(`>|[ 	
 \f\r](?:([^\\s"'>=/]+)([ 	
 \f\r]*=[ 	
 \f\r]*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Ja = /'/g, qa = /"/g, ot = /^(?:script|style|textarea|title)$/i, jt = (r) => (e, ...a) => ({
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Xa = /'/g, Za = /"/g, lt = /^(?:script|style|textarea|title)$/i, Wt = (r) => (e, ...a) => ({
   _$litType$: r,
   strings: e,
   values: a
-}), L = jt(1), q = Symbol.for("lit-noChange"), $ = Symbol.for("lit-nothing"), Wa = /* @__PURE__ */ new WeakMap(), j = J.createTreeWalker(J, 129, null, !1), Kt = (r, e) => {
+}), R = Wt(1), q = Symbol.for("lit-noChange"), $ = Symbol.for("lit-nothing"), er = /* @__PURE__ */ new WeakMap(), K = J.createTreeWalker(J, 129, null, !1), Xt = (r, e) => {
   const a = r.length - 1, t = [];
-  let o, i = e === 2 ? "<svg>" : "", n = te;
+  let o, i = e === 2 ? "<svg>" : "", n = oe;
   for (let l = 0; l < a; l++) {
     const s = r[l];
     let c, p, m = -1, u = 0;
     for (; u < s.length && (n.lastIndex = u, p = n.exec(s), p !== null); )
-      u = n.lastIndex, n === te ? p[1] === "!--" ? n = Ka : p[1] !== void 0 ? n = Qa : p[2] !== void 0 ? (ot.test(p[2]) && (o = RegExp("</" + p[2], "g")), n = H) : p[3] !== void 0 && (n = H) : n === H ? p[0] === ">" ? (n = o ?? te, m = -1) : p[1] === void 0 ? m = -2 : (m = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? H : p[3] === '"' ? qa : Ja) : n === qa || n === Ja ? n = H : n === Ka || n === Qa ? n = te : (n = H, o = void 0);
+      u = n.lastIndex, n === oe ? p[1] === "!--" ? n = qa : p[1] !== void 0 ? n = Wa : p[2] !== void 0 ? (lt.test(p[2]) && (o = RegExp("</" + p[2], "g")), n = H) : p[3] !== void 0 && (n = H) : n === H ? p[0] === ">" ? (n = o ?? oe, m = -1) : p[1] === void 0 ? m = -2 : (m = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? H : p[3] === '"' ? Za : Xa) : n === Za || n === Xa ? n = H : n === qa || n === Wa ? n = oe : (n = H, o = void 0);
     const f = n === H && r[l + 1].startsWith("/>") ? " " : "";
-    i += n === te ? s + Vt : m >= 0 ? (t.push(c), s.slice(0, m) + "$lit$" + s.slice(m) + O + f) : s + O + (m === -2 ? (t.push(void 0), l) : f);
+    i += n === oe ? s + Jt : m >= 0 ? (t.push(c), s.slice(0, m) + "$lit$" + s.slice(m) + L + f) : s + L + (m === -2 ? (t.push(void 0), l) : f);
   }
   const d = i + (r[a] || "<?>") + (e === 2 ? "</svg>" : "");
   if (!Array.isArray(r) || !r.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
-  return [ja !== void 0 ? ja.createHTML(d) : d, t];
+  return [Ja !== void 0 ? Ja.createHTML(d) : d, t];
 };
-class ce {
+class me {
   constructor({
     strings: e,
     _$litType$: a
@@ -319,26 +319,26 @@ class ce {
     let o;
     this.parts = [];
     let i = 0, n = 0;
-    const d = e.length - 1, l = this.parts, [s, c] = Kt(e, a);
-    if (this.el = ce.createElement(s, t), j.currentNode = this.el.content, a === 2) {
+    const d = e.length - 1, l = this.parts, [s, c] = Xt(e, a);
+    if (this.el = me.createElement(s, t), K.currentNode = this.el.content, a === 2) {
       const p = this.el.content, m = p.firstChild;
       m.remove(), p.append(...m.childNodes);
     }
-    for (; (o = j.nextNode()) !== null && l.length < d; ) {
+    for (; (o = K.nextNode()) !== null && l.length < d; ) {
       if (o.nodeType === 1) {
         if (o.hasAttributes()) {
           const p = [];
           for (const m of o.getAttributeNames())
-            if (m.endsWith("$lit$") || m.startsWith(O)) {
+            if (m.endsWith("$lit$") || m.startsWith(L)) {
               const u = c[n++];
               if (p.push(m), u !== void 0) {
-                const f = o.getAttribute(u.toLowerCase() + "$lit$").split(O), h = /([.?@])?(.*)/.exec(u);
+                const f = o.getAttribute(u.toLowerCase() + "$lit$").split(L), h = /([.?@])?(.*)/.exec(u);
                 l.push({
                   type: 1,
                   index: i,
                   name: h[2],
                   strings: f,
-                  ctor: h[1] === "." ? Jt : h[1] === "?" ? Wt : h[1] === "@" ? Xt : Be
+                  ctor: h[1] === "." ? eo : h[1] === "?" ? ro : h[1] === "@" ? to : Re
                 });
               } else
                 l.push({
@@ -349,31 +349,31 @@ class ce {
           for (const m of p)
             o.removeAttribute(m);
         }
-        if (ot.test(o.tagName)) {
-          const p = o.textContent.split(O), m = p.length - 1;
+        if (lt.test(o.tagName)) {
+          const p = o.textContent.split(L), m = p.length - 1;
           if (m > 0) {
             o.textContent = Q ? Q.emptyScript : "";
             for (let u = 0; u < m; u++)
-              o.append(p[u], le()), j.nextNode(), l.push({
+              o.append(p[u], se()), K.nextNode(), l.push({
                 type: 2,
                 index: ++i
               });
-            o.append(p[m], le());
+            o.append(p[m], se());
           }
         }
       } else if (o.nodeType === 8)
-        if (o.data === rt)
+        if (o.data === nt)
           l.push({
             type: 2,
             index: i
           });
         else {
           let p = -1;
-          for (; (p = o.data.indexOf(O, p + 1)) !== -1; )
+          for (; (p = o.data.indexOf(L, p + 1)) !== -1; )
             l.push({
               type: 7,
               index: i
-            }), p += O.length - 1;
+            }), p += L.length - 1;
         }
       i++;
     }
@@ -388,10 +388,10 @@ function W(r, e, a = r, t) {
   if (e === q)
     return e;
   let l = t !== void 0 ? (o = a._$Co) === null || o === void 0 ? void 0 : o[t] : a._$Cl;
-  const s = se(e) ? void 0 : e._$litDirective$;
+  const s = ce(e) ? void 0 : e._$litDirective$;
   return (l == null ? void 0 : l.constructor) !== s && ((i = l == null ? void 0 : l._$AO) === null || i === void 0 || i.call(l, !1), s === void 0 ? l = void 0 : (l = new s(r), l._$AT(r, a, t)), t !== void 0 ? ((n = (d = a)._$Co) !== null && n !== void 0 ? n : d._$Co = [])[t] = l : a._$Cl = l), l !== void 0 && (e = W(r, l._$AS(r, e.values), l, t)), e;
 }
-class Qt {
+class Zt {
   constructor(e, a) {
     this.u = [], this._$AN = void 0, this._$AD = e, this._$AM = a;
   }
@@ -409,14 +409,14 @@ class Qt {
       },
       parts: o
     } = this._$AD, i = ((a = e == null ? void 0 : e.creationScope) !== null && a !== void 0 ? a : J).importNode(t, !0);
-    j.currentNode = i;
-    let n = j.nextNode(), d = 0, l = 0, s = o[0];
+    K.currentNode = i;
+    let n = K.nextNode(), d = 0, l = 0, s = o[0];
     for (; s !== void 0; ) {
       if (d === s.index) {
         let c;
-        s.type === 2 ? c = new he(n, n.nextSibling, this, e) : s.type === 1 ? c = new s.ctor(n, s.name, s.strings, this, e) : s.type === 6 && (c = new Zt(n, this, e)), this.u.push(c), s = o[++l];
+        s.type === 2 ? c = new fe(n, n.nextSibling, this, e) : s.type === 1 ? c = new s.ctor(n, s.name, s.strings, this, e) : s.type === 6 && (c = new oo(n, this, e)), this.u.push(c), s = o[++l];
       }
-      d !== (s == null ? void 0 : s.index) && (n = j.nextNode(), d++);
+      d !== (s == null ? void 0 : s.index) && (n = K.nextNode(), d++);
     }
     return i;
   }
@@ -426,7 +426,7 @@ class Qt {
       t !== void 0 && (t.strings !== void 0 ? (t._$AI(e, t, a), a += t.strings.length - 2) : t._$AI(e[a])), a++;
   }
 }
-class he {
+class fe {
   constructor(e, a, t, o) {
     var i;
     this.type = 2, this._$AH = $, this._$AN = void 0, this._$AA = e, this._$AB = a, this._$AM = t, this.options = o, this._$Cm = (i = o == null ? void 0 : o.isConnected) === null || i === void 0 || i;
@@ -447,7 +447,7 @@ class he {
     return this._$AB;
   }
   _$AI(e, a = this) {
-    e = W(this, e, a), se(e) ? e === $ || e == null || e === "" ? (this._$AH !== $ && this._$AR(), this._$AH = $) : e !== this._$AH && e !== q && this.g(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Yt(e) ? this.k(e) : this.g(e);
+    e = W(this, e, a), ce(e) ? e === $ || e == null || e === "" ? (this._$AH !== $ && this._$AR(), this._$AH = $) : e !== this._$AH && e !== q && this.g(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : qt(e) ? this.k(e) : this.g(e);
   }
   O(e, a = this._$AB) {
     return this._$AA.parentNode.insertBefore(e, a);
@@ -456,31 +456,31 @@ class he {
     this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
   }
   g(e) {
-    this._$AH !== $ && se(this._$AH) ? this._$AA.nextSibling.data = e : this.T(J.createTextNode(e)), this._$AH = e;
+    this._$AH !== $ && ce(this._$AH) ? this._$AA.nextSibling.data = e : this.T(J.createTextNode(e)), this._$AH = e;
   }
   $(e) {
     var a;
     const {
       values: t,
       _$litType$: o
-    } = e, i = typeof o == "number" ? this._$AC(e) : (o.el === void 0 && (o.el = ce.createElement(o.h, this.options)), o);
+    } = e, i = typeof o == "number" ? this._$AC(e) : (o.el === void 0 && (o.el = me.createElement(o.h, this.options)), o);
     if (((a = this._$AH) === null || a === void 0 ? void 0 : a._$AD) === i)
       this._$AH.p(t);
     else {
-      const n = new Qt(i, this), d = n.v(this.options);
+      const n = new Zt(i, this), d = n.v(this.options);
       n.p(t), this.T(d), this._$AH = n;
     }
   }
   _$AC(e) {
-    let a = Wa.get(e.strings);
-    return a === void 0 && Wa.set(e.strings, a = new ce(e)), a;
+    let a = er.get(e.strings);
+    return a === void 0 && er.set(e.strings, a = new me(e)), a;
   }
   k(e) {
-    tt(this._$AH) || (this._$AH = [], this._$AR());
+    dt(this._$AH) || (this._$AH = [], this._$AR());
     const a = this._$AH;
     let t, o = 0;
     for (const i of e)
-      o === a.length ? a.push(t = new he(this.O(le()), this.O(le()), this, this.options)) : t = a[o], t._$AI(i), o++;
+      o === a.length ? a.push(t = new fe(this.O(se()), this.O(se()), this, this.options)) : t = a[o], t._$AI(i), o++;
     o < a.length && (this._$AR(t && t._$AB.nextSibling, o), a.length = o);
   }
   _$AR(e = this._$AA.nextSibling, a) {
@@ -495,7 +495,7 @@ class he {
     this._$AM === void 0 && (this._$Cm = e, (a = this._$AP) === null || a === void 0 || a.call(this, e));
   }
 }
-class Be {
+class Re {
   constructor(e, a, t, o, i) {
     this.type = 1, this._$AH = $, this._$AN = void 0, this.element = e, this.name = a, this._$AM = o, this.options = i, t.length > 2 || t[0] !== "" || t[1] !== "" ? (this._$AH = Array(t.length - 1).fill(new String()), this.strings = t) : this._$AH = $;
   }
@@ -509,12 +509,12 @@ class Be {
     const i = this.strings;
     let n = !1;
     if (i === void 0)
-      e = W(this, e, a, 0), n = !se(e) || e !== this._$AH && e !== q, n && (this._$AH = e);
+      e = W(this, e, a, 0), n = !ce(e) || e !== this._$AH && e !== q, n && (this._$AH = e);
     else {
       const d = e;
       let l, s;
       for (e = i[0], l = 0; l < i.length - 1; l++)
-        s = W(this, d[t + l], a, l), s === q && (s = this._$AH[l]), n || (n = !se(s) || s !== this._$AH[l]), s === $ ? e = $ : e !== $ && (e += (s ?? "") + i[l + 1]), this._$AH[l] = s;
+        s = W(this, d[t + l], a, l), s === q && (s = this._$AH[l]), n || (n = !ce(s) || s !== this._$AH[l]), s === $ ? e = $ : e !== $ && (e += (s ?? "") + i[l + 1]), this._$AH[l] = s;
     }
     n && !o && this.j(e);
   }
@@ -522,7 +522,7 @@ class Be {
     e === $ ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
   }
 }
-class Jt extends Be {
+class eo extends Re {
   constructor() {
     super(...arguments), this.type = 3;
   }
@@ -530,16 +530,16 @@ class Jt extends Be {
     this.element[this.name] = e === $ ? void 0 : e;
   }
 }
-const qt = Q ? Q.emptyScript : "";
-class Wt extends Be {
+const ao = Q ? Q.emptyScript : "";
+class ro extends Re {
   constructor() {
     super(...arguments), this.type = 4;
   }
   j(e) {
-    e && e !== $ ? this.element.setAttribute(this.name, qt) : this.element.removeAttribute(this.name);
+    e && e !== $ ? this.element.setAttribute(this.name, ao) : this.element.removeAttribute(this.name);
   }
 }
-class Xt extends Be {
+class to extends Re {
   constructor(e, a, t, o, i) {
     super(e, a, t, o, i), this.type = 5;
   }
@@ -555,7 +555,7 @@ class Xt extends Be {
     typeof this._$AH == "function" ? this._$AH.call((t = (a = this.options) === null || a === void 0 ? void 0 : a.host) !== null && t !== void 0 ? t : this.element, e) : this._$AH.handleEvent(e);
   }
 }
-class Zt {
+class oo {
   constructor(e, a, t) {
     this.element = e, this.type = 6, this._$AN = void 0, this._$AM = a, this.options = t;
   }
@@ -566,15 +566,15 @@ class Zt {
     W(this, e);
   }
 }
-const Xa = Ce.litHtmlPolyfillSupport;
-Xa == null || Xa(ce, he), ((Qe = Ce.litHtmlVersions) !== null && Qe !== void 0 ? Qe : Ce.litHtmlVersions = []).push("2.6.1");
-const eo = (r, e, a) => {
+const ar = Ae.litHtmlPolyfillSupport;
+ar == null || ar(me, fe), ((We = Ae.litHtmlVersions) !== null && We !== void 0 ? We : Ae.litHtmlVersions = []).push("2.6.1");
+const io = (r, e, a) => {
   var t, o;
   const i = (t = a == null ? void 0 : a.renderBefore) !== null && t !== void 0 ? t : e;
   let n = i._$litPart$;
   if (n === void 0) {
     const d = (o = a == null ? void 0 : a.renderBefore) !== null && o !== void 0 ? o : null;
-    i._$litPart$ = n = new he(e.insertBefore(le(), d), d, void 0, a ?? {});
+    i._$litPart$ = n = new fe(e.insertBefore(se(), d), d, void 0, a ?? {});
   }
   return n._$AI(r), n;
 };
@@ -583,8 +583,8 @@ const eo = (r, e, a) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-var Je, qe;
-class U extends Y {
+var Xe, Ze;
+class O extends Y {
   constructor() {
     super(...arguments), this.renderOptions = {
       host: this
@@ -597,7 +597,7 @@ class U extends Y {
   }
   update(e) {
     const a = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = eo(a, this.renderRoot, this.renderOptions);
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = io(a, this.renderRoot, this.renderOptions);
   }
   connectedCallback() {
     var e;
@@ -611,15 +611,15 @@ class U extends Y {
     return q;
   }
 }
-U.finalized = !0, U._$litElement$ = !0, (Je = globalThis.litElementHydrateSupport) === null || Je === void 0 || Je.call(globalThis, {
-  LitElement: U
+O.finalized = !0, O._$litElement$ = !0, (Xe = globalThis.litElementHydrateSupport) === null || Xe === void 0 || Xe.call(globalThis, {
+  LitElement: O
 });
-const Za = globalThis.litElementPolyfillSupport;
-Za == null || Za({
-  LitElement: U
+const rr = globalThis.litElementPolyfillSupport;
+rr == null || rr({
+  LitElement: O
 });
-((qe = globalThis.litElementVersions) !== null && qe !== void 0 ? qe : globalThis.litElementVersions = []).push("3.2.2");
-const ao = Zr`
+((Ze = globalThis.litElementVersions) !== null && Ze !== void 0 ? Ze : globalThis.litElementVersions = []).push("3.2.2");
+const no = tt`
   input:read-only {
     background-color: #f5f7fa;
   }
@@ -780,15 +780,15 @@ const ao = Zr`
       transform: scale(1, 1);
     }
   }
-`, ro = "http://localhost:3400/api/v1/";
-function to(r, e, a) {
-  return e = oo(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+`, lo = "http://localhost:3400/api/v1/";
+function so(r, e, a) {
+  return e = co(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
 }
-function oo(r) {
-  var e = io(r, "string");
+function co(r) {
+  var e = mo(r, "string");
   return typeof e == "symbol" ? e : String(e);
 }
-function io(r, e) {
+function mo(r, e) {
   if (typeof r != "object" || r === null)
     return r;
   var a = r[Symbol.toPrimitive];
@@ -800,8 +800,8 @@ function io(r, e) {
   }
   return (e === "string" ? String : Number)(r);
 }
-const er = "o21pay-payment", no = () => navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en";
-class Ia extends U {
+const tr = "o21pay-payment", uo = () => navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en";
+class Ba extends O {
   static get properties() {
     return {
       merchant_id: {
@@ -871,7 +871,7 @@ class Ia extends U {
     };
   }
   constructor() {
-    super(), this.form = !1, this.url = "", this.amount = "", this.apiurl = ro, this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", navigator && (this.locale = no());
+    super(), this.form = !1, this.url = "", this.amount = "", this.apiurl = lo, this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", navigator && (this.locale = uo());
     const e = this;
     setTimeout(function() {
       e.dispatchEvent(new CustomEvent("o21pay_init", {
@@ -1031,7 +1031,7 @@ class Ia extends U {
     }
   }
   render() {
-    return this.form === !0 ? L`
+    return this.form === !0 ? R`
         <div class="o21pay-payment-container">
           <div class="o21pay-payment-full">
             <div class="close" @click=${this.onInit}></div>
@@ -1064,7 +1064,7 @@ class Ia extends U {
               id="suggestion"
               style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
             >
-              ${this.arraySuggestion.map((e) => L`<span class="o21pay-tag" data-source=${e} @click="${this._onTag}">
+              ${this.arraySuggestion.map((e) => R`<span class="o21pay-tag" data-source=${e} @click="${this._onTag}">
                   ${parseFloat(e).toLocaleString(this.locale, {
       style: "currency",
       maximumFractionDigits: this.decimals,
@@ -1101,13 +1101,13 @@ class Ia extends U {
             <span>Payment secured and powered by O21Pay</span>
           </div>
         </div>
-      ` : L` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
+      ` : R` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
   }
 }
-to(Ia, "styles", [ao]);
-const We = window.customElements;
-We && !We.get(er) && We.define(er, Ia);
-const lo = Zr`
+so(Ba, "styles", [no]);
+const ea = window.customElements;
+ea && !ea.get(tr) && ea.define(tr, Ba);
+const po = tt`
   .wrapper {
     opacity: 0;
     z-index: 10;
@@ -1290,14 +1290,14 @@ const lo = Zr`
     height: 100%;
   }
 `;
-function so(r, e, a) {
-  return e = co(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+function ho(r, e, a) {
+  return e = go(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
 }
-function co(r) {
-  var e = mo(r, "string");
+function go(r) {
+  var e = fo(r, "string");
   return typeof e == "symbol" ? e : String(e);
 }
-function mo(r, e) {
+function fo(r, e) {
   if (typeof r != "object" || r === null)
     return r;
   var a = r[Symbol.toPrimitive];
@@ -1309,8 +1309,8 @@ function mo(r, e) {
   }
   return (e === "string" ? String : Number)(r);
 }
-const ar = "o21pay-dialog";
-class Sa extends U {
+const or = "o21pay-dialog";
+class Ta extends O {
   static get properties() {
     return {
       width: {
@@ -1392,7 +1392,7 @@ class Sa extends U {
   }
   render() {
     let e = "wrapper" + (this.open ? " open" : ""), a = "dialog", t = "", o = "close", i = `width:${this.width}; height:${this.height}`;
-    return this.mode === "drawer-left" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};left:0;`) : this.mode === "drawer-right" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};right:0;`) : this.mode === "fullscreen" ? i = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : o = "", L`
+    return this.mode === "drawer-left" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};left:0;`) : this.mode === "drawer-right" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};right:0;`) : this.mode === "fullscreen" ? i = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : o = "", R`
       <div class=${e}>
         <div class="overlay"></div>
         <div class=${a} style=${i}>
@@ -1415,14 +1415,14 @@ class Sa extends U {
     this.open = !1;
   }
 }
-so(Sa, "styles", [lo]);
-const Xe = window.customElements;
-Xe && !Xe.get(ar) && Xe.define(ar, Sa);
-var ge = {}, uo = function() {
+ho(Ta, "styles", [po]);
+const aa = window.customElements;
+aa && !aa.get(or) && aa.define(or, Ta);
+var be = {}, bo = function() {
   return typeof Promise == "function" && Promise.prototype && Promise.prototype.then;
-}, it = {}, E = {};
-let Pa;
-const po = [
+}, st = {}, E = {};
+let Fa;
+const zo = [
   0,
   // Not used
   26,
@@ -1474,7 +1474,7 @@ E.getSymbolSize = function(e) {
   return e * 4 + 17;
 };
 E.getSymbolTotalCodewords = function(e) {
-  return po[e];
+  return zo[e];
 };
 E.getBCHDigit = function(r) {
   let e = 0;
@@ -1485,15 +1485,15 @@ E.getBCHDigit = function(r) {
 E.setToSJISFunction = function(e) {
   if (typeof e != "function")
     throw new Error('"toSJISFunc" is not a valid function.');
-  Pa = e;
+  Fa = e;
 };
 E.isKanjiModeEnabled = function() {
-  return typeof Pa < "u";
+  return typeof Fa < "u";
 };
 E.toSJIS = function(e) {
-  return Pa(e);
+  return Fa(e);
 };
-var Fe = {};
+var Oe = {};
 (function(r) {
   r.L = {
     bit: 1
@@ -1535,11 +1535,11 @@ var Fe = {};
       return o;
     }
   };
-})(Fe);
-function nt() {
+})(Oe);
+function ct() {
   this.buffer = [], this.length = 0;
 }
-nt.prototype = {
+ct.prototype = {
   get: function(r) {
     const e = Math.floor(r / 8);
     return (this.buffer[e] >>> 7 - r % 8 & 1) === 1;
@@ -1556,26 +1556,26 @@ nt.prototype = {
     this.buffer.length <= e && this.buffer.push(0), r && (this.buffer[e] |= 128 >>> this.length % 8), this.length++;
   }
 };
-var ho = nt;
-function fe(r) {
+var vo = ct;
+function ze(r) {
   if (!r || r < 1)
     throw new Error("BitMatrix size must be defined and greater than 0");
   this.size = r, this.data = new Uint8Array(r * r), this.reservedBit = new Uint8Array(r * r);
 }
-fe.prototype.set = function(r, e, a, t) {
+ze.prototype.set = function(r, e, a, t) {
   const o = r * this.size + e;
   this.data[o] = a, t && (this.reservedBit[o] = !0);
 };
-fe.prototype.get = function(r, e) {
+ze.prototype.get = function(r, e) {
   return this.data[r * this.size + e];
 };
-fe.prototype.xor = function(r, e, a) {
+ze.prototype.xor = function(r, e, a) {
   this.data[r * this.size + e] ^= a;
 };
-fe.prototype.isReserved = function(r, e) {
+ze.prototype.isReserved = function(r, e) {
   return this.reservedBit[r * this.size + e];
 };
-var go = fe, dt = {};
+var yo = ze, mt = {};
 (function(r) {
   const e = E.getSymbolSize;
   r.getRowColCoords = function(t) {
@@ -1594,21 +1594,21 @@ var go = fe, dt = {};
         d === n - 1 && l === 0 || o.push([i[d], i[l]]);
     return o;
   };
-})(dt);
-var lt = {};
-const fo = E.getSymbolSize, rr = 7;
-lt.getPositions = function(e) {
-  const a = fo(e);
+})(mt);
+var ut = {};
+const ko = E.getSymbolSize, ir = 7;
+ut.getPositions = function(e) {
+  const a = ko(e);
   return [
     // top-left
     [0, 0],
     // top-right
-    [a - rr, 0],
+    [a - ir, 0],
     // bottom-left
-    [0, a - rr]
+    [0, a - ir]
   ];
 };
-var st = {};
+var pt = {};
 (function(r) {
   r.Patterns = {
     PATTERN000: 0,
@@ -1704,9 +1704,9 @@ var st = {};
     }
     return d;
   };
-})(st);
-var Re = {};
-const D = Fe, ve = [
+})(pt);
+var Me = {};
+const U = Oe, ke = [
   // L  M  Q  H
   1,
   1,
@@ -1868,7 +1868,7 @@ const D = Fe, ve = [
   49,
   68,
   81
-], ye = [
+], xe = [
   // L  M  Q  H
   7,
   10,
@@ -2031,56 +2031,56 @@ const D = Fe, ve = [
   2040,
   2430
 ];
-Re.getBlocksCount = function(e, a) {
+Me.getBlocksCount = function(e, a) {
   switch (a) {
-    case D.L:
-      return ve[(e - 1) * 4 + 0];
-    case D.M:
-      return ve[(e - 1) * 4 + 1];
-    case D.Q:
-      return ve[(e - 1) * 4 + 2];
-    case D.H:
-      return ve[(e - 1) * 4 + 3];
+    case U.L:
+      return ke[(e - 1) * 4 + 0];
+    case U.M:
+      return ke[(e - 1) * 4 + 1];
+    case U.Q:
+      return ke[(e - 1) * 4 + 2];
+    case U.H:
+      return ke[(e - 1) * 4 + 3];
     default:
       return;
   }
 };
-Re.getTotalCodewordsCount = function(e, a) {
+Me.getTotalCodewordsCount = function(e, a) {
   switch (a) {
-    case D.L:
-      return ye[(e - 1) * 4 + 0];
-    case D.M:
-      return ye[(e - 1) * 4 + 1];
-    case D.Q:
-      return ye[(e - 1) * 4 + 2];
-    case D.H:
-      return ye[(e - 1) * 4 + 3];
+    case U.L:
+      return xe[(e - 1) * 4 + 0];
+    case U.M:
+      return xe[(e - 1) * 4 + 1];
+    case U.Q:
+      return xe[(e - 1) * 4 + 2];
+    case U.H:
+      return xe[(e - 1) * 4 + 3];
     default:
       return;
   }
 };
-var ct = {}, Te = {};
-const oe = new Uint8Array(512), Ee = new Uint8Array(256);
+var ht = {}, De = {};
+const ie = new Uint8Array(512), Ie = new Uint8Array(256);
 (function() {
   let e = 1;
   for (let a = 0; a < 255; a++)
-    oe[a] = e, Ee[e] = a, e <<= 1, e & 256 && (e ^= 285);
+    ie[a] = e, Ie[e] = a, e <<= 1, e & 256 && (e ^= 285);
   for (let a = 255; a < 512; a++)
-    oe[a] = oe[a - 255];
+    ie[a] = ie[a - 255];
 })();
-Te.log = function(e) {
+De.log = function(e) {
   if (e < 1)
     throw new Error("log(" + e + ")");
-  return Ee[e];
+  return Ie[e];
 };
-Te.exp = function(e) {
-  return oe[e];
+De.exp = function(e) {
+  return ie[e];
 };
-Te.mul = function(e, a) {
-  return e === 0 || a === 0 ? 0 : oe[Ee[e] + Ee[a]];
+De.mul = function(e, a) {
+  return e === 0 || a === 0 ? 0 : ie[Ie[e] + Ie[a]];
 };
 (function(r) {
-  const e = Te;
+  const e = De;
   r.mul = function(t, o) {
     const i = new Uint8Array(t.length + o.length - 1);
     for (let n = 0; n < t.length; n++)
@@ -2105,53 +2105,53 @@ Te.mul = function(e, a) {
       o = r.mul(o, new Uint8Array([1, e.exp(i)]));
     return o;
   };
-})(ct);
-const mt = ct;
-function Ba(r) {
+})(ht);
+const gt = ht;
+function Ra(r) {
   this.genPoly = void 0, this.degree = r, this.degree && this.initialize(this.degree);
 }
-Ba.prototype.initialize = function(e) {
-  this.degree = e, this.genPoly = mt.generateECPolynomial(this.degree);
+Ra.prototype.initialize = function(e) {
+  this.degree = e, this.genPoly = gt.generateECPolynomial(this.degree);
 };
-Ba.prototype.encode = function(e) {
+Ra.prototype.encode = function(e) {
   if (!this.genPoly)
     throw new Error("Encoder not initialized");
   const a = new Uint8Array(e.length + this.degree);
   a.set(e);
-  const t = mt.mod(a, this.genPoly), o = this.degree - t.length;
+  const t = gt.mod(a, this.genPoly), o = this.degree - t.length;
   if (o > 0) {
     const i = new Uint8Array(this.degree);
     return i.set(t, o), i;
   }
   return t;
 };
-var bo = Ba, ut = {}, G = {}, Fa = {};
-Fa.isValid = function(e) {
+var xo = Ra, ft = {}, G = {}, Oa = {};
+Oa.isValid = function(e) {
   return !isNaN(e) && e >= 1 && e <= 40;
 };
 var P = {};
-const pt = "[0-9]+", zo = "[A-Z $%*+\\-./:]+";
-let me = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
-me = me.replace(/u/g, "\\u");
-const vo = "(?:(?![A-Z0-9 $%*+\\-./:]|" + me + `)(?:.|[\r
+const bt = "[0-9]+", wo = "[A-Z $%*+\\-./:]+";
+let ue = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
+ue = ue.replace(/u/g, "\\u");
+const $o = "(?:(?![A-Z0-9 $%*+\\-./:]|" + ue + `)(?:.|[\r
 ]))+`;
-P.KANJI = new RegExp(me, "g");
+P.KANJI = new RegExp(ue, "g");
 P.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g");
-P.BYTE = new RegExp(vo, "g");
-P.NUMERIC = new RegExp(pt, "g");
-P.ALPHANUMERIC = new RegExp(zo, "g");
-const yo = new RegExp("^" + me + "$"), ko = new RegExp("^" + pt + "$"), xo = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
+P.BYTE = new RegExp($o, "g");
+P.NUMERIC = new RegExp(bt, "g");
+P.ALPHANUMERIC = new RegExp(wo, "g");
+const _o = new RegExp("^" + ue + "$"), Co = new RegExp("^" + bt + "$"), Eo = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
 P.testKanji = function(e) {
-  return yo.test(e);
+  return _o.test(e);
 };
 P.testNumeric = function(e) {
-  return ko.test(e);
+  return Co.test(e);
 };
 P.testAlphanumeric = function(e) {
-  return xo.test(e);
+  return Eo.test(e);
 };
 (function(r) {
-  const e = Fa, a = P;
+  const e = Oa, a = P;
   r.NUMERIC = {
     id: "Numeric",
     bit: 1,
@@ -2212,7 +2212,7 @@ P.testAlphanumeric = function(e) {
   };
 })(G);
 (function(r) {
-  const e = E, a = Re, t = Fe, o = G, i = Fa, n = 7973, d = e.getBCHDigit(n);
+  const e = E, a = Me, t = Oe, o = G, i = Oa, n = 7973, d = e.getBCHDigit(n);
   function l(m, u, f) {
     for (let h = 1; h <= 40; h++)
       if (u <= r.getCapacity(h, f, m))
@@ -2274,20 +2274,20 @@ P.testAlphanumeric = function(e) {
       f ^= n << e.getBCHDigit(f) - d;
     return u << 12 | f;
   };
-})(ut);
-var ht = {};
-const pa = E, gt = 1335, wo = 21522, tr = pa.getBCHDigit(gt);
-ht.getEncodedBits = function(e, a) {
+})(ft);
+var zt = {};
+const ba = E, vt = 1335, No = 21522, nr = ba.getBCHDigit(vt);
+zt.getEncodedBits = function(e, a) {
   const t = e.bit << 3 | a;
   let o = t << 10;
-  for (; pa.getBCHDigit(o) - tr >= 0; )
-    o ^= gt << pa.getBCHDigit(o) - tr;
-  return (t << 10 | o) ^ wo;
+  for (; ba.getBCHDigit(o) - nr >= 0; )
+    o ^= vt << ba.getBCHDigit(o) - nr;
+  return (t << 10 | o) ^ No;
 };
-var ft = {};
-const $o = G;
+var yt = {};
+const Ao = G;
 function X(r) {
-  this.mode = $o.NUMERIC, this.data = r.toString();
+  this.mode = Ao.NUMERIC, this.data = r.toString();
 }
 X.getBitsLength = function(e) {
   return 10 * Math.floor(e / 3) + (e % 3 ? e % 3 * 3 + 1 : 0);
@@ -2305,10 +2305,10 @@ X.prototype.write = function(e) {
   const i = this.data.length - a;
   i > 0 && (t = this.data.substr(a), o = parseInt(t, 10), e.put(o, i * 3 + 1));
 };
-var _o = X;
-const Co = G, Ze = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
+var Io = X;
+const So = G, ra = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
 function Z(r) {
-  this.mode = Co.ALPHANUMERIC, this.data = r;
+  this.mode = So.ALPHANUMERIC, this.data = r;
 }
 Z.getBitsLength = function(e) {
   return 11 * Math.floor(e / 2) + 6 * (e % 2);
@@ -2322,12 +2322,12 @@ Z.prototype.getBitsLength = function() {
 Z.prototype.write = function(e) {
   let a;
   for (a = 0; a + 2 <= this.data.length; a += 2) {
-    let t = Ze.indexOf(this.data[a]) * 45;
-    t += Ze.indexOf(this.data[a + 1]), e.put(t, 11);
+    let t = ra.indexOf(this.data[a]) * 45;
+    t += ra.indexOf(this.data[a + 1]), e.put(t, 11);
   }
-  this.data.length % 2 && e.put(Ze.indexOf(this.data[a]), 6);
+  this.data.length % 2 && e.put(ra.indexOf(this.data[a]), 6);
 };
-var Eo = Z, No = function(e) {
+var Po = Z, Bo = function(e) {
   for (var a = [], t = e.length, o = 0; o < t; o++) {
     var i = e.charCodeAt(o);
     if (i >= 55296 && i <= 56319 && t > o + 1) {
@@ -2354,9 +2354,9 @@ var Eo = Z, No = function(e) {
   }
   return new Uint8Array(a).buffer;
 };
-const Ao = No, Io = G;
+const To = Bo, Fo = G;
 function ee(r) {
-  this.mode = Io.BYTE, typeof r == "string" && (r = Ao(r)), this.data = new Uint8Array(r);
+  this.mode = Fo.BYTE, typeof r == "string" && (r = To(r)), this.data = new Uint8Array(r);
 }
 ee.getBitsLength = function(e) {
   return e * 8;
@@ -2371,10 +2371,10 @@ ee.prototype.write = function(r) {
   for (let e = 0, a = this.data.length; e < a; e++)
     r.put(this.data[e], 8);
 };
-var So = ee;
-const Po = G, Bo = E;
+var Ro = ee;
+const Oo = G, Mo = E;
 function ae(r) {
-  this.mode = Po.KANJI, this.data = r;
+  this.mode = Oo.KANJI, this.data = r;
 }
 ae.getBitsLength = function(e) {
   return e * 13;
@@ -2388,7 +2388,7 @@ ae.prototype.getBitsLength = function() {
 ae.prototype.write = function(r) {
   let e;
   for (e = 0; e < this.data.length; e++) {
-    let a = Bo.toSJIS(this.data[e]);
+    let a = Mo.toSJIS(this.data[e]);
     if (a >= 33088 && a <= 40956)
       a -= 33088;
     else if (a >= 57408 && a <= 60351)
@@ -2399,7 +2399,7 @@ Make sure your charset is UTF-8`);
     a = (a >>> 8 & 255) * 192 + (a & 255), r.put(a, 13);
   }
 };
-var Fo = ae, bt = { exports: {} };
+var Do = ae, kt = { exports: {} };
 (function(r) {
   var e = {
     single_source_shortest_paths: function(a, t, o) {
@@ -2464,10 +2464,10 @@ var Fo = ae, bt = { exports: {} };
     }
   };
   r.exports = e;
-})(bt);
-var Ro = bt.exports;
+})(kt);
+var Lo = kt.exports;
 (function(r) {
-  const e = G, a = _o, t = Eo, o = So, i = Fo, n = P, d = E, l = Ro;
+  const e = G, a = Io, t = Po, o = Ro, i = Do, n = P, d = E, l = Lo;
   function s(b) {
     return unescape(encodeURIComponent(b)).length;
   }
@@ -2561,15 +2561,15 @@ var Ro = bt.exports;
     let k = ["start"];
     for (let x = 0; x < b.length; x++) {
       const w = b[x], N = [];
-      for (let M = 0; M < w.length; M++) {
-        const S = w[M], re = "" + x + M;
-        N.push(re), z[re] = {
+      for (let D = 0; D < w.length; D++) {
+        const S = w[D], te = "" + x + D;
+        N.push(te), z[te] = {
           node: S,
           lastCount: 0
-        }, v[re] = {};
-        for (let Ve = 0; Ve < k.length; Ve++) {
-          const B = k[Ve];
-          z[B] && z[B].node.mode === S.mode ? (v[B][re] = m(z[B].lastCount + S.length, S.mode) - m(z[B].lastCount, S.mode), z[B].lastCount += S.length) : (z[B] && (z[B].lastCount = S.length), v[B][re] = m(S.length, S.mode) + 4 + e.getCharCountIndicator(S.mode, g));
+        }, v[te] = {};
+        for (let Ke = 0; Ke < k.length; Ke++) {
+          const B = k[Ke];
+          z[B] && z[B].node.mode === S.mode ? (v[B][te] = m(z[B].lastCount + S.length, S.mode) - m(z[B].lastCount, S.mode), z[B].lastCount += S.length) : (z[B] && (z[B].lastCount = S.length), v[B][te] = m(S.length, S.mode) + 4 + e.getCharCountIndicator(S.mode, g));
         }
       }
       k = N;
@@ -2604,16 +2604,16 @@ var Ro = bt.exports;
     }, []);
   }, r.fromString = function(g, z) {
     const v = p(g, d.isKanjiModeEnabled()), k = f(v), x = h(k, z), w = l.find_path(x.map, "start", "end"), N = [];
-    for (let M = 1; M < w.length - 1; M++)
-      N.push(x.table[w[M]].node);
+    for (let D = 1; D < w.length - 1; D++)
+      N.push(x.table[w[D]].node);
     return r.fromArray(u(N));
   }, r.rawSplit = function(g) {
     return r.fromArray(p(g, d.isKanjiModeEnabled()));
   };
-})(ft);
-const Me = E, ea = Fe, To = ho, Mo = go, Oo = dt, Do = lt, ha = st, ga = Re, Lo = bo, Ne = ut, Uo = ht, Go = G, aa = ft;
-function Ho(r, e) {
-  const a = r.size, t = Do.getPositions(e);
+})(yt);
+const Le = E, ta = Oe, Uo = vo, Go = yo, Ho = mt, Vo = ut, za = pt, va = Me, jo = xo, Se = ft, Yo = zt, Ko = G, oa = yt;
+function Qo(r, e) {
+  const a = r.size, t = Vo.getPositions(e);
   for (let o = 0; o < t.length; o++) {
     const i = t[o][0], n = t[o][1];
     for (let d = -1; d <= 7; d++)
@@ -2622,15 +2622,15 @@ function Ho(r, e) {
           n + l <= -1 || a <= n + l || (d >= 0 && d <= 6 && (l === 0 || l === 6) || l >= 0 && l <= 6 && (d === 0 || d === 6) || d >= 2 && d <= 4 && l >= 2 && l <= 4 ? r.set(i + d, n + l, !0, !0) : r.set(i + d, n + l, !1, !0));
   }
 }
-function Vo(r) {
+function Jo(r) {
   const e = r.size;
   for (let a = 8; a < e - 8; a++) {
     const t = a % 2 === 0;
     r.set(a, 6, t, !0), r.set(6, a, t, !0);
   }
 }
-function Yo(r, e) {
-  const a = Oo.getPositions(e);
+function qo(r, e) {
+  const a = Ho.getPositions(e);
   for (let t = 0; t < a.length; t++) {
     const o = a[t][0], i = a[t][1];
     for (let n = -2; n <= 2; n++)
@@ -2638,20 +2638,20 @@ function Yo(r, e) {
         n === -2 || n === 2 || d === -2 || d === 2 || n === 0 && d === 0 ? r.set(o + n, i + d, !0, !0) : r.set(o + n, i + d, !1, !0);
   }
 }
-function jo(r, e) {
-  const a = r.size, t = Ne.getEncodedBits(e);
+function Wo(r, e) {
+  const a = r.size, t = Se.getEncodedBits(e);
   let o, i, n;
   for (let d = 0; d < 18; d++)
     o = Math.floor(d / 3), i = d % 3 + a - 8 - 3, n = (t >> d & 1) === 1, r.set(o, i, n, !0), r.set(i, o, n, !0);
 }
-function ra(r, e, a) {
-  const t = r.size, o = Uo.getEncodedBits(e, a);
+function ia(r, e, a) {
+  const t = r.size, o = Yo.getEncodedBits(e, a);
   let i, n;
   for (i = 0; i < 15; i++)
     n = (o >> i & 1) === 1, i < 6 ? r.set(i, 8, n, !0) : i < 8 ? r.set(i + 1, 8, n, !0) : r.set(t - 15 + i, 8, n, !0), i < 8 ? r.set(8, t - i - 1, n, !0) : i < 9 ? r.set(8, 15 - i - 1 + 1, n, !0) : r.set(8, 15 - i - 1, n, !0);
   r.set(t - 8, 8, 1, !0);
 }
-function Ko(r, e) {
+function Xo(r, e) {
   const a = r.size;
   let t = -1, o = a - 1, i = 7, n = 0;
   for (let d = a - 1; d > 0; d -= 2)
@@ -2667,21 +2667,21 @@ function Ko(r, e) {
       }
     }
 }
-function Qo(r, e, a) {
-  const t = new To();
+function Zo(r, e, a) {
+  const t = new Uo();
   a.forEach(function(l) {
-    t.put(l.mode.bit, 4), t.put(l.getLength(), Go.getCharCountIndicator(l.mode, r)), l.write(t);
+    t.put(l.mode.bit, 4), t.put(l.getLength(), Ko.getCharCountIndicator(l.mode, r)), l.write(t);
   });
-  const o = Me.getSymbolTotalCodewords(r), i = ga.getTotalCodewordsCount(r, e), n = (o - i) * 8;
+  const o = Le.getSymbolTotalCodewords(r), i = va.getTotalCodewordsCount(r, e), n = (o - i) * 8;
   for (t.getLengthInBits() + 4 <= n && t.put(0, 4); t.getLengthInBits() % 8 !== 0; )
     t.putBit(0);
   const d = (n - t.getLengthInBits()) / 8;
   for (let l = 0; l < d; l++)
     t.put(l % 2 ? 17 : 236, 8);
-  return Jo(t, r, e);
+  return ei(t, r, e);
 }
-function Jo(r, e, a) {
-  const t = Me.getSymbolTotalCodewords(e), o = ga.getTotalCodewordsCount(e, a), i = t - o, n = ga.getBlocksCount(e, a), d = t % n, l = n - d, s = Math.floor(t / n), c = Math.floor(i / n), p = c + 1, m = s - c, u = new Lo(m);
+function ei(r, e, a) {
+  const t = Le.getSymbolTotalCodewords(e), o = va.getTotalCodewordsCount(e, a), i = t - o, n = va.getBlocksCount(e, a), d = t % n, l = n - d, s = Math.floor(t / n), c = Math.floor(i / n), p = c + 1, m = s - c, u = new jo(m);
   let f = 0;
   const h = new Array(n), y = new Array(n);
   let b = 0;
@@ -2700,20 +2700,20 @@ function Jo(r, e, a) {
       z[v++] = y[x][k];
   return z;
 }
-function qo(r, e, a, t) {
+function ai(r, e, a, t) {
   let o;
   if (Array.isArray(r))
-    o = aa.fromArray(r);
+    o = oa.fromArray(r);
   else if (typeof r == "string") {
     let s = e;
     if (!s) {
-      const c = aa.rawSplit(r);
-      s = Ne.getBestVersionForData(c, a);
+      const c = oa.rawSplit(r);
+      s = Se.getBestVersionForData(c, a);
     }
-    o = aa.fromString(r, s || 40);
+    o = oa.fromString(r, s || 40);
   } else
     throw new Error("Invalid data");
-  const i = Ne.getBestVersionForData(o, a);
+  const i = Se.getBestVersionForData(o, a);
   if (!i)
     throw new Error("The amount of data is too big to be stored in a QR Code");
   if (!e)
@@ -2723,8 +2723,8 @@ function qo(r, e, a, t) {
 The chosen QR Code version cannot contain this amount of data.
 Minimum version required to store current data is: ` + i + `.
 `);
-  const n = Qo(e, a, o), d = Me.getSymbolSize(e), l = new Mo(d);
-  return Ho(l, e), Vo(l), Yo(l, e), ra(l, a, 0), e >= 7 && jo(l, e), Ko(l, n), isNaN(t) && (t = ha.getBestMask(l, ra.bind(null, l, a))), ha.applyMask(t, l), ra(l, a, t), {
+  const n = Zo(e, a, o), d = Le.getSymbolSize(e), l = new Go(d);
+  return Qo(l, e), Jo(l), qo(l, e), ia(l, a, 0), e >= 7 && Wo(l, e), Xo(l, n), isNaN(t) && (t = za.getBestMask(l, ia.bind(null, l, a))), za.applyMask(t, l), ia(l, a, t), {
     modules: l,
     version: e,
     errorCorrectionLevel: a,
@@ -2732,13 +2732,13 @@ Minimum version required to store current data is: ` + i + `.
     segments: o
   };
 }
-it.create = function(e, a) {
+st.create = function(e, a) {
   if (typeof e > "u" || e === "")
     throw new Error("No input text");
-  let t = ea.M, o, i;
-  return typeof a < "u" && (t = ea.from(a.errorCorrectionLevel, ea.M), o = Ne.from(a.version), i = ha.from(a.maskPattern), a.toSJISFunc && Me.setToSJISFunction(a.toSJISFunc)), qo(e, o, t, i);
+  let t = ta.M, o, i;
+  return typeof a < "u" && (t = ta.from(a.errorCorrectionLevel, ta.M), o = Se.from(a.version), i = za.from(a.maskPattern), a.toSJISFunc && Le.setToSJISFunction(a.toSJISFunc)), ai(e, o, t, i);
 };
-var zt = {}, Ra = {};
+var xt = {}, Ma = {};
 (function(r) {
   function e(a) {
     if (typeof a == "number" && (a = a.toString()), typeof a != "string")
@@ -2789,9 +2789,9 @@ var zt = {}, Ra = {};
         t[f++] = h.r, t[f++] = h.g, t[f++] = h.b, t[f] = h.a;
       }
   };
-})(Ra);
+})(Ma);
 (function(r) {
-  const e = Ra;
+  const e = Ma;
   function a(o, i, n) {
     o.clearRect(0, 0, i.width, i.height), i.style || (i.style = {}), i.height = n, i.width = n, i.style.height = n + "px", i.style.width = n + "px";
   }
@@ -2813,34 +2813,34 @@ var zt = {}, Ra = {};
     const s = r.render(i, n, l), c = l.type || "image/png", p = l.rendererOpts || {};
     return s.toDataURL(c, p.quality);
   };
-})(zt);
-var vt = {};
-const Wo = Ra;
-function or(r, e) {
+})(xt);
+var wt = {};
+const ri = Ma;
+function dr(r, e) {
   const a = r.a / 255, t = e + '="' + r.hex + '"';
   return a < 1 ? t + " " + e + '-opacity="' + a.toFixed(2).slice(1) + '"' : t;
 }
-function ta(r, e, a) {
+function na(r, e, a) {
   let t = r + e;
   return typeof a < "u" && (t += " " + a), t;
 }
-function Xo(r, e, a) {
+function ti(r, e, a) {
   let t = "", o = 0, i = !1, n = 0;
   for (let d = 0; d < r.length; d++) {
     const l = Math.floor(d % e), s = Math.floor(d / e);
-    !l && !i && (i = !0), r[d] ? (n++, d > 0 && l > 0 && r[d - 1] || (t += i ? ta("M", l + a, 0.5 + s + a) : ta("m", o, 0), o = 0, i = !1), l + 1 < e && r[d + 1] || (t += ta("h", n), n = 0)) : o++;
+    !l && !i && (i = !0), r[d] ? (n++, d > 0 && l > 0 && r[d - 1] || (t += i ? na("M", l + a, 0.5 + s + a) : na("m", o, 0), o = 0, i = !1), l + 1 < e && r[d + 1] || (t += na("h", n), n = 0)) : o++;
   }
   return t;
 }
-vt.render = function(e, a, t) {
-  const o = Wo.getOptions(a), i = e.modules.size, n = e.modules.data, d = i + o.margin * 2, l = o.color.light.a ? "<path " + or(o.color.light, "fill") + ' d="M0 0h' + d + "v" + d + 'H0z"/>' : "", s = "<path " + or(o.color.dark, "stroke") + ' d="' + Xo(n, i, o.margin) + '"/>', c = 'viewBox="0 0 ' + d + " " + d + '"', m = '<svg xmlns="http://www.w3.org/2000/svg" ' + (o.width ? 'width="' + o.width + '" height="' + o.width + '" ' : "") + c + ' shape-rendering="crispEdges">' + l + s + `</svg>
+wt.render = function(e, a, t) {
+  const o = ri.getOptions(a), i = e.modules.size, n = e.modules.data, d = i + o.margin * 2, l = o.color.light.a ? "<path " + dr(o.color.light, "fill") + ' d="M0 0h' + d + "v" + d + 'H0z"/>' : "", s = "<path " + dr(o.color.dark, "stroke") + ' d="' + ti(n, i, o.margin) + '"/>', c = 'viewBox="0 0 ' + d + " " + d + '"', m = '<svg xmlns="http://www.w3.org/2000/svg" ' + (o.width ? 'width="' + o.width + '" height="' + o.width + '" ' : "") + c + ' shape-rendering="crispEdges">' + l + s + `</svg>
 `;
   return typeof t == "function" && t(null, m), m;
 };
-const Zo = uo, fa = it, yt = zt, ei = vt;
-function Ta(r, e, a, t, o) {
+const oi = bo, ya = st, $t = xt, ii = wt;
+function Da(r, e, a, t, o) {
   const i = [].slice.call(arguments, 1), n = i.length, d = typeof i[n - 1] == "function";
-  if (!d && !Zo())
+  if (!d && !oi())
     throw new Error("Callback required as last argument");
   if (d) {
     if (n < 2)
@@ -2851,7 +2851,7 @@ function Ta(r, e, a, t, o) {
       throw new Error("Too few arguments provided");
     return n === 1 ? (a = e, e = t = void 0) : n === 2 && !e.getContext && (t = a, a = e, e = void 0), new Promise(function(l, s) {
       try {
-        const c = fa.create(a, t);
+        const c = ya.create(a, t);
         l(r(c, e, t));
       } catch (c) {
         s(c);
@@ -2859,31 +2859,31 @@ function Ta(r, e, a, t, o) {
     });
   }
   try {
-    const l = fa.create(a, t);
+    const l = ya.create(a, t);
     o(null, r(l, e, t));
   } catch (l) {
     o(l);
   }
 }
-ge.create = fa.create;
-ge.toCanvas = Ta.bind(null, yt.render);
-ge.toDataURL = Ta.bind(null, yt.renderToDataURL);
-ge.toString = Ta.bind(null, function(r, e, a) {
-  return ei.render(r, a);
+be.create = ya.create;
+be.toCanvas = Da.bind(null, $t.render);
+be.toDataURL = Da.bind(null, $t.renderToDataURL);
+be.toString = Da.bind(null, function(r, e, a) {
+  return ii.render(r, a);
 });
-const ai = 0.1, ir = 2.5, F = 7;
-function oa(r, e, a) {
-  return r === e ? !1 : (r - e < 0 ? e - r : r - e) <= a + ai;
+const ni = 0.1, lr = 2.5, T = 7;
+function da(r, e, a) {
+  return r === e ? !1 : (r - e < 0 ? e - r : r - e) <= a + ni;
 }
-function ri(r, e) {
-  const a = Array.prototype.slice.call(ge.create(r, {
+function di(r, e) {
+  const a = Array.prototype.slice.call(be.create(r, {
     errorCorrectionLevel: e
   }).modules.data, 0), t = Math.sqrt(a.length);
   return a.reduce((o, i, n) => (n % t === 0 ? o.push([i]) : o[o.length - 1].push(i)) && o, []);
 }
-const ti = {
+const li = {
   generate(r, e, a, t = "light") {
-    const o = t === "light" ? "#141414" : "#fff", i = t === "light" ? "#fff" : "#141414", n = [], d = ri(r, "Q"), l = e / d.length, s = [{
+    const o = t === "light" ? "#141414" : "#fff", i = t === "light" ? "#fff" : "#141414", n = [], d = di(r, "Q"), l = e / d.length, s = [{
       x: 0,
       y: 0
     }, {
@@ -2897,10 +2897,10 @@ const ti = {
       x: h,
       y
     }) => {
-      const b = (d.length - F) * l * h, g = (d.length - F) * l * y, z = 0.32;
+      const b = (d.length - T) * l * h, g = (d.length - T) * l * y, z = 0.32;
       for (let v = 0; v < s.length; v += 1) {
-        const k = l * (F - v * 2);
-        n.push(Ye`
+        const k = l * (T - v * 2);
+        n.push(Qe`
             <rect
               fill=${v % 2 === 0 ? o : i}
               height=${k}
@@ -2916,7 +2916,7 @@ const ti = {
     const c = Math.floor((a + 25) / l), p = d.length / 2 - c / 2, m = d.length / 2 + c / 2 - 1, u = [];
     d.forEach((h, y) => {
       h.forEach((b, g) => {
-        if (d[y][g] && !(y < F && g < F || y > d.length - (F + 1) && g < F || y < F && g > d.length - (F + 1)) && !(y > p && y < m && g > p && g < m)) {
+        if (d[y][g] && !(y < T && g < T || y > d.length - (T + 1) && g < T || y < T && g > d.length - (T + 1)) && !(y > p && y < m && g > p && g < m)) {
           const z = y * l + l / 2, v = g * l + l / 2;
           u.push([z, v]);
         }
@@ -2926,40 +2926,40 @@ const ti = {
     return u.forEach(([h, y]) => {
       f[h] ? f[h].push(y) : f[h] = [y];
     }), Object.entries(f).map(([h, y]) => {
-      const b = y.filter((g) => y.every((z) => !oa(g, z, l)));
+      const b = y.filter((g) => y.every((z) => !da(g, z, l)));
       return [Number(h), b];
     }).forEach(([h, y]) => {
       y.forEach((b) => {
-        n.push(Ye`<circle cx=${h} cy=${b} fill=${o} r=${l / ir} />`);
+        n.push(Qe`<circle cx=${h} cy=${b} fill=${o} r=${l / lr} />`);
       });
     }), Object.entries(f).filter(([h, y]) => y.length > 1).map(([h, y]) => {
-      const b = y.filter((g) => y.some((z) => oa(g, z, l)));
+      const b = y.filter((g) => y.some((z) => da(g, z, l)));
       return [Number(h), b];
     }).map(([h, y]) => {
       y.sort((g, z) => g < z ? -1 : 1);
       const b = [];
       for (const g of y) {
-        const z = b.find((v) => v.some((k) => oa(g, k, l)));
+        const z = b.find((v) => v.some((k) => da(g, k, l)));
         z ? z.push(g) : b.push([g]);
       }
       return [h, b.map((g) => [g[0], g[g.length - 1]])];
     }).forEach(([h, y]) => {
       y.forEach(([b, g]) => {
-        n.push(Ye`
+        n.push(Qe`
               <line
                 x1=${h}
                 x2=${h}
                 y1=${b}
                 y2=${g}
                 stroke=${o}
-                stroke-width=${l / (ir / 2)}
+                stroke-width=${l / (lr / 2)}
                 stroke-linecap="round"
               />
             `);
       });
     }), n;
   }
-}, oi = Aa`
+}, si = ge`
   .o21pay-logo {
     content: url('https://assets.obvious21.com/o21pay-assets/o21pay.png');
   }
@@ -2994,14 +2994,14 @@ const ti = {
     animation-name: zoomIn;
   }
 `;
-function ii(r, e, a) {
-  return e = ni(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+function ci(r, e, a) {
+  return e = mi(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
 }
-function ni(r) {
-  var e = di(r, "string");
+function mi(r) {
+  var e = ui(r, "string");
   return typeof e == "symbol" ? e : String(e);
 }
-function di(r, e) {
+function ui(r, e) {
   if (typeof r != "object" || r === null)
     return r;
   var a = r[Symbol.toPrimitive];
@@ -3013,8 +3013,8 @@ function di(r, e) {
   }
   return (e === "string" ? String : Number)(r);
 }
-const nr = "o21pay-qr";
-class Ma extends U {
+const sr = "o21pay-qr";
+class La extends O {
   static get properties() {
     return {
       size: {
@@ -3051,11 +3051,11 @@ class Ma extends U {
   render() {
     const e = this.url;
     if (!e || !e.length)
-      return L``;
+      return R``;
     this.size = parseInt(this.size) || "320", this.logoSize = this.size / 3.3;
-    const a = (this.size - this.logoSize) / 2 + 9, t = (this.size - this.logoSize) / 2 + 12, i = ((d) => L`<svg height="${this.size}" width="${this.size}">${d}</svg>`)(ti.generate(this.url, this.size, this.size / 4, this.theme));
+    const a = (this.size - this.logoSize) / 2 + 9, t = (this.size - this.logoSize) / 2 + 12, i = ((d) => R`<svg height="${this.size}" width="${this.size}">${d}</svg>`)(li.generate(this.url, this.size, this.size / 4, this.theme));
     let n = `pr-qrcode ${this.theme}-theme`;
-    return this.shadow && (n += " shadow"), L`
+    return this.shadow && (n += " shadow"), R`
       <div id="qrsvg" class="${n}" style="width: ${this.size}px;height: ${this.size}px;">
         <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${i}</svg>
         <img
@@ -3067,10 +3067,10 @@ class Ma extends U {
     `;
   }
 }
-ii(Ma, "styles", [oi]);
-const ia = window.customElements;
-ia && !ia.get(nr) && ia.define(nr, Ma);
-const li = Aa`
+ci(La, "styles", [si]);
+const la = window.customElements;
+la && !la.get(sr) && la.define(sr, La);
+const _t = ge`
   :host {
     --maz-primary: #1e90ff;
     --maz-primary-darken: #1873cc;
@@ -12425,7 +12425,7 @@ const li = Aa`
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
-`, si = Aa`
+`, pi = ge`
   :host {
     --maz-primary: #9bc99d;
     --maz-border-width: 1px;
@@ -12451,7 +12451,7 @@ const li = Aa`
     box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 10px -4px !important;
   }
 `;
-function be(r, e, a, t, o, i, n, d) {
+function re(r, e, a, t, o, i, n, d) {
   var l = typeof r == "function" ? r.options : r;
   e && (l.render = e, l.staticRenderFns = a, l._compiled = !0), t && (l.functional = !0), i && (l._scopeId = "data-v-" + i);
   var s;
@@ -12480,7 +12480,7 @@ function be(r, e, a, t, o, i, n, d) {
     options: l
   };
 }
-const ci = {
+const hi = {
   name: "MazSpinner",
   props: {
     size: { type: Number, default: 40 },
@@ -12493,7 +12493,7 @@ const ci = {
     }
   }
 };
-var mi = function() {
+var gi = function() {
   var e = this, a = e._self._c;
   return a("svg", { staticClass: "maz-base-component maz-spinner maz-spinner-anim", class: [
     {
@@ -12501,21 +12501,21 @@ var mi = function() {
     },
     e.fillColorClass
   ], staticStyle: { "enable-background": "new 0 0 50 50" }, attrs: { width: `${e.size}px`, height: `${e.size}px`, version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 50 50", "xml:space": "preserve" } }, [a("path", { attrs: { d: "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" } })]);
-}, ui = [], pi = /* @__PURE__ */ be(
-  ci,
-  mi,
-  ui,
+}, fi = [], bi = /* @__PURE__ */ re(
+  hi,
+  gi,
+  fi,
   !1,
   null,
   null,
   null,
   null
 );
-const ie = pi.exports;
-ie.install = (r) => {
-  r.component(ie.name, ie);
+const ne = bi.exports;
+ne.install = (r) => {
+  r.component(ne.name, ne);
 };
-const Oe = {
+const Ue = {
   data() {
     return {
       uniqueId: null
@@ -12525,12 +12525,12 @@ const Oe = {
     const r = this.id || this.$attrs.id;
     this.uniqueId = r ? `${r}` : `${this.$options.name}-${this._uid}`;
   }
-}, hi = {
+}, zi = {
   name: "MazBtn",
   components: {
-    MazSpinner: ie
+    MazSpinner: ne
   },
-  mixins: [Oe],
+  mixins: [Ue],
   inheritAttrs: !1,
   props: {
     // is the id of the button
@@ -12655,7 +12655,7 @@ const Oe = {
     }
   }
 };
-var gi = function() {
+var vi = function() {
   var e = this, a = e._self._c;
   return a(e.componentType, e._b({ tag: "component", staticClass: "maz-base-component maz-btn maz-inline-flex", class: [
     e.classes,
@@ -12681,31 +12681,31 @@ var gi = function() {
   } }, [e._t("icon-right", function() {
     return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.rightIconName))])];
   })], 2) : e._e()]);
-}, fi = [], bi = /* @__PURE__ */ be(
-  hi,
-  gi,
-  fi,
+}, yi = [], ki = /* @__PURE__ */ re(
+  zi,
+  vi,
+  yi,
   !1,
   null,
   null,
   null,
   null
 );
-const ne = bi.exports;
-ne.install = (r) => {
-  r.component(ne.name, ne);
+const de = ki.exports;
+de.install = (r) => {
+  r.component(de.name, de);
 };
-const zi = (r, e) => {
+const xi = (r, e) => {
   let a;
   return function() {
     const t = this, o = arguments;
     clearTimeout(a), a = setTimeout(() => r.apply(t, o), e);
   };
 };
-let vi = 500;
-const yi = {
+let wi = 500;
+const $i = {
   name: "MazInput",
-  mixins: [Oe],
+  mixins: [Ue],
   props: {
     // value of the input
     value: {
@@ -12801,9 +12801,9 @@ const yi = {
     }
   },
   methods: {
-    debounceValue: zi(function(r) {
+    debounceValue: xi(function(r) {
       this.$emit("input", r);
-    }, vi),
+    }, wi),
     emitValue(r) {
       if (this.debounce)
         return this.debounceValue(r);
@@ -12841,7 +12841,7 @@ const yi = {
     }
   }
 };
-var ki = function() {
+var _i = function() {
   var e = this, a = e._self._c;
   return a("div", { ref: "parent", staticClass: "maz-base-component maz-input maz-border maz-border-color maz-border-color-hover maz-border-solid maz-border-radius", class: [
     {
@@ -12899,24 +12899,24 @@ var ki = function() {
   }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(t) {
     e.showPassword = !e.showPassword;
   } } }, [a("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e._v(" " + e._s(e.showPassword ? "visibility_off" : "visibility") + " ")])]) : e._e()]), e.loading ? a("div", { staticClass: "maz-input__loader", class: { textarea: e.textarea } }, [a("div", { staticClass: "maz-input__loader__progress-bar" })]) : e._e()], 1);
-}, xi = [], wi = /* @__PURE__ */ be(
-  yi,
-  ki,
-  xi,
+}, Ci = [], Ei = /* @__PURE__ */ re(
+  $i,
+  _i,
+  Ci,
   !1,
   null,
   null,
   null,
   null
 );
-const K = wi.exports;
-K.install = (r) => {
-  r.component(K.name, K);
+const V = Ei.exports;
+V.install = (r) => {
+  r.component(V.name, V);
 };
-const $i = {
+const Ni = {
   name: "MazSelect",
-  components: { MazInput: K, MazBtn: ne },
-  mixins: [Oe],
+  components: { MazInput: V, MazBtn: de },
+  mixins: [Ue],
   props: {
     // is the value of the input
     value: {
@@ -13142,7 +13142,7 @@ const $i = {
     }
   }
 };
-var _i = function() {
+var Ai = function() {
   var e = this, a = e._self._c;
   return a("div", { staticClass: "maz-base-component maz-select", class: [
     {
@@ -13196,21 +13196,21 @@ var _i = function() {
   }), e.optionsShown.length ? e._e() : e._t("no-results", function() {
     return [a("div", { staticClass: "maz-select__options-list__no-results maz-p-1 maz-flex maz-flex-center" }, [a("i", { staticClass: "material-icons maz-text-danger" }, [e._v(" search_off ")])])];
   }, { tag: "div" })], 2)], 1)])], 1);
-}, Ci = [], Ei = /* @__PURE__ */ be(
-  $i,
-  _i,
-  Ci,
+}, Ii = [], Si = /* @__PURE__ */ re(
+  Ni,
+  Ai,
+  Ii,
   !1,
   null,
   null,
   null,
   null
 );
-const de = Ei.exports;
-de.install = (r) => {
-  r.component(de.name, de);
+const le = Si.exports;
+le.install = (r) => {
+  r.component(le.name, le);
 };
-const kt = {
+const Ct = {
   version: 4,
   country_calling_codes: {
     1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
@@ -13679,34 +13679,34 @@ const kt = {
     979: ["979", 0, "[1359]\\d{8}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[1359]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, ["[1359]\\d{8}"]]]
   }
 };
-function Oa(r, e) {
+function Ua(r, e) {
   var a = Array.prototype.slice.call(e);
-  return a.push(kt), r.apply(this, a);
+  return a.push(Ct), r.apply(this, a);
 }
-function ba(r) {
+function ka(r) {
   "@babel/helpers - typeof";
-  return ba = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+  return ka = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
     return typeof e;
   } : function(e) {
     return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, ba(r);
+  }, ka(r);
 }
-function dr(r, e) {
+function cr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Ni(r, e, a) {
-  return e && dr(r.prototype, e), a && dr(r, a), Object.defineProperty(r, "prototype", {
+function Pi(r, e, a) {
+  return e && cr(r.prototype, e), a && cr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-function Ai(r, e) {
+function Bi(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Ii(r, e) {
+function Ti(r, e) {
   if (typeof e != "function" && e !== null)
     throw new TypeError("Super expression must either be null or a function");
   r.prototype = Object.create(e && e.prototype, {
@@ -13717,36 +13717,36 @@ function Ii(r, e) {
     }
   }), Object.defineProperty(r, "prototype", {
     writable: !1
-  }), e && ue(r, e);
+  }), e && pe(r, e);
 }
-function Si(r) {
-  var e = wt();
+function Fi(r) {
+  var e = Nt();
   return function() {
-    var t = pe(r), o;
+    var t = he(r), o;
     if (e) {
-      var i = pe(this).constructor;
+      var i = he(this).constructor;
       o = Reflect.construct(t, arguments, i);
     } else
       o = t.apply(this, arguments);
-    return Pi(this, o);
+    return Ri(this, o);
   };
 }
-function Pi(r, e) {
-  if (e && (ba(e) === "object" || typeof e == "function"))
+function Ri(r, e) {
+  if (e && (ka(e) === "object" || typeof e == "function"))
     return e;
   if (e !== void 0)
     throw new TypeError("Derived constructors may only return object or undefined");
-  return xt(r);
+  return Et(r);
 }
-function xt(r) {
+function Et(r) {
   if (r === void 0)
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   return r;
 }
-function za(r) {
+function xa(r) {
   var e = typeof Map == "function" ? /* @__PURE__ */ new Map() : void 0;
-  return za = function(t) {
-    if (t === null || !Bi(t))
+  return xa = function(t) {
+    if (t === null || !Oi(t))
       return t;
     if (typeof t != "function")
       throw new TypeError("Super expression must either be null or a function");
@@ -13756,7 +13756,7 @@ function za(r) {
       e.set(t, o);
     }
     function o() {
-      return xe(t, arguments, pe(this).constructor);
+      return $e(t, arguments, he(this).constructor);
     }
     return o.prototype = Object.create(t.prototype, {
       constructor: {
@@ -13765,18 +13765,18 @@ function za(r) {
         writable: !0,
         configurable: !0
       }
-    }), ue(o, t);
-  }, za(r);
+    }), pe(o, t);
+  }, xa(r);
 }
-function xe(r, e, a) {
-  return wt() ? xe = Reflect.construct : xe = function(o, i, n) {
+function $e(r, e, a) {
+  return Nt() ? $e = Reflect.construct : $e = function(o, i, n) {
     var d = [null];
     d.push.apply(d, i);
     var l = Function.bind.apply(o, d), s = new l();
-    return n && ue(s, n.prototype), s;
-  }, xe.apply(null, arguments);
+    return n && pe(s, n.prototype), s;
+  }, $e.apply(null, arguments);
 }
-function wt() {
+function Nt() {
   if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
     return !1;
   if (typeof Proxy == "function")
@@ -13788,29 +13788,29 @@ function wt() {
     return !1;
   }
 }
-function Bi(r) {
+function Oi(r) {
   return Function.toString.call(r).indexOf("[native code]") !== -1;
 }
-function ue(r, e) {
-  return ue = Object.setPrototypeOf || function(t, o) {
+function pe(r, e) {
+  return pe = Object.setPrototypeOf || function(t, o) {
     return t.__proto__ = o, t;
-  }, ue(r, e);
+  }, pe(r, e);
 }
-function pe(r) {
-  return pe = Object.setPrototypeOf ? Object.getPrototypeOf : function(a) {
+function he(r) {
+  return he = Object.setPrototypeOf ? Object.getPrototypeOf : function(a) {
     return a.__proto__ || Object.getPrototypeOf(a);
-  }, pe(r);
+  }, he(r);
 }
-var R = /* @__PURE__ */ function(r) {
-  Ii(a, r);
-  var e = Si(a);
+var F = /* @__PURE__ */ function(r) {
+  Ti(a, r);
+  var e = Fi(a);
   function a(t) {
     var o;
-    return Ai(this, a), o = e.call(this, t), Object.setPrototypeOf(xt(o), a.prototype), o.name = o.constructor.name, o;
+    return Bi(this, a), o = e.call(this, t), Object.setPrototypeOf(Et(o), a.prototype), o.name = o.constructor.name, o;
   }
-  return Ni(a);
-}(/* @__PURE__ */ za(Error)), Da = 2, Fi = 17, Ri = 3, C = "0-9０-９٠-٩۰-۹", Ti = "-‐-―−ー－", Mi = "／/", Oi = "．.", Di = "  ­​⁠　", Li = "()（）［］\\[\\]", Ui = "~⁓∼～", I = "".concat(Ti).concat(Mi).concat(Oi).concat(Di).concat(Li).concat(Ui), De = "+＋";
-function lr(r, e) {
+  return Pi(a);
+}(/* @__PURE__ */ xa(Error)), Ga = 2, Mi = 17, Di = 3, C = "0-9０-９٠-٩۰-۹", Li = "-‐-―−ー－", Ui = "／/", Gi = "．.", Hi = "  ­​⁠　", Vi = "()（）［］\\[\\]", ji = "~⁓∼～", I = "".concat(Li).concat(Ui).concat(Gi).concat(Hi).concat(Vi).concat(ji), Ge = "+＋";
+function mr(r, e) {
   r = r.split("-"), e = e.split("-");
   for (var a = r[0].split("."), t = e[0].split("."), o = 0; o < 3; o++) {
     var i = Number(a[o]), n = Number(t[o]);
@@ -13825,34 +13825,34 @@ function lr(r, e) {
   }
   return r[1] && e[1] ? r[1] > e[1] ? 1 : r[1] < e[1] ? -1 : 0 : !r[1] && e[1] ? 1 : r[1] && !e[1] ? -1 : 0;
 }
-function Ae(r) {
+function Pe(r) {
   "@babel/helpers - typeof";
-  return Ae = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+  return Pe = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
     return typeof e;
   } : function(e) {
     return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, Ae(r);
+  }, Pe(r);
 }
-function Le(r, e) {
+function He(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function sr(r, e) {
+function ur(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Ue(r, e, a) {
-  return e && sr(r.prototype, e), a && sr(r, a), Object.defineProperty(r, "prototype", {
+function Ve(r, e, a) {
+  return e && ur(r.prototype, e), a && ur(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ */ function() {
+var Yi = "1.2.0", Ki = "1.7.35", pr = " ext. ", Qi = /^\d+$/, _ = /* @__PURE__ */ function() {
   function r(e) {
-    Le(this, r), Qi(e), this.metadata = e, $t.call(this, e);
+    He(this, r), Xi(e), this.metadata = e, At.call(this, e);
   }
-  return Ue(r, [{
+  return Ve(r, [{
     key: "getCountries",
     value: function() {
       return Object.keys(this.metadata.countries).filter(function(a) {
@@ -13903,14 +13903,14 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
   }, {
     key: "selectNumberingPlan",
     value: function(a, t) {
-      if (a && Vi.test(a) && (t = a, a = null), a && a !== "001") {
+      if (a && Qi.test(a) && (t = a, a = null), a && a !== "001") {
         if (!this.hasCountry(a))
           throw new Error("Unknown country: ".concat(a));
-        this.numberingPlan = new mr(this.getCountryMetadata(a), this);
+        this.numberingPlan = new hr(this.getCountryMetadata(a), this);
       } else if (t) {
         if (!this.hasCallingCode(t))
           throw new Error("Unknown calling code: ".concat(t));
-        this.numberingPlan = new mr(this.getNumberingPlanMetadata(t), this);
+        this.numberingPlan = new hr(this.getNumberingPlanMetadata(t), this);
       } else
         this.numberingPlan = void 0;
       return this;
@@ -14034,11 +14034,11 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
       return this.numberingPlan !== void 0;
     }
   }]), r;
-}(), mr = /* @__PURE__ */ function() {
+}(), hr = /* @__PURE__ */ function() {
   function r(e, a) {
-    Le(this, r), this.globalMetadataObject = a, this.metadata = e, $t.call(this, a.metadata);
+    He(this, r), this.globalMetadataObject = a, this.metadata = e, At.call(this, a.metadata);
   }
-  return Ue(r, [{
+  return Ve(r, [{
     key: "callingCode",
     value: function() {
       return this.metadata[0];
@@ -14093,7 +14093,7 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
     value: function() {
       var a = this, t = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
       return t.map(function(o) {
-        return new Yi(o, a);
+        return new Ji(o, a);
       });
     }
   }, {
@@ -14161,20 +14161,20 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
   }, {
     key: "type",
     value: function(a) {
-      if (this.hasTypes() && ur(this.types(), a))
-        return new Ki(ur(this.types(), a), this);
+      if (this.hasTypes() && gr(this.types(), a))
+        return new Wi(gr(this.types(), a), this);
     }
   }, {
     key: "ext",
     value: function() {
-      return this.v1 || this.v2 ? cr : this.metadata[13] || cr;
+      return this.v1 || this.v2 ? pr : this.metadata[13] || pr;
     }
   }]), r;
-}(), Yi = /* @__PURE__ */ function() {
+}(), Ji = /* @__PURE__ */ function() {
   function r(e, a) {
-    Le(this, r), this._format = e, this.metadata = a;
+    He(this, r), this._format = e, this.metadata = a;
   }
-  return Ue(r, [{
+  return Ve(r, [{
     key: "pattern",
     value: function() {
       return this._format[0];
@@ -14209,7 +14209,7 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
     key: "usesNationalPrefix",
     value: function() {
       return !!(this.nationalPrefixFormattingRule() && // Check that national prefix formatting rule is not a "dummy" one.
-      !ji.test(this.nationalPrefixFormattingRule()));
+      !qi.test(this.nationalPrefixFormattingRule()));
     }
   }, {
     key: "internationalFormat",
@@ -14217,11 +14217,11 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
       return this._format[5] || this.format();
     }
   }]), r;
-}(), ji = /^\(?\$1\)?$/, Ki = /* @__PURE__ */ function() {
+}(), qi = /^\(?\$1\)?$/, Wi = /* @__PURE__ */ function() {
   function r(e, a) {
-    Le(this, r), this.type = e, this.metadata = a;
+    He(this, r), this.type = e, this.metadata = a;
   }
-  return Ue(r, [{
+  return Ve(r, [{
     key: "pattern",
     value: function() {
       return this.metadata.v1 ? this.type : this.type[0];
@@ -14234,7 +14234,7 @@ var Gi = "1.2.0", Hi = "1.7.35", cr = " ext. ", Vi = /^\d+$/, _ = /* @__PURE__ *
     }
   }]), r;
 }();
-function ur(r, e) {
+function gr(r, e) {
   switch (e) {
     case "FIXED_LINE":
       return r[0];
@@ -14258,54 +14258,54 @@ function ur(r, e) {
       return r[9];
   }
 }
-function Qi(r) {
+function Xi(r) {
   if (!r)
     throw new Error("[libphonenumber-js] `metadata` argument not passed. Check your arguments.");
-  if (!na(r) || !na(r.countries))
-    throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(na(r) ? "an object of shape: { " + Object.keys(r).join(", ") + " }" : "a " + Ji(r) + ": " + r, "."));
+  if (!sa(r) || !sa(r.countries))
+    throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(sa(r) ? "an object of shape: { " + Object.keys(r).join(", ") + " }" : "a " + Zi(r) + ": " + r, "."));
 }
-var na = function(e) {
-  return Ae(e) === "object";
-}, Ji = function(e) {
-  return Ae(e);
+var sa = function(e) {
+  return Pe(e) === "object";
+}, Zi = function(e) {
+  return Pe(e);
 };
-function Ge(r, e) {
+function je(r, e) {
   if (e = new _(e), e.hasCountry(r))
     return e.country(r).countryCallingCode();
   throw new Error("Unknown country: ".concat(r));
 }
-function qi(r, e) {
+function en(r, e) {
   return e.countries[r] !== void 0;
 }
-function $t(r) {
+function At(r) {
   var e = r.version;
-  typeof e == "number" ? (this.v1 = e === 1, this.v2 = e === 2, this.v3 = e === 3, this.v4 = e === 4) : e ? lr(e, Gi) === -1 ? this.v2 = !0 : lr(e, Hi) === -1 ? this.v3 = !0 : this.v4 = !0 : this.v1 = !0;
+  typeof e == "number" ? (this.v1 = e === 1, this.v2 = e === 2, this.v3 = e === 3, this.v4 = e === 4) : e ? mr(e, Yi) === -1 ? this.v2 = !0 : mr(e, Ki) === -1 ? this.v3 = !0 : this.v4 = !0 : this.v1 = !0;
 }
-var Wi = ";ext=", V = function(e) {
+var an = ";ext=", j = function(e) {
   return "([".concat(C, "]{1,").concat(e, "})");
 };
-function _t(r) {
-  var e = "20", a = "15", t = "9", o = "6", i = "[  \\t,]*", n = "[:\\.．]?[  \\t,-]*", d = "#?", l = "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)", s = "(?:[xｘ#＃~～]|int|ｉｎｔ)", c = "[- ]+", p = "[  \\t]*", m = "(?:,{2}|;)", u = Wi + V(e), f = i + l + n + V(e) + d, h = i + s + n + V(t) + d, y = c + V(o) + "#", b = p + m + n + V(a) + d, g = p + "(?:,)+" + n + V(t) + d;
+function It(r) {
+  var e = "20", a = "15", t = "9", o = "6", i = "[  \\t,]*", n = "[:\\.．]?[  \\t,-]*", d = "#?", l = "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)", s = "(?:[xｘ#＃~～]|int|ｉｎｔ)", c = "[- ]+", p = "[  \\t]*", m = "(?:,{2}|;)", u = an + j(e), f = i + l + n + j(e) + d, h = i + s + n + j(t) + d, y = c + j(o) + "#", b = p + m + n + j(a) + d, g = p + "(?:,)+" + n + j(t) + d;
   return u + "|" + f + "|" + h + "|" + y + "|" + b + "|" + g;
 }
-var Xi = "[" + C + "]{" + Da + "}", Zi = "[" + De + "]{0,1}(?:[" + I + "]*[" + C + "]){3,}[" + I + C + "]*", en = new RegExp("^[" + De + "]{0,1}(?:[" + I + "]*[" + C + "]){1,2}$", "i"), an = Zi + // Phone number extensions
-"(?:" + _t() + ")?", rn = new RegExp(
+var rn = "[" + C + "]{" + Ga + "}", tn = "[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){3,}[" + I + C + "]*", on = new RegExp("^[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){1,2}$", "i"), nn = tn + // Phone number extensions
+"(?:" + It() + ")?", dn = new RegExp(
   // Either a short two-digit-only phone number
-  "^" + Xi + "$|^" + an + "$",
+  "^" + rn + "$|^" + nn + "$",
   "i"
 );
-function tn(r) {
-  return r.length >= Da && rn.test(r);
+function ln(r) {
+  return r.length >= Ga && dn.test(r);
 }
-function on(r) {
-  return en.test(r);
+function sn(r) {
+  return on.test(r);
 }
-var pr = new RegExp("(?:" + _t() + ")$", "i");
-function nn(r) {
-  var e = r.search(pr);
+var fr = new RegExp("(?:" + It() + ")$", "i");
+function cn(r) {
+  var e = r.search(fr);
   if (e < 0)
     return {};
-  for (var a = r.slice(0, e), t = r.match(pr), o = 1; o < t.length; ) {
+  for (var a = r.slice(0, e), t = r.match(fr), o = 1; o < t.length; ) {
     if (t[o])
       return {
         number: a,
@@ -14314,11 +14314,11 @@ function nn(r) {
     o++;
   }
 }
-function dn(r, e) {
+function mn(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = ln(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = un(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -14333,24 +14333,24 @@ function dn(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function ln(r, e) {
+function un(r, e) {
   if (r) {
     if (typeof r == "string")
-      return hr(r, e);
+      return br(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return hr(r, e);
+      return br(r, e);
   }
 }
-function hr(r, e) {
+function br(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-var sn = {
+var pn = {
   0: "0",
   1: "1",
   2: "2",
@@ -14422,21 +14422,21 @@ var sn = {
   "۹": "9"
   // Eastern-Arabic digit 9
 };
-function Ct(r) {
-  return sn[r];
+function St(r) {
+  return pn[r];
 }
-function Ie(r) {
-  for (var e = "", a = dn(r.split("")), t; !(t = a()).done; ) {
-    var o = t.value, i = Ct(o);
+function Be(r) {
+  for (var e = "", a = mn(r.split("")), t; !(t = a()).done; ) {
+    var o = t.value, i = St(o);
     i && (e += i);
   }
   return e;
 }
-function cn(r, e) {
+function hn(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = mn(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = gn(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -14451,129 +14451,32 @@ function cn(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function mn(r, e) {
+function gn(r, e) {
   if (r) {
     if (typeof r == "string")
-      return gr(r, e);
+      return zr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return gr(r, e);
+      return zr(r, e);
   }
 }
-function gr(r, e) {
+function zr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function fr(r) {
-  for (var e = "", a = cn(r.split("")), t; !(t = a()).done; ) {
+function vr(r) {
+  for (var e = "", a = hn(r.split("")), t; !(t = a()).done; ) {
     var o = t.value;
-    e += un(o, e) || "";
+    e += fn(o, e) || "";
   }
   return e;
 }
-function un(r, e) {
-  return r === "+" ? e ? void 0 : "+" : Ct(r);
-}
-function pn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = hn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
-    return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
-    };
-  }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function hn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return br(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return br(r, e);
-  }
-}
-function br(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function gn(r, e) {
-  for (var a = r.slice(), t = pn(e), o; !(o = t()).done; ) {
-    var i = o.value;
-    r.indexOf(i) < 0 && a.push(i);
-  }
-  return a.sort(function(n, d) {
-    return n - d;
-  });
-}
-function He(r, e) {
-  return Et(r, void 0, e);
-}
-function Et(r, e, a) {
-  var t = a.type(e), o = t && t.possibleLengths() || a.possibleLengths();
-  if (!o)
-    return "IS_POSSIBLE";
-  if (e === "FIXED_LINE_OR_MOBILE") {
-    if (!a.type("FIXED_LINE"))
-      return Et(r, "MOBILE", a);
-    var i = a.type("MOBILE");
-    i && (o = gn(o, i.possibleLengths()));
-  } else if (e && !t)
-    return "INVALID_LENGTH";
-  var n = r.length, d = o[0];
-  return d === n ? "IS_POSSIBLE" : d > n ? "TOO_SHORT" : o[o.length - 1] < n ? "TOO_LONG" : o.indexOf(n, 1) >= 0 ? "IS_POSSIBLE" : "INVALID_LENGTH";
-}
-function fn(r, e, a) {
-  if (e === void 0 && (e = {}), a = new _(a), e.v2) {
-    if (!r.countryCallingCode)
-      throw new Error("Invalid phone number object passed");
-    a.selectNumberingPlan(r.countryCallingCode);
-  } else {
-    if (!r.phone)
-      return !1;
-    if (r.country) {
-      if (!a.hasCountry(r.country))
-        throw new Error("Unknown country: ".concat(r.country));
-      a.country(r.country);
-    } else {
-      if (!r.countryCallingCode)
-        throw new Error("Invalid phone number object passed");
-      a.selectNumberingPlan(r.countryCallingCode);
-    }
-  }
-  if (a.possibleLengths())
-    return Nt(r.phone || r.nationalNumber, a);
-  if (r.countryCallingCode && a.isNonGeographicCallingCode(r.countryCallingCode))
-    return !0;
-  throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
-}
-function Nt(r, e) {
-  switch (He(r, e)) {
-    case "IS_POSSIBLE":
-      return !0;
-    default:
-      return !1;
-  }
-}
-function T(r, e) {
-  return r = r || "", new RegExp("^(?:" + e + ")$").test(r);
+function fn(r, e) {
+  return r === "+" ? e ? void 0 : "+" : St(r);
 }
 function bn(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
@@ -14597,60 +14500,157 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 function zn(r, e) {
   if (r) {
     if (typeof r == "string")
-      return zr(r, e);
+      return yr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return zr(r, e);
+      return yr(r, e);
   }
 }
-function zr(r, e) {
+function yr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-var vn = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
-function La(r, e, a) {
+function vn(r, e) {
+  for (var a = r.slice(), t = bn(e), o; !(o = t()).done; ) {
+    var i = o.value;
+    r.indexOf(i) < 0 && a.push(i);
+  }
+  return a.sort(function(n, d) {
+    return n - d;
+  });
+}
+function Ye(r, e) {
+  return Pt(r, void 0, e);
+}
+function Pt(r, e, a) {
+  var t = a.type(e), o = t && t.possibleLengths() || a.possibleLengths();
+  if (!o)
+    return "IS_POSSIBLE";
+  if (e === "FIXED_LINE_OR_MOBILE") {
+    if (!a.type("FIXED_LINE"))
+      return Pt(r, "MOBILE", a);
+    var i = a.type("MOBILE");
+    i && (o = vn(o, i.possibleLengths()));
+  } else if (e && !t)
+    return "INVALID_LENGTH";
+  var n = r.length, d = o[0];
+  return d === n ? "IS_POSSIBLE" : d > n ? "TOO_SHORT" : o[o.length - 1] < n ? "TOO_LONG" : o.indexOf(n, 1) >= 0 ? "IS_POSSIBLE" : "INVALID_LENGTH";
+}
+function yn(r, e, a) {
+  if (e === void 0 && (e = {}), a = new _(a), e.v2) {
+    if (!r.countryCallingCode)
+      throw new Error("Invalid phone number object passed");
+    a.selectNumberingPlan(r.countryCallingCode);
+  } else {
+    if (!r.phone)
+      return !1;
+    if (r.country) {
+      if (!a.hasCountry(r.country))
+        throw new Error("Unknown country: ".concat(r.country));
+      a.country(r.country);
+    } else {
+      if (!r.countryCallingCode)
+        throw new Error("Invalid phone number object passed");
+      a.selectNumberingPlan(r.countryCallingCode);
+    }
+  }
+  if (a.possibleLengths())
+    return Bt(r.phone || r.nationalNumber, a);
+  if (r.countryCallingCode && a.isNonGeographicCallingCode(r.countryCallingCode))
+    return !0;
+  throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
+}
+function Bt(r, e) {
+  switch (Ye(r, e)) {
+    case "IS_POSSIBLE":
+      return !0;
+    default:
+      return !1;
+  }
+}
+function M(r, e) {
+  return r = r || "", new RegExp("^(?:" + e + ")$").test(r);
+}
+function kn(r, e) {
+  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
+  if (a)
+    return (a = a.call(r)).next.bind(a);
+  if (Array.isArray(r) || (a = xn(r)) || e && r && typeof r.length == "number") {
+    a && (r = a);
+    var t = 0;
+    return function() {
+      return t >= r.length ? {
+        done: !0
+      } : {
+        done: !1,
+        value: r[t++]
+      };
+    };
+  }
+  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+}
+function xn(r, e) {
+  if (r) {
+    if (typeof r == "string")
+      return kr(r, e);
+    var a = Object.prototype.toString.call(r).slice(8, -1);
+    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
+      return Array.from(r);
+    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
+      return kr(r, e);
+  }
+}
+function kr(r, e) {
+  (e == null || e > r.length) && (e = r.length);
+  for (var a = 0, t = new Array(e); a < e; a++)
+    t[a] = r[a];
+  return t;
+}
+var wn = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
+function Ha(r, e, a) {
   if (e = e || {}, !!r.country) {
     a = new _(a), a.selectNumberingPlan(r.country, r.countryCallingCode);
     var t = e.v2 ? r.nationalNumber : r.phone;
-    if (T(t, a.nationalNumberPattern())) {
-      if (da(t, "FIXED_LINE", a))
-        return a.type("MOBILE") && a.type("MOBILE").pattern() === "" || !a.type("MOBILE") || da(t, "MOBILE", a) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE";
-      for (var o = bn(vn), i; !(i = o()).done; ) {
+    if (M(t, a.nationalNumberPattern())) {
+      if (ca(t, "FIXED_LINE", a))
+        return a.type("MOBILE") && a.type("MOBILE").pattern() === "" || !a.type("MOBILE") || ca(t, "MOBILE", a) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE";
+      for (var o = kn(wn), i; !(i = o()).done; ) {
         var n = i.value;
-        if (da(t, n, a))
+        if (ca(t, n, a))
           return n;
       }
     }
   }
 }
-function da(r, e, a) {
-  return e = a.type(e), !e || !e.pattern() || e.possibleLengths() && e.possibleLengths().indexOf(r.length) < 0 ? !1 : T(r, e.pattern());
+function ca(r, e, a) {
+  return e = a.type(e), !e || !e.pattern() || e.possibleLengths() && e.possibleLengths().indexOf(r.length) < 0 ? !1 : M(r, e.pattern());
 }
-function yn(r, e, a) {
+function $n(r, e, a) {
   if (e = e || {}, a = new _(a), a.selectNumberingPlan(r.country, r.countryCallingCode), a.hasTypes())
-    return La(r, e, a.metadata) !== void 0;
+    return Ha(r, e, a.metadata) !== void 0;
   var t = e.v2 ? r.nationalNumber : r.phone;
-  return T(t, a.nationalNumberPattern());
+  return M(t, a.nationalNumberPattern());
 }
-function kn(r, e, a) {
+function _n(r, e, a) {
   var t = new _(a), o = t.getCountryCodesForCallingCode(r);
   return o ? o.filter(function(i) {
-    return xn(e, i, a);
+    return Cn(e, i, a);
   }) : [];
 }
-function xn(r, e, a) {
+function Cn(r, e, a) {
   var t = new _(a);
   return t.selectNumberingPlan(e), t.numberingPlan.possibleLengths().indexOf(r.length) >= 0;
 }
-function At(r) {
+function Tt(r) {
   return r.replace(new RegExp("[".concat(I, "]+"), "g"), " ").trim();
 }
-var It = /(\$\d)/;
-function St(r, e, a) {
+var Ft = /(\$\d)/;
+function Rt(r, e, a) {
   var t = a.useInternationalFormat, o = a.withNationalPrefix;
   a.carrierCode, a.metadata;
   var i = r.replace(new RegExp(e.pattern()), t ? e.internationalFormat() : (
@@ -14667,19 +14667,19 @@ function St(r, e, a) {
     // 			? format.format().replace(FIRST_GROUP_PATTERN, format.nationalPrefixFormattingRule())
     // 			: format.format()
     // 	)
-    o && e.nationalPrefixFormattingRule() ? e.format().replace(It, e.nationalPrefixFormattingRule()) : e.format()
+    o && e.nationalPrefixFormattingRule() ? e.format().replace(Ft, e.nationalPrefixFormattingRule()) : e.format()
   ));
-  return t ? At(i) : i;
+  return t ? Tt(i) : i;
 }
-var wn = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
-function $n(r, e, a) {
+var En = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
+function Nn(r, e, a) {
   var t = new _(a);
   if (t.selectNumberingPlan(r, e), t.defaultIDDPrefix())
     return t.defaultIDDPrefix();
-  if (wn.test(t.IDDPrefix()))
+  if (En.test(t.IDDPrefix()))
     return t.IDDPrefix();
 }
-function _n(r) {
+function An(r) {
   var e = r.number, a = r.ext;
   if (!e)
     return "";
@@ -14687,11 +14687,11 @@ function _n(r) {
     throw new Error('"formatRFC3966()" expects "number" to be in E.164 format.');
   return "tel:".concat(e).concat(a ? ";ext=" + a : "");
 }
-function Cn(r, e) {
+function In(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = En(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = Sn(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -14706,121 +14706,22 @@ function Cn(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function En(r, e) {
+function Sn(r, e) {
   if (r) {
     if (typeof r == "string")
-      return vr(r, e);
+      return xr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return vr(r, e);
+      return xr(r, e);
   }
 }
-function vr(r, e) {
+function xr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
-}
-function yr(r, e) {
-  var a = Object.keys(r);
-  if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
-  }
-  return a;
-}
-function kr(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? yr(Object(a), !0).forEach(function(t) {
-      Nn(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : yr(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
-    });
-  }
-  return r;
-}
-function Nn(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
-}
-var xr = {
-  formatExtension: function(e, a, t) {
-    return "".concat(e).concat(t.ext()).concat(a);
-  }
-};
-function An(r, e, a, t) {
-  if (a ? a = kr(kr({}, xr), a) : a = xr, t = new _(t), r.country && r.country !== "001") {
-    if (!t.hasCountry(r.country))
-      throw new Error("Unknown country: ".concat(r.country));
-    t.country(r.country);
-  } else if (r.countryCallingCode)
-    t.selectNumberingPlan(r.countryCallingCode);
-  else
-    return r.phone || "";
-  var o = t.countryCallingCode(), i = a.v2 ? r.nationalNumber : r.phone, n;
-  switch (e) {
-    case "NATIONAL":
-      return i ? (n = Se(i, r.carrierCode, "NATIONAL", t, a), la(n, r.ext, t, a.formatExtension)) : "";
-    case "INTERNATIONAL":
-      return i ? (n = Se(i, null, "INTERNATIONAL", t, a), n = "+".concat(o, " ").concat(n), la(n, r.ext, t, a.formatExtension)) : "+".concat(o);
-    case "E.164":
-      return "+".concat(o).concat(i);
-    case "RFC3966":
-      return _n({
-        number: "+".concat(o).concat(i),
-        ext: r.ext
-      });
-    case "IDD":
-      if (!a.fromCountry)
-        return;
-      var d = Sn(i, r.carrierCode, o, a.fromCountry, t);
-      return la(d, r.ext, t, a.formatExtension);
-    default:
-      throw new Error('Unknown "format" argument passed to "formatNumber()": "'.concat(e, '"'));
-  }
-}
-function Se(r, e, a, t, o) {
-  var i = In(t.formats(), r);
-  return i ? St(r, i, {
-    useInternationalFormat: a === "INTERNATIONAL",
-    withNationalPrefix: !(i.nationalPrefixIsOptionalWhenFormattingInNationalFormat() && o && o.nationalPrefix === !1),
-    carrierCode: e,
-    metadata: t
-  }) : r;
-}
-function In(r, e) {
-  for (var a = Cn(r), t; !(t = a()).done; ) {
-    var o = t.value;
-    if (o.leadingDigitsPatterns().length > 0) {
-      var i = o.leadingDigitsPatterns()[o.leadingDigitsPatterns().length - 1];
-      if (e.search(i) !== 0)
-        continue;
-    }
-    if (T(e, o.pattern()))
-      return o;
-  }
-}
-function la(r, e, a, t) {
-  return e ? t(r, e, a) : r;
-}
-function Sn(r, e, a, t, o) {
-  var i = Ge(t, o.metadata);
-  if (i === a) {
-    var n = Se(r, e, "NATIONAL", o);
-    return a === "1" ? a + " " + n : n;
-  }
-  var d = $n(t, void 0, o.metadata);
-  if (d)
-    return "".concat(d, " ").concat(a, " ").concat(Se(r, null, "INTERNATIONAL", o));
 }
 function wr(r, e) {
   var a = Object.keys(r);
@@ -14851,33 +14752,132 @@ function Pn(r, e, a) {
     writable: !0
   }) : r[e] = a, r;
 }
-function Bn(r, e) {
+var _r = {
+  formatExtension: function(e, a, t) {
+    return "".concat(e).concat(t.ext()).concat(a);
+  }
+};
+function Bn(r, e, a, t) {
+  if (a ? a = $r($r({}, _r), a) : a = _r, t = new _(t), r.country && r.country !== "001") {
+    if (!t.hasCountry(r.country))
+      throw new Error("Unknown country: ".concat(r.country));
+    t.country(r.country);
+  } else if (r.countryCallingCode)
+    t.selectNumberingPlan(r.countryCallingCode);
+  else
+    return r.phone || "";
+  var o = t.countryCallingCode(), i = a.v2 ? r.nationalNumber : r.phone, n;
+  switch (e) {
+    case "NATIONAL":
+      return i ? (n = Te(i, r.carrierCode, "NATIONAL", t, a), ma(n, r.ext, t, a.formatExtension)) : "";
+    case "INTERNATIONAL":
+      return i ? (n = Te(i, null, "INTERNATIONAL", t, a), n = "+".concat(o, " ").concat(n), ma(n, r.ext, t, a.formatExtension)) : "+".concat(o);
+    case "E.164":
+      return "+".concat(o).concat(i);
+    case "RFC3966":
+      return An({
+        number: "+".concat(o).concat(i),
+        ext: r.ext
+      });
+    case "IDD":
+      if (!a.fromCountry)
+        return;
+      var d = Fn(i, r.carrierCode, o, a.fromCountry, t);
+      return ma(d, r.ext, t, a.formatExtension);
+    default:
+      throw new Error('Unknown "format" argument passed to "formatNumber()": "'.concat(e, '"'));
+  }
+}
+function Te(r, e, a, t, o) {
+  var i = Tn(t.formats(), r);
+  return i ? Rt(r, i, {
+    useInternationalFormat: a === "INTERNATIONAL",
+    withNationalPrefix: !(i.nationalPrefixIsOptionalWhenFormattingInNationalFormat() && o && o.nationalPrefix === !1),
+    carrierCode: e,
+    metadata: t
+  }) : r;
+}
+function Tn(r, e) {
+  for (var a = In(r), t; !(t = a()).done; ) {
+    var o = t.value;
+    if (o.leadingDigitsPatterns().length > 0) {
+      var i = o.leadingDigitsPatterns()[o.leadingDigitsPatterns().length - 1];
+      if (e.search(i) !== 0)
+        continue;
+    }
+    if (M(e, o.pattern()))
+      return o;
+  }
+}
+function ma(r, e, a, t) {
+  return e ? t(r, e, a) : r;
+}
+function Fn(r, e, a, t, o) {
+  var i = je(t, o.metadata);
+  if (i === a) {
+    var n = Te(r, e, "NATIONAL", o);
+    return a === "1" ? a + " " + n : n;
+  }
+  var d = Nn(t, void 0, o.metadata);
+  if (d)
+    return "".concat(d, " ").concat(a, " ").concat(Te(r, null, "INTERNATIONAL", o));
+}
+function Cr(r, e) {
+  var a = Object.keys(r);
+  if (Object.getOwnPropertySymbols) {
+    var t = Object.getOwnPropertySymbols(r);
+    e && (t = t.filter(function(o) {
+      return Object.getOwnPropertyDescriptor(r, o).enumerable;
+    })), a.push.apply(a, t);
+  }
+  return a;
+}
+function Er(r) {
+  for (var e = 1; e < arguments.length; e++) {
+    var a = arguments[e] != null ? arguments[e] : {};
+    e % 2 ? Cr(Object(a), !0).forEach(function(t) {
+      Rn(r, t, a[t]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Cr(Object(a)).forEach(function(t) {
+      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
+    });
+  }
+  return r;
+}
+function Rn(r, e, a) {
+  return e in r ? Object.defineProperty(r, e, {
+    value: a,
+    enumerable: !0,
+    configurable: !0,
+    writable: !0
+  }) : r[e] = a, r;
+}
+function On(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function _r(r, e) {
+function Nr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Fn(r, e, a) {
-  return e && _r(r.prototype, e), a && _r(r, a), Object.defineProperty(r, "prototype", {
+function Mn(r, e, a) {
+  return e && Nr(r.prototype, e), a && Nr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Ua = /* @__PURE__ */ function() {
+var Va = /* @__PURE__ */ function() {
   function r(e, a, t) {
-    if (Bn(this, r), !e)
+    if (On(this, r), !e)
       throw new TypeError("`country` or `countryCallingCode` not passed");
     if (!a)
       throw new TypeError("`nationalNumber` not passed");
     if (!t)
       throw new TypeError("`metadata` not passed");
-    var o = Tn(e, t), i = o.country, n = o.countryCallingCode;
+    var o = Ln(e, t), i = o.country, n = o.countryCallingCode;
     this.country = i, this.countryCallingCode = n, this.nationalNumber = a, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.metadata = t;
   }
-  return Fn(r, [{
+  return Mn(r, [{
     key: "setExt",
     value: function(a) {
       this.ext = a;
@@ -14885,19 +14885,19 @@ var Ua = /* @__PURE__ */ function() {
   }, {
     key: "getPossibleCountries",
     value: function() {
-      return this.country ? [this.country] : kn(this.countryCallingCode, this.nationalNumber, this.metadata);
+      return this.country ? [this.country] : _n(this.countryCallingCode, this.nationalNumber, this.metadata);
     }
   }, {
     key: "isPossible",
     value: function() {
-      return fn(this, {
+      return yn(this, {
         v2: !0
       }, this.metadata);
     }
   }, {
     key: "isValid",
     value: function() {
-      return yn(this, {
+      return $n(this, {
         v2: !0
       }, this.metadata);
     }
@@ -14929,14 +14929,14 @@ var Ua = /* @__PURE__ */ function() {
   }, {
     key: "getType",
     value: function() {
-      return La(this, {
+      return Ha(this, {
         v2: !0
       }, this.metadata);
     }
   }, {
     key: "format",
     value: function(a, t) {
-      return An(this, a, t ? $r($r({}, t), {}, {
+      return Bn(this, a, t ? Er(Er({}, t), {}, {
         v2: !0
       }) : {
         v2: !0
@@ -14958,31 +14958,31 @@ var Ua = /* @__PURE__ */ function() {
       return this.format("RFC3966", a);
     }
   }]), r;
-}(), Rn = function(e) {
+}(), Dn = function(e) {
   return /^[A-Z]{2}$/.test(e);
 };
-function Tn(r, e) {
+function Ln(r, e) {
   var a, t, o = new _(e);
-  return Rn(r) ? (a = r, o.selectNumberingPlan(a), t = o.countryCallingCode()) : t = r, {
+  return Dn(r) ? (a = r, o.selectNumberingPlan(a), t = o.countryCallingCode()) : t = r, {
     country: a,
     countryCallingCode: t
   };
 }
-var Mn = new RegExp("([" + C + "])");
-function Pt(r, e, a, t) {
+var Un = new RegExp("([" + C + "])");
+function Ot(r, e, a, t) {
   if (e) {
     var o = new _(t);
     o.selectNumberingPlan(e, a);
     var i = new RegExp(o.IDDPrefix());
     if (r.search(i) === 0) {
       r = r.slice(r.match(i)[0].length);
-      var n = r.match(Mn);
+      var n = r.match(Un);
       if (!(n && n[1] != null && n[1].length > 0 && n[1] === "0"))
         return r;
     }
   }
 }
-function va(r, e) {
+function wa(r, e) {
   if (r && e.numberingPlan.nationalPrefixForParsing()) {
     var a = new RegExp("^(?:" + e.numberingPlan.nationalPrefixForParsing() + ")"), t = a.exec(r);
     if (t) {
@@ -15010,14 +15010,14 @@ function va(r, e) {
     nationalNumber: r
   };
 }
-function ya(r, e) {
-  var a = va(r, e), t = a.carrierCode, o = a.nationalNumber;
+function $a(r, e) {
+  var a = wa(r, e), t = a.carrierCode, o = a.nationalNumber;
   if (o !== r) {
-    if (!On(r, o, e))
+    if (!Gn(r, o, e))
       return {
         nationalNumber: r
       };
-    if (e.possibleLengths() && !Dn(o, e))
+    if (e.possibleLengths() && !Hn(o, e))
       return {
         nationalNumber: r
       };
@@ -15027,11 +15027,11 @@ function ya(r, e) {
     carrierCode: t
   };
 }
-function On(r, e, a) {
-  return !(T(r, a.nationalNumberPattern()) && !T(e, a.nationalNumberPattern()));
+function Gn(r, e, a) {
+  return !(M(r, a.nationalNumberPattern()) && !M(e, a.nationalNumberPattern()));
 }
-function Dn(r, e) {
-  switch (He(r, e)) {
+function Hn(r, e) {
+  switch (Ye(r, e)) {
     case "TOO_SHORT":
     case "INVALID_LENGTH":
       return !1;
@@ -15039,12 +15039,12 @@ function Dn(r, e) {
       return !0;
   }
 }
-function Bt(r, e, a, t) {
-  var o = e ? Ge(e, t) : a;
+function Mt(r, e, a, t) {
+  var o = e ? je(e, t) : a;
   if (r.indexOf(o) === 0) {
     t = new _(t), t.selectNumberingPlan(e, a);
-    var i = r.slice(o.length), n = ya(i, t), d = n.nationalNumber, l = ya(r, t), s = l.nationalNumber;
-    if (!T(s, t.nationalNumberPattern()) && T(d, t.nationalNumberPattern()) || He(s, t) === "TOO_LONG")
+    var i = r.slice(o.length), n = $a(i, t), d = n.nationalNumber, l = $a(r, t), s = l.nationalNumber;
+    if (!M(s, t.nationalNumberPattern()) && M(d, t.nationalNumberPattern()) || Ye(s, t) === "TOO_LONG")
       return {
         countryCallingCode: o,
         number: i
@@ -15054,17 +15054,17 @@ function Bt(r, e, a, t) {
     number: r
   };
 }
-function Ft(r, e, a, t) {
+function Dt(r, e, a, t) {
   if (!r)
     return {};
   var o;
   if (r[0] !== "+") {
-    var i = Pt(r, e, a, t);
+    var i = Ot(r, e, a, t);
     if (i && i !== r)
       o = !0, r = "+" + i;
     else {
       if (e || a) {
-        var n = Bt(r, e, a, t), d = n.countryCallingCode, l = n.number;
+        var n = Mt(r, e, a, t), d = n.countryCallingCode, l = n.number;
         if (d)
           return {
             countryCallingCodeSource: "FROM_NUMBER_WITHOUT_PLUS_SIGN",
@@ -15082,7 +15082,7 @@ function Ft(r, e, a, t) {
   if (r[1] === "0")
     return {};
   t = new _(t);
-  for (var s = 2; s - 1 <= Ri && s <= r.length; ) {
+  for (var s = 2; s - 1 <= Di && s <= r.length; ) {
     var c = r.slice(1, s);
     if (t.hasCallingCode(c))
       return t.selectNumberingPlan(c), {
@@ -15094,11 +15094,11 @@ function Ft(r, e, a, t) {
   }
   return {};
 }
-function Ln(r, e) {
+function Vn(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Un(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = jn(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -15113,162 +15113,162 @@ function Ln(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function Un(r, e) {
+function jn(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Cr(r, e);
+      return Ar(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Cr(r, e);
+      return Ar(r, e);
   }
 }
-function Cr(r, e) {
+function Ar(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function Gn(r, e, a) {
+function Yn(r, e, a) {
   a = new _(a);
-  for (var t = Ln(r), o; !(o = t()).done; ) {
+  for (var t = Vn(r), o; !(o = t()).done; ) {
     var i = o.value;
     if (a.country(i), a.leadingDigits()) {
       if (e && e.search(a.leadingDigits()) === 0)
         return i;
-    } else if (La({
+    } else if (Ha({
       phone: e,
       country: i
     }, void 0, a.metadata))
       return i;
   }
 }
-var Hn = !1;
-function Rt(r, e, a) {
-  if (Hn && a.isNonGeographicCallingCode(r))
+var Kn = !1;
+function Lt(r, e, a) {
+  if (Kn && a.isNonGeographicCallingCode(r))
     return "001";
   var t = a.getCountryCodesForCallingCode(r);
   if (t)
-    return t.length === 1 ? t[0] : Gn(t, e, a.metadata);
+    return t.length === 1 ? t[0] : Yn(t, e, a.metadata);
 }
-var Tt = "+", Vn = "[\\-\\.\\(\\)]?", Er = "([" + C + "]|" + Vn + ")", Yn = "^\\" + Tt + Er + "*[" + C + "]" + Er + "*$", jn = new RegExp(Yn, "g"), ka = C, Kn = "[" + ka + "]+((\\-)*[" + ka + "])*", Qn = "a-zA-Z", Jn = "[" + Qn + "]+((\\-)*[" + ka + "])*", qn = "^(" + Kn + "\\.)*" + Jn + "\\.?$", Wn = new RegExp(qn, "g"), Nr = "tel:", xa = ";phone-context=", Xn = ";isub=";
-function Zn(r) {
-  var e = r.indexOf(xa);
+var Ut = "+", Qn = "[\\-\\.\\(\\)]?", Ir = "([" + C + "]|" + Qn + ")", Jn = "^\\" + Ut + Ir + "*[" + C + "]" + Ir + "*$", qn = new RegExp(Jn, "g"), _a = C, Wn = "[" + _a + "]+((\\-)*[" + _a + "])*", Xn = "a-zA-Z", Zn = "[" + Xn + "]+((\\-)*[" + _a + "])*", ed = "^(" + Wn + "\\.)*" + Zn + "\\.?$", ad = new RegExp(ed, "g"), Sr = "tel:", Ca = ";phone-context=", rd = ";isub=";
+function td(r) {
+  var e = r.indexOf(Ca);
   if (e < 0)
     return null;
-  var a = e + xa.length;
+  var a = e + Ca.length;
   if (a >= r.length)
     return "";
   var t = r.indexOf(";", a);
   return t >= 0 ? r.substring(a, t) : r.substring(a);
 }
-function ed(r) {
-  return r === null ? !0 : r.length === 0 ? !1 : jn.test(r) || Wn.test(r);
+function od(r) {
+  return r === null ? !0 : r.length === 0 ? !1 : qn.test(r) || ad.test(r);
 }
-function ad(r, e) {
-  var a = e.extractFormattedPhoneNumber, t = Zn(r);
-  if (!ed(t))
-    throw new R("NOT_A_NUMBER");
+function id(r, e) {
+  var a = e.extractFormattedPhoneNumber, t = td(r);
+  if (!od(t))
+    throw new F("NOT_A_NUMBER");
   var o;
   if (t === null)
     o = a(r) || "";
   else {
-    o = "", t.charAt(0) === Tt && (o += t);
-    var i = r.indexOf(Nr), n;
-    i >= 0 ? n = i + Nr.length : n = 0;
-    var d = r.indexOf(xa);
+    o = "", t.charAt(0) === Ut && (o += t);
+    var i = r.indexOf(Sr), n;
+    i >= 0 ? n = i + Sr.length : n = 0;
+    var d = r.indexOf(Ca);
     o += r.substring(n, d);
   }
-  var l = o.indexOf(Xn);
+  var l = o.indexOf(rd);
   if (l > 0 && (o = o.substring(0, l)), o !== "")
     return o;
 }
-var rd = 250, td = new RegExp("[" + De + C + "]"), od = new RegExp("[^" + C + "#]+$");
-function id(r, e, a) {
+var nd = 250, dd = new RegExp("[" + Ge + C + "]"), ld = new RegExp("[^" + C + "#]+$");
+function sd(r, e, a) {
   if (e = e || {}, a = new _(a), e.defaultCountry && !a.hasCountry(e.defaultCountry))
-    throw e.v2 ? new R("INVALID_COUNTRY") : new Error("Unknown country: ".concat(e.defaultCountry));
-  var t = dd(r, e.v2, e.extract), o = t.number, i = t.ext, n = t.error;
+    throw e.v2 ? new F("INVALID_COUNTRY") : new Error("Unknown country: ".concat(e.defaultCountry));
+  var t = md(r, e.v2, e.extract), o = t.number, i = t.ext, n = t.error;
   if (!o) {
     if (e.v2)
-      throw n === "TOO_SHORT" ? new R("TOO_SHORT") : new R("NOT_A_NUMBER");
+      throw n === "TOO_SHORT" ? new F("TOO_SHORT") : new F("NOT_A_NUMBER");
     return {};
   }
-  var d = sd(o, e.defaultCountry, e.defaultCallingCode, a), l = d.country, s = d.nationalNumber, c = d.countryCallingCode, p = d.countryCallingCodeSource, m = d.carrierCode;
+  var d = pd(o, e.defaultCountry, e.defaultCallingCode, a), l = d.country, s = d.nationalNumber, c = d.countryCallingCode, p = d.countryCallingCodeSource, m = d.carrierCode;
   if (!a.hasSelectedNumberingPlan()) {
     if (e.v2)
-      throw new R("INVALID_COUNTRY");
+      throw new F("INVALID_COUNTRY");
     return {};
   }
-  if (!s || s.length < Da) {
+  if (!s || s.length < Ga) {
     if (e.v2)
-      throw new R("TOO_SHORT");
+      throw new F("TOO_SHORT");
     return {};
   }
-  if (s.length > Fi) {
+  if (s.length > Mi) {
     if (e.v2)
-      throw new R("TOO_LONG");
+      throw new F("TOO_LONG");
     return {};
   }
   if (e.v2) {
-    var u = new Ua(c, s, a.metadata);
+    var u = new Va(c, s, a.metadata);
     return l && (u.country = l), m && (u.carrierCode = m), i && (u.ext = i), u.__countryCallingCodeSource = p, u;
   }
-  var f = (e.extended ? a.hasSelectedNumberingPlan() : l) ? T(s, a.nationalNumberPattern()) : !1;
+  var f = (e.extended ? a.hasSelectedNumberingPlan() : l) ? M(s, a.nationalNumberPattern()) : !1;
   return e.extended ? {
     country: l,
     countryCallingCode: c,
     carrierCode: m,
     valid: f,
-    possible: f ? !0 : !!(e.extended === !0 && a.possibleLengths() && Nt(s, a)),
+    possible: f ? !0 : !!(e.extended === !0 && a.possibleLengths() && Bt(s, a)),
     phone: s,
     ext: i
-  } : f ? ld(l, s, i) : {};
+  } : f ? ud(l, s, i) : {};
 }
-function nd(r, e, a) {
+function cd(r, e, a) {
   if (r) {
-    if (r.length > rd) {
+    if (r.length > nd) {
       if (a)
-        throw new R("TOO_LONG");
+        throw new F("TOO_LONG");
       return;
     }
     if (e === !1)
       return r;
-    var t = r.search(td);
+    var t = r.search(dd);
     if (!(t < 0))
-      return r.slice(t).replace(od, "");
+      return r.slice(t).replace(ld, "");
   }
 }
-function dd(r, e, a) {
-  var t = ad(r, {
+function md(r, e, a) {
+  var t = id(r, {
     extractFormattedPhoneNumber: function(n) {
-      return nd(n, a, e);
+      return cd(n, a, e);
     }
   });
   if (!t)
     return {};
-  if (!tn(t))
-    return on(t) ? {
+  if (!ln(t))
+    return sn(t) ? {
       error: "TOO_SHORT"
     } : {};
-  var o = nn(t);
+  var o = cn(t);
   return o.ext ? o : {
     number: t
   };
 }
-function ld(r, e, a) {
+function ud(r, e, a) {
   var t = {
     country: r,
     phone: e
   };
   return a && (t.ext = a), t;
 }
-function sd(r, e, a, t) {
-  var o = Ft(fr(r), e, a, t.metadata), i = o.countryCallingCodeSource, n = o.countryCallingCode, d = o.number, l;
+function pd(r, e, a, t) {
+  var o = Dt(vr(r), e, a, t.metadata), i = o.countryCallingCodeSource, n = o.countryCallingCode, d = o.number, l;
   if (n)
     t.selectNumberingPlan(n);
   else if (d && (e || a))
-    t.selectNumberingPlan(e, a), e && (l = e), n = a || Ge(e, t.metadata);
+    t.selectNumberingPlan(e, a), e && (l = e), n = a || je(e, t.metadata);
   else
     return {};
   if (!d)
@@ -15276,7 +15276,7 @@ function sd(r, e, a, t) {
       countryCallingCodeSource: i,
       countryCallingCode: n
     };
-  var s = ya(fr(d), t), c = s.nationalNumber, p = s.carrierCode, m = Rt(n, c, t);
+  var s = $a(vr(d), t), c = s.nationalNumber, p = s.carrierCode, m = Lt(n, c, t);
   return m && (l = m, m === "001" || t.country(l)), {
     country: l,
     countryCallingCode: n,
@@ -15285,7 +15285,7 @@ function sd(r, e, a, t) {
     carrierCode: p
   };
 }
-function Ar(r, e) {
+function Pr(r, e) {
   var a = Object.keys(r);
   if (Object.getOwnPropertySymbols) {
     var t = Object.getOwnPropertySymbols(r);
@@ -15295,18 +15295,18 @@ function Ar(r, e) {
   }
   return a;
 }
-function Ir(r) {
+function Br(r) {
   for (var e = 1; e < arguments.length; e++) {
     var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Ar(Object(a), !0).forEach(function(t) {
-      cd(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Ar(Object(a)).forEach(function(t) {
+    e % 2 ? Pr(Object(a), !0).forEach(function(t) {
+      hd(r, t, a[t]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Pr(Object(a)).forEach(function(t) {
       Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
     });
   }
   return r;
 }
-function cd(r, e, a) {
+function hd(r, e, a) {
   return e in r ? Object.defineProperty(r, e, {
     value: a,
     enumerable: !0,
@@ -15314,20 +15314,20 @@ function cd(r, e, a) {
     writable: !0
   }) : r[e] = a, r;
 }
-function md(r, e, a) {
-  return id(r, Ir(Ir({}, e), {}, {
+function gd(r, e, a) {
+  return sd(r, Br(Br({}, e), {}, {
     v2: !0
   }), a);
 }
-function wa(r) {
+function Ea(r) {
   "@babel/helpers - typeof";
-  return wa = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+  return Ea = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
     return typeof e;
   } : function(e) {
     return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, wa(r);
+  }, Ea(r);
 }
-function Sr(r, e) {
+function Tr(r, e) {
   var a = Object.keys(r);
   if (Object.getOwnPropertySymbols) {
     var t = Object.getOwnPropertySymbols(r);
@@ -15337,18 +15337,18 @@ function Sr(r, e) {
   }
   return a;
 }
-function ud(r) {
+function fd(r) {
   for (var e = 1; e < arguments.length; e++) {
     var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Sr(Object(a), !0).forEach(function(t) {
-      pd(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Sr(Object(a)).forEach(function(t) {
+    e % 2 ? Tr(Object(a), !0).forEach(function(t) {
+      bd(r, t, a[t]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Tr(Object(a)).forEach(function(t) {
       Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
     });
   }
   return r;
 }
-function pd(r, e, a) {
+function bd(r, e, a) {
   return e in r ? Object.defineProperty(r, e, {
     value: a,
     enumerable: !0,
@@ -15356,31 +15356,31 @@ function pd(r, e, a) {
     writable: !0
   }) : r[e] = a, r;
 }
-function hd(r, e) {
-  return zd(r) || bd(r, e) || fd(r, e) || gd();
+function zd(r, e) {
+  return xd(r) || kd(r, e) || yd(r, e) || vd();
 }
-function gd() {
+function vd() {
   throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function fd(r, e) {
+function yd(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Pr(r, e);
+      return Fr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Pr(r, e);
+      return Fr(r, e);
   }
 }
-function Pr(r, e) {
+function Fr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function bd(r, e) {
+function kd(r, e) {
   var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a != null) {
     var t = [], o = !0, i = !1, n, d;
@@ -15400,21 +15400,21 @@ function bd(r, e) {
     return t;
   }
 }
-function zd(r) {
+function xd(r) {
   if (Array.isArray(r))
     return r;
 }
-function vd(r) {
-  var e = Array.prototype.slice.call(r), a = hd(e, 4), t = a[0], o = a[1], i = a[2], n = a[3], d, l, s;
+function wd(r) {
+  var e = Array.prototype.slice.call(r), a = zd(e, 4), t = a[0], o = a[1], i = a[2], n = a[3], d, l, s;
   if (typeof t == "string")
     d = t;
   else
     throw new TypeError("A text for parsing must be a string.");
   if (!o || typeof o == "string")
-    n ? (l = i, s = n) : (l = void 0, s = i), o && (l = ud({
+    n ? (l = i, s = n) : (l = void 0, s = i), o && (l = fd({
       defaultCountry: o
     }, l));
-  else if (yd(o))
+  else if ($d(o))
     i ? (l = o, s = i) : s = o;
   else
     throw new Error("Invalid second argument: ".concat(o));
@@ -15424,10 +15424,10 @@ function vd(r) {
     metadata: s
   };
 }
-var yd = function(e) {
-  return wa(e) === "object";
+var $d = function(e) {
+  return Ea(e) === "object";
 };
-function Br(r, e) {
+function Rr(r, e) {
   var a = Object.keys(r);
   if (Object.getOwnPropertySymbols) {
     var t = Object.getOwnPropertySymbols(r);
@@ -15437,18 +15437,18 @@ function Br(r, e) {
   }
   return a;
 }
-function Fr(r) {
+function Or(r) {
   for (var e = 1; e < arguments.length; e++) {
     var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Br(Object(a), !0).forEach(function(t) {
-      kd(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Br(Object(a)).forEach(function(t) {
+    e % 2 ? Rr(Object(a), !0).forEach(function(t) {
+      _d(r, t, a[t]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Rr(Object(a)).forEach(function(t) {
       Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
     });
   }
   return r;
 }
-function kd(r, e, a) {
+function _d(r, e, a) {
   return e in r ? Object.defineProperty(r, e, {
     value: a,
     enumerable: !0,
@@ -15456,42 +15456,42 @@ function kd(r, e, a) {
     writable: !0
   }) : r[e] = a, r;
 }
-function xd(r, e, a) {
-  e && e.defaultCountry && !qi(e.defaultCountry, a) && (e = Fr(Fr({}, e), {}, {
+function Cd(r, e, a) {
+  e && e.defaultCountry && !en(e.defaultCountry, a) && (e = Or(Or({}, e), {}, {
     defaultCountry: void 0
   }));
   try {
-    return md(r, e, a);
+    return gd(r, e, a);
   } catch (t) {
-    if (!(t instanceof R))
+    if (!(t instanceof F))
       throw t;
   }
 }
-function wd() {
-  var r = vd(arguments), e = r.text, a = r.options, t = r.metadata;
-  return xd(e, a, t);
+function Ed() {
+  var r = wd(arguments), e = r.text, a = r.options, t = r.metadata;
+  return Cd(e, a, t);
 }
-function $d(r, e) {
+function Nd(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Rr(r, e) {
+function Mr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function _d(r, e, a) {
-  return e && Rr(r.prototype, e), a && Rr(r, a), Object.defineProperty(r, "prototype", {
+function Ad(r, e, a) {
+  return e && Mr(r.prototype, e), a && Mr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Cd = /* @__PURE__ */ function() {
+var Id = /* @__PURE__ */ function() {
   function r(e) {
     var a = e.onCountryChange, t = e.onCallingCodeChange;
-    $d(this, r), this.onCountryChange = a, this.onCallingCodeChange = t;
+    Nd(this, r), this.onCountryChange = a, this.onCallingCodeChange = t;
   }
-  return _d(r, [{
+  return Ad(r, [{
     key: "reset",
     value: function(a) {
       var t = a.country, o = a.callingCode;
@@ -15559,11 +15559,11 @@ var Cd = /* @__PURE__ */ function() {
     }
   }]), r;
 }();
-function Ed(r, e) {
+function Sd(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Nd(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = Pd(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -15578,35 +15578,35 @@ function Ed(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function Nd(r, e) {
+function Pd(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Tr(r, e);
+      return Dr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Tr(r, e);
+      return Dr(r, e);
   }
 }
-function Tr(r, e) {
+function Dr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-var A = "x", sa = new RegExp(A);
-function we(r, e) {
+var A = "x", ua = new RegExp(A);
+function _e(r, e) {
   if (e < 1)
     return "";
   for (var a = ""; e > 1; )
     e & 1 && (a += r), e >>= 1, r += r;
   return a + r;
 }
-function Mr(r, e) {
-  return r[e] === ")" && e++, Ad(r.slice(0, e));
+function Lr(r, e) {
+  return r[e] === ")" && e++, Bd(r.slice(0, e));
 }
-function Ad(r) {
+function Bd(r) {
   for (var e = [], a = 0; a < r.length; )
     r[a] === "(" ? e.push(a) : r[a] === ")" && e.pop(), a++;
   var t = 0, o = "";
@@ -15617,31 +15617,31 @@ function Ad(r) {
   }
   return o;
 }
-function Id(r, e, a) {
-  for (var t = Ed(a.split("")), o; !(o = t()).done; ) {
+function Td(r, e, a) {
+  for (var t = Sd(a.split("")), o; !(o = t()).done; ) {
     var i = o.value;
-    if (r.slice(e + 1).search(sa) < 0)
+    if (r.slice(e + 1).search(ua) < 0)
       return;
-    e = r.search(sa), r = r.replace(sa, i);
+    e = r.search(ua), r = r.replace(ua, i);
   }
   return [r, e];
 }
-function Sd(r, e, a) {
+function Fd(r, e, a) {
   var t = a.metadata, o = a.shouldTryNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = new RegExp("^(?:".concat(e.pattern(), ")$"));
   if (n.test(r.nationalSignificantNumber))
-    return Bd(r, e, {
+    return Od(r, e, {
       metadata: t,
       shouldTryNationalPrefixFormattingRule: o,
       getSeparatorAfterNationalPrefix: i
     });
 }
-function Pd(r, e) {
-  return He(r, e) === "IS_POSSIBLE";
+function Rd(r, e) {
+  return Ye(r, e) === "IS_POSSIBLE";
 }
-function Bd(r, e, a) {
+function Od(r, e, a) {
   var t = a.metadata, o = a.shouldTryNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix;
   if (r.nationalSignificantNumber, r.international, r.nationalPrefix, r.carrierCode, o(e)) {
-    var n = Or(r, e, {
+    var n = Ur(r, e, {
       useNationalPrefixFormattingRule: !0,
       getSeparatorAfterNationalPrefix: i,
       metadata: t
@@ -15649,45 +15649,45 @@ function Bd(r, e, a) {
     if (n)
       return n;
   }
-  return Or(r, e, {
+  return Ur(r, e, {
     useNationalPrefixFormattingRule: !1,
     getSeparatorAfterNationalPrefix: i,
     metadata: t
   });
 }
-function Or(r, e, a) {
-  var t = a.metadata, o = a.useNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = St(r.nationalSignificantNumber, e, {
+function Ur(r, e, a) {
+  var t = a.metadata, o = a.useNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = Rt(r.nationalSignificantNumber, e, {
     carrierCode: r.carrierCode,
     useInternationalFormat: r.international,
     withNationalPrefix: o,
     metadata: t
   });
-  if (o || (r.nationalPrefix ? n = r.nationalPrefix + i(e) + n : r.complexPrefixBeforeNationalSignificantNumber && (n = r.complexPrefixBeforeNationalSignificantNumber + " " + n)), Fd(n, r))
+  if (o || (r.nationalPrefix ? n = r.nationalPrefix + i(e) + n : r.complexPrefixBeforeNationalSignificantNumber && (n = r.complexPrefixBeforeNationalSignificantNumber + " " + n)), Md(n, r))
     return n;
 }
-function Fd(r, e) {
-  return Ie(r) === e.getNationalDigits();
+function Md(r, e) {
+  return Be(r) === e.getNationalDigits();
 }
-function Rd(r, e) {
+function Dd(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Dr(r, e) {
+function Gr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Td(r, e, a) {
-  return e && Dr(r.prototype, e), a && Dr(r, a), Object.defineProperty(r, "prototype", {
+function Ld(r, e, a) {
+  return e && Gr(r.prototype, e), a && Gr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Md = /* @__PURE__ */ function() {
+var Ud = /* @__PURE__ */ function() {
   function r() {
-    Rd(this, r);
+    Dd(this, r);
   }
-  return Td(r, [{
+  return Ld(r, [{
     key: "parse",
     value: function(a) {
       if (this.context = [{
@@ -15699,7 +15699,7 @@ var Md = /* @__PURE__ */ function() {
       if (o)
         return {
           op: "|",
-          args: o.concat([ca(i)])
+          args: o.concat([pa(i)])
         };
       if (i.length === 0)
         throw new Error("Pattern is required");
@@ -15725,9 +15725,9 @@ var Md = /* @__PURE__ */ function() {
     value: function(a) {
       if (!a)
         throw new Error("Pattern is required");
-      var t = a.match(Ld);
+      var t = a.match(Vd);
       if (!t) {
-        if (Dd.test(a))
+        if (Hd.test(a))
           throw new Error("Illegal characters found in a pattern: ".concat(a));
         this.getContext().instructions = this.getContext().instructions.concat(a.split(""));
         return;
@@ -15747,7 +15747,7 @@ var Md = /* @__PURE__ */ function() {
           if (i && this.parsePattern(i), this.getContext().instructions.length === 0)
             throw new Error('No instructions found after "|" operator in an "or" group');
           var d = this.getContext(), l = d.branches;
-          l.push(ca(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({
+          l.push(pa(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({
             op: "|",
             args: l
           });
@@ -15760,7 +15760,7 @@ var Md = /* @__PURE__ */ function() {
               this.getContext().branches = [];
             else
               throw new Error('"branches" not found in an "or" group context');
-          this.getContext().branches.push(ca(this.getContext().instructions)), this.getContext().instructions = [];
+          this.getContext().branches.push(pa(this.getContext().instructions)), this.getContext().instructions = [];
           break;
         case "[":
           i && this.parsePattern(i), this.startContext({
@@ -15772,7 +15772,7 @@ var Md = /* @__PURE__ */ function() {
             throw new Error('"]" operator must be preceded by "[" operator');
           this.endContext(), this.getContext().instructions.push({
             op: "[]",
-            args: Od(i)
+            args: Gd(i)
           });
           break;
         default:
@@ -15782,7 +15782,7 @@ var Md = /* @__PURE__ */ function() {
     }
   }]), r;
 }();
-function Od(r) {
+function Gd(r) {
   for (var e = [], a = 0; a < r.length; ) {
     if (r[a] === "-") {
       if (a === 0 || a === r.length - 1)
@@ -15795,18 +15795,18 @@ function Od(r) {
   }
   return e;
 }
-var Dd = /[\(\)\[\]\?\:\|]/, Ld = new RegExp(
+var Hd = /[\(\)\[\]\?\:\|]/, Vd = new RegExp(
   // any of:
   "(\\||\\(\\?\\:|\\)|\\[|\\])"
 );
-function ca(r) {
+function pa(r) {
   return r.length === 1 ? r[0] : r;
 }
-function Lr(r, e) {
+function Hr(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Ud(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = jd(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -15821,55 +15821,55 @@ function Lr(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function Ud(r, e) {
+function jd(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Ur(r, e);
+      return Vr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Ur(r, e);
+      return Vr(r, e);
   }
 }
-function Ur(r, e) {
+function Vr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function Gd(r, e) {
+function Yd(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Gr(r, e) {
+function jr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Hd(r, e, a) {
-  return e && Gr(r.prototype, e), a && Gr(r, a), Object.defineProperty(r, "prototype", {
+function Kd(r, e, a) {
+  return e && jr(r.prototype, e), a && jr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Vd = /* @__PURE__ */ function() {
+var Qd = /* @__PURE__ */ function() {
   function r(e) {
-    Gd(this, r), this.matchTree = new Md().parse(e);
+    Yd(this, r), this.matchTree = new Ud().parse(e);
   }
-  return Hd(r, [{
+  return Kd(r, [{
     key: "match",
     value: function(a) {
       var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, o = t.allowOverflow;
       if (!a)
         throw new Error("String is required");
-      var i = $a(a.split(""), this.matchTree, !0);
+      var i = Na(a.split(""), this.matchTree, !0);
       if (i && i.match && delete i.matchedChars, !(i && i.overflow && !o))
         return i;
     }
   }]), r;
 }();
-function $a(r, e, a) {
+function Na(r, e, a) {
   if (typeof e == "string") {
     var t = r.join("");
     return e.indexOf(t) === 0 ? r.length === e.length ? {
@@ -15887,7 +15887,7 @@ function $a(r, e, a) {
   }
   if (Array.isArray(e)) {
     for (var o = r.slice(), i = 0; i < e.length; ) {
-      var n = e[i], d = $a(o, n, a && i === e.length - 1);
+      var n = e[i], d = Na(o, n, a && i === e.length - 1);
       if (d) {
         if (d.overflow)
           return d;
@@ -15922,8 +15922,8 @@ function $a(r, e, a) {
   }
   switch (e.op) {
     case "|":
-      for (var l, s = Lr(e.args), c; !(c = s()).done; ) {
-        var p = c.value, m = $a(r, p, a);
+      for (var l, s = Hr(e.args), c; !(c = s()).done; ) {
+        var p = c.value, m = Na(r, p, a);
         if (m) {
           if (m.overflow)
             return m;
@@ -15944,7 +15944,7 @@ function $a(r, e, a) {
         // matchedChars: ...
       } : void 0;
     case "[]":
-      for (var u = Lr(e.args), f; !(f = u()).done; ) {
+      for (var u = Hr(e.args), f; !(f = u()).done; ) {
         var h = f.value;
         if (r[0] === h)
           return r.length === 1 ? {
@@ -15962,11 +15962,11 @@ function $a(r, e, a) {
       throw new Error("Unsupported instruction tree: ".concat(e));
   }
 }
-function Hr(r, e) {
+function Yr(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a)
     return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Yd(r)) || e && r && typeof r.length == "number") {
+  if (Array.isArray(r) || (a = Jd(r)) || e && r && typeof r.length == "number") {
     a && (r = a);
     var t = 0;
     return function() {
@@ -15981,49 +15981,49 @@ function Hr(r, e) {
   throw new TypeError(`Invalid attempt to iterate non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function Yd(r, e) {
+function Jd(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Vr(r, e);
+      return Kr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Vr(r, e);
+      return Kr(r, e);
   }
 }
-function Vr(r, e) {
+function Kr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function jd(r, e) {
+function qd(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Yr(r, e) {
+function Qr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function Kd(r, e, a) {
-  return e && Yr(r.prototype, e), a && Yr(r, a), Object.defineProperty(r, "prototype", {
+function Wd(r, e, a) {
+  return e && Qr(r.prototype, e), a && Qr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
+var Aa = "9", Xd = 15, Zd = _e(Aa, Xd), el = /[- ]/, al = function() {
   return /\[([^\[\]])*\]/g;
-}, Xd = function() {
+}, rl = function() {
   return /\d(?=[^,}][^,}])/g;
-}, Zd = new RegExp("[" + I + "]*\\$1[" + I + "]*(\\$\\d[" + I + "]*)*$"), jr = 3, el = /* @__PURE__ */ function() {
+}, tl = new RegExp("[" + I + "]*\\$1[" + I + "]*(\\$\\d[" + I + "]*)*$"), Jr = 3, ol = /* @__PURE__ */ function() {
   function r(e) {
     e.state;
     var a = e.metadata;
-    jd(this, r), this.metadata = a, this.resetFormat();
+    qd(this, r), this.metadata = a, this.resetFormat();
   }
-  return Kd(r, [{
+  return Wd(r, [{
     key: "resetFormat",
     value: function() {
       this.chosenFormat = void 0, this.template = void 0, this.nationalNumberTemplate = void 0, this.populatedNationalNumberTemplate = void 0, this.populatedNationalNumberTemplatePosition = -1;
@@ -16043,9 +16043,9 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
     key: "format",
     value: function(a, t) {
       var o = this;
-      if (Pd(t.nationalSignificantNumber, this.metadata))
-        for (var i = Hr(this.matchingFormats), n; !(n = i()).done; ) {
-          var d = n.value, l = Sd(t, d, {
+      if (Rd(t.nationalSignificantNumber, this.metadata))
+        for (var i = Yr(this.matchingFormats), n; !(n = i()).done; ) {
+          var d = n.value, l = Fd(t, d, {
             metadata: this.metadata,
             shouldTryNationalPrefixFormattingRule: function(c) {
               return o.shouldTryNationalPrefixFormattingRule(c, {
@@ -16073,7 +16073,7 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
   }, {
     key: "narrowDownMatchingFormats",
     value: function(a) {
-      var t = this, o = a.nationalSignificantNumber, i = a.nationalPrefix, n = a.international, d = o, l = d.length - jr;
+      var t = this, o = a.nationalSignificantNumber, i = a.nationalPrefix, n = a.international, d = o, l = d.length - Jr;
       l < 0 && (l = 0), this.matchingFormats = this.matchingFormats.filter(function(s) {
         return t.formatSuits(s, n, i) && t.formatMatches(s, d, l);
       }), this.chosenFormat && this.matchingFormats.indexOf(this.chosenFormat) === -1 && this.resetFormat();
@@ -16092,9 +16092,9 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
         return !0;
       o = Math.min(o, i - 1);
       var n = a.leadingDigitsPatterns()[o];
-      if (t.length < jr)
+      if (t.length < Jr)
         try {
-          return new Vd(n).match(t, {
+          return new Qd(n).match(t, {
             allowOverflow: !0
           }) !== void 0;
         } catch (d) {
@@ -16112,10 +16112,10 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
     value: function(a) {
       for (var t = this, o = function() {
         var s = n.value;
-        return t.chosenFormat === s ? "break" : Zd.test(t.getFormatFormat(s, a.international)) ? t.createTemplateForFormat(s, a) ? (t.chosenFormat = s, "break") : (t.matchingFormats = t.matchingFormats.filter(function(c) {
+        return t.chosenFormat === s ? "break" : tl.test(t.getFormatFormat(s, a.international)) ? t.createTemplateForFormat(s, a) ? (t.chosenFormat = s, "break") : (t.matchingFormats = t.matchingFormats.filter(function(c) {
           return c !== s;
         }), "continue") : "continue";
-      }, i = Hr(this.matchingFormats.slice()), n; !(n = i()).done; ) {
+      }, i = Yr(this.matchingFormats.slice()), n; !(n = i()).done; ) {
         var d = o();
         if (d === "break")
           break;
@@ -16134,7 +16134,7 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
   }, {
     key: "getSeparatorAfterNationalPrefix",
     value: function(a) {
-      return this.isNANP || a && a.nationalPrefixFormattingRule() && qd.test(a.nationalPrefixFormattingRule()) ? " " : "";
+      return this.isNANP || a && a.nationalPrefixFormattingRule() && el.test(a.nationalPrefixFormattingRule()) ? " " : "";
     }
   }, {
     key: "getInternationalPrefixBeforeCountryCallingCode",
@@ -16150,13 +16150,13 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
           spacing: !1
         }) : ""; o < i.length + a.getDigitsWithoutInternationalPrefix().length; )
           t = this.template.indexOf(A, t + 1), o++;
-        return Mr(this.template, t + 1);
+        return Lr(this.template, t + 1);
       }
     }
   }, {
     key: "setNationalNumberTemplate",
     value: function(a, t) {
-      this.nationalNumberTemplate = a, this.populatedNationalNumberTemplate = a, this.populatedNationalNumberTemplatePosition = -1, t.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(t).replace(/[\d\+]/g, A) + we(A, t.callingCode.length) + " " + a : this.template = a;
+      this.nationalNumberTemplate = a, this.populatedNationalNumberTemplate = a, this.populatedNationalNumberTemplatePosition = -1, t.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(t).replace(/[\d\+]/g, A) + _e(A, t.callingCode.length) + " " + a : this.template = a;
     }
     /**
      * Generates formatting template for a national phone number,
@@ -16169,34 +16169,34 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
     key: "getTemplateForFormat",
     value: function(a, t) {
       var o = t.nationalSignificantNumber, i = t.international, n = t.nationalPrefix, d = t.complexPrefixBeforeNationalSignificantNumber, l = a.pattern();
-      l = l.replace(Wd(), "\\d").replace(Xd(), "\\d");
-      var s = Jd.match(l)[0];
+      l = l.replace(al(), "\\d").replace(rl(), "\\d");
+      var s = Zd.match(l)[0];
       if (!(o.length > s.length)) {
-        var c = new RegExp("^" + l + "$"), p = o.replace(/\d/g, _a);
+        var c = new RegExp("^" + l + "$"), p = o.replace(/\d/g, Aa);
         c.test(p) && (s = p);
         var m = this.getFormatFormat(a, i), u;
         if (this.shouldTryNationalPrefixFormattingRule(a, {
           international: i,
           nationalPrefix: n
         })) {
-          var f = m.replace(It, a.nationalPrefixFormattingRule());
-          if (Ie(a.nationalPrefixFormattingRule()) === (n || "") + Ie("$1") && (m = f, u = !0, n))
+          var f = m.replace(Ft, a.nationalPrefixFormattingRule());
+          if (Be(a.nationalPrefixFormattingRule()) === (n || "") + Be("$1") && (m = f, u = !0, n))
             for (var h = n.length; h > 0; )
               m = m.replace(/\d/, A), h--;
         }
-        var y = s.replace(new RegExp(l), m).replace(new RegExp(_a, "g"), A);
-        return u || (d ? y = we(A, d.length) + " " + y : n && (y = we(A, n.length) + this.getSeparatorAfterNationalPrefix(a) + y)), i && (y = At(y)), y;
+        var y = s.replace(new RegExp(l), m).replace(new RegExp(Aa, "g"), A);
+        return u || (d ? y = _e(A, d.length) + " " + y : n && (y = _e(A, n.length) + this.getSeparatorAfterNationalPrefix(a) + y)), i && (y = Tt(y)), y;
       }
     }
   }, {
     key: "formatNextNationalNumberDigits",
     value: function(a) {
-      var t = Id(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition, a);
+      var t = Td(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition, a);
       if (!t) {
         this.resetFormat();
         return;
       }
-      return this.populatedNationalNumberTemplate = t[0], this.populatedNationalNumberTemplatePosition = t[1], Mr(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition + 1);
+      return this.populatedNationalNumberTemplate = t[0], this.populatedNationalNumberTemplatePosition = t[1], Lr(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition + 1);
     }
   }, {
     key: "shouldTryNationalPrefixFormattingRule",
@@ -16210,31 +16210,31 @@ var _a = "9", Qd = 15, Jd = we(_a, Qd), qd = /[- ]/, Wd = function() {
     }
   }]), r;
 }();
-function Mt(r, e) {
-  return ol(r) || tl(r, e) || rl(r, e) || al();
+function Gt(r, e) {
+  return ll(r) || dl(r, e) || nl(r, e) || il();
 }
-function al() {
+function il() {
   throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function rl(r, e) {
+function nl(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Kr(r, e);
+      return qr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Kr(r, e);
+      return qr(r, e);
   }
 }
-function Kr(r, e) {
+function qr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function tl(r, e) {
+function dl(r, e) {
   var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a != null) {
     var t = [], o = !0, i = !1, n, d;
@@ -16254,34 +16254,34 @@ function tl(r, e) {
     return t;
   }
 }
-function ol(r) {
+function ll(r) {
   if (Array.isArray(r))
     return r;
 }
-function il(r, e) {
+function sl(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function Qr(r, e) {
+function Wr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function nl(r, e, a) {
-  return e && Qr(r.prototype, e), a && Qr(r, a), Object.defineProperty(r, "prototype", {
+function cl(r, e, a) {
+  return e && Wr(r.prototype, e), a && Wr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" + De + "][" + I + C + "]*|[" + I + C + "]+)", cl = new RegExp("[^" + I + C + "]+.*$"), ml = /[^\d\[\]]/, ul = /* @__PURE__ */ function() {
+var ml = "[" + I + C + "]+", ul = new RegExp("^" + ml + "$", "i"), pl = "(?:[" + Ge + "][" + I + C + "]*|[" + I + C + "]+)", hl = new RegExp("[^" + I + C + "]+.*$"), gl = /[^\d\[\]]/, fl = /* @__PURE__ */ function() {
   function r(e) {
     var a = e.defaultCountry, t = e.defaultCallingCode, o = e.metadata, i = e.onNationalSignificantNumberChange;
-    il(this, r), this.defaultCountry = a, this.defaultCallingCode = t, this.metadata = o, this.onNationalSignificantNumberChange = i;
+    sl(this, r), this.defaultCountry = a, this.defaultCallingCode = t, this.metadata = o, this.onNationalSignificantNumberChange = i;
   }
-  return nl(r, [{
+  return cl(r, [{
     key: "input",
     value: function(a, t) {
-      var o = gl(a), i = Mt(o, 2), n = i[0], d = i[1], l = Ie(n), s;
+      var o = vl(a), i = Gt(o, 2), n = i[0], d = i[1], l = Be(n), s;
       return d && (t.digits || (t.startInternationalNumber(), l || (s = !0))), l && this.inputDigits(l, t), {
         digits: l,
         justLeadingPlus: s
@@ -16316,7 +16316,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
   }, {
     key: "extractCountryCallingCode",
     value: function(a) {
-      var t = Ft("+" + a.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode, i = t.number;
+      var t = Dt("+" + a.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode, i = t.number;
       if (o)
         return a.setCallingCode(o), a.update({
           nationalSignificantNumber: i
@@ -16328,7 +16328,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
       if (a) {
         this.hasSelectedNumberingPlan = !0;
         var t = a._nationalPrefixForParsing();
-        this.couldPossiblyExtractAnotherNationalSignificantNumber = t && ml.test(t);
+        this.couldPossiblyExtractAnotherNationalSignificantNumber = t && gl.test(t);
       } else
         this.hasSelectedNumberingPlan = void 0, this.couldPossiblyExtractAnotherNationalSignificantNumber = void 0;
     }
@@ -16343,7 +16343,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
     key: "extractNationalSignificantNumber",
     value: function(a, t) {
       if (this.hasSelectedNumberingPlan) {
-        var o = va(a, this.metadata), i = o.nationalPrefix, n = o.nationalNumber, d = o.carrierCode;
+        var o = wa(a, this.metadata), i = o.nationalPrefix, n = o.nationalNumber, d = o.carrierCode;
         if (n !== a)
           return this.onExtractedNationalNumber(i, d, n, a, t), !0;
       }
@@ -16359,7 +16359,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
       if (!this.hasExtractedNationalSignificantNumber)
         return this.extractNationalSignificantNumber(a, o);
       if (this.couldPossiblyExtractAnotherNationalSignificantNumber) {
-        var i = va(a, this.metadata), n = i.nationalPrefix, d = i.nationalNumber, l = i.carrierCode;
+        var i = wa(a, this.metadata), n = i.nationalPrefix, d = i.nationalNumber, l = i.carrierCode;
         if (d !== t)
           return this.onExtractedNationalNumber(n, l, d, a, o), !0;
       }
@@ -16398,7 +16398,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
     value: function(a) {
       var t = a.international, o = a.IDDPrefix, i = a.digits;
       if (a.nationalSignificantNumber, !(t || o)) {
-        var n = Pt(i, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
+        var n = Ot(i, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
         if (n !== void 0 && n !== i)
           return a.update({
             IDDPrefix: i.slice(0, i.length - n.length)
@@ -16412,7 +16412,7 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
     key: "fixMissingPlus",
     value: function(a) {
       if (!a.international) {
-        var t = Bt(a.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode;
+        var t = Mt(a.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode;
         if (t.number, o)
           return a.update({
             missingPlus: !0
@@ -16437,55 +16437,55 @@ var dl = "[" + I + C + "]+", ll = new RegExp("^" + dl + "$", "i"), sl = "(?:[" +
     }
   }]), r;
 }();
-function pl(r) {
-  var e = r.search(sl);
+function bl(r) {
+  var e = r.search(pl);
   if (!(e < 0)) {
     r = r.slice(e);
     var a;
-    return r[0] === "+" && (a = !0, r = r.slice(1)), r = r.replace(cl, ""), a && (r = "+" + r), r;
+    return r[0] === "+" && (a = !0, r = r.slice(1)), r = r.replace(hl, ""), a && (r = "+" + r), r;
   }
 }
-function hl(r) {
-  var e = pl(r) || "";
+function zl(r) {
+  var e = bl(r) || "";
   return e[0] === "+" ? [e.slice(1), !0] : [e];
 }
-function gl(r) {
-  var e = hl(r), a = Mt(e, 2), t = a[0], o = a[1];
-  return ll.test(t) || (t = ""), [t, o];
+function vl(r) {
+  var e = zl(r), a = Gt(e, 2), t = a[0], o = a[1];
+  return ul.test(t) || (t = ""), [t, o];
 }
-function Ca(r) {
+function Ia(r) {
   "@babel/helpers - typeof";
-  return Ca = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
+  return Ia = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
     return typeof e;
   } : function(e) {
     return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, Ca(r);
+  }, Ia(r);
 }
-function fl(r, e) {
-  return yl(r) || vl(r, e) || zl(r, e) || bl();
+function yl(r, e) {
+  return $l(r) || wl(r, e) || xl(r, e) || kl();
 }
-function bl() {
+function kl() {
   throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function zl(r, e) {
+function xl(r, e) {
   if (r) {
     if (typeof r == "string")
-      return Jr(r, e);
+      return Xr(r, e);
     var a = Object.prototype.toString.call(r).slice(8, -1);
     if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
       return Array.from(r);
     if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Jr(r, e);
+      return Xr(r, e);
   }
 }
-function Jr(r, e) {
+function Xr(r, e) {
   (e == null || e > r.length) && (e = r.length);
   for (var a = 0, t = new Array(e); a < e; a++)
     t[a] = r[a];
   return t;
 }
-function vl(r, e) {
+function wl(r, e) {
   var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
   if (a != null) {
     var t = [], o = !0, i = !1, n, d;
@@ -16505,36 +16505,36 @@ function vl(r, e) {
     return t;
   }
 }
-function yl(r) {
+function $l(r) {
   if (Array.isArray(r))
     return r;
 }
-function kl(r, e) {
+function _l(r, e) {
   if (!(r instanceof e))
     throw new TypeError("Cannot call a class as a function");
 }
-function qr(r, e) {
+function Zr(r, e) {
   for (var a = 0; a < e.length; a++) {
     var t = e[a];
     t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
   }
 }
-function xl(r, e, a) {
-  return e && qr(r.prototype, e), a && qr(r, a), Object.defineProperty(r, "prototype", {
+function Cl(r, e, a) {
+  return e && Zr(r.prototype, e), a && Zr(r, a), Object.defineProperty(r, "prototype", {
     writable: !1
   }), r;
 }
-var Ot = /* @__PURE__ */ function() {
+var Ht = /* @__PURE__ */ function() {
   function r(e, a) {
-    kl(this, r), this.metadata = new _(a);
-    var t = this.getCountryAndCallingCode(e), o = fl(t, 2), i = o[0], n = o[1];
+    _l(this, r), this.metadata = new _(a);
+    var t = this.getCountryAndCallingCode(e), o = yl(t, 2), i = o[0], n = o[1];
     this.defaultCountry = i, this.defaultCallingCode = n, this.reset();
   }
-  return xl(r, [{
+  return Cl(r, [{
     key: "getCountryAndCallingCode",
     value: function(a) {
       var t, o;
-      return a && (Ca(a) === "object" ? (t = a.defaultCountry, o = a.defaultCallingCode) : t = a), t && !this.metadata.hasCountry(t) && (t = void 0), [t, o];
+      return a && (Ia(a) === "object" ? (t = a.defaultCountry, o = a.defaultCallingCode) : t = a), t && !this.metadata.hasCountry(t) && (t = void 0), [t, o];
     }
     /**
      * Inputs "next" phone number characters.
@@ -16563,17 +16563,17 @@ var Ot = /* @__PURE__ */ function() {
     key: "reset",
     value: function() {
       var a = this;
-      return this.state = new Cd({
+      return this.state = new Id({
         onCountryChange: function(o) {
           a.country = o;
         },
         onCallingCodeChange: function(o, i) {
           a.metadata.selectNumberingPlan(i, o), a.formatter.reset(a.metadata.numberingPlan, a.state), a.parser.reset(a.metadata.numberingPlan);
         }
-      }), this.formatter = new el({
+      }), this.formatter = new ol({
         state: this.state,
         metadata: this.metadata
-      }), this.parser = new ul({
+      }), this.parser = new fl({
         defaultCountry: this.defaultCountry,
         defaultCallingCode: this.defaultCallingCode,
         metadata: this.metadata,
@@ -16689,7 +16689,7 @@ var Ot = /* @__PURE__ */ function() {
   }, {
     key: "determineTheCountry",
     value: function() {
-      this.state.setCountry(Rt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, this.state.nationalSignificantNumber, this.metadata));
+      this.state.setCountry(Lt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, this.state.nationalSignificantNumber, this.metadata));
     }
     /**
      * Returns a E.164 phone number value for the user's input.
@@ -16733,7 +16733,7 @@ var Ot = /* @__PURE__ */ function() {
     value: function() {
       var a = this.state, t = a.nationalSignificantNumber, o = a.carrierCode, i = a.callingCode, n = this._getCountry();
       if (t && !(!n && !i)) {
-        var d = new Ua(n || i, t, this.metadata.metadata);
+        var d = new Va(n || i, t, this.metadata.metadata);
         return o && (d.carrierCode = o), d;
       }
     }
@@ -16789,46 +16789,46 @@ var Ot = /* @__PURE__ */ function() {
     }
   }]), r;
 }();
-function wl(r, e, a) {
+function El(r, e, a) {
   if (e[r])
-    return new Ua(r, e[r], a);
+    return new Va(r, e[r], a);
 }
-function $l() {
-  return Oa(wd, arguments);
+function Nl() {
+  return Ua(Ed, arguments);
 }
-function Pe(r) {
-  return Ot.call(this, r, kt);
+function Fe(r) {
+  return Ht.call(this, r, Ct);
 }
-Pe.prototype = Object.create(Ot.prototype, {});
-Pe.prototype.constructor = Pe;
-function _l() {
-  return Oa(Ge, arguments);
+Fe.prototype = Object.create(Ht.prototype, {});
+Fe.prototype.constructor = Fe;
+function Al() {
+  return Ua(je, arguments);
 }
-function Cl() {
-  return Oa(wl, arguments);
+function Il() {
+  return Ua(El, arguments);
 }
-const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], El = Dt.map((r) => r[1].toUpperCase()), Lt = Dt.map((r) => ({
+const Vt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], Sl = Vt.map((r) => r[1].toUpperCase()), jt = Vt.map((r) => ({
   name: r[0],
   iso2: r[1].toUpperCase(),
   dialCode: r[2],
   priority: r[3] || 0,
   areaCodes: r[4] || null
-})), Nl = () => {
+})), Pl = () => {
   if (typeof window > "u")
     return null;
   const r = window.navigator.userLanguage || window.navigator.language;
   let e = r ? r.substr(3, 4).toUpperCase() : null;
   return e === "" && (e = r.substr(0, 2).toUpperCase()), e === "EN" && (e = "US"), e === "JA" && (e = "JP"), e;
-}, Al = async (r) => {
+}, Bl = async (r) => {
   try {
-    if (El.includes(r))
+    if (Sl.includes(r))
       return !0;
     throw `MazPhoneNumberInput: The country ${r} is not available`;
   } catch (e) {
     throw new Error(e);
   }
-}, Il = (r, e) => {
-  const a = r ? $l(r, e) : null;
+}, Tl = (r, e) => {
+  const a = r ? Nl(r, e) : null;
   let t = {
     countryCode: e,
     phoneNumber: r,
@@ -16846,7 +16846,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     uri: a.getURI(),
     e164: a.format("E.164")
   }), t;
-}, Wr = (r, e) => r ? e ? new Pe(e).input(r) : r : null, Sl = async () => {
+}, et = (r, e) => r ? e ? new Fe(e).input(r) : r : null, Fl = async () => {
   try {
     const a = (await (await fetch("https://ip2c.org/s")).text() || "").toString();
     if (a && a[0] === "1")
@@ -16854,7 +16854,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   } catch {
     return new Error("[MazPhoneNumberInput] Error while fetching country code");
   }
-}, Pl = {
+}, Rl = {
   AC: "40123",
   AD: "312345",
   AE: "501234567",
@@ -17100,19 +17100,19 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   ZA: "711234567",
   ZM: "955123456",
   ZW: "712345678"
-}, Bl = {
+}, Ol = {
   countrySelectorLabel: "Country code",
   countrySelectorError: "Choose country",
   countrySelectorSearchPlaceholder: "Search country",
   phoneNumberLabel: "Phone number",
   example: "Example:"
-}, Fl = {
+}, Ml = {
   name: "MazPhoneNumberInput",
   components: {
-    MazInput: K,
-    MazSelect: de
+    MazInput: V,
+    MazSelect: le
   },
-  mixins: [Oe],
+  mixins: [Ue],
   props: {
     value: {
       validator: (r) => ["string", "number"].includes(typeof r) || r === null,
@@ -17175,7 +17175,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   computed: {
     t() {
       return {
-        ...Bl,
+        ...Ol,
         ...this.translations
       };
     },
@@ -17184,7 +17184,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
       return r ? `+${((a) => {
         const t = this.countriesSorted.find((o) => o.iso2 === a);
         return t ? t.dialCode : null;
-      })(r) || _l(r)}` : null;
+      })(r) || Al(r)}` : null;
     },
     // input states
     shouldChooseCountry() {
@@ -17199,7 +17199,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     },
     // hint values
     phoneNumberExample() {
-      const { countryCode: r } = this, e = r ? Cl(r, Pl) : null;
+      const { countryCode: r } = this, e = r ? Il(r, Rl) : null;
       return e ? e.formatNational() : null;
     },
     hintValue() {
@@ -17208,7 +17208,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     },
     // Countries list management
     countriesList() {
-      return Lt.filter((r) => !this.ignoredCountries.includes(r.iso2));
+      return jt.filter((r) => !this.ignoredCountries.includes(r.iso2));
     },
     countriesFiltered() {
       return (this.onlyCountries || this.preferredCountries).map(
@@ -17249,7 +17249,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
         );
       if (r)
         return;
-      const o = e ? await Sl() : a ? null : await Nl();
+      const o = e ? await Fl() : a ? null : await Pl();
       o && t(o);
     } catch (r) {
       throw new Error(r);
@@ -17260,21 +17260,21 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
       const { countryCode: a, value: t } = this;
       await this.$nextTick();
       const o = this.asYouTypeNumber && r && this.asYouTypeNumber.length > r.length;
-      this.results = Il(r, a);
+      this.results = Tl(r, a);
       const { isValid: i, e164: n } = this.results, d = this.asYouTypeNumber && this.cursorPosition ? this.cursorPosition + 1 >= this.asYouTypeNumber.length : !0, l = !o && d || i;
-      this.asYouTypeNumber = l ? Wr(r, a) : r, !e && this.results && this.results.countryCode && a !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
+      this.asYouTypeNumber = l ? et(r, a) : r, !e && this.results && this.results.countryCode && a !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
       const s = i ? n : this.asYouTypeNumber;
       !s && s === t || this.$emit("input", s);
     },
     onBlur(r) {
-      this.$emit("blur", r), this.countryCode && (this.asYouTypeNumber = Wr(this.asYouTypeNumber, this.countryCode));
+      this.$emit("blur", r), this.countryCode && (this.asYouTypeNumber = et(this.asYouTypeNumber, this.countryCode));
     },
     onKeydown(r) {
       const e = r.target;
       this.cursorPosition = e == null ? void 0 : e.selectionStart;
     },
     async setCountryCode(r, e) {
-      const { buildResults: a, asYouTypeNumber: t } = this, o = Al(r);
+      const { buildResults: a, asYouTypeNumber: t } = this, o = Bl(r);
       e && (this.focusPhoneNumberInput(), t && t.includes("+") && (this.asYouTypeNumber = null)), o && r && (this.countryCode = r, a(this.asYouTypeNumber, !0));
     },
     async focusCountrySelector() {
@@ -17285,7 +17285,7 @@ const Dt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     }
   }
 };
-var Rl = function() {
+var Dl = function() {
   var e = this, a = e._self._c;
   return a("div", { staticClass: "maz-base-component maz-phone-number-input maz-flex", class: [{ "maz-is-dark": e.dark }, `maz-phone-number-input--${e.size}`], attrs: { id: e.id } }, [e.noCountrySelector ? e._e() : a("MazSelect", { ref: "CountrySelector", staticClass: "country-selector", class: {
     "no-padding-left": e.noFlags || !e.countryCode
@@ -17312,28 +17312,28 @@ var Rl = function() {
   }, clear: function(t) {
     return e.$emit("clear", t);
   }, input: e.buildResults } }, "MazInput", e.$attrs, !1), [e._t("icon-left", null, { slot: "icon-left" }), e._t("icon-right", null, { slot: "icon-right" })], 2)], 1);
-}, Tl = [], Ml = /* @__PURE__ */ be(
-  Fl,
-  Rl,
-  Tl,
+}, Ll = [], Ul = /* @__PURE__ */ re(
+  Ml,
+  Dl,
+  Ll,
   !1,
   null,
   null,
   null,
   null
 );
-const $e = Ml.exports;
-$e.install = (r) => {
-  r.component($e.name, $e);
+const Ce = Ul.exports;
+Ce.install = (r) => {
+  r.component(Ce.name, Ce);
 };
-function Ol(r, e, a) {
-  return e = Dl(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+function Gl(r, e, a) {
+  return e = Hl(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
 }
-function Dl(r) {
-  var e = Ll(r, "string");
+function Hl(r) {
+  var e = Vl(r, "string");
   return typeof e == "symbol" ? e : String(e);
 }
-function Ll(r, e) {
+function Vl(r, e) {
   if (typeof r != "object" || r === null)
     return r;
   var a = r[Symbol.toPrimitive];
@@ -17345,12 +17345,12 @@ function Ll(r, e) {
   }
   return (e === "string" ? String : Number)(r);
 }
-const Xr = "o21pay-address", Ul = [ie, ne, K, de, $e], Gl = (r, e = {}) => {
-  Ul.forEach((a) => {
+const at = "o21pay-address", jl = [ne, de, V, le, Ce], Yl = (r, e = {}) => {
+  jl.forEach((a) => {
     r.component(a.name, a);
   });
 };
-class ze extends U {
+class ve extends O {
   static get properties() {
     return {
       editor: {
@@ -17401,19 +17401,19 @@ class ze extends U {
       style: ""
     }, {
       type: "Switch",
-      title: "Optimized",
+      title: "Optimized View",
       value: "optimized",
-      style: "float: left;"
-    }, {
-      type: "Switch",
-      title: "Address Pro",
-      value: "pro",
-      style: "float: left;"
+      style: "float: left;margin-bottom: 5px"
     }, {
       type: "Switch",
       title: "Icons",
       value: "icons",
-      style: "margin-bottom: 10px"
+      style: "float: left;margin-bottom: 5px"
+    }, {
+      type: "Switch",
+      title: "Address Pro",
+      value: "pro",
+      style: "margin-bottom: 5px"
     }, {
       type: "Size"
     }];
@@ -17483,7 +17483,7 @@ class ze extends U {
     const a = e.renderRoot.querySelector("#app");
     if (!a)
       return;
-    Gl(Vue), this.object = new Vue({
+    Yl(Vue), this.object = new Vue({
       el: a,
       components: {},
       data: function() {
@@ -17507,6 +17507,20 @@ class ze extends U {
         name(i, n) {
           e.getData();
         }
+      },
+      methods: {
+        __inputValue() {
+          const i = e.validation();
+          e.dispatchEvent(new CustomEvent("o21pay_component", {
+            detail: {
+              instance: e,
+              message: "o21pay_validation",
+              state: i
+            },
+            bubbles: !0,
+            composed: !0
+          }));
+        }
       }
     });
     let t = navigator.language.split("-")[0], o = this.countries.find((i) => i.iso === t);
@@ -17518,7 +17532,7 @@ class ze extends U {
    */
   listCountries() {
     const e = [];
-    for (const a of Lt)
+    for (const a of jt)
       e.push({
         label: a.name,
         value: a.name,
@@ -17540,7 +17554,7 @@ class ze extends U {
    */
   prepareDataProperties() {
     let e = {};
-    for (const a in ze.properties) {
+    for (const a in ve.properties) {
       let t = this[a];
       if (console.log(a, t), a === "size")
         t === "small" ? t = "sm" : t === "medium" ? t = void 0 : t === "large" ? t = "lg" : t = "sm";
@@ -17557,7 +17571,7 @@ class ze extends U {
    *
    */
   render() {
-    return L` <div>
+    return R` <div>
       <div id="app">
         <div v-if="visible">
           <form>
@@ -17579,6 +17593,7 @@ class ze extends U {
                 :size="props.size"
                 :readonly="props.editor"
                 :required="props.required"
+                @input="__inputValue"
               />
             </div>
             <div class="m1">
@@ -17589,6 +17604,7 @@ class ze extends U {
                 :size="props.size"
                 :readonly="props.editor"
                 :required="props.required"
+                @input="__inputValue"
               />
             </div>
 
@@ -17600,6 +17616,7 @@ class ze extends U {
                   :size="props.size"
                   :readonly="props.editor"
                   :required="props.required"
+                  @input="__inputValue"
                 />
               </div>
               <div class="" style="padding-left: 5px; width: 40%; ">
@@ -17609,6 +17626,7 @@ class ze extends U {
                   :size="props.size"
                   :readonly="props.editor"
                   :required="props.required"
+                  @input="__inputValue"
                 />
               </div>
               <div style="padding-left: 5px; width: 60%;">
@@ -17633,6 +17651,7 @@ class ze extends U {
                     :size="props.size"
                     :readonly="props.editor"
                     :required="props.required"
+                    @input="__inputValue"
                   />
                 </div>
                 <div class="" style="padding-left: 5px; width: 100%">
@@ -17642,6 +17661,7 @@ class ze extends U {
                     :size="props.size"
                     :readonly="props.editor"
                     :required="props.required"
+                    @input="__inputValue"
                   />
                 </div>
               </div>
@@ -17665,6 +17685,7 @@ class ze extends U {
                 :required="props.required"
                 :lock="props.editor"
                 @update="resultPhone = $event"
+                @input="__inputValue"
               />
             </div>
 
@@ -17676,6 +17697,7 @@ class ze extends U {
                 :size="props.size"
                 :readonly="props.editor"
                 :required="props.required"
+                @input="__inputValue"
               />
             </div>
             <div v-if="props.pro" class="m1">
@@ -17686,6 +17708,7 @@ class ze extends U {
                 :size="props.size"
                 :readonly="props.editor"
                 :required="props.required"
+                @input="__inputValue"
               />
             </div>
           </form>
@@ -17694,32 +17717,556 @@ class ze extends U {
     </div>`;
   }
 }
-Ol(ze, "styles", [li, si]);
-const ma = window.customElements;
-ma && !ma.get(Xr) && ma.define(Xr, ze);
+Gl(ve, "styles", [_t, pi]);
+const ha = window.customElements;
+ha && !ha.get(at) && ha.define(at, ve);
+const Kl = {
+  getServerUrl: function(r) {
+    let e = "https://o21c.obvious21.com/api/v1/";
+    return r === "development" && (e = "http://localhost:3400/api/v1/"), r === "sandbox" && (e = "https://sandbox-o21c.obvious21.com/api/v1/"), r === "beta" && (e = "https://beta-o21c.obvious21.com/api/v1/"), e;
+  }
+}, Ql = {
+  name: "OtpInput",
+  props: {
+    id: {
+      type: String,
+      default: "otp"
+    },
+    digits: {
+      type: Number,
+      default: 5
+    },
+    mode: {
+      type: String,
+      default: "separate"
+    },
+    type: {
+      type: String,
+      default: "number"
+    },
+    placeholder: {
+      type: String,
+      default: "-"
+    },
+    radius: {
+      type: Number,
+      default: 5
+    },
+    gap: {
+      type: Number,
+      default: 10
+    },
+    isDisabled: {
+      type: Boolean,
+      default: !1
+    },
+    isValid: {
+      type: Boolean,
+      default: !0
+    },
+    rtl: {
+      type: Boolean,
+      default: !1
+    },
+    autoFocus: {
+      type: Boolean,
+      default: !0
+    },
+    errorClass: {
+      type: String,
+      default: ""
+    },
+    separateInputClass: {
+      type: String,
+      default: ""
+    },
+    separateWrapperClass: {
+      type: String,
+      default: ""
+    },
+    groupInputClass: {
+      type: String,
+      default: ""
+    },
+    groupWrapperClass: {
+      type: String,
+      default: ""
+    },
+    activeInputClass: {
+      type: String,
+      default: ""
+    },
+    activeWrapperClass: {
+      type: String,
+      default: ""
+    }
+  },
+  data() {
+    return {
+      inputValue: [],
+      joinedValue: "",
+      isInputFocused: !1,
+      activeInput: -1
+    };
+  },
+  mounted() {
+    if (this.autoFocus && !this.isDisabled && (this.onFocus(0), this.$refs.digitInput[0].focus(), ["text", "password", "number"].indexOf(this.type) != -1))
+      for (let e of this.$refs.digitInput)
+        e.type = this.type;
+  },
+  computed: {
+    wrapperStyle() {
+      return {
+        direction: this.rtl ? "rtl" : "ltr",
+        gap: `${this.gap}px`,
+        "border-radius": `${this.radius}px`
+      };
+    },
+    inputStyle() {
+      return {
+        "--border-radius": `${this.radius}px`
+      };
+    },
+    inputClassHandler() {
+      return this.mode === "separate" ? this.isValid ? this.separateInputClass ? this.separateInputClass : "defualt-input-separate" : this.separateInputClass ? this.separateInputClass : "defualt-error-input-separate" : this.mode === "group" ? this.groupInputClass ? this.groupInputClass : "defualt-input-group" : "";
+    },
+    activeInputClassHandler() {
+      return this.mode === "separate" ? this.activeInputClass ? this.activeInputClass : "defualt-active-input" : "";
+    },
+    activeWrapperClassHandler() {
+      return this.mode === "group" ? this.isValid ? this.activeWrapperClass ? this.activeWrapperClass : "defualt-active-wrapper" : this.activeWrapperClass ? this.activeWrapperClass : "defualt-error-wrapper-group" : "";
+    },
+    wrapperClassHandler() {
+      return this.mode === "separate" ? this.separateWrapperClass ? this.separateWrapperClass : "defualt-wrapper-separate" : this.mode === "group" ? this.isValid ? this.groupWrapperClass ? this.groupWrapperClass : "defualt-wrapper-group" : this.groupWrapperClass ? this.groupWrapperClass : "defualt-error-wrapper-group" : "";
+    },
+    errorClassHandler() {
+      return this.errorClass ? this.errorClass : "default-error-class";
+    }
+  },
+  methods: {
+    keydownHandler(r, e) {
+      e.keyCode === 8 && e.target.value === "" && this.$refs.digitInput[Math.max(0, r - 1)].focus();
+    },
+    onInput(r) {
+      const [e, ...a] = this.type === "number" ? this.inputValue[r].replace(/[^0-9]/g, "") : this.inputValue[r];
+      this.inputValue[r] = e ?? "";
+      const t = r === this.digits - 1;
+      e !== void 0 && !t && (this.$refs.digitInput[r + 1].focus(), this.$refs.digitInput[r + 1].value = a.join(""), this.$refs.digitInput[r + 1].dispatchEvent(new Event("input"))), this.joinedValue = this.inputValue.map((i) => i).join(""), this.$emit("value", this.joinedValue), this.joinedValue.length === this.digits && this.onComplete(this.joinedValue);
+    },
+    onFocus(r) {
+      this.activeInput = r, this.isInputFocused = !0;
+    },
+    onBlur() {
+      this.activeInput = -1, this.isInputFocused = !1;
+    },
+    onComplete(r) {
+      this.onBlur(), this.$refs.digitInput[this.digits - 1].blur(), this.type === "password" ? this.$emit("on-complete", r) : this.$emit("on-complete", r);
+    },
+    onChanged(r) {
+      this.$emit("on-changed", this.inputValue[r]);
+    },
+    OnPaste(r) {
+      this.$emit("on-paste", r);
+    }
+  }
+};
+var Jl = function() {
+  var e = this, a = e._self._c;
+  return a("div", { staticClass: "vue-otp-input" }, [a("div", { staticClass: "otp-wrapper", class: e.isInputFocused ? e.activeWrapperClassHandler : e.wrapperClassHandler, style: e.wrapperStyle, attrs: { id: e.id } }, e._l(e.digits, function(t, o) {
+    return a("input", { directives: [{ name: "model", rawName: "v-model", value: e.inputValue[o], expression: "inputValue[index]" }], key: e.id + o, ref: "digitInput", refInFor: !0, staticClass: "otp-input", class: [e.inputClassHandler, e.activeInput === o ? e.activeInputClassHandler : ""], style: e.inputStyle, attrs: { autocomplete: "one-time-code", placeholder: e.placeholder, disabled: e.isDisabled }, domProps: { value: e.inputValue[o] }, on: { focus: function(i) {
+      return e.onFocus(o);
+    }, blur: e.onBlur, paste: e.OnPaste, input: [function(i) {
+      i.target.composing || e.$set(e.inputValue, o, i.target.value);
+    }, function(i) {
+      return e.onInput(o, i);
+    }], change: function(i) {
+      return e.onChanged(o);
+    }, keydown: function(i) {
+      return e.keydownHandler(o, i);
+    } } });
+  }), 0), e.isValid ? e._e() : a("span", { class: e.errorClassHandler }, [e._t("errorMessage")], 2)]);
+}, ql = [], Wl = /* @__PURE__ */ re(
+  Ql,
+  Jl,
+  ql,
+  !1,
+  null,
+  null,
+  null,
+  null
+);
+const Ee = Wl.exports;
+Ee.install = (r) => {
+  r.component(Ee.name, Ee);
+};
+const Xl = ge`
+  div.vue-otp-input {
+    width: max-content;
+    margin-left: 15 px;
+    width: unset !important;
+    caret-color: transparent;
+  }
+  div.vue-otp-input > div.otp-wrapper {
+    direction: var(--direction);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s;
+  }
+  div.vue-otp-input > div.otp-wrapper > input.otp-input {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s;
+    border-radius: var(--border-radius);
+  }
+  div.vue-otp-input > div.otp-wrapper > input.otp-input:disabled {
+    background-color: #ececec !important;
+  }
+  /* SINGLE INPUT IN SEPARATE MODE */
+  div.vue-otp-input > div.otp-wrapper > input.defualt-input-separate {
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    background-color: white;
+    border: solid 2px #dcdfe6;
+    width: 42px;
+    height: 42px;
+  }
+  div.vue-otp-input > div.otp-wrapper > input.defualt-error-input-separate {
+    text-align: center;
+    font-weight: 600;
+    background-color: transparent;
+    border: solid 2px #d50000;
+    width: 3rem;
+    height: 48px;
+  }
+  @media only screen and (max-width: 600px) {
+    div.vue-otp-input > div.otp-wrapper > input.defualt-input-separate {
+      width: 2.5rem;
+      height: 40px;
+    }
+  }
+  /* INPUTS WRAPPER IN SEPARATE MODE */
+  div.vue-otp-input > div.defualt-wrapper-separate {
+    background: transparent;
+  }
+  /* INPUTS WRAPPER IN GROUP MODE */
+  div.vue-otp-input > div.defualt-wrapper-group {
+    border: solid 2px #dcdfe6;
+  }
+  div.vue-otp-input > div.defualt-error-wrapper-group {
+    border: solid 2px #d50000;
+  }
+
+  /* SINGLE INPUT IN GROUP MODE */
+  div.vue-otp-input > div.otp-wrapper > input.defualt-input-group {
+    background-color: transparent;
+    font-weight: 600;
+    border: none;
+    width: 3rem;
+    height: 48px;
+    text-align: center;
+  }
+  @media only screen and (max-width: 600px) {
+    div.vue-otp-input > div.otp-wrapper > input.defualt-input-group {
+      width: 2.5rem;
+      height: 40px;
+    }
+  }
+  div.vue-otp-input > div.otp-wrapper > input.defualt-active-input {
+    border: solid 2px #68d18d;
+  }
+  div.vue-otp-input > div.defualt-active-wrapper {
+    border: solid 2px #68d18d;
+  }
+  div.vue-otp-input > span.default-error-class {
+    color: #d50000;
+    font-weight: bold;
+  }
+  input:focus {
+    outline: 2px solid #68d18d;
+    border: 0px !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  /* removing the arrow keys on side of the input area */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+`, Zl = ge`
+  :host {
+    --maz-primary: #9bc99d;
+    --maz-border-width: 1px;
+    --maz-border-radius: 5px;
+    --maz-border-color: #dddfe6;
+    --maz-icon-color: lightgray;
+    --maz-placeholder-color: lightgray;
+  }
+
+  .m1 {
+    margin: 4px 0px;
+    padding: 0;
+  }
+`;
+function es(r, e, a) {
+  return e = as(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+}
+function as(r) {
+  var e = rs(r, "string");
+  return typeof e == "symbol" ? e : String(e);
+}
+function rs(r, e) {
+  if (typeof r != "object" || r === null)
+    return r;
+  var a = r[Symbol.toPrimitive];
+  if (a !== void 0) {
+    var t = a.call(r, e || "default");
+    if (typeof t != "object")
+      return t;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (e === "string" ? String : Number)(r);
+}
+const rt = "o21pay-otp", ts = [V, Ee], os = (r, e = {}) => {
+  ts.forEach((a) => {
+    r.component(a.name, a);
+  });
+};
+class ye extends O {
+  static get properties() {
+    return {
+      required: {
+        type: Boolean
+      },
+      env: {
+        type: String
+      },
+      editor: {
+        type: Boolean
+      },
+      ticket: {
+        type: String
+      },
+      data: {
+        type: Object
+      }
+    };
+  }
+  /**
+   *
+   *
+   */
+  constructor() {
+    super(), this.editor = !1, this.required = !1, this.object = void 0;
+    const e = this;
+    setTimeout(async function() {
+      e.createVue();
+    }, 200);
+  }
+  init() {
+  }
+  /**
+   *
+   *
+   */
+  builderProperties() {
+    return [{
+      type: "Switch",
+      title: "Required",
+      value: "required",
+      style: ""
+    }];
+  }
+  /**
+   *
+   *
+   */
+  validation() {
+    return this.required ? !!this.getData() : !0;
+  }
+  /**
+   *
+   *
+   */
+  getData() {
+    return !this.object || !this.object.$data ? null : {};
+  }
+  /**
+   *
+   *
+   */
+  setData() {
+    if (!this.object || !this.object.$data)
+      return null;
+    this.data;
+  }
+  /* createRenderRoot() {
+    return this
+  }*/
+  /**
+   *
+   *
+   */
+  updated(e) {
+    super.updated(e);
+    const a = this.prepareDataProperties();
+    this.object && (this.object.$data.props = a);
+  }
+  /**
+   *
+   *
+   */
+  async createVue() {
+    const e = this;
+    if (!e.renderRoot)
+      return;
+    const a = e.renderRoot.querySelector("#app");
+    a && (os(Vue), this.object = new Vue({
+      el: a,
+      components: {},
+      data: function() {
+        return {
+          visible: !1,
+          displayOTP: !1,
+          email: "",
+          disabled: !1,
+          isCodeValid: !1,
+          props: e.prepareDataProperties()
+        };
+      },
+      watch: {
+        name(t, o) {
+          e.getData();
+        }
+      },
+      methods: {
+        async _OTP(t, o, i) {
+          let n = Kl.getServerUrl(this.props.env);
+          const d = {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              idTicket: t,
+              key: o,
+              code: i
+            })
+          }, s = await (await fetch(n + "abc", d)).json();
+          return s.data ? s.data.result : null;
+        },
+        async enter() {
+          this.disabled = !0, await this._OTP(this.props.ticket, this.email) && (this.displayOTP = !0), this.disabled = !1;
+        },
+        back() {
+          this.disabled = !1, this.displayOTP = !1;
+        },
+        async onComplete(t) {
+          await this._OTP(this.props.ticket, this.email, t), e.dispatchEvent(new CustomEvent("o21pay_component", {
+            detail: {
+              instance: e,
+              message: "o21pay_next"
+            },
+            bubbles: !0,
+            composed: !0
+          })), this.isCodeValid = !1;
+        }
+      }
+    }), this.setData(), this.object.$data.visible = !0, this.requestUpdate());
+  }
+  /**
+   *
+   *
+   */
+  prepareDataProperties() {
+    let e = {};
+    for (const a in ye.properties) {
+      let t = this[a];
+      e[a] = t;
+    }
+    return e;
+  }
+  /**
+   *
+   *
+   */
+  render() {
+    return R`
+      <div id="app">
+        <div v-if="!displayOTP" style="margin: 4px 0;">
+          <maz-input
+            v-model="email"
+            type="email"
+            id="email"
+            left-icon-name="email"
+            placeholder="Please input email"
+            size="medium"
+            required
+            clearable
+            :disabled="disabled"
+            @change="enter"
+          />
+        </div>
+        <div v-else style="display: flex!important;justify-content: space-between!important;">
+          <i class="material-icons" style="margin-top: 18px" @click="back"> cancel </i>
+          <otp-input
+            ref="otp"
+            type="number"
+            style="margin: 4px 0;"
+            :digits="6"
+            :gap="8"
+            :ais-valid="isCodeValid"
+            placeholder="_"
+            @on-complete="onComplete"
+          >
+          </otp-input>
+        </div>
+      </div>
+    `;
+  }
+}
+es(ye, "styles", [_t, Xl, Zl]);
+const ga = window.customElements;
+ga && !ga.get(rt) && ga.define(rt, ye);
 import("https://unpkg.com/vue@2/dist/vue.js");
 window.O21PayComponents = {
-  version: "0.6.2",
+  version: "0.6.5",
   components: [{
     name: "O21Pay",
-    component: Ia,
+    component: Ba,
     img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png",
     id: "o21pay"
   }, {
     name: "O21PayQR",
     title: "QR-Code",
-    component: Ma,
+    component: La,
     icon: "fa fa-qrcode",
     id: "o21pay-qr"
   }, {
     name: "O21PayDialog",
-    component: Sa
+    component: Ta
   }, {
     name: "O21PayAddress",
     title: "Address",
-    component: ze,
+    component: ve,
     icon: "fa fa-address-card",
     id: "address"
+  }, {
+    name: "O21PayOTP",
+    title: "OTP",
+    component: ye,
+    icon: "fa fa-key",
+    id: "otp"
   }],
   waitLoaded: async function() {
     return await Promise.allSettled([
@@ -17727,7 +18274,8 @@ window.O21PayComponents = {
       customElements.whenDefined("o21pay-dialog"),
       customElements.whenDefined("o21pay-payment"),
       //customElements.whenDefined("o21pay-change"),
-      customElements.whenDefined("o21pay-address")
+      customElements.whenDefined("o21pay-address"),
+      customElements.whenDefined("o21pay-otp")
     ]), !0;
   }
 };
