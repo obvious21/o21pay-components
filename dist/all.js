@@ -1,11 +1,11 @@
-import { css as tt, svg as Qe } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
+import { css as jt, svg as Qe } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
 /**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
 const we = window, Sa = we.ShadowRoot && (we.ShadyCSS === void 0 || we.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Pa = Symbol(), ja = /* @__PURE__ */ new WeakMap();
-let ot = class {
+let tt = class {
   constructor(e, a, t) {
     if (this._$cssResult$ = !0, t !== Pa)
       throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -24,7 +24,7 @@ let ot = class {
     return this.cssText;
   }
 };
-const Yt = (r) => new ot(typeof r == "string" ? r : r + "", void 0, Pa), ge = (r, ...e) => {
+const Yt = (r) => new tt(typeof r == "string" ? r : r + "", void 0, Pa), re = (r, ...e) => {
   const a = r.length === 1 ? r[0] : e.reduce((t, o, i) => t + ((n) => {
     if (n._$cssResult$ === !0)
       return n.cssText;
@@ -32,7 +32,7 @@ const Yt = (r) => new ot(typeof r == "string" ? r : r + "", void 0, Pa), ge = (r
       return n;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(o) + r[i + 1], r[0]);
-  return new ot(a, r, Pa);
+  return new tt(a, r, Pa);
 }, Kt = (r, e) => {
   Sa ? r.adoptedStyleSheets = e.map((a) => a instanceof CSSStyleSheet ? a : a.styleSheet) : e.forEach((a) => {
     const t = document.createElement("style"), o = we.litNonce;
@@ -81,12 +81,12 @@ const Ne = window, Ka = Ne.trustedTypes, Qt = Ka ? Ka.emptyScript : "", Qa = Ne.
     }
     return a;
   }
-}, it = (r, e) => e !== r && (e == e || r == r), qe = {
+}, ot = (r, e) => e !== r && (e == e || r == r), qe = {
   attribute: !0,
   type: String,
   converter: fa,
   reflect: !1,
-  hasChanged: it
+  hasChanged: ot
 };
 let Y = class extends HTMLElement {
   constructor() {
@@ -213,7 +213,7 @@ let Y = class extends HTMLElement {
   }
   requestUpdate(e, a, t) {
     let o = !0;
-    e !== void 0 && (((t = t || this.constructor.getPropertyOptions(e)).hasChanged || it)(this[e], a) ? (this._$AL.has(e) || this._$AL.set(e, a), t.reflect === !0 && this._$El !== e && (this._$EC === void 0 && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e, t))) : o = !1), !this.isUpdatePending && o && (this._$E_ = this._$Ej());
+    e !== void 0 && (((t = t || this.constructor.getPropertyOptions(e)).hasChanged || ot)(this[e], a) ? (this._$AL.has(e) || this._$AL.set(e, a), t.reflect === !0 && this._$El !== e && (this._$EC === void 0 && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e, t))) : o = !1), !this.isUpdatePending && o && (this._$E_ = this._$Ej());
   }
   async _$Ej() {
     this.isUpdatePending = !0;
@@ -287,31 +287,31 @@ Y.finalized = !0, Y.elementProperties = /* @__PURE__ */ new Map(), Y.elementStyl
 var We;
 const Ae = window, Q = Ae.trustedTypes, Ja = Q ? Q.createPolicy("lit-html", {
   createHTML: (r) => r
-}) : void 0, L = `lit$${(Math.random() + "").slice(9)}$`, nt = "?" + L, Jt = `<${nt}>`, J = document, se = (r = "") => J.createComment(r), ce = (r) => r === null || typeof r != "object" && typeof r != "function", dt = Array.isArray, qt = (r) => dt(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", oe = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, qa = /-->/g, Wa = />/g, H = RegExp(`>|[ 	
+}) : void 0, L = `lit$${(Math.random() + "").slice(9)}$`, it = "?" + L, Jt = `<${it}>`, J = document, ce = (r = "") => J.createComment(r), me = (r) => r === null || typeof r != "object" && typeof r != "function", nt = Array.isArray, qt = (r) => nt(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", ie = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, qa = /-->/g, Wa = />/g, H = RegExp(`>|[ 	
 \f\r](?:([^\\s"'>=/]+)([ 	
 \f\r]*=[ 	
 \f\r]*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Xa = /'/g, Za = /"/g, lt = /^(?:script|style|textarea|title)$/i, Wt = (r) => (e, ...a) => ({
+\f\r"'\`<>=]|("|')|))|$)`, "g"), Xa = /'/g, Za = /"/g, dt = /^(?:script|style|textarea|title)$/i, Wt = (r) => (e, ...a) => ({
   _$litType$: r,
   strings: e,
   values: a
 }), R = Wt(1), q = Symbol.for("lit-noChange"), $ = Symbol.for("lit-nothing"), er = /* @__PURE__ */ new WeakMap(), K = J.createTreeWalker(J, 129, null, !1), Xt = (r, e) => {
   const a = r.length - 1, t = [];
-  let o, i = e === 2 ? "<svg>" : "", n = oe;
+  let o, i = e === 2 ? "<svg>" : "", n = ie;
   for (let l = 0; l < a; l++) {
     const s = r[l];
     let c, p, m = -1, u = 0;
     for (; u < s.length && (n.lastIndex = u, p = n.exec(s), p !== null); )
-      u = n.lastIndex, n === oe ? p[1] === "!--" ? n = qa : p[1] !== void 0 ? n = Wa : p[2] !== void 0 ? (lt.test(p[2]) && (o = RegExp("</" + p[2], "g")), n = H) : p[3] !== void 0 && (n = H) : n === H ? p[0] === ">" ? (n = o ?? oe, m = -1) : p[1] === void 0 ? m = -2 : (m = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? H : p[3] === '"' ? Za : Xa) : n === Za || n === Xa ? n = H : n === qa || n === Wa ? n = oe : (n = H, o = void 0);
+      u = n.lastIndex, n === ie ? p[1] === "!--" ? n = qa : p[1] !== void 0 ? n = Wa : p[2] !== void 0 ? (dt.test(p[2]) && (o = RegExp("</" + p[2], "g")), n = H) : p[3] !== void 0 && (n = H) : n === H ? p[0] === ">" ? (n = o ?? ie, m = -1) : p[1] === void 0 ? m = -2 : (m = n.lastIndex - p[2].length, c = p[1], n = p[3] === void 0 ? H : p[3] === '"' ? Za : Xa) : n === Za || n === Xa ? n = H : n === qa || n === Wa ? n = ie : (n = H, o = void 0);
     const f = n === H && r[l + 1].startsWith("/>") ? " " : "";
-    i += n === oe ? s + Jt : m >= 0 ? (t.push(c), s.slice(0, m) + "$lit$" + s.slice(m) + L + f) : s + L + (m === -2 ? (t.push(void 0), l) : f);
+    i += n === ie ? s + Jt : m >= 0 ? (t.push(c), s.slice(0, m) + "$lit$" + s.slice(m) + L + f) : s + L + (m === -2 ? (t.push(void 0), l) : f);
   }
   const d = i + (r[a] || "<?>") + (e === 2 ? "</svg>" : "");
   if (!Array.isArray(r) || !r.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
   return [Ja !== void 0 ? Ja.createHTML(d) : d, t];
 };
-class me {
+class ue {
   constructor({
     strings: e,
     _$litType$: a
@@ -320,7 +320,7 @@ class me {
     this.parts = [];
     let i = 0, n = 0;
     const d = e.length - 1, l = this.parts, [s, c] = Xt(e, a);
-    if (this.el = me.createElement(s, t), K.currentNode = this.el.content, a === 2) {
+    if (this.el = ue.createElement(s, t), K.currentNode = this.el.content, a === 2) {
       const p = this.el.content, m = p.firstChild;
       m.remove(), p.append(...m.childNodes);
     }
@@ -349,20 +349,20 @@ class me {
           for (const m of p)
             o.removeAttribute(m);
         }
-        if (lt.test(o.tagName)) {
+        if (dt.test(o.tagName)) {
           const p = o.textContent.split(L), m = p.length - 1;
           if (m > 0) {
             o.textContent = Q ? Q.emptyScript : "";
             for (let u = 0; u < m; u++)
-              o.append(p[u], se()), K.nextNode(), l.push({
+              o.append(p[u], ce()), K.nextNode(), l.push({
                 type: 2,
                 index: ++i
               });
-            o.append(p[m], se());
+            o.append(p[m], ce());
           }
         }
       } else if (o.nodeType === 8)
-        if (o.data === nt)
+        if (o.data === it)
           l.push({
             type: 2,
             index: i
@@ -388,7 +388,7 @@ function W(r, e, a = r, t) {
   if (e === q)
     return e;
   let l = t !== void 0 ? (o = a._$Co) === null || o === void 0 ? void 0 : o[t] : a._$Cl;
-  const s = ce(e) ? void 0 : e._$litDirective$;
+  const s = me(e) ? void 0 : e._$litDirective$;
   return (l == null ? void 0 : l.constructor) !== s && ((i = l == null ? void 0 : l._$AO) === null || i === void 0 || i.call(l, !1), s === void 0 ? l = void 0 : (l = new s(r), l._$AT(r, a, t)), t !== void 0 ? ((n = (d = a)._$Co) !== null && n !== void 0 ? n : d._$Co = [])[t] = l : a._$Cl = l), l !== void 0 && (e = W(r, l._$AS(r, e.values), l, t)), e;
 }
 class Zt {
@@ -447,7 +447,7 @@ class fe {
     return this._$AB;
   }
   _$AI(e, a = this) {
-    e = W(this, e, a), ce(e) ? e === $ || e == null || e === "" ? (this._$AH !== $ && this._$AR(), this._$AH = $) : e !== this._$AH && e !== q && this.g(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : qt(e) ? this.k(e) : this.g(e);
+    e = W(this, e, a), me(e) ? e === $ || e == null || e === "" ? (this._$AH !== $ && this._$AR(), this._$AH = $) : e !== this._$AH && e !== q && this.g(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : qt(e) ? this.k(e) : this.g(e);
   }
   O(e, a = this._$AB) {
     return this._$AA.parentNode.insertBefore(e, a);
@@ -456,14 +456,14 @@ class fe {
     this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
   }
   g(e) {
-    this._$AH !== $ && ce(this._$AH) ? this._$AA.nextSibling.data = e : this.T(J.createTextNode(e)), this._$AH = e;
+    this._$AH !== $ && me(this._$AH) ? this._$AA.nextSibling.data = e : this.T(J.createTextNode(e)), this._$AH = e;
   }
   $(e) {
     var a;
     const {
       values: t,
       _$litType$: o
-    } = e, i = typeof o == "number" ? this._$AC(e) : (o.el === void 0 && (o.el = me.createElement(o.h, this.options)), o);
+    } = e, i = typeof o == "number" ? this._$AC(e) : (o.el === void 0 && (o.el = ue.createElement(o.h, this.options)), o);
     if (((a = this._$AH) === null || a === void 0 ? void 0 : a._$AD) === i)
       this._$AH.p(t);
     else {
@@ -473,14 +473,14 @@ class fe {
   }
   _$AC(e) {
     let a = er.get(e.strings);
-    return a === void 0 && er.set(e.strings, a = new me(e)), a;
+    return a === void 0 && er.set(e.strings, a = new ue(e)), a;
   }
   k(e) {
-    dt(this._$AH) || (this._$AH = [], this._$AR());
+    nt(this._$AH) || (this._$AH = [], this._$AR());
     const a = this._$AH;
     let t, o = 0;
     for (const i of e)
-      o === a.length ? a.push(t = new fe(this.O(se()), this.O(se()), this, this.options)) : t = a[o], t._$AI(i), o++;
+      o === a.length ? a.push(t = new fe(this.O(ce()), this.O(ce()), this, this.options)) : t = a[o], t._$AI(i), o++;
     o < a.length && (this._$AR(t && t._$AB.nextSibling, o), a.length = o);
   }
   _$AR(e = this._$AA.nextSibling, a) {
@@ -509,12 +509,12 @@ class Re {
     const i = this.strings;
     let n = !1;
     if (i === void 0)
-      e = W(this, e, a, 0), n = !ce(e) || e !== this._$AH && e !== q, n && (this._$AH = e);
+      e = W(this, e, a, 0), n = !me(e) || e !== this._$AH && e !== q, n && (this._$AH = e);
     else {
       const d = e;
       let l, s;
       for (e = i[0], l = 0; l < i.length - 1; l++)
-        s = W(this, d[t + l], a, l), s === q && (s = this._$AH[l]), n || (n = !ce(s) || s !== this._$AH[l]), s === $ ? e = $ : e !== $ && (e += (s ?? "") + i[l + 1]), this._$AH[l] = s;
+        s = W(this, d[t + l], a, l), s === q && (s = this._$AH[l]), n || (n = !me(s) || s !== this._$AH[l]), s === $ ? e = $ : e !== $ && (e += (s ?? "") + i[l + 1]), this._$AH[l] = s;
     }
     n && !o && this.j(e);
   }
@@ -567,14 +567,14 @@ class oo {
   }
 }
 const ar = Ae.litHtmlPolyfillSupport;
-ar == null || ar(me, fe), ((We = Ae.litHtmlVersions) !== null && We !== void 0 ? We : Ae.litHtmlVersions = []).push("2.6.1");
+ar == null || ar(ue, fe), ((We = Ae.litHtmlVersions) !== null && We !== void 0 ? We : Ae.litHtmlVersions = []).push("2.6.1");
 const io = (r, e, a) => {
   var t, o;
   const i = (t = a == null ? void 0 : a.renderBefore) !== null && t !== void 0 ? t : e;
   let n = i._$litPart$;
   if (n === void 0) {
     const d = (o = a == null ? void 0 : a.renderBefore) !== null && o !== void 0 ? o : null;
-    i._$litPart$ = n = new fe(e.insertBefore(se(), d), d, void 0, a ?? {});
+    i._$litPart$ = n = new fe(e.insertBefore(ce(), d), d, void 0, a ?? {});
   }
   return n._$AI(r), n;
 };
@@ -619,9 +619,14 @@ rr == null || rr({
   LitElement: O
 });
 ((Ze = globalThis.litElementVersions) !== null && Ze !== void 0 ? Ze : globalThis.litElementVersions = []).push("3.2.2");
-const no = tt`
+const no = re`
   input:read-only {
     background-color: #f5f7fa;
+  }
+  input:focus {
+    outline: 2px solid lightgray;
+    border: 0px !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
 
   .o21pay-payment-container {
@@ -650,7 +655,7 @@ const no = tt`
     box-sizing: border-box;
   }
   .o21pay-button {
-    background-image: url("https://assets.obvious21.com/o21pay-assets/o21pay-button.png");
+    background-image: url('https://assets.obvious21.com/o21pay-assets/o21pay-button.png');
     background-repeat: no-repeat;
     background-size: auto 25px;
     background-position: 22px 8px;
@@ -733,7 +738,7 @@ const no = tt`
   .close:after {
     position: absolute;
     left: 15px;
-    content: " ";
+    content: ' ';
     height: 20px;
     width: 2px;
     background-color: black;
@@ -856,6 +861,10 @@ class Ba extends O {
         type: Boolean,
         attribute: "readonly"
       },
+      hide_menu: {
+        type: Boolean,
+        attribute: "hide_menu"
+      },
       disabled: {
         type: Boolean,
         attribute: "disabled"
@@ -864,9 +873,17 @@ class Ba extends O {
         type: String,
         attribute: "qr_size"
       },
+      primary_color: {
+        type: String,
+        attribute: "primary_color"
+      },
       data: {
         type: String,
         attribute: "data"
+      },
+      lang: {
+        type: String,
+        attribute: "lang"
       }
     };
   }
@@ -950,7 +967,7 @@ class Ba extends O {
       t = await this._createPaymentLink(this.merchant_id, this.secretkey, this.amount, this.currency, this.order_ref, this.survey_id);
     }
     if (t && t.length) {
-      this.url = t;
+      this.url = t, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.lang && (this.url += `&lang=${this.lang}`.toLowerCase());
       const o = {
         detail: {
           url: this.url
@@ -983,7 +1000,7 @@ class Ba extends O {
     if (!e)
       return;
     let a = this.amount;
-    a || (a = 0), e.type = "", e.lastValue = a, e.value = parseFloat(a).toLocaleString(this.locale, {
+    a || (a = 0), e.type = "", a = a.replace(/[^\d\-.,]/g, "").replace(/,/g, ".").replace(/\.(?=.*\.)/g, ""), e.lastValue = a, e.value = parseFloat(a).toLocaleString(this.locale, {
       style: "currency",
       maximumFractionDigits: this.decimals,
       minimumFractionDigits: 2,
@@ -1107,7 +1124,7 @@ class Ba extends O {
 so(Ba, "styles", [no]);
 const ea = window.customElements;
 ea && !ea.get(tr) && ea.define(tr, Ba);
-const po = tt`
+const po = jt`
   .wrapper {
     opacity: 0;
     z-index: 10;
@@ -1374,7 +1391,7 @@ class Ta extends O {
   init(e, a, t, o = "dialog") {
     if (!e || !e.length)
       return !1;
-    a !== void 0 && (this.width = a), t !== void 0 && (this.height = t), o !== void 0 && (this.mode = o), this.hideSpinner = !1, e += `&time=${(/* @__PURE__ */ new Date()).getTime()}`;
+    a !== void 0 && (this.width = a, this.width = parseInt(a) + "px"), t !== void 0 && (this.height = t, this.height = parseInt(t) + "px"), o !== void 0 && (this.mode = o), this.hideSpinner = !1, e += `&time=${(/* @__PURE__ */ new Date()).getTime()}`;
     const i = this.renderRoot.querySelector("#framePayment");
     return i ? (i.style.opacity = 0, this.mode.indexOf("drawer") !== -1 && e.indexOf("&close") === -1 && (e += "&close=1"), e.indexOf("&reset") === -1 && (e += "&reset"), i.src = e, !0) : !1;
   }
@@ -1420,7 +1437,7 @@ const aa = window.customElements;
 aa && !aa.get(or) && aa.define(or, Ta);
 var be = {}, bo = function() {
   return typeof Promise == "function" && Promise.prototype && Promise.prototype.then;
-}, st = {}, E = {};
+}, lt = {}, E = {};
 let Fa;
 const zo = [
   0,
@@ -1536,10 +1553,10 @@ var Oe = {};
     }
   };
 })(Oe);
-function ct() {
+function st() {
   this.buffer = [], this.length = 0;
 }
-ct.prototype = {
+st.prototype = {
   get: function(r) {
     const e = Math.floor(r / 8);
     return (this.buffer[e] >>> 7 - r % 8 & 1) === 1;
@@ -1556,7 +1573,7 @@ ct.prototype = {
     this.buffer.length <= e && this.buffer.push(0), r && (this.buffer[e] |= 128 >>> this.length % 8), this.length++;
   }
 };
-var vo = ct;
+var vo = st;
 function ze(r) {
   if (!r || r < 1)
     throw new Error("BitMatrix size must be defined and greater than 0");
@@ -1575,7 +1592,7 @@ ze.prototype.xor = function(r, e, a) {
 ze.prototype.isReserved = function(r, e) {
   return this.reservedBit[r * this.size + e];
 };
-var yo = ze, mt = {};
+var yo = ze, ct = {};
 (function(r) {
   const e = E.getSymbolSize;
   r.getRowColCoords = function(t) {
@@ -1594,10 +1611,10 @@ var yo = ze, mt = {};
         d === n - 1 && l === 0 || o.push([i[d], i[l]]);
     return o;
   };
-})(mt);
-var ut = {};
+})(ct);
+var mt = {};
 const ko = E.getSymbolSize, ir = 7;
-ut.getPositions = function(e) {
+mt.getPositions = function(e) {
   const a = ko(e);
   return [
     // top-left
@@ -1608,7 +1625,7 @@ ut.getPositions = function(e) {
     [0, a - ir]
   ];
 };
-var pt = {};
+var ut = {};
 (function(r) {
   r.Patterns = {
     PATTERN000: 0,
@@ -1704,7 +1721,7 @@ var pt = {};
     }
     return d;
   };
-})(pt);
+})(ut);
 var Me = {};
 const U = Oe, ke = [
   // L  M  Q  H
@@ -2059,14 +2076,14 @@ Me.getTotalCodewordsCount = function(e, a) {
       return;
   }
 };
-var ht = {}, De = {};
-const ie = new Uint8Array(512), Ie = new Uint8Array(256);
+var pt = {}, De = {};
+const ne = new Uint8Array(512), Ie = new Uint8Array(256);
 (function() {
   let e = 1;
   for (let a = 0; a < 255; a++)
-    ie[a] = e, Ie[e] = a, e <<= 1, e & 256 && (e ^= 285);
+    ne[a] = e, Ie[e] = a, e <<= 1, e & 256 && (e ^= 285);
   for (let a = 255; a < 512; a++)
-    ie[a] = ie[a - 255];
+    ne[a] = ne[a - 255];
 })();
 De.log = function(e) {
   if (e < 1)
@@ -2074,10 +2091,10 @@ De.log = function(e) {
   return Ie[e];
 };
 De.exp = function(e) {
-  return ie[e];
+  return ne[e];
 };
 De.mul = function(e, a) {
-  return e === 0 || a === 0 ? 0 : ie[Ie[e] + Ie[a]];
+  return e === 0 || a === 0 ? 0 : ne[Ie[e] + Ie[a]];
 };
 (function(r) {
   const e = De;
@@ -2105,42 +2122,42 @@ De.mul = function(e, a) {
       o = r.mul(o, new Uint8Array([1, e.exp(i)]));
     return o;
   };
-})(ht);
-const gt = ht;
+})(pt);
+const ht = pt;
 function Ra(r) {
   this.genPoly = void 0, this.degree = r, this.degree && this.initialize(this.degree);
 }
 Ra.prototype.initialize = function(e) {
-  this.degree = e, this.genPoly = gt.generateECPolynomial(this.degree);
+  this.degree = e, this.genPoly = ht.generateECPolynomial(this.degree);
 };
 Ra.prototype.encode = function(e) {
   if (!this.genPoly)
     throw new Error("Encoder not initialized");
   const a = new Uint8Array(e.length + this.degree);
   a.set(e);
-  const t = gt.mod(a, this.genPoly), o = this.degree - t.length;
+  const t = ht.mod(a, this.genPoly), o = this.degree - t.length;
   if (o > 0) {
     const i = new Uint8Array(this.degree);
     return i.set(t, o), i;
   }
   return t;
 };
-var xo = Ra, ft = {}, G = {}, Oa = {};
+var xo = Ra, gt = {}, G = {}, Oa = {};
 Oa.isValid = function(e) {
   return !isNaN(e) && e >= 1 && e <= 40;
 };
 var P = {};
-const bt = "[0-9]+", wo = "[A-Z $%*+\\-./:]+";
-let ue = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
-ue = ue.replace(/u/g, "\\u");
-const $o = "(?:(?![A-Z0-9 $%*+\\-./:]|" + ue + `)(?:.|[\r
+const ft = "[0-9]+", wo = "[A-Z $%*+\\-./:]+";
+let pe = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
+pe = pe.replace(/u/g, "\\u");
+const $o = "(?:(?![A-Z0-9 $%*+\\-./:]|" + pe + `)(?:.|[\r
 ]))+`;
-P.KANJI = new RegExp(ue, "g");
+P.KANJI = new RegExp(pe, "g");
 P.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g");
 P.BYTE = new RegExp($o, "g");
-P.NUMERIC = new RegExp(bt, "g");
+P.NUMERIC = new RegExp(ft, "g");
 P.ALPHANUMERIC = new RegExp(wo, "g");
-const _o = new RegExp("^" + ue + "$"), Co = new RegExp("^" + bt + "$"), Eo = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
+const _o = new RegExp("^" + pe + "$"), Co = new RegExp("^" + ft + "$"), Eo = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
 P.testKanji = function(e) {
   return _o.test(e);
 };
@@ -2274,17 +2291,17 @@ P.testAlphanumeric = function(e) {
       f ^= n << e.getBCHDigit(f) - d;
     return u << 12 | f;
   };
-})(ft);
-var zt = {};
-const ba = E, vt = 1335, No = 21522, nr = ba.getBCHDigit(vt);
-zt.getEncodedBits = function(e, a) {
+})(gt);
+var bt = {};
+const ba = E, zt = 1335, No = 21522, nr = ba.getBCHDigit(zt);
+bt.getEncodedBits = function(e, a) {
   const t = e.bit << 3 | a;
   let o = t << 10;
   for (; ba.getBCHDigit(o) - nr >= 0; )
-    o ^= vt << ba.getBCHDigit(o) - nr;
+    o ^= zt << ba.getBCHDigit(o) - nr;
   return (t << 10 | o) ^ No;
 };
-var yt = {};
+var vt = {};
 const Ao = G;
 function X(r) {
   this.mode = Ao.NUMERIC, this.data = r.toString();
@@ -2399,7 +2416,7 @@ Make sure your charset is UTF-8`);
     a = (a >>> 8 & 255) * 192 + (a & 255), r.put(a, 13);
   }
 };
-var Do = ae, kt = { exports: {} };
+var Do = ae, yt = { exports: {} };
 (function(r) {
   var e = {
     single_source_shortest_paths: function(a, t, o) {
@@ -2464,8 +2481,8 @@ var Do = ae, kt = { exports: {} };
     }
   };
   r.exports = e;
-})(kt);
-var Lo = kt.exports;
+})(yt);
+var Lo = yt.exports;
 (function(r) {
   const e = G, a = Io, t = Po, o = Ro, i = Do, n = P, d = E, l = Lo;
   function s(b) {
@@ -2562,14 +2579,14 @@ var Lo = kt.exports;
     for (let x = 0; x < b.length; x++) {
       const w = b[x], N = [];
       for (let D = 0; D < w.length; D++) {
-        const S = w[D], te = "" + x + D;
-        N.push(te), z[te] = {
+        const S = w[D], oe = "" + x + D;
+        N.push(oe), z[oe] = {
           node: S,
           lastCount: 0
-        }, v[te] = {};
+        }, v[oe] = {};
         for (let Ke = 0; Ke < k.length; Ke++) {
           const B = k[Ke];
-          z[B] && z[B].node.mode === S.mode ? (v[B][te] = m(z[B].lastCount + S.length, S.mode) - m(z[B].lastCount, S.mode), z[B].lastCount += S.length) : (z[B] && (z[B].lastCount = S.length), v[B][te] = m(S.length, S.mode) + 4 + e.getCharCountIndicator(S.mode, g));
+          z[B] && z[B].node.mode === S.mode ? (v[B][oe] = m(z[B].lastCount + S.length, S.mode) - m(z[B].lastCount, S.mode), z[B].lastCount += S.length) : (z[B] && (z[B].lastCount = S.length), v[B][oe] = m(S.length, S.mode) + 4 + e.getCharCountIndicator(S.mode, g));
         }
       }
       k = N;
@@ -2610,8 +2627,8 @@ var Lo = kt.exports;
   }, r.rawSplit = function(g) {
     return r.fromArray(p(g, d.isKanjiModeEnabled()));
   };
-})(yt);
-const Le = E, ta = Oe, Uo = vo, Go = yo, Ho = mt, Vo = ut, za = pt, va = Me, jo = xo, Se = ft, Yo = zt, Ko = G, oa = yt;
+})(vt);
+const Le = E, ta = Oe, Uo = vo, Go = yo, Ho = ct, Vo = mt, za = ut, va = Me, jo = xo, Se = gt, Yo = bt, Ko = G, oa = vt;
 function Qo(r, e) {
   const a = r.size, t = Vo.getPositions(e);
   for (let o = 0; o < t.length; o++) {
@@ -2732,13 +2749,13 @@ Minimum version required to store current data is: ` + i + `.
     segments: o
   };
 }
-st.create = function(e, a) {
+lt.create = function(e, a) {
   if (typeof e > "u" || e === "")
     throw new Error("No input text");
   let t = ta.M, o, i;
   return typeof a < "u" && (t = ta.from(a.errorCorrectionLevel, ta.M), o = Se.from(a.version), i = za.from(a.maskPattern), a.toSJISFunc && Le.setToSJISFunction(a.toSJISFunc)), ai(e, o, t, i);
 };
-var xt = {}, Ma = {};
+var kt = {}, Ma = {};
 (function(r) {
   function e(a) {
     if (typeof a == "number" && (a = a.toString()), typeof a != "string")
@@ -2813,8 +2830,8 @@ var xt = {}, Ma = {};
     const s = r.render(i, n, l), c = l.type || "image/png", p = l.rendererOpts || {};
     return s.toDataURL(c, p.quality);
   };
-})(xt);
-var wt = {};
+})(kt);
+var xt = {};
 const ri = Ma;
 function dr(r, e) {
   const a = r.a / 255, t = e + '="' + r.hex + '"';
@@ -2832,12 +2849,12 @@ function ti(r, e, a) {
   }
   return t;
 }
-wt.render = function(e, a, t) {
+xt.render = function(e, a, t) {
   const o = ri.getOptions(a), i = e.modules.size, n = e.modules.data, d = i + o.margin * 2, l = o.color.light.a ? "<path " + dr(o.color.light, "fill") + ' d="M0 0h' + d + "v" + d + 'H0z"/>' : "", s = "<path " + dr(o.color.dark, "stroke") + ' d="' + ti(n, i, o.margin) + '"/>', c = 'viewBox="0 0 ' + d + " " + d + '"', m = '<svg xmlns="http://www.w3.org/2000/svg" ' + (o.width ? 'width="' + o.width + '" height="' + o.width + '" ' : "") + c + ' shape-rendering="crispEdges">' + l + s + `</svg>
 `;
   return typeof t == "function" && t(null, m), m;
 };
-const oi = bo, ya = st, $t = xt, ii = wt;
+const oi = bo, ya = lt, wt = kt, ii = xt;
 function Da(r, e, a, t, o) {
   const i = [].slice.call(arguments, 1), n = i.length, d = typeof i[n - 1] == "function";
   if (!d && !oi())
@@ -2866,8 +2883,8 @@ function Da(r, e, a, t, o) {
   }
 }
 be.create = ya.create;
-be.toCanvas = Da.bind(null, $t.render);
-be.toDataURL = Da.bind(null, $t.renderToDataURL);
+be.toCanvas = Da.bind(null, wt.render);
+be.toDataURL = Da.bind(null, wt.renderToDataURL);
 be.toString = Da.bind(null, function(r, e, a) {
   return ii.render(r, a);
 });
@@ -2959,7 +2976,7 @@ const li = {
       });
     }), n;
   }
-}, si = ge`
+}, si = re`
   .o21pay-logo {
     content: url('https://assets.obvious21.com/o21pay-assets/o21pay.png');
   }
@@ -3056,12 +3073,18 @@ class La extends O {
     const a = (this.size - this.logoSize) / 2 + 9, t = (this.size - this.logoSize) / 2 + 12, i = ((d) => R`<svg height="${this.size}" width="${this.size}">${d}</svg>`)(li.generate(this.url, this.size, this.size / 4, this.theme));
     let n = `pr-qrcode ${this.theme}-theme`;
     return this.shadow && (n += " shadow"), R`
-      <div id="qrsvg" class="${n}" style="width: ${this.size}px;height: ${this.size}px;">
+      <div
+        id="qrsvg"
+        class="${n}"
+        style="width: ${this.size}px;height: ${this.size}px;"
+        @click="${this._onClick}"
+      >
         <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${i}</svg>
         <img
           class="o21pay-logo"
           height="${this.logoSize}"
           style="position: absolute; top: ${a}px; left: ${t}px;"
+          @click="${this._onClick}"
         />
       </div>
     `;
@@ -3070,7 +3093,7 @@ class La extends O {
 ci(La, "styles", [si]);
 const la = window.customElements;
 la && !la.get(sr) && la.define(sr, La);
-const _t = ge`
+const $t = re`
   :host {
     --maz-primary: #1e90ff;
     --maz-primary-darken: #1873cc;
@@ -12425,7 +12448,7 @@ const _t = ge`
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
-`, pi = ge`
+`, pi = re`
   :host {
     --maz-primary: #9bc99d;
     --maz-border-width: 1px;
@@ -12451,7 +12474,7 @@ const _t = ge`
     box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 10px -4px !important;
   }
 `;
-function re(r, e, a, t, o, i, n, d) {
+function te(r, e, a, t, o, i, n, d) {
   var l = typeof r == "function" ? r.options : r;
   e && (l.render = e, l.staticRenderFns = a, l._compiled = !0), t && (l.functional = !0), i && (l._scopeId = "data-v-" + i);
   var s;
@@ -12501,7 +12524,7 @@ var gi = function() {
     },
     e.fillColorClass
   ], staticStyle: { "enable-background": "new 0 0 50 50" }, attrs: { width: `${e.size}px`, height: `${e.size}px`, version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 50 50", "xml:space": "preserve" } }, [a("path", { attrs: { d: "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" } })]);
-}, fi = [], bi = /* @__PURE__ */ re(
+}, fi = [], bi = /* @__PURE__ */ te(
   hi,
   gi,
   fi,
@@ -12511,9 +12534,9 @@ var gi = function() {
   null,
   null
 );
-const ne = bi.exports;
-ne.install = (r) => {
-  r.component(ne.name, ne);
+const de = bi.exports;
+de.install = (r) => {
+  r.component(de.name, de);
 };
 const Ue = {
   data() {
@@ -12528,7 +12551,7 @@ const Ue = {
 }, zi = {
   name: "MazBtn",
   components: {
-    MazSpinner: ne
+    MazSpinner: de
   },
   mixins: [Ue],
   inheritAttrs: !1,
@@ -12681,7 +12704,7 @@ var vi = function() {
   } }, [e._t("icon-right", function() {
     return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.rightIconName))])];
   })], 2) : e._e()]);
-}, yi = [], ki = /* @__PURE__ */ re(
+}, yi = [], ki = /* @__PURE__ */ te(
   zi,
   vi,
   yi,
@@ -12691,9 +12714,9 @@ var vi = function() {
   null,
   null
 );
-const de = ki.exports;
-de.install = (r) => {
-  r.component(de.name, de);
+const le = ki.exports;
+le.install = (r) => {
+  r.component(le.name, le);
 };
 const xi = (r, e) => {
   let a;
@@ -12899,7 +12922,7 @@ var _i = function() {
   }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(t) {
     e.showPassword = !e.showPassword;
   } } }, [a("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e._v(" " + e._s(e.showPassword ? "visibility_off" : "visibility") + " ")])]) : e._e()]), e.loading ? a("div", { staticClass: "maz-input__loader", class: { textarea: e.textarea } }, [a("div", { staticClass: "maz-input__loader__progress-bar" })]) : e._e()], 1);
-}, Ci = [], Ei = /* @__PURE__ */ re(
+}, Ci = [], Ei = /* @__PURE__ */ te(
   $i,
   _i,
   Ci,
@@ -12915,7 +12938,7 @@ V.install = (r) => {
 };
 const Ni = {
   name: "MazSelect",
-  components: { MazInput: V, MazBtn: de },
+  components: { MazInput: V, MazBtn: le },
   mixins: [Ue],
   props: {
     // is the value of the input
@@ -13196,7 +13219,7 @@ var Ai = function() {
   }), e.optionsShown.length ? e._e() : e._t("no-results", function() {
     return [a("div", { staticClass: "maz-select__options-list__no-results maz-p-1 maz-flex maz-flex-center" }, [a("i", { staticClass: "material-icons maz-text-danger" }, [e._v(" search_off ")])])];
   }, { tag: "div" })], 2)], 1)])], 1);
-}, Ii = [], Si = /* @__PURE__ */ re(
+}, Ii = [], Si = /* @__PURE__ */ te(
   Ni,
   Ai,
   Ii,
@@ -13206,11 +13229,11 @@ var Ai = function() {
   null,
   null
 );
-const le = Si.exports;
-le.install = (r) => {
-  r.component(le.name, le);
+const se = Si.exports;
+se.install = (r) => {
+  r.component(se.name, se);
 };
-const Ct = {
+const _t = {
   version: 4,
   country_calling_codes: {
     1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
@@ -13681,7 +13704,7 @@ const Ct = {
 };
 function Ua(r, e) {
   var a = Array.prototype.slice.call(e);
-  return a.push(Ct), r.apply(this, a);
+  return a.push(_t), r.apply(this, a);
 }
 function ka(r) {
   "@babel/helpers - typeof";
@@ -13717,14 +13740,14 @@ function Ti(r, e) {
     }
   }), Object.defineProperty(r, "prototype", {
     writable: !1
-  }), e && pe(r, e);
+  }), e && he(r, e);
 }
 function Fi(r) {
-  var e = Nt();
+  var e = Et();
   return function() {
-    var t = he(r), o;
+    var t = ge(r), o;
     if (e) {
-      var i = he(this).constructor;
+      var i = ge(this).constructor;
       o = Reflect.construct(t, arguments, i);
     } else
       o = t.apply(this, arguments);
@@ -13736,9 +13759,9 @@ function Ri(r, e) {
     return e;
   if (e !== void 0)
     throw new TypeError("Derived constructors may only return object or undefined");
-  return Et(r);
+  return Ct(r);
 }
-function Et(r) {
+function Ct(r) {
   if (r === void 0)
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   return r;
@@ -13756,7 +13779,7 @@ function xa(r) {
       e.set(t, o);
     }
     function o() {
-      return $e(t, arguments, he(this).constructor);
+      return $e(t, arguments, ge(this).constructor);
     }
     return o.prototype = Object.create(t.prototype, {
       constructor: {
@@ -13765,18 +13788,18 @@ function xa(r) {
         writable: !0,
         configurable: !0
       }
-    }), pe(o, t);
+    }), he(o, t);
   }, xa(r);
 }
 function $e(r, e, a) {
-  return Nt() ? $e = Reflect.construct : $e = function(o, i, n) {
+  return Et() ? $e = Reflect.construct : $e = function(o, i, n) {
     var d = [null];
     d.push.apply(d, i);
     var l = Function.bind.apply(o, d), s = new l();
-    return n && pe(s, n.prototype), s;
+    return n && he(s, n.prototype), s;
   }, $e.apply(null, arguments);
 }
-function Nt() {
+function Et() {
   if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
     return !1;
   if (typeof Proxy == "function")
@@ -13791,22 +13814,22 @@ function Nt() {
 function Oi(r) {
   return Function.toString.call(r).indexOf("[native code]") !== -1;
 }
-function pe(r, e) {
-  return pe = Object.setPrototypeOf || function(t, o) {
+function he(r, e) {
+  return he = Object.setPrototypeOf || function(t, o) {
     return t.__proto__ = o, t;
-  }, pe(r, e);
+  }, he(r, e);
 }
-function he(r) {
-  return he = Object.setPrototypeOf ? Object.getPrototypeOf : function(a) {
+function ge(r) {
+  return ge = Object.setPrototypeOf ? Object.getPrototypeOf : function(a) {
     return a.__proto__ || Object.getPrototypeOf(a);
-  }, he(r);
+  }, ge(r);
 }
 var F = /* @__PURE__ */ function(r) {
   Ti(a, r);
   var e = Fi(a);
   function a(t) {
     var o;
-    return Bi(this, a), o = e.call(this, t), Object.setPrototypeOf(Et(o), a.prototype), o.name = o.constructor.name, o;
+    return Bi(this, a), o = e.call(this, t), Object.setPrototypeOf(Ct(o), a.prototype), o.name = o.constructor.name, o;
   }
   return Pi(a);
 }(/* @__PURE__ */ xa(Error)), Ga = 2, Mi = 17, Di = 3, C = "0-9０-９٠-٩۰-۹", Li = "-‐-―−ー－", Ui = "／/", Gi = "．.", Hi = "  ­​⁠　", Vi = "()（）［］\\[\\]", ji = "~⁓∼～", I = "".concat(Li).concat(Ui).concat(Gi).concat(Hi).concat(Vi).concat(ji), Ge = "+＋";
@@ -13850,7 +13873,7 @@ function Ve(r, e, a) {
 }
 var Yi = "1.2.0", Ki = "1.7.35", pr = " ext. ", Qi = /^\d+$/, _ = /* @__PURE__ */ function() {
   function r(e) {
-    He(this, r), Xi(e), this.metadata = e, At.call(this, e);
+    He(this, r), Xi(e), this.metadata = e, Nt.call(this, e);
   }
   return Ve(r, [{
     key: "getCountries",
@@ -14036,7 +14059,7 @@ var Yi = "1.2.0", Ki = "1.7.35", pr = " ext. ", Qi = /^\d+$/, _ = /* @__PURE__ *
   }]), r;
 }(), hr = /* @__PURE__ */ function() {
   function r(e, a) {
-    He(this, r), this.globalMetadataObject = a, this.metadata = e, At.call(this, a.metadata);
+    He(this, r), this.globalMetadataObject = a, this.metadata = e, Nt.call(this, a.metadata);
   }
   return Ve(r, [{
     key: "callingCode",
@@ -14277,19 +14300,19 @@ function je(r, e) {
 function en(r, e) {
   return e.countries[r] !== void 0;
 }
-function At(r) {
+function Nt(r) {
   var e = r.version;
   typeof e == "number" ? (this.v1 = e === 1, this.v2 = e === 2, this.v3 = e === 3, this.v4 = e === 4) : e ? mr(e, Yi) === -1 ? this.v2 = !0 : mr(e, Ki) === -1 ? this.v3 = !0 : this.v4 = !0 : this.v1 = !0;
 }
 var an = ";ext=", j = function(e) {
   return "([".concat(C, "]{1,").concat(e, "})");
 };
-function It(r) {
+function At(r) {
   var e = "20", a = "15", t = "9", o = "6", i = "[  \\t,]*", n = "[:\\.．]?[  \\t,-]*", d = "#?", l = "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)", s = "(?:[xｘ#＃~～]|int|ｉｎｔ)", c = "[- ]+", p = "[  \\t]*", m = "(?:,{2}|;)", u = an + j(e), f = i + l + n + j(e) + d, h = i + s + n + j(t) + d, y = c + j(o) + "#", b = p + m + n + j(a) + d, g = p + "(?:,)+" + n + j(t) + d;
   return u + "|" + f + "|" + h + "|" + y + "|" + b + "|" + g;
 }
 var rn = "[" + C + "]{" + Ga + "}", tn = "[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){3,}[" + I + C + "]*", on = new RegExp("^[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){1,2}$", "i"), nn = tn + // Phone number extensions
-"(?:" + It() + ")?", dn = new RegExp(
+"(?:" + At() + ")?", dn = new RegExp(
   // Either a short two-digit-only phone number
   "^" + rn + "$|^" + nn + "$",
   "i"
@@ -14300,7 +14323,7 @@ function ln(r) {
 function sn(r) {
   return on.test(r);
 }
-var fr = new RegExp("(?:" + It() + ")$", "i");
+var fr = new RegExp("(?:" + At() + ")$", "i");
 function cn(r) {
   var e = r.search(fr);
   if (e < 0)
@@ -14422,12 +14445,12 @@ var pn = {
   "۹": "9"
   // Eastern-Arabic digit 9
 };
-function St(r) {
+function It(r) {
   return pn[r];
 }
 function Be(r) {
   for (var e = "", a = mn(r.split("")), t; !(t = a()).done; ) {
-    var o = t.value, i = St(o);
+    var o = t.value, i = It(o);
     i && (e += i);
   }
   return e;
@@ -14476,7 +14499,7 @@ function vr(r) {
   return e;
 }
 function fn(r, e) {
-  return r === "+" ? e ? void 0 : "+" : St(r);
+  return r === "+" ? e ? void 0 : "+" : It(r);
 }
 function bn(r, e) {
   var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
@@ -14524,15 +14547,15 @@ function vn(r, e) {
   });
 }
 function Ye(r, e) {
-  return Pt(r, void 0, e);
+  return St(r, void 0, e);
 }
-function Pt(r, e, a) {
+function St(r, e, a) {
   var t = a.type(e), o = t && t.possibleLengths() || a.possibleLengths();
   if (!o)
     return "IS_POSSIBLE";
   if (e === "FIXED_LINE_OR_MOBILE") {
     if (!a.type("FIXED_LINE"))
-      return Pt(r, "MOBILE", a);
+      return St(r, "MOBILE", a);
     var i = a.type("MOBILE");
     i && (o = vn(o, i.possibleLengths()));
   } else if (e && !t)
@@ -14559,12 +14582,12 @@ function yn(r, e, a) {
     }
   }
   if (a.possibleLengths())
-    return Bt(r.phone || r.nationalNumber, a);
+    return Pt(r.phone || r.nationalNumber, a);
   if (r.countryCallingCode && a.isNonGeographicCallingCode(r.countryCallingCode))
     return !0;
   throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
 }
-function Bt(r, e) {
+function Pt(r, e) {
   switch (Ye(r, e)) {
     case "IS_POSSIBLE":
       return !0;
@@ -14646,11 +14669,11 @@ function Cn(r, e, a) {
   var t = new _(a);
   return t.selectNumberingPlan(e), t.numberingPlan.possibleLengths().indexOf(r.length) >= 0;
 }
-function Tt(r) {
+function Bt(r) {
   return r.replace(new RegExp("[".concat(I, "]+"), "g"), " ").trim();
 }
-var Ft = /(\$\d)/;
-function Rt(r, e, a) {
+var Tt = /(\$\d)/;
+function Ft(r, e, a) {
   var t = a.useInternationalFormat, o = a.withNationalPrefix;
   a.carrierCode, a.metadata;
   var i = r.replace(new RegExp(e.pattern()), t ? e.internationalFormat() : (
@@ -14667,9 +14690,9 @@ function Rt(r, e, a) {
     // 			? format.format().replace(FIRST_GROUP_PATTERN, format.nationalPrefixFormattingRule())
     // 			: format.format()
     // 	)
-    o && e.nationalPrefixFormattingRule() ? e.format().replace(Ft, e.nationalPrefixFormattingRule()) : e.format()
+    o && e.nationalPrefixFormattingRule() ? e.format().replace(Tt, e.nationalPrefixFormattingRule()) : e.format()
   ));
-  return t ? Tt(i) : i;
+  return t ? Bt(i) : i;
 }
 var En = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
 function Nn(r, e, a) {
@@ -14790,7 +14813,7 @@ function Bn(r, e, a, t) {
 }
 function Te(r, e, a, t, o) {
   var i = Tn(t.formats(), r);
-  return i ? Rt(r, i, {
+  return i ? Ft(r, i, {
     useInternationalFormat: a === "INTERNATIONAL",
     withNationalPrefix: !(i.nationalPrefixIsOptionalWhenFormattingInNationalFormat() && o && o.nationalPrefix === !1),
     carrierCode: e,
@@ -14969,7 +14992,7 @@ function Ln(r, e) {
   };
 }
 var Un = new RegExp("([" + C + "])");
-function Ot(r, e, a, t) {
+function Rt(r, e, a, t) {
   if (e) {
     var o = new _(t);
     o.selectNumberingPlan(e, a);
@@ -15039,7 +15062,7 @@ function Hn(r, e) {
       return !0;
   }
 }
-function Mt(r, e, a, t) {
+function Ot(r, e, a, t) {
   var o = e ? je(e, t) : a;
   if (r.indexOf(o) === 0) {
     t = new _(t), t.selectNumberingPlan(e, a);
@@ -15054,17 +15077,17 @@ function Mt(r, e, a, t) {
     number: r
   };
 }
-function Dt(r, e, a, t) {
+function Mt(r, e, a, t) {
   if (!r)
     return {};
   var o;
   if (r[0] !== "+") {
-    var i = Ot(r, e, a, t);
+    var i = Rt(r, e, a, t);
     if (i && i !== r)
       o = !0, r = "+" + i;
     else {
       if (e || a) {
-        var n = Mt(r, e, a, t), d = n.countryCallingCode, l = n.number;
+        var n = Ot(r, e, a, t), d = n.countryCallingCode, l = n.number;
         if (d)
           return {
             countryCallingCodeSource: "FROM_NUMBER_WITHOUT_PLUS_SIGN",
@@ -15145,14 +15168,14 @@ function Yn(r, e, a) {
   }
 }
 var Kn = !1;
-function Lt(r, e, a) {
+function Dt(r, e, a) {
   if (Kn && a.isNonGeographicCallingCode(r))
     return "001";
   var t = a.getCountryCodesForCallingCode(r);
   if (t)
     return t.length === 1 ? t[0] : Yn(t, e, a.metadata);
 }
-var Ut = "+", Qn = "[\\-\\.\\(\\)]?", Ir = "([" + C + "]|" + Qn + ")", Jn = "^\\" + Ut + Ir + "*[" + C + "]" + Ir + "*$", qn = new RegExp(Jn, "g"), _a = C, Wn = "[" + _a + "]+((\\-)*[" + _a + "])*", Xn = "a-zA-Z", Zn = "[" + Xn + "]+((\\-)*[" + _a + "])*", ed = "^(" + Wn + "\\.)*" + Zn + "\\.?$", ad = new RegExp(ed, "g"), Sr = "tel:", Ca = ";phone-context=", rd = ";isub=";
+var Lt = "+", Qn = "[\\-\\.\\(\\)]?", Ir = "([" + C + "]|" + Qn + ")", Jn = "^\\" + Lt + Ir + "*[" + C + "]" + Ir + "*$", qn = new RegExp(Jn, "g"), _a = C, Wn = "[" + _a + "]+((\\-)*[" + _a + "])*", Xn = "a-zA-Z", Zn = "[" + Xn + "]+((\\-)*[" + _a + "])*", ed = "^(" + Wn + "\\.)*" + Zn + "\\.?$", ad = new RegExp(ed, "g"), Sr = "tel:", Ca = ";phone-context=", rd = ";isub=";
 function td(r) {
   var e = r.indexOf(Ca);
   if (e < 0)
@@ -15174,7 +15197,7 @@ function id(r, e) {
   if (t === null)
     o = a(r) || "";
   else {
-    o = "", t.charAt(0) === Ut && (o += t);
+    o = "", t.charAt(0) === Lt && (o += t);
     var i = r.indexOf(Sr), n;
     i >= 0 ? n = i + Sr.length : n = 0;
     var d = r.indexOf(Ca);
@@ -15220,7 +15243,7 @@ function sd(r, e, a) {
     countryCallingCode: c,
     carrierCode: m,
     valid: f,
-    possible: f ? !0 : !!(e.extended === !0 && a.possibleLengths() && Bt(s, a)),
+    possible: f ? !0 : !!(e.extended === !0 && a.possibleLengths() && Pt(s, a)),
     phone: s,
     ext: i
   } : f ? ud(l, s, i) : {};
@@ -15264,7 +15287,7 @@ function ud(r, e, a) {
   return a && (t.ext = a), t;
 }
 function pd(r, e, a, t) {
-  var o = Dt(vr(r), e, a, t.metadata), i = o.countryCallingCodeSource, n = o.countryCallingCode, d = o.number, l;
+  var o = Mt(vr(r), e, a, t.metadata), i = o.countryCallingCodeSource, n = o.countryCallingCode, d = o.number, l;
   if (n)
     t.selectNumberingPlan(n);
   else if (d && (e || a))
@@ -15276,7 +15299,7 @@ function pd(r, e, a, t) {
       countryCallingCodeSource: i,
       countryCallingCode: n
     };
-  var s = $a(vr(d), t), c = s.nationalNumber, p = s.carrierCode, m = Lt(n, c, t);
+  var s = $a(vr(d), t), c = s.nationalNumber, p = s.carrierCode, m = Dt(n, c, t);
   return m && (l = m, m === "001" || t.country(l)), {
     country: l,
     countryCallingCode: n,
@@ -15656,7 +15679,7 @@ function Od(r, e, a) {
   });
 }
 function Ur(r, e, a) {
-  var t = a.metadata, o = a.useNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = Rt(r.nationalSignificantNumber, e, {
+  var t = a.metadata, o = a.useNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = Ft(r.nationalSignificantNumber, e, {
     carrierCode: r.carrierCode,
     useInternationalFormat: r.international,
     withNationalPrefix: o,
@@ -16179,13 +16202,13 @@ var Aa = "9", Xd = 15, Zd = _e(Aa, Xd), el = /[- ]/, al = function() {
           international: i,
           nationalPrefix: n
         })) {
-          var f = m.replace(Ft, a.nationalPrefixFormattingRule());
+          var f = m.replace(Tt, a.nationalPrefixFormattingRule());
           if (Be(a.nationalPrefixFormattingRule()) === (n || "") + Be("$1") && (m = f, u = !0, n))
             for (var h = n.length; h > 0; )
               m = m.replace(/\d/, A), h--;
         }
         var y = s.replace(new RegExp(l), m).replace(new RegExp(Aa, "g"), A);
-        return u || (d ? y = _e(A, d.length) + " " + y : n && (y = _e(A, n.length) + this.getSeparatorAfterNationalPrefix(a) + y)), i && (y = Tt(y)), y;
+        return u || (d ? y = _e(A, d.length) + " " + y : n && (y = _e(A, n.length) + this.getSeparatorAfterNationalPrefix(a) + y)), i && (y = Bt(y)), y;
       }
     }
   }, {
@@ -16210,7 +16233,7 @@ var Aa = "9", Xd = 15, Zd = _e(Aa, Xd), el = /[- ]/, al = function() {
     }
   }]), r;
 }();
-function Gt(r, e) {
+function Ut(r, e) {
   return ll(r) || dl(r, e) || nl(r, e) || il();
 }
 function il() {
@@ -16281,7 +16304,7 @@ var ml = "[" + I + C + "]+", ul = new RegExp("^" + ml + "$", "i"), pl = "(?:[" +
   return cl(r, [{
     key: "input",
     value: function(a, t) {
-      var o = vl(a), i = Gt(o, 2), n = i[0], d = i[1], l = Be(n), s;
+      var o = vl(a), i = Ut(o, 2), n = i[0], d = i[1], l = Be(n), s;
       return d && (t.digits || (t.startInternationalNumber(), l || (s = !0))), l && this.inputDigits(l, t), {
         digits: l,
         justLeadingPlus: s
@@ -16316,7 +16339,7 @@ var ml = "[" + I + C + "]+", ul = new RegExp("^" + ml + "$", "i"), pl = "(?:[" +
   }, {
     key: "extractCountryCallingCode",
     value: function(a) {
-      var t = Dt("+" + a.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode, i = t.number;
+      var t = Mt("+" + a.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode, i = t.number;
       if (o)
         return a.setCallingCode(o), a.update({
           nationalSignificantNumber: i
@@ -16398,7 +16421,7 @@ var ml = "[" + I + C + "]+", ul = new RegExp("^" + ml + "$", "i"), pl = "(?:[" +
     value: function(a) {
       var t = a.international, o = a.IDDPrefix, i = a.digits;
       if (a.nationalSignificantNumber, !(t || o)) {
-        var n = Ot(i, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
+        var n = Rt(i, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
         if (n !== void 0 && n !== i)
           return a.update({
             IDDPrefix: i.slice(0, i.length - n.length)
@@ -16412,7 +16435,7 @@ var ml = "[" + I + C + "]+", ul = new RegExp("^" + ml + "$", "i"), pl = "(?:[" +
     key: "fixMissingPlus",
     value: function(a) {
       if (!a.international) {
-        var t = Mt(a.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode;
+        var t = Ot(a.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode;
         if (t.number, o)
           return a.update({
             missingPlus: !0
@@ -16450,7 +16473,7 @@ function zl(r) {
   return e[0] === "+" ? [e.slice(1), !0] : [e];
 }
 function vl(r) {
-  var e = zl(r), a = Gt(e, 2), t = a[0], o = a[1];
+  var e = zl(r), a = Ut(e, 2), t = a[0], o = a[1];
   return ul.test(t) || (t = ""), [t, o];
 }
 function Ia(r) {
@@ -16524,7 +16547,7 @@ function Cl(r, e, a) {
     writable: !1
   }), r;
 }
-var Ht = /* @__PURE__ */ function() {
+var Gt = /* @__PURE__ */ function() {
   function r(e, a) {
     _l(this, r), this.metadata = new _(a);
     var t = this.getCountryAndCallingCode(e), o = yl(t, 2), i = o[0], n = o[1];
@@ -16689,7 +16712,7 @@ var Ht = /* @__PURE__ */ function() {
   }, {
     key: "determineTheCountry",
     value: function() {
-      this.state.setCountry(Lt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, this.state.nationalSignificantNumber, this.metadata));
+      this.state.setCountry(Dt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, this.state.nationalSignificantNumber, this.metadata));
     }
     /**
      * Returns a E.164 phone number value for the user's input.
@@ -16797,9 +16820,9 @@ function Nl() {
   return Ua(Ed, arguments);
 }
 function Fe(r) {
-  return Ht.call(this, r, Ct);
+  return Gt.call(this, r, _t);
 }
-Fe.prototype = Object.create(Ht.prototype, {});
+Fe.prototype = Object.create(Gt.prototype, {});
 Fe.prototype.constructor = Fe;
 function Al() {
   return Ua(je, arguments);
@@ -16807,7 +16830,7 @@ function Al() {
 function Il() {
   return Ua(El, arguments);
 }
-const Vt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], Sl = Vt.map((r) => r[1].toUpperCase()), jt = Vt.map((r) => ({
+const Ht = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], Sl = Ht.map((r) => r[1].toUpperCase()), Vt = Ht.map((r) => ({
   name: r[0],
   iso2: r[1].toUpperCase(),
   dialCode: r[2],
@@ -17110,7 +17133,7 @@ const Vt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   name: "MazPhoneNumberInput",
   components: {
     MazInput: V,
-    MazSelect: le
+    MazSelect: se
   },
   mixins: [Ue],
   props: {
@@ -17208,7 +17231,7 @@ const Vt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     },
     // Countries list management
     countriesList() {
-      return jt.filter((r) => !this.ignoredCountries.includes(r.iso2));
+      return Vt.filter((r) => !this.ignoredCountries.includes(r.iso2));
     },
     countriesFiltered() {
       return (this.onlyCountries || this.preferredCountries).map(
@@ -17312,7 +17335,7 @@ var Dl = function() {
   }, clear: function(t) {
     return e.$emit("clear", t);
   }, input: e.buildResults } }, "MazInput", e.$attrs, !1), [e._t("icon-left", null, { slot: "icon-left" }), e._t("icon-right", null, { slot: "icon-right" })], 2)], 1);
-}, Ll = [], Ul = /* @__PURE__ */ re(
+}, Ll = [], Ul = /* @__PURE__ */ te(
   Ml,
   Dl,
   Ll,
@@ -17345,7 +17368,7 @@ function Vl(r, e) {
   }
   return (e === "string" ? String : Number)(r);
 }
-const at = "o21pay-address", jl = [ne, de, V, le, Ce], Yl = (r, e = {}) => {
+const at = "o21pay-address", jl = [de, le, V, se, Ce], Yl = (r, e = {}) => {
   jl.forEach((a) => {
     r.component(a.name, a);
   });
@@ -17370,6 +17393,10 @@ class ve extends O {
       },
       optimized: {
         type: Boolean
+      },
+      primary_color: {
+        type: String,
+        attribute: "primary_color"
       },
       data: {
         type: Object
@@ -17532,7 +17559,7 @@ class ve extends O {
    */
   listCountries() {
     const e = [];
-    for (const a of jt)
+    for (const a of Vt)
       e.push({
         label: a.name,
         value: a.name,
@@ -17717,7 +17744,7 @@ class ve extends O {
     </div>`;
   }
 }
-Gl(ve, "styles", [_t, pi]);
+Gl(ve, "styles", [$t, pi]);
 const ha = window.customElements;
 ha && !ha.get(at) && ha.define(at, ve);
 const Kl = {
@@ -17885,7 +17912,7 @@ var Jl = function() {
       return e.keydownHandler(o, i);
     } } });
   }), 0), e.isValid ? e._e() : a("span", { class: e.errorClassHandler }, [e._t("errorMessage")], 2)]);
-}, ql = [], Wl = /* @__PURE__ */ re(
+}, ql = [], Wl = /* @__PURE__ */ te(
   Ql,
   Jl,
   ql,
@@ -17899,7 +17926,7 @@ const Ee = Wl.exports;
 Ee.install = (r) => {
   r.component(Ee.name, Ee);
 };
-const Xl = ge`
+const Xl = re`
   div.vue-otp-input {
     width: max-content;
     margin-left: 15 px;
@@ -18002,7 +18029,7 @@ const Xl = ge`
   input[type='number'] {
     -moz-appearance: textfield;
   }
-`, Zl = ge`
+`, Zl = re`
   :host {
     --maz-primary: #9bc99d;
     --maz-border-width: 1px;
@@ -18235,12 +18262,12 @@ class ye extends O {
     `;
   }
 }
-es(ye, "styles", [_t, Xl, Zl]);
+es(ye, "styles", [$t, Xl, Zl]);
 const ga = window.customElements;
 ga && !ga.get(rt) && ga.define(rt, ye);
 import("https://unpkg.com/vue@2/dist/vue.js");
 window.O21PayComponents = {
-  version: "0.6.9",
+  version: "0.6.72",
   components: [{
     name: "O21Pay",
     component: Ba,
