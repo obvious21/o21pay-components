@@ -1,261 +1,235 @@
-import { css as qt, svg as Qe } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
-/**
- * @license
- * Copyright 2019 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-const we = window, Ta = we.ShadowRoot && (we.ShadyCSS === void 0 || we.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Fa = Symbol(), Qa = /* @__PURE__ */ new WeakMap();
-let nt = class {
-  constructor(e, a, t) {
-    if (this._$cssResult$ = !0, t !== Fa)
+import { css as e, svg as a } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
+const t = window, r = t.ShadowRoot && (void 0 === t.ShadyCSS || t.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, o = Symbol(), i = /* @__PURE__ */ new WeakMap();
+class n {
+  constructor(e2, a2, t2) {
+    if (this._$cssResult$ = true, t2 !== o)
       throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
-    this.cssText = e, this.t = a;
+    this.cssText = e2, this.t = a2;
   }
   get styleSheet() {
-    let e = this.o;
-    const a = this.t;
-    if (Ta && e === void 0) {
-      const t = a !== void 0 && a.length === 1;
-      t && (e = Qa.get(a)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), t && Qa.set(a, e));
+    let e2 = this.o;
+    const a2 = this.t;
+    if (r && void 0 === e2) {
+      const t2 = void 0 !== a2 && 1 === a2.length;
+      t2 && (e2 = i.get(a2)), void 0 === e2 && ((this.o = e2 = new CSSStyleSheet()).replaceSync(this.cssText), t2 && i.set(a2, e2));
     }
-    return e;
+    return e2;
   }
   toString() {
     return this.cssText;
   }
-};
-const Wt = (r) => new nt(typeof r == "string" ? r : r + "", void 0, Fa), re = (r, ...e) => {
-  const a = r.length === 1 ? r[0] : e.reduce((t, o, i) => t + ((n) => {
-    if (n._$cssResult$ === !0)
-      return n.cssText;
-    if (typeof n == "number")
-      return n;
-    throw Error("Value passed to 'css' function must be a 'css' function result: " + n + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-  })(o) + r[i + 1], r[0]);
-  return new nt(a, r, Fa);
-}, Xt = (r, e) => {
-  Ta ? r.adoptedStyleSheets = e.map((a) => a instanceof CSSStyleSheet ? a : a.styleSheet) : e.forEach((a) => {
-    const t = document.createElement("style"), o = we.litNonce;
-    o !== void 0 && t.setAttribute("nonce", o), t.textContent = a.cssText, r.appendChild(t);
-  });
-}, Ja = Ta ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((e) => {
-  let a = "";
-  for (const t of e.cssRules)
-    a += t.cssText;
-  return Wt(a);
-})(r) : r;
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-var Je;
-const Ne = window, qa = Ne.trustedTypes, Zt = qa ? qa.emptyScript : "", Wa = Ne.reactiveElementPolyfillSupport, ba = {
-  toAttribute(r, e) {
-    switch (e) {
-      case Boolean:
-        r = r ? Zt : null;
-        break;
-      case Object:
-      case Array:
-        r = r == null ? r : JSON.stringify(r);
-    }
-    return r;
-  },
-  fromAttribute(r, e) {
-    let a = r;
-    switch (e) {
-      case Boolean:
-        a = r !== null;
-        break;
-      case Number:
-        a = r === null ? null : Number(r);
-        break;
-      case Object:
-      case Array:
-        try {
-          a = JSON.parse(r);
-        } catch {
-          a = null;
-        }
-    }
-    return a;
+}
+const d = (e2, ...a2) => {
+  const t2 = 1 === e2.length ? e2[0] : a2.reduce((a3, t3, r2) => a3 + ((e3) => {
+    if (true === e3._$cssResult$)
+      return e3.cssText;
+    if ("number" == typeof e3)
+      return e3;
+    throw Error("Value passed to 'css' function must be a 'css' function result: " + e3 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
+  })(t3) + e2[r2 + 1], e2[0]);
+  return new n(t2, e2, o);
+}, l = r ? (e2) => e2 : (e2) => e2 instanceof CSSStyleSheet ? ((e3) => {
+  let a2 = "";
+  for (const t2 of e3.cssRules)
+    a2 += t2.cssText;
+  return ((e4) => new n("string" == typeof e4 ? e4 : e4 + "", void 0, o))(a2);
+})(e2) : e2;
+var s;
+const c = window, m = c.trustedTypes, u = m ? m.emptyScript : "", p = c.reactiveElementPolyfillSupport, h = { toAttribute(e2, a2) {
+  switch (a2) {
+    case Boolean:
+      e2 = e2 ? u : null;
+      break;
+    case Object:
+    case Array:
+      e2 = null == e2 ? e2 : JSON.stringify(e2);
   }
-}, dt = (r, e) => e !== r && (e == e || r == r), qe = {
-  attribute: !0,
-  type: String,
-  converter: ba,
-  reflect: !1,
-  hasChanged: dt
-}, za = "finalized";
-let Q = class extends HTMLElement {
+  return e2;
+}, fromAttribute(e2, a2) {
+  let t2 = e2;
+  switch (a2) {
+    case Boolean:
+      t2 = null !== e2;
+      break;
+    case Number:
+      t2 = null === e2 ? null : Number(e2);
+      break;
+    case Object:
+    case Array:
+      try {
+        t2 = JSON.parse(e2);
+      } catch (e3) {
+        t2 = null;
+      }
+  }
+  return t2;
+} }, g = (e2, a2) => a2 !== e2 && (a2 == a2 || e2 == e2), b = { attribute: true, type: String, converter: h, reflect: false, hasChanged: g }, z = "finalized";
+class f extends HTMLElement {
   constructor() {
-    super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = !1, this.hasUpdated = !1, this._$El = null, this._$Eu();
+    super(), this._$Ei = /* @__PURE__ */ new Map(), this.isUpdatePending = false, this.hasUpdated = false, this._$El = null, this._$Eu();
   }
-  static addInitializer(e) {
-    var a;
-    this.finalize(), ((a = this.h) !== null && a !== void 0 ? a : this.h = []).push(e);
+  static addInitializer(e2) {
+    var a2;
+    this.finalize(), (null !== (a2 = this.h) && void 0 !== a2 ? a2 : this.h = []).push(e2);
   }
   static get observedAttributes() {
     this.finalize();
-    const e = [];
-    return this.elementProperties.forEach((a, t) => {
-      const o = this._$Ep(t, a);
-      o !== void 0 && (this._$Ev.set(o, t), e.push(o));
-    }), e;
+    const e2 = [];
+    return this.elementProperties.forEach((a2, t2) => {
+      const r2 = this._$Ep(t2, a2);
+      void 0 !== r2 && (this._$Ev.set(r2, t2), e2.push(r2));
+    }), e2;
   }
-  static createProperty(e, a = qe) {
-    if (a.state && (a.attribute = !1), this.finalize(), this.elementProperties.set(e, a), !a.noAccessor && !this.prototype.hasOwnProperty(e)) {
-      const t = typeof e == "symbol" ? Symbol() : "__" + e, o = this.getPropertyDescriptor(e, t, a);
-      o !== void 0 && Object.defineProperty(this.prototype, e, o);
+  static createProperty(e2, a2 = b) {
+    if (a2.state && (a2.attribute = false), this.finalize(), this.elementProperties.set(e2, a2), !a2.noAccessor && !this.prototype.hasOwnProperty(e2)) {
+      const t2 = "symbol" == typeof e2 ? Symbol() : "__" + e2, r2 = this.getPropertyDescriptor(e2, t2, a2);
+      void 0 !== r2 && Object.defineProperty(this.prototype, e2, r2);
     }
   }
-  static getPropertyDescriptor(e, a, t) {
-    return {
-      get() {
-        return this[a];
-      },
-      set(o) {
-        const i = this[e];
-        this[a] = o, this.requestUpdate(e, i, t);
-      },
-      configurable: !0,
-      enumerable: !0
-    };
+  static getPropertyDescriptor(e2, a2, t2) {
+    return { get() {
+      return this[a2];
+    }, set(r2) {
+      const o2 = this[e2];
+      this[a2] = r2, this.requestUpdate(e2, o2, t2);
+    }, configurable: true, enumerable: true };
   }
-  static getPropertyOptions(e) {
-    return this.elementProperties.get(e) || qe;
+  static getPropertyOptions(e2) {
+    return this.elementProperties.get(e2) || b;
   }
   static finalize() {
-    if (this.hasOwnProperty(za))
-      return !1;
-    this[za] = !0;
-    const e = Object.getPrototypeOf(this);
-    if (e.finalize(), e.h !== void 0 && (this.h = [...e.h]), this.elementProperties = new Map(e.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
-      const a = this.properties, t = [...Object.getOwnPropertyNames(a), ...Object.getOwnPropertySymbols(a)];
-      for (const o of t)
-        this.createProperty(o, a[o]);
+    if (this.hasOwnProperty(z))
+      return false;
+    this[z] = true;
+    const e2 = Object.getPrototypeOf(this);
+    if (e2.finalize(), void 0 !== e2.h && (this.h = [...e2.h]), this.elementProperties = new Map(e2.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
+      const e3 = this.properties, a2 = [...Object.getOwnPropertyNames(e3), ...Object.getOwnPropertySymbols(e3)];
+      for (const t2 of a2)
+        this.createProperty(t2, e3[t2]);
     }
-    return this.elementStyles = this.finalizeStyles(this.styles), !0;
+    return this.elementStyles = this.finalizeStyles(this.styles), true;
   }
-  static finalizeStyles(e) {
-    const a = [];
-    if (Array.isArray(e)) {
-      const t = new Set(e.flat(1 / 0).reverse());
-      for (const o of t)
-        a.unshift(Ja(o));
+  static finalizeStyles(e2) {
+    const a2 = [];
+    if (Array.isArray(e2)) {
+      const t2 = new Set(e2.flat(1 / 0).reverse());
+      for (const e3 of t2)
+        a2.unshift(l(e3));
     } else
-      e !== void 0 && a.push(Ja(e));
-    return a;
+      void 0 !== e2 && a2.push(l(e2));
+    return a2;
   }
-  static _$Ep(e, a) {
-    const t = a.attribute;
-    return t === !1 ? void 0 : typeof t == "string" ? t : typeof e == "string" ? e.toLowerCase() : void 0;
+  static _$Ep(e2, a2) {
+    const t2 = a2.attribute;
+    return false === t2 ? void 0 : "string" == typeof t2 ? t2 : "string" == typeof e2 ? e2.toLowerCase() : void 0;
   }
   _$Eu() {
-    var e;
-    this._$E_ = new Promise((a) => this.enableUpdating = a), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), (e = this.constructor.h) === null || e === void 0 || e.forEach((a) => a(this));
+    var e2;
+    this._$E_ = new Promise((e3) => this.enableUpdating = e3), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), null === (e2 = this.constructor.h) || void 0 === e2 || e2.forEach((e3) => e3(this));
   }
-  addController(e) {
-    var a, t;
-    ((a = this._$ES) !== null && a !== void 0 ? a : this._$ES = []).push(e), this.renderRoot !== void 0 && this.isConnected && ((t = e.hostConnected) === null || t === void 0 || t.call(e));
+  addController(e2) {
+    var a2, t2;
+    (null !== (a2 = this._$ES) && void 0 !== a2 ? a2 : this._$ES = []).push(e2), void 0 !== this.renderRoot && this.isConnected && (null === (t2 = e2.hostConnected) || void 0 === t2 || t2.call(e2));
   }
-  removeController(e) {
-    var a;
-    (a = this._$ES) === null || a === void 0 || a.splice(this._$ES.indexOf(e) >>> 0, 1);
+  removeController(e2) {
+    var a2;
+    null === (a2 = this._$ES) || void 0 === a2 || a2.splice(this._$ES.indexOf(e2) >>> 0, 1);
   }
   _$Eg() {
-    this.constructor.elementProperties.forEach((e, a) => {
-      this.hasOwnProperty(a) && (this._$Ei.set(a, this[a]), delete this[a]);
+    this.constructor.elementProperties.forEach((e2, a2) => {
+      this.hasOwnProperty(a2) && (this._$Ei.set(a2, this[a2]), delete this[a2]);
     });
   }
   createRenderRoot() {
-    var e;
-    const a = (e = this.shadowRoot) !== null && e !== void 0 ? e : this.attachShadow(this.constructor.shadowRootOptions);
-    return Xt(a, this.constructor.elementStyles), a;
+    var e2;
+    const a2 = null !== (e2 = this.shadowRoot) && void 0 !== e2 ? e2 : this.attachShadow(this.constructor.shadowRootOptions);
+    return ((e3, a3) => {
+      r ? e3.adoptedStyleSheets = a3.map((e4) => e4 instanceof CSSStyleSheet ? e4 : e4.styleSheet) : a3.forEach((a4) => {
+        const r2 = document.createElement("style"), o2 = t.litNonce;
+        void 0 !== o2 && r2.setAttribute("nonce", o2), r2.textContent = a4.cssText, e3.appendChild(r2);
+      });
+    })(a2, this.constructor.elementStyles), a2;
   }
   connectedCallback() {
-    var e;
-    this.renderRoot === void 0 && (this.renderRoot = this.createRenderRoot()), this.enableUpdating(!0), (e = this._$ES) === null || e === void 0 || e.forEach((a) => {
-      var t;
-      return (t = a.hostConnected) === null || t === void 0 ? void 0 : t.call(a);
+    var e2;
+    void 0 === this.renderRoot && (this.renderRoot = this.createRenderRoot()), this.enableUpdating(true), null === (e2 = this._$ES) || void 0 === e2 || e2.forEach((e3) => {
+      var a2;
+      return null === (a2 = e3.hostConnected) || void 0 === a2 ? void 0 : a2.call(e3);
     });
   }
-  enableUpdating(e) {
+  enableUpdating(e2) {
   }
   disconnectedCallback() {
-    var e;
-    (e = this._$ES) === null || e === void 0 || e.forEach((a) => {
-      var t;
-      return (t = a.hostDisconnected) === null || t === void 0 ? void 0 : t.call(a);
+    var e2;
+    null === (e2 = this._$ES) || void 0 === e2 || e2.forEach((e3) => {
+      var a2;
+      return null === (a2 = e3.hostDisconnected) || void 0 === a2 ? void 0 : a2.call(e3);
     });
   }
-  attributeChangedCallback(e, a, t) {
-    this._$AK(e, t);
+  attributeChangedCallback(e2, a2, t2) {
+    this._$AK(e2, t2);
   }
-  _$EO(e, a, t = qe) {
-    var o;
-    const i = this.constructor._$Ep(e, t);
-    if (i !== void 0 && t.reflect === !0) {
-      const n = (((o = t.converter) === null || o === void 0 ? void 0 : o.toAttribute) !== void 0 ? t.converter : ba).toAttribute(a, t.type);
-      this._$El = e, n == null ? this.removeAttribute(i) : this.setAttribute(i, n), this._$El = null;
+  _$EO(e2, a2, t2 = b) {
+    var r2;
+    const o2 = this.constructor._$Ep(e2, t2);
+    if (void 0 !== o2 && true === t2.reflect) {
+      const i2 = (void 0 !== (null === (r2 = t2.converter) || void 0 === r2 ? void 0 : r2.toAttribute) ? t2.converter : h).toAttribute(a2, t2.type);
+      this._$El = e2, null == i2 ? this.removeAttribute(o2) : this.setAttribute(o2, i2), this._$El = null;
     }
   }
-  _$AK(e, a) {
-    var t;
-    const o = this.constructor, i = o._$Ev.get(e);
-    if (i !== void 0 && this._$El !== i) {
-      const n = o.getPropertyOptions(i), l = typeof n.converter == "function" ? {
-        fromAttribute: n.converter
-      } : ((t = n.converter) === null || t === void 0 ? void 0 : t.fromAttribute) !== void 0 ? n.converter : ba;
-      this._$El = i, this[i] = l.fromAttribute(a, n.type), this._$El = null;
+  _$AK(e2, a2) {
+    var t2;
+    const r2 = this.constructor, o2 = r2._$Ev.get(e2);
+    if (void 0 !== o2 && this._$El !== o2) {
+      const e3 = r2.getPropertyOptions(o2), i2 = "function" == typeof e3.converter ? { fromAttribute: e3.converter } : void 0 !== (null === (t2 = e3.converter) || void 0 === t2 ? void 0 : t2.fromAttribute) ? e3.converter : h;
+      this._$El = o2, this[o2] = i2.fromAttribute(a2, e3.type), this._$El = null;
     }
   }
-  requestUpdate(e, a, t) {
-    let o = !0;
-    e !== void 0 && (((t = t || this.constructor.getPropertyOptions(e)).hasChanged || dt)(this[e], a) ? (this._$AL.has(e) || this._$AL.set(e, a), t.reflect === !0 && this._$El !== e && (this._$EC === void 0 && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e, t))) : o = !1), !this.isUpdatePending && o && (this._$E_ = this._$Ej());
+  requestUpdate(e2, a2, t2) {
+    let r2 = true;
+    void 0 !== e2 && (((t2 = t2 || this.constructor.getPropertyOptions(e2)).hasChanged || g)(this[e2], a2) ? (this._$AL.has(e2) || this._$AL.set(e2, a2), true === t2.reflect && this._$El !== e2 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e2, t2))) : r2 = false), !this.isUpdatePending && r2 && (this._$E_ = this._$Ej());
   }
   async _$Ej() {
-    this.isUpdatePending = !0;
+    this.isUpdatePending = true;
     try {
       await this._$E_;
-    } catch (a) {
-      Promise.reject(a);
+    } catch (e3) {
+      Promise.reject(e3);
     }
-    const e = this.scheduleUpdate();
-    return e != null && await e, !this.isUpdatePending;
+    const e2 = this.scheduleUpdate();
+    return null != e2 && await e2, !this.isUpdatePending;
   }
   scheduleUpdate() {
     return this.performUpdate();
   }
   performUpdate() {
-    var e;
+    var e2;
     if (!this.isUpdatePending)
       return;
-    this.hasUpdated, this._$Ei && (this._$Ei.forEach((o, i) => this[i] = o), this._$Ei = void 0);
-    let a = !1;
-    const t = this._$AL;
+    this.hasUpdated, this._$Ei && (this._$Ei.forEach((e3, a3) => this[a3] = e3), this._$Ei = void 0);
+    let a2 = false;
+    const t2 = this._$AL;
     try {
-      a = this.shouldUpdate(t), a ? (this.willUpdate(t), (e = this._$ES) === null || e === void 0 || e.forEach((o) => {
-        var i;
-        return (i = o.hostUpdate) === null || i === void 0 ? void 0 : i.call(o);
-      }), this.update(t)) : this._$Ek();
-    } catch (o) {
-      throw a = !1, this._$Ek(), o;
+      a2 = this.shouldUpdate(t2), a2 ? (this.willUpdate(t2), null === (e2 = this._$ES) || void 0 === e2 || e2.forEach((e3) => {
+        var a3;
+        return null === (a3 = e3.hostUpdate) || void 0 === a3 ? void 0 : a3.call(e3);
+      }), this.update(t2)) : this._$Ek();
+    } catch (e3) {
+      throw a2 = false, this._$Ek(), e3;
     }
-    a && this._$AE(t);
+    a2 && this._$AE(t2);
   }
-  willUpdate(e) {
+  willUpdate(e2) {
   }
-  _$AE(e) {
-    var a;
-    (a = this._$ES) === null || a === void 0 || a.forEach((t) => {
-      var o;
-      return (o = t.hostUpdated) === null || o === void 0 ? void 0 : o.call(t);
-    }), this.hasUpdated || (this.hasUpdated = !0, this.firstUpdated(e)), this.updated(e);
+  _$AE(e2) {
+    var a2;
+    null === (a2 = this._$ES) || void 0 === a2 || a2.forEach((e3) => {
+      var a3;
+      return null === (a3 = e3.hostUpdated) || void 0 === a3 ? void 0 : a3.call(e3);
+    }), this.hasUpdated || (this.hasUpdated = true, this.firstUpdated(e2)), this.updated(e2);
   }
   _$Ek() {
-    this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = !1;
+    this._$AL = /* @__PURE__ */ new Map(), this.isUpdatePending = false;
   }
   get updateComplete() {
     return this.getUpdateComplete();
@@ -263,138 +237,101 @@ let Q = class extends HTMLElement {
   getUpdateComplete() {
     return this._$E_;
   }
-  shouldUpdate(e) {
-    return !0;
+  shouldUpdate(e2) {
+    return true;
   }
-  update(e) {
-    this._$EC !== void 0 && (this._$EC.forEach((a, t) => this._$EO(t, this[t], a)), this._$EC = void 0), this._$Ek();
+  update(e2) {
+    void 0 !== this._$EC && (this._$EC.forEach((e3, a2) => this._$EO(a2, this[a2], e3)), this._$EC = void 0), this._$Ek();
   }
-  updated(e) {
+  updated(e2) {
   }
-  firstUpdated(e) {
+  firstUpdated(e2) {
   }
-};
-Q[za] = !0, Q.elementProperties = /* @__PURE__ */ new Map(), Q.elementStyles = [], Q.shadowRootOptions = {
-  mode: "open"
-}, Wa == null || Wa({
-  ReactiveElement: Q
-}), ((Je = Ne.reactiveElementVersions) !== null && Je !== void 0 ? Je : Ne.reactiveElementVersions = []).push("1.6.3");
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-var We;
-const Ae = window, J = Ae.trustedTypes, Xa = J ? J.createPolicy("lit-html", {
-  createHTML: (r) => r
-}) : void 0, va = "$lit$", L = `lit$${(Math.random() + "").slice(9)}$`, lt = "?" + L, eo = `<${lt}>`, Y = document, ce = () => Y.createComment(""), me = (r) => r === null || typeof r != "object" && typeof r != "function", st = Array.isArray, ao = (r) => st(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", Xe = `[ 	
-\f\r]`, ie = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Za = /-->/g, er = />/g, H = RegExp(`>|${Xe}(?:([^\\s"'>=/]+)(${Xe}*=${Xe}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), ar = /'/g, rr = /"/g, ct = /^(?:script|style|textarea|title)$/i, ro = (r) => (e, ...a) => ({
-  _$litType$: r,
-  strings: e,
-  values: a
-}), R = ro(1), q = Symbol.for("lit-noChange"), $ = Symbol.for("lit-nothing"), tr = /* @__PURE__ */ new WeakMap(), V = Y.createTreeWalker(Y, 129, null, !1);
-function mt(r, e) {
-  if (!Array.isArray(r) || !r.hasOwnProperty("raw"))
-    throw Error("invalid template strings array");
-  return Xa !== void 0 ? Xa.createHTML(e) : e;
 }
-const to = (r, e) => {
-  const a = r.length - 1, t = [];
-  let o, i = e === 2 ? "<svg>" : "", n = ie;
-  for (let l = 0; l < a; l++) {
-    const d = r[l];
-    let s, c, p = -1, m = 0;
-    for (; m < d.length && (n.lastIndex = m, c = n.exec(d), c !== null); )
-      m = n.lastIndex, n === ie ? c[1] === "!--" ? n = Za : c[1] !== void 0 ? n = er : c[2] !== void 0 ? (ct.test(c[2]) && (o = RegExp("</" + c[2], "g")), n = H) : c[3] !== void 0 && (n = H) : n === H ? c[0] === ">" ? (n = o ?? ie, p = -1) : c[1] === void 0 ? p = -2 : (p = n.lastIndex - c[2].length, s = c[1], n = c[3] === void 0 ? H : c[3] === '"' ? rr : ar) : n === rr || n === ar ? n = H : n === Za || n === er ? n = ie : (n = H, o = void 0);
-    const u = n === H && r[l + 1].startsWith("/>") ? " " : "";
-    i += n === ie ? d + eo : p >= 0 ? (t.push(s), d.slice(0, p) + va + d.slice(p) + L + u) : d + L + (p === -2 ? (t.push(void 0), l) : u);
+var v;
+f[z] = true, f.elementProperties = /* @__PURE__ */ new Map(), f.elementStyles = [], f.shadowRootOptions = { mode: "open" }, null == p || p({ ReactiveElement: f }), (null !== (s = c.reactiveElementVersions) && void 0 !== s ? s : c.reactiveElementVersions = []).push("1.6.3");
+const y = window, k = y.trustedTypes, x = k ? k.createPolicy("lit-html", { createHTML: (e2) => e2 }) : void 0, w = "$lit$", $ = `lit$${(Math.random() + "").slice(9)}$`, _ = "?" + $, C = `<${_}>`, E = document, S = () => E.createComment(""), I = (e2) => null === e2 || "object" != typeof e2 && "function" != typeof e2, A = Array.isArray, N = "[ 	\n\f\r]", P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, B = /-->/g, O = />/g, M = RegExp(`>|${N}(?:([^\\s"'>=/]+)(${N}*=${N}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, D = /"/g, T = /^(?:script|style|textarea|title)$/i, F = ((e2) => (a2, ...t2) => ({ _$litType$: e2, strings: a2, values: t2 }))(1), L = Symbol.for("lit-noChange"), j = Symbol.for("lit-nothing"), U = /* @__PURE__ */ new WeakMap(), G = E.createTreeWalker(E, 129, null, false);
+function V(e2, a2) {
+  if (!Array.isArray(e2) || !e2.hasOwnProperty("raw"))
+    throw Error("invalid template strings array");
+  return void 0 !== x ? x.createHTML(a2) : a2;
+}
+const H = (e2, a2) => {
+  const t2 = e2.length - 1, r2 = [];
+  let o2, i2 = 2 === a2 ? "<svg>" : "", n2 = P;
+  for (let a3 = 0; a3 < t2; a3++) {
+    const t3 = e2[a3];
+    let d2, l2, s2 = -1, c2 = 0;
+    for (; c2 < t3.length && (n2.lastIndex = c2, l2 = n2.exec(t3), null !== l2); )
+      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = O : void 0 !== l2[2] ? (T.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = M) : void 0 !== l2[3] && (n2 = M) : n2 === M ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? M : '"' === l2[3] ? D : R) : n2 === D || n2 === R ? n2 = M : n2 === B || n2 === O ? n2 = P : (n2 = M, o2 = void 0);
+    const m2 = n2 === M && e2[a3 + 1].startsWith("/>") ? " " : "";
+    i2 += n2 === P ? t3 + C : s2 >= 0 ? (r2.push(d2), t3.slice(0, s2) + w + t3.slice(s2) + $ + m2) : t3 + $ + (-2 === s2 ? (r2.push(void 0), a3) : m2);
   }
-  return [mt(r, i + (r[a] || "<?>") + (e === 2 ? "</svg>" : "")), t];
+  return [V(e2, i2 + (e2[t2] || "<?>") + (2 === a2 ? "</svg>" : "")), r2];
 };
-class ue {
-  constructor({
-    strings: e,
-    _$litType$: a
-  }, t) {
-    let o;
+class Y {
+  constructor({ strings: e2, _$litType$: a2 }, t2) {
+    let r2;
     this.parts = [];
-    let i = 0, n = 0;
-    const l = e.length - 1, d = this.parts, [s, c] = to(e, a);
-    if (this.el = ue.createElement(s, t), V.currentNode = this.el.content, a === 2) {
-      const p = this.el.content, m = p.firstChild;
-      m.remove(), p.append(...m.childNodes);
+    let o2 = 0, i2 = 0;
+    const n2 = e2.length - 1, d2 = this.parts, [l2, s2] = H(e2, a2);
+    if (this.el = Y.createElement(l2, t2), G.currentNode = this.el.content, 2 === a2) {
+      const e3 = this.el.content, a3 = e3.firstChild;
+      a3.remove(), e3.append(...a3.childNodes);
     }
-    for (; (o = V.nextNode()) !== null && d.length < l; ) {
-      if (o.nodeType === 1) {
-        if (o.hasAttributes()) {
-          const p = [];
-          for (const m of o.getAttributeNames())
-            if (m.endsWith(va) || m.startsWith(L)) {
-              const u = c[n++];
-              if (p.push(m), u !== void 0) {
-                const f = o.getAttribute(u.toLowerCase() + va).split(L), h = /([.?@])?(.*)/.exec(u);
-                d.push({
-                  type: 1,
-                  index: i,
-                  name: h[2],
-                  strings: f,
-                  ctor: h[1] === "." ? io : h[1] === "?" ? lo : h[1] === "@" ? so : Re
-                });
+    for (; null !== (r2 = G.nextNode()) && d2.length < n2; ) {
+      if (1 === r2.nodeType) {
+        if (r2.hasAttributes()) {
+          const e3 = [];
+          for (const a3 of r2.getAttributeNames())
+            if (a3.endsWith(w) || a3.startsWith($)) {
+              const t3 = s2[i2++];
+              if (e3.push(a3), void 0 !== t3) {
+                const e4 = r2.getAttribute(t3.toLowerCase() + w).split($), a4 = /([.?@])?(.*)/.exec(t3);
+                d2.push({ type: 1, index: o2, name: a4[2], strings: e4, ctor: "." === a4[1] ? W : "?" === a4[1] ? X : "@" === a4[1] ? ee : q });
               } else
-                d.push({
-                  type: 6,
-                  index: i
-                });
+                d2.push({ type: 6, index: o2 });
             }
-          for (const m of p)
-            o.removeAttribute(m);
+          for (const a3 of e3)
+            r2.removeAttribute(a3);
         }
-        if (ct.test(o.tagName)) {
-          const p = o.textContent.split(L), m = p.length - 1;
-          if (m > 0) {
-            o.textContent = J ? J.emptyScript : "";
-            for (let u = 0; u < m; u++)
-              o.append(p[u], ce()), V.nextNode(), d.push({
-                type: 2,
-                index: ++i
-              });
-            o.append(p[m], ce());
+        if (T.test(r2.tagName)) {
+          const e3 = r2.textContent.split($), a3 = e3.length - 1;
+          if (a3 > 0) {
+            r2.textContent = k ? k.emptyScript : "";
+            for (let t3 = 0; t3 < a3; t3++)
+              r2.append(e3[t3], S()), G.nextNode(), d2.push({ type: 2, index: ++o2 });
+            r2.append(e3[a3], S());
           }
         }
-      } else if (o.nodeType === 8)
-        if (o.data === lt)
-          d.push({
-            type: 2,
-            index: i
-          });
+      } else if (8 === r2.nodeType)
+        if (r2.data === _)
+          d2.push({ type: 2, index: o2 });
         else {
-          let p = -1;
-          for (; (p = o.data.indexOf(L, p + 1)) !== -1; )
-            d.push({
-              type: 7,
-              index: i
-            }), p += L.length - 1;
+          let e3 = -1;
+          for (; -1 !== (e3 = r2.data.indexOf($, e3 + 1)); )
+            d2.push({ type: 7, index: o2 }), e3 += $.length - 1;
         }
-      i++;
+      o2++;
     }
   }
-  static createElement(e, a) {
-    const t = Y.createElement("template");
-    return t.innerHTML = e, t;
+  static createElement(e2, a2) {
+    const t2 = E.createElement("template");
+    return t2.innerHTML = e2, t2;
   }
 }
-function W(r, e, a = r, t) {
-  var o, i, n, l;
-  if (e === q)
-    return e;
-  let d = t !== void 0 ? (o = a._$Co) === null || o === void 0 ? void 0 : o[t] : a._$Cl;
-  const s = me(e) ? void 0 : e._$litDirective$;
-  return (d == null ? void 0 : d.constructor) !== s && ((i = d == null ? void 0 : d._$AO) === null || i === void 0 || i.call(d, !1), s === void 0 ? d = void 0 : (d = new s(r), d._$AT(r, a, t)), t !== void 0 ? ((n = (l = a)._$Co) !== null && n !== void 0 ? n : l._$Co = [])[t] = d : a._$Cl = d), d !== void 0 && (e = W(r, d._$AS(r, e.values), d, t)), e;
+function K(e2, a2, t2 = e2, r2) {
+  var o2, i2, n2, d2;
+  if (a2 === L)
+    return a2;
+  let l2 = void 0 !== r2 ? null === (o2 = t2._$Co) || void 0 === o2 ? void 0 : o2[r2] : t2._$Cl;
+  const s2 = I(a2) ? void 0 : a2._$litDirective$;
+  return (null == l2 ? void 0 : l2.constructor) !== s2 && (null === (i2 = null == l2 ? void 0 : l2._$AO) || void 0 === i2 || i2.call(l2, false), void 0 === s2 ? l2 = void 0 : (l2 = new s2(e2), l2._$AT(e2, t2, r2)), void 0 !== r2 ? (null !== (n2 = (d2 = t2)._$Co) && void 0 !== n2 ? n2 : d2._$Co = [])[r2] = l2 : t2._$Cl = l2), void 0 !== l2 && (a2 = K(e2, l2._$AS(e2, a2.values), l2, r2)), a2;
 }
-class oo {
-  constructor(e, a) {
-    this._$AV = [], this._$AN = void 0, this._$AD = e, this._$AM = a;
+class Q {
+  constructor(e2, a2) {
+    this._$AV = [], this._$AN = void 0, this._$AD = e2, this._$AM = a2;
   }
   get parentNode() {
     return this._$AM.parentNode;
@@ -402,44 +339,39 @@ class oo {
   get _$AU() {
     return this._$AM._$AU;
   }
-  u(e) {
-    var a;
-    const {
-      el: {
-        content: t
-      },
-      parts: o
-    } = this._$AD, i = ((a = e == null ? void 0 : e.creationScope) !== null && a !== void 0 ? a : Y).importNode(t, !0);
-    V.currentNode = i;
-    let n = V.nextNode(), l = 0, d = 0, s = o[0];
-    for (; s !== void 0; ) {
-      if (l === s.index) {
-        let c;
-        s.type === 2 ? c = new fe(n, n.nextSibling, this, e) : s.type === 1 ? c = new s.ctor(n, s.name, s.strings, this, e) : s.type === 6 && (c = new co(n, this, e)), this._$AV.push(c), s = o[++d];
+  u(e2) {
+    var a2;
+    const { el: { content: t2 }, parts: r2 } = this._$AD, o2 = (null !== (a2 = null == e2 ? void 0 : e2.creationScope) && void 0 !== a2 ? a2 : E).importNode(t2, true);
+    G.currentNode = o2;
+    let i2 = G.nextNode(), n2 = 0, d2 = 0, l2 = r2[0];
+    for (; void 0 !== l2; ) {
+      if (n2 === l2.index) {
+        let a3;
+        2 === l2.type ? a3 = new J(i2, i2.nextSibling, this, e2) : 1 === l2.type ? a3 = new l2.ctor(i2, l2.name, l2.strings, this, e2) : 6 === l2.type && (a3 = new ae(i2, this, e2)), this._$AV.push(a3), l2 = r2[++d2];
       }
-      l !== (s == null ? void 0 : s.index) && (n = V.nextNode(), l++);
+      n2 !== (null == l2 ? void 0 : l2.index) && (i2 = G.nextNode(), n2++);
     }
-    return V.currentNode = Y, i;
+    return G.currentNode = E, o2;
   }
-  v(e) {
-    let a = 0;
-    for (const t of this._$AV)
-      t !== void 0 && (t.strings !== void 0 ? (t._$AI(e, t, a), a += t.strings.length - 2) : t._$AI(e[a])), a++;
+  v(e2) {
+    let a2 = 0;
+    for (const t2 of this._$AV)
+      void 0 !== t2 && (void 0 !== t2.strings ? (t2._$AI(e2, t2, a2), a2 += t2.strings.length - 2) : t2._$AI(e2[a2])), a2++;
   }
 }
-class fe {
-  constructor(e, a, t, o) {
-    var i;
-    this.type = 2, this._$AH = $, this._$AN = void 0, this._$AA = e, this._$AB = a, this._$AM = t, this.options = o, this._$Cp = (i = o == null ? void 0 : o.isConnected) === null || i === void 0 || i;
+class J {
+  constructor(e2, a2, t2, r2) {
+    var o2;
+    this.type = 2, this._$AH = j, this._$AN = void 0, this._$AA = e2, this._$AB = a2, this._$AM = t2, this.options = r2, this._$Cp = null === (o2 = null == r2 ? void 0 : r2.isConnected) || void 0 === o2 || o2;
   }
   get _$AU() {
-    var e, a;
-    return (a = (e = this._$AM) === null || e === void 0 ? void 0 : e._$AU) !== null && a !== void 0 ? a : this._$Cp;
+    var e2, a2;
+    return null !== (a2 = null === (e2 = this._$AM) || void 0 === e2 ? void 0 : e2._$AU) && void 0 !== a2 ? a2 : this._$Cp;
   }
   get parentNode() {
-    let e = this._$AA.parentNode;
-    const a = this._$AM;
-    return a !== void 0 && (e == null ? void 0 : e.nodeType) === 11 && (e = a.parentNode), e;
+    let e2 = this._$AA.parentNode;
+    const a2 = this._$AM;
+    return void 0 !== a2 && 11 === (null == e2 ? void 0 : e2.nodeType) && (e2 = a2.parentNode), e2;
   }
   get startNode() {
     return this._$AA;
@@ -447,58 +379,55 @@ class fe {
   get endNode() {
     return this._$AB;
   }
-  _$AI(e, a = this) {
-    e = W(this, e, a), me(e) ? e === $ || e == null || e === "" ? (this._$AH !== $ && this._$AR(), this._$AH = $) : e !== this._$AH && e !== q && this._(e) : e._$litType$ !== void 0 ? this.g(e) : e.nodeType !== void 0 ? this.$(e) : ao(e) ? this.T(e) : this._(e);
+  _$AI(e2, a2 = this) {
+    e2 = K(this, e2, a2), I(e2) ? e2 === j || null == e2 || "" === e2 ? (this._$AH !== j && this._$AR(), this._$AH = j) : e2 !== this._$AH && e2 !== L && this._(e2) : void 0 !== e2._$litType$ ? this.g(e2) : void 0 !== e2.nodeType ? this.$(e2) : ((e3) => A(e3) || "function" == typeof (null == e3 ? void 0 : e3[Symbol.iterator]))(e2) ? this.T(e2) : this._(e2);
   }
-  k(e) {
-    return this._$AA.parentNode.insertBefore(e, this._$AB);
+  k(e2) {
+    return this._$AA.parentNode.insertBefore(e2, this._$AB);
   }
-  $(e) {
-    this._$AH !== e && (this._$AR(), this._$AH = this.k(e));
+  $(e2) {
+    this._$AH !== e2 && (this._$AR(), this._$AH = this.k(e2));
   }
-  _(e) {
-    this._$AH !== $ && me(this._$AH) ? this._$AA.nextSibling.data = e : this.$(Y.createTextNode(e)), this._$AH = e;
+  _(e2) {
+    this._$AH !== j && I(this._$AH) ? this._$AA.nextSibling.data = e2 : this.$(E.createTextNode(e2)), this._$AH = e2;
   }
-  g(e) {
-    var a;
-    const {
-      values: t,
-      _$litType$: o
-    } = e, i = typeof o == "number" ? this._$AC(e) : (o.el === void 0 && (o.el = ue.createElement(mt(o.h, o.h[0]), this.options)), o);
-    if (((a = this._$AH) === null || a === void 0 ? void 0 : a._$AD) === i)
-      this._$AH.v(t);
+  g(e2) {
+    var a2;
+    const { values: t2, _$litType$: r2 } = e2, o2 = "number" == typeof r2 ? this._$AC(e2) : (void 0 === r2.el && (r2.el = Y.createElement(V(r2.h, r2.h[0]), this.options)), r2);
+    if ((null === (a2 = this._$AH) || void 0 === a2 ? void 0 : a2._$AD) === o2)
+      this._$AH.v(t2);
     else {
-      const n = new oo(i, this), l = n.u(this.options);
-      n.v(t), this.$(l), this._$AH = n;
+      const e3 = new Q(o2, this), a3 = e3.u(this.options);
+      e3.v(t2), this.$(a3), this._$AH = e3;
     }
   }
-  _$AC(e) {
-    let a = tr.get(e.strings);
-    return a === void 0 && tr.set(e.strings, a = new ue(e)), a;
+  _$AC(e2) {
+    let a2 = U.get(e2.strings);
+    return void 0 === a2 && U.set(e2.strings, a2 = new Y(e2)), a2;
   }
-  T(e) {
-    st(this._$AH) || (this._$AH = [], this._$AR());
-    const a = this._$AH;
-    let t, o = 0;
-    for (const i of e)
-      o === a.length ? a.push(t = new fe(this.k(ce()), this.k(ce()), this, this.options)) : t = a[o], t._$AI(i), o++;
-    o < a.length && (this._$AR(t && t._$AB.nextSibling, o), a.length = o);
+  T(e2) {
+    A(this._$AH) || (this._$AH = [], this._$AR());
+    const a2 = this._$AH;
+    let t2, r2 = 0;
+    for (const o2 of e2)
+      r2 === a2.length ? a2.push(t2 = new J(this.k(S()), this.k(S()), this, this.options)) : t2 = a2[r2], t2._$AI(o2), r2++;
+    r2 < a2.length && (this._$AR(t2 && t2._$AB.nextSibling, r2), a2.length = r2);
   }
-  _$AR(e = this._$AA.nextSibling, a) {
-    var t;
-    for ((t = this._$AP) === null || t === void 0 || t.call(this, !1, !0, a); e && e !== this._$AB; ) {
-      const o = e.nextSibling;
-      e.remove(), e = o;
+  _$AR(e2 = this._$AA.nextSibling, a2) {
+    var t2;
+    for (null === (t2 = this._$AP) || void 0 === t2 || t2.call(this, false, true, a2); e2 && e2 !== this._$AB; ) {
+      const a3 = e2.nextSibling;
+      e2.remove(), e2 = a3;
     }
   }
-  setConnected(e) {
-    var a;
-    this._$AM === void 0 && (this._$Cp = e, (a = this._$AP) === null || a === void 0 || a.call(this, e));
+  setConnected(e2) {
+    var a2;
+    void 0 === this._$AM && (this._$Cp = e2, null === (a2 = this._$AP) || void 0 === a2 || a2.call(this, e2));
   }
 }
-class Re {
-  constructor(e, a, t, o, i) {
-    this.type = 1, this._$AH = $, this._$AN = void 0, this.element = e, this.name = a, this._$AM = o, this.options = i, t.length > 2 || t[0] !== "" || t[1] !== "" ? (this._$AH = Array(t.length - 1).fill(new String()), this.strings = t) : this._$AH = $;
+class q {
+  constructor(e2, a2, t2, r2, o2) {
+    this.type = 1, this._$AH = j, this._$AN = void 0, this.element = e2, this.name = a2, this._$AM = r2, this.options = o2, t2.length > 2 || "" !== t2[0] || "" !== t2[1] ? (this._$AH = Array(t2.length - 1).fill(new String()), this.strings = t2) : this._$AH = j;
   }
   get tagName() {
     return this.element.tagName;
@@ -506,121 +435,108 @@ class Re {
   get _$AU() {
     return this._$AM._$AU;
   }
-  _$AI(e, a = this, t, o) {
-    const i = this.strings;
-    let n = !1;
-    if (i === void 0)
-      e = W(this, e, a, 0), n = !me(e) || e !== this._$AH && e !== q, n && (this._$AH = e);
+  _$AI(e2, a2 = this, t2, r2) {
+    const o2 = this.strings;
+    let i2 = false;
+    if (void 0 === o2)
+      e2 = K(this, e2, a2, 0), i2 = !I(e2) || e2 !== this._$AH && e2 !== L, i2 && (this._$AH = e2);
     else {
-      const l = e;
-      let d, s;
-      for (e = i[0], d = 0; d < i.length - 1; d++)
-        s = W(this, l[t + d], a, d), s === q && (s = this._$AH[d]), n || (n = !me(s) || s !== this._$AH[d]), s === $ ? e = $ : e !== $ && (e += (s ?? "") + i[d + 1]), this._$AH[d] = s;
+      const r3 = e2;
+      let n2, d2;
+      for (e2 = o2[0], n2 = 0; n2 < o2.length - 1; n2++)
+        d2 = K(this, r3[t2 + n2], a2, n2), d2 === L && (d2 = this._$AH[n2]), i2 || (i2 = !I(d2) || d2 !== this._$AH[n2]), d2 === j ? e2 = j : e2 !== j && (e2 += (null != d2 ? d2 : "") + o2[n2 + 1]), this._$AH[n2] = d2;
     }
-    n && !o && this.j(e);
+    i2 && !r2 && this.j(e2);
   }
-  j(e) {
-    e === $ ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
+  j(e2) {
+    e2 === j ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != e2 ? e2 : "");
   }
 }
-class io extends Re {
+class W extends q {
   constructor() {
     super(...arguments), this.type = 3;
   }
-  j(e) {
-    this.element[this.name] = e === $ ? void 0 : e;
+  j(e2) {
+    this.element[this.name] = e2 === j ? void 0 : e2;
   }
 }
-const no = J ? J.emptyScript : "";
-class lo extends Re {
+const Z = k ? k.emptyScript : "";
+class X extends q {
   constructor() {
     super(...arguments), this.type = 4;
   }
-  j(e) {
-    e && e !== $ ? this.element.setAttribute(this.name, no) : this.element.removeAttribute(this.name);
+  j(e2) {
+    e2 && e2 !== j ? this.element.setAttribute(this.name, Z) : this.element.removeAttribute(this.name);
   }
 }
-class so extends Re {
-  constructor(e, a, t, o, i) {
-    super(e, a, t, o, i), this.type = 5;
+class ee extends q {
+  constructor(e2, a2, t2, r2, o2) {
+    super(e2, a2, t2, r2, o2), this.type = 5;
   }
-  _$AI(e, a = this) {
-    var t;
-    if ((e = (t = W(this, e, a, 0)) !== null && t !== void 0 ? t : $) === q)
+  _$AI(e2, a2 = this) {
+    var t2;
+    if ((e2 = null !== (t2 = K(this, e2, a2, 0)) && void 0 !== t2 ? t2 : j) === L)
       return;
-    const o = this._$AH, i = e === $ && o !== $ || e.capture !== o.capture || e.once !== o.once || e.passive !== o.passive, n = e !== $ && (o === $ || i);
-    i && this.element.removeEventListener(this.name, this, o), n && this.element.addEventListener(this.name, this, e), this._$AH = e;
+    const r2 = this._$AH, o2 = e2 === j && r2 !== j || e2.capture !== r2.capture || e2.once !== r2.once || e2.passive !== r2.passive, i2 = e2 !== j && (r2 === j || o2);
+    o2 && this.element.removeEventListener(this.name, this, r2), i2 && this.element.addEventListener(this.name, this, e2), this._$AH = e2;
   }
-  handleEvent(e) {
-    var a, t;
-    typeof this._$AH == "function" ? this._$AH.call((t = (a = this.options) === null || a === void 0 ? void 0 : a.host) !== null && t !== void 0 ? t : this.element, e) : this._$AH.handleEvent(e);
+  handleEvent(e2) {
+    var a2, t2;
+    "function" == typeof this._$AH ? this._$AH.call(null !== (t2 = null === (a2 = this.options) || void 0 === a2 ? void 0 : a2.host) && void 0 !== t2 ? t2 : this.element, e2) : this._$AH.handleEvent(e2);
   }
 }
-class co {
-  constructor(e, a, t) {
-    this.element = e, this.type = 6, this._$AN = void 0, this._$AM = a, this.options = t;
+class ae {
+  constructor(e2, a2, t2) {
+    this.element = e2, this.type = 6, this._$AN = void 0, this._$AM = a2, this.options = t2;
   }
   get _$AU() {
     return this._$AM._$AU;
   }
-  _$AI(e) {
-    W(this, e);
+  _$AI(e2) {
+    K(this, e2);
   }
 }
-const or = Ae.litHtmlPolyfillSupport;
-or == null || or(ue, fe), ((We = Ae.litHtmlVersions) !== null && We !== void 0 ? We : Ae.litHtmlVersions = []).push("2.8.0");
-const mo = (r, e, a) => {
-  var t, o;
-  const i = (t = a == null ? void 0 : a.renderBefore) !== null && t !== void 0 ? t : e;
-  let n = i._$litPart$;
-  if (n === void 0) {
-    const l = (o = a == null ? void 0 : a.renderBefore) !== null && o !== void 0 ? o : null;
-    i._$litPart$ = n = new fe(e.insertBefore(ce(), l), l, void 0, a ?? {});
-  }
-  return n._$AI(r), n;
-};
-/**
- * @license
- * Copyright 2017 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-var Ze, ea;
-class O extends Q {
+const te = y.litHtmlPolyfillSupport;
+null == te || te(Y, J), (null !== (v = y.litHtmlVersions) && void 0 !== v ? v : y.litHtmlVersions = []).push("2.8.0");
+var re, oe;
+class ie extends f {
   constructor() {
-    super(...arguments), this.renderOptions = {
-      host: this
-    }, this._$Do = void 0;
+    super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
   createRenderRoot() {
-    var e, a;
-    const t = super.createRenderRoot();
-    return (e = (a = this.renderOptions).renderBefore) !== null && e !== void 0 || (a.renderBefore = t.firstChild), t;
+    var e2, a2;
+    const t2 = super.createRenderRoot();
+    return null !== (e2 = (a2 = this.renderOptions).renderBefore) && void 0 !== e2 || (a2.renderBefore = t2.firstChild), t2;
   }
-  update(e) {
-    const a = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e), this._$Do = mo(a, this.renderRoot, this.renderOptions);
+  update(e2) {
+    const a2 = this.render();
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e2), this._$Do = ((e3, a3, t2) => {
+      var r2, o2;
+      const i2 = null !== (r2 = null == t2 ? void 0 : t2.renderBefore) && void 0 !== r2 ? r2 : a3;
+      let n2 = i2._$litPart$;
+      if (void 0 === n2) {
+        const e4 = null !== (o2 = null == t2 ? void 0 : t2.renderBefore) && void 0 !== o2 ? o2 : null;
+        i2._$litPart$ = n2 = new J(a3.insertBefore(S(), e4), e4, void 0, null != t2 ? t2 : {});
+      }
+      return n2._$AI(e3), n2;
+    })(a2, this.renderRoot, this.renderOptions);
   }
   connectedCallback() {
-    var e;
-    super.connectedCallback(), (e = this._$Do) === null || e === void 0 || e.setConnected(!0);
+    var e2;
+    super.connectedCallback(), null === (e2 = this._$Do) || void 0 === e2 || e2.setConnected(true);
   }
   disconnectedCallback() {
-    var e;
-    super.disconnectedCallback(), (e = this._$Do) === null || e === void 0 || e.setConnected(!1);
+    var e2;
+    super.disconnectedCallback(), null === (e2 = this._$Do) || void 0 === e2 || e2.setConnected(false);
   }
   render() {
-    return q;
+    return L;
   }
 }
-O.finalized = !0, O._$litElement$ = !0, (Ze = globalThis.litElementHydrateSupport) === null || Ze === void 0 || Ze.call(globalThis, {
-  LitElement: O
-});
-const ir = globalThis.litElementPolyfillSupport;
-ir == null || ir({
-  LitElement: O
-});
-((ea = globalThis.litElementVersions) !== null && ea !== void 0 ? ea : globalThis.litElementVersions = []).push("3.3.3");
-const uo = re`
+ie.finalized = true, ie._$litElement$ = true, null === (re = globalThis.litElementHydrateSupport) || void 0 === re || re.call(globalThis, { LitElement: ie });
+const ne = globalThis.litElementPolyfillSupport;
+null == ne || ne({ LitElement: ie }), (null !== (oe = globalThis.litElementVersions) && void 0 !== oe ? oe : globalThis.litElementVersions = []).push("3.3.3");
+const de = d`
   input:read-only {
     background-color: #f5f7fa;
   }
@@ -784,270 +700,123 @@ const uo = re`
       transform: scale(1, 1);
     }
   }
-`, po = "http://localhost:3400/api/v1/";
-function ho(r, e, a) {
-  return e = go(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
-}
-function go(r) {
-  var e = fo(r, "string");
-  return typeof e == "symbol" ? e : String(e);
-}
-function fo(r, e) {
-  if (typeof r != "object" || r === null)
-    return r;
-  var a = r[Symbol.toPrimitive];
-  if (a !== void 0) {
-    var t = a.call(r, e || "default");
-    if (typeof t != "object")
-      return t;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (e === "string" ? String : Number)(r);
-}
-const nr = "o21pay-payment", bo = () => navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en";
-class Ra extends O {
+`;
+const le = "o21pay-payment";
+class se extends ie {
   static get properties() {
-    return {
-      merchant_id: {
-        type: String,
-        attribute: "merchant_id"
-      },
-      survey_id: {
-        type: String,
-        attribute: "survey_id"
-      },
-      secretkey: {
-        type: String,
-        attribute: "secretkey"
-      },
-      funnel_id: {
-        type: String,
-        attribute: "funnel_id"
-      },
-      apiurl: {
-        type: String,
-        attribute: "apiurl"
-      },
-      form: {
-        type: Boolean,
-        attribute: "form"
-      },
-      amount: {
-        type: String,
-        attribute: "amount"
-      },
-      currency: {
-        type: String,
-        attribute: "currency"
-      },
-      decimals: {
-        type: String,
-        attribute: "decimals"
-      },
-      order_ref: {
-        type: String,
-        attribute: "order_ref"
-      },
-      hidden_order_ref: {
-        type: Boolean,
-        attribute: "hidden_order_ref"
-      },
-      suggestion: {
-        type: String,
-        attribute: "suggestion"
-      },
-      readonly: {
-        type: Boolean,
-        attribute: "readonly"
-      },
-      hide_menu: {
-        type: Boolean,
-        attribute: "hide_menu"
-      },
-      disabled: {
-        type: Boolean,
-        attribute: "disabled"
-      },
-      qr_size: {
-        type: String,
-        attribute: "qr_size"
-      },
-      primary_color: {
-        type: String,
-        attribute: "primary_color"
-      },
-      data: {
-        type: String,
-        attribute: "data"
-      },
-      lang: {
-        type: String,
-        attribute: "lang"
-      }
-    };
+    return { merchant_id: { type: String, attribute: "merchant_id" }, survey_id: { type: String, attribute: "survey_id" }, secretkey: { type: String, attribute: "secretkey" }, funnel_id: { type: String, attribute: "funnel_id" }, apiurl: { type: String, attribute: "apiurl" }, form: { type: Boolean, attribute: "form" }, amount: { type: String, attribute: "amount" }, currency: { type: String, attribute: "currency" }, decimals: { type: String, attribute: "decimals" }, order_ref: { type: String, attribute: "order_ref" }, hidden_order_ref: { type: Boolean, attribute: "hidden_order_ref" }, suggestion: { type: String, attribute: "suggestion" }, readonly: { type: Boolean, attribute: "readonly" }, hide_menu: { type: Boolean, attribute: "hide_menu" }, disabled: { type: Boolean, attribute: "disabled" }, qr_size: { type: String, attribute: "qr_size" }, primary_color: { type: String, attribute: "primary_color" }, data: { type: String, attribute: "data" }, lang: { type: String, attribute: "lang" } };
   }
   constructor() {
-    super(), this.form = !1, this.url = "", this.amount = "", this.apiurl = po, this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", navigator && (this.locale = bo());
-    const e = this;
+    super(), this.form = false, this.url = "", this.amount = "", this.apiurl = "http://localhost:3400/api/v1/", this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", navigator && (this.locale = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en");
+    const e2 = this;
     setTimeout(function() {
-      e.dispatchEvent(new CustomEvent("o21pay_init", {
-        detail: {
-          instance: e
-        },
-        bubbles: !0,
-        composed: !0
-      }));
+      e2.dispatchEvent(new CustomEvent("o21pay_init", { detail: { instance: e2 }, bubbles: true, composed: true }));
     }, 500);
   }
-  init(e, a) {
+  init(e2, a2) {
     this.url = "";
-    let t = this.renderRoot.querySelector(".o21pay-payment-full");
-    t.style.removeProperty("height"), this.renderRoot.querySelector(".close").style.visibility = "hidden", this.renderRoot.querySelector(".o21pay-edit").hidden = !1, t = this.renderRoot.querySelector("#suggestion"), !this.suggestion || !this.suggestion.length ? t.style.display = "none" : t.style.display = "block", t = this.renderRoot.querySelector("#page2"), t.style.display = "none", e && (this.amount = e), this.order_ref = a || "";
+    let t2 = this.renderRoot.querySelector(".o21pay-payment-full");
+    t2.style.removeProperty("height"), this.renderRoot.querySelector(".close").style.visibility = "hidden", this.renderRoot.querySelector(".o21pay-edit").hidden = false, t2 = this.renderRoot.querySelector("#suggestion"), this.suggestion && this.suggestion.length ? t2.style.display = "block" : t2.style.display = "none", t2 = this.renderRoot.querySelector("#page2"), t2.style.display = "none", e2 && (this.amount = e2), this.order_ref = a2 || "";
   }
-  async _createPaymentLink(e, a, t, o, i, n) {
-    const l = this.apiurl + `merchants/${e}/paymentlinks`, d = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        secretkey: a,
-        amount: t,
-        currency_code: o,
-        order_ref: i,
-        type_payment_request: 2,
-        // Emepheral
-        id_survey: n
-      })
-    }, c = await (await fetch(l, d)).json();
-    return c.data ? c.data.url : (console.log(c), null);
+  async _createPaymentLink(e2, a2, t2, r2, o2, i2) {
+    const n2 = this.apiurl + `merchants/${e2}/paymentlinks`, d2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ secretkey: a2, amount: t2, currency_code: r2, order_ref: o2, type_payment_request: 2, id_survey: i2 }) }, l2 = await fetch(n2, d2), s2 = await l2.json();
+    return s2.data ? s2.data.url : (console.log(s2), null);
   }
-  async _createPaymentLinkFromFunnel(e, a, t, o, i) {
-    const n = this.apiurl + `funnels/${e}/paymentlink`, l = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: a,
-        currency_code: t,
-        order_ref: o,
-        data: i
-      })
-    }, s = await (await fetch(n, l)).json();
-    return s.data ? s.data.url : (console.log(s), null);
+  async _createPaymentLinkFromFunnel(e2, a2, t2, r2, o2) {
+    const i2 = this.apiurl + `funnels/${e2}/paymentlink`, n2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ amount: a2, currency_code: t2, order_ref: r2, data: o2 }) }, d2 = await fetch(i2, n2), l2 = await d2.json();
+    return l2.data ? l2.data.url : (console.log(l2), null);
   }
-  async _onO21Pay(e) {
+  async _onO21Pay(e2) {
     if (this.disabled)
       return;
-    let a = this.renderRoot.querySelector("#amount");
-    if (a) {
-      let o = a.value;
-      o = o.replace(",", "."), o = o.replace("€", ""), this.amount = o;
+    let a2, t2 = this.renderRoot.querySelector("#amount");
+    if (t2) {
+      let e3 = t2.value;
+      e3 = e3.replace(",", "."), e3 = e3.replace("\u20AC", ""), this.amount = e3;
     }
-    if (!this.amount || !this.amount.length) {
-      alert("Missing Amount");
-      return;
-    }
-    if (a = this.renderRoot.querySelector("#order_ref"), a && (this.order_ref = a.value), !this.order_ref || !this.order_ref.length) {
-      alert("Missing order_ref");
-      return;
-    }
-    let t;
-    if (this.funnel_id)
-      t = await this._createPaymentLinkFromFunnel(this.funnel_id, this.amount, this.currency, this.order_ref, this.data);
-    else {
-      if (!this.merchant_id || !this.merchant_id.length) {
-        alert("Missing merchant_id");
-        return;
-      }
-      t = await this._createPaymentLink(this.merchant_id, this.secretkey, this.amount, this.currency, this.order_ref, this.survey_id);
-    }
-    if (t && t.length) {
-      this.url = t, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.lang && (this.url += `&lang=${this.lang}`.toLowerCase());
-      const o = {
-        detail: {
-          url: this.url
-        },
-        bubbles: !0,
-        composed: !0
-      };
-      this.dispatchEvent(new CustomEvent("o21pay_payment_request", o));
-      let i = this.renderRoot.querySelector(".o21pay-payment-full");
-      if (this.form) {
-        this.renderRoot.querySelector(".o21pay-edit").hidden = !0, i.style.height = "200px", this.renderRoot.querySelector(".close").style.visibility = "visible";
-        const n = this;
-        i = n.renderRoot.querySelector("o21pay-qr"), i.url = n.url, i = this.renderRoot.querySelector("#suggestion"), i.style.display = "none", i = n.renderRoot.querySelector("#page2"), i.style.display = "block";
+    if (this.amount && this.amount.length)
+      if (t2 = this.renderRoot.querySelector("#order_ref"), t2 && (this.order_ref = t2.value), this.order_ref && this.order_ref.length) {
+        if (this.funnel_id)
+          a2 = await this._createPaymentLinkFromFunnel(this.funnel_id, this.amount, this.currency, this.order_ref, this.data);
+        else {
+          if (!this.merchant_id || !this.merchant_id.length)
+            return void alert("Missing merchant_id");
+          a2 = await this._createPaymentLink(this.merchant_id, this.secretkey, this.amount, this.currency, this.order_ref, this.survey_id);
+        }
+        if (a2 && a2.length) {
+          this.url = a2, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.lang && (this.url += `&lang=${this.lang}`.toLowerCase());
+          const e3 = { detail: { url: this.url }, bubbles: true, composed: true };
+          this.dispatchEvent(new CustomEvent("o21pay_payment_request", e3));
+          let t3 = this.renderRoot.querySelector(".o21pay-payment-full");
+          if (this.form) {
+            this.renderRoot.querySelector(".o21pay-edit").hidden = true, t3.style.height = "200px", this.renderRoot.querySelector(".close").style.visibility = "visible";
+            const e4 = this;
+            t3 = e4.renderRoot.querySelector("o21pay-qr"), t3.url = e4.url, t3 = this.renderRoot.querySelector("#suggestion"), t3.style.display = "none", t3 = e4.renderRoot.querySelector("#page2"), t3.style.display = "block";
+          } else
+            t3 && (t3.style.height = "52px");
+        }
       } else
-        i && (i.style.height = "52px");
-    }
+        alert("Missing order_ref");
+    else
+      alert("Missing Amount");
   }
-  onInit(e) {
+  onInit(e2) {
     this.init(this.amount, this.order_ref);
   }
-  onFocus(e) {
-    const a = e.target;
-    return a.readOnly === !0 ? null : (a.type = "number", a.value = a.lastValue, a.value);
+  onFocus(e2) {
+    const a2 = e2.target;
+    return true === a2.readOnly ? null : (a2.type = "number", a2.value = a2.lastValue, a2.value);
   }
-  onBlur(e) {
-    const a = e.target;
-    a.value || (a.value = 0), a.lastValue = a.value, this.amount = a.value;
+  onBlur(e2) {
+    const a2 = e2.target;
+    a2.value || (a2.value = 0), a2.lastValue = a2.value, this.amount = a2.value;
   }
-  changeViewInput(e) {
-    if (!e)
+  changeViewInput(e2) {
+    if (!e2)
       return;
-    let a = this.amount;
-    a || (a = 0), e.type = "", a = a.replace(/[^\d\-.,]/g, "").replace(/,/g, ".").replace(/\.(?=.*\.)/g, ""), e.lastValue = a, e.value = parseFloat(a).toLocaleString(this.locale, {
-      style: "currency",
-      maximumFractionDigits: this.decimals,
-      minimumFractionDigits: 2,
-      currency: this.currency,
-      currencyDisplay: "symbol"
-    });
+    let a2 = this.amount;
+    a2 || (a2 = 0), e2.type = "", a2 = a2.replace(/[^\d\-.,]/g, "").replace(/,/g, ".").replace(/\.(?=.*\.)/g, ""), e2.lastValue = a2, e2.value = parseFloat(a2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" });
   }
-  _onTag(e) {
+  _onTag(e2) {
     if (this.disabled)
       return;
-    let a = e.target.dataset.source;
-    a && (a = parseFloat(a), this.amount = a);
+    let a2 = e2.target.dataset.source;
+    a2 && (a2 = parseFloat(a2), this.amount = a2);
   }
-  updated(e) {
-    if (e.has("amount")) {
-      const a = this.renderRoot.getElementById("amount");
-      this.changeViewInput(a);
+  updated(e2) {
+    if (e2.has("amount")) {
+      const e3 = this.renderRoot.getElementById("amount");
+      this.changeViewInput(e3);
     }
-    if (e.has("readonly")) {
-      let a = this.renderRoot.getElementById("amount");
-      a && a.setAttribute("readonly", "readonly"), a = this.renderRoot.getElementById("order_ref"), a && a.setAttribute("readonly", "readonly");
+    if (e2.has("readonly")) {
+      let e3 = this.renderRoot.getElementById("amount");
+      e3 && e3.setAttribute("readonly", "readonly"), e3 = this.renderRoot.getElementById("order_ref"), e3 && e3.setAttribute("readonly", "readonly");
     }
-    if (e.has("disabled")) {
-      let a = this.renderRoot.getElementById("amount");
-      a && a.setAttribute("disabled", "disabled"), a = this.renderRoot.getElementById("order_ref"), a && a.setAttribute("disabled", "disabled");
+    if (e2.has("disabled")) {
+      let e3 = this.renderRoot.getElementById("amount");
+      e3 && e3.setAttribute("disabled", "disabled"), e3 = this.renderRoot.getElementById("order_ref"), e3 && e3.setAttribute("disabled", "disabled");
     }
-    if (e.has("hidden_order_ref")) {
-      let a = this.renderRoot.getElementById("order_ref");
-      a && a.setAttribute("hidden", "hidden");
+    if (e2.has("hidden_order_ref")) {
+      let e3 = this.renderRoot.getElementById("order_ref");
+      e3 && e3.setAttribute("hidden", "hidden");
     }
-    if (e.has("suggestion")) {
-      let a = this.renderRoot.getElementById("suggestion");
-      if (a)
-        if (!this.suggestion || !this.suggestion.length)
-          this.arraySuggestion = [], a.style.display = "none";
-        else {
-          const t = [];
-          this.suggestion.split(",").forEach(function(o) {
-            o.length && (o = Number(o), o > 0 && !isNaN(o) && t.push(o));
-          }), this.arraySuggestion = t, a.style.display = "block";
-        }
+    if (e2.has("suggestion")) {
+      let e3 = this.renderRoot.getElementById("suggestion");
+      if (e3)
+        if (this.suggestion && this.suggestion.length) {
+          const a2 = [];
+          this.suggestion.split(",").forEach(function(e4) {
+            e4.length && (e4 = Number(e4)) > 0 && !isNaN(e4) && a2.push(e4);
+          }), this.arraySuggestion = a2, e3.style.display = "block";
+        } else
+          this.arraySuggestion = [], e3.style.display = "none";
       else
         this.arraySuggestion = [];
       this.requestUpdate();
     }
   }
   render() {
-    return this.form === !0 ? R`
+    return true === this.form ? F`
         <div class="o21pay-payment-container">
           <div class="o21pay-payment-full">
             <div class="close" @click=${this.onInit}></div>
@@ -1080,14 +849,8 @@ class Ra extends O {
               id="suggestion"
               style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
             >
-              ${this.arraySuggestion.map((e) => R`<span class="o21pay-tag" data-source=${e} @click="${this._onTag}">
-                  ${parseFloat(e).toLocaleString(this.locale, {
-      style: "currency",
-      maximumFractionDigits: this.decimals,
-      minimumFractionDigits: 2,
-      currency: this.currency,
-      currencyDisplay: "symbol"
-    })}
+              ${this.arraySuggestion.map((e2) => F`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
+                  ${parseFloat(e2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" })}
                 </span>`)}
             </div>
 
@@ -1117,13 +880,28 @@ class Ra extends O {
             <span>Payment secured and powered by O21Pay</span>
           </div>
         </div>
-      ` : R` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
+      ` : F` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
   }
 }
-ho(Ra, "styles", [uo]);
-const aa = window.customElements;
-aa && !aa.get(nr) && aa.define(nr, Ra);
-const zo = qt`
+var ce, me, ue;
+ce = se, ue = [de], (me = function(e2) {
+  var a2 = function(e3, a3) {
+    if ("object" != typeof e3 || null === e3)
+      return e3;
+    var t2 = e3[Symbol.toPrimitive];
+    if (void 0 !== t2) {
+      var r2 = t2.call(e3, a3 || "default");
+      if ("object" != typeof r2)
+        return r2;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === a3 ? String : Number)(e3);
+  }(e2, "string");
+  return "symbol" == typeof a2 ? a2 : String(a2);
+}(me = "styles")) in ce ? Object.defineProperty(ce, me, { value: ue, enumerable: true, configurable: true, writable: true }) : ce[me] = ue;
+const pe = window.customElements;
+pe && !pe.get(le) && pe.define(le, se);
+const he = e`
   .wrapper {
     opacity: 0;
     z-index: 10;
@@ -1306,114 +1084,59 @@ const zo = qt`
     height: 100%;
   }
 `;
-function vo(r, e, a) {
-  return e = yo(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
-}
-function yo(r) {
-  var e = ko(r, "string");
-  return typeof e == "symbol" ? e : String(e);
-}
-function ko(r, e) {
-  if (typeof r != "object" || r === null)
-    return r;
-  var a = r[Symbol.toPrimitive];
-  if (a !== void 0) {
-    var t = a.call(r, e || "default");
-    if (typeof t != "object")
-      return t;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (e === "string" ? String : Number)(r);
-}
-const dr = "o21pay-dialog";
-class Oa extends O {
+const ge = "o21pay-dialog";
+class be extends ie {
   static get properties() {
-    return {
-      width: {
-        type: String,
-        attribute: "width"
-      },
-      height: {
-        type: String,
-        attribute: "height"
-      },
-      mode: {
-        type: String,
-        attribute: "mode"
-      },
-      url: {
-        type: String
-      },
-      open: {
-        type: Boolean
-      },
-      hideSpinner: {
-        type: Boolean
-      },
-      texts: {
-        type: Array,
-        attribute: "texts"
-      },
-      events: {
-        hasChanged(e, a) {
-          return !0;
-        }
-      }
-    };
+    return { width: { type: String, attribute: "width" }, height: { type: String, attribute: "height" }, mode: { type: String, attribute: "mode" }, url: { type: String }, open: { type: Boolean }, hideSpinner: { type: Boolean }, texts: { type: Array, attribute: "texts" }, events: { hasChanged: (e2, a2) => true } };
   }
   constructor() {
-    super(), this.open = !1, this.oribitStyle = "borderColor: red; animationDuration: 1000ms;", this.width = "375px", this.height = "560px", this.modal = "dialog", this.texts = {
-      TXT_CNX: "Connection in progress..."
-    };
+    super(), this.open = false, this.oribitStyle = "borderColor: red; animationDuration: 1000ms;", this.width = "375px", this.height = "560px", this.modal = "dialog", this.texts = { TXT_CNX: "Connection in progress..." };
   }
-  updated(e) {
-    if (e.has("events")) {
-      const a = e.get("events"), t = this.events;
-      a && window.removeEventListener("message", a);
-      const o = this;
-      window.addEventListener("message", function(i) {
-        if (i && i.data) {
-          const n = i.data;
-          if (n) {
-            const l = n.message;
-            if (l === "o21pay_ready") {
-              const d = o.shadowRoot.getElementById("framePayment");
-              d && (d.style.opacity = 1);
+  updated(e2) {
+    if (e2.has("events")) {
+      const a2 = e2.get("events"), t2 = this.events;
+      a2 && window.removeEventListener("message", a2);
+      const r2 = this;
+      window.addEventListener("message", function(e3) {
+        if (e3 && e3.data) {
+          const a3 = e3.data;
+          if (a3) {
+            const e4 = a3.message;
+            if ("o21pay_ready" === e4) {
+              const e5 = r2.shadowRoot.getElementById("framePayment");
+              e5 && (e5.style.opacity = 1);
             }
-            t && l && t(n);
+            t2 && e4 && t2(a3);
           }
         }
       });
     }
-    super.updated(e);
+    super.updated(e2);
   }
-  init(e, a, t, o = "dialog") {
-    if (!e || !e.length)
-      return !1;
-    a !== void 0 && (this.width = a, this.width = parseInt(a) + "px"), t !== void 0 && (this.height = t, this.height = parseInt(t) + "px"), o !== void 0 && (this.mode = o), this.hideSpinner = !1, e += `&time=${(/* @__PURE__ */ new Date()).getTime()}`;
-    const i = this.renderRoot.querySelector("#framePayment");
-    return i ? (i.style.opacity = 0, this.mode.indexOf("drawer") !== -1 && e.indexOf("&close") === -1 && (e += "&close=1"), e.indexOf("&reset") === -1 && (e += "&reset"), i.src = e, !0) : !1;
+  init(e2, a2, t2, r2 = "dialog") {
+    if (!e2 || !e2.length)
+      return false;
+    void 0 !== a2 && (this.width = a2, this.width = parseInt(a2) + "px"), void 0 !== t2 && (this.height = t2, this.height = parseInt(t2) + "px"), void 0 !== r2 && (this.mode = r2), this.hideSpinner = false, e2 += `&time=${new Date().getTime()}`;
+    const o2 = this.renderRoot.querySelector("#framePayment");
+    return !!o2 && (o2.style.opacity = 0, -1 !== this.mode.indexOf("drawer") && -1 === e2.indexOf("&close") && (e2 += "&close=1"), -1 === e2.indexOf("&reset") && (e2 += "&reset"), o2.src = e2, true);
   }
   reset() {
-    const e = this.shadowRoot.getElementById("framePayment");
-    e.src = "about:blank";
+    this.shadowRoot.getElementById("framePayment").src = "about:blank";
   }
   spinnerStyle() {
     return "display: " + (this.hideSpinner ? "none" : "block");
   }
   closeWindow() {
-    this.open = !1, this.events && this.events({
-      message: "o21pay_closed"
-    }), this.reset();
+    this.open = false, this.events && this.events({ message: "o21pay_closed" }), this.reset();
   }
   render() {
-    let e = "wrapper" + (this.open ? " open" : ""), a = "dialog", t = "", o = "close", i = `width:${this.width}; height:${this.height}`;
-    return this.mode === "drawer-left" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};left:0;`) : this.mode === "drawer-right" ? (a = "drawer", t = "drawer-header", o = "", i = `width:${this.width};right:0;`) : this.mode === "fullscreen" ? i = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : o = "", R`
-      <div class=${e}>
+    let e2 = "wrapper" + (this.open ? " open" : ""), a2 = "dialog", t2 = "", r2 = "close", o2 = `width:${this.width}; height:${this.height}`;
+    return "drawer-left" === this.mode ? (a2 = "drawer", t2 = "drawer-header", r2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", t2 = "drawer-header", r2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : r2 = "", F`
+      <div class=${e2}>
         <div class="overlay"></div>
-        <div class=${a} style=${i}>
-          <div class=${t}></div>
-          <div class=${o} @click=${this.closeWindow}></div>
+        <div class=${a2} style=${o2}>
+          <div class=${t2}></div>
+          <div class=${r2} @click=${this.closeWindow}></div>
           <iframe id="framePayment" class="obv-frameStyle" allowtransparency="true"></iframe>
           <div class="orbit-spinner-text" style=${this.spinnerStyle()}>
             <span>${this.texts.TXT_CNX}</span>
@@ -1428,1554 +1151,963 @@ class Oa extends O {
     `;
   }
   close() {
-    this.open = !1;
+    this.open = false;
   }
 }
-vo(Oa, "styles", [zo]);
-const ra = window.customElements;
-ra && !ra.get(dr) && ra.define(dr, Oa);
-var be = {}, xo = function() {
-  return typeof Promise == "function" && Promise.prototype && Promise.prototype.then;
-}, ut = {}, E = {};
-let Ma;
-const wo = [
-  0,
-  // Not used
-  26,
-  44,
-  70,
-  100,
-  134,
-  172,
-  196,
-  242,
-  292,
-  346,
-  404,
-  466,
-  532,
-  581,
-  655,
-  733,
-  815,
-  901,
-  991,
-  1085,
-  1156,
-  1258,
-  1364,
-  1474,
-  1588,
-  1706,
-  1828,
-  1921,
-  2051,
-  2185,
-  2323,
-  2465,
-  2611,
-  2761,
-  2876,
-  3034,
-  3196,
-  3362,
-  3532,
-  3706
-];
-E.getSymbolSize = function(e) {
-  if (!e)
+!function(e2, a2, t2) {
+  (a2 = function(e3) {
+    var a3 = function(e4, a4) {
+      if ("object" != typeof e4 || null === e4)
+        return e4;
+      var t3 = e4[Symbol.toPrimitive];
+      if (void 0 !== t3) {
+        var r2 = t3.call(e4, a4 || "default");
+        if ("object" != typeof r2)
+          return r2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === a4 ? String : Number)(e4);
+    }(e3, "string");
+    return "symbol" == typeof a3 ? a3 : String(a3);
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+}(be, "styles", [he]);
+const ze = window.customElements;
+ze && !ze.get(ge) && ze.define(ge, be);
+var fe = {}, ve = {}, ye = {};
+let ke;
+const xe = [0, 26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532, 3706];
+ye.getSymbolSize = function(e2) {
+  if (!e2)
     throw new Error('"version" cannot be null or undefined');
-  if (e < 1 || e > 40)
+  if (e2 < 1 || e2 > 40)
     throw new Error('"version" should be in range from 1 to 40');
-  return e * 4 + 17;
-};
-E.getSymbolTotalCodewords = function(e) {
-  return wo[e];
-};
-E.getBCHDigit = function(r) {
-  let e = 0;
-  for (; r !== 0; )
-    e++, r >>>= 1;
-  return e;
-};
-E.setToSJISFunction = function(e) {
-  if (typeof e != "function")
+  return 4 * e2 + 17;
+}, ye.getSymbolTotalCodewords = function(e2) {
+  return xe[e2];
+}, ye.getBCHDigit = function(e2) {
+  let a2 = 0;
+  for (; 0 !== e2; )
+    a2++, e2 >>>= 1;
+  return a2;
+}, ye.setToSJISFunction = function(e2) {
+  if ("function" != typeof e2)
     throw new Error('"toSJISFunc" is not a valid function.');
-  Ma = e;
+  ke = e2;
+}, ye.isKanjiModeEnabled = function() {
+  return void 0 !== ke;
+}, ye.toSJIS = function(e2) {
+  return ke(e2);
 };
-E.isKanjiModeEnabled = function() {
-  return typeof Ma < "u";
-};
-E.toSJIS = function(e) {
-  return Ma(e);
-};
-var Oe = {};
-(function(r) {
-  r.L = {
-    bit: 1
-  }, r.M = {
-    bit: 0
-  }, r.Q = {
-    bit: 3
-  }, r.H = {
-    bit: 2
-  };
-  function e(a) {
-    if (typeof a != "string")
-      throw new Error("Param is not a string");
-    switch (a.toLowerCase()) {
-      case "l":
-      case "low":
-        return r.L;
-      case "m":
-      case "medium":
-        return r.M;
-      case "q":
-      case "quartile":
-        return r.Q;
-      case "h":
-      case "high":
-        return r.H;
-      default:
-        throw new Error("Unknown EC Level: " + a);
-    }
-  }
-  r.isValid = function(t) {
-    return t && typeof t.bit < "u" && t.bit >= 0 && t.bit < 4;
-  }, r.from = function(t, o) {
-    if (r.isValid(t))
-      return t;
-    try {
-      return e(t);
-    } catch {
-      return o;
-    }
-  };
-})(Oe);
-function pt() {
+var we, $e = {};
+function _e() {
   this.buffer = [], this.length = 0;
 }
-pt.prototype = {
-  get: function(r) {
-    const e = Math.floor(r / 8);
-    return (this.buffer[e] >>> 7 - r % 8 & 1) === 1;
-  },
-  put: function(r, e) {
-    for (let a = 0; a < e; a++)
-      this.putBit((r >>> e - a - 1 & 1) === 1);
-  },
-  getLengthInBits: function() {
-    return this.length;
-  },
-  putBit: function(r) {
-    const e = Math.floor(this.length / 8);
-    this.buffer.length <= e && this.buffer.push(0), r && (this.buffer[e] |= 128 >>> this.length % 8), this.length++;
+(we = $e).L = { bit: 1 }, we.M = { bit: 0 }, we.Q = { bit: 3 }, we.H = { bit: 2 }, we.isValid = function(e2) {
+  return e2 && void 0 !== e2.bit && e2.bit >= 0 && e2.bit < 4;
+}, we.from = function(e2, a2) {
+  if (we.isValid(e2))
+    return e2;
+  try {
+    return function(e3) {
+      if ("string" != typeof e3)
+        throw new Error("Param is not a string");
+      switch (e3.toLowerCase()) {
+        case "l":
+        case "low":
+          return we.L;
+        case "m":
+        case "medium":
+          return we.M;
+        case "q":
+        case "quartile":
+          return we.Q;
+        case "h":
+        case "high":
+          return we.H;
+        default:
+          throw new Error("Unknown EC Level: " + e3);
+      }
+    }(e2);
+  } catch (e3) {
+    return a2;
   }
-};
-var $o = pt;
-function ze(r) {
-  if (!r || r < 1)
+}, _e.prototype = { get: function(e2) {
+  const a2 = Math.floor(e2 / 8);
+  return 1 == (this.buffer[a2] >>> 7 - e2 % 8 & 1);
+}, put: function(e2, a2) {
+  for (let t2 = 0; t2 < a2; t2++)
+    this.putBit(1 == (e2 >>> a2 - t2 - 1 & 1));
+}, getLengthInBits: function() {
+  return this.length;
+}, putBit: function(e2) {
+  const a2 = Math.floor(this.length / 8);
+  this.buffer.length <= a2 && this.buffer.push(0), e2 && (this.buffer[a2] |= 128 >>> this.length % 8), this.length++;
+} };
+var Ce = _e;
+function Ee(e2) {
+  if (!e2 || e2 < 1)
     throw new Error("BitMatrix size must be defined and greater than 0");
-  this.size = r, this.data = new Uint8Array(r * r), this.reservedBit = new Uint8Array(r * r);
+  this.size = e2, this.data = new Uint8Array(e2 * e2), this.reservedBit = new Uint8Array(e2 * e2);
 }
-ze.prototype.set = function(r, e, a, t) {
-  const o = r * this.size + e;
-  this.data[o] = a, t && (this.reservedBit[o] = !0);
+Ee.prototype.set = function(e2, a2, t2, r2) {
+  const o2 = e2 * this.size + a2;
+  this.data[o2] = t2, r2 && (this.reservedBit[o2] = true);
+}, Ee.prototype.get = function(e2, a2) {
+  return this.data[e2 * this.size + a2];
+}, Ee.prototype.xor = function(e2, a2, t2) {
+  this.data[e2 * this.size + a2] ^= t2;
+}, Ee.prototype.isReserved = function(e2, a2) {
+  return this.reservedBit[e2 * this.size + a2];
 };
-ze.prototype.get = function(r, e) {
-  return this.data[r * this.size + e];
-};
-ze.prototype.xor = function(r, e, a) {
-  this.data[r * this.size + e] ^= a;
-};
-ze.prototype.isReserved = function(r, e) {
-  return this.reservedBit[r * this.size + e];
-};
-var _o = ze, ht = {};
-(function(r) {
-  const e = E.getSymbolSize;
-  r.getRowColCoords = function(t) {
-    if (t === 1)
+var Se = Ee, Ie = {};
+!function(e2) {
+  const a2 = ye.getSymbolSize;
+  e2.getRowColCoords = function(e3) {
+    if (1 === e3)
       return [];
-    const o = Math.floor(t / 7) + 2, i = e(t), n = i === 145 ? 26 : Math.ceil((i - 13) / (2 * o - 2)) * 2, l = [i - 7];
-    for (let d = 1; d < o - 1; d++)
-      l[d] = l[d - 1] - n;
-    return l.push(6), l.reverse();
-  }, r.getPositions = function(t) {
-    const o = [], i = r.getRowColCoords(t), n = i.length;
-    for (let l = 0; l < n; l++)
-      for (let d = 0; d < n; d++)
-        l === 0 && d === 0 || // top-left
-        l === 0 && d === n - 1 || // bottom-left
-        l === n - 1 && d === 0 || o.push([i[l], i[d]]);
-    return o;
+    const t2 = Math.floor(e3 / 7) + 2, r2 = a2(e3), o2 = 145 === r2 ? 26 : 2 * Math.ceil((r2 - 13) / (2 * t2 - 2)), i2 = [r2 - 7];
+    for (let e4 = 1; e4 < t2 - 1; e4++)
+      i2[e4] = i2[e4 - 1] - o2;
+    return i2.push(6), i2.reverse();
+  }, e2.getPositions = function(a3) {
+    const t2 = [], r2 = e2.getRowColCoords(a3), o2 = r2.length;
+    for (let e3 = 0; e3 < o2; e3++)
+      for (let a4 = 0; a4 < o2; a4++)
+        0 === e3 && 0 === a4 || 0 === e3 && a4 === o2 - 1 || e3 === o2 - 1 && 0 === a4 || t2.push([r2[e3], r2[a4]]);
+    return t2;
   };
-})(ht);
-var gt = {};
-const Co = E.getSymbolSize, lr = 7;
-gt.getPositions = function(e) {
-  const a = Co(e);
-  return [
-    // top-left
-    [0, 0],
-    // top-right
-    [a - lr, 0],
-    // bottom-left
-    [0, a - lr]
-  ];
+}(Ie);
+var Ae = {};
+const Ne = ye.getSymbolSize;
+Ae.getPositions = function(e2) {
+  const a2 = Ne(e2);
+  return [[0, 0], [a2 - 7, 0], [0, a2 - 7]];
 };
-var ft = {};
-(function(r) {
-  r.Patterns = {
-    PATTERN000: 0,
-    PATTERN001: 1,
-    PATTERN010: 2,
-    PATTERN011: 3,
-    PATTERN100: 4,
-    PATTERN101: 5,
-    PATTERN110: 6,
-    PATTERN111: 7
-  };
-  const e = {
-    N1: 3,
-    N2: 3,
-    N3: 40,
-    N4: 10
-  };
-  r.isValid = function(o) {
-    return o != null && o !== "" && !isNaN(o) && o >= 0 && o <= 7;
-  }, r.from = function(o) {
-    return r.isValid(o) ? parseInt(o, 10) : void 0;
-  }, r.getPenaltyN1 = function(o) {
-    const i = o.size;
-    let n = 0, l = 0, d = 0, s = null, c = null;
-    for (let p = 0; p < i; p++) {
-      l = d = 0, s = c = null;
-      for (let m = 0; m < i; m++) {
-        let u = o.get(p, m);
-        u === s ? l++ : (l >= 5 && (n += e.N1 + (l - 5)), s = u, l = 1), u = o.get(m, p), u === c ? d++ : (d >= 5 && (n += e.N1 + (d - 5)), c = u, d = 1);
-      }
-      l >= 5 && (n += e.N1 + (l - 5)), d >= 5 && (n += e.N1 + (d - 5));
-    }
-    return n;
-  }, r.getPenaltyN2 = function(o) {
-    const i = o.size;
-    let n = 0;
-    for (let l = 0; l < i - 1; l++)
-      for (let d = 0; d < i - 1; d++) {
-        const s = o.get(l, d) + o.get(l, d + 1) + o.get(l + 1, d) + o.get(l + 1, d + 1);
-        (s === 4 || s === 0) && n++;
-      }
-    return n * e.N2;
-  }, r.getPenaltyN3 = function(o) {
-    const i = o.size;
-    let n = 0, l = 0, d = 0;
-    for (let s = 0; s < i; s++) {
-      l = d = 0;
-      for (let c = 0; c < i; c++)
-        l = l << 1 & 2047 | o.get(s, c), c >= 10 && (l === 1488 || l === 93) && n++, d = d << 1 & 2047 | o.get(c, s), c >= 10 && (d === 1488 || d === 93) && n++;
-    }
-    return n * e.N3;
-  }, r.getPenaltyN4 = function(o) {
-    let i = 0;
-    const n = o.data.length;
-    for (let d = 0; d < n; d++)
-      i += o.data[d];
-    return Math.abs(Math.ceil(i * 100 / n / 5) - 10) * e.N4;
-  };
-  function a(t, o, i) {
-    switch (t) {
-      case r.Patterns.PATTERN000:
-        return (o + i) % 2 === 0;
-      case r.Patterns.PATTERN001:
-        return o % 2 === 0;
-      case r.Patterns.PATTERN010:
-        return i % 3 === 0;
-      case r.Patterns.PATTERN011:
-        return (o + i) % 3 === 0;
-      case r.Patterns.PATTERN100:
-        return (Math.floor(o / 2) + Math.floor(i / 3)) % 2 === 0;
-      case r.Patterns.PATTERN101:
-        return o * i % 2 + o * i % 3 === 0;
-      case r.Patterns.PATTERN110:
-        return (o * i % 2 + o * i % 3) % 2 === 0;
-      case r.Patterns.PATTERN111:
-        return (o * i % 3 + (o + i) % 2) % 2 === 0;
+var Pe = {};
+!function(e2) {
+  e2.Patterns = { PATTERN000: 0, PATTERN001: 1, PATTERN010: 2, PATTERN011: 3, PATTERN100: 4, PATTERN101: 5, PATTERN110: 6, PATTERN111: 7 };
+  const a2 = 3, t2 = 3, r2 = 40, o2 = 10;
+  function i2(a3, t3, r3) {
+    switch (a3) {
+      case e2.Patterns.PATTERN000:
+        return (t3 + r3) % 2 == 0;
+      case e2.Patterns.PATTERN001:
+        return t3 % 2 == 0;
+      case e2.Patterns.PATTERN010:
+        return r3 % 3 == 0;
+      case e2.Patterns.PATTERN011:
+        return (t3 + r3) % 3 == 0;
+      case e2.Patterns.PATTERN100:
+        return (Math.floor(t3 / 2) + Math.floor(r3 / 3)) % 2 == 0;
+      case e2.Patterns.PATTERN101:
+        return t3 * r3 % 2 + t3 * r3 % 3 == 0;
+      case e2.Patterns.PATTERN110:
+        return (t3 * r3 % 2 + t3 * r3 % 3) % 2 == 0;
+      case e2.Patterns.PATTERN111:
+        return (t3 * r3 % 3 + (t3 + r3) % 2) % 2 == 0;
       default:
-        throw new Error("bad maskPattern:" + t);
+        throw new Error("bad maskPattern:" + a3);
     }
   }
-  r.applyMask = function(o, i) {
-    const n = i.size;
-    for (let l = 0; l < n; l++)
-      for (let d = 0; d < n; d++)
-        i.isReserved(d, l) || i.xor(d, l, a(o, d, l));
-  }, r.getBestMask = function(o, i) {
-    const n = Object.keys(r.Patterns).length;
-    let l = 0, d = 1 / 0;
-    for (let s = 0; s < n; s++) {
-      i(s), r.applyMask(s, o);
-      const c = r.getPenaltyN1(o) + r.getPenaltyN2(o) + r.getPenaltyN3(o) + r.getPenaltyN4(o);
-      r.applyMask(s, o), c < d && (d = c, l = s);
+  e2.isValid = function(e3) {
+    return null != e3 && "" !== e3 && !isNaN(e3) && e3 >= 0 && e3 <= 7;
+  }, e2.from = function(a3) {
+    return e2.isValid(a3) ? parseInt(a3, 10) : void 0;
+  }, e2.getPenaltyN1 = function(e3) {
+    const t3 = e3.size;
+    let r3 = 0, o3 = 0, i3 = 0, n2 = null, d2 = null;
+    for (let l2 = 0; l2 < t3; l2++) {
+      o3 = i3 = 0, n2 = d2 = null;
+      for (let s2 = 0; s2 < t3; s2++) {
+        let t4 = e3.get(l2, s2);
+        t4 === n2 ? o3++ : (o3 >= 5 && (r3 += a2 + (o3 - 5)), n2 = t4, o3 = 1), t4 = e3.get(s2, l2), t4 === d2 ? i3++ : (i3 >= 5 && (r3 += a2 + (i3 - 5)), d2 = t4, i3 = 1);
+      }
+      o3 >= 5 && (r3 += a2 + (o3 - 5)), i3 >= 5 && (r3 += a2 + (i3 - 5));
     }
-    return l;
+    return r3;
+  }, e2.getPenaltyN2 = function(e3) {
+    const a3 = e3.size;
+    let r3 = 0;
+    for (let t3 = 0; t3 < a3 - 1; t3++)
+      for (let o3 = 0; o3 < a3 - 1; o3++) {
+        const a4 = e3.get(t3, o3) + e3.get(t3, o3 + 1) + e3.get(t3 + 1, o3) + e3.get(t3 + 1, o3 + 1);
+        4 !== a4 && 0 !== a4 || r3++;
+      }
+    return r3 * t2;
+  }, e2.getPenaltyN3 = function(e3) {
+    const a3 = e3.size;
+    let t3 = 0, o3 = 0, i3 = 0;
+    for (let r3 = 0; r3 < a3; r3++) {
+      o3 = i3 = 0;
+      for (let n2 = 0; n2 < a3; n2++)
+        o3 = o3 << 1 & 2047 | e3.get(r3, n2), n2 >= 10 && (1488 === o3 || 93 === o3) && t3++, i3 = i3 << 1 & 2047 | e3.get(n2, r3), n2 >= 10 && (1488 === i3 || 93 === i3) && t3++;
+    }
+    return t3 * r2;
+  }, e2.getPenaltyN4 = function(e3) {
+    let a3 = 0;
+    const t3 = e3.data.length;
+    for (let r3 = 0; r3 < t3; r3++)
+      a3 += e3.data[r3];
+    return Math.abs(Math.ceil(100 * a3 / t3 / 5) - 10) * o2;
+  }, e2.applyMask = function(e3, a3) {
+    const t3 = a3.size;
+    for (let r3 = 0; r3 < t3; r3++)
+      for (let o3 = 0; o3 < t3; o3++)
+        a3.isReserved(o3, r3) || a3.xor(o3, r3, i2(e3, o3, r3));
+  }, e2.getBestMask = function(a3, t3) {
+    const r3 = Object.keys(e2.Patterns).length;
+    let o3 = 0, i3 = 1 / 0;
+    for (let n2 = 0; n2 < r3; n2++) {
+      t3(n2), e2.applyMask(n2, a3);
+      const r4 = e2.getPenaltyN1(a3) + e2.getPenaltyN2(a3) + e2.getPenaltyN3(a3) + e2.getPenaltyN4(a3);
+      e2.applyMask(n2, a3), r4 < i3 && (i3 = r4, o3 = n2);
+    }
+    return o3;
   };
-})(ft);
-var Me = {};
-const U = Oe, ke = [
-  // L  M  Q  H
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  2,
-  2,
-  1,
-  2,
-  2,
-  4,
-  1,
-  2,
-  4,
-  4,
-  2,
-  4,
-  4,
-  4,
-  2,
-  4,
-  6,
-  5,
-  2,
-  4,
-  6,
-  6,
-  2,
-  5,
-  8,
-  8,
-  4,
-  5,
-  8,
-  8,
-  4,
-  5,
-  8,
-  11,
-  4,
-  8,
-  10,
-  11,
-  4,
-  9,
-  12,
-  16,
-  4,
-  9,
-  16,
-  16,
-  6,
-  10,
-  12,
-  18,
-  6,
-  10,
-  17,
-  16,
-  6,
-  11,
-  16,
-  19,
-  6,
-  13,
-  18,
-  21,
-  7,
-  14,
-  21,
-  25,
-  8,
-  16,
-  20,
-  25,
-  8,
-  17,
-  23,
-  25,
-  9,
-  17,
-  23,
-  34,
-  9,
-  18,
-  25,
-  30,
-  10,
-  20,
-  27,
-  32,
-  12,
-  21,
-  29,
-  35,
-  12,
-  23,
-  34,
-  37,
-  12,
-  25,
-  34,
-  40,
-  13,
-  26,
-  35,
-  42,
-  14,
-  28,
-  38,
-  45,
-  15,
-  29,
-  40,
-  48,
-  16,
-  31,
-  43,
-  51,
-  17,
-  33,
-  45,
-  54,
-  18,
-  35,
-  48,
-  57,
-  19,
-  37,
-  51,
-  60,
-  19,
-  38,
-  53,
-  63,
-  20,
-  40,
-  56,
-  66,
-  21,
-  43,
-  59,
-  70,
-  22,
-  45,
-  62,
-  74,
-  24,
-  47,
-  65,
-  77,
-  25,
-  49,
-  68,
-  81
-], xe = [
-  // L  M  Q  H
-  7,
-  10,
-  13,
-  17,
-  10,
-  16,
-  22,
-  28,
-  15,
-  26,
-  36,
-  44,
-  20,
-  36,
-  52,
-  64,
-  26,
-  48,
-  72,
-  88,
-  36,
-  64,
-  96,
-  112,
-  40,
-  72,
-  108,
-  130,
-  48,
-  88,
-  132,
-  156,
-  60,
-  110,
-  160,
-  192,
-  72,
-  130,
-  192,
-  224,
-  80,
-  150,
-  224,
-  264,
-  96,
-  176,
-  260,
-  308,
-  104,
-  198,
-  288,
-  352,
-  120,
-  216,
-  320,
-  384,
-  132,
-  240,
-  360,
-  432,
-  144,
-  280,
-  408,
-  480,
-  168,
-  308,
-  448,
-  532,
-  180,
-  338,
-  504,
-  588,
-  196,
-  364,
-  546,
-  650,
-  224,
-  416,
-  600,
-  700,
-  224,
-  442,
-  644,
-  750,
-  252,
-  476,
-  690,
-  816,
-  270,
-  504,
-  750,
-  900,
-  300,
-  560,
-  810,
-  960,
-  312,
-  588,
-  870,
-  1050,
-  336,
-  644,
-  952,
-  1110,
-  360,
-  700,
-  1020,
-  1200,
-  390,
-  728,
-  1050,
-  1260,
-  420,
-  784,
-  1140,
-  1350,
-  450,
-  812,
-  1200,
-  1440,
-  480,
-  868,
-  1290,
-  1530,
-  510,
-  924,
-  1350,
-  1620,
-  540,
-  980,
-  1440,
-  1710,
-  570,
-  1036,
-  1530,
-  1800,
-  570,
-  1064,
-  1590,
-  1890,
-  600,
-  1120,
-  1680,
-  1980,
-  630,
-  1204,
-  1770,
-  2100,
-  660,
-  1260,
-  1860,
-  2220,
-  720,
-  1316,
-  1950,
-  2310,
-  750,
-  1372,
-  2040,
-  2430
-];
-Me.getBlocksCount = function(e, a) {
-  switch (a) {
-    case U.L:
-      return ke[(e - 1) * 4 + 0];
-    case U.M:
-      return ke[(e - 1) * 4 + 1];
-    case U.Q:
-      return ke[(e - 1) * 4 + 2];
-    case U.H:
-      return ke[(e - 1) * 4 + 3];
+}(Pe);
+var Be = {};
+const Oe = $e, Me = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 4, 1, 2, 4, 4, 2, 4, 4, 4, 2, 4, 6, 5, 2, 4, 6, 6, 2, 5, 8, 8, 4, 5, 8, 8, 4, 5, 8, 11, 4, 8, 10, 11, 4, 9, 12, 16, 4, 9, 16, 16, 6, 10, 12, 18, 6, 10, 17, 16, 6, 11, 16, 19, 6, 13, 18, 21, 7, 14, 21, 25, 8, 16, 20, 25, 8, 17, 23, 25, 9, 17, 23, 34, 9, 18, 25, 30, 10, 20, 27, 32, 12, 21, 29, 35, 12, 23, 34, 37, 12, 25, 34, 40, 13, 26, 35, 42, 14, 28, 38, 45, 15, 29, 40, 48, 16, 31, 43, 51, 17, 33, 45, 54, 18, 35, 48, 57, 19, 37, 51, 60, 19, 38, 53, 63, 20, 40, 56, 66, 21, 43, 59, 70, 22, 45, 62, 74, 24, 47, 65, 77, 25, 49, 68, 81], Re = [7, 10, 13, 17, 10, 16, 22, 28, 15, 26, 36, 44, 20, 36, 52, 64, 26, 48, 72, 88, 36, 64, 96, 112, 40, 72, 108, 130, 48, 88, 132, 156, 60, 110, 160, 192, 72, 130, 192, 224, 80, 150, 224, 264, 96, 176, 260, 308, 104, 198, 288, 352, 120, 216, 320, 384, 132, 240, 360, 432, 144, 280, 408, 480, 168, 308, 448, 532, 180, 338, 504, 588, 196, 364, 546, 650, 224, 416, 600, 700, 224, 442, 644, 750, 252, 476, 690, 816, 270, 504, 750, 900, 300, 560, 810, 960, 312, 588, 870, 1050, 336, 644, 952, 1110, 360, 700, 1020, 1200, 390, 728, 1050, 1260, 420, 784, 1140, 1350, 450, 812, 1200, 1440, 480, 868, 1290, 1530, 510, 924, 1350, 1620, 540, 980, 1440, 1710, 570, 1036, 1530, 1800, 570, 1064, 1590, 1890, 600, 1120, 1680, 1980, 630, 1204, 1770, 2100, 660, 1260, 1860, 2220, 720, 1316, 1950, 2310, 750, 1372, 2040, 2430];
+Be.getBlocksCount = function(e2, a2) {
+  switch (a2) {
+    case Oe.L:
+      return Me[4 * (e2 - 1) + 0];
+    case Oe.M:
+      return Me[4 * (e2 - 1) + 1];
+    case Oe.Q:
+      return Me[4 * (e2 - 1) + 2];
+    case Oe.H:
+      return Me[4 * (e2 - 1) + 3];
+    default:
+      return;
+  }
+}, Be.getTotalCodewordsCount = function(e2, a2) {
+  switch (a2) {
+    case Oe.L:
+      return Re[4 * (e2 - 1) + 0];
+    case Oe.M:
+      return Re[4 * (e2 - 1) + 1];
+    case Oe.Q:
+      return Re[4 * (e2 - 1) + 2];
+    case Oe.H:
+      return Re[4 * (e2 - 1) + 3];
     default:
       return;
   }
 };
-Me.getTotalCodewordsCount = function(e, a) {
-  switch (a) {
-    case U.L:
-      return xe[(e - 1) * 4 + 0];
-    case U.M:
-      return xe[(e - 1) * 4 + 1];
-    case U.Q:
-      return xe[(e - 1) * 4 + 2];
-    case U.H:
-      return xe[(e - 1) * 4 + 3];
-    default:
-      return;
-  }
-};
-var bt = {}, De = {};
-const ne = new Uint8Array(512), Ie = new Uint8Array(256);
-(function() {
-  let e = 1;
-  for (let a = 0; a < 255; a++)
-    ne[a] = e, Ie[e] = a, e <<= 1, e & 256 && (e ^= 285);
-  for (let a = 255; a < 512; a++)
-    ne[a] = ne[a - 255];
-})();
-De.log = function(e) {
-  if (e < 1)
-    throw new Error("log(" + e + ")");
-  return Ie[e];
-};
-De.exp = function(e) {
-  return ne[e];
-};
-De.mul = function(e, a) {
-  return e === 0 || a === 0 ? 0 : ne[Ie[e] + Ie[a]];
-};
-(function(r) {
-  const e = De;
-  r.mul = function(t, o) {
-    const i = new Uint8Array(t.length + o.length - 1);
-    for (let n = 0; n < t.length; n++)
-      for (let l = 0; l < o.length; l++)
-        i[n + l] ^= e.mul(t[n], o[l]);
-    return i;
-  }, r.mod = function(t, o) {
-    let i = new Uint8Array(t);
-    for (; i.length - o.length >= 0; ) {
-      const n = i[0];
-      for (let d = 0; d < o.length; d++)
-        i[d] ^= e.mul(o[d], n);
-      let l = 0;
-      for (; l < i.length && i[l] === 0; )
-        l++;
-      i = i.slice(l);
+var De = {}, Te = {};
+const Fe = new Uint8Array(512), Le = new Uint8Array(256);
+!function() {
+  let e2 = 1;
+  for (let a2 = 0; a2 < 255; a2++)
+    Fe[a2] = e2, Le[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
+  for (let e3 = 255; e3 < 512; e3++)
+    Fe[e3] = Fe[e3 - 255];
+}(), Te.log = function(e2) {
+  if (e2 < 1)
+    throw new Error("log(" + e2 + ")");
+  return Le[e2];
+}, Te.exp = function(e2) {
+  return Fe[e2];
+}, Te.mul = function(e2, a2) {
+  return 0 === e2 || 0 === a2 ? 0 : Fe[Le[e2] + Le[a2]];
+}, function(e2) {
+  const a2 = Te;
+  e2.mul = function(e3, t2) {
+    const r2 = new Uint8Array(e3.length + t2.length - 1);
+    for (let o2 = 0; o2 < e3.length; o2++)
+      for (let i2 = 0; i2 < t2.length; i2++)
+        r2[o2 + i2] ^= a2.mul(e3[o2], t2[i2]);
+    return r2;
+  }, e2.mod = function(e3, t2) {
+    let r2 = new Uint8Array(e3);
+    for (; r2.length - t2.length >= 0; ) {
+      const e4 = r2[0];
+      for (let o3 = 0; o3 < t2.length; o3++)
+        r2[o3] ^= a2.mul(t2[o3], e4);
+      let o2 = 0;
+      for (; o2 < r2.length && 0 === r2[o2]; )
+        o2++;
+      r2 = r2.slice(o2);
     }
-    return i;
-  }, r.generateECPolynomial = function(t) {
-    let o = new Uint8Array([1]);
-    for (let i = 0; i < t; i++)
-      o = r.mul(o, new Uint8Array([1, e.exp(i)]));
-    return o;
+    return r2;
+  }, e2.generateECPolynomial = function(t2) {
+    let r2 = new Uint8Array([1]);
+    for (let o2 = 0; o2 < t2; o2++)
+      r2 = e2.mul(r2, new Uint8Array([1, a2.exp(o2)]));
+    return r2;
   };
-})(bt);
-const zt = bt;
-function Da(r) {
-  this.genPoly = void 0, this.degree = r, this.degree && this.initialize(this.degree);
+}(De);
+const je = De;
+function Ue(e2) {
+  this.genPoly = void 0, this.degree = e2, this.degree && this.initialize(this.degree);
 }
-Da.prototype.initialize = function(e) {
-  this.degree = e, this.genPoly = zt.generateECPolynomial(this.degree);
-};
-Da.prototype.encode = function(e) {
+Ue.prototype.initialize = function(e2) {
+  this.degree = e2, this.genPoly = je.generateECPolynomial(this.degree);
+}, Ue.prototype.encode = function(e2) {
   if (!this.genPoly)
     throw new Error("Encoder not initialized");
-  const a = new Uint8Array(e.length + this.degree);
-  a.set(e);
-  const t = zt.mod(a, this.genPoly), o = this.degree - t.length;
-  if (o > 0) {
-    const i = new Uint8Array(this.degree);
-    return i.set(t, o), i;
+  const a2 = new Uint8Array(e2.length + this.degree);
+  a2.set(e2);
+  const t2 = je.mod(a2, this.genPoly), r2 = this.degree - t2.length;
+  if (r2 > 0) {
+    const e3 = new Uint8Array(this.degree);
+    return e3.set(t2, r2), e3;
   }
-  return t;
+  return t2;
 };
-var Eo = Da, vt = {}, G = {}, La = {};
-La.isValid = function(e) {
-  return !isNaN(e) && e >= 1 && e <= 40;
-};
-var P = {};
-const yt = "[0-9]+", No = "[A-Z $%*+\\-./:]+";
-let pe = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
-pe = pe.replace(/u/g, "\\u");
-const Ao = "(?:(?![A-Z0-9 $%*+\\-./:]|" + pe + `)(?:.|[\r
-]))+`;
-P.KANJI = new RegExp(pe, "g");
-P.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g");
-P.BYTE = new RegExp(Ao, "g");
-P.NUMERIC = new RegExp(yt, "g");
-P.ALPHANUMERIC = new RegExp(No, "g");
-const Io = new RegExp("^" + pe + "$"), So = new RegExp("^" + yt + "$"), Po = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
-P.testKanji = function(e) {
-  return Io.test(e);
-};
-P.testNumeric = function(e) {
-  return So.test(e);
-};
-P.testAlphanumeric = function(e) {
-  return Po.test(e);
-};
-(function(r) {
-  const e = La, a = P;
-  r.NUMERIC = {
-    id: "Numeric",
-    bit: 1,
-    ccBits: [10, 12, 14]
-  }, r.ALPHANUMERIC = {
-    id: "Alphanumeric",
-    bit: 2,
-    ccBits: [9, 11, 13]
-  }, r.BYTE = {
-    id: "Byte",
-    bit: 4,
-    ccBits: [8, 16, 16]
-  }, r.KANJI = {
-    id: "Kanji",
-    bit: 8,
-    ccBits: [8, 10, 12]
-  }, r.MIXED = {
-    bit: -1
-  }, r.getCharCountIndicator = function(i, n) {
-    if (!i.ccBits)
-      throw new Error("Invalid mode: " + i);
-    if (!e.isValid(n))
-      throw new Error("Invalid version: " + n);
-    return n >= 1 && n < 10 ? i.ccBits[0] : n < 27 ? i.ccBits[1] : i.ccBits[2];
-  }, r.getBestModeForData = function(i) {
-    return a.testNumeric(i) ? r.NUMERIC : a.testAlphanumeric(i) ? r.ALPHANUMERIC : a.testKanji(i) ? r.KANJI : r.BYTE;
-  }, r.toString = function(i) {
-    if (i && i.id)
-      return i.id;
+var Ge = Ue, Ve = {}, He = {}, Ye = { isValid: function(e2) {
+  return !isNaN(e2) && e2 >= 1 && e2 <= 40;
+} }, Ke = {};
+const Qe = "[0-9]+";
+let Je = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
+Je = Je.replace(/u/g, "\\u");
+const qe = "(?:(?![A-Z0-9 $%*+\\-./:]|" + Je + ")(?:.|[\r\n]))+";
+Ke.KANJI = new RegExp(Je, "g"), Ke.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g"), Ke.BYTE = new RegExp(qe, "g"), Ke.NUMERIC = new RegExp(Qe, "g"), Ke.ALPHANUMERIC = new RegExp("[A-Z $%*+\\-./:]+", "g");
+const We = new RegExp("^" + Je + "$"), Ze = new RegExp("^" + Qe + "$"), Xe = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
+Ke.testKanji = function(e2) {
+  return We.test(e2);
+}, Ke.testNumeric = function(e2) {
+  return Ze.test(e2);
+}, Ke.testAlphanumeric = function(e2) {
+  return Xe.test(e2);
+}, function(e2) {
+  const a2 = Ye, t2 = Ke;
+  e2.NUMERIC = { id: "Numeric", bit: 1, ccBits: [10, 12, 14] }, e2.ALPHANUMERIC = { id: "Alphanumeric", bit: 2, ccBits: [9, 11, 13] }, e2.BYTE = { id: "Byte", bit: 4, ccBits: [8, 16, 16] }, e2.KANJI = { id: "Kanji", bit: 8, ccBits: [8, 10, 12] }, e2.MIXED = { bit: -1 }, e2.getCharCountIndicator = function(e3, t3) {
+    if (!e3.ccBits)
+      throw new Error("Invalid mode: " + e3);
+    if (!a2.isValid(t3))
+      throw new Error("Invalid version: " + t3);
+    return t3 >= 1 && t3 < 10 ? e3.ccBits[0] : t3 < 27 ? e3.ccBits[1] : e3.ccBits[2];
+  }, e2.getBestModeForData = function(a3) {
+    return t2.testNumeric(a3) ? e2.NUMERIC : t2.testAlphanumeric(a3) ? e2.ALPHANUMERIC : t2.testKanji(a3) ? e2.KANJI : e2.BYTE;
+  }, e2.toString = function(e3) {
+    if (e3 && e3.id)
+      return e3.id;
     throw new Error("Invalid mode");
-  }, r.isValid = function(i) {
-    return i && i.bit && i.ccBits;
-  };
-  function t(o) {
-    if (typeof o != "string")
-      throw new Error("Param is not a string");
-    switch (o.toLowerCase()) {
-      case "numeric":
-        return r.NUMERIC;
-      case "alphanumeric":
-        return r.ALPHANUMERIC;
-      case "kanji":
-        return r.KANJI;
-      case "byte":
-        return r.BYTE;
-      default:
-        throw new Error("Unknown mode: " + o);
-    }
-  }
-  r.from = function(i, n) {
-    if (r.isValid(i))
-      return i;
+  }, e2.isValid = function(e3) {
+    return e3 && e3.bit && e3.ccBits;
+  }, e2.from = function(a3, t3) {
+    if (e2.isValid(a3))
+      return a3;
     try {
-      return t(i);
-    } catch {
-      return n;
+      return function(a4) {
+        if ("string" != typeof a4)
+          throw new Error("Param is not a string");
+        switch (a4.toLowerCase()) {
+          case "numeric":
+            return e2.NUMERIC;
+          case "alphanumeric":
+            return e2.ALPHANUMERIC;
+          case "kanji":
+            return e2.KANJI;
+          case "byte":
+            return e2.BYTE;
+          default:
+            throw new Error("Unknown mode: " + a4);
+        }
+      }(a3);
+    } catch (e3) {
+      return t3;
     }
   };
-})(G);
-(function(r) {
-  const e = E, a = Me, t = Oe, o = G, i = La, n = 7973, l = e.getBCHDigit(n);
-  function d(m, u, f) {
-    for (let h = 1; h <= 40; h++)
-      if (u <= r.getCapacity(h, f, m))
-        return h;
+}(He), function(e2) {
+  const a2 = ye, t2 = Be, r2 = $e, o2 = He, i2 = Ye, n2 = a2.getBCHDigit(7973);
+  function d2(e3, a3) {
+    return o2.getCharCountIndicator(e3, a3) + 4;
   }
-  function s(m, u) {
-    return o.getCharCountIndicator(m, u) + 4;
+  function l2(e3, a3) {
+    let t3 = 0;
+    return e3.forEach(function(e4) {
+      const r3 = d2(e4.mode, a3);
+      t3 += r3 + e4.getBitsLength();
+    }), t3;
   }
-  function c(m, u) {
-    let f = 0;
-    return m.forEach(function(h) {
-      const y = s(h.mode, u);
-      f += y + h.getBitsLength();
-    }), f;
-  }
-  function p(m, u) {
-    for (let f = 1; f <= 40; f++)
-      if (c(m, f) <= r.getCapacity(f, u, o.MIXED))
-        return f;
-  }
-  r.from = function(u, f) {
-    return i.isValid(u) ? parseInt(u, 10) : f;
-  }, r.getCapacity = function(u, f, h) {
-    if (!i.isValid(u))
+  e2.from = function(e3, a3) {
+    return i2.isValid(e3) ? parseInt(e3, 10) : a3;
+  }, e2.getCapacity = function(e3, r3, n3) {
+    if (!i2.isValid(e3))
       throw new Error("Invalid QR Code version");
-    typeof h > "u" && (h = o.BYTE);
-    const y = e.getSymbolTotalCodewords(u), b = a.getTotalCodewordsCount(u, f), g = (y - b) * 8;
-    if (h === o.MIXED)
-      return g;
-    const z = g - s(h, u);
-    switch (h) {
-      case o.NUMERIC:
-        return Math.floor(z / 10 * 3);
-      case o.ALPHANUMERIC:
-        return Math.floor(z / 11 * 2);
-      case o.KANJI:
-        return Math.floor(z / 13);
-      case o.BYTE:
+    void 0 === n3 && (n3 = o2.BYTE);
+    const l3 = 8 * (a2.getSymbolTotalCodewords(e3) - t2.getTotalCodewordsCount(e3, r3));
+    if (n3 === o2.MIXED)
+      return l3;
+    const s2 = l3 - d2(n3, e3);
+    switch (n3) {
+      case o2.NUMERIC:
+        return Math.floor(s2 / 10 * 3);
+      case o2.ALPHANUMERIC:
+        return Math.floor(s2 / 11 * 2);
+      case o2.KANJI:
+        return Math.floor(s2 / 13);
+      case o2.BYTE:
       default:
-        return Math.floor(z / 8);
+        return Math.floor(s2 / 8);
     }
-  }, r.getBestVersionForData = function(u, f) {
-    let h;
-    const y = t.from(f, t.M);
-    if (Array.isArray(u)) {
-      if (u.length > 1)
-        return p(u, y);
-      if (u.length === 0)
+  }, e2.getBestVersionForData = function(a3, t3) {
+    let i3;
+    const n3 = r2.from(t3, r2.M);
+    if (Array.isArray(a3)) {
+      if (a3.length > 1)
+        return function(a4, t4) {
+          for (let r3 = 1; r3 <= 40; r3++)
+            if (l2(a4, r3) <= e2.getCapacity(r3, t4, o2.MIXED))
+              return r3;
+        }(a3, n3);
+      if (0 === a3.length)
         return 1;
-      h = u[0];
+      i3 = a3[0];
     } else
-      h = u;
-    return d(h.mode, h.getLength(), y);
-  }, r.getEncodedBits = function(u) {
-    if (!i.isValid(u) || u < 7)
+      i3 = a3;
+    return function(a4, t4, r3) {
+      for (let o3 = 1; o3 <= 40; o3++)
+        if (t4 <= e2.getCapacity(o3, r3, a4))
+          return o3;
+    }(i3.mode, i3.getLength(), n3);
+  }, e2.getEncodedBits = function(e3) {
+    if (!i2.isValid(e3) || e3 < 7)
       throw new Error("Invalid QR Code version");
-    let f = u << 12;
-    for (; e.getBCHDigit(f) - l >= 0; )
-      f ^= n << e.getBCHDigit(f) - l;
-    return u << 12 | f;
+    let t3 = e3 << 12;
+    for (; a2.getBCHDigit(t3) - n2 >= 0; )
+      t3 ^= 7973 << a2.getBCHDigit(t3) - n2;
+    return e3 << 12 | t3;
   };
-})(vt);
-var kt = {};
-const ya = E, xt = 1335, Bo = 21522, sr = ya.getBCHDigit(xt);
-kt.getEncodedBits = function(e, a) {
-  const t = e.bit << 3 | a;
-  let o = t << 10;
-  for (; ya.getBCHDigit(o) - sr >= 0; )
-    o ^= xt << ya.getBCHDigit(o) - sr;
-  return (t << 10 | o) ^ Bo;
+}(Ve);
+var ea = {};
+const aa = ye, ta = aa.getBCHDigit(1335);
+ea.getEncodedBits = function(e2, a2) {
+  const t2 = e2.bit << 3 | a2;
+  let r2 = t2 << 10;
+  for (; aa.getBCHDigit(r2) - ta >= 0; )
+    r2 ^= 1335 << aa.getBCHDigit(r2) - ta;
+  return 21522 ^ (t2 << 10 | r2);
 };
-var wt = {};
-const To = G;
-function X(r) {
-  this.mode = To.NUMERIC, this.data = r.toString();
+var ra = {};
+const oa = He;
+function ia(e2) {
+  this.mode = oa.NUMERIC, this.data = e2.toString();
 }
-X.getBitsLength = function(e) {
-  return 10 * Math.floor(e / 3) + (e % 3 ? e % 3 * 3 + 1 : 0);
-};
-X.prototype.getLength = function() {
+ia.getBitsLength = function(e2) {
+  return 10 * Math.floor(e2 / 3) + (e2 % 3 ? e2 % 3 * 3 + 1 : 0);
+}, ia.prototype.getLength = function() {
   return this.data.length;
+}, ia.prototype.getBitsLength = function() {
+  return ia.getBitsLength(this.data.length);
+}, ia.prototype.write = function(e2) {
+  let a2, t2, r2;
+  for (a2 = 0; a2 + 3 <= this.data.length; a2 += 3)
+    t2 = this.data.substr(a2, 3), r2 = parseInt(t2, 10), e2.put(r2, 10);
+  const o2 = this.data.length - a2;
+  o2 > 0 && (t2 = this.data.substr(a2), r2 = parseInt(t2, 10), e2.put(r2, 3 * o2 + 1));
 };
-X.prototype.getBitsLength = function() {
-  return X.getBitsLength(this.data.length);
-};
-X.prototype.write = function(e) {
-  let a, t, o;
-  for (a = 0; a + 3 <= this.data.length; a += 3)
-    t = this.data.substr(a, 3), o = parseInt(t, 10), e.put(o, 10);
-  const i = this.data.length - a;
-  i > 0 && (t = this.data.substr(a), o = parseInt(t, 10), e.put(o, i * 3 + 1));
-};
-var Fo = X;
-const Ro = G, ta = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
-function Z(r) {
-  this.mode = Ro.ALPHANUMERIC, this.data = r;
+var na = ia;
+const da = He, la = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
+function sa(e2) {
+  this.mode = da.ALPHANUMERIC, this.data = e2;
 }
-Z.getBitsLength = function(e) {
-  return 11 * Math.floor(e / 2) + 6 * (e % 2);
-};
-Z.prototype.getLength = function() {
+sa.getBitsLength = function(e2) {
+  return 11 * Math.floor(e2 / 2) + e2 % 2 * 6;
+}, sa.prototype.getLength = function() {
   return this.data.length;
-};
-Z.prototype.getBitsLength = function() {
-  return Z.getBitsLength(this.data.length);
-};
-Z.prototype.write = function(e) {
-  let a;
-  for (a = 0; a + 2 <= this.data.length; a += 2) {
-    let t = ta.indexOf(this.data[a]) * 45;
-    t += ta.indexOf(this.data[a + 1]), e.put(t, 11);
+}, sa.prototype.getBitsLength = function() {
+  return sa.getBitsLength(this.data.length);
+}, sa.prototype.write = function(e2) {
+  let a2;
+  for (a2 = 0; a2 + 2 <= this.data.length; a2 += 2) {
+    let t2 = 45 * la.indexOf(this.data[a2]);
+    t2 += la.indexOf(this.data[a2 + 1]), e2.put(t2, 11);
   }
-  this.data.length % 2 && e.put(ta.indexOf(this.data[a]), 6);
+  this.data.length % 2 && e2.put(la.indexOf(this.data[a2]), 6);
 };
-var Oo = Z, Mo = function(e) {
-  for (var a = [], t = e.length, o = 0; o < t; o++) {
-    var i = e.charCodeAt(o);
-    if (i >= 55296 && i <= 56319 && t > o + 1) {
-      var n = e.charCodeAt(o + 1);
-      n >= 56320 && n <= 57343 && (i = (i - 55296) * 1024 + n - 56320 + 65536, o += 1);
+var ca = sa;
+const ma = function(e2) {
+  for (var a2 = [], t2 = e2.length, r2 = 0; r2 < t2; r2++) {
+    var o2 = e2.charCodeAt(r2);
+    if (o2 >= 55296 && o2 <= 56319 && t2 > r2 + 1) {
+      var i2 = e2.charCodeAt(r2 + 1);
+      i2 >= 56320 && i2 <= 57343 && (o2 = 1024 * (o2 - 55296) + i2 - 56320 + 65536, r2 += 1);
     }
-    if (i < 128) {
-      a.push(i);
-      continue;
-    }
-    if (i < 2048) {
-      a.push(i >> 6 | 192), a.push(i & 63 | 128);
-      continue;
-    }
-    if (i < 55296 || i >= 57344 && i < 65536) {
-      a.push(i >> 12 | 224), a.push(i >> 6 & 63 | 128), a.push(i & 63 | 128);
-      continue;
-    }
-    if (i >= 65536 && i <= 1114111) {
-      a.push(i >> 18 | 240), a.push(i >> 12 & 63 | 128), a.push(i >> 6 & 63 | 128), a.push(i & 63 | 128);
-      continue;
-    }
-    a.push(239, 191, 189);
+    o2 < 128 ? a2.push(o2) : o2 < 2048 ? (a2.push(o2 >> 6 | 192), a2.push(63 & o2 | 128)) : o2 < 55296 || o2 >= 57344 && o2 < 65536 ? (a2.push(o2 >> 12 | 224), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : o2 >= 65536 && o2 <= 1114111 ? (a2.push(o2 >> 18 | 240), a2.push(o2 >> 12 & 63 | 128), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : a2.push(239, 191, 189);
   }
-  return new Uint8Array(a).buffer;
-};
-const Do = Mo, Lo = G;
-function ee(r) {
-  this.mode = Lo.BYTE, typeof r == "string" && (r = Do(r)), this.data = new Uint8Array(r);
+  return new Uint8Array(a2).buffer;
+}, ua = He;
+function pa(e2) {
+  this.mode = ua.BYTE, "string" == typeof e2 && (e2 = ma(e2)), this.data = new Uint8Array(e2);
 }
-ee.getBitsLength = function(e) {
-  return e * 8;
-};
-ee.prototype.getLength = function() {
+pa.getBitsLength = function(e2) {
+  return 8 * e2;
+}, pa.prototype.getLength = function() {
   return this.data.length;
+}, pa.prototype.getBitsLength = function() {
+  return pa.getBitsLength(this.data.length);
+}, pa.prototype.write = function(e2) {
+  for (let a2 = 0, t2 = this.data.length; a2 < t2; a2++)
+    e2.put(this.data[a2], 8);
 };
-ee.prototype.getBitsLength = function() {
-  return ee.getBitsLength(this.data.length);
-};
-ee.prototype.write = function(r) {
-  for (let e = 0, a = this.data.length; e < a; e++)
-    r.put(this.data[e], 8);
-};
-var Uo = ee;
-const Go = G, Ho = E;
-function ae(r) {
-  this.mode = Go.KANJI, this.data = r;
+var ha = pa;
+const ga = He, ba = ye;
+function za(e2) {
+  this.mode = ga.KANJI, this.data = e2;
 }
-ae.getBitsLength = function(e) {
-  return e * 13;
-};
-ae.prototype.getLength = function() {
+za.getBitsLength = function(e2) {
+  return 13 * e2;
+}, za.prototype.getLength = function() {
   return this.data.length;
-};
-ae.prototype.getBitsLength = function() {
-  return ae.getBitsLength(this.data.length);
-};
-ae.prototype.write = function(r) {
-  let e;
-  for (e = 0; e < this.data.length; e++) {
-    let a = Ho.toSJIS(this.data[e]);
-    if (a >= 33088 && a <= 40956)
-      a -= 33088;
-    else if (a >= 57408 && a <= 60351)
-      a -= 49472;
-    else
-      throw new Error("Invalid SJIS character: " + this.data[e] + `
-Make sure your charset is UTF-8`);
-    a = (a >>> 8 & 255) * 192 + (a & 255), r.put(a, 13);
-  }
-};
-var Vo = ae, $t = { exports: {} };
-(function(r) {
-  var e = {
-    single_source_shortest_paths: function(a, t, o) {
-      var i = {}, n = {};
-      n[t] = 0;
-      var l = e.PriorityQueue.make();
-      l.push(t, 0);
-      for (var d, s, c, p, m, u, f, h, y; !l.empty(); ) {
-        d = l.pop(), s = d.value, p = d.cost, m = a[s] || {};
-        for (c in m)
-          m.hasOwnProperty(c) && (u = m[c], f = p + u, h = n[c], y = typeof n[c] > "u", (y || h > f) && (n[c] = f, l.push(c, f), i[c] = s));
-      }
-      if (typeof o < "u" && typeof n[o] > "u") {
-        var b = ["Could not find a path from ", t, " to ", o, "."].join("");
-        throw new Error(b);
-      }
-      return i;
-    },
-    extract_shortest_path_from_predecessor_list: function(a, t) {
-      for (var o = [], i = t; i; )
-        o.push(i), a[i], i = a[i];
-      return o.reverse(), o;
-    },
-    find_path: function(a, t, o) {
-      var i = e.single_source_shortest_paths(a, t, o);
-      return e.extract_shortest_path_from_predecessor_list(i, o);
-    },
-    /**
-     * A very naive priority queue implementation.
-     */
-    PriorityQueue: {
-      make: function(a) {
-        var t = e.PriorityQueue, o = {}, i;
-        a = a || {};
-        for (i in t)
-          t.hasOwnProperty(i) && (o[i] = t[i]);
-        return o.queue = [], o.sorter = a.sorter || t.default_sorter, o;
-      },
-      default_sorter: function(a, t) {
-        return a.cost - t.cost;
-      },
-      /**
-       * Add a new item to the queue and ensure the highest priority element
-       * is at the front of the queue.
-       */
-      push: function(a, t) {
-        var o = {
-          value: a,
-          cost: t
-        };
-        this.queue.push(o), this.queue.sort(this.sorter);
-      },
-      /**
-       * Return the highest priority element in the queue.
-       */
-      pop: function() {
-        return this.queue.shift();
-      },
-      empty: function() {
-        return this.queue.length === 0;
-      }
+}, za.prototype.getBitsLength = function() {
+  return za.getBitsLength(this.data.length);
+}, za.prototype.write = function(e2) {
+  let a2;
+  for (a2 = 0; a2 < this.data.length; a2++) {
+    let t2 = ba.toSJIS(this.data[a2]);
+    if (t2 >= 33088 && t2 <= 40956)
+      t2 -= 33088;
+    else {
+      if (!(t2 >= 57408 && t2 <= 60351))
+        throw new Error("Invalid SJIS character: " + this.data[a2] + "\nMake sure your charset is UTF-8");
+      t2 -= 49472;
     }
-  };
-  r.exports = e;
-})($t);
-var jo = $t.exports;
-(function(r) {
-  const e = G, a = Fo, t = Oo, o = Uo, i = Vo, n = P, l = E, d = jo;
-  function s(b) {
-    return unescape(encodeURIComponent(b)).length;
+    t2 = 192 * (t2 >>> 8 & 255) + (255 & t2), e2.put(t2, 13);
   }
-  function c(b, g, z) {
-    const v = [];
-    let k;
-    for (; (k = b.exec(z)) !== null; )
-      v.push({
-        data: k[0],
-        index: k.index,
-        mode: g,
-        length: k[0].length
-      });
-    return v;
+};
+var fa = za, va = { exports: {} };
+!function(e2) {
+  var a2 = { single_source_shortest_paths: function(e3, t2, r2) {
+    var o2 = {}, i2 = {};
+    i2[t2] = 0;
+    var n2, d2, l2, s2, c2, m2, u2, p2 = a2.PriorityQueue.make();
+    for (p2.push(t2, 0); !p2.empty(); )
+      for (l2 in d2 = (n2 = p2.pop()).value, s2 = n2.cost, c2 = e3[d2] || {})
+        c2.hasOwnProperty(l2) && (m2 = s2 + c2[l2], u2 = i2[l2], (void 0 === i2[l2] || u2 > m2) && (i2[l2] = m2, p2.push(l2, m2), o2[l2] = d2));
+    if (void 0 !== r2 && void 0 === i2[r2]) {
+      var h2 = ["Could not find a path from ", t2, " to ", r2, "."].join("");
+      throw new Error(h2);
+    }
+    return o2;
+  }, extract_shortest_path_from_predecessor_list: function(e3, a3) {
+    for (var t2 = [], r2 = a3; r2; )
+      t2.push(r2), e3[r2], r2 = e3[r2];
+    return t2.reverse(), t2;
+  }, find_path: function(e3, t2, r2) {
+    var o2 = a2.single_source_shortest_paths(e3, t2, r2);
+    return a2.extract_shortest_path_from_predecessor_list(o2, r2);
+  }, PriorityQueue: { make: function(e3) {
+    var t2, r2 = a2.PriorityQueue, o2 = {};
+    for (t2 in e3 = e3 || {}, r2)
+      r2.hasOwnProperty(t2) && (o2[t2] = r2[t2]);
+    return o2.queue = [], o2.sorter = e3.sorter || r2.default_sorter, o2;
+  }, default_sorter: function(e3, a3) {
+    return e3.cost - a3.cost;
+  }, push: function(e3, a3) {
+    var t2 = { value: e3, cost: a3 };
+    this.queue.push(t2), this.queue.sort(this.sorter);
+  }, pop: function() {
+    return this.queue.shift();
+  }, empty: function() {
+    return 0 === this.queue.length;
+  } } };
+  e2.exports = a2;
+}(va), function(e2) {
+  const a2 = He, t2 = na, r2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = va.exports;
+  function s2(e3) {
+    return unescape(encodeURIComponent(e3)).length;
   }
-  function p(b) {
-    const g = c(n.NUMERIC, e.NUMERIC, b), z = c(n.ALPHANUMERIC, e.ALPHANUMERIC, b);
-    let v, k;
-    return l.isKanjiModeEnabled() ? (v = c(n.BYTE, e.BYTE, b), k = c(n.KANJI, e.KANJI, b)) : (v = c(n.BYTE_KANJI, e.BYTE, b), k = []), g.concat(z, v, k).sort(function(w, N) {
-      return w.index - N.index;
-    }).map(function(w) {
-      return {
-        data: w.data,
-        mode: w.mode,
-        length: w.length
-      };
+  function c2(e3, a3, t3) {
+    const r3 = [];
+    let o3;
+    for (; null !== (o3 = e3.exec(t3)); )
+      r3.push({ data: o3[0], index: o3.index, mode: a3, length: o3[0].length });
+    return r3;
+  }
+  function m2(e3) {
+    const t3 = c2(n2.NUMERIC, a2.NUMERIC, e3), r3 = c2(n2.ALPHANUMERIC, a2.ALPHANUMERIC, e3);
+    let o3, i3;
+    d2.isKanjiModeEnabled() ? (o3 = c2(n2.BYTE, a2.BYTE, e3), i3 = c2(n2.KANJI, a2.KANJI, e3)) : (o3 = c2(n2.BYTE_KANJI, a2.BYTE, e3), i3 = []);
+    return t3.concat(r3, o3, i3).sort(function(e4, a3) {
+      return e4.index - a3.index;
+    }).map(function(e4) {
+      return { data: e4.data, mode: e4.mode, length: e4.length };
     });
   }
-  function m(b, g) {
-    switch (g) {
-      case e.NUMERIC:
-        return a.getBitsLength(b);
-      case e.ALPHANUMERIC:
-        return t.getBitsLength(b);
-      case e.KANJI:
-        return i.getBitsLength(b);
-      case e.BYTE:
-        return o.getBitsLength(b);
+  function u2(e3, n3) {
+    switch (n3) {
+      case a2.NUMERIC:
+        return t2.getBitsLength(e3);
+      case a2.ALPHANUMERIC:
+        return r2.getBitsLength(e3);
+      case a2.KANJI:
+        return i2.getBitsLength(e3);
+      case a2.BYTE:
+        return o2.getBitsLength(e3);
     }
   }
-  function u(b) {
-    return b.reduce(function(g, z) {
-      const v = g.length - 1 >= 0 ? g[g.length - 1] : null;
-      return v && v.mode === z.mode ? (g[g.length - 1].data += z.data, g) : (g.push(z), g);
+  function p2(e3, n3) {
+    let l3;
+    const s3 = a2.getBestModeForData(e3);
+    if (l3 = a2.from(n3, s3), l3 !== a2.BYTE && l3.bit < s3.bit)
+      throw new Error('"' + e3 + '" cannot be encoded with mode ' + a2.toString(l3) + ".\n Suggested mode is: " + a2.toString(s3));
+    switch (l3 !== a2.KANJI || d2.isKanjiModeEnabled() || (l3 = a2.BYTE), l3) {
+      case a2.NUMERIC:
+        return new t2(e3);
+      case a2.ALPHANUMERIC:
+        return new r2(e3);
+      case a2.KANJI:
+        return new i2(e3);
+      case a2.BYTE:
+        return new o2(e3);
+    }
+  }
+  e2.fromArray = function(e3) {
+    return e3.reduce(function(e4, a3) {
+      return "string" == typeof a3 ? e4.push(p2(a3, null)) : a3.data && e4.push(p2(a3.data, a3.mode)), e4;
     }, []);
-  }
-  function f(b) {
-    const g = [];
-    for (let z = 0; z < b.length; z++) {
-      const v = b[z];
-      switch (v.mode) {
-        case e.NUMERIC:
-          g.push([v, {
-            data: v.data,
-            mode: e.ALPHANUMERIC,
-            length: v.length
-          }, {
-            data: v.data,
-            mode: e.BYTE,
-            length: v.length
-          }]);
-          break;
-        case e.ALPHANUMERIC:
-          g.push([v, {
-            data: v.data,
-            mode: e.BYTE,
-            length: v.length
-          }]);
-          break;
-        case e.KANJI:
-          g.push([v, {
-            data: v.data,
-            mode: e.BYTE,
-            length: s(v.data)
-          }]);
-          break;
-        case e.BYTE:
-          g.push([{
-            data: v.data,
-            mode: e.BYTE,
-            length: s(v.data)
-          }]);
-      }
-    }
-    return g;
-  }
-  function h(b, g) {
-    const z = {}, v = {
-      start: {}
-    };
-    let k = ["start"];
-    for (let x = 0; x < b.length; x++) {
-      const w = b[x], N = [];
-      for (let D = 0; D < w.length; D++) {
-        const S = w[D], oe = "" + x + D;
-        N.push(oe), z[oe] = {
-          node: S,
-          lastCount: 0
-        }, v[oe] = {};
-        for (let Ke = 0; Ke < k.length; Ke++) {
-          const B = k[Ke];
-          z[B] && z[B].node.mode === S.mode ? (v[B][oe] = m(z[B].lastCount + S.length, S.mode) - m(z[B].lastCount, S.mode), z[B].lastCount += S.length) : (z[B] && (z[B].lastCount = S.length), v[B][oe] = m(S.length, S.mode) + 4 + e.getCharCountIndicator(S.mode, g));
+  }, e2.fromString = function(t3, r3) {
+    const o3 = function(e3) {
+      const t4 = [];
+      for (let r4 = 0; r4 < e3.length; r4++) {
+        const o4 = e3[r4];
+        switch (o4.mode) {
+          case a2.NUMERIC:
+            t4.push([o4, { data: o4.data, mode: a2.ALPHANUMERIC, length: o4.length }, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
+            break;
+          case a2.ALPHANUMERIC:
+            t4.push([o4, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
+            break;
+          case a2.KANJI:
+            t4.push([o4, { data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
+            break;
+          case a2.BYTE:
+            t4.push([{ data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
         }
       }
-      k = N;
-    }
-    for (let x = 0; x < k.length; x++)
-      v[k[x]].end = 0;
-    return {
-      map: v,
-      table: z
-    };
-  }
-  function y(b, g) {
-    let z;
-    const v = e.getBestModeForData(b);
-    if (z = e.from(g, v), z !== e.BYTE && z.bit < v.bit)
-      throw new Error('"' + b + '" cannot be encoded with mode ' + e.toString(z) + `.
- Suggested mode is: ` + e.toString(v));
-    switch (z === e.KANJI && !l.isKanjiModeEnabled() && (z = e.BYTE), z) {
-      case e.NUMERIC:
-        return new a(b);
-      case e.ALPHANUMERIC:
-        return new t(b);
-      case e.KANJI:
-        return new i(b);
-      case e.BYTE:
-        return new o(b);
-    }
-  }
-  r.fromArray = function(g) {
-    return g.reduce(function(z, v) {
-      return typeof v == "string" ? z.push(y(v, null)) : v.data && z.push(y(v.data, v.mode)), z;
-    }, []);
-  }, r.fromString = function(g, z) {
-    const v = p(g, l.isKanjiModeEnabled()), k = f(v), x = h(k, z), w = d.find_path(x.map, "start", "end"), N = [];
-    for (let D = 1; D < w.length - 1; D++)
-      N.push(x.table[w[D]].node);
-    return r.fromArray(u(N));
-  }, r.rawSplit = function(g) {
-    return r.fromArray(p(g, l.isKanjiModeEnabled()));
+      return t4;
+    }(m2(t3, d2.isKanjiModeEnabled())), i3 = function(e3, t4) {
+      const r4 = {}, o4 = { start: {} };
+      let i4 = ["start"];
+      for (let n4 = 0; n4 < e3.length; n4++) {
+        const d3 = e3[n4], l3 = [];
+        for (let e4 = 0; e4 < d3.length; e4++) {
+          const s3 = d3[e4], c4 = "" + n4 + e4;
+          l3.push(c4), r4[c4] = { node: s3, lastCount: 0 }, o4[c4] = {};
+          for (let e5 = 0; e5 < i4.length; e5++) {
+            const n5 = i4[e5];
+            r4[n5] && r4[n5].node.mode === s3.mode ? (o4[n5][c4] = u2(r4[n5].lastCount + s3.length, s3.mode) - u2(r4[n5].lastCount, s3.mode), r4[n5].lastCount += s3.length) : (r4[n5] && (r4[n5].lastCount = s3.length), o4[n5][c4] = u2(s3.length, s3.mode) + 4 + a2.getCharCountIndicator(s3.mode, t4));
+          }
+        }
+        i4 = l3;
+      }
+      for (let e4 = 0; e4 < i4.length; e4++)
+        o4[i4[e4]].end = 0;
+      return { map: o4, table: r4 };
+    }(o3, r3), n3 = l2.find_path(i3.map, "start", "end"), c3 = [];
+    for (let e3 = 1; e3 < n3.length - 1; e3++)
+      c3.push(i3.table[n3[e3]].node);
+    return e2.fromArray(function(e3) {
+      return e3.reduce(function(e4, a3) {
+        const t4 = e4.length - 1 >= 0 ? e4[e4.length - 1] : null;
+        return t4 && t4.mode === a3.mode ? (e4[e4.length - 1].data += a3.data, e4) : (e4.push(a3), e4);
+      }, []);
+    }(c3));
+  }, e2.rawSplit = function(a3) {
+    return e2.fromArray(m2(a3, d2.isKanjiModeEnabled()));
   };
-})(wt);
-const Le = E, oa = Oe, Yo = $o, Ko = _o, Qo = ht, Jo = gt, ka = ft, xa = Me, qo = Eo, Se = vt, Wo = kt, Xo = G, ia = wt;
-function Zo(r, e) {
-  const a = r.size, t = Jo.getPositions(e);
-  for (let o = 0; o < t.length; o++) {
-    const i = t[o][0], n = t[o][1];
-    for (let l = -1; l <= 7; l++)
-      if (!(i + l <= -1 || a <= i + l))
-        for (let d = -1; d <= 7; d++)
-          n + d <= -1 || a <= n + d || (l >= 0 && l <= 6 && (d === 0 || d === 6) || d >= 0 && d <= 6 && (l === 0 || l === 6) || l >= 2 && l <= 4 && d >= 2 && d <= 4 ? r.set(i + l, n + d, !0, !0) : r.set(i + l, n + d, !1, !0));
-  }
+}(ra);
+const ya = ye, ka = $e, xa = Ce, wa = Se, $a = Ie, _a = Ae, Ca = Pe, Ea = Be, Sa = Ge, Ia = Ve, Aa = ea, Na = He, Pa = ra;
+function Ba(e2, a2, t2) {
+  const r2 = e2.size, o2 = Aa.getEncodedBits(a2, t2);
+  let i2, n2;
+  for (i2 = 0; i2 < 15; i2++)
+    n2 = 1 == (o2 >> i2 & 1), i2 < 6 ? e2.set(i2, 8, n2, true) : i2 < 8 ? e2.set(i2 + 1, 8, n2, true) : e2.set(r2 - 15 + i2, 8, n2, true), i2 < 8 ? e2.set(8, r2 - i2 - 1, n2, true) : i2 < 9 ? e2.set(8, 15 - i2 - 1 + 1, n2, true) : e2.set(8, 15 - i2 - 1, n2, true);
+  e2.set(r2 - 8, 8, 1, true);
 }
-function ei(r) {
-  const e = r.size;
-  for (let a = 8; a < e - 8; a++) {
-    const t = a % 2 === 0;
-    r.set(a, 6, t, !0), r.set(6, a, t, !0);
-  }
-}
-function ai(r, e) {
-  const a = Qo.getPositions(e);
-  for (let t = 0; t < a.length; t++) {
-    const o = a[t][0], i = a[t][1];
-    for (let n = -2; n <= 2; n++)
-      for (let l = -2; l <= 2; l++)
-        n === -2 || n === 2 || l === -2 || l === 2 || n === 0 && l === 0 ? r.set(o + n, i + l, !0, !0) : r.set(o + n, i + l, !1, !0);
-  }
-}
-function ri(r, e) {
-  const a = r.size, t = Se.getEncodedBits(e);
-  let o, i, n;
-  for (let l = 0; l < 18; l++)
-    o = Math.floor(l / 3), i = l % 3 + a - 8 - 3, n = (t >> l & 1) === 1, r.set(o, i, n, !0), r.set(i, o, n, !0);
-}
-function na(r, e, a) {
-  const t = r.size, o = Wo.getEncodedBits(e, a);
-  let i, n;
-  for (i = 0; i < 15; i++)
-    n = (o >> i & 1) === 1, i < 6 ? r.set(i, 8, n, !0) : i < 8 ? r.set(i + 1, 8, n, !0) : r.set(t - 15 + i, 8, n, !0), i < 8 ? r.set(8, t - i - 1, n, !0) : i < 9 ? r.set(8, 15 - i - 1 + 1, n, !0) : r.set(8, 15 - i - 1, n, !0);
-  r.set(t - 8, 8, 1, !0);
-}
-function ti(r, e) {
-  const a = r.size;
-  let t = -1, o = a - 1, i = 7, n = 0;
-  for (let l = a - 1; l > 0; l -= 2)
-    for (l === 6 && l--; ; ) {
-      for (let d = 0; d < 2; d++)
-        if (!r.isReserved(o, l - d)) {
-          let s = !1;
-          n < e.length && (s = (e[n] >>> i & 1) === 1), r.set(o, l - d, s), i--, i === -1 && (n++, i = 7);
-        }
-      if (o += t, o < 0 || a <= o) {
-        o -= t, t = -t;
-        break;
-      }
-    }
-}
-function oi(r, e, a) {
-  const t = new Yo();
-  a.forEach(function(d) {
-    t.put(d.mode.bit, 4), t.put(d.getLength(), Xo.getCharCountIndicator(d.mode, r)), d.write(t);
+function Oa(e2, a2, t2) {
+  const r2 = new xa();
+  t2.forEach(function(a3) {
+    r2.put(a3.mode.bit, 4), r2.put(a3.getLength(), Na.getCharCountIndicator(a3.mode, e2)), a3.write(r2);
   });
-  const o = Le.getSymbolTotalCodewords(r), i = xa.getTotalCodewordsCount(r, e), n = (o - i) * 8;
-  for (t.getLengthInBits() + 4 <= n && t.put(0, 4); t.getLengthInBits() % 8 !== 0; )
-    t.putBit(0);
-  const l = (n - t.getLengthInBits()) / 8;
-  for (let d = 0; d < l; d++)
-    t.put(d % 2 ? 17 : 236, 8);
-  return ii(t, r, e);
-}
-function ii(r, e, a) {
-  const t = Le.getSymbolTotalCodewords(e), o = xa.getTotalCodewordsCount(e, a), i = t - o, n = xa.getBlocksCount(e, a), l = t % n, d = n - l, s = Math.floor(t / n), c = Math.floor(i / n), p = c + 1, m = s - c, u = new qo(m);
-  let f = 0;
-  const h = new Array(n), y = new Array(n);
-  let b = 0;
-  const g = new Uint8Array(r.buffer);
-  for (let w = 0; w < n; w++) {
-    const N = w < d ? c : p;
-    h[w] = g.slice(f, f + N), y[w] = u.encode(h[w]), f += N, b = Math.max(b, N);
-  }
-  const z = new Uint8Array(t);
-  let v = 0, k, x;
-  for (k = 0; k < b; k++)
-    for (x = 0; x < n; x++)
-      k < h[x].length && (z[v++] = h[x][k]);
-  for (k = 0; k < m; k++)
-    for (x = 0; x < n; x++)
-      z[v++] = y[x][k];
-  return z;
-}
-function ni(r, e, a, t) {
-  let o;
-  if (Array.isArray(r))
-    o = ia.fromArray(r);
-  else if (typeof r == "string") {
-    let s = e;
-    if (!s) {
-      const c = ia.rawSplit(r);
-      s = Se.getBestVersionForData(c, a);
+  const o2 = 8 * (ya.getSymbolTotalCodewords(e2) - Ea.getTotalCodewordsCount(e2, a2));
+  for (r2.getLengthInBits() + 4 <= o2 && r2.put(0, 4); r2.getLengthInBits() % 8 != 0; )
+    r2.putBit(0);
+  const i2 = (o2 - r2.getLengthInBits()) / 8;
+  for (let e3 = 0; e3 < i2; e3++)
+    r2.put(e3 % 2 ? 17 : 236, 8);
+  return function(e3, a3, t3) {
+    const r3 = ya.getSymbolTotalCodewords(a3), o3 = Ea.getTotalCodewordsCount(a3, t3), i3 = r3 - o3, n2 = Ea.getBlocksCount(a3, t3), d2 = r3 % n2, l2 = n2 - d2, s2 = Math.floor(r3 / n2), c2 = Math.floor(i3 / n2), m2 = c2 + 1, u2 = s2 - c2, p2 = new Sa(u2);
+    let h2 = 0;
+    const g2 = new Array(n2), b2 = new Array(n2);
+    let z2 = 0;
+    const f2 = new Uint8Array(e3.buffer);
+    for (let e4 = 0; e4 < n2; e4++) {
+      const a4 = e4 < l2 ? c2 : m2;
+      g2[e4] = f2.slice(h2, h2 + a4), b2[e4] = p2.encode(g2[e4]), h2 += a4, z2 = Math.max(z2, a4);
     }
-    o = ia.fromString(r, s || 40);
-  } else
-    throw new Error("Invalid data");
-  const i = Se.getBestVersionForData(o, a);
-  if (!i)
-    throw new Error("The amount of data is too big to be stored in a QR Code");
-  if (!e)
-    e = i;
-  else if (e < i)
-    throw new Error(`
-The chosen QR Code version cannot contain this amount of data.
-Minimum version required to store current data is: ` + i + `.
-`);
-  const n = oi(e, a, o), l = Le.getSymbolSize(e), d = new Ko(l);
-  return Zo(d, e), ei(d), ai(d, e), na(d, a, 0), e >= 7 && ri(d, e), ti(d, n), isNaN(t) && (t = ka.getBestMask(d, na.bind(null, d, a))), ka.applyMask(t, d), na(d, a, t), {
-    modules: d,
-    version: e,
-    errorCorrectionLevel: a,
-    maskPattern: t,
-    segments: o
-  };
+    const v2 = new Uint8Array(r3);
+    let y2, k2, x2 = 0;
+    for (y2 = 0; y2 < z2; y2++)
+      for (k2 = 0; k2 < n2; k2++)
+        y2 < g2[k2].length && (v2[x2++] = g2[k2][y2]);
+    for (y2 = 0; y2 < u2; y2++)
+      for (k2 = 0; k2 < n2; k2++)
+        v2[x2++] = b2[k2][y2];
+    return v2;
+  }(r2, e2, a2);
 }
-ut.create = function(e, a) {
-  if (typeof e > "u" || e === "")
-    throw new Error("No input text");
-  let t = oa.M, o, i;
-  return typeof a < "u" && (t = oa.from(a.errorCorrectionLevel, oa.M), o = Se.from(a.version), i = ka.from(a.maskPattern), a.toSJISFunc && Le.setToSJISFunction(a.toSJISFunc)), ni(e, o, t, i);
-};
-var _t = {}, Ua = {};
-(function(r) {
-  function e(a) {
-    if (typeof a == "number" && (a = a.toString()), typeof a != "string")
-      throw new Error("Color should be defined as hex string");
-    let t = a.slice().replace("#", "").split("");
-    if (t.length < 3 || t.length === 5 || t.length > 8)
-      throw new Error("Invalid hex color: " + a);
-    (t.length === 3 || t.length === 4) && (t = Array.prototype.concat.apply([], t.map(function(i) {
-      return [i, i];
-    }))), t.length === 6 && t.push("F", "F");
-    const o = parseInt(t.join(""), 16);
-    return {
-      r: o >> 24 & 255,
-      g: o >> 16 & 255,
-      b: o >> 8 & 255,
-      a: o & 255,
-      hex: "#" + t.slice(0, 6).join("")
-    };
+function Ma(e2, a2, t2, r2) {
+  let o2;
+  if (Array.isArray(e2))
+    o2 = Pa.fromArray(e2);
+  else {
+    if ("string" != typeof e2)
+      throw new Error("Invalid data");
+    {
+      let r3 = a2;
+      if (!r3) {
+        const a3 = Pa.rawSplit(e2);
+        r3 = Ia.getBestVersionForData(a3, t2);
+      }
+      o2 = Pa.fromString(e2, r3 || 40);
+    }
   }
-  r.getOptions = function(t) {
-    t || (t = {}), t.color || (t.color = {});
-    const o = typeof t.margin > "u" || t.margin === null || t.margin < 0 ? 4 : t.margin, i = t.width && t.width >= 21 ? t.width : void 0, n = t.scale || 4;
-    return {
-      width: i,
-      scale: i ? 4 : n,
-      margin: o,
-      color: {
-        dark: e(t.color.dark || "#000000ff"),
-        light: e(t.color.light || "#ffffffff")
-      },
-      type: t.type,
-      rendererOpts: t.rendererOpts || {}
-    };
-  }, r.getScale = function(t, o) {
-    return o.width && o.width >= t + o.margin * 2 ? o.width / (t + o.margin * 2) : o.scale;
-  }, r.getImageWidth = function(t, o) {
-    const i = r.getScale(t, o);
-    return Math.floor((t + o.margin * 2) * i);
-  }, r.qrToImageData = function(t, o, i) {
-    const n = o.modules.size, l = o.modules.data, d = r.getScale(n, i), s = Math.floor((n + i.margin * 2) * d), c = i.margin * d, p = [i.color.light, i.color.dark];
-    for (let m = 0; m < s; m++)
-      for (let u = 0; u < s; u++) {
-        let f = (m * s + u) * 4, h = i.color.light;
-        if (m >= c && u >= c && m < s - c && u < s - c) {
-          const y = Math.floor((m - c) / d), b = Math.floor((u - c) / d);
-          h = p[l[y * n + b] ? 1 : 0];
+  const i2 = Ia.getBestVersionForData(o2, t2);
+  if (!i2)
+    throw new Error("The amount of data is too big to be stored in a QR Code");
+  if (a2) {
+    if (a2 < i2)
+      throw new Error("\nThe chosen QR Code version cannot contain this amount of data.\nMinimum version required to store current data is: " + i2 + ".\n");
+  } else
+    a2 = i2;
+  const n2 = Oa(a2, t2, o2), d2 = ya.getSymbolSize(a2), l2 = new wa(d2);
+  return function(e3, a3) {
+    const t3 = e3.size, r3 = _a.getPositions(a3);
+    for (let a4 = 0; a4 < r3.length; a4++) {
+      const o3 = r3[a4][0], i3 = r3[a4][1];
+      for (let a5 = -1; a5 <= 7; a5++)
+        if (!(o3 + a5 <= -1 || t3 <= o3 + a5))
+          for (let r4 = -1; r4 <= 7; r4++)
+            i3 + r4 <= -1 || t3 <= i3 + r4 || (a5 >= 0 && a5 <= 6 && (0 === r4 || 6 === r4) || r4 >= 0 && r4 <= 6 && (0 === a5 || 6 === a5) || a5 >= 2 && a5 <= 4 && r4 >= 2 && r4 <= 4 ? e3.set(o3 + a5, i3 + r4, true, true) : e3.set(o3 + a5, i3 + r4, false, true));
+    }
+  }(l2, a2), function(e3) {
+    const a3 = e3.size;
+    for (let t3 = 8; t3 < a3 - 8; t3++) {
+      const a4 = t3 % 2 == 0;
+      e3.set(t3, 6, a4, true), e3.set(6, t3, a4, true);
+    }
+  }(l2), function(e3, a3) {
+    const t3 = $a.getPositions(a3);
+    for (let a4 = 0; a4 < t3.length; a4++) {
+      const r3 = t3[a4][0], o3 = t3[a4][1];
+      for (let a5 = -2; a5 <= 2; a5++)
+        for (let t4 = -2; t4 <= 2; t4++)
+          -2 === a5 || 2 === a5 || -2 === t4 || 2 === t4 || 0 === a5 && 0 === t4 ? e3.set(r3 + a5, o3 + t4, true, true) : e3.set(r3 + a5, o3 + t4, false, true);
+    }
+  }(l2, a2), Ba(l2, t2, 0), a2 >= 7 && function(e3, a3) {
+    const t3 = e3.size, r3 = Ia.getEncodedBits(a3);
+    let o3, i3, n3;
+    for (let a4 = 0; a4 < 18; a4++)
+      o3 = Math.floor(a4 / 3), i3 = a4 % 3 + t3 - 8 - 3, n3 = 1 == (r3 >> a4 & 1), e3.set(o3, i3, n3, true), e3.set(i3, o3, n3, true);
+  }(l2, a2), function(e3, a3) {
+    const t3 = e3.size;
+    let r3 = -1, o3 = t3 - 1, i3 = 7, n3 = 0;
+    for (let d3 = t3 - 1; d3 > 0; d3 -= 2)
+      for (6 === d3 && d3--; ; ) {
+        for (let t4 = 0; t4 < 2; t4++)
+          if (!e3.isReserved(o3, d3 - t4)) {
+            let r4 = false;
+            n3 < a3.length && (r4 = 1 == (a3[n3] >>> i3 & 1)), e3.set(o3, d3 - t4, r4), i3--, -1 === i3 && (n3++, i3 = 7);
+          }
+        if (o3 += r3, o3 < 0 || t3 <= o3) {
+          o3 -= r3, r3 = -r3;
+          break;
         }
-        t[f++] = h.r, t[f++] = h.g, t[f++] = h.b, t[f] = h.a;
+      }
+  }(l2, n2), isNaN(r2) && (r2 = Ca.getBestMask(l2, Ba.bind(null, l2, t2))), Ca.applyMask(r2, l2), Ba(l2, t2, r2), { modules: l2, version: a2, errorCorrectionLevel: t2, maskPattern: r2, segments: o2 };
+}
+ve.create = function(e2, a2) {
+  if (void 0 === e2 || "" === e2)
+    throw new Error("No input text");
+  let t2, r2, o2 = ka.M;
+  return void 0 !== a2 && (o2 = ka.from(a2.errorCorrectionLevel, ka.M), t2 = Ia.from(a2.version), r2 = Ca.from(a2.maskPattern), a2.toSJISFunc && ya.setToSJISFunction(a2.toSJISFunc)), Ma(e2, t2, o2, r2);
+};
+var Ra = {}, Da = {};
+!function(e2) {
+  function a2(e3) {
+    if ("number" == typeof e3 && (e3 = e3.toString()), "string" != typeof e3)
+      throw new Error("Color should be defined as hex string");
+    let a3 = e3.slice().replace("#", "").split("");
+    if (a3.length < 3 || 5 === a3.length || a3.length > 8)
+      throw new Error("Invalid hex color: " + e3);
+    3 !== a3.length && 4 !== a3.length || (a3 = Array.prototype.concat.apply([], a3.map(function(e4) {
+      return [e4, e4];
+    }))), 6 === a3.length && a3.push("F", "F");
+    const t2 = parseInt(a3.join(""), 16);
+    return { r: t2 >> 24 & 255, g: t2 >> 16 & 255, b: t2 >> 8 & 255, a: 255 & t2, hex: "#" + a3.slice(0, 6).join("") };
+  }
+  e2.getOptions = function(e3) {
+    e3 || (e3 = {}), e3.color || (e3.color = {});
+    const t2 = void 0 === e3.margin || null === e3.margin || e3.margin < 0 ? 4 : e3.margin, r2 = e3.width && e3.width >= 21 ? e3.width : void 0, o2 = e3.scale || 4;
+    return { width: r2, scale: r2 ? 4 : o2, margin: t2, color: { dark: a2(e3.color.dark || "#000000ff"), light: a2(e3.color.light || "#ffffffff") }, type: e3.type, rendererOpts: e3.rendererOpts || {} };
+  }, e2.getScale = function(e3, a3) {
+    return a3.width && a3.width >= e3 + 2 * a3.margin ? a3.width / (e3 + 2 * a3.margin) : a3.scale;
+  }, e2.getImageWidth = function(a3, t2) {
+    const r2 = e2.getScale(a3, t2);
+    return Math.floor((a3 + 2 * t2.margin) * r2);
+  }, e2.qrToImageData = function(a3, t2, r2) {
+    const o2 = t2.modules.size, i2 = t2.modules.data, n2 = e2.getScale(o2, r2), d2 = Math.floor((o2 + 2 * r2.margin) * n2), l2 = r2.margin * n2, s2 = [r2.color.light, r2.color.dark];
+    for (let e3 = 0; e3 < d2; e3++)
+      for (let t3 = 0; t3 < d2; t3++) {
+        let c2 = 4 * (e3 * d2 + t3), m2 = r2.color.light;
+        if (e3 >= l2 && t3 >= l2 && e3 < d2 - l2 && t3 < d2 - l2) {
+          m2 = s2[i2[Math.floor((e3 - l2) / n2) * o2 + Math.floor((t3 - l2) / n2)] ? 1 : 0];
+        }
+        a3[c2++] = m2.r, a3[c2++] = m2.g, a3[c2++] = m2.b, a3[c2] = m2.a;
       }
   };
-})(Ua);
-(function(r) {
-  const e = Ua;
-  function a(o, i, n) {
-    o.clearRect(0, 0, i.width, i.height), i.style || (i.style = {}), i.height = n, i.width = n, i.style.height = n + "px", i.style.width = n + "px";
-  }
-  function t() {
-    try {
-      return document.createElement("canvas");
-    } catch {
-      throw new Error("You need to specify a canvas element");
-    }
-  }
-  r.render = function(i, n, l) {
-    let d = l, s = n;
-    typeof d > "u" && (!n || !n.getContext) && (d = n, n = void 0), n || (s = t()), d = e.getOptions(d);
-    const c = e.getImageWidth(i.modules.size, d), p = s.getContext("2d"), m = p.createImageData(c, c);
-    return e.qrToImageData(m.data, i, d), a(p, s, c), p.putImageData(m, 0, 0), s;
-  }, r.renderToDataURL = function(i, n, l) {
-    let d = l;
-    typeof d > "u" && (!n || !n.getContext) && (d = n, n = void 0), d || (d = {});
-    const s = r.render(i, n, d), c = d.type || "image/png", p = d.rendererOpts || {};
-    return s.toDataURL(c, p.quality);
-  };
-})(_t);
-var Ct = {};
-const di = Ua;
-function cr(r, e) {
-  const a = r.a / 255, t = e + '="' + r.hex + '"';
-  return a < 1 ? t + " " + e + '-opacity="' + a.toFixed(2).slice(1) + '"' : t;
-}
-function da(r, e, a) {
-  let t = r + e;
-  return typeof a < "u" && (t += " " + a), t;
-}
-function li(r, e, a) {
-  let t = "", o = 0, i = !1, n = 0;
-  for (let l = 0; l < r.length; l++) {
-    const d = Math.floor(l % e), s = Math.floor(l / e);
-    !d && !i && (i = !0), r[l] ? (n++, l > 0 && d > 0 && r[l - 1] || (t += i ? da("M", d + a, 0.5 + s + a) : da("m", o, 0), o = 0, i = !1), d + 1 < e && r[l + 1] || (t += da("h", n), n = 0)) : o++;
-  }
-  return t;
-}
-Ct.render = function(e, a, t) {
-  const o = di.getOptions(a), i = e.modules.size, n = e.modules.data, l = i + o.margin * 2, d = o.color.light.a ? "<path " + cr(o.color.light, "fill") + ' d="M0 0h' + l + "v" + l + 'H0z"/>' : "", s = "<path " + cr(o.color.dark, "stroke") + ' d="' + li(n, i, o.margin) + '"/>', c = 'viewBox="0 0 ' + l + " " + l + '"', m = '<svg xmlns="http://www.w3.org/2000/svg" ' + (o.width ? 'width="' + o.width + '" height="' + o.width + '" ' : "") + c + ' shape-rendering="crispEdges">' + d + s + `</svg>
-`;
-  return typeof t == "function" && t(null, m), m;
-};
-const si = xo, wa = ut, Et = _t, ci = Ct;
-function Ga(r, e, a, t, o) {
-  const i = [].slice.call(arguments, 1), n = i.length, l = typeof i[n - 1] == "function";
-  if (!l && !si())
-    throw new Error("Callback required as last argument");
-  if (l) {
-    if (n < 2)
-      throw new Error("Too few arguments provided");
-    n === 2 ? (o = a, a = e, e = t = void 0) : n === 3 && (e.getContext && typeof o > "u" ? (o = t, t = void 0) : (o = t, t = a, a = e, e = void 0));
-  } else {
-    if (n < 1)
-      throw new Error("Too few arguments provided");
-    return n === 1 ? (a = e, e = t = void 0) : n === 2 && !e.getContext && (t = a, a = e, e = void 0), new Promise(function(d, s) {
+}(Da), function(e2) {
+  const a2 = Da;
+  e2.render = function(e3, t2, r2) {
+    let o2 = r2, i2 = t2;
+    void 0 !== o2 || t2 && t2.getContext || (o2 = t2, t2 = void 0), t2 || (i2 = function() {
       try {
-        const c = wa.create(a, t);
-        d(r(c, e, t));
-      } catch (c) {
-        s(c);
+        return document.createElement("canvas");
+      } catch (e4) {
+        throw new Error("You need to specify a canvas element");
+      }
+    }()), o2 = a2.getOptions(o2);
+    const n2 = a2.getImageWidth(e3.modules.size, o2), d2 = i2.getContext("2d"), l2 = d2.createImageData(n2, n2);
+    return a2.qrToImageData(l2.data, e3, o2), function(e4, a3, t3) {
+      e4.clearRect(0, 0, a3.width, a3.height), a3.style || (a3.style = {}), a3.height = t3, a3.width = t3, a3.style.height = t3 + "px", a3.style.width = t3 + "px";
+    }(d2, i2, n2), d2.putImageData(l2, 0, 0), i2;
+  }, e2.renderToDataURL = function(a3, t2, r2) {
+    let o2 = r2;
+    void 0 !== o2 || t2 && t2.getContext || (o2 = t2, t2 = void 0), o2 || (o2 = {});
+    const i2 = e2.render(a3, t2, o2), n2 = o2.type || "image/png", d2 = o2.rendererOpts || {};
+    return i2.toDataURL(n2, d2.quality);
+  };
+}(Ra);
+var Ta = {};
+const Fa = Da;
+function La(e2, a2) {
+  const t2 = e2.a / 255, r2 = a2 + '="' + e2.hex + '"';
+  return t2 < 1 ? r2 + " " + a2 + '-opacity="' + t2.toFixed(2).slice(1) + '"' : r2;
+}
+function ja(e2, a2, t2) {
+  let r2 = e2 + a2;
+  return void 0 !== t2 && (r2 += " " + t2), r2;
+}
+Ta.render = function(e2, a2, t2) {
+  const r2 = Fa.getOptions(a2), o2 = e2.modules.size, i2 = e2.modules.data, n2 = o2 + 2 * r2.margin, d2 = r2.color.light.a ? "<path " + La(r2.color.light, "fill") + ' d="M0 0h' + n2 + "v" + n2 + 'H0z"/>' : "", l2 = "<path " + La(r2.color.dark, "stroke") + ' d="' + function(e3, a3, t3) {
+    let r3 = "", o3 = 0, i3 = false, n3 = 0;
+    for (let d3 = 0; d3 < e3.length; d3++) {
+      const l3 = Math.floor(d3 % a3), s3 = Math.floor(d3 / a3);
+      l3 || i3 || (i3 = true), e3[d3] ? (n3++, d3 > 0 && l3 > 0 && e3[d3 - 1] || (r3 += i3 ? ja("M", l3 + t3, 0.5 + s3 + t3) : ja("m", o3, 0), o3 = 0, i3 = false), l3 + 1 < a3 && e3[d3 + 1] || (r3 += ja("h", n3), n3 = 0)) : o3++;
+    }
+    return r3;
+  }(i2, o2, r2.margin) + '"/>', s2 = 'viewBox="0 0 ' + n2 + " " + n2 + '"', c2 = '<svg xmlns="http://www.w3.org/2000/svg" ' + (r2.width ? 'width="' + r2.width + '" height="' + r2.width + '" ' : "") + s2 + ' shape-rendering="crispEdges">' + d2 + l2 + "</svg>\n";
+  return "function" == typeof t2 && t2(null, c2), c2;
+};
+const Ua = function() {
+  return "function" == typeof Promise && Promise.prototype && Promise.prototype.then;
+}, Ga = ve, Va = Ra, Ha = Ta;
+function Ya(e2, a2, t2, r2, o2) {
+  const i2 = [].slice.call(arguments, 1), n2 = i2.length, d2 = "function" == typeof i2[n2 - 1];
+  if (!d2 && !Ua())
+    throw new Error("Callback required as last argument");
+  if (!d2) {
+    if (n2 < 1)
+      throw new Error("Too few arguments provided");
+    return 1 === n2 ? (t2 = a2, a2 = r2 = void 0) : 2 !== n2 || a2.getContext || (r2 = t2, t2 = a2, a2 = void 0), new Promise(function(o3, i3) {
+      try {
+        const i4 = Ga.create(t2, r2);
+        o3(e2(i4, a2, r2));
+      } catch (e3) {
+        i3(e3);
       }
     });
   }
+  if (n2 < 2)
+    throw new Error("Too few arguments provided");
+  2 === n2 ? (o2 = t2, t2 = a2, a2 = r2 = void 0) : 3 === n2 && (a2.getContext && void 0 === o2 ? (o2 = r2, r2 = void 0) : (o2 = r2, r2 = t2, t2 = a2, a2 = void 0));
   try {
-    const d = wa.create(a, t);
-    o(null, r(d, e, t));
-  } catch (d) {
-    o(d);
+    const i3 = Ga.create(t2, r2);
+    o2(null, e2(i3, a2, r2));
+  } catch (e3) {
+    o2(e3);
   }
 }
-be.create = wa.create;
-be.toCanvas = Ga.bind(null, Et.render);
-be.toDataURL = Ga.bind(null, Et.renderToDataURL);
-be.toString = Ga.bind(null, function(r, e, a) {
-  return ci.render(r, a);
+fe.create = Ga.create, fe.toCanvas = Ya.bind(null, Va.render), fe.toDataURL = Ya.bind(null, Va.renderToDataURL), fe.toString = Ya.bind(null, function(e2, a2, t2) {
+  return Ha.render(e2, t2);
 });
-const mi = 0.1, mr = 2.5, T = 7;
-function la(r, e, a) {
-  return r === e ? !1 : (r - e < 0 ? e - r : r - e) <= a + mi;
+function Ka(e2, a2, t2) {
+  if (e2 === a2)
+    return false;
+  return (e2 - a2 < 0 ? a2 - e2 : e2 - a2) <= t2 + 0.1;
 }
-function ui(r, e) {
-  const a = Array.prototype.slice.call(be.create(r, {
-    errorCorrectionLevel: e
-  }).modules.data, 0), t = Math.sqrt(a.length);
-  return a.reduce((o, i, n) => (n % t === 0 ? o.push([i]) : o[o.length - 1].push(i)) && o, []);
-}
-const pi = {
-  generate(r, e, a, t = "light") {
-    const o = t === "light" ? "#141414" : "#fff", i = t === "light" ? "#fff" : "#141414", n = [], l = ui(r, "Q"), d = e / l.length, s = [{
-      x: 0,
-      y: 0
-    }, {
-      x: 1,
-      y: 0
-    }, {
-      x: 0,
-      y: 1
-    }];
-    s.forEach(({
-      x: h,
-      y
-    }) => {
-      const b = (l.length - T) * d * h, g = (l.length - T) * d * y, z = 0.32;
-      for (let v = 0; v < s.length; v += 1) {
-        const k = d * (T - v * 2);
-        n.push(Qe`
+const Qa = { generate(e2, t2, r2, o2 = "light") {
+  const i2 = "light" === o2 ? "#141414" : "#fff", n2 = "light" === o2 ? "#fff" : "#141414", d2 = [], l2 = function(e3, a2) {
+    const t3 = Array.prototype.slice.call(fe.create(e3, { errorCorrectionLevel: a2 }).modules.data, 0), r3 = Math.sqrt(t3.length);
+    return t3.reduce((e4, a3, t4) => (t4 % r3 == 0 ? e4.push([a3]) : e4[e4.length - 1].push(a3)) && e4, []);
+  }(e2, "Q"), s2 = t2 / l2.length, c2 = [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }];
+  c2.forEach(({ x: e3, y: t3 }) => {
+    const r3 = (l2.length - 7) * s2 * e3, o3 = (l2.length - 7) * s2 * t3;
+    for (let e4 = 0; e4 < c2.length; e4 += 1) {
+      const t4 = s2 * (7 - 2 * e4);
+      d2.push(a`
             <rect
-              fill=${v % 2 === 0 ? o : i}
-              height=${k}
-              rx=${k * z}
-              ry=${k * z}
-              width=${k}
-              x=${b + d * v}
-              y=${g + d * v}
+              fill=${e4 % 2 == 0 ? i2 : n2}
+              height=${t4}
+              rx=${0.32 * t4}
+              ry=${0.32 * t4}
+              width=${t4}
+              x=${r3 + s2 * e4}
+              y=${o3 + s2 * e4}
             />
           `);
+    }
+  });
+  const m2 = Math.floor((r2 + 25) / s2), u2 = l2.length / 2 - m2 / 2, p2 = l2.length / 2 + m2 / 2 - 1, h2 = [];
+  l2.forEach((e3, a2) => {
+    e3.forEach((e4, t3) => {
+      if (l2[a2][t3] && !(a2 < 7 && t3 < 7 || a2 > l2.length - 8 && t3 < 7 || a2 < 7 && t3 > l2.length - 8 || a2 > u2 && a2 < p2 && t3 > u2 && t3 < p2)) {
+        const e5 = a2 * s2 + s2 / 2, r3 = t3 * s2 + s2 / 2;
+        h2.push([e5, r3]);
       }
     });
-    const c = Math.floor((a + 25) / d), p = l.length / 2 - c / 2, m = l.length / 2 + c / 2 - 1, u = [];
-    l.forEach((h, y) => {
-      h.forEach((b, g) => {
-        if (l[y][g] && !(y < T && g < T || y > l.length - (T + 1) && g < T || y < T && g > l.length - (T + 1)) && !(y > p && y < m && g > p && g < m)) {
-          const z = y * d + d / 2, v = g * d + d / 2;
-          u.push([z, v]);
-        }
-      });
+  });
+  const g2 = {};
+  return h2.forEach(([e3, a2]) => {
+    g2[e3] ? g2[e3].push(a2) : g2[e3] = [a2];
+  }), Object.entries(g2).map(([e3, a2]) => {
+    const t3 = a2.filter((e4) => a2.every((a3) => !Ka(e4, a3, s2)));
+    return [Number(e3), t3];
+  }).forEach(([e3, t3]) => {
+    t3.forEach((t4) => {
+      d2.push(a`<circle cx=${e3} cy=${t4} fill=${i2} r=${s2 / 2.5} />`);
     });
-    const f = {};
-    return u.forEach(([h, y]) => {
-      f[h] ? f[h].push(y) : f[h] = [y];
-    }), Object.entries(f).map(([h, y]) => {
-      const b = y.filter((g) => y.every((z) => !la(g, z, d)));
-      return [Number(h), b];
-    }).forEach(([h, y]) => {
-      y.forEach((b) => {
-        n.push(Qe`<circle cx=${h} cy=${b} fill=${o} r=${d / mr} />`);
-      });
-    }), Object.entries(f).filter(([h, y]) => y.length > 1).map(([h, y]) => {
-      const b = y.filter((g) => y.some((z) => la(g, z, d)));
-      return [Number(h), b];
-    }).map(([h, y]) => {
-      y.sort((g, z) => g < z ? -1 : 1);
-      const b = [];
-      for (const g of y) {
-        const z = b.find((v) => v.some((k) => la(g, k, d)));
-        z ? z.push(g) : b.push([g]);
-      }
-      return [h, b.map((g) => [g[0], g[g.length - 1]])];
-    }).forEach(([h, y]) => {
-      y.forEach(([b, g]) => {
-        n.push(Qe`
+  }), Object.entries(g2).filter(([e3, a2]) => a2.length > 1).map(([e3, a2]) => {
+    const t3 = a2.filter((e4) => a2.some((a3) => Ka(e4, a3, s2)));
+    return [Number(e3), t3];
+  }).map(([e3, a2]) => {
+    a2.sort((e4, a3) => e4 < a3 ? -1 : 1);
+    const t3 = [];
+    for (const e4 of a2) {
+      const a3 = t3.find((a4) => a4.some((a5) => Ka(e4, a5, s2)));
+      a3 ? a3.push(e4) : t3.push([e4]);
+    }
+    return [e3, t3.map((e4) => [e4[0], e4[e4.length - 1]])];
+  }).forEach(([e3, t3]) => {
+    t3.forEach(([t4, r3]) => {
+      d2.push(a`
               <line
-                x1=${h}
-                x2=${h}
-                y1=${b}
-                y2=${g}
-                stroke=${o}
-                stroke-width=${d / (mr / 2)}
+                x1=${e3}
+                x2=${e3}
+                y1=${t4}
+                y2=${r3}
+                stroke=${i2}
+                stroke-width=${s2 / 1.25}
                 stroke-linecap="round"
               />
             `);
-      });
-    }), n;
-  }
-}, hi = re`
+    });
+  }), d2;
+} }, Ja = d`
   .o21pay-logo {
     content: url('https://assets.obvious21.com/o21pay-assets/o21pay.png');
   }
@@ -3010,89 +2142,63 @@ const pi = {
     animation-name: zoomIn;
   }
 `;
-function gi(r, e, a) {
-  return e = fi(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
-}
-function fi(r) {
-  var e = bi(r, "string");
-  return typeof e == "symbol" ? e : String(e);
-}
-function bi(r, e) {
-  if (typeof r != "object" || r === null)
-    return r;
-  var a = r[Symbol.toPrimitive];
-  if (a !== void 0) {
-    var t = a.call(r, e || "default");
-    if (typeof t != "object")
-      return t;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (e === "string" ? String : Number)(r);
-}
-const ur = "o21pay-qr";
-class Ha extends O {
+const qa = "o21pay-qr";
+class Wa extends ie {
   static get properties() {
-    return {
-      size: {
-        type: String,
-        attribute: "size"
-      },
-      theme: {
-        type: String,
-        attribute: "theme"
-      },
-      shadow: {
-        type: Boolean,
-        attribute: "shadow"
-      },
-      url: {
-        type: String,
-        attribute: "url"
-      }
-    };
+    return { size: { type: String, attribute: "size" }, theme: { type: String, attribute: "theme" }, shadow: { type: Boolean, attribute: "shadow" }, url: { type: String, attribute: "url" } };
   }
   constructor() {
-    super(), this.theme = "dark", this.size = "320", this.shadow = !1, this.url = "", this.eventsO21Pay = void 0;
+    super(), this.theme = "dark", this.size = "320", this.shadow = false, this.url = "", this.eventsO21Pay = void 0;
   }
-  _onClick(e) {
-    const a = {
-      detail: {
-        url: this.url
-      },
-      bubbles: !0,
-      composed: !0
-    };
-    this.dispatchEvent(new CustomEvent("o21pay_QRclick", a));
+  _onClick(e2) {
+    const a2 = { detail: { url: this.url }, bubbles: true, composed: true };
+    this.dispatchEvent(new CustomEvent("o21pay_QRclick", a2));
   }
   render() {
-    const e = this.url;
-    if (!e || !e.length)
-      return R``;
+    const e2 = this.url;
+    if (!e2 || !e2.length)
+      return F``;
     this.size = parseInt(this.size) || "320", this.logoSize = this.size / 3.3;
-    const a = (this.size - this.logoSize) / 2 + 9, t = (this.size - this.logoSize) / 2 + 12, i = ((l) => R`<svg height="${this.size}" width="${this.size}">${l}</svg>`)(pi.generate(this.url, this.size, this.size / 4, this.theme));
-    let n = `pr-qrcode ${this.theme}-theme`;
-    return this.shadow && (n += " shadow"), R`
+    const a2 = (this.size - this.logoSize) / 2 + 9, t2 = (this.size - this.logoSize) / 2 + 12, r2 = ((e3) => F`<svg height="${this.size}" width="${this.size}">${e3}</svg>`)(Qa.generate(this.url, this.size, this.size / 4, this.theme));
+    let o2 = `pr-qrcode ${this.theme}-theme`;
+    return this.shadow && (o2 += " shadow"), F`
       <div
         id="qrsvg"
-        class="${n}"
+        class="${o2}"
         style="width: ${this.size}px;height: ${this.size}px;"
         @click="${this._onClick}"
       >
-        <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${i}</svg>
+        <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${r2}</svg>
         <img
           class="o21pay-logo"
           height="${this.logoSize}"
-          style="position: absolute; top: ${a}px; left: ${t}px;"
+          style="position: absolute; top: ${a2}px; left: ${t2}px;"
           @click="${this._onClick}"
         />
       </div>
     `;
   }
 }
-gi(Ha, "styles", [hi]);
-const sa = window.customElements;
-sa && !sa.get(ur) && sa.define(ur, Ha);
-const Nt = re`
+!function(e2, a2, t2) {
+  (a2 = function(e3) {
+    var a3 = function(e4, a4) {
+      if ("object" != typeof e4 || null === e4)
+        return e4;
+      var t3 = e4[Symbol.toPrimitive];
+      if (void 0 !== t3) {
+        var r2 = t3.call(e4, a4 || "default");
+        if ("object" != typeof r2)
+          return r2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === a4 ? String : Number)(e4);
+    }(e3, "string");
+    return "symbol" == typeof a3 ? a3 : String(a3);
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+}(Wa, "styles", [Ja]);
+const Za = window.customElements;
+Za && !Za.get(qa) && Za.define(qa, Wa);
+const Xa = d`
   :host {
     --maz-primary: #1e90ff;
     --maz-primary-darken: #1873cc;
@@ -12447,7 +11553,7 @@ const Nt = re`
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
-`, zi = re`
+`, et = d`
   :host {
     --maz-primary: #9bc99d;
     --maz-border-width: 1px;
@@ -12473,5167 +11579,2616 @@ const Nt = re`
     box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 10px -4px !important;
   }
 `;
-function te(r, e, a, t, o, i, n, l) {
-  var d = typeof r == "function" ? r.options : r;
-  e && (d.render = e, d.staticRenderFns = a, d._compiled = !0), t && (d.functional = !0), i && (d._scopeId = "data-v-" + i);
-  var s;
-  if (n ? (s = function(m) {
-    m = m || // cached call
-    this.$vnode && this.$vnode.ssrContext || // stateful
-    this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext, !m && typeof __VUE_SSR_CONTEXT__ < "u" && (m = __VUE_SSR_CONTEXT__), o && o.call(this, m), m && m._registeredComponents && m._registeredComponents.add(n);
-  }, d._ssrRegister = s) : o && (s = l ? function() {
-    o.call(
-      this,
-      (d.functional ? this.parent : this).$root.$options.shadowRoot
-    );
-  } : o), s)
-    if (d.functional) {
-      d._injectStyles = s;
-      var c = d.render;
-      d.render = function(u, f) {
-        return s.call(f), c(u, f);
+function at(e2, a2, t2, r2, o2, i2, n2, d2) {
+  var l2, s2 = "function" == typeof e2 ? e2.options : e2;
+  if (a2 && (s2.render = a2, s2.staticRenderFns = t2, s2._compiled = true), r2 && (s2.functional = true), i2 && (s2._scopeId = "data-v-" + i2), n2 ? (l2 = function(e3) {
+    (e3 = e3 || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) || "undefined" == typeof __VUE_SSR_CONTEXT__ || (e3 = __VUE_SSR_CONTEXT__), o2 && o2.call(this, e3), e3 && e3._registeredComponents && e3._registeredComponents.add(n2);
+  }, s2._ssrRegister = l2) : o2 && (l2 = d2 ? function() {
+    o2.call(this, (s2.functional ? this.parent : this).$root.$options.shadowRoot);
+  } : o2), l2)
+    if (s2.functional) {
+      s2._injectStyles = l2;
+      var c2 = s2.render;
+      s2.render = function(e3, a3) {
+        return l2.call(a3), c2(e3, a3);
       };
     } else {
-      var p = d.beforeCreate;
-      d.beforeCreate = p ? [].concat(p, s) : [s];
+      var m2 = s2.beforeCreate;
+      s2.beforeCreate = m2 ? [].concat(m2, l2) : [l2];
     }
-  return {
-    exports: r,
-    options: d
-  };
+  return { exports: e2, options: s2 };
 }
-const vi = {
-  name: "MazSpinner",
-  props: {
-    size: { type: Number, default: 40 },
-    dark: { type: Boolean, default: !1 },
-    color: { type: String, default: "primary" }
-  },
-  computed: {
-    fillColorClass() {
-      return `maz-fill-${this.color}`;
-    }
-  }
+const tt = at({ name: "MazSpinner", props: { size: { type: Number, default: 40 }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" } }, computed: { fillColorClass() {
+  return `maz-fill-${this.color}`;
+} } }, function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2("svg", { staticClass: "maz-base-component maz-spinner maz-spinner-anim", class: [{ "spinner-anim__white": e2.dark }, e2.fillColorClass], staticStyle: { "enable-background": "new 0 0 50 50" }, attrs: { width: `${e2.size}px`, height: `${e2.size}px`, version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 50 50", "xml:space": "preserve" } }, [a2("path", { attrs: { d: "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" } })]);
+}, [], false, null, null, null, null).exports;
+tt.install = (e2) => {
+  e2.component(tt.name, tt);
 };
-var yi = function() {
-  var e = this, a = e._self._c;
-  return a("svg", { staticClass: "maz-base-component maz-spinner maz-spinner-anim", class: [
-    {
-      "spinner-anim__white": e.dark
-    },
-    e.fillColorClass
-  ], staticStyle: { "enable-background": "new 0 0 50 50" }, attrs: { width: `${e.size}px`, height: `${e.size}px`, version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 50 50", "xml:space": "preserve" } }, [a("path", { attrs: { d: "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" } })]);
-}, ki = [], xi = /* @__PURE__ */ te(
-  vi,
-  yi,
-  ki,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const de = xi.exports;
-de.install = (r) => {
-  r.component(de.name, de);
+const rt = { data: () => ({ uniqueId: null }), mounted() {
+  const e2 = this.id || this.$attrs.id;
+  this.uniqueId = e2 ? `${e2}` : `${this.$options.name}-${this._uid}`;
+} }, ot = { name: "MazBtn", components: { MazSpinner: tt }, mixins: [rt], inheritAttrs: false, props: { id: { type: String, default: null }, color: { type: String, default: "primary" }, type: { type: String, default: "button" }, size: { type: String, default: "md" }, loading: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, outline: { type: Boolean, default: false }, rounded: { type: Boolean, default: false }, fab: { type: Boolean, default: false }, active: { type: Boolean, default: false }, block: { type: Boolean, default: false }, noShadow: { type: Boolean, default: false }, iconName: { type: String, default: null }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, justifyStart: { type: Boolean, default: false }, justifyEnd: { type: Boolean, default: false } }, computed: { componentType() {
+  const { href: e2, to: a2 } = this.$attrs;
+  return e2 ? "a" : a2 ? "router-link" : "button";
+}, isLink() {
+  return "a" === this.componentType;
+}, isDisabled() {
+  const { disabled: e2, loading: a2 } = this;
+  return a2 || e2;
+}, classes() {
+  const { color: e2, size: a2, outline: t2, rounded: r2, fab: o2, active: i2, block: n2, noShadow: d2, hasRightIcon: l2, hasLeftIcon: s2, hasIcon: c2, hasSlotDefault: m2 } = this;
+  return [...e2 ? [`maz-btn--${e2}`] : [null], ...a2 ? [`maz-btn--${a2}`] : [null], ...t2 ? ["maz-btn--outline"] : [null], ...r2 ? ["maz-btn--rounded"] : [null], ...n2 ? ["maz-btn--block"] : [null], ...o2 ? ["maz-btn--fab"] : [null], ...i2 ? ["maz-active"] : [null], ...d2 ? ["maz-no-shadow"] : [null], ...s2() ? ["maz-btn--icon--left"] : [null], ...l2() ? ["maz-btn--icon--right"] : [null], ...c2() ? ["maz-btn--icon"] : [null], ...m2() ? [null] : ["maz-btn--no-text"]];
+}, textClasses() {
+  const { justifyStart: e2, justifyEnd: a2 } = this;
+  return [...e2 ? ["maz-justify-start"] : [null], ...a2 ? ["maz-justify-end"] : [null], ...e2 || a2 ? [null] : ["maz-justify-center"]];
+} }, methods: { hasSlotDefault() {
+  return this.$slots.default;
+}, hasIcon() {
+  return this.hasLeftIcon() || this.hasRightIcon() || this.hasMainIcon();
+}, hasMainIcon() {
+  return this.iconName || this.$slots.icon;
+}, hasLeftIcon() {
+  return this.leftIconName || this.$slots["icon-left"];
+}, hasRightIcon() {
+  return this.rightIconName || this.$slots["icon-right"];
+}, handleClick(e2) {
+  this.$emit("click", e2);
+}, emitMouseEnter(e2) {
+  this.$emit("mouseenter", e2);
+}, emitMouseLeave(e2) {
+  this.$emit("mouseleave", e2);
+}, emitFocus(e2) {
+  this.$emit("focus", e2);
+}, emitBlur(e2) {
+  this.$emit("blur", e2);
+} } };
+const it = at(ot, function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2(e2.componentType, e2._b({ tag: "component", staticClass: "maz-base-component maz-btn maz-inline-flex", class: [e2.classes, { "maz-text-hidden": e2.loading }], attrs: { id: e2.uniqueId, type: e2.isLink ? null : e2.type, disabled: e2.isLink ? null : e2.isDisabled }, on: { click: function(a3) {
+    return e2.handleClick(a3);
+  }, mouseenter: function(a3) {
+    return e2.emitMouseEnter(a3);
+  }, mouseleave: function(a3) {
+    return e2.emitMouseLeave(a3);
+  }, focus: function(a3) {
+    return e2.emitFocus(a3);
+  }, blur: function(a3) {
+    return e2.emitBlur(a3);
+  } } }, "component", e2.$attrs, false), [e2.hasLeftIcon() || e2.hasMainIcon() ? a2("div", { staticClass: "maz-flex maz-flex-center maz-btn__icon-left", class: { "maz-mr-2": !e2.fab && e2.hasSlotDefault() } }, [e2._t("icon-left", function() {
+    return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.leftIconName || e2.iconName))])];
+  })], 2) : e2._e(), a2("span", { staticClass: "maz-flex maz-align-center maz-h-100 maz-overflow-hidden", class: [e2.textClasses, { "maz-flex-1": e2.hasSlotDefault() }] }, [e2._t("default")], 2), e2.hasRightIcon() ? a2("div", { staticClass: "maz-flex maz-flex-center maz-btn__icon-right", class: { "maz-ml-2": !e2.fab && e2.hasSlotDefault() } }, [e2._t("icon-right", function() {
+    return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.rightIconName))])];
+  })], 2) : e2._e()]);
+}, [], false, null, null, null, null).exports;
+it.install = (e2) => {
+  e2.component(it.name, it);
 };
-const Ue = {
-  data() {
-    return {
-      uniqueId: null
-    };
-  },
-  mounted() {
-    const r = this.id || this.$attrs.id;
-    this.uniqueId = r ? `${r}` : `${this.$options.name}-${this._uid}`;
-  }
-}, wi = {
-  name: "MazBtn",
-  components: {
-    MazSpinner: de
-  },
-  mixins: [Ue],
-  inheritAttrs: !1,
-  props: {
-    // is the id of the button
-    id: { type: String, default: null },
-    // is color type (`primary` / `secondary` / `third` / `success` / `danger` / `grey` / `info` / `warning` / `light` / `dark` / `default` / `white` / `black`)
-    color: {
-      type: String,
-      default: "primary"
-    },
-    // is the button type (button, submit or something else)
-    type: { type: String, default: "button" },
-    // button size (`xl`, `lg` / `md` / `sm` / `mini`)
-    size: { type: String, default: "md" },
-    // is a `boolean` to show the loader & disable it
-    loading: { type: Boolean, default: !1 },
-    // is a `boolean` to disable the button
-    disabled: { type: Boolean, default: !1 },
-    // apply the outline style
-    outline: { type: Boolean, default: !1 },
-    // apply the rounded style
-    rounded: { type: Boolean, default: !1 },
-    // apply the fab style
-    fab: { type: Boolean, default: !1 },
-    // apply the focus style
-    active: { type: Boolean, default: !1 },
-    // take 100% of the width
-    block: { type: Boolean, default: !1 },
-    // remove shadow/elevation
-    noShadow: { type: Boolean, default: !1 },
-    // should be a [material icon](https://material.io/resources/icons/) name (usefull with fab buttons)
-    iconName: { type: String, default: null },
-    // should be a [material icon](https://material.io/resources/icons/) name
-    leftIconName: { type: String, default: null },
-    // should be a [material icon](https://material.io/resources/icons/) name
-    rightIconName: { type: String, default: null },
-    // align text to left (for block button)
-    justifyStart: { type: Boolean, default: !1 },
-    // align text to right (for block button)
-    justifyEnd: { type: Boolean, default: !1 }
-  },
-  computed: {
-    componentType() {
-      const { href: r, to: e } = this.$attrs;
-      return r ? "a" : e ? "router-link" : "button";
-    },
-    isLink() {
-      return this.componentType === "a";
-    },
-    isDisabled() {
-      const { disabled: r, loading: e } = this;
-      return e || r;
-    },
-    classes() {
-      const {
-        color: r,
-        size: e,
-        outline: a,
-        rounded: t,
-        fab: o,
-        active: i,
-        block: n,
-        noShadow: l,
-        hasRightIcon: d,
-        hasLeftIcon: s,
-        hasIcon: c,
-        hasSlotDefault: p
-      } = this;
-      return [
-        ...r ? [`maz-btn--${r}`] : [null],
-        ...e ? [`maz-btn--${e}`] : [null],
-        ...a ? ["maz-btn--outline"] : [null],
-        ...t ? ["maz-btn--rounded"] : [null],
-        ...n ? ["maz-btn--block"] : [null],
-        ...o ? ["maz-btn--fab"] : [null],
-        ...i ? ["maz-active"] : [null],
-        ...l ? ["maz-no-shadow"] : [null],
-        ...s() ? ["maz-btn--icon--left"] : [null],
-        ...d() ? ["maz-btn--icon--right"] : [null],
-        ...c() ? ["maz-btn--icon"] : [null],
-        ...p() ? [null] : ["maz-btn--no-text"]
-      ];
-    },
-    textClasses() {
-      const { justifyStart: r, justifyEnd: e } = this;
-      return [
-        ...r ? ["maz-justify-start"] : [null],
-        ...e ? ["maz-justify-end"] : [null],
-        ...!r && !e ? ["maz-justify-center"] : [null]
-      ];
-    }
-  },
-  methods: {
-    hasSlotDefault() {
-      return this.$slots.default;
-    },
-    hasIcon() {
-      return this.hasLeftIcon() || this.hasRightIcon() || this.hasMainIcon();
-    },
-    hasMainIcon() {
-      return this.iconName || this.$slots.icon;
-    },
-    hasLeftIcon() {
-      return this.leftIconName || this.$slots["icon-left"];
-    },
-    hasRightIcon() {
-      return this.rightIconName || this.$slots["icon-right"];
-    },
-    handleClick(r) {
-      this.$emit("click", r);
-    },
-    emitMouseEnter(r) {
-      this.$emit("mouseenter", r);
-    },
-    emitMouseLeave(r) {
-      this.$emit("mouseleave", r);
-    },
-    emitFocus(r) {
-      this.$emit("focus", r);
-    },
-    emitBlur(r) {
-      this.$emit("blur", r);
-    }
-  }
-};
-var $i = function() {
-  var e = this, a = e._self._c;
-  return a(e.componentType, e._b({ tag: "component", staticClass: "maz-base-component maz-btn maz-inline-flex", class: [
-    e.classes,
-    {
-      "maz-text-hidden": e.loading
-    }
-  ], attrs: { id: e.uniqueId, type: e.isLink ? null : e.type, disabled: e.isLink ? null : e.isDisabled }, on: { click: function(t) {
-    return e.handleClick(t);
-  }, mouseenter: function(t) {
-    return e.emitMouseEnter(t);
-  }, mouseleave: function(t) {
-    return e.emitMouseLeave(t);
-  }, focus: function(t) {
-    return e.emitFocus(t);
-  }, blur: function(t) {
-    return e.emitBlur(t);
-  } } }, "component", e.$attrs, !1), [e.hasLeftIcon() || e.hasMainIcon() ? a("div", { staticClass: "maz-flex maz-flex-center maz-btn__icon-left", class: {
-    "maz-mr-2": !e.fab && e.hasSlotDefault()
-  } }, [e._t("icon-left", function() {
-    return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.leftIconName || e.iconName))])];
-  })], 2) : e._e(), a("span", { staticClass: "maz-flex maz-align-center maz-h-100 maz-overflow-hidden", class: [e.textClasses, { "maz-flex-1": e.hasSlotDefault() }] }, [e._t("default")], 2), e.hasRightIcon() ? a("div", { staticClass: "maz-flex maz-flex-center maz-btn__icon-right", class: {
-    "maz-ml-2": !e.fab && e.hasSlotDefault()
-  } }, [e._t("icon-right", function() {
-    return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.rightIconName))])];
-  })], 2) : e._e()]);
-}, _i = [], Ci = /* @__PURE__ */ te(
-  wi,
-  $i,
-  _i,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const le = Ci.exports;
-le.install = (r) => {
-  r.component(le.name, le);
-};
-const Ei = (r, e) => {
-  let a;
+const nt = { name: "MazInput", mixins: [rt], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, placeholder: { type: String, default: "Enter text" }, hint: { type: String, default: null }, size: { type: String, default: null }, type: { type: String, default: "text" }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, error: { type: Boolean, default: false }, warning: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, readonly: { type: Boolean, default: false }, success: { type: Boolean, default: false }, required: { type: Boolean, default: false }, textarea: { type: Boolean, default: false }, loading: { type: Boolean, default: false }, clearable: { type: Boolean, default: false }, noLabel: { type: Boolean, default: false }, noRequiredSymbol: { type: Boolean, default: false }, focus: { type: Boolean, default: false }, color: { type: String, default: "primary" }, debounce: { type: Boolean, default: false } }, data: () => ({ isFocus: false, showPassword: false }), computed: { inputValue: { get() {
+  return this.value;
+}, set(e2) {
+  const a2 = this.hasNumberType ? e2 ? parseInt(e2) : 0 : e2;
+  this.emitValue(a2);
+} }, placeholderValue() {
+  let { placeholder: e2 } = this;
+  return this.required && e2 && !this.noRequiredSymbol && (e2 += " *"), e2;
+}, hintValue() {
+  let { hint: e2 } = this;
+  return this.required && e2 && (e2 += " *"), e2;
+}, hasNumberType() {
+  return "number" === this.type;
+}, hasLabel() {
+  return !this.noLabel;
+}, getType() {
+  return this.showPassword ? "text" : this.type;
+}, hasPasswordBtn() {
+  return "password" === this.type && this.inputValue;
+}, hasClearBtn() {
+  return this.clearable && this.inputValue && !this.textarea;
+}, leftNumberIcon() {
+  return [!!this.hasRightIcon(), !!this.hasClearBtn, !!this.hasPasswordBtn].filter((e2) => e2).length;
+} }, methods: { debounceValue: ((e2, a2) => {
+  let t2;
   return function() {
-    const t = this, o = arguments;
-    clearTimeout(a), a = setTimeout(() => r.apply(t, o), e);
+    const r2 = this, o2 = arguments;
+    clearTimeout(t2), t2 = setTimeout(() => e2.apply(r2, o2), a2);
   };
-};
-let Ni = 500;
-const Ai = {
-  name: "MazInput",
-  mixins: [Ue],
-  props: {
-    // value of the input
-    value: {
-      validator: (r) => ["string", "number"].includes(typeof r) || r === null,
-      default: null
-    },
-    // input id
-    id: { type: String, default: null },
-    // value of the input
-    placeholder: { type: String, default: "Enter text" },
-    // replace the label if is present
-    hint: { type: String, default: null },
-    // input size (`'lg'` / `'sm'`)
-    size: { type: String, default: null },
-    // is the input size (`text` or `number`)
-    type: { type: String, default: "text" },
-    // should be a [material icon](https://material.io/resources/icons/) name
-    leftIconName: { type: String, default: null },
-    // should be a [material icon](https://material.io/resources/icons/) name
-    rightIconName: { type: String, default: null },
-    // When is `true` the input has the error style
-    error: { type: Boolean, default: !1 },
-    // When is `true` the input has the warning style
-    warning: { type: Boolean, default: !1 },
-    // When is `true` the input is disable
-    disabled: { type: Boolean, default: !1 },
-    // When is `true` the input has the dark theme
-    dark: { type: Boolean, default: !1 },
-    // When is `true` the input is on readonly mode
-    readonly: { type: Boolean, default: !1 },
-    // When is `true` the input has the valid style
-    success: { type: Boolean, default: !1 },
-    // When is `true` the input become required & has the `*` symbol
-    required: { type: Boolean, default: !1 },
-    // When is `true` the input is a textarea
-    textarea: { type: Boolean, default: !1 },
-    // When is `true` the input has a progress bar animated
-    loading: { type: Boolean, default: !1 },
-    // When is `true` the input can be clear with a button on the right
-    clearable: { type: Boolean, default: !1 },
-    // When is `true` the input has not label (top placeholder when value is not empty)
-    noLabel: { type: Boolean, default: !1 },
-    // When is `true` and is `required`, the `*` symbol is not showing
-    noRequiredSymbol: { type: Boolean, default: !1 },
-    // force focus style input
-    focus: { type: Boolean, default: !1 },
-    // color name in basic colors
-    color: { type: String, default: "primary" },
-    // Add a debounce of 500ms to emit the value
-    debounce: { type: Boolean, default: !1 }
-  },
-  data() {
-    return {
-      isFocus: !1,
-      showPassword: !1
-    };
-  },
-  computed: {
-    inputValue: {
-      get() {
-        return this.value;
-      },
-      set(r) {
-        const e = this.hasNumberType ? r ? parseInt(r) : 0 : r;
-        this.emitValue(e);
-      }
-    },
-    placeholderValue() {
-      let { placeholder: r } = this;
-      return this.required && r && !this.noRequiredSymbol && (r += " *"), r;
-    },
-    hintValue() {
-      let { hint: r } = this;
-      return this.required && r && (r += " *"), r;
-    },
-    hasNumberType() {
-      return this.type === "number";
-    },
-    hasLabel() {
-      return !this.noLabel;
-    },
-    getType() {
-      return this.showPassword ? "text" : this.type;
-    },
-    hasPasswordBtn() {
-      return this.type === "password" && this.inputValue;
-    },
-    hasClearBtn() {
-      return this.clearable && this.inputValue && !this.textarea;
-    },
-    leftNumberIcon() {
-      return [!!this.hasRightIcon(), !!this.hasClearBtn, !!this.hasPasswordBtn].filter((e) => e).length;
-    }
-  },
-  methods: {
-    debounceValue: Ei(function(r) {
-      this.$emit("input", r);
-    }, Ni),
-    emitValue(r) {
-      if (this.debounce)
-        return this.debounceValue(r);
-      this.$emit("input", r);
-    },
-    hasLeftIcon() {
-      return this.leftIconName || this.$slots["icon-left"];
-    },
-    hasRightIcon() {
-      return this.rightIconName || this.$slots["icon-right"];
-    },
-    focusInput() {
-      this.$refs.MazInput.focus();
-    },
-    onFocus(r) {
-      this.$emit("focus", r), this.isFocus = !0;
-    },
-    onBlur(r) {
-      this.$emit("blur", r), this.isFocus = !1;
-    },
-    onPaste(r) {
-      this.$emit("paste", r);
-    },
-    onChange(r) {
-      this.$emit("change", r);
-    },
-    clear() {
-      this.$emit("input", this.hasNumberType ? 0 : ""), this.$emit("clear");
-    },
-    keyUp(r) {
-      this.$emit("keyup", r);
-    },
-    keyDown(r) {
-      this.$emit("keydown", r);
-    }
-  }
-};
-var Ii = function() {
-  var e = this, a = e._self._c;
-  return a("div", { ref: "parent", staticClass: "maz-base-component maz-input maz-border maz-border-color maz-border-color-hover maz-border-solid maz-border-radius", class: [
-    {
-      "is-focused": e.isFocus || e.focus,
-      "is-valid": e.success,
-      "has-value": e.value,
-      "is-textarea": e.textarea,
-      "has-error": e.error,
-      "has-warning": e.warning,
-      "is-disabled": e.disabled,
-      "maz-is-dark": e.dark,
-      "has-hint": e.hint,
-      "has-no-label": !e.hasLabel && !e.hint,
-      "has-left-icon": e.hasLeftIcon()
-    },
-    `maz-input--${e.size}`,
-    `has-${e.leftNumberIcon}-right-icon`,
-    `maz-input--${e.color}`
-  ], on: { click: e.focusInput } }, [e.hasLeftIcon() ? a("div", { staticClass: "maz-input__icon maz-flex left", class: [e.textarea ? "maz-align-start maz-pt-2" : "maz-align-center"] }, [e._t("icon-left", function() {
-    return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.leftIconName))])];
-  })], 2) : e._e(), e.hasRightIcon() ? a("div", { staticClass: "maz-input__icon maz-flex right", class: [e.textarea ? "maz-align-start maz-pt-2" : "maz-align-center"] }, [e._t("icon-right", function() {
-    return [a("i", { staticClass: "material-icons" }, [e._v(e._s(e.rightIconName))])];
-  })], 2) : e._e(), e.getType === "checkbox" && !e.textarea ? a("input", e._b({ directives: [{ name: "model", rawName: "v-model", value: e.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: {
-    "has-right-icon": e.hasClearBtn || e.hasPasswordBtn || e.hasRightIcon()
-  }, attrs: { id: e.uniqueId, placeholder: e.placeholderValue, "aria-label": e.placeholder, disabled: e.disabled, required: e.required, readonly: e.readonly, type: "checkbox" }, domProps: { checked: Array.isArray(e.inputValue) ? e._i(e.inputValue, null) > -1 : e.inputValue }, on: { keydown: e.keyDown, keyup: e.keyUp, focus: e.onFocus, blur: e.onBlur, paste: e.onPaste, change: [function(t) {
-    var o = e.inputValue, i = t.target, n = !!i.checked;
-    if (Array.isArray(o)) {
-      var l = null, d = e._i(o, l);
-      i.checked ? d < 0 && (e.inputValue = o.concat([l])) : d > -1 && (e.inputValue = o.slice(0, d).concat(o.slice(d + 1)));
+})(function(e2) {
+  this.$emit("input", e2);
+}, 500), emitValue(e2) {
+  if (this.debounce)
+    return this.debounceValue(e2);
+  this.$emit("input", e2);
+}, hasLeftIcon() {
+  return this.leftIconName || this.$slots["icon-left"];
+}, hasRightIcon() {
+  return this.rightIconName || this.$slots["icon-right"];
+}, focusInput() {
+  this.$refs.MazInput.focus();
+}, onFocus(e2) {
+  this.$emit("focus", e2), this.isFocus = true;
+}, onBlur(e2) {
+  this.$emit("blur", e2), this.isFocus = false;
+}, onPaste(e2) {
+  this.$emit("paste", e2);
+}, onChange(e2) {
+  this.$emit("change", e2);
+}, clear() {
+  this.$emit("input", this.hasNumberType ? 0 : ""), this.$emit("clear");
+}, keyUp(e2) {
+  this.$emit("keyup", e2);
+}, keyDown(e2) {
+  this.$emit("keydown", e2);
+} } };
+const dt = at(nt, function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2("div", { ref: "parent", staticClass: "maz-base-component maz-input maz-border maz-border-color maz-border-color-hover maz-border-solid maz-border-radius", class: [{ "is-focused": e2.isFocus || e2.focus, "is-valid": e2.success, "has-value": e2.value, "is-textarea": e2.textarea, "has-error": e2.error, "has-warning": e2.warning, "is-disabled": e2.disabled, "maz-is-dark": e2.dark, "has-hint": e2.hint, "has-no-label": !e2.hasLabel && !e2.hint, "has-left-icon": e2.hasLeftIcon() }, `maz-input--${e2.size}`, `has-${e2.leftNumberIcon}-right-icon`, `maz-input--${e2.color}`], on: { click: e2.focusInput } }, [e2.hasLeftIcon() ? a2("div", { staticClass: "maz-input__icon maz-flex left", class: [e2.textarea ? "maz-align-start maz-pt-2" : "maz-align-center"] }, [e2._t("icon-left", function() {
+    return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.leftIconName))])];
+  })], 2) : e2._e(), e2.hasRightIcon() ? a2("div", { staticClass: "maz-input__icon maz-flex right", class: [e2.textarea ? "maz-align-start maz-pt-2" : "maz-align-center"] }, [e2._t("icon-right", function() {
+    return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.rightIconName))])];
+  })], 2) : e2._e(), "checkbox" !== e2.getType || e2.textarea ? "radio" !== e2.getType || e2.textarea ? e2.textarea ? a2("textarea", e2._b({ directives: [{ name: "model", rawName: "v-model", value: e2.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-textarea", attrs: { id: e2.uniqueId, placeholder: e2.placeholderValue, type: e2.type, required: e2.required, readonly: e2.readonly }, domProps: { value: e2.inputValue }, on: { keydown: e2.keyDown, keyup: e2.keyUp, focus: e2.onFocus, blur: e2.onBlur, paste: e2.onPaste, change: e2.onChange, click: function(a3) {
+    return e2.$emit("click", a3);
+  }, input: function(a3) {
+    a3.target.composing || (e2.inputValue = a3.target.value);
+  } } }, "textarea", e2.$attrs, false)) : a2("input", e2._b({ directives: [{ name: "model", rawName: "v-model", value: e2.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: { "has-right-icon": e2.hasClearBtn || e2.hasPasswordBtn || e2.hasRightIcon() }, attrs: { id: e2.uniqueId, placeholder: e2.placeholderValue, "aria-label": e2.placeholder, disabled: e2.disabled, required: e2.required, readonly: e2.readonly, type: e2.getType }, domProps: { value: e2.inputValue }, on: { keydown: e2.keyDown, keyup: e2.keyUp, focus: e2.onFocus, blur: e2.onBlur, paste: e2.onPaste, change: e2.onChange, click: function(a3) {
+    return e2.$emit("click", a3);
+  }, input: function(a3) {
+    a3.target.composing || (e2.inputValue = a3.target.value);
+  } } }, "input", e2.$attrs, false)) : a2("input", e2._b({ directives: [{ name: "model", rawName: "v-model", value: e2.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: { "has-right-icon": e2.hasClearBtn || e2.hasPasswordBtn || e2.hasRightIcon() }, attrs: { id: e2.uniqueId, placeholder: e2.placeholderValue, "aria-label": e2.placeholder, disabled: e2.disabled, required: e2.required, readonly: e2.readonly, type: "radio" }, domProps: { checked: e2._q(e2.inputValue, null) }, on: { keydown: e2.keyDown, keyup: e2.keyUp, focus: e2.onFocus, blur: e2.onBlur, paste: e2.onPaste, change: [function(a3) {
+    e2.inputValue = null;
+  }, e2.onChange], click: function(a3) {
+    return e2.$emit("click", a3);
+  } } }, "input", e2.$attrs, false)) : a2("input", e2._b({ directives: [{ name: "model", rawName: "v-model", value: e2.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: { "has-right-icon": e2.hasClearBtn || e2.hasPasswordBtn || e2.hasRightIcon() }, attrs: { id: e2.uniqueId, placeholder: e2.placeholderValue, "aria-label": e2.placeholder, disabled: e2.disabled, required: e2.required, readonly: e2.readonly, type: "checkbox" }, domProps: { checked: Array.isArray(e2.inputValue) ? e2._i(e2.inputValue, null) > -1 : e2.inputValue }, on: { keydown: e2.keyDown, keyup: e2.keyUp, focus: e2.onFocus, blur: e2.onBlur, paste: e2.onPaste, change: [function(a3) {
+    var t2 = e2.inputValue, r2 = a3.target, o2 = !!r2.checked;
+    if (Array.isArray(t2)) {
+      var i2 = e2._i(t2, null);
+      r2.checked ? i2 < 0 && (e2.inputValue = t2.concat([null])) : i2 > -1 && (e2.inputValue = t2.slice(0, i2).concat(t2.slice(i2 + 1)));
     } else
-      e.inputValue = n;
-  }, e.onChange], click: function(t) {
-    return e.$emit("click", t);
-  } } }, "input", e.$attrs, !1)) : e.getType === "radio" && !e.textarea ? a("input", e._b({ directives: [{ name: "model", rawName: "v-model", value: e.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: {
-    "has-right-icon": e.hasClearBtn || e.hasPasswordBtn || e.hasRightIcon()
-  }, attrs: { id: e.uniqueId, placeholder: e.placeholderValue, "aria-label": e.placeholder, disabled: e.disabled, required: e.required, readonly: e.readonly, type: "radio" }, domProps: { checked: e._q(e.inputValue, null) }, on: { keydown: e.keyDown, keyup: e.keyUp, focus: e.onFocus, blur: e.onBlur, paste: e.onPaste, change: [function(t) {
-    e.inputValue = null;
-  }, e.onChange], click: function(t) {
-    return e.$emit("click", t);
-  } } }, "input", e.$attrs, !1)) : e.textarea ? a("textarea", e._b({ directives: [{ name: "model", rawName: "v-model", value: e.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-textarea", attrs: { id: e.uniqueId, placeholder: e.placeholderValue, type: e.type, required: e.required, readonly: e.readonly }, domProps: { value: e.inputValue }, on: { keydown: e.keyDown, keyup: e.keyUp, focus: e.onFocus, blur: e.onBlur, paste: e.onPaste, change: e.onChange, click: function(t) {
-    return e.$emit("click", t);
-  }, input: function(t) {
-    t.target.composing || (e.inputValue = t.target.value);
-  } } }, "textarea", e.$attrs, !1)) : a("input", e._b({ directives: [{ name: "model", rawName: "v-model", value: e.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: {
-    "has-right-icon": e.hasClearBtn || e.hasPasswordBtn || e.hasRightIcon()
-  }, attrs: { id: e.uniqueId, placeholder: e.placeholderValue, "aria-label": e.placeholder, disabled: e.disabled, required: e.required, readonly: e.readonly, type: e.getType }, domProps: { value: e.inputValue }, on: { keydown: e.keyDown, keyup: e.keyUp, focus: e.onFocus, blur: e.onBlur, paste: e.onPaste, change: e.onChange, click: function(t) {
-    return e.$emit("click", t);
-  }, input: function(t) {
-    t.target.composing || (e.inputValue = t.target.value);
-  } } }, "input", e.$attrs, !1)), e._v(" "), e.hasLabel || e.hint ? a("label", { ref: "label", staticClass: "maz-input__label", class: e.error ? "maz-text-danger" : null, attrs: { for: e.uniqueId, tabindex: "-1" }, on: { click: e.focusInput } }, [e._v(" " + e._s(e.hintValue || e.placeholderValue) + " ")]) : e._e(), a("transition-group", { attrs: { name: "maz-scale" } }, [e.hasClearBtn ? a("button", { key: "clear-button", staticClass: "maz-input__toggle-btn --clear maz-flex maz-flex-center", class: { "has-right-icon": e.hasRightIcon() }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(t) {
-    return t.stopPropagation(), e.clear.apply(null, arguments);
-  } } }, [a("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e._v(" close ")])]) : e._e(), e.hasPasswordBtn ? a("button", { key: "password-button", staticClass: "maz-input__toggle-btn password maz-flex maz-flex-center", class: {
-    "has-clear-btn": e.hasClearBtn,
-    "has-right-icon": e.hasRightIcon()
-  }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(t) {
-    e.showPassword = !e.showPassword;
-  } } }, [a("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e._v(" " + e._s(e.showPassword ? "visibility_off" : "visibility") + " ")])]) : e._e()]), e.loading ? a("div", { staticClass: "maz-input__loader", class: { textarea: e.textarea } }, [a("div", { staticClass: "maz-input__loader__progress-bar" })]) : e._e()], 1);
-}, Si = [], Pi = /* @__PURE__ */ te(
-  Ai,
-  Ii,
-  Si,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const j = Pi.exports;
-j.install = (r) => {
-  r.component(j.name, j);
+      e2.inputValue = o2;
+  }, e2.onChange], click: function(a3) {
+    return e2.$emit("click", a3);
+  } } }, "input", e2.$attrs, false)), e2._v(" "), e2.hasLabel || e2.hint ? a2("label", { ref: "label", staticClass: "maz-input__label", class: e2.error ? "maz-text-danger" : null, attrs: { for: e2.uniqueId, tabindex: "-1" }, on: { click: e2.focusInput } }, [e2._v(" " + e2._s(e2.hintValue || e2.placeholderValue) + " ")]) : e2._e(), a2("transition-group", { attrs: { name: "maz-scale" } }, [e2.hasClearBtn ? a2("button", { key: "clear-button", staticClass: "maz-input__toggle-btn --clear maz-flex maz-flex-center", class: { "has-right-icon": e2.hasRightIcon() }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(a3) {
+    return a3.stopPropagation(), e2.clear.apply(null, arguments);
+  } } }, [a2("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e2._v(" close ")])]) : e2._e(), e2.hasPasswordBtn ? a2("button", { key: "password-button", staticClass: "maz-input__toggle-btn password maz-flex maz-flex-center", class: { "has-clear-btn": e2.hasClearBtn, "has-right-icon": e2.hasRightIcon() }, attrs: { title: "clear", type: "button", tabindex: "-1" }, on: { click: function(a3) {
+    e2.showPassword = !e2.showPassword;
+  } } }, [a2("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e2._v(" " + e2._s(e2.showPassword ? "visibility_off" : "visibility") + " ")])]) : e2._e()]), e2.loading ? a2("div", { staticClass: "maz-input__loader", class: { textarea: e2.textarea } }, [a2("div", { staticClass: "maz-input__loader__progress-bar" })]) : e2._e()], 1);
+}, [], false, null, null, null, null).exports;
+dt.install = (e2) => {
+  e2.component(dt.name, dt);
 };
-const Bi = {
-  name: "MazSelect",
-  components: { MazInput: j, MazBtn: le },
-  mixins: [Ue],
-  props: {
-    // is the value of the input
-    value: {
-      required: !0,
-      validator: (r) => ["number", "string", "boolean"].includes(typeof r) || Array.isArray(r) || r === null
-    },
-    // list of the options
-    options: { type: Array, required: !0 },
-    // When is `true` the select is disabled
-    disabled: { type: Boolean, default: !1 },
-    lock: { type: Boolean, default: !1 },
-    // When is `true` the select has the dark style
-    dark: { type: Boolean, default: !1 },
-    // Item in list height in pixel
-    itemHeight: { type: Number, default: 35 },
-    // List height in pixel
-    listHeight: { type: Number, default: 260 },
-    // List width in pixel or percent (:list-width="100", list-width="100%")
-    listWidth: { type: [Number, String], default: null },
-    // The select has no label in the input
-    placeholder: { type: String, default: "Select option" },
-    // When is `true` the select you select multiple values
-    noLabel: { type: Boolean, default: !1 },
-    // When is `true` the select you select multiple values
-    multiple: { type: Boolean, default: !1 },
-    // When is `true` the select has an input to search in options
-    search: { type: Boolean, default: !1 },
-    // the search input placeholder
-    searchPlaceholder: { type: String, default: "Search in options" },
-    // the search input placeholder
-    color: { type: String, default: "primary" },
-    // input size
-    size: { type: String, default: "md" },
-    // When is `true` the option list is open
-    open: { type: Boolean, default: !1 },
-    // set the position of option list (`top`, `top right`, `bottom right`)
-    position: { type: String, default: "left bottom" },
-    // set label key and value key - Ex: `{ labelKey: '<your_object_key>', valueKey: '<your_object_key>', searchKey: '<your_object_key>' }`
-    config: {
-      type: Object,
-      default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" })
-    },
-    // force value shown on input
-    inputValue: { type: String, default: null }
-  },
-  data() {
-    return {
-      listIsOpen: !1,
-      query: "",
-      tmpValue: null,
-      searchQuery: null,
-      filteredOptions: null
-    };
-  },
-  computed: {
-    hasPositionTop() {
-      return this.position.includes("top");
-    },
-    hasPositionRight() {
-      return this.position.includes("right");
-    },
-    listTransition() {
-      return this.position.includes("bottom") ? "maz-slide" : "maz-slideinvert";
-    },
-    hasOpenList() {
-      return this.open || this.listIsOpen;
-    },
-    values() {
-      const { multiple: r, value: e, options: a } = this;
-      if (!a)
-        throw new Error("[MazSelect] options should be provide");
-      if (r && !Array.isArray(e) && e !== null)
-        throw new Error("[MazSelect] value should be an array or null");
-      if (!r && Array.isArray(e))
-        throw new Error("[MazSelect] value should be a string, a number or null");
-      return e ? r ? [...e] : [e] : [];
-    },
-    hasLeftIcon() {
-      return this.$attrs.leftIconName || this.$slots["icon-left"];
-    },
-    placeholderShown() {
-      const { placeholder: r, multiple: e, values: a } = this;
-      return e && a.length ? null : r;
-    },
-    hasNoLabel() {
-      return this.multiple || this.noLabel;
-    },
-    optionHeight() {
-      return {
-        height: `${this.itemHeight}px`,
-        flex: `0 0 ${this.itemHeight}px`
-      };
-    },
-    itemListSize() {
-      const { listHeight: r, listWidth: e } = this, a = Number.isInteger(e) ? `${e}px` : e;
-      return {
-        maxHeight: `${r}px`,
-        width: a,
-        maxWidth: a
-      };
-    },
-    tmpValueIndex() {
-      const { config: r, tmpValue: e, optionsShown: a } = this;
-      return a.findIndex((t) => t[r.valueKey] === e);
-    },
-    selectedValueIndex() {
-      const { values: r, options: e, config: a } = this;
-      return r.length ? e.findIndex((t) => t[a.valueKey] === r[r.length - 1]) : null;
-    },
-    valueShown() {
-      if (this.inputValue)
-        return this.inputValue;
-      const { multiple: r, options: e, values: a, value: t, config: o } = this, i = e.find((l) => l[o.valueKey] === t);
-      return i && i[o.valueKey] && !r ? i[o.labelKey] : a[0] ? " " : null;
-    },
-    optionsShown() {
-      return this.filteredOptions || this.options;
-    },
-    selectedOptions() {
-      const { values: r, options: e, config: a } = this, t = [];
-      return r.forEach((o) => t.push(e.find((i) => o === i[a.valueKey]))), t;
-    }
-  },
-  watch: {
-    value: {
-      handler() {
-        const { multiple: r } = this;
-        r && this.scrollTags();
-      },
-      immediate: !0
-    }
-  },
-  methods: {
-    async scrollTags() {
-      var a;
-      await this.$nextTick();
-      const { SelectedTags: r, SelectedTagsContainer: e } = this.$refs;
-      r && (r.scrollLeft = ((a = e == null ? void 0 : e.$el) == null ? void 0 : a.clientWidth) ?? null);
-    },
-    removeOption(r) {
-      const { values: e, multiple: a } = this, t = e.filter((i) => i !== r), o = t.length ? a ? t : t[0] : null;
-      this.emitValues(o);
-    },
-    closeList(r = {}) {
-      if (this.$el.contains(r.relatedTarget))
-        return r.preventDefault();
-      this.$emit("close"), this.listIsOpen = !1, this.isFocus = !1;
-    },
-    openList(r) {
-      if (this.lock)
-        return;
-      this.$emit("focus", r);
-      const { disabled: e, search: a, values: t } = this;
-      if (!e) {
-        if (e)
-          return;
-        this.$emit("open"), this.isFocus = !0, this.listIsOpen = !0, this.selectFirstValue(), a && this.focusSearchInput(), t.length && this.scrollToSelectedOnFocus(this.selectedValueIndex);
-      }
-    },
-    clearSearch() {
-      this.searchQuery = null, this.filteredOptions = null;
-    },
-    async reset() {
-      this.clearSearch(), !this.multiple && this.closeList();
-    },
-    selectFirstValue() {
-      const { multiple: r, value: e, options: a, config: t } = this;
-      if (e || r)
-        return;
-      const o = a[0][t.valueKey] || null;
-      this.tmpValue = o, this.emitValues(o, !0);
-    },
-    updateValue(r) {
-      const { multiple: e, values: a, removeOption: t } = this;
-      if (a.includes(r) && e)
-        return t(r);
-      this.tmpValue = r, r && a.push(r);
-      const o = e && r ? a : r;
-      this.emitValues(o);
-    },
-    async focusSearchInput() {
-      await this.$nextTick();
-      const { SearchInput: r } = this.$refs;
-      r.$el.querySelector("input").focus();
-    },
-    async emitValues(r, e) {
-      this.$emit("input", r), !e && (await this.$nextTick(), this.reset());
-    },
-    async scrollToSelectedOnFocus(r) {
-      await this.$nextTick(), this.$refs.optionsList.scrollTop = r * this.itemHeight - this.itemHeight * 3;
-    },
-    keyboardNav(r) {
-      const e = r.keyCode, { hasOpenList: a, tmpValueIndex: t, optionsShown: o, openList: i, tmpValue: n, search: l, config: d } = this;
-      if (e === 40 || e === 38) {
-        r.preventDefault(), a || i();
-        let s = e === 40 ? t + 1 : t - 1;
-        (s === -1 || s >= o.length) && (s = s === -1 ? o.length - 1 : 0), this.tmpValue = o[s][d.valueKey], this.scrollToSelectedOnFocus(s);
-      } else
-        e === 13 ? (r.preventDefault(), a ? this.updateValue(n) : this.openList()) : e === 27 ? this.closeList() : l || this.searching(r);
-    },
-    searching(r) {
-      const { config: e, options: a } = this, t = r.keyCode;
-      clearTimeout(o);
-      const o = setTimeout(() => {
-        this.query = "";
-      }, 2e3), i = String.fromCharCode(t);
-      if (t === 8 && this.query !== "")
-        this.query = this.query.substring(0, this.query.length - 1);
-      else if (/[a-zA-Z-e ]/.test(i)) {
-        this.hasOpenList || this.openList(), this.query += i.toLowerCase();
-        const n = a.findIndex((l) => (this.tmpValue = l[e.valueKey], l[e.searchKey].toLowerCase().includes(this.query)));
-        n !== -1 && this.scrollToSelectedOnFocus(n);
-      }
-    },
-    searchInOptions(r) {
-      const { config: e, options: a } = this;
-      if (this.searchQuery = r === "" ? null : r, !this.searchQuery)
-        return this.filteredOptions = a;
-      const t = r.toLowerCase(), o = a.filter(
-        (i) => i[e.valueKey] && i[e.searchKey].toLowerCase().includes(t) || i[e.labelKey] && i[e.labelKey].includes(t)
-      );
-      this.tmpValue = o.length ? o[0][e.valueKey] : null, this.filteredOptions = o;
-    }
+const lt = { name: "MazSelect", components: { MazInput: dt, MazBtn: it }, mixins: [rt], props: { value: { required: true, validator: (e2) => ["number", "string", "boolean"].includes(typeof e2) || Array.isArray(e2) || null === e2 }, options: { type: Array, required: true }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, itemHeight: { type: Number, default: 35 }, listHeight: { type: Number, default: 260 }, listWidth: { type: [Number, String], default: null }, placeholder: { type: String, default: "Select option" }, noLabel: { type: Boolean, default: false }, multiple: { type: Boolean, default: false }, search: { type: Boolean, default: false }, searchPlaceholder: { type: String, default: "Search in options" }, color: { type: String, default: "primary" }, size: { type: String, default: "md" }, open: { type: Boolean, default: false }, position: { type: String, default: "left bottom" }, config: { type: Object, default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" }) }, inputValue: { type: String, default: null } }, data: () => ({ listIsOpen: false, query: "", tmpValue: null, searchQuery: null, filteredOptions: null }), computed: { hasPositionTop() {
+  return this.position.includes("top");
+}, hasPositionRight() {
+  return this.position.includes("right");
+}, listTransition() {
+  return this.position.includes("bottom") ? "maz-slide" : "maz-slideinvert";
+}, hasOpenList() {
+  return this.open || this.listIsOpen;
+}, values() {
+  const { multiple: e2, value: a2, options: t2 } = this;
+  if (!t2)
+    throw new Error("[MazSelect] options should be provide");
+  if (e2 && !Array.isArray(a2) && null !== a2)
+    throw new Error("[MazSelect] value should be an array or null");
+  if (!e2 && Array.isArray(a2))
+    throw new Error("[MazSelect] value should be a string, a number or null");
+  return a2 ? e2 ? [...a2] : [a2] : [];
+}, hasLeftIcon() {
+  return this.$attrs.leftIconName || this.$slots["icon-left"];
+}, placeholderShown() {
+  const { placeholder: e2, multiple: a2, values: t2 } = this;
+  return a2 && t2.length ? null : e2;
+}, hasNoLabel() {
+  return this.multiple || this.noLabel;
+}, optionHeight() {
+  return { height: `${this.itemHeight}px`, flex: `0 0 ${this.itemHeight}px` };
+}, itemListSize() {
+  const { listHeight: e2, listWidth: a2 } = this, t2 = Number.isInteger(a2) ? `${a2}px` : a2;
+  return { maxHeight: `${e2}px`, width: t2, maxWidth: t2 };
+}, tmpValueIndex() {
+  const { config: e2, tmpValue: a2, optionsShown: t2 } = this;
+  return t2.findIndex((t3) => t3[e2.valueKey] === a2);
+}, selectedValueIndex() {
+  const { values: e2, options: a2, config: t2 } = this;
+  return e2.length ? a2.findIndex((a3) => a3[t2.valueKey] === e2[e2.length - 1]) : null;
+}, valueShown() {
+  if (this.inputValue)
+    return this.inputValue;
+  const { multiple: e2, options: a2, values: t2, value: r2, config: o2 } = this, i2 = a2.find((e3) => e3[o2.valueKey] === r2);
+  return i2 && i2[o2.valueKey] && !e2 ? i2[o2.labelKey] : t2[0] ? " " : null;
+}, optionsShown() {
+  return this.filteredOptions || this.options;
+}, selectedOptions() {
+  const { values: e2, options: a2, config: t2 } = this, r2 = [];
+  return e2.forEach((e3) => r2.push(a2.find((a3) => e3 === a3[t2.valueKey]))), r2;
+} }, watch: { value: { handler() {
+  const { multiple: e2 } = this;
+  e2 && this.scrollTags();
+}, immediate: true } }, methods: { async scrollTags() {
+  var _a2, _b;
+  await this.$nextTick();
+  const { SelectedTags: e2, SelectedTagsContainer: a2 } = this.$refs;
+  e2 && (e2.scrollLeft = (_b = (_a2 = a2 == null ? void 0 : a2.$el) == null ? void 0 : _a2.clientWidth) != null ? _b : null);
+}, removeOption(e2) {
+  const { values: a2, multiple: t2 } = this, r2 = a2.filter((a3) => a3 !== e2), o2 = r2.length ? t2 ? r2 : r2[0] : null;
+  this.emitValues(o2);
+}, closeList(e2 = {}) {
+  if (this.$el.contains(e2.relatedTarget))
+    return e2.preventDefault();
+  this.$emit("close"), this.listIsOpen = false, this.isFocus = false;
+}, openList(e2) {
+  if (this.lock)
+    return;
+  this.$emit("focus", e2);
+  const { disabled: a2, search: t2, values: r2 } = this;
+  if (!a2) {
+    if (a2)
+      return;
+    this.$emit("open"), this.isFocus = true, this.listIsOpen = true, this.selectFirstValue(), t2 && this.focusSearchInput(), r2.length && this.scrollToSelectedOnFocus(this.selectedValueIndex);
   }
-};
-var Ti = function() {
-  var e = this, a = e._self._c;
-  return a("div", { staticClass: "maz-base-component maz-select", class: [
-    {
-      "has-list-open": e.hasOpenList,
-      "maz-is-dark": e.dark
-    },
-    `maz-select--${e.color}`,
-    `maz-select--${e.size}`
-  ], on: { "!blur": function(t) {
-    return e.closeList(t);
-  } } }, [e.multiple ? a("div", { ref: "SelectedTags", staticClass: "maz-select__tags maz-flex maz-align-center", class: {
-    "maz-left-offset": e.hasLeftIcon
-  } }, [a("transition-group", { ref: "SelectedTagsContainer", staticClass: "maz-flex maz-align-center maz-h-100", attrs: { tag: "div", name: "maz-tags" } }, e._l(e.selectedOptions, function(t, o) {
-    return a("MazBtn", { key: `tags-${o}`, staticClass: "maz-select__tag maz-flex maz-align-center", attrs: { disabled: e.disabled, color: e.color, size: e.size }, on: { click: function(i) {
-      return i.preventDefault(), i.stopPropagation(), e.removeOption(t[e.config.valueKey]);
-    } } }, [a("span", { staticClass: "maz-select__tag__text" }, [e._v(" " + e._s(t[e.config.labelKey]) + " ")]), a("i", { staticClass: "maz-select__tag__clear material-icons" }, [e._v(" close ")])]);
-  }), 1)], 1) : e._e(), a("MazInput", e._b({ ref: "textField", attrs: { value: e.valueShown, readonly: "", "no-label": e.hasNoLabel, color: e.color, size: e.size, placeholder: e.placeholderShown, disabled: e.disabled, focus: e.hasOpenList }, on: { clear: function(t) {
-    return e.emitValues(null);
-  }, keydown: function(t) {
-    e.search || e.keyboardNav(t);
-  }, keyup: function(t) {
-    return e.$emit("keyup", t);
-  }, blur: function(t) {
-    return e.$emit("blur", t);
-  }, change: function(t) {
-    return e.$emit("change", t);
-  }, paste: function(t) {
-    return e.$emit("paste", t);
-  }, click: function(t) {
-    return e.$emit("click", t);
-  }, focus: e.openList } }, "MazInput", e.$attrs, !1), [a("div", { staticClass: "maz-select__toggle maz-flex maz-flex-center", attrs: { slot: "icon-right", tabindex: "-1" }, slot: "icon-right" }, [e._t("arrow", function() {
-    return [a("svg", { staticClass: "maz-select__toggle__arrow", attrs: { mlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" } }, [a("path", { staticClass: "arrow", attrs: { d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" } }), a("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } })])];
-  })], 2)]), a("transition", { attrs: { name: e.listTransition } }, [a("div", { directives: [{ name: "show", rawName: "v-show", value: e.hasOpenList, expression: "hasOpenList" }], staticClass: "maz-select__options-list maz-flex maz-elevation", class: [
-    e.hasPositionTop ? "maz-select__options-list--top maz-direction-column-reverse" : "maz-direction-column",
-    { "maz-select__options-list--right": e.hasPositionRight }
-  ], style: [e.itemListSize] }, [e.search ? a("MazInput", { ref: "SearchInput", staticClass: "maz-m-1", attrs: { color: e.color, value: e.searchQuery, placeholder: e.searchPlaceholder, size: "sm", "no-label": "", name: "new_search_in_options", autocomplete: "off" }, on: { input: e.searchInOptions, keydown: [e.keyboardNav, function(t) {
-    return !t.type.indexOf("key") && e._k(t.keyCode, "esc", 27, t.key, ["Esc", "Escape"]) ? null : e.closeList.apply(null, arguments);
-  }] } }) : e._e(), a("div", { ref: "optionsList", staticClass: "maz-select__options-list__items maz-flex maz-direction-column" }, [e._l(e.optionsShown, function(t, o) {
-    return a("button", { key: o, staticClass: "maz-select__options-list__item flex maz-align-center maz-text-left", class: [
-      { selected: e.values.length && e.values.includes(t[e.config.valueKey]) },
-      { "keyboard-selected": e.tmpValue === t[e.config.valueKey] }
-    ], style: [e.optionHeight], attrs: { tabindex: "-1", type: "button" }, on: { click: function(i) {
-      return i.preventDefault(), i.stopPropagation(), e.updateValue(t[e.config.valueKey]);
-    } } }, [e._t("default", function() {
-      return [a("div", { class: t.icon ? `maz-flag maz-flag-${t.icon}` : "" }, [a("span", { staticClass: "maz-dots-text", class: [
-        { "maz-flag-after": t.icon },
-        { "maz-text-muted": !t[e.config.valueKey] },
-        e.values.includes(t[e.config.valueKey]) ? "maz-text-white" : "maz-text-color"
-      ] }, [e._v(" " + e._s(t[e.config.labelKey]) + " ")])])];
-    }, { option: { ...t, isSelected: e.values.includes(t[e.config.valueKey]) }, tag: "div" })], 2);
-  }), e.optionsShown.length ? e._e() : e._t("no-results", function() {
-    return [a("div", { staticClass: "maz-select__options-list__no-results maz-p-1 maz-flex maz-flex-center" }, [a("i", { staticClass: "material-icons maz-text-danger" }, [e._v(" search_off ")])])];
+}, clearSearch() {
+  this.searchQuery = null, this.filteredOptions = null;
+}, async reset() {
+  this.clearSearch(), this.multiple || this.closeList();
+}, selectFirstValue() {
+  const { multiple: e2, value: a2, options: t2, config: r2 } = this;
+  if (a2 || e2)
+    return;
+  const o2 = t2[0][r2.valueKey] || null;
+  this.tmpValue = o2, this.emitValues(o2, true);
+}, updateValue(e2) {
+  const { multiple: a2, values: t2, removeOption: r2 } = this;
+  if (t2.includes(e2) && a2)
+    return r2(e2);
+  this.tmpValue = e2, e2 && t2.push(e2);
+  const o2 = a2 && e2 ? t2 : e2;
+  this.emitValues(o2);
+}, async focusSearchInput() {
+  await this.$nextTick();
+  const { SearchInput: e2 } = this.$refs;
+  e2.$el.querySelector("input").focus();
+}, async emitValues(e2, a2) {
+  this.$emit("input", e2), a2 || (await this.$nextTick(), this.reset());
+}, async scrollToSelectedOnFocus(e2) {
+  await this.$nextTick(), this.$refs.optionsList.scrollTop = e2 * this.itemHeight - 3 * this.itemHeight;
+}, keyboardNav(e2) {
+  const a2 = e2.keyCode, { hasOpenList: t2, tmpValueIndex: r2, optionsShown: o2, openList: i2, tmpValue: n2, search: d2, config: l2 } = this;
+  if (40 === a2 || 38 === a2) {
+    e2.preventDefault(), t2 || i2();
+    let n3 = 40 === a2 ? r2 + 1 : r2 - 1;
+    (-1 === n3 || n3 >= o2.length) && (n3 = -1 === n3 ? o2.length - 1 : 0), this.tmpValue = o2[n3][l2.valueKey], this.scrollToSelectedOnFocus(n3);
+  } else
+    13 === a2 ? (e2.preventDefault(), t2 ? this.updateValue(n2) : this.openList()) : 27 === a2 ? this.closeList() : d2 || this.searching(e2);
+}, searching(e2) {
+  const { config: a2, options: t2 } = this, r2 = e2.keyCode;
+  clearTimeout(o2);
+  const o2 = setTimeout(() => {
+    this.query = "";
+  }, 2e3), i2 = String.fromCharCode(r2);
+  if (8 === r2 && "" !== this.query)
+    this.query = this.query.substring(0, this.query.length - 1);
+  else if (/[a-zA-Z-e ]/.test(i2)) {
+    this.hasOpenList || this.openList(), this.query += i2.toLowerCase();
+    const e3 = t2.findIndex((e4) => (this.tmpValue = e4[a2.valueKey], e4[a2.searchKey].toLowerCase().includes(this.query)));
+    -1 !== e3 && this.scrollToSelectedOnFocus(e3);
+  }
+}, searchInOptions(e2) {
+  const { config: a2, options: t2 } = this;
+  if (this.searchQuery = "" === e2 ? null : e2, !this.searchQuery)
+    return this.filteredOptions = t2;
+  const r2 = e2.toLowerCase(), o2 = t2.filter((e3) => e3[a2.valueKey] && e3[a2.searchKey].toLowerCase().includes(r2) || e3[a2.labelKey] && e3[a2.labelKey].includes(r2));
+  this.tmpValue = o2.length ? o2[0][a2.valueKey] : null, this.filteredOptions = o2;
+} } };
+var st = function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2("div", { staticClass: "maz-base-component maz-select", class: [{ "has-list-open": e2.hasOpenList, "maz-is-dark": e2.dark }, `maz-select--${e2.color}`, `maz-select--${e2.size}`], on: { "!blur": function(a3) {
+    return e2.closeList(a3);
+  } } }, [e2.multiple ? a2("div", { ref: "SelectedTags", staticClass: "maz-select__tags maz-flex maz-align-center", class: { "maz-left-offset": e2.hasLeftIcon } }, [a2("transition-group", { ref: "SelectedTagsContainer", staticClass: "maz-flex maz-align-center maz-h-100", attrs: { tag: "div", name: "maz-tags" } }, e2._l(e2.selectedOptions, function(t2, r2) {
+    return a2("MazBtn", { key: `tags-${r2}`, staticClass: "maz-select__tag maz-flex maz-align-center", attrs: { disabled: e2.disabled, color: e2.color, size: e2.size }, on: { click: function(a3) {
+      return a3.preventDefault(), a3.stopPropagation(), e2.removeOption(t2[e2.config.valueKey]);
+    } } }, [a2("span", { staticClass: "maz-select__tag__text" }, [e2._v(" " + e2._s(t2[e2.config.labelKey]) + " ")]), a2("i", { staticClass: "maz-select__tag__clear material-icons" }, [e2._v(" close ")])]);
+  }), 1)], 1) : e2._e(), a2("MazInput", e2._b({ ref: "textField", attrs: { value: e2.valueShown, readonly: "", "no-label": e2.hasNoLabel, color: e2.color, size: e2.size, placeholder: e2.placeholderShown, disabled: e2.disabled, focus: e2.hasOpenList }, on: { clear: function(a3) {
+    return e2.emitValues(null);
+  }, keydown: function(a3) {
+    !e2.search && e2.keyboardNav(a3);
+  }, keyup: function(a3) {
+    return e2.$emit("keyup", a3);
+  }, blur: function(a3) {
+    return e2.$emit("blur", a3);
+  }, change: function(a3) {
+    return e2.$emit("change", a3);
+  }, paste: function(a3) {
+    return e2.$emit("paste", a3);
+  }, click: function(a3) {
+    return e2.$emit("click", a3);
+  }, focus: e2.openList } }, "MazInput", e2.$attrs, false), [a2("div", { staticClass: "maz-select__toggle maz-flex maz-flex-center", attrs: { slot: "icon-right", tabindex: "-1" }, slot: "icon-right" }, [e2._t("arrow", function() {
+    return [a2("svg", { staticClass: "maz-select__toggle__arrow", attrs: { mlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" } }, [a2("path", { staticClass: "arrow", attrs: { d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" } }), a2("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } })])];
+  })], 2)]), a2("transition", { attrs: { name: e2.listTransition } }, [a2("div", { directives: [{ name: "show", rawName: "v-show", value: e2.hasOpenList, expression: "hasOpenList" }], staticClass: "maz-select__options-list maz-flex maz-elevation", class: [e2.hasPositionTop ? "maz-select__options-list--top maz-direction-column-reverse" : "maz-direction-column", { "maz-select__options-list--right": e2.hasPositionRight }], style: [e2.itemListSize] }, [e2.search ? a2("MazInput", { ref: "SearchInput", staticClass: "maz-m-1", attrs: { color: e2.color, value: e2.searchQuery, placeholder: e2.searchPlaceholder, size: "sm", "no-label": "", name: "new_search_in_options", autocomplete: "off" }, on: { input: e2.searchInOptions, keydown: [e2.keyboardNav, function(a3) {
+    return !a3.type.indexOf("key") && e2._k(a3.keyCode, "esc", 27, a3.key, ["Esc", "Escape"]) ? null : e2.closeList.apply(null, arguments);
+  }] } }) : e2._e(), a2("div", { ref: "optionsList", staticClass: "maz-select__options-list__items maz-flex maz-direction-column" }, [e2._l(e2.optionsShown, function(t2, r2) {
+    return a2("button", { key: r2, staticClass: "maz-select__options-list__item flex maz-align-center maz-text-left", class: [{ selected: e2.values.length && e2.values.includes(t2[e2.config.valueKey]) }, { "keyboard-selected": e2.tmpValue === t2[e2.config.valueKey] }], style: [e2.optionHeight], attrs: { tabindex: "-1", type: "button" }, on: { click: function(a3) {
+      return a3.preventDefault(), a3.stopPropagation(), e2.updateValue(t2[e2.config.valueKey]);
+    } } }, [e2._t("default", function() {
+      return [a2("div", { class: t2.icon ? `maz-flag maz-flag-${t2.icon}` : "" }, [a2("span", { staticClass: "maz-dots-text", class: [{ "maz-flag-after": t2.icon }, { "maz-text-muted": !t2[e2.config.valueKey] }, e2.values.includes(t2[e2.config.valueKey]) ? "maz-text-white" : "maz-text-color"] }, [e2._v(" " + e2._s(t2[e2.config.labelKey]) + " ")])])];
+    }, { option: { ...t2, isSelected: e2.values.includes(t2[e2.config.valueKey]) }, tag: "div" })], 2);
+  }), e2.optionsShown.length ? e2._e() : e2._t("no-results", function() {
+    return [a2("div", { staticClass: "maz-select__options-list__no-results maz-p-1 maz-flex maz-flex-center" }, [a2("i", { staticClass: "material-icons maz-text-danger" }, [e2._v(" search_off ")])])];
   }, { tag: "div" })], 2)], 1)])], 1);
-}, Fi = [], Ri = /* @__PURE__ */ te(
-  Bi,
-  Ti,
-  Fi,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const se = Ri.exports;
-se.install = (r) => {
-  r.component(se.name, se);
 };
-const At = {
-  version: 4,
-  country_calling_codes: {
-    1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"],
-    7: ["RU", "KZ"],
-    20: ["EG"],
-    27: ["ZA"],
-    30: ["GR"],
-    31: ["NL"],
-    32: ["BE"],
-    33: ["FR"],
-    34: ["ES"],
-    36: ["HU"],
-    39: ["IT", "VA"],
-    40: ["RO"],
-    41: ["CH"],
-    43: ["AT"],
-    44: ["GB", "GG", "IM", "JE"],
-    45: ["DK"],
-    46: ["SE"],
-    47: ["NO", "SJ"],
-    48: ["PL"],
-    49: ["DE"],
-    51: ["PE"],
-    52: ["MX"],
-    53: ["CU"],
-    54: ["AR"],
-    55: ["BR"],
-    56: ["CL"],
-    57: ["CO"],
-    58: ["VE"],
-    60: ["MY"],
-    61: ["AU", "CC", "CX"],
-    62: ["ID"],
-    63: ["PH"],
-    64: ["NZ"],
-    65: ["SG"],
-    66: ["TH"],
-    81: ["JP"],
-    82: ["KR"],
-    84: ["VN"],
-    86: ["CN"],
-    90: ["TR"],
-    91: ["IN"],
-    92: ["PK"],
-    93: ["AF"],
-    94: ["LK"],
-    95: ["MM"],
-    98: ["IR"],
-    211: ["SS"],
-    212: ["MA", "EH"],
-    213: ["DZ"],
-    216: ["TN"],
-    218: ["LY"],
-    220: ["GM"],
-    221: ["SN"],
-    222: ["MR"],
-    223: ["ML"],
-    224: ["GN"],
-    225: ["CI"],
-    226: ["BF"],
-    227: ["NE"],
-    228: ["TG"],
-    229: ["BJ"],
-    230: ["MU"],
-    231: ["LR"],
-    232: ["SL"],
-    233: ["GH"],
-    234: ["NG"],
-    235: ["TD"],
-    236: ["CF"],
-    237: ["CM"],
-    238: ["CV"],
-    239: ["ST"],
-    240: ["GQ"],
-    241: ["GA"],
-    242: ["CG"],
-    243: ["CD"],
-    244: ["AO"],
-    245: ["GW"],
-    246: ["IO"],
-    247: ["AC"],
-    248: ["SC"],
-    249: ["SD"],
-    250: ["RW"],
-    251: ["ET"],
-    252: ["SO"],
-    253: ["DJ"],
-    254: ["KE"],
-    255: ["TZ"],
-    256: ["UG"],
-    257: ["BI"],
-    258: ["MZ"],
-    260: ["ZM"],
-    261: ["MG"],
-    262: ["RE", "YT"],
-    263: ["ZW"],
-    264: ["NA"],
-    265: ["MW"],
-    266: ["LS"],
-    267: ["BW"],
-    268: ["SZ"],
-    269: ["KM"],
-    290: ["SH", "TA"],
-    291: ["ER"],
-    297: ["AW"],
-    298: ["FO"],
-    299: ["GL"],
-    350: ["GI"],
-    351: ["PT"],
-    352: ["LU"],
-    353: ["IE"],
-    354: ["IS"],
-    355: ["AL"],
-    356: ["MT"],
-    357: ["CY"],
-    358: ["FI", "AX"],
-    359: ["BG"],
-    370: ["LT"],
-    371: ["LV"],
-    372: ["EE"],
-    373: ["MD"],
-    374: ["AM"],
-    375: ["BY"],
-    376: ["AD"],
-    377: ["MC"],
-    378: ["SM"],
-    380: ["UA"],
-    381: ["RS"],
-    382: ["ME"],
-    383: ["XK"],
-    385: ["HR"],
-    386: ["SI"],
-    387: ["BA"],
-    389: ["MK"],
-    420: ["CZ"],
-    421: ["SK"],
-    423: ["LI"],
-    500: ["FK"],
-    501: ["BZ"],
-    502: ["GT"],
-    503: ["SV"],
-    504: ["HN"],
-    505: ["NI"],
-    506: ["CR"],
-    507: ["PA"],
-    508: ["PM"],
-    509: ["HT"],
-    590: ["GP", "BL", "MF"],
-    591: ["BO"],
-    592: ["GY"],
-    593: ["EC"],
-    594: ["GF"],
-    595: ["PY"],
-    596: ["MQ"],
-    597: ["SR"],
-    598: ["UY"],
-    599: ["CW", "BQ"],
-    670: ["TL"],
-    672: ["NF"],
-    673: ["BN"],
-    674: ["NR"],
-    675: ["PG"],
-    676: ["TO"],
-    677: ["SB"],
-    678: ["VU"],
-    679: ["FJ"],
-    680: ["PW"],
-    681: ["WF"],
-    682: ["CK"],
-    683: ["NU"],
-    685: ["WS"],
-    686: ["KI"],
-    687: ["NC"],
-    688: ["TV"],
-    689: ["PF"],
-    690: ["TK"],
-    691: ["FM"],
-    692: ["MH"],
-    850: ["KP"],
-    852: ["HK"],
-    853: ["MO"],
-    855: ["KH"],
-    856: ["LA"],
-    880: ["BD"],
-    886: ["TW"],
-    960: ["MV"],
-    961: ["LB"],
-    962: ["JO"],
-    963: ["SY"],
-    964: ["IQ"],
-    965: ["KW"],
-    966: ["SA"],
-    967: ["YE"],
-    968: ["OM"],
-    970: ["PS"],
-    971: ["AE"],
-    972: ["IL"],
-    973: ["BH"],
-    974: ["QA"],
-    975: ["BT"],
-    976: ["MN"],
-    977: ["NP"],
-    992: ["TJ"],
-    993: ["TM"],
-    994: ["AZ"],
-    995: ["GE"],
-    996: ["KG"],
-    998: ["UZ"]
-  },
-  countries: {
-    AC: ["247", "00", "(?:[01589]\\d|[46])\\d{4}", [5, 6]],
-    AD: ["376", "00", "(?:1|6\\d)\\d{7}|[135-9]\\d{5}", [6, 8, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["[135-9]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["1"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]]],
-    AE: ["971", "00", "(?:[4-7]\\d|9[0-689])\\d{7}|800\\d{2,9}|[2-4679]\\d{7}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{2,9})", "$1 $2", ["60|8"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[236]|[479][2-8]"], "0$1"], ["(\\d{3})(\\d)(\\d{5})", "$1 $2 $3", ["[479]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"]], "0"],
-    AF: ["93", "00", "[2-7]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"]], "0"],
-    AG: ["1", "011", "(?:268|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([457]\\d{6})$|1", "268$1", 0, "268"],
-    AI: ["1", "011", "(?:264|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2457]\\d{6})$|1", "264$1", 0, "264"],
-    AL: ["355", "00", "(?:700\\d\\d|900)\\d{3}|8\\d{5,7}|(?:[2-5]|6\\d)\\d{7}", [6, 7, 8, 9], [["(\\d{3})(\\d{3,4})", "$1 $2", ["80|9"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["4[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2358][2-5]|4"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["[23578]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["6"], "0$1"]], "0"],
-    AM: ["374", "00", "(?:[1-489]\\d|55|60|77)\\d{6}", [8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[89]0"], "0 $1"], ["(\\d{3})(\\d{5})", "$1 $2", ["2|3[12]"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["1|47"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[3-9]"], "0$1"]], "0"],
-    AO: ["244", "00", "[29]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[29]"]]]],
-    AR: ["54", "00", "(?:11|[89]\\d\\d)\\d{8}|[2368]\\d{9}", [10, 11], [["(\\d{4})(\\d{2})(\\d{4})", "$1 $2-$3", ["2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9])", "2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8]))|2(?:2[24-9]|3[1-59]|47)", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5[56][46]|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|58|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|54(?:4|5[13-7]|6[89])|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:454|85[56])[46]|3(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["1"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[68]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2-$3", ["[23]"], "0$1", 1], ["(\\d)(\\d{4})(\\d{2})(\\d{4})", "$2 15-$3-$4", ["9(?:2[2-469]|3[3-578])", "9(?:2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9]))", "9(?:2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8])))|92(?:2[24-9]|3[1-59]|47)", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5(?:[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|5(?:4(?:4|5[13-7]|6[89])|[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 15-$3-$4", ["91"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d{3})(\\d{3})(\\d{5})", "$1-$2-$3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 15-$3-$4", ["9"], "0$1", 0, "$1 $2 $3-$4"]], "0", 0, "0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|3(?:02?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[2-4]|7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", "9$1"],
-    AS: ["1", "011", "(?:[58]\\d\\d|684|900)\\d{7}", [10], 0, "1", 0, "([267]\\d{6})$|1", "684$1", 0, "684"],
-    AT: ["43", "00", "1\\d{3,12}|2\\d{6,12}|43(?:(?:0\\d|5[02-9])\\d{3,9}|2\\d{4,5}|[3467]\\d{4}|8\\d{4,6}|9\\d{4,7})|5\\d{4,12}|8\\d{7,12}|9\\d{8,12}|(?:[367]\\d|4[0-24-9])\\d{4,11}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3,12})", "$1 $2", ["1(?:11|[2-9])"], "0$1"], ["(\\d{3})(\\d{2})", "$1 $2", ["517"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["5[079]"], "0$1"], ["(\\d{3})(\\d{3,10})", "$1 $2", ["(?:31|4)6|51|6(?:5[0-3579]|[6-9])|7(?:20|32|8)|[89]"], "0$1"], ["(\\d{4})(\\d{3,9})", "$1 $2", ["[2-467]|5[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,7})", "$1 $2 $3", ["5"], "0$1"]], "0"],
-    AU: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{7}(?:\\d(?:\\d{2})?)?|8[0-24-9]\\d{7})|[2-478]\\d{8}|1\\d{4,7}", [5, 6, 7, 8, 9, 10, 12], [["(\\d{2})(\\d{3,4})", "$1 $2", ["16"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,4})", "$1 $2 $3", ["16"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["14|4"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[2378]"], "(0$1)"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:30|[89])"]]], "0", 0, "(183[12])|0", 0, 0, 0, [["(?:(?:2(?:[0-26-9]\\d|3[0-8]|4[02-9]|5[0135-9])|3(?:[0-3589]\\d|4[0-578]|6[1-9]|7[0-35-9])|7(?:[013-57-9]\\d|2[0-8]))\\d{3}|8(?:51(?:0(?:0[03-9]|[12479]\\d|3[2-9]|5[0-8]|6[1-9]|8[0-7])|1(?:[0235689]\\d|1[0-69]|4[0-589]|7[0-47-9])|2(?:0[0-79]|[18][13579]|2[14-9]|3[0-46-9]|[4-6]\\d|7[89]|9[0-4]))|(?:6[0-8]|[78]\\d)\\d{3}|9(?:[02-9]\\d{3}|1(?:(?:[0-58]\\d|6[0135-9])\\d|7(?:0[0-24-9]|[1-9]\\d)|9(?:[0-46-9]\\d|5[0-79])))))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, ["163\\d{2,6}", [5, 6, 7, 8, 9]], ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"],
-    AW: ["297", "00", "(?:[25-79]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[25-9]"]]]],
-    AX: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "2\\d{4,9}|35\\d{4,5}|(?:60\\d\\d|800)\\d{4,6}|7\\d{5,11}|(?:[14]\\d|3[0-46-9]|50)\\d{4,8}", [5, 6, 7, 8, 9, 10, 11, 12], 0, "0", 0, 0, 0, 0, "18", 0, "00"],
-    AZ: ["994", "00", "365\\d{6}|(?:[124579]\\d|60|88)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[28]|2|365|46", "1[28]|2|365[45]|46", "1[28]|2|365(?:4|5[02])|46"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[13-9]"], "0$1"]], "0"],
-    BA: ["387", "00", "6\\d{8}|(?:[35689]\\d|49|70)\\d{6}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[1-3]|[7-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2-$3", ["[3-5]|6[56]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["6"], "0$1"]], "0"],
-    BB: ["1", "011", "(?:246|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "246$1", 0, "246"],
-    BD: ["880", "00", "[1-469]\\d{9}|8[0-79]\\d{7,8}|[2-79]\\d{8}|[2-9]\\d{7}|[3-9]\\d{6}|[57-9]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{4,6})", "$1-$2", ["31[5-8]|[459]1"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1-$2", ["3(?:[67]|8[013-9])|4(?:6[168]|7|[89][18])|5(?:6[128]|9)|6(?:[15]|28|4[14])|7[2-589]|8(?:0[014-9]|[12])|9[358]|(?:3[2-5]|4[235]|5[2-578]|6[0389]|76|8[3-7]|9[24])1|(?:44|66)[01346-9]"], "0$1"], ["(\\d{4})(\\d{3,6})", "$1-$2", ["[13-9]|22"], "0$1"], ["(\\d)(\\d{7,8})", "$1-$2", ["2"], "0$1"]], "0"],
-    BE: ["32", "00", "4\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:80|9)0"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[239]|4[23]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[15-8]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4"], "0$1"]], "0"],
-    BF: ["226", "00", "[025-7]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[025-7]"]]]],
-    BG: ["359", "00", "00800\\d{7}|[2-7]\\d{6,7}|[89]\\d{6,8}|2\\d{5}", [6, 7, 8, 9, 12], [["(\\d)(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["43[1-6]|70[1-9]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[356]|4[124-7]|7[1-9]|8[1-6]|9[1-7]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:70|8)0"], "0$1"], ["(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3", ["43[1-7]|7"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[48]|9[08]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"]], "0"],
-    BH: ["973", "00", "[136-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[13679]|8[02-4679]"]]]],
-    BI: ["257", "00", "(?:[267]\\d|31)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2367]"]]]],
-    BJ: ["229", "00", "[24-689]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-689]"]]]],
-    BL: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:2[7-9]|3[3-7]|5[12]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]],
-    BM: ["1", "011", "(?:441|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "441$1", 0, "441"],
-    BN: ["673", "00", "[2-578]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-578]"]]]],
-    BO: ["591", "00(?:1\\d)?", "(?:[2-467]\\d\\d|8001)\\d{5}", [8, 9], [["(\\d)(\\d{7})", "$1 $2", ["[23]|4[46]"]], ["(\\d{8})", "$1", ["[67]"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["8"]]], "0", 0, "0(1\\d)?"],
-    BQ: ["599", "00", "(?:[34]1|7\\d)\\d{5}", [7], 0, 0, 0, 0, 0, 0, "[347]"],
-    BR: ["55", "00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)", "(?:[1-46-9]\\d\\d|5(?:[0-46-9]\\d|5[0-46-9]))\\d{8}|[1-9]\\d{9}|[3589]\\d{8}|[34]\\d{7}", [8, 9, 10, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["300|4(?:0[02]|37)", "4(?:02|37)0|[34]00"]], ["(\\d{3})(\\d{2,3})(\\d{4})", "$1 $2 $3", ["(?:[358]|90)0"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["(?:[14689][1-9]|2[12478]|3[1-578]|5[13-5]|7[13-579])[2-57]"], "($1)"], ["(\\d{2})(\\d{5})(\\d{4})", "$1 $2-$3", ["[16][1-9]|[2-57-9]"], "($1)"]], "0", 0, "(?:0|90)(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\\d{10,11}))?", "$2"],
-    BS: ["1", "011", "(?:242|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([3-8]\\d{6})$|1", "242$1", 0, "242"],
-    BT: ["975", "00", "[17]\\d{7}|[2-8]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-68]|7[246]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[67]|7"]]]],
-    BW: ["267", "00", "(?:0800|(?:[37]|800)\\d)\\d{6}|(?:[2-6]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["90"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[24-6]|3[15-9]"]], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37]"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["8"]]]],
-    BY: ["375", "810", "(?:[12]\\d|33|44|902)\\d{7}|8(?:0[0-79]\\d{5,7}|[1-7]\\d{9})|8(?:1[0-489]|[5-79]\\d)\\d{7}|8[1-79]\\d{6,7}|8[0-79]\\d{5}|8\\d{5}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3})", "$1 $2", ["800"], "8 $1"], ["(\\d{3})(\\d{2})(\\d{2,4})", "$1 $2 $3", ["800"], "8 $1"], ["(\\d{4})(\\d{2})(\\d{3})", "$1 $2-$3", ["1(?:5[169]|6[3-5]|7[179])|2(?:1[35]|2[34]|3[3-5])", "1(?:5[169]|6(?:3[1-3]|4|5[125])|7(?:1[3-9]|7[0-24-6]|9[2-7]))|2(?:1[35]|2[34]|3[3-5])"], "8 0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["1(?:[56]|7[467])|2[1-3]"], "8 0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-4]"], "8 0$1"], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[89]"], "8 $1"]], "8", 0, "0|80?", 0, 0, 0, 0, "8~10"],
-    BZ: ["501", "00", "(?:0800\\d|[2-8])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-8]"]], ["(\\d)(\\d{3})(\\d{4})(\\d{3})", "$1-$2-$3-$4", ["0"]]]],
-    CA: ["1", "011", "(?:[2-8]\\d|90)\\d{8}|3\\d{6}", [7, 10], 0, "1", 0, 0, 0, 0, 0, [["(?:2(?:04|[23]6|[48]9|50|63)|3(?:06|43|54|6[578]|82)|4(?:03|1[68]|[26]8|3[178]|50|74)|5(?:06|1[49]|48|79|8[147])|6(?:04|[18]3|39|47|72)|7(?:0[59]|42|53|78|8[02])|8(?:[06]7|19|25|73)|90[25])[2-9]\\d{6}", [10]], ["", [10]], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}", [10]], ["900[2-9]\\d{6}", [10]], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|(?:5(?:00|2[125-9]|33|44|66|77|88)|622)[2-9]\\d{6}", [10]], 0, ["310\\d{4}", [7]], 0, ["600[2-9]\\d{6}", [10]]]],
-    CC: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:02|31|60|89)|1(?:18|76)|223)|91(?:0(?:1[0-2]|29)|1(?:[28]2|50|79)|2(?:10|64)|3(?:[06]8|22)|4[29]8|62\\d|70[23]|959))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"],
-    CD: ["243", "00", "[189]\\d{8}|[1-68]\\d{6}", [7, 9], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[1-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]"], "0$1"]], "0"],
-    CF: ["236", "00", "(?:[27]\\d{3}|8776)\\d{4}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[278]"]]]],
-    CG: ["242", "00", "222\\d{6}|(?:0\\d|80)\\d{7}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[02]"]]]],
-    CH: ["41", "00", "8\\d{11}|[2-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8[047]|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]|81"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["8"], "0$1"]], "0"],
-    CI: ["225", "00", "[02]\\d{9}", [10], [["(\\d{2})(\\d{2})(\\d)(\\d{5})", "$1 $2 $3 $4", ["2"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3 $4", ["0"]]]],
-    CK: ["682", "00", "[2-578]\\d{4}", [5], [["(\\d{2})(\\d{3})", "$1 $2", ["[2-578]"]]]],
-    CL: ["56", "(?:0|1(?:1[0-69]|2[02-5]|5[13-58]|69|7[0167]|8[018]))0", "12300\\d{6}|6\\d{9,10}|[2-9]\\d{8}", [9, 10, 11], [["(\\d{5})(\\d{4})", "$1 $2", ["219", "2196"], "($1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["44"]], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2[1-36]"], "($1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["9[2-9]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["3[2-5]|[47]|5[1-3578]|6[13-57]|8(?:0[1-9]|[1-9])"], "($1)"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["60|8"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{3})(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["60"]]]],
-    CM: ["237", "00", "[26]\\d{8}|88\\d{6,7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["88"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[26]|88"]]]],
-    CN: ["86", "00|1(?:[12]\\d|79)\\d\\d00", "1[127]\\d{8,9}|2\\d{9}(?:\\d{2})?|[12]\\d{6,7}|86\\d{6}|(?:1[03-689]\\d|6)\\d{7,9}|(?:[3-579]\\d|8[0-57-9])\\d{6,9}", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5,6})", "$1 $2", ["(?:10|2[0-57-9])[19]", "(?:10|2[0-57-9])(?:10|9[56])", "10(?:10|9[56])|2[0-57-9](?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["3(?:[157]|35|49|9[1-68])|4(?:[17]|2[179]|6[47-9]|8[23])|5(?:[1357]|2[37]|4[36]|6[1-46]|80)|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])|(?:4[35]|59|85)[1-9]", "(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[1-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))[19]", "85[23](?:10|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:10|9[56])", "85[23](?:100|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["(?:4|80)0"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|2(?:[02-57-9]|1[1-9])", "10|2(?:[02-57-9]|1[1-9])", "10[0-79]|2(?:[02-57-9]|1[1-79])|(?:10|21)8(?:0[1-9]|[1-9])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["3(?:[3-59]|7[02-68])|4(?:[26-8]|3[3-9]|5[2-9])|5(?:3[03-9]|[468]|7[028]|9[2-46-9])|6|7(?:[0-247]|3[04-9]|5[0-4689]|6[2368])|8(?:[1-358]|9[1-7])|9(?:[013479]|5[1-5])|(?:[34]1|55|79|87)[02-9]"], "0$1", 1], ["(\\d{3})(\\d{7,8})", "$1 $2", ["9"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["80"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[3-578]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["1[3-9]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["[12]"], "0$1", 1]], "0", 0, "(1(?:[12]\\d|79)\\d\\d)|0", 0, 0, 0, 0, "00"],
-    CO: ["57", "00(?:4(?:[14]4|56)|[579])", "(?:60\\d\\d|9101)\\d{6}|(?:1\\d|3)\\d{9}", [10, 11], [["(\\d{3})(\\d{7})", "$1 $2", ["6"], "($1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3[0-357]|91"]], ["(\\d)(\\d{3})(\\d{7})", "$1-$2-$3", ["1"], "0$1", 0, "$1 $2 $3"]], "0", 0, "0(4(?:[14]4|56)|[579])?"],
-    CR: ["506", "00", "(?:8\\d|90)\\d{8}|(?:[24-8]\\d{3}|3005)\\d{4}", [8, 10], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[3-9]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[89]"]]], 0, 0, "(19(?:0[0-2468]|1[09]|20|66|77|99))"],
-    CU: ["53", "119", "[27]\\d{6,7}|[34]\\d{5,7}|63\\d{6}|(?:5|8\\d\\d)\\d{7}", [6, 7, 8, 10], [["(\\d{2})(\\d{4,6})", "$1 $2", ["2[1-4]|[34]"], "(0$1)"], ["(\\d)(\\d{6,7})", "$1 $2", ["7"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["[56]"], "0$1"], ["(\\d{3})(\\d{7})", "$1 $2", ["8"], "0$1"]], "0"],
-    CV: ["238", "0", "(?:[2-59]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2-589]"]]]],
-    CW: ["599", "00", "(?:[34]1|60|(?:7|9\\d)\\d)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[3467]"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["9[4-8]"]]], 0, 0, 0, 0, 0, "[69]"],
-    CX: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:01|30|59|88)|1(?:17|46|75)|2(?:22|35))|91(?:00[6-9]|1(?:[28]1|49|78)|2(?:09|63)|3(?:12|26|75)|4(?:56|97)|64\\d|7(?:0[01]|1[0-2])|958))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"],
-    CY: ["357", "00", "(?:[279]\\d|[58]0)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[257-9]"]]]],
-    CZ: ["420", "00", "(?:[2-578]\\d|60)\\d{7}|9\\d{8,11}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]|9[015-7]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["96"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]]],
-    DE: ["49", "00", "[2579]\\d{5,14}|49(?:[34]0|69|8\\d)\\d\\d?|49(?:37|49|60|7[089]|9\\d)\\d{1,3}|49(?:2[024-9]|3[2-689]|7[1-7])\\d{1,8}|(?:1|[368]\\d|4[0-8])\\d{3,13}|49(?:[015]\\d|2[13]|31|[46][1-8])\\d{1,9}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [["(\\d{2})(\\d{3,13})", "$1 $2", ["3[02]|40|[68]9"], "0$1"], ["(\\d{3})(\\d{3,12})", "$1 $2", ["2(?:0[1-389]|1[124]|2[18]|3[14])|3(?:[35-9][15]|4[015])|906|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1", "2(?:0[1-389]|12[0-8])|3(?:[35-9][15]|4[015])|906|2(?:[13][14]|2[18])|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1"], "0$1"], ["(\\d{4})(\\d{2,11})", "$1 $2", ["[24-6]|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]", "[24-6]|3(?:3(?:0[1-467]|2[127-9]|3[124578]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|4[13578]|9[1346])|5(?:0[14]|2[1-3589]|6[1-4]|7[13468]|8[13568])|6(?:2[1-489]|3[124-6]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|6|7[1467]|8[136])|9(?:0[12479]|2[1358]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]|3[68]4[1347]|3(?:47|60)[1356]|3(?:3[46]|46|5[49])[1246]|3[4579]3[1357]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["138"], "0$1"], ["(\\d{5})(\\d{2,10})", "$1 $2", ["3"], "0$1"], ["(\\d{3})(\\d{5,11})", "$1 $2", ["181"], "0$1"], ["(\\d{3})(\\d)(\\d{4,10})", "$1 $2 $3", ["1(?:3|80)|9"], "0$1"], ["(\\d{3})(\\d{7,8})", "$1 $2", ["1[67]"], "0$1"], ["(\\d{3})(\\d{7,12})", "$1 $2", ["8"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["185", "1850", "18500"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["18[68]"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["15[0568]"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["15[1279]"], "0$1"], ["(\\d{3})(\\d{8})", "$1 $2", ["18"], "0$1"], ["(\\d{3})(\\d{2})(\\d{7,8})", "$1 $2 $3", ["1(?:6[023]|7)"], "0$1"], ["(\\d{4})(\\d{2})(\\d{7})", "$1 $2 $3", ["15[279]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{8})", "$1 $2 $3", ["15"], "0$1"]], "0"],
-    DJ: ["253", "00", "(?:2\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[27]"]]]],
-    DK: ["45", "00", "[2-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-9]"]]]],
-    DM: ["1", "011", "(?:[58]\\d\\d|767|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "767$1", 0, "767"],
-    DO: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "8001|8[024]9"],
-    DZ: ["213", "00", "(?:[1-4]|[5-79]\\d|80)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["9"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-8]"], "0$1"]], "0"],
-    EC: ["593", "00", "1\\d{9,10}|(?:[2-7]|9\\d)\\d{7}", [8, 9, 10, 11], [["(\\d)(\\d{3})(\\d{4})", "$1 $2-$3", ["[2-7]"], "(0$1)", 0, "$1-$2-$3"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1"]]], "0"],
-    EE: ["372", "00", "8\\d{9}|[4578]\\d{7}|(?:[3-8]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[369]|4[3-8]|5(?:[0-2]|5[0-478]|6[45])|7[1-9]|88", "[369]|4[3-8]|5(?:[02]|1(?:[0-8]|95)|5[0-478]|6(?:4[0-4]|5[1-589]))|7[1-9]|88"]], ["(\\d{4})(\\d{3,4})", "$1 $2", ["[45]|8(?:00|[1-49])", "[45]|8(?:00[1-9]|[1-49])"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]],
-    EG: ["20", "00", "[189]\\d{8,9}|[24-6]\\d{8}|[135]\\d{7}", [8, 9, 10], [["(\\d)(\\d{7,8})", "$1 $2", ["[23]"], "0$1"], ["(\\d{2})(\\d{6,7})", "$1 $2", ["1[35]|[4-6]|8[2468]|9[235-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{8})", "$1 $2", ["1"], "0$1"]], "0"],
-    EH: ["212", "00", "[5-8]\\d{8}", [9], 0, "0", 0, 0, 0, 0, "528[89]"],
-    ER: ["291", "00", "[178]\\d{6}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[178]"], "0$1"]], "0"],
-    ES: ["34", "00", "[5-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]00"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-9]"]]]],
-    ET: ["251", "00", "(?:11|[2-579]\\d)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-579]"], "0$1"]], "0"],
-    FI: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "[1-35689]\\d{4}|7\\d{10,11}|(?:[124-7]\\d|3[0-46-9])\\d{8}|[1-9]\\d{5,8}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d)(\\d{4,9})", "$1 $2", ["[2568][1-8]|3(?:0[1-9]|[1-9])|9"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[12]00|[368]|70[07-9]"], "0$1"], ["(\\d{2})(\\d{4,8})", "$1 $2", ["[1245]|7[135]"], "0$1"], ["(\\d{2})(\\d{6,10})", "$1 $2", ["7"], "0$1"]], "0", 0, 0, 0, 0, "1[03-79]|[2-9]", 0, "00"],
-    FJ: ["679", "0(?:0|52)", "45\\d{5}|(?:0800\\d|[235-9])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[235-9]|45"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    FK: ["500", "00", "[2-7]\\d{4}", [5]],
-    FM: ["691", "00", "(?:[39]\\d\\d|820)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[389]"]]]],
-    FO: ["298", "00", "[2-9]\\d{5}", [6], [["(\\d{6})", "$1", ["[2-9]"]]], 0, 0, "(10(?:01|[12]0|88))"],
-    FR: ["33", "00", "[1-9]\\d{8}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0 $1"], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[1-79]"], "0$1"]], "0"],
-    GA: ["241", "00", "(?:[067]\\d|11)\\d{6}|[2-7]\\d{6}", [7, 8], [["(\\d)(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-7]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["11|[67]"], "0$1"]], 0, 0, "0(11\\d{6}|60\\d{6}|61\\d{6}|6[256]\\d{6}|7[467]\\d{6})", "$1"],
-    GB: ["44", "00", "[1-357-9]\\d{9}|[18]\\d{8}|8\\d{6}", [7, 9, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["800", "8001", "80011", "800111", "8001111"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["845", "8454", "84546", "845464"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["800"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["1(?:38|5[23]|69|76|94)", "1(?:(?:38|69)7|5(?:24|39)|768|946)", "1(?:3873|5(?:242|39[4-6])|(?:697|768)[347]|9467)"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["1(?:[2-69][02-9]|[78])"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[25]|7(?:0|6[02-9])", "[25]|7(?:0|6(?:[03-9]|2[356]))"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1389]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["(?:1(?:1(?:3(?:[0-58]\\d\\d|73[0235])|4(?:[0-5]\\d\\d|69[7-9]|70[0-79])|(?:(?:5[0-26-9]|[78][0-49])\\d|6(?:[0-4]\\d|50))\\d)|(?:2(?:(?:0[024-9]|2[3-9]|3[3-79]|4[1-689]|[58][02-9]|6[0-47-9]|7[013-9]|9\\d)\\d|1(?:[0-7]\\d|8[0-2]))|(?:3(?:0\\d|1[0-8]|[25][02-9]|3[02-579]|[468][0-46-9]|7[1-35-79]|9[2-578])|4(?:0[03-9]|[137]\\d|[28][02-57-9]|4[02-69]|5[0-8]|[69][0-79])|5(?:0[1-35-9]|[16]\\d|2[024-9]|3[015689]|4[02-9]|5[03-9]|7[0-35-9]|8[0-468]|9[0-57-9])|6(?:0[034689]|1\\d|2[0-35689]|[38][013-9]|4[1-467]|5[0-69]|6[13-9]|7[0-8]|9[0-24578])|7(?:0[0246-9]|2\\d|3[0236-8]|4[03-9]|5[0-46-9]|6[013-9]|7[0-35-9]|8[024-9]|9[02-9])|8(?:0[35-9]|2[1-57-9]|3[02-578]|4[0-578]|5[124-9]|6[2-69]|7\\d|8[02-9]|9[02569])|9(?:0[02-589]|[18]\\d|2[02-689]|3[1-57-9]|4[2-9]|5[0-579]|6[2-47-9]|7[0-24578]|9[2-57]))\\d)\\d)|2(?:0[013478]|3[0189]|4[017]|8[0-46-9]|9[0-2])\\d{3})\\d{4}|1(?:2(?:0(?:46[1-4]|87[2-9])|545[1-79]|76(?:2\\d|3[1-8]|6[1-6])|9(?:7(?:2[0-4]|3[2-5])|8(?:2[2-8]|7[0-47-9]|8[3-5])))|3(?:6(?:38[2-5]|47[23])|8(?:47[04-9]|64[0157-9]))|4(?:044[1-7]|20(?:2[23]|8\\d)|6(?:0(?:30|5[2-57]|6[1-8]|7[2-8])|140)|8(?:052|87[1-3]))|5(?:2(?:4(?:3[2-79]|6\\d)|76\\d)|6(?:26[06-9]|686))|6(?:06(?:4\\d|7[4-79])|295[5-7]|35[34]\\d|47(?:24|61)|59(?:5[08]|6[67]|74)|9(?:55[0-4]|77[23]))|7(?:26(?:6[13-9]|7[0-7])|(?:442|688)\\d|50(?:2[0-3]|[3-68]2|76))|8(?:27[56]\\d|37(?:5[2-5]|8[239])|843[2-58])|9(?:0(?:0(?:6[1-8]|85)|52\\d)|3583|4(?:66[1-8]|9(?:2[01]|81))|63(?:23|3[1-4])|9561))\\d{3}", [9, 10]], ["7(?:457[0-57-9]|700[01]|911[028])\\d{5}|7(?:[1-3]\\d\\d|4(?:[0-46-9]\\d|5[0-689])|5(?:0[0-8]|[13-9]\\d|2[0-35-9])|7(?:0[1-9]|[1-7]\\d|8[02-9]|9[0-689])|8(?:[014-9]\\d|[23][0-8])|9(?:[024-9]\\d|1[02-9]|3[0-689]))\\d{6}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[2-49]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]], 0, " x"],
-    GD: ["1", "011", "(?:473|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "473$1", 0, "473"],
-    GE: ["995", "00", "(?:[3-57]\\d\\d|800)\\d{6}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["32"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[57]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[348]"], "0$1"]], "0"],
-    GF: ["594", "00", "[56]94\\d{6}|(?:80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[56]|9[47]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[89]"], "0$1"]], "0"],
-    GG: ["44", "00", "(?:1481|[357-9]\\d{3})\\d{6}|8\\d{6}(?:\\d{2})?", [7, 9, 10], 0, "0", 0, "([25-9]\\d{5})$|0", "1481$1", 0, 0, [["1481[25-9]\\d{5}", [10]], ["7(?:(?:781|839)\\d|911[17])\\d{5}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[0-3]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]]],
-    GH: ["233", "00", "(?:[235]\\d{3}|800)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[235]"], "0$1"]], "0"],
-    GI: ["350", "00", "(?:[25]\\d|60)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["2"]]]],
-    GL: ["299", "00", "(?:19|[2-689]\\d|70)\\d{4}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["19|[2-9]"]]]],
-    GM: ["220", "00", "[2-9]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]],
-    GN: ["224", "00", "722\\d{6}|(?:3|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["3"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[67]"]]]],
-    GP: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0", 0, 0, 0, 0, 0, [["590(?:0[1-68]|[14][0-24-9]|2[0-68]|3[1-9]|5[3-579]|[68][0-689]|7[08]|9\\d)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]],
-    GQ: ["240", "00", "222\\d{6}|(?:3\\d|55|[89]0)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235]"]], ["(\\d{3})(\\d{6})", "$1 $2", ["[89]"]]]],
-    GR: ["30", "00", "5005000\\d{3}|8\\d{9,11}|(?:[269]\\d|70)\\d{8}", [10, 11, 12], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["21|7"]], ["(\\d{4})(\\d{6})", "$1 $2", ["2(?:2|3[2-57-9]|4[2-469]|5[2-59]|6[2-9]|7[2-69]|8[2-49])|5"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2689]"]], ["(\\d{3})(\\d{3,4})(\\d{5})", "$1 $2 $3", ["8"]]]],
-    GT: ["502", "00", "(?:1\\d{3}|[2-7])\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]],
-    GU: ["1", "011", "(?:[58]\\d\\d|671|900)\\d{7}", [10], 0, "1", 0, "([3-9]\\d{6})$|1", "671$1", 0, "671"],
-    GW: ["245", "00", "[49]\\d{8}|4\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["40"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"]]]],
-    GY: ["592", "001", "9008\\d{3}|(?:[2-467]\\d\\d|510|862)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]],
-    HK: ["852", "00(?:30|5[09]|[126-9]?)", "8[0-46-9]\\d{6,7}|9\\d{4,7}|(?:[2-7]|9\\d{3})\\d{7}", [5, 6, 7, 8, 9, 11], [["(\\d{3})(\\d{2,5})", "$1 $2", ["900", "9003"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[1-4]|9(?:0[1-9]|[1-8])"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{3})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    HN: ["504", "00", "8\\d{10}|[237-9]\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["[237-9]"]]]],
-    HR: ["385", "00", "(?:[24-69]\\d|3[0-79])\\d{7}|80\\d{5,7}|[1-79]\\d{7}|6\\d{5,6}", [6, 7, 8, 9], [["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["6[01]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{4})(\\d{3})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-5]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"]], "0"],
-    HT: ["509", "00", "(?:[2-489]\\d|55)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[2-589]"]]]],
-    HU: ["36", "00", "[235-7]\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6|8[2-57-9]|9[2-69]"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "06 $1"]], "06"],
-    ID: ["62", "00[89]", "(?:(?:00[1-9]|8\\d)\\d{4}|[1-36])\\d{6}|00\\d{10}|[1-9]\\d{8,10}|[2-9]\\d{7}", [7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["15"]], ["(\\d{2})(\\d{5,9})", "$1 $2", ["2[124]|[36]1"], "(0$1)"], ["(\\d{3})(\\d{5,7})", "$1 $2", ["800"], "0$1"], ["(\\d{3})(\\d{5,8})", "$1 $2", ["[2-79]"], "(0$1)"], ["(\\d{3})(\\d{3,4})(\\d{3})", "$1-$2-$3", ["8[1-35-9]"], "0$1"], ["(\\d{3})(\\d{6,8})", "$1 $2", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["804"], "0$1"], ["(\\d{3})(\\d)(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["80"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1-$2-$3", ["8"], "0$1"]], "0"],
-    IE: ["353", "00", "(?:1\\d|[2569])\\d{6,8}|4\\d{6,9}|7\\d{8}|8\\d{8,9}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["2[24-9]|47|58|6[237-9]|9[35-9]"], "(0$1)"], ["(\\d{3})(\\d{5})", "$1 $2", ["[45]0"], "(0$1)"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2569]|4[1-69]|7[14]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["81"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["4"], "(0$1)"], ["(\\d{2})(\\d)(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"],
-    IL: ["972", "0(?:0|1[2-9])", "1\\d{6}(?:\\d{3,5})?|[57]\\d{8}|[1-489]\\d{7}", [7, 8, 9, 10, 11, 12], [["(\\d{4})(\\d{3})", "$1-$2", ["125"]], ["(\\d{4})(\\d{2})(\\d{2})", "$1-$2-$3", ["121"]], ["(\\d)(\\d{3})(\\d{4})", "$1-$2-$3", ["[2-489]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1-$2-$3", ["12"]], ["(\\d{4})(\\d{6})", "$1-$2", ["159"]], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3-$4", ["1[7-9]"]], ["(\\d{3})(\\d{1,2})(\\d{3})(\\d{4})", "$1-$2 $3-$4", ["15"]]], "0"],
-    IM: ["44", "00", "1624\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([25-8]\\d{5})$|0", "1624$1", 0, "74576|(?:16|7[56])24"],
-    IN: ["91", "00", "(?:000800|[2-9]\\d\\d)\\d{7}|1\\d{7,12}", [8, 9, 10, 11, 12, 13], [["(\\d{8})", "$1", ["5(?:0|2[23]|3[03]|[67]1|88)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|888)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|8888)"], 0, 1], ["(\\d{4})(\\d{4,5})", "$1 $2", ["180", "1800"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["140"], 0, 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["11|2[02]|33|4[04]|79[1-7]|80[2-46]", "11|2[02]|33|4[04]|79(?:[1-6]|7[19])|80(?:[2-4]|6[0-589])", "11|2[02]|33|4[04]|79(?:[124-6]|3(?:[02-9]|1[0-24-9])|7(?:1|9[1-6]))|80(?:[2-4]|6[0-589])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1(?:2[0-249]|3[0-25]|4[145]|[68]|7[1257])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|5[12]|[78]1)|6(?:12|[2-4]1|5[17]|6[13]|80)|7(?:12|3[134]|4[47]|61|88)|8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)|(?:43|59|75)[15]|(?:1[59]|29|67|72)[14]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|674|7(?:(?:2[14]|3[34]|5[15])[2-6]|61[346]|88[0-8])|8(?:70[2-6]|84[235-7]|91[3-7])|(?:1(?:29|60|8[06])|261|552|6(?:12|[2-47]1|5[17]|6[13]|80)|7(?:12|31|4[47])|8(?:16|2[014]|3[126]|6[136]|7[78]|83))[2-7]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|6(?:12(?:[2-6]|7[0-8])|74[2-7])|7(?:(?:2[14]|5[15])[2-6]|3171|61[346]|88(?:[2-7]|82))|8(?:70[2-6]|84(?:[2356]|7[19])|91(?:[3-6]|7[19]))|73[134][2-6]|(?:74[47]|8(?:16|2[014]|3[126]|6[136]|7[78]|83))(?:[2-6]|7[19])|(?:1(?:29|60|8[06])|261|552|6(?:[2-4]1|5[17]|6[13]|7(?:1|4[0189])|80)|7(?:12|88[01]))[2-7]"], "0$1", 1], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2[2457-9]|3[2-5]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1[013-9]|28|3[129]|4[1-35689]|5[29]|6[02-5]|70)|807", "1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2(?:[2457]|84|95)|3(?:[2-4]|55)|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1(?:[013-8]|9[6-9])|28[6-8]|3(?:17|2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4|5[0-367])|70[13-7])|807[19]", "1(?:[2-479]|5(?:[0236-9]|5[013-9]))|[2-5]|6(?:2(?:84|95)|355|83)|73179|807(?:1|9[1-3])|(?:1552|6(?:1[1358]|2[2457]|3[2-4]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[124-6])\\d|7(?:1(?:[013-8]\\d|9[6-9])|28[6-8]|3(?:2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]\\d|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4\\d|5[0-367])|70[13-7]))[2-7]"], "0$1", 1], ["(\\d{5})(\\d{5})", "$1 $2", ["[6-9]"], "0$1", 1], ["(\\d{4})(\\d{2,4})(\\d{4})", "$1 $2 $3", ["1(?:6|8[06])", "1(?:6|8[06]0)"], 0, 1], ["(\\d{4})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["18"], 0, 1]], "0"],
-    IO: ["246", "00", "3\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["3"]]]],
-    IQ: ["964", "00", "(?:1|7\\d\\d)\\d{7}|[2-6]\\d{7,8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-6]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"],
-    IR: ["98", "00", "[1-9]\\d{9}|(?:[1-8]\\d\\d|9)\\d{3,4}", [4, 5, 6, 7, 10], [["(\\d{4,5})", "$1", ["96"], "0$1"], ["(\\d{2})(\\d{4,5})", "$1 $2", ["(?:1[137]|2[13-68]|3[1458]|4[145]|5[1468]|6[16]|7[1467]|8[13467])[12689]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[1-8]"], "0$1"]], "0"],
-    IS: ["354", "00|1(?:0(?:01|[12]0)|100)", "(?:38\\d|[4-9])\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    IT: ["39", "00", "0\\d{5,10}|1\\d{8,10}|3(?:[0-8]\\d{7,10}|9\\d{7,8})|(?:55|70)\\d{8}|8\\d{5}(?:\\d{2,4})?", [6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{4,6})", "$1 $2", ["0[26]"]], ["(\\d{3})(\\d{3,6})", "$1 $2", ["0[13-57-9][0159]|8(?:03|4[17]|9[2-5])", "0[13-57-9][0159]|8(?:03|4[17]|9(?:2|3[04]|[45][0-4]))"]], ["(\\d{4})(\\d{2,6})", "$1 $2", ["0(?:[13-579][2-46-8]|8[236-8])"]], ["(\\d{4})(\\d{4})", "$1 $2", ["894"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[26]|5"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1(?:44|[679])|[378]"]], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[13-57-9][0159]|14"]], ["(\\d{2})(\\d{4})(\\d{5})", "$1 $2 $3", ["0[26]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, [["0669[0-79]\\d{1,6}|0(?:1(?:[0159]\\d|[27][1-5]|31|4[1-4]|6[1356]|8[2-57])|2\\d\\d|3(?:[0159]\\d|2[1-4]|3[12]|[48][1-6]|6[2-59]|7[1-7])|4(?:[0159]\\d|[23][1-9]|4[245]|6[1-5]|7[1-4]|81)|5(?:[0159]\\d|2[1-5]|3[2-6]|4[1-79]|6[4-6]|7[1-578]|8[3-8])|6(?:[0-57-9]\\d|6[0-8])|7(?:[0159]\\d|2[12]|3[1-7]|4[2-46]|6[13569]|7[13-6]|8[1-59])|8(?:[0159]\\d|2[3-578]|3[1-356]|[6-8][1-5])|9(?:[0159]\\d|[238][1-5]|4[12]|6[1-8]|7[1-6]))\\d{2,7}"], ["3[1-9]\\d{8}|3[2-9]\\d{7}", [9, 10]], ["80(?:0\\d{3}|3)\\d{3}", [6, 9]], ["(?:0878\\d{3}|89(?:2\\d|3[04]|4(?:[0-4]|[5-9]\\d\\d)|5[0-4]))\\d\\d|(?:1(?:44|6[346])|89(?:38|5[5-9]|9))\\d{6}", [6, 8, 9, 10]], ["1(?:78\\d|99)\\d{6}", [9, 10]], 0, 0, 0, ["55\\d{8}", [10]], ["84(?:[08]\\d{3}|[17])\\d{3}", [6, 9]]]],
-    JE: ["44", "00", "1534\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([0-24-8]\\d{5})$|0", "1534$1", 0, 0, [["1534[0-24-8]\\d{5}"], ["7(?:(?:(?:50|82)9|937)\\d|7(?:00[378]|97[7-9]))\\d{5}"], ["80(?:07(?:35|81)|8901)\\d{4}"], ["(?:8(?:4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|90(?:066[59]|1810|71(?:07|55)))\\d{4}"], ["701511\\d{4}"], 0, ["(?:3(?:0(?:07(?:35|81)|8901)|3\\d{4}|4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|55\\d{4})\\d{4}"], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}"], ["56\\d{8}"]]],
-    JM: ["1", "011", "(?:[58]\\d\\d|658|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "658|876"],
-    JO: ["962", "00", "(?:(?:[2689]|7\\d)\\d|32|53)\\d{6}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2356]|87"], "(0$1)"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["70"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"],
-    JP: ["81", "010", "00[1-9]\\d{6,14}|[257-9]\\d{9}|(?:00|[1-9]\\d\\d)\\d{6}", [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], [["(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3", ["(?:12|57|99)0"], "0$1"], ["(\\d{4})(\\d)(\\d{4})", "$1-$2-$3", ["1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|499|5(?:76|97)|746|8(?:3[89]|47|51)|9(?:80|9[16])", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:76|97)9|7468|8(?:3(?:8[7-9]|96)|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:769|979[2-69])|7468|8(?:3(?:8[7-9]|96[2457-9])|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2-$3", ["[36]|4(?:2[09]|7[01])", "[36]|4(?:2(?:0|9[02-69])|7(?:0[019]|1))"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["1(?:1|5[45]|77|88|9[69])|2(?:2[1-37]|3[0-269]|4[59]|5|6[24]|7[1-358]|8[1369]|9[0-38])|4(?:[28][1-9]|3[0-57]|[45]|6[248]|7[2-579]|9[29])|5(?:2|3[0459]|4[0-369]|5[29]|8[02389]|9[0-389])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9[2-6])|8(?:2[124589]|3[26-9]|49|51|6|7[0-468]|8[68]|9[019])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9[1-489])", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2(?:[127]|3[014-9])|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9[19])|62|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|8[1-9]|9[29])|5(?:2|3(?:[045]|9[0-8])|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0-2469])|3(?:[29]|60)|49|51|6(?:[0-24]|36|5[0-3589]|7[23]|9[01459])|7[0-468]|8[68])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9(?:[1289]|3[34]|4[0178]))|(?:264|837)[016-9]|2(?:57|93)[015-9]|(?:25[0468]|422|838)[01]|(?:47[59]|59[89]|8(?:6[68]|9))[019]", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2[127]|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9(?:17|99))|6(?:2|4[016-9])|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|9[29])|5(?:2|3(?:[045]|9(?:[0-58]|6[4-9]|7[0-35689]))|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0169])|3(?:[29]|60|7(?:[017-9]|6[6-8]))|49|51|6(?:[0-24]|36[2-57-9]|5(?:[0-389]|5[23])|6(?:[01]|9[178])|7(?:2[2-468]|3[78])|9[0145])|7[0-468]|8[68])|9(?:4[15]|5[138]|7[156]|8[189]|9(?:[1289]|3(?:31|4[357])|4[0178]))|(?:8294|96)[1-3]|2(?:57|93)[015-9]|(?:223|8699)[014-9]|(?:25[0468]|422|838)[01]|(?:48|8292|9[23])[1-9]|(?:47[59]|59[89]|8(?:68|9))[019]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3", ["[14]|[289][2-9]|5[3-9]|7[2-4679]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["800"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[257-9]"], "0$1"]], "0", 0, "(000[259]\\d{6})$|(?:(?:003768)0?)|0", "$1"],
-    KE: ["254", "000", "(?:[17]\\d\\d|900)\\d{6}|(?:2|80)0\\d{6,7}|[4-6]\\d{6,8}", [7, 8, 9, 10], [["(\\d{2})(\\d{5,7})", "$1 $2", ["[24-6]"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[17]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0"],
-    KG: ["996", "00", "8\\d{9}|[235-9]\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["3(?:1[346]|[24-79])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235-79]|88"], "0$1"], ["(\\d{3})(\\d{3})(\\d)(\\d{2,3})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"],
-    KH: ["855", "00[14-9]", "1\\d{9}|[1-9]\\d{7,8}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"],
-    KI: ["686", "00", "(?:[37]\\d|6[0-79])\\d{6}|(?:[2-48]\\d|50)\\d{3}", [5, 8], 0, "0"],
-    KM: ["269", "00", "[3478]\\d{6}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[3478]"]]]],
-    KN: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "869$1", 0, "869"],
-    KP: ["850", "00|99", "85\\d{6}|(?:19\\d|[2-7])\\d{7}", [8, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"]], "0"],
-    KR: ["82", "00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))", "00[1-9]\\d{8,11}|(?:[12]|5\\d{3})\\d{7}|[13-6]\\d{9}|(?:[1-6]\\d|80)\\d{7}|[3-6]\\d{4,5}|(?:00|7)0\\d{8}", [5, 6, 8, 9, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{3,4})", "$1-$2", ["(?:3[1-3]|[46][1-4]|5[1-5])1"], "0$1"], ["(\\d{4})(\\d{4})", "$1-$2", ["1"]], ["(\\d)(\\d{3,4})(\\d{4})", "$1-$2-$3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60|8"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1-$2-$3", ["[1346]|5[1-5]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{2})(\\d{5})(\\d{4})", "$1-$2-$3", ["5"], "0$1"]], "0", 0, "0(8(?:[1-46-8]|5\\d\\d))?"],
-    KW: ["965", "00", "18\\d{5}|(?:[2569]\\d|41)\\d{6}", [7, 8], [["(\\d{4})(\\d{3,4})", "$1 $2", ["[169]|2(?:[235]|4[1-35-9])|52"]], ["(\\d{3})(\\d{5})", "$1 $2", ["[245]"]]]],
-    KY: ["1", "011", "(?:345|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "345$1", 0, "345"],
-    KZ: ["7", "810", "(?:33622|8\\d{8})\\d{5}|[78]\\d{9}", [10, 14], 0, "8", 0, 0, 0, 0, "33|7", 0, "8~10"],
-    LA: ["856", "00", "[23]\\d{9}|3\\d{8}|(?:[235-8]\\d|41)\\d{6}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2[13]|3[14]|[4-8]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["30[013-9]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0"],
-    LB: ["961", "00", "[27-9]\\d{7}|[13-9]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[13-69]|7(?:[2-57]|62|8[0-7]|9[04-9])|8[02-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27-9]"]]], "0"],
-    LC: ["1", "011", "(?:[58]\\d\\d|758|900)\\d{7}", [10], 0, "1", 0, "([2-8]\\d{6})$|1", "758$1", 0, "758"],
-    LI: ["423", "00", "[68]\\d{8}|(?:[2378]\\d|90)\\d{5}", [7, 9], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2379]|8(?:0[09]|7)", "[2379]|8(?:0(?:02|9)|7)"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["69"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]], "0", 0, "(1001)|0"],
-    LK: ["94", "00", "[1-9]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[1-689]"], "0$1"]], "0"],
-    LR: ["231", "00", "(?:[25]\\d|33|77|88)\\d{7}|(?:2\\d|[4-6])\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[4-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23578]"], "0$1"]], "0"],
-    LS: ["266", "00", "(?:[256]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2568]"]]]],
-    LT: ["370", "00", "(?:[3469]\\d|52|[78]0)\\d{6}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["52[0-7]"], "(8-$1)", 1], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[7-9]"], "8 $1", 1], ["(\\d{2})(\\d{6})", "$1 $2", ["37|4(?:[15]|6[1-8])"], "(8-$1)", 1], ["(\\d{3})(\\d{5})", "$1 $2", ["[3-6]"], "(8-$1)", 1]], "8", 0, "[08]"],
-    LU: ["352", "00", "35[013-9]\\d{4,8}|6\\d{8}|35\\d{2,4}|(?:[2457-9]\\d|3[0-46-9])\\d{2,9}", [4, 5, 6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{3})", "$1 $2", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["20[2-689]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4", ["2(?:[0367]|4[3-8])"]], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["80[01]|90[015]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["20"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4 $5", ["2(?:[0367]|4[3-8])"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,5})", "$1 $2 $3 $4", ["[3-57]|8[13-9]|9(?:0[89]|[2-579])|(?:2|80)[2-9]"]]], 0, 0, "(15(?:0[06]|1[12]|[35]5|4[04]|6[26]|77|88|99)\\d)"],
-    LV: ["371", "00", "(?:[268]\\d|90)\\d{6}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[269]|8[01]"]]]],
-    LY: ["218", "00", "[2-9]\\d{8}", [9], [["(\\d{2})(\\d{7})", "$1-$2", ["[2-9]"], "0$1"]], "0"],
-    MA: ["212", "00", "[5-8]\\d{8}", [9], [["(\\d{5})(\\d{4})", "$1-$2", ["5(?:29|38)", "5(?:29[1289]|389)", "529(?:1[1-46-9]|2[013-8]|90)|5(?:298|389)[0-46-9]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5[45]"], "0$1"], ["(\\d{4})(\\d{5})", "$1-$2", ["5(?:2[2-489]|3[5-9]|9)|892", "5(?:2(?:[2-49]|8[235-9])|3[5-9]|9)|892"], "0$1"], ["(\\d{2})(\\d{7})", "$1-$2", ["8"], "0$1"], ["(\\d{3})(\\d{6})", "$1-$2", ["[5-7]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["5293[01]\\d{4}|5(?:2(?:[0-25-7]\\d|3[1-578]|4[02-46-8]|8[0235-7]|9[0-289])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[0189]|9[3-9])|(?:4[067]|5[03])\\d)\\d{5}"], ["(?:6(?:[0-79]\\d|8[0-247-9])|7(?:[017]\\d|2[0-2]|6[0-8]|8[0-3]))\\d{6}"], ["80\\d{7}"], ["89\\d{7}"], 0, 0, 0, 0, ["592(?:4[0-2]|93)\\d{4}"]]],
-    MC: ["377", "00", "(?:[3489]|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[389]"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["6"], "0$1"]], "0"],
-    MD: ["373", "00", "(?:[235-7]\\d|[89]0)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["22|3"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[25-7]"], "0$1"]], "0"],
-    ME: ["382", "00", "(?:20|[3-79]\\d)\\d{6}|80\\d{6,7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "0$1"]], "0"],
-    MF: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:0[079]|[14]3|[27][79]|3[03-7]|5[0-268]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]],
-    MG: ["261", "00", "[23]\\d{8}", [9], [["(\\d{2})(\\d{2})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0", 0, "([24-9]\\d{6})$|0", "20$1"],
-    MH: ["692", "011", "329\\d{4}|(?:[256]\\d|45)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-6]"]]], "1"],
-    MK: ["389", "00", "[2-578]\\d{7}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2|34[47]|4(?:[37]7|5[47]|64)"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[347]"], "0$1"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[58]"], "0$1"]], "0"],
-    ML: ["223", "00", "[24-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-9]"]]]],
-    MM: ["95", "00", "1\\d{5,7}|95\\d{6}|(?:[4-7]|9[0-46-9])\\d{6,8}|(?:2|8\\d)\\d{5,8}", [6, 7, 8, 9, 10], [["(\\d)(\\d{2})(\\d{3})", "$1 $2 $3", ["16|2"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["[45]|6(?:0[23]|[1-689]|7[235-7])|7(?:[0-4]|5[2-7])|8[1-6]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[4-7]|8[1-35]"], "0$1"], ["(\\d)(\\d{3})(\\d{4,6})", "$1 $2 $3", ["9(?:2[0-4]|[35-9]|4[137-9])"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["92"], "0$1"], ["(\\d)(\\d{5})(\\d{4})", "$1 $2 $3", ["9"], "0$1"]], "0"],
-    MN: ["976", "001", "[12]\\d{7,9}|[5-9]\\d{7}", [8, 9, 10], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[12]1"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[5-9]"]], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[12]2[1-3]"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["[12](?:27|3[2-8]|4[2-68]|5[1-4689])", "[12](?:27|3[2-8]|4[2-68]|5[1-4689])[0-3]"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["[12]"], "0$1"]], "0"],
-    MO: ["853", "00", "0800\\d{3}|(?:28|[68]\\d)\\d{6}", [7, 8], [["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[268]"]]]],
-    MP: ["1", "011", "[58]\\d{9}|(?:67|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "670$1", 0, "670"],
-    MQ: ["596", "00", "596\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"],
-    MR: ["222", "00", "(?:[2-4]\\d\\d|800)\\d{5}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-48]"]]]],
-    MS: ["1", "011", "(?:[58]\\d\\d|664|900)\\d{7}", [10], 0, "1", 0, "([34]\\d{6})$|1", "664$1", 0, "664"],
-    MT: ["356", "00", "3550\\d{4}|(?:[2579]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2357-9]"]]]],
-    MU: ["230", "0(?:0|[24-7]0|3[03])", "(?:[57]|8\\d\\d)\\d{7}|[2-468]\\d{6}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-46]|8[013]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[57]"]], ["(\\d{5})(\\d{5})", "$1 $2", ["8"]]], 0, 0, 0, 0, 0, 0, 0, "020"],
-    MV: ["960", "0(?:0|19)", "(?:800|9[0-57-9]\\d)\\d{7}|[34679]\\d{6}", [7, 10], [["(\\d{3})(\\d{4})", "$1-$2", ["[34679]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    MW: ["265", "00", "(?:[1289]\\d|31|77)\\d{7}|1\\d{6}", [7, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["1[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[137-9]"], "0$1"]], "0"],
-    MX: ["52", "0[09]", "1(?:(?:[27]2|44|99)[1-9]|65[0-689])\\d{7}|(?:1(?:[01]\\d|2[13-9]|[35][1-9]|4[0-35-9]|6[0-46-9]|7[013-9]|8[1-79]|9[1-8])|[2-9]\\d)\\d{8}", [10, 11], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["33|5[56]|81"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-9]"], 0, 1], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 $3 $4", ["1(?:33|5[56]|81)"], 0, 1], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 $3 $4", ["1"], 0, 1]], "01", 0, "0(?:[12]|4[45])|1", 0, 0, 0, 0, "00"],
-    MY: ["60", "00", "1\\d{8,9}|(?:3\\d|[4-9])\\d{7}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1-$2 $3", ["[4-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1-$2 $3", ["1(?:[02469]|[378][1-9]|53)|8", "1(?:[02469]|[37][1-9]|53|8(?:[1-46-9]|5[7-9]))|8"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2 $3", ["3"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3-$4", ["1(?:[367]|80)"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2 $3", ["15"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2 $3", ["1"], "0$1"]], "0"],
-    MZ: ["258", "00", "(?:2|8\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2|8[2-79]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]],
-    NA: ["264", "00", "[68]\\d{7,8}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["87"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"],
-    NC: ["687", "00", "(?:050|[2-57-9]\\d\\d)\\d{3}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1.$2.$3", ["[02-57-9]"]]]],
-    NE: ["227", "00", "[027-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["08"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[089]|2[013]|7[047]"]]]],
-    NF: ["672", "00", "[13]\\d{5}", [6], [["(\\d{2})(\\d{4})", "$1 $2", ["1[0-3]"]], ["(\\d)(\\d{5})", "$1 $2", ["[13]"]]], 0, 0, "([0-258]\\d{4})$", "3$1"],
-    NG: ["234", "009", "(?:[124-7]|9\\d{3})\\d{6}|[1-9]\\d{7}|[78]\\d{9,13}", [7, 8, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["78"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]|9(?:0[3-9]|[1-9])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[3-7]|8[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[7-9]"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{3})(\\d{5})(\\d{5,6})", "$1 $2 $3", ["[78]"], "0$1"]], "0"],
-    NI: ["505", "00", "(?:1800|[25-8]\\d{3})\\d{4}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[125-8]"]]]],
-    NL: ["31", "00", "(?:[124-7]\\d\\d|3(?:[02-9]\\d|1[0-8]))\\d{6}|8\\d{6,9}|9\\d{6,10}|1\\d{4,5}", [5, 6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{4,7})", "$1 $2", ["[89]0"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["66"], "0$1"], ["(\\d)(\\d{8})", "$1 $2", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["1[16-8]|2[259]|3[124]|4[17-9]|5[124679]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-578]|91"], "0$1"], ["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3", ["9"], "0$1"]], "0"],
-    NO: ["47", "00", "(?:0|[2-9]\\d{3})\\d{4}", [5, 8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]"]]], 0, 0, 0, 0, 0, "[02-689]|7[0-8]"],
-    NP: ["977", "00", "(?:1\\d|9)\\d{9}|[1-9]\\d{7}", [8, 10, 11], [["(\\d)(\\d{7})", "$1-$2", ["1[2-6]"], "0$1"], ["(\\d{2})(\\d{6})", "$1-$2", ["1[01]|[2-8]|9(?:[1-59]|[67][2-6])"], "0$1"], ["(\\d{3})(\\d{7})", "$1-$2", ["9"]]], "0"],
-    NR: ["674", "00", "(?:444|(?:55|8\\d)\\d|666)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-68]"]]]],
-    NU: ["683", "00", "(?:[47]|888\\d)\\d{3}", [4, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["8"]]]],
-    NZ: ["64", "0(?:0|161)", "[1289]\\d{9}|50\\d{5}(?:\\d{2,3})?|[27-9]\\d{7,8}|(?:[34]\\d|6[0-35-9])\\d{6}|8\\d{4,6}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,8})", "$1 $2", ["8[1-79]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["50[036-8]|8|90", "50(?:[0367]|88)|8|90"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["24|[346]|7[2-57-9]|9[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:10|74)|[589]"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1|2[028]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,5})", "$1 $2 $3", ["2(?:[169]|7[0-35-9])|7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "00"],
-    OM: ["968", "00", "(?:1505|[279]\\d{3}|500)\\d{4}|800\\d{5,6}", [7, 8, 9], [["(\\d{3})(\\d{4,6})", "$1 $2", ["[58]"]], ["(\\d{2})(\\d{6})", "$1 $2", ["2"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[179]"]]]],
-    PA: ["507", "00", "(?:00800|8\\d{3})\\d{6}|[68]\\d{7}|[1-57-9]\\d{6}", [7, 8, 10, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[1-57-9]"]], ["(\\d{4})(\\d{4})", "$1-$2", ["[68]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]]],
-    PE: ["51", "00|19(?:1[124]|77|90)00", "(?:[14-8]|9\\d)\\d{7}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["80"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["1"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[4-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"]]], "0", 0, 0, 0, 0, 0, 0, "00", " Anexo "],
-    PF: ["689", "00", "4\\d{5}(?:\\d{2})?|8\\d{7,8}", [6, 8, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["44"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4|8[7-9]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]],
-    PG: ["675", "00|140[1-3]", "(?:180|[78]\\d{3})\\d{4}|(?:[2-589]\\d|64)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["18|[2-69]|85"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[78]"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    PH: ["63", "00", "(?:[2-7]|9\\d)\\d{8}|2\\d{5}|(?:1800|8)\\d{7,9}", [6, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{5})", "$1 $2", ["2"], "(0$1)"], ["(\\d{4})(\\d{4,6})", "$1 $2", ["3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|544|88[245]|(?:52|64|86)2", "3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))"], "(0$1)"], ["(\\d{5})(\\d{4})", "$1 $2", ["346|4(?:27|9[35])|883", "3469|4(?:279|9(?:30|56))|8834"], "(0$1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|8[2-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{4})(\\d{1,2})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["1"]]], "0"],
-    PK: ["92", "00", "122\\d{6}|[24-8]\\d{10,11}|9(?:[013-9]\\d{8,10}|2(?:[01]\\d\\d|2(?:[06-8]\\d|1[01]))\\d{7})|(?:[2-8]\\d{3}|92(?:[0-7]\\d|8[1-9]))\\d{6}|[24-9]\\d{8}|[89]\\d{7}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,7})", "$1 $2 $3", ["[89]0"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["1"]], ["(\\d{3})(\\d{6,7})", "$1 $2", ["2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:2[2-8]|3[27-9]|4[2-6]|6[3569]|9[25-8])", "9(?:2[3-8]|98)|(?:2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:22|3[27-9]|4[2-6]|6[3569]|9[25-7]))[2-9]"], "(0$1)"], ["(\\d{2})(\\d{7,8})", "$1 $2", ["(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]"], "(0$1)"], ["(\\d{5})(\\d{5})", "$1 $2", ["58"], "(0$1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[24-9]"], "(0$1)"]], "0"],
-    PL: ["48", "00", "(?:6|8\\d\\d)\\d{7}|[1-9]\\d{6}(?:\\d{2})?|[26]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{5})", "$1", ["19"]], ["(\\d{3})(\\d{3})", "$1 $2", ["11|20|64"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])1", "(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])19"]], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["64"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["21|39|45|5[0137]|6[0469]|7[02389]|8(?:0[14]|8)"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[2-8]|[2-7]|8[1-79]|9[145]"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["8"]]]],
-    PM: ["508", "00", "[45]\\d{5}|(?:708|80\\d)\\d{6}", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[45]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"],
-    PR: ["1", "011", "(?:[589]\\d\\d|787)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "787|939"],
-    PS: ["970", "00", "[2489]2\\d{6}|(?:1\\d|5)\\d{8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2489]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"],
-    PT: ["351", "00", "1693\\d{5}|(?:[26-9]\\d|30)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["2[12]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["16|[236-9]"]]]],
-    PW: ["680", "01[12]", "(?:[24-8]\\d\\d|345|900)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]],
-    PY: ["595", "00", "59\\d{4,6}|9\\d{5,10}|(?:[2-46-8]\\d|5[0-8])\\d{4,7}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3,6})", "$1 $2", ["[2-9]0"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[26]1|3[289]|4[1246-8]|7[1-3]|8[1-36]"], "(0$1)"], ["(\\d{3})(\\d{4,5})", "$1 $2", ["2[279]|3[13-5]|4[359]|5|6(?:[34]|7[1-46-8])|7[46-8]|85"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2[14-68]|3[26-9]|4[1246-8]|6(?:1|75)|7[1-35]|8[1-36]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["87"]], ["(\\d{3})(\\d{6})", "$1 $2", ["9(?:[5-79]|8[1-6])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"]]], "0"],
-    QA: ["974", "00", "800\\d{4}|(?:2|800)\\d{6}|(?:0080|[3-7])\\d{7}", [7, 8, 9, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["2[16]|8"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[3-7]"]]]],
-    RE: ["262", "00", "(?:26|[689]\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2689]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["26(?:2\\d\\d|3(?:0\\d|1[0-5]))\\d{4}"], ["69(?:2\\d\\d|3(?:[06][0-6]|1[013]|2[0-2]|3[0-39]|4\\d|5[0-5]|7[0-27]|8[0-8]|9[0-479]))\\d{4}"], ["80\\d{7}"], ["89[1-37-9]\\d{6}"], 0, 0, 0, 0, ["9(?:399[0-3]|479[0-5]|76(?:2[27]|3[0-37]))\\d{4}"], ["8(?:1[019]|2[0156]|84|90)\\d{6}"]]],
-    RO: ["40", "00", "(?:[2378]\\d|90)\\d{7}|[23]\\d{5}", [6, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["2[3-6]", "2[3-6]\\d9"], "0$1"], ["(\\d{2})(\\d{4})", "$1 $2", ["219|31"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23]1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[237-9]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, " int "],
-    RS: ["381", "00", "38[02-9]\\d{6,9}|6\\d{7,9}|90\\d{4,8}|38\\d{5,6}|(?:7\\d\\d|800)\\d{3,9}|(?:[12]\\d|3[0-79])\\d{5,10}", [6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{3,9})", "$1 $2", ["(?:2[389]|39)0|[7-9]"], "0$1"], ["(\\d{2})(\\d{5,10})", "$1 $2", ["[1-36]"], "0$1"]], "0"],
-    RU: ["7", "810", "8\\d{13}|[347-9]\\d{9}", [10, 14], [["(\\d{4})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-8]|2[1-9])", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:1[23]|[2-9]2))", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:13[03-69]|62[013-9]))|72[1-57-9]2"], "8 ($1)", 1], ["(\\d{5})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-68]|2[1-9])", "7(?:1(?:[06][3-6]|[18]|2[35]|[3-5][3-5])|2(?:[13][3-5]|[24-689]|7[457]))", "7(?:1(?:0(?:[356]|4[023])|[18]|2(?:3[013-9]|5)|3[45]|43[013-79]|5(?:3[1-8]|4[1-7]|5)|6(?:3[0-35-9]|[4-6]))|2(?:1(?:3[178]|[45])|[24-689]|3[35]|7[457]))|7(?:14|23)4[0-8]|71(?:33|45)[1-79]"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[349]|8(?:[02-7]|1[1-8])"], "8 ($1)", 1], ["(\\d{4})(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["8"], "8 ($1)"]], "8", 0, 0, 0, 0, "3[04-689]|[489]", 0, "8~10"],
-    RW: ["250", "00", "(?:06|[27]\\d\\d|[89]00)\\d{6}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[7-9]"], "0$1"]], "0"],
-    SA: ["966", "00", "92\\d{7}|(?:[15]|8\\d)\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["9"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["81"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]], "0"],
-    SB: ["677", "0[01]", "(?:[1-6]|[7-9]\\d\\d)\\d{4}", [5, 7], [["(\\d{2})(\\d{5})", "$1 $2", ["7|8[4-9]|9(?:[1-8]|9[0-8])"]]]],
-    SC: ["248", "010|0[0-2]", "800\\d{4}|(?:[249]\\d|64)\\d{5}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[246]|9[57]"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    SD: ["249", "00", "[19]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[19]"], "0$1"]], "0"],
-    SE: ["46", "00", "(?:[26]\\d\\d|9)\\d{9}|[1-9]\\d{8}|[1-689]\\d{7}|[1-4689]\\d{6}|2\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["20"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{4})", "$1-$2", ["9(?:00|39|44|9)"], "0$1", 0, "$1 $2"], ["(\\d{2})(\\d{3})(\\d{2})", "$1-$2 $3", ["[12][136]|3[356]|4[0246]|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3"], ["(\\d)(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["1[2457]|2(?:[247-9]|5[0138])|3[0247-9]|4[1357-9]|5[0-35-9]|6(?:[125689]|4[02-57]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{2,3})(\\d{3})", "$1-$2 $3", ["9(?:00|39|44)"], "0$1", 0, "$1 $2 $3"], ["(\\d{2})(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["1[13689]|2[0136]|3[1356]|4[0246]|54|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["10|7"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["[13-5]|2(?:[247-9]|5[0138])|6(?:[124-689]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{3})", "$1-$2 $3 $4", ["9"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4 $5", ["[26]"], "0$1", 0, "$1 $2 $3 $4 $5"]], "0"],
-    SG: ["65", "0[0-3]\\d", "(?:(?:1\\d|8)\\d\\d|7000)\\d{7}|[3689]\\d{7}", [8, 10, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[369]|8(?:0[1-8]|[1-9])"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{4})(\\d{4})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]],
-    SH: ["290", "00", "(?:[256]\\d|8)\\d{3}", [4, 5], 0, 0, 0, 0, 0, 0, "[256]"],
-    SI: ["386", "00|10(?:22|66|88|99)", "[1-7]\\d{7}|8\\d{4,7}|90\\d{4,6}", [5, 6, 7, 8], [["(\\d{2})(\\d{3,6})", "$1 $2", ["8[09]|9"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["59|8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37][01]|4[0139]|51|6"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-57]"], "(0$1)"]], "0", 0, 0, 0, 0, 0, 0, "00"],
-    SJ: ["47", "00", "0\\d{4}|(?:[489]\\d|79)\\d{6}", [5, 8], 0, 0, 0, 0, 0, 0, "79"],
-    SK: ["421", "00", "[2-689]\\d{8}|[2-59]\\d{6}|[2-5]\\d{5}", [6, 7, 9], [["(\\d)(\\d{2})(\\d{3,4})", "$1 $2 $3", ["21"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["[3-5][1-8]1", "[3-5][1-8]1[67]"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1/$2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[689]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1/$2 $3 $4", ["[3-5]"], "0$1"]], "0"],
-    SL: ["232", "00", "(?:[237-9]\\d|66)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[236-9]"], "(0$1)"]], "0"],
-    SM: ["378", "00", "(?:0549|[5-7]\\d)\\d{6}", [8, 10], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-7]"]], ["(\\d{4})(\\d{6})", "$1 $2", ["0"]]], 0, 0, "([89]\\d{5})$", "0549$1"],
-    SN: ["221", "00", "(?:[378]\\d|93)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[379]"]]]],
-    SO: ["252", "00", "[346-9]\\d{8}|[12679]\\d{7}|[1-5]\\d{6}|[1348]\\d{5}", [6, 7, 8, 9], [["(\\d{2})(\\d{4})", "$1 $2", ["8[125]"]], ["(\\d{6})", "$1", ["[134]"]], ["(\\d)(\\d{6})", "$1 $2", ["[15]|2[0-79]|3[0-46-8]|4[0-7]"]], ["(\\d)(\\d{7})", "$1 $2", ["(?:2|90)4|[67]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[348]|64|79|90"]], ["(\\d{2})(\\d{5,7})", "$1 $2", ["1|28|6[0-35-9]|77|9[2-9]"]]], "0"],
-    SR: ["597", "00", "(?:[2-5]|68|[78]\\d)\\d{5}", [6, 7], [["(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3", ["56"]], ["(\\d{3})(\\d{3})", "$1-$2", ["[2-5]"]], ["(\\d{3})(\\d{4})", "$1-$2", ["[6-8]"]]]],
-    SS: ["211", "00", "[19]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[19]"], "0$1"]], "0"],
-    ST: ["239", "00", "(?:22|9\\d)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[29]"]]]],
-    SV: ["503", "00", "[267]\\d{7}|[89]00\\d{4}(?:\\d{4})?", [7, 8, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[89]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[267]"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[89]"]]]],
-    SX: ["1", "011", "7215\\d{6}|(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "(5\\d{6})$|1", "721$1", 0, "721"],
-    SY: ["963", "00", "[1-39]\\d{8}|[1-5]\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-5]"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1", 1]], "0"],
-    SZ: ["268", "00", "0800\\d{4}|(?:[237]\\d|900)\\d{6}", [8, 9], [["(\\d{4})(\\d{4})", "$1 $2", ["[0237]"]], ["(\\d{5})(\\d{4})", "$1 $2", ["9"]]]],
-    TA: ["290", "00", "8\\d{3}", [4], 0, 0, 0, 0, 0, 0, "8"],
-    TC: ["1", "011", "(?:[58]\\d\\d|649|900)\\d{7}", [10], 0, "1", 0, "([2-479]\\d{6})$|1", "649$1", 0, "649"],
-    TD: ["235", "00|16", "(?:22|[69]\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2679]"]]], 0, 0, 0, 0, 0, 0, 0, "00"],
-    TG: ["228", "00", "[279]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[279]"]]]],
-    TH: ["66", "00[1-9]", "(?:001800|[2-57]|[689]\\d)\\d{7}|1\\d{7,9}", [8, 9, 10, 13], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[13-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"],
-    TJ: ["992", "810", "[0-57-9]\\d{8}", [9], [["(\\d{6})(\\d)(\\d{2})", "$1 $2 $3", ["331", "3317"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["44[04]|[34]7"]], ["(\\d{4})(\\d)(\\d{4})", "$1 $2 $3", ["3[1-5]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[0-57-9]"]]], 0, 0, 0, 0, 0, 0, 0, "8~10"],
-    TK: ["690", "00", "[2-47]\\d{3,6}", [4, 5, 6, 7]],
-    TL: ["670", "00", "7\\d{7}|(?:[2-47]\\d|[89]0)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-489]|70"]], ["(\\d{4})(\\d{4})", "$1 $2", ["7"]]]],
-    TM: ["993", "810", "[1-6]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["12"], "(8 $1)"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-5]"], "(8 $1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["6"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"],
-    TN: ["216", "00", "[2-57-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-57-9]"]]]],
-    TO: ["676", "00", "(?:0800|(?:[5-8]\\d\\d|999)\\d)\\d{3}|[2-8]\\d{4}", [5, 7], [["(\\d{2})(\\d{3})", "$1-$2", ["[2-4]|50|6[09]|7[0-24-69]|8[05]"]], ["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[5-9]"]]]],
-    TR: ["90", "00", "4\\d{6}|8\\d{11,12}|(?:[2-58]\\d\\d|900)\\d{7}", [7, 10, 12, 13], [["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["512|8[01589]|90"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5(?:[0-59]|61)", "5(?:[0-59]|616)", "5(?:[0-59]|6161)"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24][1-8]|3[1-9]"], "(0$1)", 1], ["(\\d{3})(\\d{3})(\\d{6,7})", "$1 $2 $3", ["80"], "0$1", 1]], "0"],
-    TT: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-46-8]\\d{6})$|1", "868$1", 0, "868"],
-    TV: ["688", "00", "(?:2|7\\d\\d|90)\\d{4}", [5, 6, 7], [["(\\d{2})(\\d{3})", "$1 $2", ["2"]], ["(\\d{2})(\\d{4})", "$1 $2", ["90"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]],
-    TW: ["886", "0(?:0[25-79]|19)", "[2-689]\\d{8}|7\\d{9,10}|[2-8]\\d{7}|2\\d{6}", [7, 8, 9, 10, 11], [["(\\d{2})(\\d)(\\d{4})", "$1 $2 $3", ["202"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[258]0"], "0$1"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[23568]|4(?:0[02-48]|[1-47-9])|7[1-9]", "[23568]|4(?:0[2-48]|[1-47-9])|(?:400|7)[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, "#"],
-    TZ: ["255", "00[056]", "(?:[25-8]\\d|41|90)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[24]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["5"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[67]"], "0$1"]], "0"],
-    UA: ["380", "00", "[89]\\d{9}|[3-9]\\d{8}", [9, 10], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[12][29]|(?:3[1-8]|4[136-8]|5[12457]|6[49])2|(?:56|65)[24]", "6[12][29]|(?:35|4[1378]|5[12457]|6[49])2|(?:56|65)[24]|(?:3[1-46-8]|46)2[013-9]"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6[0135689]|7[4-6])|6(?:[12][3-7]|[459])", "3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6(?:[015689]|3[02389])|7[4-6])|6(?:[12][3-7]|[459])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|89|9[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "0~0"],
-    UG: ["256", "00[057]", "800\\d{6}|(?:[29]0|[347]\\d)\\d{7}", [9], [["(\\d{4})(\\d{5})", "$1 $2", ["202", "2024"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[27-9]|4(?:6[45]|[7-9])"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[34]"], "0$1"]], "0"],
-    US: ["1", "011", "[2-9]\\d{9}|3\\d{6}", [10], [["(\\d{3})(\\d{4})", "$1-$2", ["310"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3", ["[2-9]"], 0, 1, "$1-$2-$3"]], "1", 0, 0, 0, 0, 0, [["5056(?:[0-35-9]\\d|4[46])\\d{4}|(?:4722|505[2-57-9]|983[29])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-589]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[01356]|3[0-24679]|4[167]|5[0-2]|6[014]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|[34][016]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-7]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}"], [""], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}"], ["900[2-9]\\d{6}"], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|5(?:00|2[125-9]|33|44|66|77|88)[2-9]\\d{6}"]]],
-    UY: ["598", "0(?:0|1[3-9]\\d)", "(?:0004|4)\\d{9}|[1249]\\d{7}|(?:[49]\\d|80)\\d{5}", [7, 8, 10, 13], [["(\\d{3})(\\d{4})", "$1 $2", ["405|8|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[124]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["0"]]], "0", 0, 0, 0, 0, 0, 0, "00", " int. "],
-    UZ: ["998", "810", "200\\d{6}|(?:33|[5-79]\\d|88)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[235-9]"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"],
-    VA: ["39", "00", "0\\d{5,10}|3[0-8]\\d{7,10}|55\\d{8}|8\\d{5}(?:\\d{2,4})?|(?:1\\d|39)\\d{7,8}", [6, 7, 8, 9, 10, 11], 0, 0, 0, 0, 0, 0, "06698"],
-    VC: ["1", "011", "(?:[58]\\d\\d|784|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "784$1", 0, "784"],
-    VE: ["58", "00", "[68]00\\d{7}|(?:[24]\\d|[59]0)\\d{8}", [10], [["(\\d{3})(\\d{7})", "$1-$2", ["[24-689]"], "0$1"]], "0"],
-    VG: ["1", "011", "(?:284|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-578]\\d{6})$|1", "284$1", 0, "284"],
-    VI: ["1", "011", "[58]\\d{9}|(?:34|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "340$1", 0, "340"],
-    VN: ["84", "00", "[12]\\d{9}|[135-9]\\d{8}|[16]\\d{7}|[16-8]\\d{6}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["80"], "0$1", 1], ["(\\d{4})(\\d{4,6})", "$1 $2", ["1"], 0, 1], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["6"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[357-9]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["2[48]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["2"], "0$1", 1]], "0"],
-    VU: ["678", "00", "[57-9]\\d{6}|(?:[238]\\d|48)\\d{3}", [5, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["[57-9]"]]]],
-    WF: ["681", "00", "(?:40|72)\\d{4}|8\\d{5}(?:\\d{3})?", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[478]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]],
-    WS: ["685", "0", "(?:[2-6]|8\\d{5})\\d{4}|[78]\\d{6}|[68]\\d{5}", [5, 6, 7, 10], [["(\\d{5})", "$1", ["[2-5]|6[1-9]"]], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[68]"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]],
-    XK: ["383", "00", "[23]\\d{7,8}|(?:4\\d\\d|[89]00)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[23]"], "0$1"]], "0"],
-    YE: ["967", "00", "(?:1|7\\d)\\d{7}|[1-7]\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-6]|7(?:[24-6]|8[0-7])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"], "0$1"]], "0"],
-    YT: ["262", "00", "(?:80|9\\d)\\d{7}|(?:26|63)9\\d{6}", [9], 0, "0", 0, 0, 0, 0, 0, [["269(?:0[0-467]|5[0-4]|6\\d|[78]0)\\d{4}"], ["639(?:0[0-79]|1[019]|[267]\\d|3[09]|40|5[05-9]|9[04-79])\\d{4}"], ["80\\d{7}"], 0, 0, 0, 0, 0, ["9(?:(?:39|47)8[01]|769\\d)\\d{4}"]]],
-    ZA: ["27", "00", "[1-79]\\d{8}|8\\d{4,9}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,4})", "$1 $2", ["8[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["8[1-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["860"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"],
-    ZM: ["260", "00", "800\\d{6}|(?:21|63|[79]\\d)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[28]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[79]"], "0$1"]], "0"],
-    ZW: ["263", "00", "2(?:[0-57-9]\\d{6,8}|6[0-24-9]\\d{6,7})|[38]\\d{9}|[35-8]\\d{8}|[3-6]\\d{7}|[1-689]\\d{6}|[1-3569]\\d{5}|[1356]\\d{4}", [5, 6, 7, 8, 9, 10], [["(\\d{3})(\\d{3,5})", "$1 $2", ["2(?:0[45]|2[278]|[49]8)|3(?:[09]8|17)|6(?:[29]8|37|75)|[23][78]|(?:33|5[15]|6[68])[78]"], "0$1"], ["(\\d)(\\d{3})(\\d{2,4})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["80"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["24|8[13-59]|(?:2[05-79]|39|5[45]|6[15-8])2", "2(?:02[014]|4|[56]20|[79]2)|392|5(?:42|525)|6(?:[16-8]21|52[013])|8[13-59]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:1[39]|2[0157]|[378]|[56][14])|3(?:12|29)", "2(?:1[39]|2[0157]|[378]|[56][14])|3(?:123|29)"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["1|2(?:0[0-36-9]|12|29|[56])|3(?:1[0-689]|[24-6])|5(?:[0236-9]|1[2-4])|6(?:[013-59]|7[0-46-9])|(?:33|55|6[68])[0-69]|(?:29|3[09]|62)[0-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["29[013-9]|39|54"], "0$1"], ["(\\d{4})(\\d{3,5})", "$1 $2", ["(?:25|54)8", "258|5483"], "0$1"]], "0"]
-  },
-  nonGeographic: {
-    800: ["800", 0, "(?:00|[1-9]\\d)\\d{6}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["\\d"]]], 0, 0, 0, 0, 0, 0, [0, 0, ["(?:00|[1-9]\\d)\\d{6}"]]],
-    808: ["808", 0, "[1-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[1-9]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, ["[1-9]\\d{7}"]]],
-    870: ["870", 0, "7\\d{11}|[35-7]\\d{8}", [9, 12], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[35-7]"]]], 0, 0, 0, 0, 0, 0, [0, ["(?:[356]|774[45])\\d{8}|7[6-8]\\d{7}"]]],
-    878: ["878", 0, "10\\d{10}", [12], [["(\\d{2})(\\d{5})(\\d{5})", "$1 $2 $3", ["1"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["10\\d{10}"]]],
-    881: ["881", 0, "[0-36-9]\\d{8}", [9], [["(\\d)(\\d{3})(\\d{5})", "$1 $2 $3", ["[0-36-9]"]]], 0, 0, 0, 0, 0, 0, [0, ["[0-36-9]\\d{8}"]]],
-    882: ["882", 0, "[13]\\d{6}(?:\\d{2,5})?|[19]\\d{7}|(?:[25]\\d\\d|4)\\d{7}(?:\\d{2})?", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5})", "$1 $2", ["16|342"]], ["(\\d{2})(\\d{6})", "$1 $2", ["49"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["1[36]|9"]], ["(\\d{2})(\\d{4})(\\d{3})", "$1 $2 $3", ["3[23]"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["16"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|23|3(?:[15]|4[57])|4|51"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["34"]], ["(\\d{2})(\\d{4,5})(\\d{5})", "$1 $2 $3", ["[1-35]"]]], 0, 0, 0, 0, 0, 0, [0, ["342\\d{4}|(?:337|49)\\d{6}|(?:3(?:2|47|7\\d{3})|50\\d{3})\\d{7}", [7, 8, 9, 10, 12]], 0, 0, 0, 0, 0, 0, ["1(?:3(?:0[0347]|[13][0139]|2[035]|4[013568]|6[0459]|7[06]|8[15-8]|9[0689])\\d{4}|6\\d{5,10})|(?:345\\d|9[89])\\d{6}|(?:10|2(?:3|85\\d)|3(?:[15]|[69]\\d\\d)|4[15-8]|51)\\d{8}"]]],
-    883: ["883", 0, "(?:[1-4]\\d|51)\\d{6,10}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,8})", "$1 $2 $3", ["[14]|2[24-689]|3[02-689]|51[24-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["510"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["21"]], ["(\\d{4})(\\d{4})(\\d{4})", "$1 $2 $3", ["51[13]"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[235]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["(?:2(?:00\\d\\d|10)|(?:370[1-9]|51\\d0)\\d)\\d{7}|51(?:00\\d{5}|[24-9]0\\d{4,7})|(?:1[013-79]|2[24-689]|3[02-689]|4[0-4])0\\d{5,9}"]]],
-    888: ["888", 0, "\\d{11}", [11], [["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3"]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, ["\\d{11}"]]],
-    979: ["979", 0, "[1359]\\d{8}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[1359]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, ["[1359]\\d{8}"]]]
-  }
+const ct = at(lt, st, [], false, null, null, null, null).exports;
+ct.install = (e2) => {
+  e2.component(ct.name, ct);
 };
-function Va(r, e) {
-  var a = Array.prototype.slice.call(e);
-  return a.push(At), r.apply(this, a);
+const mt = { version: 4, country_calling_codes: { 1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"], 7: ["RU", "KZ"], 20: ["EG"], 27: ["ZA"], 30: ["GR"], 31: ["NL"], 32: ["BE"], 33: ["FR"], 34: ["ES"], 36: ["HU"], 39: ["IT", "VA"], 40: ["RO"], 41: ["CH"], 43: ["AT"], 44: ["GB", "GG", "IM", "JE"], 45: ["DK"], 46: ["SE"], 47: ["NO", "SJ"], 48: ["PL"], 49: ["DE"], 51: ["PE"], 52: ["MX"], 53: ["CU"], 54: ["AR"], 55: ["BR"], 56: ["CL"], 57: ["CO"], 58: ["VE"], 60: ["MY"], 61: ["AU", "CC", "CX"], 62: ["ID"], 63: ["PH"], 64: ["NZ"], 65: ["SG"], 66: ["TH"], 81: ["JP"], 82: ["KR"], 84: ["VN"], 86: ["CN"], 90: ["TR"], 91: ["IN"], 92: ["PK"], 93: ["AF"], 94: ["LK"], 95: ["MM"], 98: ["IR"], 211: ["SS"], 212: ["MA", "EH"], 213: ["DZ"], 216: ["TN"], 218: ["LY"], 220: ["GM"], 221: ["SN"], 222: ["MR"], 223: ["ML"], 224: ["GN"], 225: ["CI"], 226: ["BF"], 227: ["NE"], 228: ["TG"], 229: ["BJ"], 230: ["MU"], 231: ["LR"], 232: ["SL"], 233: ["GH"], 234: ["NG"], 235: ["TD"], 236: ["CF"], 237: ["CM"], 238: ["CV"], 239: ["ST"], 240: ["GQ"], 241: ["GA"], 242: ["CG"], 243: ["CD"], 244: ["AO"], 245: ["GW"], 246: ["IO"], 247: ["AC"], 248: ["SC"], 249: ["SD"], 250: ["RW"], 251: ["ET"], 252: ["SO"], 253: ["DJ"], 254: ["KE"], 255: ["TZ"], 256: ["UG"], 257: ["BI"], 258: ["MZ"], 260: ["ZM"], 261: ["MG"], 262: ["RE", "YT"], 263: ["ZW"], 264: ["NA"], 265: ["MW"], 266: ["LS"], 267: ["BW"], 268: ["SZ"], 269: ["KM"], 290: ["SH", "TA"], 291: ["ER"], 297: ["AW"], 298: ["FO"], 299: ["GL"], 350: ["GI"], 351: ["PT"], 352: ["LU"], 353: ["IE"], 354: ["IS"], 355: ["AL"], 356: ["MT"], 357: ["CY"], 358: ["FI", "AX"], 359: ["BG"], 370: ["LT"], 371: ["LV"], 372: ["EE"], 373: ["MD"], 374: ["AM"], 375: ["BY"], 376: ["AD"], 377: ["MC"], 378: ["SM"], 380: ["UA"], 381: ["RS"], 382: ["ME"], 383: ["XK"], 385: ["HR"], 386: ["SI"], 387: ["BA"], 389: ["MK"], 420: ["CZ"], 421: ["SK"], 423: ["LI"], 500: ["FK"], 501: ["BZ"], 502: ["GT"], 503: ["SV"], 504: ["HN"], 505: ["NI"], 506: ["CR"], 507: ["PA"], 508: ["PM"], 509: ["HT"], 590: ["GP", "BL", "MF"], 591: ["BO"], 592: ["GY"], 593: ["EC"], 594: ["GF"], 595: ["PY"], 596: ["MQ"], 597: ["SR"], 598: ["UY"], 599: ["CW", "BQ"], 670: ["TL"], 672: ["NF"], 673: ["BN"], 674: ["NR"], 675: ["PG"], 676: ["TO"], 677: ["SB"], 678: ["VU"], 679: ["FJ"], 680: ["PW"], 681: ["WF"], 682: ["CK"], 683: ["NU"], 685: ["WS"], 686: ["KI"], 687: ["NC"], 688: ["TV"], 689: ["PF"], 690: ["TK"], 691: ["FM"], 692: ["MH"], 850: ["KP"], 852: ["HK"], 853: ["MO"], 855: ["KH"], 856: ["LA"], 880: ["BD"], 886: ["TW"], 960: ["MV"], 961: ["LB"], 962: ["JO"], 963: ["SY"], 964: ["IQ"], 965: ["KW"], 966: ["SA"], 967: ["YE"], 968: ["OM"], 970: ["PS"], 971: ["AE"], 972: ["IL"], 973: ["BH"], 974: ["QA"], 975: ["BT"], 976: ["MN"], 977: ["NP"], 992: ["TJ"], 993: ["TM"], 994: ["AZ"], 995: ["GE"], 996: ["KG"], 998: ["UZ"] }, countries: { AC: ["247", "00", "(?:[01589]\\d|[46])\\d{4}", [5, 6]], AD: ["376", "00", "(?:1|6\\d)\\d{7}|[135-9]\\d{5}", [6, 8, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["[135-9]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["1"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]]], AE: ["971", "00", "(?:[4-7]\\d|9[0-689])\\d{7}|800\\d{2,9}|[2-4679]\\d{7}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{2,9})", "$1 $2", ["60|8"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[236]|[479][2-8]"], "0$1"], ["(\\d{3})(\\d)(\\d{5})", "$1 $2 $3", ["[479]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"]], "0"], AF: ["93", "00", "[2-7]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"]], "0"], AG: ["1", "011", "(?:268|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([457]\\d{6})$|1", "268$1", 0, "268"], AI: ["1", "011", "(?:264|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2457]\\d{6})$|1", "264$1", 0, "264"], AL: ["355", "00", "(?:700\\d\\d|900)\\d{3}|8\\d{5,7}|(?:[2-5]|6\\d)\\d{7}", [6, 7, 8, 9], [["(\\d{3})(\\d{3,4})", "$1 $2", ["80|9"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["4[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2358][2-5]|4"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["[23578]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["6"], "0$1"]], "0"], AM: ["374", "00", "(?:[1-489]\\d|55|60|77)\\d{6}", [8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[89]0"], "0 $1"], ["(\\d{3})(\\d{5})", "$1 $2", ["2|3[12]"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["1|47"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[3-9]"], "0$1"]], "0"], AO: ["244", "00", "[29]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[29]"]]]], AR: ["54", "00", "(?:11|[89]\\d\\d)\\d{8}|[2368]\\d{9}", [10, 11], [["(\\d{4})(\\d{2})(\\d{4})", "$1 $2-$3", ["2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9])", "2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8]))|2(?:2[24-9]|3[1-59]|47)", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5[56][46]|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|58|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|54(?:4|5[13-7]|6[89])|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:454|85[56])[46]|3(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["1"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[68]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2-$3", ["[23]"], "0$1", 1], ["(\\d)(\\d{4})(\\d{2})(\\d{4})", "$2 15-$3-$4", ["9(?:2[2-469]|3[3-578])", "9(?:2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9]))", "9(?:2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8])))|92(?:2[24-9]|3[1-59]|47)", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5(?:[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|5(?:4(?:4|5[13-7]|6[89])|[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 15-$3-$4", ["91"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d{3})(\\d{3})(\\d{5})", "$1-$2-$3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 15-$3-$4", ["9"], "0$1", 0, "$1 $2 $3-$4"]], "0", 0, "0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|3(?:02?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[2-4]|7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", "9$1"], AS: ["1", "011", "(?:[58]\\d\\d|684|900)\\d{7}", [10], 0, "1", 0, "([267]\\d{6})$|1", "684$1", 0, "684"], AT: ["43", "00", "1\\d{3,12}|2\\d{6,12}|43(?:(?:0\\d|5[02-9])\\d{3,9}|2\\d{4,5}|[3467]\\d{4}|8\\d{4,6}|9\\d{4,7})|5\\d{4,12}|8\\d{7,12}|9\\d{8,12}|(?:[367]\\d|4[0-24-9])\\d{4,11}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3,12})", "$1 $2", ["1(?:11|[2-9])"], "0$1"], ["(\\d{3})(\\d{2})", "$1 $2", ["517"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["5[079]"], "0$1"], ["(\\d{3})(\\d{3,10})", "$1 $2", ["(?:31|4)6|51|6(?:5[0-3579]|[6-9])|7(?:20|32|8)|[89]"], "0$1"], ["(\\d{4})(\\d{3,9})", "$1 $2", ["[2-467]|5[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,7})", "$1 $2 $3", ["5"], "0$1"]], "0"], AU: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{7}(?:\\d(?:\\d{2})?)?|8[0-24-9]\\d{7})|[2-478]\\d{8}|1\\d{4,7}", [5, 6, 7, 8, 9, 10, 12], [["(\\d{2})(\\d{3,4})", "$1 $2", ["16"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,4})", "$1 $2 $3", ["16"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["14|4"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[2378]"], "(0$1)"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:30|[89])"]]], "0", 0, "(183[12])|0", 0, 0, 0, [["(?:(?:2(?:[0-26-9]\\d|3[0-8]|4[02-9]|5[0135-9])|3(?:[0-3589]\\d|4[0-578]|6[1-9]|7[0-35-9])|7(?:[013-57-9]\\d|2[0-8]))\\d{3}|8(?:51(?:0(?:0[03-9]|[12479]\\d|3[2-9]|5[0-8]|6[1-9]|8[0-7])|1(?:[0235689]\\d|1[0-69]|4[0-589]|7[0-47-9])|2(?:0[0-79]|[18][13579]|2[14-9]|3[0-46-9]|[4-6]\\d|7[89]|9[0-4]))|(?:6[0-8]|[78]\\d)\\d{3}|9(?:[02-9]\\d{3}|1(?:(?:[0-58]\\d|6[0135-9])\\d|7(?:0[0-24-9]|[1-9]\\d)|9(?:[0-46-9]\\d|5[0-79])))))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, ["163\\d{2,6}", [5, 6, 7, 8, 9]], ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], AW: ["297", "00", "(?:[25-79]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[25-9]"]]]], AX: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "2\\d{4,9}|35\\d{4,5}|(?:60\\d\\d|800)\\d{4,6}|7\\d{5,11}|(?:[14]\\d|3[0-46-9]|50)\\d{4,8}", [5, 6, 7, 8, 9, 10, 11, 12], 0, "0", 0, 0, 0, 0, "18", 0, "00"], AZ: ["994", "00", "365\\d{6}|(?:[124579]\\d|60|88)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[28]|2|365|46", "1[28]|2|365[45]|46", "1[28]|2|365(?:4|5[02])|46"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[13-9]"], "0$1"]], "0"], BA: ["387", "00", "6\\d{8}|(?:[35689]\\d|49|70)\\d{6}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[1-3]|[7-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2-$3", ["[3-5]|6[56]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["6"], "0$1"]], "0"], BB: ["1", "011", "(?:246|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "246$1", 0, "246"], BD: ["880", "00", "[1-469]\\d{9}|8[0-79]\\d{7,8}|[2-79]\\d{8}|[2-9]\\d{7}|[3-9]\\d{6}|[57-9]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{4,6})", "$1-$2", ["31[5-8]|[459]1"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1-$2", ["3(?:[67]|8[013-9])|4(?:6[168]|7|[89][18])|5(?:6[128]|9)|6(?:[15]|28|4[14])|7[2-589]|8(?:0[014-9]|[12])|9[358]|(?:3[2-5]|4[235]|5[2-578]|6[0389]|76|8[3-7]|9[24])1|(?:44|66)[01346-9]"], "0$1"], ["(\\d{4})(\\d{3,6})", "$1-$2", ["[13-9]|22"], "0$1"], ["(\\d)(\\d{7,8})", "$1-$2", ["2"], "0$1"]], "0"], BE: ["32", "00", "4\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:80|9)0"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[239]|4[23]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[15-8]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4"], "0$1"]], "0"], BF: ["226", "00", "[025-7]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[025-7]"]]]], BG: ["359", "00", "00800\\d{7}|[2-7]\\d{6,7}|[89]\\d{6,8}|2\\d{5}", [6, 7, 8, 9, 12], [["(\\d)(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["43[1-6]|70[1-9]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[356]|4[124-7]|7[1-9]|8[1-6]|9[1-7]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:70|8)0"], "0$1"], ["(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3", ["43[1-7]|7"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[48]|9[08]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"]], "0"], BH: ["973", "00", "[136-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[13679]|8[02-4679]"]]]], BI: ["257", "00", "(?:[267]\\d|31)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2367]"]]]], BJ: ["229", "00", "[24-689]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-689]"]]]], BL: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:2[7-9]|3[3-7]|5[12]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], BM: ["1", "011", "(?:441|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "441$1", 0, "441"], BN: ["673", "00", "[2-578]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-578]"]]]], BO: ["591", "00(?:1\\d)?", "(?:[2-467]\\d\\d|8001)\\d{5}", [8, 9], [["(\\d)(\\d{7})", "$1 $2", ["[23]|4[46]"]], ["(\\d{8})", "$1", ["[67]"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["8"]]], "0", 0, "0(1\\d)?"], BQ: ["599", "00", "(?:[34]1|7\\d)\\d{5}", [7], 0, 0, 0, 0, 0, 0, "[347]"], BR: ["55", "00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)", "(?:[1-46-9]\\d\\d|5(?:[0-46-9]\\d|5[0-46-9]))\\d{8}|[1-9]\\d{9}|[3589]\\d{8}|[34]\\d{7}", [8, 9, 10, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["300|4(?:0[02]|37)", "4(?:02|37)0|[34]00"]], ["(\\d{3})(\\d{2,3})(\\d{4})", "$1 $2 $3", ["(?:[358]|90)0"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["(?:[14689][1-9]|2[12478]|3[1-578]|5[13-5]|7[13-579])[2-57]"], "($1)"], ["(\\d{2})(\\d{5})(\\d{4})", "$1 $2-$3", ["[16][1-9]|[2-57-9]"], "($1)"]], "0", 0, "(?:0|90)(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\\d{10,11}))?", "$2"], BS: ["1", "011", "(?:242|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([3-8]\\d{6})$|1", "242$1", 0, "242"], BT: ["975", "00", "[17]\\d{7}|[2-8]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-68]|7[246]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[67]|7"]]]], BW: ["267", "00", "(?:0800|(?:[37]|800)\\d)\\d{6}|(?:[2-6]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["90"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[24-6]|3[15-9]"]], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37]"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["8"]]]], BY: ["375", "810", "(?:[12]\\d|33|44|902)\\d{7}|8(?:0[0-79]\\d{5,7}|[1-7]\\d{9})|8(?:1[0-489]|[5-79]\\d)\\d{7}|8[1-79]\\d{6,7}|8[0-79]\\d{5}|8\\d{5}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3})", "$1 $2", ["800"], "8 $1"], ["(\\d{3})(\\d{2})(\\d{2,4})", "$1 $2 $3", ["800"], "8 $1"], ["(\\d{4})(\\d{2})(\\d{3})", "$1 $2-$3", ["1(?:5[169]|6[3-5]|7[179])|2(?:1[35]|2[34]|3[3-5])", "1(?:5[169]|6(?:3[1-3]|4|5[125])|7(?:1[3-9]|7[0-24-6]|9[2-7]))|2(?:1[35]|2[34]|3[3-5])"], "8 0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["1(?:[56]|7[467])|2[1-3]"], "8 0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-4]"], "8 0$1"], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[89]"], "8 $1"]], "8", 0, "0|80?", 0, 0, 0, 0, "8~10"], BZ: ["501", "00", "(?:0800\\d|[2-8])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-8]"]], ["(\\d)(\\d{3})(\\d{4})(\\d{3})", "$1-$2-$3-$4", ["0"]]]], CA: ["1", "011", "(?:[2-8]\\d|90)\\d{8}|3\\d{6}", [7, 10], 0, "1", 0, 0, 0, 0, 0, [["(?:2(?:04|[23]6|[48]9|50|63)|3(?:06|43|54|6[578]|82)|4(?:03|1[68]|[26]8|3[178]|50|74)|5(?:06|1[49]|48|79|8[147])|6(?:04|[18]3|39|47|72)|7(?:0[59]|42|53|78|8[02])|8(?:[06]7|19|25|73)|90[25])[2-9]\\d{6}", [10]], ["", [10]], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}", [10]], ["900[2-9]\\d{6}", [10]], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|(?:5(?:00|2[125-9]|33|44|66|77|88)|622)[2-9]\\d{6}", [10]], 0, ["310\\d{4}", [7]], 0, ["600[2-9]\\d{6}", [10]]]], CC: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:02|31|60|89)|1(?:18|76)|223)|91(?:0(?:1[0-2]|29)|1(?:[28]2|50|79)|2(?:10|64)|3(?:[06]8|22)|4[29]8|62\\d|70[23]|959))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CD: ["243", "00", "[189]\\d{8}|[1-68]\\d{6}", [7, 9], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[1-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], CF: ["236", "00", "(?:[27]\\d{3}|8776)\\d{4}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[278]"]]]], CG: ["242", "00", "222\\d{6}|(?:0\\d|80)\\d{7}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[02]"]]]], CH: ["41", "00", "8\\d{11}|[2-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8[047]|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]|81"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["8"], "0$1"]], "0"], CI: ["225", "00", "[02]\\d{9}", [10], [["(\\d{2})(\\d{2})(\\d)(\\d{5})", "$1 $2 $3 $4", ["2"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3 $4", ["0"]]]], CK: ["682", "00", "[2-578]\\d{4}", [5], [["(\\d{2})(\\d{3})", "$1 $2", ["[2-578]"]]]], CL: ["56", "(?:0|1(?:1[0-69]|2[02-5]|5[13-58]|69|7[0167]|8[018]))0", "12300\\d{6}|6\\d{9,10}|[2-9]\\d{8}", [9, 10, 11], [["(\\d{5})(\\d{4})", "$1 $2", ["219", "2196"], "($1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["44"]], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2[1-36]"], "($1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["9[2-9]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["3[2-5]|[47]|5[1-3578]|6[13-57]|8(?:0[1-9]|[1-9])"], "($1)"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["60|8"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{3})(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["60"]]]], CM: ["237", "00", "[26]\\d{8}|88\\d{6,7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["88"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[26]|88"]]]], CN: ["86", "00|1(?:[12]\\d|79)\\d\\d00", "1[127]\\d{8,9}|2\\d{9}(?:\\d{2})?|[12]\\d{6,7}|86\\d{6}|(?:1[03-689]\\d|6)\\d{7,9}|(?:[3-579]\\d|8[0-57-9])\\d{6,9}", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5,6})", "$1 $2", ["(?:10|2[0-57-9])[19]", "(?:10|2[0-57-9])(?:10|9[56])", "10(?:10|9[56])|2[0-57-9](?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["3(?:[157]|35|49|9[1-68])|4(?:[17]|2[179]|6[47-9]|8[23])|5(?:[1357]|2[37]|4[36]|6[1-46]|80)|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])|(?:4[35]|59|85)[1-9]", "(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[1-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))[19]", "85[23](?:10|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:10|9[56])", "85[23](?:100|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["(?:4|80)0"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|2(?:[02-57-9]|1[1-9])", "10|2(?:[02-57-9]|1[1-9])", "10[0-79]|2(?:[02-57-9]|1[1-79])|(?:10|21)8(?:0[1-9]|[1-9])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["3(?:[3-59]|7[02-68])|4(?:[26-8]|3[3-9]|5[2-9])|5(?:3[03-9]|[468]|7[028]|9[2-46-9])|6|7(?:[0-247]|3[04-9]|5[0-4689]|6[2368])|8(?:[1-358]|9[1-7])|9(?:[013479]|5[1-5])|(?:[34]1|55|79|87)[02-9]"], "0$1", 1], ["(\\d{3})(\\d{7,8})", "$1 $2", ["9"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["80"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[3-578]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["1[3-9]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["[12]"], "0$1", 1]], "0", 0, "(1(?:[12]\\d|79)\\d\\d)|0", 0, 0, 0, 0, "00"], CO: ["57", "00(?:4(?:[14]4|56)|[579])", "(?:60\\d\\d|9101)\\d{6}|(?:1\\d|3)\\d{9}", [10, 11], [["(\\d{3})(\\d{7})", "$1 $2", ["6"], "($1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3[0-357]|91"]], ["(\\d)(\\d{3})(\\d{7})", "$1-$2-$3", ["1"], "0$1", 0, "$1 $2 $3"]], "0", 0, "0(4(?:[14]4|56)|[579])?"], CR: ["506", "00", "(?:8\\d|90)\\d{8}|(?:[24-8]\\d{3}|3005)\\d{4}", [8, 10], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[3-9]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[89]"]]], 0, 0, "(19(?:0[0-2468]|1[09]|20|66|77|99))"], CU: ["53", "119", "[27]\\d{6,7}|[34]\\d{5,7}|63\\d{6}|(?:5|8\\d\\d)\\d{7}", [6, 7, 8, 10], [["(\\d{2})(\\d{4,6})", "$1 $2", ["2[1-4]|[34]"], "(0$1)"], ["(\\d)(\\d{6,7})", "$1 $2", ["7"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["[56]"], "0$1"], ["(\\d{3})(\\d{7})", "$1 $2", ["8"], "0$1"]], "0"], CV: ["238", "0", "(?:[2-59]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2-589]"]]]], CW: ["599", "00", "(?:[34]1|60|(?:7|9\\d)\\d)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[3467]"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["9[4-8]"]]], 0, 0, 0, 0, 0, "[69]"], CX: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:01|30|59|88)|1(?:17|46|75)|2(?:22|35))|91(?:00[6-9]|1(?:[28]1|49|78)|2(?:09|63)|3(?:12|26|75)|4(?:56|97)|64\\d|7(?:0[01]|1[0-2])|958))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CY: ["357", "00", "(?:[279]\\d|[58]0)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[257-9]"]]]], CZ: ["420", "00", "(?:[2-578]\\d|60)\\d{7}|9\\d{8,11}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]|9[015-7]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["96"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]]], DE: ["49", "00", "[2579]\\d{5,14}|49(?:[34]0|69|8\\d)\\d\\d?|49(?:37|49|60|7[089]|9\\d)\\d{1,3}|49(?:2[024-9]|3[2-689]|7[1-7])\\d{1,8}|(?:1|[368]\\d|4[0-8])\\d{3,13}|49(?:[015]\\d|2[13]|31|[46][1-8])\\d{1,9}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [["(\\d{2})(\\d{3,13})", "$1 $2", ["3[02]|40|[68]9"], "0$1"], ["(\\d{3})(\\d{3,12})", "$1 $2", ["2(?:0[1-389]|1[124]|2[18]|3[14])|3(?:[35-9][15]|4[015])|906|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1", "2(?:0[1-389]|12[0-8])|3(?:[35-9][15]|4[015])|906|2(?:[13][14]|2[18])|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1"], "0$1"], ["(\\d{4})(\\d{2,11})", "$1 $2", ["[24-6]|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]", "[24-6]|3(?:3(?:0[1-467]|2[127-9]|3[124578]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|4[13578]|9[1346])|5(?:0[14]|2[1-3589]|6[1-4]|7[13468]|8[13568])|6(?:2[1-489]|3[124-6]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|6|7[1467]|8[136])|9(?:0[12479]|2[1358]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]|3[68]4[1347]|3(?:47|60)[1356]|3(?:3[46]|46|5[49])[1246]|3[4579]3[1357]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["138"], "0$1"], ["(\\d{5})(\\d{2,10})", "$1 $2", ["3"], "0$1"], ["(\\d{3})(\\d{5,11})", "$1 $2", ["181"], "0$1"], ["(\\d{3})(\\d)(\\d{4,10})", "$1 $2 $3", ["1(?:3|80)|9"], "0$1"], ["(\\d{3})(\\d{7,8})", "$1 $2", ["1[67]"], "0$1"], ["(\\d{3})(\\d{7,12})", "$1 $2", ["8"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["185", "1850", "18500"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["18[68]"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["15[0568]"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["15[1279]"], "0$1"], ["(\\d{3})(\\d{8})", "$1 $2", ["18"], "0$1"], ["(\\d{3})(\\d{2})(\\d{7,8})", "$1 $2 $3", ["1(?:6[023]|7)"], "0$1"], ["(\\d{4})(\\d{2})(\\d{7})", "$1 $2 $3", ["15[279]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{8})", "$1 $2 $3", ["15"], "0$1"]], "0"], DJ: ["253", "00", "(?:2\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[27]"]]]], DK: ["45", "00", "[2-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-9]"]]]], DM: ["1", "011", "(?:[58]\\d\\d|767|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "767$1", 0, "767"], DO: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "8001|8[024]9"], DZ: ["213", "00", "(?:[1-4]|[5-79]\\d|80)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["9"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-8]"], "0$1"]], "0"], EC: ["593", "00", "1\\d{9,10}|(?:[2-7]|9\\d)\\d{7}", [8, 9, 10, 11], [["(\\d)(\\d{3})(\\d{4})", "$1 $2-$3", ["[2-7]"], "(0$1)", 0, "$1-$2-$3"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1"]]], "0"], EE: ["372", "00", "8\\d{9}|[4578]\\d{7}|(?:[3-8]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[369]|4[3-8]|5(?:[0-2]|5[0-478]|6[45])|7[1-9]|88", "[369]|4[3-8]|5(?:[02]|1(?:[0-8]|95)|5[0-478]|6(?:4[0-4]|5[1-589]))|7[1-9]|88"]], ["(\\d{4})(\\d{3,4})", "$1 $2", ["[45]|8(?:00|[1-49])", "[45]|8(?:00[1-9]|[1-49])"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], EG: ["20", "00", "[189]\\d{8,9}|[24-6]\\d{8}|[135]\\d{7}", [8, 9, 10], [["(\\d)(\\d{7,8})", "$1 $2", ["[23]"], "0$1"], ["(\\d{2})(\\d{6,7})", "$1 $2", ["1[35]|[4-6]|8[2468]|9[235-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{8})", "$1 $2", ["1"], "0$1"]], "0"], EH: ["212", "00", "[5-8]\\d{8}", [9], 0, "0", 0, 0, 0, 0, "528[89]"], ER: ["291", "00", "[178]\\d{6}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[178]"], "0$1"]], "0"], ES: ["34", "00", "[5-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]00"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-9]"]]]], ET: ["251", "00", "(?:11|[2-579]\\d)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-579]"], "0$1"]], "0"], FI: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "[1-35689]\\d{4}|7\\d{10,11}|(?:[124-7]\\d|3[0-46-9])\\d{8}|[1-9]\\d{5,8}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d)(\\d{4,9})", "$1 $2", ["[2568][1-8]|3(?:0[1-9]|[1-9])|9"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[12]00|[368]|70[07-9]"], "0$1"], ["(\\d{2})(\\d{4,8})", "$1 $2", ["[1245]|7[135]"], "0$1"], ["(\\d{2})(\\d{6,10})", "$1 $2", ["7"], "0$1"]], "0", 0, 0, 0, 0, "1[03-79]|[2-9]", 0, "00"], FJ: ["679", "0(?:0|52)", "45\\d{5}|(?:0800\\d|[235-9])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[235-9]|45"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]]], 0, 0, 0, 0, 0, 0, 0, "00"], FK: ["500", "00", "[2-7]\\d{4}", [5]], FM: ["691", "00", "(?:[39]\\d\\d|820)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[389]"]]]], FO: ["298", "00", "[2-9]\\d{5}", [6], [["(\\d{6})", "$1", ["[2-9]"]]], 0, 0, "(10(?:01|[12]0|88))"], FR: ["33", "00", "[1-9]\\d{8}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0 $1"], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[1-79]"], "0$1"]], "0"], GA: ["241", "00", "(?:[067]\\d|11)\\d{6}|[2-7]\\d{6}", [7, 8], [["(\\d)(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-7]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["11|[67]"], "0$1"]], 0, 0, "0(11\\d{6}|60\\d{6}|61\\d{6}|6[256]\\d{6}|7[467]\\d{6})", "$1"], GB: ["44", "00", "[1-357-9]\\d{9}|[18]\\d{8}|8\\d{6}", [7, 9, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["800", "8001", "80011", "800111", "8001111"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["845", "8454", "84546", "845464"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["800"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["1(?:38|5[23]|69|76|94)", "1(?:(?:38|69)7|5(?:24|39)|768|946)", "1(?:3873|5(?:242|39[4-6])|(?:697|768)[347]|9467)"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["1(?:[2-69][02-9]|[78])"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[25]|7(?:0|6[02-9])", "[25]|7(?:0|6(?:[03-9]|2[356]))"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1389]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["(?:1(?:1(?:3(?:[0-58]\\d\\d|73[0235])|4(?:[0-5]\\d\\d|69[7-9]|70[0-79])|(?:(?:5[0-26-9]|[78][0-49])\\d|6(?:[0-4]\\d|50))\\d)|(?:2(?:(?:0[024-9]|2[3-9]|3[3-79]|4[1-689]|[58][02-9]|6[0-47-9]|7[013-9]|9\\d)\\d|1(?:[0-7]\\d|8[0-2]))|(?:3(?:0\\d|1[0-8]|[25][02-9]|3[02-579]|[468][0-46-9]|7[1-35-79]|9[2-578])|4(?:0[03-9]|[137]\\d|[28][02-57-9]|4[02-69]|5[0-8]|[69][0-79])|5(?:0[1-35-9]|[16]\\d|2[024-9]|3[015689]|4[02-9]|5[03-9]|7[0-35-9]|8[0-468]|9[0-57-9])|6(?:0[034689]|1\\d|2[0-35689]|[38][013-9]|4[1-467]|5[0-69]|6[13-9]|7[0-8]|9[0-24578])|7(?:0[0246-9]|2\\d|3[0236-8]|4[03-9]|5[0-46-9]|6[013-9]|7[0-35-9]|8[024-9]|9[02-9])|8(?:0[35-9]|2[1-57-9]|3[02-578]|4[0-578]|5[124-9]|6[2-69]|7\\d|8[02-9]|9[02569])|9(?:0[02-589]|[18]\\d|2[02-689]|3[1-57-9]|4[2-9]|5[0-579]|6[2-47-9]|7[0-24578]|9[2-57]))\\d)\\d)|2(?:0[013478]|3[0189]|4[017]|8[0-46-9]|9[0-2])\\d{3})\\d{4}|1(?:2(?:0(?:46[1-4]|87[2-9])|545[1-79]|76(?:2\\d|3[1-8]|6[1-6])|9(?:7(?:2[0-4]|3[2-5])|8(?:2[2-8]|7[0-47-9]|8[3-5])))|3(?:6(?:38[2-5]|47[23])|8(?:47[04-9]|64[0157-9]))|4(?:044[1-7]|20(?:2[23]|8\\d)|6(?:0(?:30|5[2-57]|6[1-8]|7[2-8])|140)|8(?:052|87[1-3]))|5(?:2(?:4(?:3[2-79]|6\\d)|76\\d)|6(?:26[06-9]|686))|6(?:06(?:4\\d|7[4-79])|295[5-7]|35[34]\\d|47(?:24|61)|59(?:5[08]|6[67]|74)|9(?:55[0-4]|77[23]))|7(?:26(?:6[13-9]|7[0-7])|(?:442|688)\\d|50(?:2[0-3]|[3-68]2|76))|8(?:27[56]\\d|37(?:5[2-5]|8[239])|843[2-58])|9(?:0(?:0(?:6[1-8]|85)|52\\d)|3583|4(?:66[1-8]|9(?:2[01]|81))|63(?:23|3[1-4])|9561))\\d{3}", [9, 10]], ["7(?:457[0-57-9]|700[01]|911[028])\\d{5}|7(?:[1-3]\\d\\d|4(?:[0-46-9]\\d|5[0-689])|5(?:0[0-8]|[13-9]\\d|2[0-35-9])|7(?:0[1-9]|[1-7]\\d|8[02-9]|9[0-689])|8(?:[014-9]\\d|[23][0-8])|9(?:[024-9]\\d|1[02-9]|3[0-689]))\\d{6}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[2-49]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]], 0, " x"], GD: ["1", "011", "(?:473|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "473$1", 0, "473"], GE: ["995", "00", "(?:[3-57]\\d\\d|800)\\d{6}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["32"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[57]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[348]"], "0$1"]], "0"], GF: ["594", "00", "[56]94\\d{6}|(?:80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[56]|9[47]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[89]"], "0$1"]], "0"], GG: ["44", "00", "(?:1481|[357-9]\\d{3})\\d{6}|8\\d{6}(?:\\d{2})?", [7, 9, 10], 0, "0", 0, "([25-9]\\d{5})$|0", "1481$1", 0, 0, [["1481[25-9]\\d{5}", [10]], ["7(?:(?:781|839)\\d|911[17])\\d{5}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[0-3]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]]], GH: ["233", "00", "(?:[235]\\d{3}|800)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[235]"], "0$1"]], "0"], GI: ["350", "00", "(?:[25]\\d|60)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["2"]]]], GL: ["299", "00", "(?:19|[2-689]\\d|70)\\d{4}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["19|[2-9]"]]]], GM: ["220", "00", "[2-9]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], GN: ["224", "00", "722\\d{6}|(?:3|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["3"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[67]"]]]], GP: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0", 0, 0, 0, 0, 0, [["590(?:0[1-68]|[14][0-24-9]|2[0-68]|3[1-9]|5[3-579]|[68][0-689]|7[08]|9\\d)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], GQ: ["240", "00", "222\\d{6}|(?:3\\d|55|[89]0)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235]"]], ["(\\d{3})(\\d{6})", "$1 $2", ["[89]"]]]], GR: ["30", "00", "5005000\\d{3}|8\\d{9,11}|(?:[269]\\d|70)\\d{8}", [10, 11, 12], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["21|7"]], ["(\\d{4})(\\d{6})", "$1 $2", ["2(?:2|3[2-57-9]|4[2-469]|5[2-59]|6[2-9]|7[2-69]|8[2-49])|5"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2689]"]], ["(\\d{3})(\\d{3,4})(\\d{5})", "$1 $2 $3", ["8"]]]], GT: ["502", "00", "(?:1\\d{3}|[2-7])\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], GU: ["1", "011", "(?:[58]\\d\\d|671|900)\\d{7}", [10], 0, "1", 0, "([3-9]\\d{6})$|1", "671$1", 0, "671"], GW: ["245", "00", "[49]\\d{8}|4\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["40"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"]]]], GY: ["592", "001", "9008\\d{3}|(?:[2-467]\\d\\d|510|862)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], HK: ["852", "00(?:30|5[09]|[126-9]?)", "8[0-46-9]\\d{6,7}|9\\d{4,7}|(?:[2-7]|9\\d{3})\\d{7}", [5, 6, 7, 8, 9, 11], [["(\\d{3})(\\d{2,5})", "$1 $2", ["900", "9003"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[1-4]|9(?:0[1-9]|[1-8])"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{3})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]], 0, 0, 0, 0, 0, 0, 0, "00"], HN: ["504", "00", "8\\d{10}|[237-9]\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["[237-9]"]]]], HR: ["385", "00", "(?:[24-69]\\d|3[0-79])\\d{7}|80\\d{5,7}|[1-79]\\d{7}|6\\d{5,6}", [6, 7, 8, 9], [["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["6[01]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{4})(\\d{3})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-5]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"]], "0"], HT: ["509", "00", "(?:[2-489]\\d|55)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[2-589]"]]]], HU: ["36", "00", "[235-7]\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6|8[2-57-9]|9[2-69]"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "06 $1"]], "06"], ID: ["62", "00[89]", "(?:(?:00[1-9]|8\\d)\\d{4}|[1-36])\\d{6}|00\\d{10}|[1-9]\\d{8,10}|[2-9]\\d{7}", [7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["15"]], ["(\\d{2})(\\d{5,9})", "$1 $2", ["2[124]|[36]1"], "(0$1)"], ["(\\d{3})(\\d{5,7})", "$1 $2", ["800"], "0$1"], ["(\\d{3})(\\d{5,8})", "$1 $2", ["[2-79]"], "(0$1)"], ["(\\d{3})(\\d{3,4})(\\d{3})", "$1-$2-$3", ["8[1-35-9]"], "0$1"], ["(\\d{3})(\\d{6,8})", "$1 $2", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["804"], "0$1"], ["(\\d{3})(\\d)(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["80"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1-$2-$3", ["8"], "0$1"]], "0"], IE: ["353", "00", "(?:1\\d|[2569])\\d{6,8}|4\\d{6,9}|7\\d{8}|8\\d{8,9}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["2[24-9]|47|58|6[237-9]|9[35-9]"], "(0$1)"], ["(\\d{3})(\\d{5})", "$1 $2", ["[45]0"], "(0$1)"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2569]|4[1-69]|7[14]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["81"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["4"], "(0$1)"], ["(\\d{2})(\\d)(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], IL: ["972", "0(?:0|1[2-9])", "1\\d{6}(?:\\d{3,5})?|[57]\\d{8}|[1-489]\\d{7}", [7, 8, 9, 10, 11, 12], [["(\\d{4})(\\d{3})", "$1-$2", ["125"]], ["(\\d{4})(\\d{2})(\\d{2})", "$1-$2-$3", ["121"]], ["(\\d)(\\d{3})(\\d{4})", "$1-$2-$3", ["[2-489]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1-$2-$3", ["12"]], ["(\\d{4})(\\d{6})", "$1-$2", ["159"]], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3-$4", ["1[7-9]"]], ["(\\d{3})(\\d{1,2})(\\d{3})(\\d{4})", "$1-$2 $3-$4", ["15"]]], "0"], IM: ["44", "00", "1624\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([25-8]\\d{5})$|0", "1624$1", 0, "74576|(?:16|7[56])24"], IN: ["91", "00", "(?:000800|[2-9]\\d\\d)\\d{7}|1\\d{7,12}", [8, 9, 10, 11, 12, 13], [["(\\d{8})", "$1", ["5(?:0|2[23]|3[03]|[67]1|88)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|888)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|8888)"], 0, 1], ["(\\d{4})(\\d{4,5})", "$1 $2", ["180", "1800"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["140"], 0, 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["11|2[02]|33|4[04]|79[1-7]|80[2-46]", "11|2[02]|33|4[04]|79(?:[1-6]|7[19])|80(?:[2-4]|6[0-589])", "11|2[02]|33|4[04]|79(?:[124-6]|3(?:[02-9]|1[0-24-9])|7(?:1|9[1-6]))|80(?:[2-4]|6[0-589])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1(?:2[0-249]|3[0-25]|4[145]|[68]|7[1257])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|5[12]|[78]1)|6(?:12|[2-4]1|5[17]|6[13]|80)|7(?:12|3[134]|4[47]|61|88)|8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)|(?:43|59|75)[15]|(?:1[59]|29|67|72)[14]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|674|7(?:(?:2[14]|3[34]|5[15])[2-6]|61[346]|88[0-8])|8(?:70[2-6]|84[235-7]|91[3-7])|(?:1(?:29|60|8[06])|261|552|6(?:12|[2-47]1|5[17]|6[13]|80)|7(?:12|31|4[47])|8(?:16|2[014]|3[126]|6[136]|7[78]|83))[2-7]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|6(?:12(?:[2-6]|7[0-8])|74[2-7])|7(?:(?:2[14]|5[15])[2-6]|3171|61[346]|88(?:[2-7]|82))|8(?:70[2-6]|84(?:[2356]|7[19])|91(?:[3-6]|7[19]))|73[134][2-6]|(?:74[47]|8(?:16|2[014]|3[126]|6[136]|7[78]|83))(?:[2-6]|7[19])|(?:1(?:29|60|8[06])|261|552|6(?:[2-4]1|5[17]|6[13]|7(?:1|4[0189])|80)|7(?:12|88[01]))[2-7]"], "0$1", 1], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2[2457-9]|3[2-5]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1[013-9]|28|3[129]|4[1-35689]|5[29]|6[02-5]|70)|807", "1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2(?:[2457]|84|95)|3(?:[2-4]|55)|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1(?:[013-8]|9[6-9])|28[6-8]|3(?:17|2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4|5[0-367])|70[13-7])|807[19]", "1(?:[2-479]|5(?:[0236-9]|5[013-9]))|[2-5]|6(?:2(?:84|95)|355|83)|73179|807(?:1|9[1-3])|(?:1552|6(?:1[1358]|2[2457]|3[2-4]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[124-6])\\d|7(?:1(?:[013-8]\\d|9[6-9])|28[6-8]|3(?:2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]\\d|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4\\d|5[0-367])|70[13-7]))[2-7]"], "0$1", 1], ["(\\d{5})(\\d{5})", "$1 $2", ["[6-9]"], "0$1", 1], ["(\\d{4})(\\d{2,4})(\\d{4})", "$1 $2 $3", ["1(?:6|8[06])", "1(?:6|8[06]0)"], 0, 1], ["(\\d{4})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["18"], 0, 1]], "0"], IO: ["246", "00", "3\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["3"]]]], IQ: ["964", "00", "(?:1|7\\d\\d)\\d{7}|[2-6]\\d{7,8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-6]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], IR: ["98", "00", "[1-9]\\d{9}|(?:[1-8]\\d\\d|9)\\d{3,4}", [4, 5, 6, 7, 10], [["(\\d{4,5})", "$1", ["96"], "0$1"], ["(\\d{2})(\\d{4,5})", "$1 $2", ["(?:1[137]|2[13-68]|3[1458]|4[145]|5[1468]|6[16]|7[1467]|8[13467])[12689]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[1-8]"], "0$1"]], "0"], IS: ["354", "00|1(?:0(?:01|[12]0)|100)", "(?:38\\d|[4-9])\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, 0, "00"], IT: ["39", "00", "0\\d{5,10}|1\\d{8,10}|3(?:[0-8]\\d{7,10}|9\\d{7,8})|(?:55|70)\\d{8}|8\\d{5}(?:\\d{2,4})?", [6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{4,6})", "$1 $2", ["0[26]"]], ["(\\d{3})(\\d{3,6})", "$1 $2", ["0[13-57-9][0159]|8(?:03|4[17]|9[2-5])", "0[13-57-9][0159]|8(?:03|4[17]|9(?:2|3[04]|[45][0-4]))"]], ["(\\d{4})(\\d{2,6})", "$1 $2", ["0(?:[13-579][2-46-8]|8[236-8])"]], ["(\\d{4})(\\d{4})", "$1 $2", ["894"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[26]|5"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1(?:44|[679])|[378]"]], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[13-57-9][0159]|14"]], ["(\\d{2})(\\d{4})(\\d{5})", "$1 $2 $3", ["0[26]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, [["0669[0-79]\\d{1,6}|0(?:1(?:[0159]\\d|[27][1-5]|31|4[1-4]|6[1356]|8[2-57])|2\\d\\d|3(?:[0159]\\d|2[1-4]|3[12]|[48][1-6]|6[2-59]|7[1-7])|4(?:[0159]\\d|[23][1-9]|4[245]|6[1-5]|7[1-4]|81)|5(?:[0159]\\d|2[1-5]|3[2-6]|4[1-79]|6[4-6]|7[1-578]|8[3-8])|6(?:[0-57-9]\\d|6[0-8])|7(?:[0159]\\d|2[12]|3[1-7]|4[2-46]|6[13569]|7[13-6]|8[1-59])|8(?:[0159]\\d|2[3-578]|3[1-356]|[6-8][1-5])|9(?:[0159]\\d|[238][1-5]|4[12]|6[1-8]|7[1-6]))\\d{2,7}"], ["3[1-9]\\d{8}|3[2-9]\\d{7}", [9, 10]], ["80(?:0\\d{3}|3)\\d{3}", [6, 9]], ["(?:0878\\d{3}|89(?:2\\d|3[04]|4(?:[0-4]|[5-9]\\d\\d)|5[0-4]))\\d\\d|(?:1(?:44|6[346])|89(?:38|5[5-9]|9))\\d{6}", [6, 8, 9, 10]], ["1(?:78\\d|99)\\d{6}", [9, 10]], 0, 0, 0, ["55\\d{8}", [10]], ["84(?:[08]\\d{3}|[17])\\d{3}", [6, 9]]]], JE: ["44", "00", "1534\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([0-24-8]\\d{5})$|0", "1534$1", 0, 0, [["1534[0-24-8]\\d{5}"], ["7(?:(?:(?:50|82)9|937)\\d|7(?:00[378]|97[7-9]))\\d{5}"], ["80(?:07(?:35|81)|8901)\\d{4}"], ["(?:8(?:4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|90(?:066[59]|1810|71(?:07|55)))\\d{4}"], ["701511\\d{4}"], 0, ["(?:3(?:0(?:07(?:35|81)|8901)|3\\d{4}|4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|55\\d{4})\\d{4}"], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}"], ["56\\d{8}"]]], JM: ["1", "011", "(?:[58]\\d\\d|658|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "658|876"], JO: ["962", "00", "(?:(?:[2689]|7\\d)\\d|32|53)\\d{6}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2356]|87"], "(0$1)"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["70"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], JP: ["81", "010", "00[1-9]\\d{6,14}|[257-9]\\d{9}|(?:00|[1-9]\\d\\d)\\d{6}", [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], [["(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3", ["(?:12|57|99)0"], "0$1"], ["(\\d{4})(\\d)(\\d{4})", "$1-$2-$3", ["1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|499|5(?:76|97)|746|8(?:3[89]|47|51)|9(?:80|9[16])", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:76|97)9|7468|8(?:3(?:8[7-9]|96)|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:769|979[2-69])|7468|8(?:3(?:8[7-9]|96[2457-9])|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2-$3", ["[36]|4(?:2[09]|7[01])", "[36]|4(?:2(?:0|9[02-69])|7(?:0[019]|1))"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["1(?:1|5[45]|77|88|9[69])|2(?:2[1-37]|3[0-269]|4[59]|5|6[24]|7[1-358]|8[1369]|9[0-38])|4(?:[28][1-9]|3[0-57]|[45]|6[248]|7[2-579]|9[29])|5(?:2|3[0459]|4[0-369]|5[29]|8[02389]|9[0-389])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9[2-6])|8(?:2[124589]|3[26-9]|49|51|6|7[0-468]|8[68]|9[019])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9[1-489])", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2(?:[127]|3[014-9])|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9[19])|62|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|8[1-9]|9[29])|5(?:2|3(?:[045]|9[0-8])|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0-2469])|3(?:[29]|60)|49|51|6(?:[0-24]|36|5[0-3589]|7[23]|9[01459])|7[0-468]|8[68])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9(?:[1289]|3[34]|4[0178]))|(?:264|837)[016-9]|2(?:57|93)[015-9]|(?:25[0468]|422|838)[01]|(?:47[59]|59[89]|8(?:6[68]|9))[019]", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2[127]|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9(?:17|99))|6(?:2|4[016-9])|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|9[29])|5(?:2|3(?:[045]|9(?:[0-58]|6[4-9]|7[0-35689]))|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0169])|3(?:[29]|60|7(?:[017-9]|6[6-8]))|49|51|6(?:[0-24]|36[2-57-9]|5(?:[0-389]|5[23])|6(?:[01]|9[178])|7(?:2[2-468]|3[78])|9[0145])|7[0-468]|8[68])|9(?:4[15]|5[138]|7[156]|8[189]|9(?:[1289]|3(?:31|4[357])|4[0178]))|(?:8294|96)[1-3]|2(?:57|93)[015-9]|(?:223|8699)[014-9]|(?:25[0468]|422|838)[01]|(?:48|8292|9[23])[1-9]|(?:47[59]|59[89]|8(?:68|9))[019]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3", ["[14]|[289][2-9]|5[3-9]|7[2-4679]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["800"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[257-9]"], "0$1"]], "0", 0, "(000[259]\\d{6})$|(?:(?:003768)0?)|0", "$1"], KE: ["254", "000", "(?:[17]\\d\\d|900)\\d{6}|(?:2|80)0\\d{6,7}|[4-6]\\d{6,8}", [7, 8, 9, 10], [["(\\d{2})(\\d{5,7})", "$1 $2", ["[24-6]"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[17]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], KG: ["996", "00", "8\\d{9}|[235-9]\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["3(?:1[346]|[24-79])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235-79]|88"], "0$1"], ["(\\d{3})(\\d{3})(\\d)(\\d{2,3})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], KH: ["855", "00[14-9]", "1\\d{9}|[1-9]\\d{7,8}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], KI: ["686", "00", "(?:[37]\\d|6[0-79])\\d{6}|(?:[2-48]\\d|50)\\d{3}", [5, 8], 0, "0"], KM: ["269", "00", "[3478]\\d{6}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[3478]"]]]], KN: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "869$1", 0, "869"], KP: ["850", "00|99", "85\\d{6}|(?:19\\d|[2-7])\\d{7}", [8, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"]], "0"], KR: ["82", "00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))", "00[1-9]\\d{8,11}|(?:[12]|5\\d{3})\\d{7}|[13-6]\\d{9}|(?:[1-6]\\d|80)\\d{7}|[3-6]\\d{4,5}|(?:00|7)0\\d{8}", [5, 6, 8, 9, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{3,4})", "$1-$2", ["(?:3[1-3]|[46][1-4]|5[1-5])1"], "0$1"], ["(\\d{4})(\\d{4})", "$1-$2", ["1"]], ["(\\d)(\\d{3,4})(\\d{4})", "$1-$2-$3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60|8"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1-$2-$3", ["[1346]|5[1-5]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{2})(\\d{5})(\\d{4})", "$1-$2-$3", ["5"], "0$1"]], "0", 0, "0(8(?:[1-46-8]|5\\d\\d))?"], KW: ["965", "00", "18\\d{5}|(?:[2569]\\d|41)\\d{6}", [7, 8], [["(\\d{4})(\\d{3,4})", "$1 $2", ["[169]|2(?:[235]|4[1-35-9])|52"]], ["(\\d{3})(\\d{5})", "$1 $2", ["[245]"]]]], KY: ["1", "011", "(?:345|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "345$1", 0, "345"], KZ: ["7", "810", "(?:33622|8\\d{8})\\d{5}|[78]\\d{9}", [10, 14], 0, "8", 0, 0, 0, 0, "33|7", 0, "8~10"], LA: ["856", "00", "[23]\\d{9}|3\\d{8}|(?:[235-8]\\d|41)\\d{6}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2[13]|3[14]|[4-8]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["30[013-9]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0"], LB: ["961", "00", "[27-9]\\d{7}|[13-9]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[13-69]|7(?:[2-57]|62|8[0-7]|9[04-9])|8[02-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27-9]"]]], "0"], LC: ["1", "011", "(?:[58]\\d\\d|758|900)\\d{7}", [10], 0, "1", 0, "([2-8]\\d{6})$|1", "758$1", 0, "758"], LI: ["423", "00", "[68]\\d{8}|(?:[2378]\\d|90)\\d{5}", [7, 9], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2379]|8(?:0[09]|7)", "[2379]|8(?:0(?:02|9)|7)"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["69"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]], "0", 0, "(1001)|0"], LK: ["94", "00", "[1-9]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[1-689]"], "0$1"]], "0"], LR: ["231", "00", "(?:[25]\\d|33|77|88)\\d{7}|(?:2\\d|[4-6])\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[4-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23578]"], "0$1"]], "0"], LS: ["266", "00", "(?:[256]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2568]"]]]], LT: ["370", "00", "(?:[3469]\\d|52|[78]0)\\d{6}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["52[0-7]"], "(8-$1)", 1], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[7-9]"], "8 $1", 1], ["(\\d{2})(\\d{6})", "$1 $2", ["37|4(?:[15]|6[1-8])"], "(8-$1)", 1], ["(\\d{3})(\\d{5})", "$1 $2", ["[3-6]"], "(8-$1)", 1]], "8", 0, "[08]"], LU: ["352", "00", "35[013-9]\\d{4,8}|6\\d{8}|35\\d{2,4}|(?:[2457-9]\\d|3[0-46-9])\\d{2,9}", [4, 5, 6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{3})", "$1 $2", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["20[2-689]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4", ["2(?:[0367]|4[3-8])"]], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["80[01]|90[015]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["20"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4 $5", ["2(?:[0367]|4[3-8])"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,5})", "$1 $2 $3 $4", ["[3-57]|8[13-9]|9(?:0[89]|[2-579])|(?:2|80)[2-9]"]]], 0, 0, "(15(?:0[06]|1[12]|[35]5|4[04]|6[26]|77|88|99)\\d)"], LV: ["371", "00", "(?:[268]\\d|90)\\d{6}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[269]|8[01]"]]]], LY: ["218", "00", "[2-9]\\d{8}", [9], [["(\\d{2})(\\d{7})", "$1-$2", ["[2-9]"], "0$1"]], "0"], MA: ["212", "00", "[5-8]\\d{8}", [9], [["(\\d{5})(\\d{4})", "$1-$2", ["5(?:29|38)", "5(?:29[1289]|389)", "529(?:1[1-46-9]|2[013-8]|90)|5(?:298|389)[0-46-9]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5[45]"], "0$1"], ["(\\d{4})(\\d{5})", "$1-$2", ["5(?:2[2-489]|3[5-9]|9)|892", "5(?:2(?:[2-49]|8[235-9])|3[5-9]|9)|892"], "0$1"], ["(\\d{2})(\\d{7})", "$1-$2", ["8"], "0$1"], ["(\\d{3})(\\d{6})", "$1-$2", ["[5-7]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["5293[01]\\d{4}|5(?:2(?:[0-25-7]\\d|3[1-578]|4[02-46-8]|8[0235-7]|9[0-289])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[0189]|9[3-9])|(?:4[067]|5[03])\\d)\\d{5}"], ["(?:6(?:[0-79]\\d|8[0-247-9])|7(?:[017]\\d|2[0-2]|6[0-8]|8[0-3]))\\d{6}"], ["80\\d{7}"], ["89\\d{7}"], 0, 0, 0, 0, ["592(?:4[0-2]|93)\\d{4}"]]], MC: ["377", "00", "(?:[3489]|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[389]"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["6"], "0$1"]], "0"], MD: ["373", "00", "(?:[235-7]\\d|[89]0)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["22|3"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[25-7]"], "0$1"]], "0"], ME: ["382", "00", "(?:20|[3-79]\\d)\\d{6}|80\\d{6,7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "0$1"]], "0"], MF: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:0[079]|[14]3|[27][79]|3[03-7]|5[0-268]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], MG: ["261", "00", "[23]\\d{8}", [9], [["(\\d{2})(\\d{2})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0", 0, "([24-9]\\d{6})$|0", "20$1"], MH: ["692", "011", "329\\d{4}|(?:[256]\\d|45)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-6]"]]], "1"], MK: ["389", "00", "[2-578]\\d{7}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2|34[47]|4(?:[37]7|5[47]|64)"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[347]"], "0$1"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[58]"], "0$1"]], "0"], ML: ["223", "00", "[24-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-9]"]]]], MM: ["95", "00", "1\\d{5,7}|95\\d{6}|(?:[4-7]|9[0-46-9])\\d{6,8}|(?:2|8\\d)\\d{5,8}", [6, 7, 8, 9, 10], [["(\\d)(\\d{2})(\\d{3})", "$1 $2 $3", ["16|2"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["[45]|6(?:0[23]|[1-689]|7[235-7])|7(?:[0-4]|5[2-7])|8[1-6]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[4-7]|8[1-35]"], "0$1"], ["(\\d)(\\d{3})(\\d{4,6})", "$1 $2 $3", ["9(?:2[0-4]|[35-9]|4[137-9])"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["92"], "0$1"], ["(\\d)(\\d{5})(\\d{4})", "$1 $2 $3", ["9"], "0$1"]], "0"], MN: ["976", "001", "[12]\\d{7,9}|[5-9]\\d{7}", [8, 9, 10], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[12]1"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[5-9]"]], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[12]2[1-3]"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["[12](?:27|3[2-8]|4[2-68]|5[1-4689])", "[12](?:27|3[2-8]|4[2-68]|5[1-4689])[0-3]"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["[12]"], "0$1"]], "0"], MO: ["853", "00", "0800\\d{3}|(?:28|[68]\\d)\\d{6}", [7, 8], [["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[268]"]]]], MP: ["1", "011", "[58]\\d{9}|(?:67|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "670$1", 0, "670"], MQ: ["596", "00", "596\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], MR: ["222", "00", "(?:[2-4]\\d\\d|800)\\d{5}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-48]"]]]], MS: ["1", "011", "(?:[58]\\d\\d|664|900)\\d{7}", [10], 0, "1", 0, "([34]\\d{6})$|1", "664$1", 0, "664"], MT: ["356", "00", "3550\\d{4}|(?:[2579]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2357-9]"]]]], MU: ["230", "0(?:0|[24-7]0|3[03])", "(?:[57]|8\\d\\d)\\d{7}|[2-468]\\d{6}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-46]|8[013]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[57]"]], ["(\\d{5})(\\d{5})", "$1 $2", ["8"]]], 0, 0, 0, 0, 0, 0, 0, "020"], MV: ["960", "0(?:0|19)", "(?:800|9[0-57-9]\\d)\\d{7}|[34679]\\d{6}", [7, 10], [["(\\d{3})(\\d{4})", "$1-$2", ["[34679]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], MW: ["265", "00", "(?:[1289]\\d|31|77)\\d{7}|1\\d{6}", [7, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["1[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[137-9]"], "0$1"]], "0"], MX: ["52", "0[09]", "1(?:(?:[27]2|44|99)[1-9]|65[0-689])\\d{7}|(?:1(?:[01]\\d|2[13-9]|[35][1-9]|4[0-35-9]|6[0-46-9]|7[013-9]|8[1-79]|9[1-8])|[2-9]\\d)\\d{8}", [10, 11], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["33|5[56]|81"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-9]"], 0, 1], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 $3 $4", ["1(?:33|5[56]|81)"], 0, 1], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 $3 $4", ["1"], 0, 1]], "01", 0, "0(?:[12]|4[45])|1", 0, 0, 0, 0, "00"], MY: ["60", "00", "1\\d{8,9}|(?:3\\d|[4-9])\\d{7}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1-$2 $3", ["[4-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1-$2 $3", ["1(?:[02469]|[378][1-9]|53)|8", "1(?:[02469]|[37][1-9]|53|8(?:[1-46-9]|5[7-9]))|8"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2 $3", ["3"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3-$4", ["1(?:[367]|80)"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2 $3", ["15"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2 $3", ["1"], "0$1"]], "0"], MZ: ["258", "00", "(?:2|8\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2|8[2-79]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], NA: ["264", "00", "[68]\\d{7,8}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["87"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], NC: ["687", "00", "(?:050|[2-57-9]\\d\\d)\\d{3}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1.$2.$3", ["[02-57-9]"]]]], NE: ["227", "00", "[027-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["08"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[089]|2[013]|7[047]"]]]], NF: ["672", "00", "[13]\\d{5}", [6], [["(\\d{2})(\\d{4})", "$1 $2", ["1[0-3]"]], ["(\\d)(\\d{5})", "$1 $2", ["[13]"]]], 0, 0, "([0-258]\\d{4})$", "3$1"], NG: ["234", "009", "(?:[124-7]|9\\d{3})\\d{6}|[1-9]\\d{7}|[78]\\d{9,13}", [7, 8, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["78"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]|9(?:0[3-9]|[1-9])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[3-7]|8[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[7-9]"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{3})(\\d{5})(\\d{5,6})", "$1 $2 $3", ["[78]"], "0$1"]], "0"], NI: ["505", "00", "(?:1800|[25-8]\\d{3})\\d{4}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[125-8]"]]]], NL: ["31", "00", "(?:[124-7]\\d\\d|3(?:[02-9]\\d|1[0-8]))\\d{6}|8\\d{6,9}|9\\d{6,10}|1\\d{4,5}", [5, 6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{4,7})", "$1 $2", ["[89]0"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["66"], "0$1"], ["(\\d)(\\d{8})", "$1 $2", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["1[16-8]|2[259]|3[124]|4[17-9]|5[124679]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-578]|91"], "0$1"], ["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3", ["9"], "0$1"]], "0"], NO: ["47", "00", "(?:0|[2-9]\\d{3})\\d{4}", [5, 8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]"]]], 0, 0, 0, 0, 0, "[02-689]|7[0-8]"], NP: ["977", "00", "(?:1\\d|9)\\d{9}|[1-9]\\d{7}", [8, 10, 11], [["(\\d)(\\d{7})", "$1-$2", ["1[2-6]"], "0$1"], ["(\\d{2})(\\d{6})", "$1-$2", ["1[01]|[2-8]|9(?:[1-59]|[67][2-6])"], "0$1"], ["(\\d{3})(\\d{7})", "$1-$2", ["9"]]], "0"], NR: ["674", "00", "(?:444|(?:55|8\\d)\\d|666)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-68]"]]]], NU: ["683", "00", "(?:[47]|888\\d)\\d{3}", [4, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["8"]]]], NZ: ["64", "0(?:0|161)", "[1289]\\d{9}|50\\d{5}(?:\\d{2,3})?|[27-9]\\d{7,8}|(?:[34]\\d|6[0-35-9])\\d{6}|8\\d{4,6}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,8})", "$1 $2", ["8[1-79]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["50[036-8]|8|90", "50(?:[0367]|88)|8|90"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["24|[346]|7[2-57-9]|9[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:10|74)|[589]"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1|2[028]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,5})", "$1 $2 $3", ["2(?:[169]|7[0-35-9])|7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "00"], OM: ["968", "00", "(?:1505|[279]\\d{3}|500)\\d{4}|800\\d{5,6}", [7, 8, 9], [["(\\d{3})(\\d{4,6})", "$1 $2", ["[58]"]], ["(\\d{2})(\\d{6})", "$1 $2", ["2"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[179]"]]]], PA: ["507", "00", "(?:00800|8\\d{3})\\d{6}|[68]\\d{7}|[1-57-9]\\d{6}", [7, 8, 10, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[1-57-9]"]], ["(\\d{4})(\\d{4})", "$1-$2", ["[68]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]]], PE: ["51", "00|19(?:1[124]|77|90)00", "(?:[14-8]|9\\d)\\d{7}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["80"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["1"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[4-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"]]], "0", 0, 0, 0, 0, 0, 0, "00", " Anexo "], PF: ["689", "00", "4\\d{5}(?:\\d{2})?|8\\d{7,8}", [6, 8, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["44"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4|8[7-9]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], PG: ["675", "00|140[1-3]", "(?:180|[78]\\d{3})\\d{4}|(?:[2-589]\\d|64)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["18|[2-69]|85"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[78]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], PH: ["63", "00", "(?:[2-7]|9\\d)\\d{8}|2\\d{5}|(?:1800|8)\\d{7,9}", [6, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{5})", "$1 $2", ["2"], "(0$1)"], ["(\\d{4})(\\d{4,6})", "$1 $2", ["3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|544|88[245]|(?:52|64|86)2", "3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))"], "(0$1)"], ["(\\d{5})(\\d{4})", "$1 $2", ["346|4(?:27|9[35])|883", "3469|4(?:279|9(?:30|56))|8834"], "(0$1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|8[2-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{4})(\\d{1,2})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["1"]]], "0"], PK: ["92", "00", "122\\d{6}|[24-8]\\d{10,11}|9(?:[013-9]\\d{8,10}|2(?:[01]\\d\\d|2(?:[06-8]\\d|1[01]))\\d{7})|(?:[2-8]\\d{3}|92(?:[0-7]\\d|8[1-9]))\\d{6}|[24-9]\\d{8}|[89]\\d{7}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,7})", "$1 $2 $3", ["[89]0"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["1"]], ["(\\d{3})(\\d{6,7})", "$1 $2", ["2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:2[2-8]|3[27-9]|4[2-6]|6[3569]|9[25-8])", "9(?:2[3-8]|98)|(?:2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:22|3[27-9]|4[2-6]|6[3569]|9[25-7]))[2-9]"], "(0$1)"], ["(\\d{2})(\\d{7,8})", "$1 $2", ["(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]"], "(0$1)"], ["(\\d{5})(\\d{5})", "$1 $2", ["58"], "(0$1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[24-9]"], "(0$1)"]], "0"], PL: ["48", "00", "(?:6|8\\d\\d)\\d{7}|[1-9]\\d{6}(?:\\d{2})?|[26]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{5})", "$1", ["19"]], ["(\\d{3})(\\d{3})", "$1 $2", ["11|20|64"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])1", "(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])19"]], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["64"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["21|39|45|5[0137]|6[0469]|7[02389]|8(?:0[14]|8)"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[2-8]|[2-7]|8[1-79]|9[145]"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["8"]]]], PM: ["508", "00", "[45]\\d{5}|(?:708|80\\d)\\d{6}", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[45]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], PR: ["1", "011", "(?:[589]\\d\\d|787)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "787|939"], PS: ["970", "00", "[2489]2\\d{6}|(?:1\\d|5)\\d{8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2489]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], PT: ["351", "00", "1693\\d{5}|(?:[26-9]\\d|30)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["2[12]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["16|[236-9]"]]]], PW: ["680", "01[12]", "(?:[24-8]\\d\\d|345|900)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], PY: ["595", "00", "59\\d{4,6}|9\\d{5,10}|(?:[2-46-8]\\d|5[0-8])\\d{4,7}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3,6})", "$1 $2", ["[2-9]0"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[26]1|3[289]|4[1246-8]|7[1-3]|8[1-36]"], "(0$1)"], ["(\\d{3})(\\d{4,5})", "$1 $2", ["2[279]|3[13-5]|4[359]|5|6(?:[34]|7[1-46-8])|7[46-8]|85"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2[14-68]|3[26-9]|4[1246-8]|6(?:1|75)|7[1-35]|8[1-36]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["87"]], ["(\\d{3})(\\d{6})", "$1 $2", ["9(?:[5-79]|8[1-6])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"]]], "0"], QA: ["974", "00", "800\\d{4}|(?:2|800)\\d{6}|(?:0080|[3-7])\\d{7}", [7, 8, 9, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["2[16]|8"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[3-7]"]]]], RE: ["262", "00", "(?:26|[689]\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2689]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["26(?:2\\d\\d|3(?:0\\d|1[0-5]))\\d{4}"], ["69(?:2\\d\\d|3(?:[06][0-6]|1[013]|2[0-2]|3[0-39]|4\\d|5[0-5]|7[0-27]|8[0-8]|9[0-479]))\\d{4}"], ["80\\d{7}"], ["89[1-37-9]\\d{6}"], 0, 0, 0, 0, ["9(?:399[0-3]|479[0-5]|76(?:2[27]|3[0-37]))\\d{4}"], ["8(?:1[019]|2[0156]|84|90)\\d{6}"]]], RO: ["40", "00", "(?:[2378]\\d|90)\\d{7}|[23]\\d{5}", [6, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["2[3-6]", "2[3-6]\\d9"], "0$1"], ["(\\d{2})(\\d{4})", "$1 $2", ["219|31"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23]1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[237-9]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, " int "], RS: ["381", "00", "38[02-9]\\d{6,9}|6\\d{7,9}|90\\d{4,8}|38\\d{5,6}|(?:7\\d\\d|800)\\d{3,9}|(?:[12]\\d|3[0-79])\\d{5,10}", [6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{3,9})", "$1 $2", ["(?:2[389]|39)0|[7-9]"], "0$1"], ["(\\d{2})(\\d{5,10})", "$1 $2", ["[1-36]"], "0$1"]], "0"], RU: ["7", "810", "8\\d{13}|[347-9]\\d{9}", [10, 14], [["(\\d{4})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-8]|2[1-9])", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:1[23]|[2-9]2))", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:13[03-69]|62[013-9]))|72[1-57-9]2"], "8 ($1)", 1], ["(\\d{5})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-68]|2[1-9])", "7(?:1(?:[06][3-6]|[18]|2[35]|[3-5][3-5])|2(?:[13][3-5]|[24-689]|7[457]))", "7(?:1(?:0(?:[356]|4[023])|[18]|2(?:3[013-9]|5)|3[45]|43[013-79]|5(?:3[1-8]|4[1-7]|5)|6(?:3[0-35-9]|[4-6]))|2(?:1(?:3[178]|[45])|[24-689]|3[35]|7[457]))|7(?:14|23)4[0-8]|71(?:33|45)[1-79]"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[349]|8(?:[02-7]|1[1-8])"], "8 ($1)", 1], ["(\\d{4})(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["8"], "8 ($1)"]], "8", 0, 0, 0, 0, "3[04-689]|[489]", 0, "8~10"], RW: ["250", "00", "(?:06|[27]\\d\\d|[89]00)\\d{6}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[7-9]"], "0$1"]], "0"], SA: ["966", "00", "92\\d{7}|(?:[15]|8\\d)\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["9"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["81"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]], "0"], SB: ["677", "0[01]", "(?:[1-6]|[7-9]\\d\\d)\\d{4}", [5, 7], [["(\\d{2})(\\d{5})", "$1 $2", ["7|8[4-9]|9(?:[1-8]|9[0-8])"]]]], SC: ["248", "010|0[0-2]", "800\\d{4}|(?:[249]\\d|64)\\d{5}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[246]|9[57]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], SD: ["249", "00", "[19]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], SE: ["46", "00", "(?:[26]\\d\\d|9)\\d{9}|[1-9]\\d{8}|[1-689]\\d{7}|[1-4689]\\d{6}|2\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["20"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{4})", "$1-$2", ["9(?:00|39|44|9)"], "0$1", 0, "$1 $2"], ["(\\d{2})(\\d{3})(\\d{2})", "$1-$2 $3", ["[12][136]|3[356]|4[0246]|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3"], ["(\\d)(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["1[2457]|2(?:[247-9]|5[0138])|3[0247-9]|4[1357-9]|5[0-35-9]|6(?:[125689]|4[02-57]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{2,3})(\\d{3})", "$1-$2 $3", ["9(?:00|39|44)"], "0$1", 0, "$1 $2 $3"], ["(\\d{2})(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["1[13689]|2[0136]|3[1356]|4[0246]|54|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["10|7"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["[13-5]|2(?:[247-9]|5[0138])|6(?:[124-689]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{3})", "$1-$2 $3 $4", ["9"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4 $5", ["[26]"], "0$1", 0, "$1 $2 $3 $4 $5"]], "0"], SG: ["65", "0[0-3]\\d", "(?:(?:1\\d|8)\\d\\d|7000)\\d{7}|[3689]\\d{7}", [8, 10, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[369]|8(?:0[1-8]|[1-9])"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{4})(\\d{4})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], SH: ["290", "00", "(?:[256]\\d|8)\\d{3}", [4, 5], 0, 0, 0, 0, 0, 0, "[256]"], SI: ["386", "00|10(?:22|66|88|99)", "[1-7]\\d{7}|8\\d{4,7}|90\\d{4,6}", [5, 6, 7, 8], [["(\\d{2})(\\d{3,6})", "$1 $2", ["8[09]|9"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["59|8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37][01]|4[0139]|51|6"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-57]"], "(0$1)"]], "0", 0, 0, 0, 0, 0, 0, "00"], SJ: ["47", "00", "0\\d{4}|(?:[489]\\d|79)\\d{6}", [5, 8], 0, 0, 0, 0, 0, 0, "79"], SK: ["421", "00", "[2-689]\\d{8}|[2-59]\\d{6}|[2-5]\\d{5}", [6, 7, 9], [["(\\d)(\\d{2})(\\d{3,4})", "$1 $2 $3", ["21"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["[3-5][1-8]1", "[3-5][1-8]1[67]"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1/$2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[689]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1/$2 $3 $4", ["[3-5]"], "0$1"]], "0"], SL: ["232", "00", "(?:[237-9]\\d|66)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[236-9]"], "(0$1)"]], "0"], SM: ["378", "00", "(?:0549|[5-7]\\d)\\d{6}", [8, 10], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-7]"]], ["(\\d{4})(\\d{6})", "$1 $2", ["0"]]], 0, 0, "([89]\\d{5})$", "0549$1"], SN: ["221", "00", "(?:[378]\\d|93)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[379]"]]]], SO: ["252", "00", "[346-9]\\d{8}|[12679]\\d{7}|[1-5]\\d{6}|[1348]\\d{5}", [6, 7, 8, 9], [["(\\d{2})(\\d{4})", "$1 $2", ["8[125]"]], ["(\\d{6})", "$1", ["[134]"]], ["(\\d)(\\d{6})", "$1 $2", ["[15]|2[0-79]|3[0-46-8]|4[0-7]"]], ["(\\d)(\\d{7})", "$1 $2", ["(?:2|90)4|[67]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[348]|64|79|90"]], ["(\\d{2})(\\d{5,7})", "$1 $2", ["1|28|6[0-35-9]|77|9[2-9]"]]], "0"], SR: ["597", "00", "(?:[2-5]|68|[78]\\d)\\d{5}", [6, 7], [["(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3", ["56"]], ["(\\d{3})(\\d{3})", "$1-$2", ["[2-5]"]], ["(\\d{3})(\\d{4})", "$1-$2", ["[6-8]"]]]], SS: ["211", "00", "[19]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], ST: ["239", "00", "(?:22|9\\d)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[29]"]]]], SV: ["503", "00", "[267]\\d{7}|[89]00\\d{4}(?:\\d{4})?", [7, 8, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[89]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[267]"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[89]"]]]], SX: ["1", "011", "7215\\d{6}|(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "(5\\d{6})$|1", "721$1", 0, "721"], SY: ["963", "00", "[1-39]\\d{8}|[1-5]\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-5]"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1", 1]], "0"], SZ: ["268", "00", "0800\\d{4}|(?:[237]\\d|900)\\d{6}", [8, 9], [["(\\d{4})(\\d{4})", "$1 $2", ["[0237]"]], ["(\\d{5})(\\d{4})", "$1 $2", ["9"]]]], TA: ["290", "00", "8\\d{3}", [4], 0, 0, 0, 0, 0, 0, "8"], TC: ["1", "011", "(?:[58]\\d\\d|649|900)\\d{7}", [10], 0, "1", 0, "([2-479]\\d{6})$|1", "649$1", 0, "649"], TD: ["235", "00|16", "(?:22|[69]\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2679]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], TG: ["228", "00", "[279]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[279]"]]]], TH: ["66", "00[1-9]", "(?:001800|[2-57]|[689]\\d)\\d{7}|1\\d{7,9}", [8, 9, 10, 13], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[13-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], TJ: ["992", "810", "[0-57-9]\\d{8}", [9], [["(\\d{6})(\\d)(\\d{2})", "$1 $2 $3", ["331", "3317"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["44[04]|[34]7"]], ["(\\d{4})(\\d)(\\d{4})", "$1 $2 $3", ["3[1-5]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[0-57-9]"]]], 0, 0, 0, 0, 0, 0, 0, "8~10"], TK: ["690", "00", "[2-47]\\d{3,6}", [4, 5, 6, 7]], TL: ["670", "00", "7\\d{7}|(?:[2-47]\\d|[89]0)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-489]|70"]], ["(\\d{4})(\\d{4})", "$1 $2", ["7"]]]], TM: ["993", "810", "[1-6]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["12"], "(8 $1)"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-5]"], "(8 $1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["6"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], TN: ["216", "00", "[2-57-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-57-9]"]]]], TO: ["676", "00", "(?:0800|(?:[5-8]\\d\\d|999)\\d)\\d{3}|[2-8]\\d{4}", [5, 7], [["(\\d{2})(\\d{3})", "$1-$2", ["[2-4]|50|6[09]|7[0-24-69]|8[05]"]], ["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[5-9]"]]]], TR: ["90", "00", "4\\d{6}|8\\d{11,12}|(?:[2-58]\\d\\d|900)\\d{7}", [7, 10, 12, 13], [["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["512|8[01589]|90"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5(?:[0-59]|61)", "5(?:[0-59]|616)", "5(?:[0-59]|6161)"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24][1-8]|3[1-9]"], "(0$1)", 1], ["(\\d{3})(\\d{3})(\\d{6,7})", "$1 $2 $3", ["80"], "0$1", 1]], "0"], TT: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-46-8]\\d{6})$|1", "868$1", 0, "868"], TV: ["688", "00", "(?:2|7\\d\\d|90)\\d{4}", [5, 6, 7], [["(\\d{2})(\\d{3})", "$1 $2", ["2"]], ["(\\d{2})(\\d{4})", "$1 $2", ["90"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], TW: ["886", "0(?:0[25-79]|19)", "[2-689]\\d{8}|7\\d{9,10}|[2-8]\\d{7}|2\\d{6}", [7, 8, 9, 10, 11], [["(\\d{2})(\\d)(\\d{4})", "$1 $2 $3", ["202"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[258]0"], "0$1"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[23568]|4(?:0[02-48]|[1-47-9])|7[1-9]", "[23568]|4(?:0[2-48]|[1-47-9])|(?:400|7)[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, "#"], TZ: ["255", "00[056]", "(?:[25-8]\\d|41|90)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[24]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["5"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[67]"], "0$1"]], "0"], UA: ["380", "00", "[89]\\d{9}|[3-9]\\d{8}", [9, 10], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[12][29]|(?:3[1-8]|4[136-8]|5[12457]|6[49])2|(?:56|65)[24]", "6[12][29]|(?:35|4[1378]|5[12457]|6[49])2|(?:56|65)[24]|(?:3[1-46-8]|46)2[013-9]"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6[0135689]|7[4-6])|6(?:[12][3-7]|[459])", "3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6(?:[015689]|3[02389])|7[4-6])|6(?:[12][3-7]|[459])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|89|9[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "0~0"], UG: ["256", "00[057]", "800\\d{6}|(?:[29]0|[347]\\d)\\d{7}", [9], [["(\\d{4})(\\d{5})", "$1 $2", ["202", "2024"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[27-9]|4(?:6[45]|[7-9])"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[34]"], "0$1"]], "0"], US: ["1", "011", "[2-9]\\d{9}|3\\d{6}", [10], [["(\\d{3})(\\d{4})", "$1-$2", ["310"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3", ["[2-9]"], 0, 1, "$1-$2-$3"]], "1", 0, 0, 0, 0, 0, [["5056(?:[0-35-9]\\d|4[46])\\d{4}|(?:4722|505[2-57-9]|983[29])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-589]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[01356]|3[0-24679]|4[167]|5[0-2]|6[014]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|[34][016]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-7]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}"], [""], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}"], ["900[2-9]\\d{6}"], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|5(?:00|2[125-9]|33|44|66|77|88)[2-9]\\d{6}"]]], UY: ["598", "0(?:0|1[3-9]\\d)", "(?:0004|4)\\d{9}|[1249]\\d{7}|(?:[49]\\d|80)\\d{5}", [7, 8, 10, 13], [["(\\d{3})(\\d{4})", "$1 $2", ["405|8|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[124]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["0"]]], "0", 0, 0, 0, 0, 0, 0, "00", " int. "], UZ: ["998", "810", "200\\d{6}|(?:33|[5-79]\\d|88)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[235-9]"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], VA: ["39", "00", "0\\d{5,10}|3[0-8]\\d{7,10}|55\\d{8}|8\\d{5}(?:\\d{2,4})?|(?:1\\d|39)\\d{7,8}", [6, 7, 8, 9, 10, 11], 0, 0, 0, 0, 0, 0, "06698"], VC: ["1", "011", "(?:[58]\\d\\d|784|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "784$1", 0, "784"], VE: ["58", "00", "[68]00\\d{7}|(?:[24]\\d|[59]0)\\d{8}", [10], [["(\\d{3})(\\d{7})", "$1-$2", ["[24-689]"], "0$1"]], "0"], VG: ["1", "011", "(?:284|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-578]\\d{6})$|1", "284$1", 0, "284"], VI: ["1", "011", "[58]\\d{9}|(?:34|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "340$1", 0, "340"], VN: ["84", "00", "[12]\\d{9}|[135-9]\\d{8}|[16]\\d{7}|[16-8]\\d{6}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["80"], "0$1", 1], ["(\\d{4})(\\d{4,6})", "$1 $2", ["1"], 0, 1], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["6"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[357-9]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["2[48]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["2"], "0$1", 1]], "0"], VU: ["678", "00", "[57-9]\\d{6}|(?:[238]\\d|48)\\d{3}", [5, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["[57-9]"]]]], WF: ["681", "00", "(?:40|72)\\d{4}|8\\d{5}(?:\\d{3})?", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[478]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], WS: ["685", "0", "(?:[2-6]|8\\d{5})\\d{4}|[78]\\d{6}|[68]\\d{5}", [5, 6, 7, 10], [["(\\d{5})", "$1", ["[2-5]|6[1-9]"]], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[68]"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], XK: ["383", "00", "[23]\\d{7,8}|(?:4\\d\\d|[89]00)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[23]"], "0$1"]], "0"], YE: ["967", "00", "(?:1|7\\d)\\d{7}|[1-7]\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-6]|7(?:[24-6]|8[0-7])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"], "0$1"]], "0"], YT: ["262", "00", "(?:80|9\\d)\\d{7}|(?:26|63)9\\d{6}", [9], 0, "0", 0, 0, 0, 0, 0, [["269(?:0[0-467]|5[0-4]|6\\d|[78]0)\\d{4}"], ["639(?:0[0-79]|1[019]|[267]\\d|3[09]|40|5[05-9]|9[04-79])\\d{4}"], ["80\\d{7}"], 0, 0, 0, 0, 0, ["9(?:(?:39|47)8[01]|769\\d)\\d{4}"]]], ZA: ["27", "00", "[1-79]\\d{8}|8\\d{4,9}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,4})", "$1 $2", ["8[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["8[1-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["860"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], ZM: ["260", "00", "800\\d{6}|(?:21|63|[79]\\d)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[28]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[79]"], "0$1"]], "0"], ZW: ["263", "00", "2(?:[0-57-9]\\d{6,8}|6[0-24-9]\\d{6,7})|[38]\\d{9}|[35-8]\\d{8}|[3-6]\\d{7}|[1-689]\\d{6}|[1-3569]\\d{5}|[1356]\\d{4}", [5, 6, 7, 8, 9, 10], [["(\\d{3})(\\d{3,5})", "$1 $2", ["2(?:0[45]|2[278]|[49]8)|3(?:[09]8|17)|6(?:[29]8|37|75)|[23][78]|(?:33|5[15]|6[68])[78]"], "0$1"], ["(\\d)(\\d{3})(\\d{2,4})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["80"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["24|8[13-59]|(?:2[05-79]|39|5[45]|6[15-8])2", "2(?:02[014]|4|[56]20|[79]2)|392|5(?:42|525)|6(?:[16-8]21|52[013])|8[13-59]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:1[39]|2[0157]|[378]|[56][14])|3(?:12|29)", "2(?:1[39]|2[0157]|[378]|[56][14])|3(?:123|29)"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["1|2(?:0[0-36-9]|12|29|[56])|3(?:1[0-689]|[24-6])|5(?:[0236-9]|1[2-4])|6(?:[013-59]|7[0-46-9])|(?:33|55|6[68])[0-69]|(?:29|3[09]|62)[0-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["29[013-9]|39|54"], "0$1"], ["(\\d{4})(\\d{3,5})", "$1 $2", ["(?:25|54)8", "258|5483"], "0$1"]], "0"] }, nonGeographic: { 800: ["800", 0, "(?:00|[1-9]\\d)\\d{6}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["\\d"]]], 0, 0, 0, 0, 0, 0, [0, 0, ["(?:00|[1-9]\\d)\\d{6}"]]], 808: ["808", 0, "[1-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[1-9]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, ["[1-9]\\d{7}"]]], 870: ["870", 0, "7\\d{11}|[35-7]\\d{8}", [9, 12], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[35-7]"]]], 0, 0, 0, 0, 0, 0, [0, ["(?:[356]|774[45])\\d{8}|7[6-8]\\d{7}"]]], 878: ["878", 0, "10\\d{10}", [12], [["(\\d{2})(\\d{5})(\\d{5})", "$1 $2 $3", ["1"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["10\\d{10}"]]], 881: ["881", 0, "[0-36-9]\\d{8}", [9], [["(\\d)(\\d{3})(\\d{5})", "$1 $2 $3", ["[0-36-9]"]]], 0, 0, 0, 0, 0, 0, [0, ["[0-36-9]\\d{8}"]]], 882: ["882", 0, "[13]\\d{6}(?:\\d{2,5})?|[19]\\d{7}|(?:[25]\\d\\d|4)\\d{7}(?:\\d{2})?", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5})", "$1 $2", ["16|342"]], ["(\\d{2})(\\d{6})", "$1 $2", ["49"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["1[36]|9"]], ["(\\d{2})(\\d{4})(\\d{3})", "$1 $2 $3", ["3[23]"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["16"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|23|3(?:[15]|4[57])|4|51"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["34"]], ["(\\d{2})(\\d{4,5})(\\d{5})", "$1 $2 $3", ["[1-35]"]]], 0, 0, 0, 0, 0, 0, [0, ["342\\d{4}|(?:337|49)\\d{6}|(?:3(?:2|47|7\\d{3})|50\\d{3})\\d{7}", [7, 8, 9, 10, 12]], 0, 0, 0, 0, 0, 0, ["1(?:3(?:0[0347]|[13][0139]|2[035]|4[013568]|6[0459]|7[06]|8[15-8]|9[0689])\\d{4}|6\\d{5,10})|(?:345\\d|9[89])\\d{6}|(?:10|2(?:3|85\\d)|3(?:[15]|[69]\\d\\d)|4[15-8]|51)\\d{8}"]]], 883: ["883", 0, "(?:[1-4]\\d|51)\\d{6,10}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,8})", "$1 $2 $3", ["[14]|2[24-689]|3[02-689]|51[24-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["510"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["21"]], ["(\\d{4})(\\d{4})(\\d{4})", "$1 $2 $3", ["51[13]"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[235]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["(?:2(?:00\\d\\d|10)|(?:370[1-9]|51\\d0)\\d)\\d{7}|51(?:00\\d{5}|[24-9]0\\d{4,7})|(?:1[013-79]|2[24-689]|3[02-689]|4[0-4])0\\d{5,9}"]]], 888: ["888", 0, "\\d{11}", [11], [["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3"]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, ["\\d{11}"]]], 979: ["979", 0, "[1359]\\d{8}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[1359]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, ["[1359]\\d{8}"]]] } };
+function ut(e2, a2) {
+  var t2 = Array.prototype.slice.call(a2);
+  return t2.push(mt), e2.apply(this, t2);
 }
-function $a(r) {
-  "@babel/helpers - typeof";
-  return $a = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
-    return typeof e;
-  } : function(e) {
-    return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, $a(r);
+function pt(e2) {
+  return pt = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+    return typeof e3;
+  } : function(e3) {
+    return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
+  }, pt(e2);
 }
-function pr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+function ht(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Oi(r, e, a) {
-  return e && pr(r.prototype, e), a && pr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-function Mi(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function Di(r, e) {
-  if (typeof e != "function" && e !== null)
-    throw new TypeError("Super expression must either be null or a function");
-  r.prototype = Object.create(e && e.prototype, {
-    constructor: {
-      value: r,
-      writable: !0,
-      configurable: !0
-    }
-  }), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), e && he(r, e);
-}
-function Li(r) {
-  var e = St();
+function gt(e2) {
+  var a2 = vt();
   return function() {
-    var t = ge(r), o;
-    if (e) {
-      var i = ge(this).constructor;
-      o = Reflect.construct(t, arguments, i);
+    var t2, r2 = kt(e2);
+    if (a2) {
+      var o2 = kt(this).constructor;
+      t2 = Reflect.construct(r2, arguments, o2);
     } else
-      o = t.apply(this, arguments);
-    return Ui(this, o);
+      t2 = r2.apply(this, arguments);
+    return function(e3, a3) {
+      if (a3 && ("object" === pt(a3) || "function" == typeof a3))
+        return a3;
+      if (void 0 !== a3)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return bt(e3);
+    }(this, t2);
   };
 }
-function Ui(r, e) {
-  if (e && ($a(e) === "object" || typeof e == "function"))
-    return e;
-  if (e !== void 0)
-    throw new TypeError("Derived constructors may only return object or undefined");
-  return It(r);
-}
-function It(r) {
-  if (r === void 0)
+function bt(e2) {
+  if (void 0 === e2)
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  return r;
+  return e2;
 }
-function _a(r) {
-  var e = typeof Map == "function" ? /* @__PURE__ */ new Map() : void 0;
-  return _a = function(t) {
-    if (t === null || !Gi(t))
-      return t;
-    if (typeof t != "function")
+function zt(e2) {
+  var a2 = "function" == typeof Map ? /* @__PURE__ */ new Map() : void 0;
+  return zt = function(e3) {
+    if (null === e3 || (t2 = e3, -1 === Function.toString.call(t2).indexOf("[native code]")))
+      return e3;
+    var t2;
+    if ("function" != typeof e3)
       throw new TypeError("Super expression must either be null or a function");
-    if (typeof e < "u") {
-      if (e.has(t))
-        return e.get(t);
-      e.set(t, o);
+    if (void 0 !== a2) {
+      if (a2.has(e3))
+        return a2.get(e3);
+      a2.set(e3, r2);
     }
-    function o() {
-      return $e(t, arguments, ge(this).constructor);
+    function r2() {
+      return ft(e3, arguments, kt(this).constructor);
     }
-    return o.prototype = Object.create(t.prototype, {
-      constructor: {
-        value: o,
-        enumerable: !1,
-        writable: !0,
-        configurable: !0
-      }
-    }), he(o, t);
-  }, _a(r);
+    return r2.prototype = Object.create(e3.prototype, { constructor: { value: r2, enumerable: false, writable: true, configurable: true } }), yt(r2, e3);
+  }, zt(e2);
 }
-function $e(r, e, a) {
-  return St() ? $e = Reflect.construct : $e = function(o, i, n) {
-    var l = [null];
-    l.push.apply(l, i);
-    var d = Function.bind.apply(o, l), s = new d();
-    return n && he(s, n.prototype), s;
-  }, $e.apply(null, arguments);
+function ft(e2, a2, t2) {
+  return ft = vt() ? Reflect.construct : function(e3, a3, t3) {
+    var r2 = [null];
+    r2.push.apply(r2, a3);
+    var o2 = new (Function.bind.apply(e3, r2))();
+    return t3 && yt(o2, t3.prototype), o2;
+  }, ft.apply(null, arguments);
 }
-function St() {
-  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
-    return !1;
-  if (typeof Proxy == "function")
-    return !0;
+function vt() {
+  if ("undefined" == typeof Reflect || !Reflect.construct)
+    return false;
+  if (Reflect.construct.sham)
+    return false;
+  if ("function" == typeof Proxy)
+    return true;
   try {
     return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-    })), !0;
-  } catch {
-    return !1;
+    })), true;
+  } catch (e2) {
+    return false;
   }
 }
-function Gi(r) {
-  return Function.toString.call(r).indexOf("[native code]") !== -1;
+function yt(e2, a2) {
+  return yt = Object.setPrototypeOf || function(e3, a3) {
+    return e3.__proto__ = a3, e3;
+  }, yt(e2, a2);
 }
-function he(r, e) {
-  return he = Object.setPrototypeOf || function(t, o) {
-    return t.__proto__ = o, t;
-  }, he(r, e);
+function kt(e2) {
+  return kt = Object.setPrototypeOf ? Object.getPrototypeOf : function(e3) {
+    return e3.__proto__ || Object.getPrototypeOf(e3);
+  }, kt(e2);
 }
-function ge(r) {
-  return ge = Object.setPrototypeOf ? Object.getPrototypeOf : function(a) {
-    return a.__proto__ || Object.getPrototypeOf(a);
-  }, ge(r);
-}
-var F = /* @__PURE__ */ function(r) {
-  Di(a, r);
-  var e = Li(a);
-  function a(t) {
-    var o;
-    return Mi(this, a), o = e.call(this, t), Object.setPrototypeOf(It(o), a.prototype), o.name = o.constructor.name, o;
+var xt = function(e2) {
+  !function(e3, a3) {
+    if ("function" != typeof a3 && null !== a3)
+      throw new TypeError("Super expression must either be null or a function");
+    e3.prototype = Object.create(a3 && a3.prototype, { constructor: { value: e3, writable: true, configurable: true } }), Object.defineProperty(e3, "prototype", { writable: false }), a3 && yt(e3, a3);
+  }(i2, zt(Error));
+  var a2, t2, r2, o2 = gt(i2);
+  function i2(e3) {
+    var a3;
+    return function(e4, a4) {
+      if (!(e4 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, i2), a3 = o2.call(this, e3), Object.setPrototypeOf(bt(a3), i2.prototype), a3.name = a3.constructor.name, a3;
   }
-  return Oi(a);
-}(/* @__PURE__ */ _a(Error)), ja = 2, Hi = 17, Vi = 3, C = "0-9０-９٠-٩۰-۹", ji = "-‐-―−ー－", Yi = "／/", Ki = "．.", Qi = "  ­​⁠　", Ji = "()（）［］\\[\\]", qi = "~⁓∼～", I = "".concat(ji).concat(Yi).concat(Ki).concat(Qi).concat(Ji).concat(qi), Ge = "+＋";
-function hr(r, e) {
-  r = r.split("-"), e = e.split("-");
-  for (var a = r[0].split("."), t = e[0].split("."), o = 0; o < 3; o++) {
-    var i = Number(a[o]), n = Number(t[o]);
-    if (i > n)
+  return a2 = i2, t2 && ht(a2.prototype, t2), r2 && ht(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), a2;
+}(), wt = 2, $t = 17, _t = 3, Ct = "0-9\uFF10-\uFF19\u0660-\u0669\u06F0-\u06F9", Et = "".concat("-\u2010-\u2015\u2212\u30FC\uFF0D").concat("\uFF0F/").concat("\uFF0E.").concat(" \xA0\xAD\u200B\u2060\u3000").concat("()\uFF08\uFF09\uFF3B\uFF3D\\[\\]").concat("~\u2053\u223C\uFF5E");
+function St(e2, a2) {
+  e2 = e2.split("-"), a2 = a2.split("-");
+  for (var t2 = e2[0].split("."), r2 = a2[0].split("."), o2 = 0; o2 < 3; o2++) {
+    var i2 = Number(t2[o2]), n2 = Number(r2[o2]);
+    if (i2 > n2)
       return 1;
-    if (n > i)
+    if (n2 > i2)
       return -1;
-    if (!isNaN(i) && isNaN(n))
+    if (!isNaN(i2) && isNaN(n2))
       return 1;
-    if (isNaN(i) && !isNaN(n))
+    if (isNaN(i2) && !isNaN(n2))
       return -1;
   }
-  return r[1] && e[1] ? r[1] > e[1] ? 1 : r[1] < e[1] ? -1 : 0 : !r[1] && e[1] ? 1 : r[1] && !e[1] ? -1 : 0;
+  return e2[1] && a2[1] ? e2[1] > a2[1] ? 1 : e2[1] < a2[1] ? -1 : 0 : !e2[1] && a2[1] ? 1 : e2[1] && !a2[1] ? -1 : 0;
 }
-function Pe(r) {
-  "@babel/helpers - typeof";
-  return Pe = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
-    return typeof e;
-  } : function(e) {
-    return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, Pe(r);
+function It(e2) {
+  return It = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+    return typeof e3;
+  } : function(e3) {
+    return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
+  }, It(e2);
 }
-function He(r, e) {
-  if (!(r instanceof e))
+function At(e2, a2) {
+  if (!(e2 instanceof a2))
     throw new TypeError("Cannot call a class as a function");
 }
-function gr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+function Nt(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Ve(r, e, a) {
-  return e && gr(r.prototype, e), a && gr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
+function Pt(e2, a2, t2) {
+  return a2 && Nt(e2.prototype, a2), t2 && Nt(e2, t2), Object.defineProperty(e2, "prototype", { writable: false }), e2;
 }
-var Wi = "1.2.0", Xi = "1.7.35", fr = " ext. ", Zi = /^\d+$/, _ = /* @__PURE__ */ function() {
-  function r(e) {
-    He(this, r), tn(e), this.metadata = e, Pt.call(this, e);
+var Bt = " ext. ", Ot = /^\d+$/, Mt = function() {
+  function e2(a2) {
+    At(this, e2), function(e3) {
+      if (!e3)
+        throw new Error("[libphonenumber-js] `metadata` argument not passed. Check your arguments.");
+      if (!jt(e3) || !jt(e3.countries))
+        throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(jt(e3) ? "an object of shape: { " + Object.keys(e3).join(", ") + " }" : "a " + Ut(e3) + ": " + e3, "."));
+    }(a2), this.metadata = a2, Vt.call(this, a2);
   }
-  return Ve(r, [{
-    key: "getCountries",
-    value: function() {
-      return Object.keys(this.metadata.countries).filter(function(a) {
-        return a !== "001";
-      });
-    }
-  }, {
-    key: "getCountryMetadata",
-    value: function(a) {
-      return this.metadata.countries[a];
-    }
-  }, {
-    key: "nonGeographic",
-    value: function() {
-      if (!(this.v1 || this.v2 || this.v3))
-        return this.metadata.nonGeographic || this.metadata.nonGeographical;
-    }
-  }, {
-    key: "hasCountry",
-    value: function(a) {
-      return this.getCountryMetadata(a) !== void 0;
-    }
-  }, {
-    key: "hasCallingCode",
-    value: function(a) {
-      if (this.getCountryCodesForCallingCode(a))
-        return !0;
-      if (this.nonGeographic()) {
-        if (this.nonGeographic()[a])
-          return !0;
-      } else {
-        var t = this.countryCallingCodes()[a];
-        if (t && t.length === 1 && t[0] === "001")
-          return !0;
-      }
-    }
-  }, {
-    key: "isNonGeographicCallingCode",
-    value: function(a) {
-      return this.nonGeographic() ? !!this.nonGeographic()[a] : !this.getCountryCodesForCallingCode(a);
-    }
-    // Deprecated.
-  }, {
-    key: "country",
-    value: function(a) {
-      return this.selectNumberingPlan(a);
-    }
-  }, {
-    key: "selectNumberingPlan",
-    value: function(a, t) {
-      if (a && Zi.test(a) && (t = a, a = null), a && a !== "001") {
-        if (!this.hasCountry(a))
-          throw new Error("Unknown country: ".concat(a));
-        this.numberingPlan = new br(this.getCountryMetadata(a), this);
-      } else if (t) {
-        if (!this.hasCallingCode(t))
-          throw new Error("Unknown calling code: ".concat(t));
-        this.numberingPlan = new br(this.getNumberingPlanMetadata(t), this);
-      } else
-        this.numberingPlan = void 0;
-      return this;
-    }
-  }, {
-    key: "getCountryCodesForCallingCode",
-    value: function(a) {
-      var t = this.countryCallingCodes()[a];
-      if (t)
-        return t.length === 1 && t[0].length === 3 ? void 0 : t;
-    }
-  }, {
-    key: "getCountryCodeForCallingCode",
-    value: function(a) {
-      var t = this.getCountryCodesForCallingCode(a);
-      if (t)
-        return t[0];
-    }
-  }, {
-    key: "getNumberingPlanMetadata",
-    value: function(a) {
-      var t = this.getCountryCodeForCallingCode(a);
-      if (t)
-        return this.getCountryMetadata(t);
-      if (this.nonGeographic()) {
-        var o = this.nonGeographic()[a];
-        if (o)
-          return o;
-      } else {
-        var i = this.countryCallingCodes()[a];
-        if (i && i.length === 1 && i[0] === "001")
-          return this.metadata.countries["001"];
-      }
-    }
-    // Deprecated.
-  }, {
-    key: "countryCallingCode",
-    value: function() {
-      return this.numberingPlan.callingCode();
-    }
-    // Deprecated.
-  }, {
-    key: "IDDPrefix",
-    value: function() {
-      return this.numberingPlan.IDDPrefix();
-    }
-    // Deprecated.
-  }, {
-    key: "defaultIDDPrefix",
-    value: function() {
-      return this.numberingPlan.defaultIDDPrefix();
-    }
-    // Deprecated.
-  }, {
-    key: "nationalNumberPattern",
-    value: function() {
-      return this.numberingPlan.nationalNumberPattern();
-    }
-    // Deprecated.
-  }, {
-    key: "possibleLengths",
-    value: function() {
-      return this.numberingPlan.possibleLengths();
-    }
-    // Deprecated.
-  }, {
-    key: "formats",
-    value: function() {
-      return this.numberingPlan.formats();
-    }
-    // Deprecated.
-  }, {
-    key: "nationalPrefixForParsing",
-    value: function() {
-      return this.numberingPlan.nationalPrefixForParsing();
-    }
-    // Deprecated.
-  }, {
-    key: "nationalPrefixTransformRule",
-    value: function() {
-      return this.numberingPlan.nationalPrefixTransformRule();
-    }
-    // Deprecated.
-  }, {
-    key: "leadingDigits",
-    value: function() {
-      return this.numberingPlan.leadingDigits();
-    }
-    // Deprecated.
-  }, {
-    key: "hasTypes",
-    value: function() {
-      return this.numberingPlan.hasTypes();
-    }
-    // Deprecated.
-  }, {
-    key: "type",
-    value: function(a) {
-      return this.numberingPlan.type(a);
-    }
-    // Deprecated.
-  }, {
-    key: "ext",
-    value: function() {
-      return this.numberingPlan.ext();
-    }
-  }, {
-    key: "countryCallingCodes",
-    value: function() {
-      return this.v1 ? this.metadata.country_phone_code_to_countries : this.metadata.country_calling_codes;
-    }
-    // Deprecated.
-  }, {
-    key: "chooseCountryByCountryCallingCode",
-    value: function(a) {
-      return this.selectNumberingPlan(a);
-    }
-  }, {
-    key: "hasSelectedNumberingPlan",
-    value: function() {
-      return this.numberingPlan !== void 0;
-    }
-  }]), r;
-}(), br = /* @__PURE__ */ function() {
-  function r(e, a) {
-    He(this, r), this.globalMetadataObject = a, this.metadata = e, Pt.call(this, a.metadata);
-  }
-  return Ve(r, [{
-    key: "callingCode",
-    value: function() {
-      return this.metadata[0];
-    }
-    // Formatting information for regions which share
-    // a country calling code is contained by only one region
-    // for performance reasons. For example, for NANPA region
-    // ("North American Numbering Plan Administration",
-    //  which includes USA, Canada, Cayman Islands, Bahamas, etc)
-    // it will be contained in the metadata for `US`.
-  }, {
-    key: "getDefaultCountryMetadataForRegion",
-    value: function() {
-      return this.globalMetadataObject.getNumberingPlanMetadata(this.callingCode());
-    }
-    // Is always present.
-  }, {
-    key: "IDDPrefix",
-    value: function() {
-      if (!(this.v1 || this.v2))
-        return this.metadata[1];
-    }
-    // Is only present when a country supports multiple IDD prefixes.
-  }, {
-    key: "defaultIDDPrefix",
-    value: function() {
-      if (!(this.v1 || this.v2))
-        return this.metadata[12];
-    }
-  }, {
-    key: "nationalNumberPattern",
-    value: function() {
-      return this.v1 || this.v2 ? this.metadata[1] : this.metadata[2];
-    }
-    // "possible length" data is always present in Google's metadata.
-  }, {
-    key: "possibleLengths",
-    value: function() {
-      if (!this.v1)
-        return this.metadata[this.v2 ? 2 : 3];
-    }
-  }, {
-    key: "_getFormats",
-    value: function(a) {
-      return a[this.v1 ? 2 : this.v2 ? 3 : 4];
-    }
-    // For countries of the same region (e.g. NANPA)
-    // formats are all stored in the "main" country for that region.
-    // E.g. "RU" and "KZ", "US" and "CA".
-  }, {
-    key: "formats",
-    value: function() {
-      var a = this, t = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
-      return t.map(function(o) {
-        return new en(o, a);
-      });
-    }
-  }, {
-    key: "nationalPrefix",
-    value: function() {
-      return this.metadata[this.v1 ? 3 : this.v2 ? 4 : 5];
-    }
-  }, {
-    key: "_getNationalPrefixFormattingRule",
-    value: function(a) {
-      return a[this.v1 ? 4 : this.v2 ? 5 : 6];
-    }
-    // For countries of the same region (e.g. NANPA)
-    // national prefix formatting rule is stored in the "main" country for that region.
-    // E.g. "RU" and "KZ", "US" and "CA".
-  }, {
-    key: "nationalPrefixFormattingRule",
-    value: function() {
-      return this._getNationalPrefixFormattingRule(this.metadata) || this._getNationalPrefixFormattingRule(this.getDefaultCountryMetadataForRegion());
-    }
-  }, {
-    key: "_nationalPrefixForParsing",
-    value: function() {
-      return this.metadata[this.v1 ? 5 : this.v2 ? 6 : 7];
-    }
-  }, {
-    key: "nationalPrefixForParsing",
-    value: function() {
-      return this._nationalPrefixForParsing() || this.nationalPrefix();
-    }
-  }, {
-    key: "nationalPrefixTransformRule",
-    value: function() {
-      return this.metadata[this.v1 ? 6 : this.v2 ? 7 : 8];
-    }
-  }, {
-    key: "_getNationalPrefixIsOptionalWhenFormatting",
-    value: function() {
-      return !!this.metadata[this.v1 ? 7 : this.v2 ? 8 : 9];
-    }
-    // For countries of the same region (e.g. NANPA)
-    // "national prefix is optional when formatting" flag is
-    // stored in the "main" country for that region.
-    // E.g. "RU" and "KZ", "US" and "CA".
-  }, {
-    key: "nationalPrefixIsOptionalWhenFormattingInNationalFormat",
-    value: function() {
-      return this._getNationalPrefixIsOptionalWhenFormatting(this.metadata) || this._getNationalPrefixIsOptionalWhenFormatting(this.getDefaultCountryMetadataForRegion());
-    }
-  }, {
-    key: "leadingDigits",
-    value: function() {
-      return this.metadata[this.v1 ? 8 : this.v2 ? 9 : 10];
-    }
-  }, {
-    key: "types",
-    value: function() {
-      return this.metadata[this.v1 ? 9 : this.v2 ? 10 : 11];
-    }
-  }, {
-    key: "hasTypes",
-    value: function() {
-      return this.types() && this.types().length === 0 ? !1 : !!this.types();
-    }
-  }, {
-    key: "type",
-    value: function(a) {
-      if (this.hasTypes() && zr(this.types(), a))
-        return new rn(zr(this.types(), a), this);
-    }
-  }, {
-    key: "ext",
-    value: function() {
-      return this.v1 || this.v2 ? fr : this.metadata[13] || fr;
-    }
-  }]), r;
-}(), en = /* @__PURE__ */ function() {
-  function r(e, a) {
-    He(this, r), this._format = e, this.metadata = a;
-  }
-  return Ve(r, [{
-    key: "pattern",
-    value: function() {
-      return this._format[0];
-    }
-  }, {
-    key: "format",
-    value: function() {
-      return this._format[1];
-    }
-  }, {
-    key: "leadingDigitsPatterns",
-    value: function() {
-      return this._format[2] || [];
-    }
-  }, {
-    key: "nationalPrefixFormattingRule",
-    value: function() {
-      return this._format[3] || this.metadata.nationalPrefixFormattingRule();
-    }
-  }, {
-    key: "nationalPrefixIsOptionalWhenFormattingInNationalFormat",
-    value: function() {
-      return !!this._format[4] || this.metadata.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
-    }
-  }, {
-    key: "nationalPrefixIsMandatoryWhenFormattingInNationalFormat",
-    value: function() {
-      return this.usesNationalPrefix() && !this.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
-    }
-    // Checks whether national prefix formatting rule contains national prefix.
-  }, {
-    key: "usesNationalPrefix",
-    value: function() {
-      return !!(this.nationalPrefixFormattingRule() && // Check that national prefix formatting rule is not a "dummy" one.
-      !an.test(this.nationalPrefixFormattingRule()));
-    }
-  }, {
-    key: "internationalFormat",
-    value: function() {
-      return this._format[5] || this.format();
-    }
-  }]), r;
-}(), an = /^\(?\$1\)?$/, rn = /* @__PURE__ */ function() {
-  function r(e, a) {
-    He(this, r), this.type = e, this.metadata = a;
-  }
-  return Ve(r, [{
-    key: "pattern",
-    value: function() {
-      return this.metadata.v1 ? this.type : this.type[0];
-    }
-  }, {
-    key: "possibleLengths",
-    value: function() {
-      if (!this.metadata.v1)
-        return this.type[1] || this.metadata.possibleLengths();
-    }
-  }]), r;
-}();
-function zr(r, e) {
-  switch (e) {
-    case "FIXED_LINE":
-      return r[0];
-    case "MOBILE":
-      return r[1];
-    case "TOLL_FREE":
-      return r[2];
-    case "PREMIUM_RATE":
-      return r[3];
-    case "PERSONAL_NUMBER":
-      return r[4];
-    case "VOICEMAIL":
-      return r[5];
-    case "UAN":
-      return r[6];
-    case "PAGER":
-      return r[7];
-    case "VOIP":
-      return r[8];
-    case "SHARED_COST":
-      return r[9];
-  }
-}
-function tn(r) {
-  if (!r)
-    throw new Error("[libphonenumber-js] `metadata` argument not passed. Check your arguments.");
-  if (!ca(r) || !ca(r.countries))
-    throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(ca(r) ? "an object of shape: { " + Object.keys(r).join(", ") + " }" : "a " + on(r) + ": " + r, "."));
-}
-var ca = function(e) {
-  return Pe(e) === "object";
-}, on = function(e) {
-  return Pe(e);
-};
-function je(r, e) {
-  if (e = new _(e), e.hasCountry(r))
-    return e.country(r).countryCallingCode();
-  throw new Error("Unknown country: ".concat(r));
-}
-function nn(r, e) {
-  return e.countries.hasOwnProperty(r);
-}
-function Pt(r) {
-  var e = r.version;
-  typeof e == "number" ? (this.v1 = e === 1, this.v2 = e === 2, this.v3 = e === 3, this.v4 = e === 4) : e ? hr(e, Wi) === -1 ? this.v2 = !0 : hr(e, Xi) === -1 ? this.v3 = !0 : this.v4 = !0 : this.v1 = !0;
-}
-var dn = ";ext=", K = function(e) {
-  return "([".concat(C, "]{1,").concat(e, "})");
-};
-function Bt(r) {
-  var e = "20", a = "15", t = "9", o = "6", i = "[  \\t,]*", n = "[:\\.．]?[  \\t,-]*", l = "#?", d = "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)", s = "(?:[xｘ#＃~～]|int|ｉｎｔ)", c = "[- ]+", p = "[  \\t]*", m = "(?:,{2}|;)", u = dn + K(e), f = i + d + n + K(e) + l, h = i + s + n + K(t) + l, y = c + K(o) + "#", b = p + m + n + K(a) + l, g = p + "(?:,)+" + n + K(t) + l;
-  return u + "|" + f + "|" + h + "|" + y + "|" + b + "|" + g;
-}
-var ln = "[" + C + "]{" + ja + "}", sn = "[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){3,}[" + I + C + "]*", cn = new RegExp("^[" + Ge + "]{0,1}(?:[" + I + "]*[" + C + "]){1,2}$", "i"), mn = sn + // Phone number extensions
-"(?:" + Bt() + ")?", un = new RegExp(
-  // Either a short two-digit-only phone number
-  "^" + ln + "$|^" + mn + "$",
-  "i"
-);
-function pn(r) {
-  return r.length >= ja && un.test(r);
-}
-function hn(r) {
-  return cn.test(r);
-}
-var vr = new RegExp("(?:" + Bt() + ")$", "i");
-function gn(r) {
-  var e = r.search(vr);
-  if (e < 0)
-    return {};
-  for (var a = r.slice(0, e), t = r.match(vr), o = 1; o < t.length; ) {
-    if (t[o])
-      return {
-        number: a,
-        ext: t[o]
-      };
-    o++;
-  }
-}
-function fn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = bn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
-    return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
-    };
-  }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function bn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return yr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return yr(r, e);
-  }
-}
-function yr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-var zn = {
-  0: "0",
-  1: "1",
-  2: "2",
-  3: "3",
-  4: "4",
-  5: "5",
-  6: "6",
-  7: "7",
-  8: "8",
-  9: "9",
-  "０": "0",
-  // Fullwidth digit 0
-  "１": "1",
-  // Fullwidth digit 1
-  "２": "2",
-  // Fullwidth digit 2
-  "３": "3",
-  // Fullwidth digit 3
-  "４": "4",
-  // Fullwidth digit 4
-  "５": "5",
-  // Fullwidth digit 5
-  "６": "6",
-  // Fullwidth digit 6
-  "７": "7",
-  // Fullwidth digit 7
-  "８": "8",
-  // Fullwidth digit 8
-  "９": "9",
-  // Fullwidth digit 9
-  "٠": "0",
-  // Arabic-indic digit 0
-  "١": "1",
-  // Arabic-indic digit 1
-  "٢": "2",
-  // Arabic-indic digit 2
-  "٣": "3",
-  // Arabic-indic digit 3
-  "٤": "4",
-  // Arabic-indic digit 4
-  "٥": "5",
-  // Arabic-indic digit 5
-  "٦": "6",
-  // Arabic-indic digit 6
-  "٧": "7",
-  // Arabic-indic digit 7
-  "٨": "8",
-  // Arabic-indic digit 8
-  "٩": "9",
-  // Arabic-indic digit 9
-  "۰": "0",
-  // Eastern-Arabic digit 0
-  "۱": "1",
-  // Eastern-Arabic digit 1
-  "۲": "2",
-  // Eastern-Arabic digit 2
-  "۳": "3",
-  // Eastern-Arabic digit 3
-  "۴": "4",
-  // Eastern-Arabic digit 4
-  "۵": "5",
-  // Eastern-Arabic digit 5
-  "۶": "6",
-  // Eastern-Arabic digit 6
-  "۷": "7",
-  // Eastern-Arabic digit 7
-  "۸": "8",
-  // Eastern-Arabic digit 8
-  "۹": "9"
-  // Eastern-Arabic digit 9
-};
-function Tt(r) {
-  return zn[r];
-}
-function Be(r) {
-  for (var e = "", a = fn(r.split("")), t; !(t = a()).done; ) {
-    var o = t.value, i = Tt(o);
-    i && (e += i);
-  }
-  return e;
-}
-function vn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = yn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
-    return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
-    };
-  }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function yn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return kr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return kr(r, e);
-  }
-}
-function kr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function xr(r) {
-  for (var e = "", a = vn(r.split("")), t; !(t = a()).done; ) {
-    var o = t.value;
-    e += kn(o, e) || "";
-  }
-  return e;
-}
-function kn(r, e) {
-  return r === "+" ? e ? void 0 : "+" : Tt(r);
-}
-function xn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = wn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
-    return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
-    };
-  }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function wn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return wr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return wr(r, e);
-  }
-}
-function wr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function $n(r, e) {
-  for (var a = r.slice(), t = xn(e), o; !(o = t()).done; ) {
-    var i = o.value;
-    r.indexOf(i) < 0 && a.push(i);
-  }
-  return a.sort(function(n, l) {
-    return n - l;
-  });
-}
-function Ye(r, e) {
-  return Ft(r, void 0, e);
-}
-function Ft(r, e, a) {
-  var t = a.type(e), o = t && t.possibleLengths() || a.possibleLengths();
-  if (!o)
-    return "IS_POSSIBLE";
-  if (e === "FIXED_LINE_OR_MOBILE") {
-    if (!a.type("FIXED_LINE"))
-      return Ft(r, "MOBILE", a);
-    var i = a.type("MOBILE");
-    i && (o = $n(o, i.possibleLengths()));
-  } else if (e && !t)
-    return "INVALID_LENGTH";
-  var n = r.length, l = o[0];
-  return l === n ? "IS_POSSIBLE" : l > n ? "TOO_SHORT" : o[o.length - 1] < n ? "TOO_LONG" : o.indexOf(n, 1) >= 0 ? "IS_POSSIBLE" : "INVALID_LENGTH";
-}
-function _n(r, e, a) {
-  if (e === void 0 && (e = {}), a = new _(a), e.v2) {
-    if (!r.countryCallingCode)
-      throw new Error("Invalid phone number object passed");
-    a.selectNumberingPlan(r.countryCallingCode);
-  } else {
-    if (!r.phone)
-      return !1;
-    if (r.country) {
-      if (!a.hasCountry(r.country))
-        throw new Error("Unknown country: ".concat(r.country));
-      a.country(r.country);
+  return Pt(e2, [{ key: "getCountries", value: function() {
+    return Object.keys(this.metadata.countries).filter(function(e3) {
+      return "001" !== e3;
+    });
+  } }, { key: "getCountryMetadata", value: function(e3) {
+    return this.metadata.countries[e3];
+  } }, { key: "nonGeographic", value: function() {
+    if (!(this.v1 || this.v2 || this.v3))
+      return this.metadata.nonGeographic || this.metadata.nonGeographical;
+  } }, { key: "hasCountry", value: function(e3) {
+    return void 0 !== this.getCountryMetadata(e3);
+  } }, { key: "hasCallingCode", value: function(e3) {
+    if (this.getCountryCodesForCallingCode(e3))
+      return true;
+    if (this.nonGeographic()) {
+      if (this.nonGeographic()[e3])
+        return true;
     } else {
-      if (!r.countryCallingCode)
-        throw new Error("Invalid phone number object passed");
-      a.selectNumberingPlan(r.countryCallingCode);
+      var a2 = this.countryCallingCodes()[e3];
+      if (a2 && 1 === a2.length && "001" === a2[0])
+        return true;
     }
+  } }, { key: "isNonGeographicCallingCode", value: function(e3) {
+    return this.nonGeographic() ? !!this.nonGeographic()[e3] : !this.getCountryCodesForCallingCode(e3);
+  } }, { key: "country", value: function(e3) {
+    return this.selectNumberingPlan(e3);
+  } }, { key: "selectNumberingPlan", value: function(e3, a2) {
+    if (e3 && Ot.test(e3) && (a2 = e3, e3 = null), e3 && "001" !== e3) {
+      if (!this.hasCountry(e3))
+        throw new Error("Unknown country: ".concat(e3));
+      this.numberingPlan = new Rt(this.getCountryMetadata(e3), this);
+    } else if (a2) {
+      if (!this.hasCallingCode(a2))
+        throw new Error("Unknown calling code: ".concat(a2));
+      this.numberingPlan = new Rt(this.getNumberingPlanMetadata(a2), this);
+    } else
+      this.numberingPlan = void 0;
+    return this;
+  } }, { key: "getCountryCodesForCallingCode", value: function(e3) {
+    var a2 = this.countryCallingCodes()[e3];
+    if (a2) {
+      if (1 === a2.length && 3 === a2[0].length)
+        return;
+      return a2;
+    }
+  } }, { key: "getCountryCodeForCallingCode", value: function(e3) {
+    var a2 = this.getCountryCodesForCallingCode(e3);
+    if (a2)
+      return a2[0];
+  } }, { key: "getNumberingPlanMetadata", value: function(e3) {
+    var a2 = this.getCountryCodeForCallingCode(e3);
+    if (a2)
+      return this.getCountryMetadata(a2);
+    if (this.nonGeographic()) {
+      var t2 = this.nonGeographic()[e3];
+      if (t2)
+        return t2;
+    } else {
+      var r2 = this.countryCallingCodes()[e3];
+      if (r2 && 1 === r2.length && "001" === r2[0])
+        return this.metadata.countries["001"];
+    }
+  } }, { key: "countryCallingCode", value: function() {
+    return this.numberingPlan.callingCode();
+  } }, { key: "IDDPrefix", value: function() {
+    return this.numberingPlan.IDDPrefix();
+  } }, { key: "defaultIDDPrefix", value: function() {
+    return this.numberingPlan.defaultIDDPrefix();
+  } }, { key: "nationalNumberPattern", value: function() {
+    return this.numberingPlan.nationalNumberPattern();
+  } }, { key: "possibleLengths", value: function() {
+    return this.numberingPlan.possibleLengths();
+  } }, { key: "formats", value: function() {
+    return this.numberingPlan.formats();
+  } }, { key: "nationalPrefixForParsing", value: function() {
+    return this.numberingPlan.nationalPrefixForParsing();
+  } }, { key: "nationalPrefixTransformRule", value: function() {
+    return this.numberingPlan.nationalPrefixTransformRule();
+  } }, { key: "leadingDigits", value: function() {
+    return this.numberingPlan.leadingDigits();
+  } }, { key: "hasTypes", value: function() {
+    return this.numberingPlan.hasTypes();
+  } }, { key: "type", value: function(e3) {
+    return this.numberingPlan.type(e3);
+  } }, { key: "ext", value: function() {
+    return this.numberingPlan.ext();
+  } }, { key: "countryCallingCodes", value: function() {
+    return this.v1 ? this.metadata.country_phone_code_to_countries : this.metadata.country_calling_codes;
+  } }, { key: "chooseCountryByCountryCallingCode", value: function(e3) {
+    return this.selectNumberingPlan(e3);
+  } }, { key: "hasSelectedNumberingPlan", value: function() {
+    return void 0 !== this.numberingPlan;
+  } }]), e2;
+}(), Rt = function() {
+  function e2(a2, t2) {
+    At(this, e2), this.globalMetadataObject = t2, this.metadata = a2, Vt.call(this, t2.metadata);
   }
-  if (a.possibleLengths())
-    return Rt(r.phone || r.nationalNumber, a);
-  if (r.countryCallingCode && a.isNonGeographicCallingCode(r.countryCallingCode))
-    return !0;
-  throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
-}
-function Rt(r, e) {
-  switch (Ye(r, e)) {
-    case "IS_POSSIBLE":
-      return !0;
-    default:
-      return !1;
+  return Pt(e2, [{ key: "callingCode", value: function() {
+    return this.metadata[0];
+  } }, { key: "getDefaultCountryMetadataForRegion", value: function() {
+    return this.globalMetadataObject.getNumberingPlanMetadata(this.callingCode());
+  } }, { key: "IDDPrefix", value: function() {
+    if (!this.v1 && !this.v2)
+      return this.metadata[1];
+  } }, { key: "defaultIDDPrefix", value: function() {
+    if (!this.v1 && !this.v2)
+      return this.metadata[12];
+  } }, { key: "nationalNumberPattern", value: function() {
+    return this.v1 || this.v2 ? this.metadata[1] : this.metadata[2];
+  } }, { key: "possibleLengths", value: function() {
+    if (!this.v1)
+      return this.metadata[this.v2 ? 2 : 3];
+  } }, { key: "_getFormats", value: function(e3) {
+    return e3[this.v1 ? 2 : this.v2 ? 3 : 4];
+  } }, { key: "formats", value: function() {
+    var e3 = this, a2 = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
+    return a2.map(function(a3) {
+      return new Dt(a3, e3);
+    });
+  } }, { key: "nationalPrefix", value: function() {
+    return this.metadata[this.v1 ? 3 : this.v2 ? 4 : 5];
+  } }, { key: "_getNationalPrefixFormattingRule", value: function(e3) {
+    return e3[this.v1 ? 4 : this.v2 ? 5 : 6];
+  } }, { key: "nationalPrefixFormattingRule", value: function() {
+    return this._getNationalPrefixFormattingRule(this.metadata) || this._getNationalPrefixFormattingRule(this.getDefaultCountryMetadataForRegion());
+  } }, { key: "_nationalPrefixForParsing", value: function() {
+    return this.metadata[this.v1 ? 5 : this.v2 ? 6 : 7];
+  } }, { key: "nationalPrefixForParsing", value: function() {
+    return this._nationalPrefixForParsing() || this.nationalPrefix();
+  } }, { key: "nationalPrefixTransformRule", value: function() {
+    return this.metadata[this.v1 ? 6 : this.v2 ? 7 : 8];
+  } }, { key: "_getNationalPrefixIsOptionalWhenFormatting", value: function() {
+    return !!this.metadata[this.v1 ? 7 : this.v2 ? 8 : 9];
+  } }, { key: "nationalPrefixIsOptionalWhenFormattingInNationalFormat", value: function() {
+    return this._getNationalPrefixIsOptionalWhenFormatting(this.metadata) || this._getNationalPrefixIsOptionalWhenFormatting(this.getDefaultCountryMetadataForRegion());
+  } }, { key: "leadingDigits", value: function() {
+    return this.metadata[this.v1 ? 8 : this.v2 ? 9 : 10];
+  } }, { key: "types", value: function() {
+    return this.metadata[this.v1 ? 9 : this.v2 ? 10 : 11];
+  } }, { key: "hasTypes", value: function() {
+    return (!this.types() || 0 !== this.types().length) && !!this.types();
+  } }, { key: "type", value: function(e3) {
+    if (this.hasTypes() && Lt(this.types(), e3))
+      return new Ft(Lt(this.types(), e3), this);
+  } }, { key: "ext", value: function() {
+    return this.v1 || this.v2 ? Bt : this.metadata[13] || Bt;
+  } }]), e2;
+}(), Dt = function() {
+  function e2(a2, t2) {
+    At(this, e2), this._format = a2, this.metadata = t2;
+  }
+  return Pt(e2, [{ key: "pattern", value: function() {
+    return this._format[0];
+  } }, { key: "format", value: function() {
+    return this._format[1];
+  } }, { key: "leadingDigitsPatterns", value: function() {
+    return this._format[2] || [];
+  } }, { key: "nationalPrefixFormattingRule", value: function() {
+    return this._format[3] || this.metadata.nationalPrefixFormattingRule();
+  } }, { key: "nationalPrefixIsOptionalWhenFormattingInNationalFormat", value: function() {
+    return !!this._format[4] || this.metadata.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
+  } }, { key: "nationalPrefixIsMandatoryWhenFormattingInNationalFormat", value: function() {
+    return this.usesNationalPrefix() && !this.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
+  } }, { key: "usesNationalPrefix", value: function() {
+    return !(!this.nationalPrefixFormattingRule() || Tt.test(this.nationalPrefixFormattingRule()));
+  } }, { key: "internationalFormat", value: function() {
+    return this._format[5] || this.format();
+  } }]), e2;
+}(), Tt = /^\(?\$1\)?$/, Ft = function() {
+  function e2(a2, t2) {
+    At(this, e2), this.type = a2, this.metadata = t2;
+  }
+  return Pt(e2, [{ key: "pattern", value: function() {
+    return this.metadata.v1 ? this.type : this.type[0];
+  } }, { key: "possibleLengths", value: function() {
+    if (!this.metadata.v1)
+      return this.type[1] || this.metadata.possibleLengths();
+  } }]), e2;
+}();
+function Lt(e2, a2) {
+  switch (a2) {
+    case "FIXED_LINE":
+      return e2[0];
+    case "MOBILE":
+      return e2[1];
+    case "TOLL_FREE":
+      return e2[2];
+    case "PREMIUM_RATE":
+      return e2[3];
+    case "PERSONAL_NUMBER":
+      return e2[4];
+    case "VOICEMAIL":
+      return e2[5];
+    case "UAN":
+      return e2[6];
+    case "PAGER":
+      return e2[7];
+    case "VOIP":
+      return e2[8];
+    case "SHARED_COST":
+      return e2[9];
   }
 }
-function M(r, e) {
-  return r = r || "", new RegExp("^(?:" + e + ")$").test(r);
+var jt = function(e2) {
+  return "object" === It(e2);
+}, Ut = function(e2) {
+  return It(e2);
+};
+function Gt(e2, a2) {
+  if ((a2 = new Mt(a2)).hasCountry(e2))
+    return a2.country(e2).countryCallingCode();
+  throw new Error("Unknown country: ".concat(e2));
 }
-function Cn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = En(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
+function Vt(e2) {
+  var a2 = e2.version;
+  "number" == typeof a2 ? (this.v1 = 1 === a2, this.v2 = 2 === a2, this.v3 = 3 === a2, this.v4 = 4 === a2) : a2 ? -1 === St(a2, "1.2.0") ? this.v2 = true : -1 === St(a2, "1.7.35") ? this.v3 = true : this.v4 = true : this.v1 = true;
+}
+var Ht = function(e2) {
+  return "([".concat(Ct, "]{1,").concat(e2, "})");
+};
+function Yt(e2) {
+  var a2 = "[ \xA0\\t,]*", t2 = "[:\\.\uFF0E]?[ \xA0\\t,-]*", r2 = "#?", o2 = "[ \xA0\\t]*";
+  return ";ext=" + Ht("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:o\u0301?|\xF3))?n?|\uFF45?\uFF58\uFF54\uFF4E?|\u0434\u043E\u0431|anexo)" + t2 + Ht("20") + r2) + "|" + (a2 + "(?:[x\uFF58#\uFF03~\uFF5E]|int|\uFF49\uFF4E\uFF54)" + t2 + Ht("9") + r2) + "|" + ("[- ]+" + Ht("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + t2 + Ht("15") + r2) + "|" + (o2 + "(?:,)+" + t2 + Ht("9") + r2);
+}
+var Kt = "[" + Ct + "]{" + wt + "}", Qt = "[+\uFF0B]{0,1}(?:[" + Et + "]*[" + Ct + "]){3,}[" + Et + Ct + "]*", Jt = new RegExp("^[+\uFF0B]{0,1}(?:[" + Et + "]*[" + Ct + "]){1,2}$", "i"), qt = Qt + "(?:" + Yt() + ")?", Wt = new RegExp("^" + Kt + "$|^" + qt + "$", "i");
+var Zt = new RegExp("(?:" + Yt() + ")$", "i");
+function Xt(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return er(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return er(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
     return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
   }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function En(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return $r(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return $r(r, e);
+function er(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+var ar = { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", "\uFF10": "0", "\uFF11": "1", "\uFF12": "2", "\uFF13": "3", "\uFF14": "4", "\uFF15": "5", "\uFF16": "6", "\uFF17": "7", "\uFF18": "8", "\uFF19": "9", "\u0660": "0", "\u0661": "1", "\u0662": "2", "\u0663": "3", "\u0664": "4", "\u0665": "5", "\u0666": "6", "\u0667": "7", "\u0668": "8", "\u0669": "9", "\u06F0": "0", "\u06F1": "1", "\u06F2": "2", "\u06F3": "3", "\u06F4": "4", "\u06F5": "5", "\u06F6": "6", "\u06F7": "7", "\u06F8": "8", "\u06F9": "9" };
+function tr(e2) {
+  return ar[e2];
+}
+function rr(e2) {
+  for (var a2, t2 = "", r2 = Xt(e2.split("")); !(a2 = r2()).done; ) {
+    var o2 = tr(a2.value);
+    o2 && (t2 += o2);
   }
+  return t2;
 }
-function $r(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
+function or(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return ir(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return ir(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
+    return function() {
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+    };
+  }
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-var Nn = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
-function Ya(r, e, a) {
-  if (e = e || {}, !!r.country) {
-    a = new _(a), a.selectNumberingPlan(r.country, r.countryCallingCode);
-    var t = e.v2 ? r.nationalNumber : r.phone;
-    if (M(t, a.nationalNumberPattern())) {
-      if (ma(t, "FIXED_LINE", a))
-        return a.type("MOBILE") && a.type("MOBILE").pattern() === "" || !a.type("MOBILE") || ma(t, "MOBILE", a) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE";
-      for (var o = Cn(Nn), i; !(i = o()).done; ) {
-        var n = i.value;
-        if (ma(t, n, a))
-          return n;
+function ir(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function nr(e2) {
+  for (var a2, t2 = "", r2 = or(e2.split("")); !(a2 = r2()).done; ) {
+    t2 += dr(a2.value, t2) || "";
+  }
+  return t2;
+}
+function dr(e2, a2) {
+  if ("+" === e2) {
+    if (a2)
+      return;
+    return "+";
+  }
+  return tr(e2);
+}
+function lr(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return sr(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return sr(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
+    return function() {
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+    };
+  }
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function sr(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function cr(e2, a2) {
+  return mr(e2, void 0, a2);
+}
+function mr(e2, a2, t2) {
+  var r2 = t2.type(a2), o2 = r2 && r2.possibleLengths() || t2.possibleLengths();
+  if (!o2)
+    return "IS_POSSIBLE";
+  if ("FIXED_LINE_OR_MOBILE" === a2) {
+    if (!t2.type("FIXED_LINE"))
+      return mr(e2, "MOBILE", t2);
+    var i2 = t2.type("MOBILE");
+    i2 && (o2 = function(e3, a3) {
+      for (var t3, r3 = e3.slice(), o3 = lr(a3); !(t3 = o3()).done; ) {
+        var i3 = t3.value;
+        e3.indexOf(i3) < 0 && r3.push(i3);
+      }
+      return r3.sort(function(e4, a4) {
+        return e4 - a4;
+      });
+    }(o2, i2.possibleLengths()));
+  } else if (a2 && !r2)
+    return "INVALID_LENGTH";
+  var n2 = e2.length, d2 = o2[0];
+  return d2 === n2 ? "IS_POSSIBLE" : d2 > n2 ? "TOO_SHORT" : o2[o2.length - 1] < n2 ? "TOO_LONG" : o2.indexOf(n2, 1) >= 0 ? "IS_POSSIBLE" : "INVALID_LENGTH";
+}
+function ur(e2, a2) {
+  return "IS_POSSIBLE" === cr(e2, a2);
+}
+function pr(e2, a2) {
+  return e2 = e2 || "", new RegExp("^(?:" + a2 + ")$").test(e2);
+}
+function hr(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return gr(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return gr(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
+    return function() {
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+    };
+  }
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function gr(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+var br = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
+function zr(e2, a2, t2) {
+  if (a2 = a2 || {}, e2.country) {
+    (t2 = new Mt(t2)).selectNumberingPlan(e2.country, e2.countryCallingCode);
+    var r2 = a2.v2 ? e2.nationalNumber : e2.phone;
+    if (pr(r2, t2.nationalNumberPattern())) {
+      if (fr(r2, "FIXED_LINE", t2))
+        return t2.type("MOBILE") && "" === t2.type("MOBILE").pattern() ? "FIXED_LINE_OR_MOBILE" : t2.type("MOBILE") ? fr(r2, "MOBILE", t2) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE" : "FIXED_LINE_OR_MOBILE";
+      for (var o2, i2 = hr(br); !(o2 = i2()).done; ) {
+        var n2 = o2.value;
+        if (fr(r2, n2, t2))
+          return n2;
       }
     }
   }
 }
-function ma(r, e, a) {
-  return e = a.type(e), !e || !e.pattern() || e.possibleLengths() && e.possibleLengths().indexOf(r.length) < 0 ? !1 : M(r, e.pattern());
+function fr(e2, a2, t2) {
+  return !(!(a2 = t2.type(a2)) || !a2.pattern()) && (!(a2.possibleLengths() && a2.possibleLengths().indexOf(e2.length) < 0) && pr(e2, a2.pattern()));
 }
-function An(r, e, a) {
-  if (e = e || {}, a = new _(a), a.selectNumberingPlan(r.country, r.countryCallingCode), a.hasTypes())
-    return Ya(r, e, a.metadata) !== void 0;
-  var t = e.v2 ? r.nationalNumber : r.phone;
-  return M(t, a.nationalNumberPattern());
-}
-function In(r, e, a) {
-  var t = new _(a), o = t.getCountryCodesForCallingCode(r);
-  return o ? o.filter(function(i) {
-    return Sn(e, i, a);
+function vr(e2, a2, t2) {
+  var r2 = new Mt(t2).getCountryCodesForCallingCode(e2);
+  return r2 ? r2.filter(function(e3) {
+    return function(e4, a3, t3) {
+      var r3 = new Mt(t3);
+      if (r3.selectNumberingPlan(a3), r3.numberingPlan.possibleLengths().indexOf(e4.length) >= 0)
+        return true;
+      return false;
+    }(a2, e3, t2);
   }) : [];
 }
-function Sn(r, e, a) {
-  var t = new _(a);
-  return t.selectNumberingPlan(e), t.numberingPlan.possibleLengths().indexOf(r.length) >= 0;
+function yr(e2) {
+  return e2.replace(new RegExp("[".concat(Et, "]+"), "g"), " ").trim();
 }
-function Ot(r) {
-  return r.replace(new RegExp("[".concat(I, "]+"), "g"), " ").trim();
+var kr = /(\$\d)/;
+function xr(e2, a2, t2) {
+  var r2 = t2.useInternationalFormat, o2 = t2.withNationalPrefix;
+  t2.carrierCode, t2.metadata;
+  var i2 = e2.replace(new RegExp(a2.pattern()), r2 ? a2.internationalFormat() : o2 && a2.nationalPrefixFormattingRule() ? a2.format().replace(kr, a2.nationalPrefixFormattingRule()) : a2.format());
+  return r2 ? yr(i2) : i2;
 }
-var Mt = /(\$\d)/;
-function Dt(r, e, a) {
-  var t = a.useInternationalFormat, o = a.withNationalPrefix;
-  a.carrierCode, a.metadata;
-  var i = r.replace(new RegExp(e.pattern()), t ? e.internationalFormat() : (
-    // This library doesn't use `domestic_carrier_code_formatting_rule`,
-    // because that one is only used when formatting phone numbers
-    // for dialing from a mobile phone, and this is not a dialing library.
-    // carrierCode && format.domesticCarrierCodeFormattingRule()
-    // 	// First, replace the $CC in the formatting rule with the desired carrier code.
-    // 	// Then, replace the $FG in the formatting rule with the first group
-    // 	// and the carrier code combined in the appropriate way.
-    // 	? format.format().replace(FIRST_GROUP_PATTERN, format.domesticCarrierCodeFormattingRule().replace('$CC', carrierCode))
-    // 	: (
-    // 		withNationalPrefix && format.nationalPrefixFormattingRule()
-    // 			? format.format().replace(FIRST_GROUP_PATTERN, format.nationalPrefixFormattingRule())
-    // 			: format.format()
-    // 	)
-    o && e.nationalPrefixFormattingRule() ? e.format().replace(Mt, e.nationalPrefixFormattingRule()) : e.format()
-  ));
-  return t ? Ot(i) : i;
-}
-var Pn = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
-function Bn(r, e, a) {
-  var t = new _(a);
-  if (t.selectNumberingPlan(r, e), t.defaultIDDPrefix())
-    return t.defaultIDDPrefix();
-  if (Pn.test(t.IDDPrefix()))
-    return t.IDDPrefix();
-}
-function Tn(r) {
-  var e = r.number, a = r.ext;
-  if (!e)
-    return "";
-  if (e[0] !== "+")
-    throw new Error('"formatRFC3966()" expects "number" to be in E.164 format.');
-  return "tel:".concat(e).concat(a ? ";ext=" + a : "");
-}
-function Fn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Rn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
+var wr = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
+function $r(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return _r(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return _r(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
     return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
   }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Rn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return _r(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return _r(r, e);
-  }
+function _r(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
 }
-function _r(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function Cr(r, e) {
-  var a = Object.keys(r);
+function Cr(e2, a2) {
+  var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
+    var r2 = Object.getOwnPropertySymbols(e2);
+    a2 && (r2 = r2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), t2.push.apply(t2, r2);
   }
-  return a;
+  return t2;
 }
-function Er(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Cr(Object(a), !0).forEach(function(t) {
-      On(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Cr(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
+function Er(e2) {
+  for (var a2 = 1; a2 < arguments.length; a2++) {
+    var t2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? Cr(Object(t2), true).forEach(function(a3) {
+      Sr(e2, a3, t2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : Cr(Object(t2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
     });
   }
-  return r;
+  return e2;
 }
-function On(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
+function Sr(e2, a2, t2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
 }
-var Nr = {
-  formatExtension: function(e, a, t) {
-    return "".concat(e).concat(t.ext()).concat(a);
+var Ir = { formatExtension: function(e2, a2, t2) {
+  return "".concat(e2).concat(t2.ext()).concat(a2);
+} };
+function Ar(e2, a2, t2, r2) {
+  if (t2 = t2 ? Er(Er({}, Ir), t2) : Ir, r2 = new Mt(r2), e2.country && "001" !== e2.country) {
+    if (!r2.hasCountry(e2.country))
+      throw new Error("Unknown country: ".concat(e2.country));
+    r2.country(e2.country);
+  } else {
+    if (!e2.countryCallingCode)
+      return e2.phone || "";
+    r2.selectNumberingPlan(e2.countryCallingCode);
   }
-};
-function Mn(r, e, a, t) {
-  if (a ? a = Er(Er({}, Nr), a) : a = Nr, t = new _(t), r.country && r.country !== "001") {
-    if (!t.hasCountry(r.country))
-      throw new Error("Unknown country: ".concat(r.country));
-    t.country(r.country);
-  } else if (r.countryCallingCode)
-    t.selectNumberingPlan(r.countryCallingCode);
-  else
-    return r.phone || "";
-  var o = t.countryCallingCode(), i = a.v2 ? r.nationalNumber : r.phone, n;
-  switch (e) {
+  var o2, i2 = r2.countryCallingCode(), n2 = t2.v2 ? e2.nationalNumber : e2.phone;
+  switch (a2) {
     case "NATIONAL":
-      return i ? (n = Te(i, r.carrierCode, "NATIONAL", t, a), ua(n, r.ext, t, a.formatExtension)) : "";
+      return n2 ? Pr(o2 = Nr(n2, e2.carrierCode, "NATIONAL", r2, t2), e2.ext, r2, t2.formatExtension) : "";
     case "INTERNATIONAL":
-      return i ? (n = Te(i, null, "INTERNATIONAL", t, a), n = "+".concat(o, " ").concat(n), ua(n, r.ext, t, a.formatExtension)) : "+".concat(o);
+      return n2 ? (o2 = Nr(n2, null, "INTERNATIONAL", r2, t2), Pr(o2 = "+".concat(i2, " ").concat(o2), e2.ext, r2, t2.formatExtension)) : "+".concat(i2);
     case "E.164":
-      return "+".concat(o).concat(i);
+      return "+".concat(i2).concat(n2);
     case "RFC3966":
-      return Tn({
-        number: "+".concat(o).concat(i),
-        ext: r.ext
-      });
+      return function(e3) {
+        var a3 = e3.number, t3 = e3.ext;
+        if (!a3)
+          return "";
+        if ("+" !== a3[0])
+          throw new Error('"formatRFC3966()" expects "number" to be in E.164 format.');
+        return "tel:".concat(a3).concat(t3 ? ";ext=" + t3 : "");
+      }({ number: "+".concat(i2).concat(n2), ext: e2.ext });
     case "IDD":
-      if (!a.fromCountry)
+      if (!t2.fromCountry)
         return;
-      var l = Ln(i, r.carrierCode, o, a.fromCountry, t);
-      return ua(l, r.ext, t, a.formatExtension);
+      var d2 = function(e3, a3, t3, r3, o3) {
+        var i3 = Gt(r3, o3.metadata);
+        if (i3 === t3) {
+          var n3 = Nr(e3, a3, "NATIONAL", o3);
+          return "1" === t3 ? t3 + " " + n3 : n3;
+        }
+        var d3 = function(e4, a4, t4) {
+          var r4 = new Mt(t4);
+          return r4.selectNumberingPlan(e4, a4), r4.defaultIDDPrefix() ? r4.defaultIDDPrefix() : wr.test(r4.IDDPrefix()) ? r4.IDDPrefix() : void 0;
+        }(r3, void 0, o3.metadata);
+        if (d3)
+          return "".concat(d3, " ").concat(t3, " ").concat(Nr(e3, null, "INTERNATIONAL", o3));
+      }(n2, e2.carrierCode, i2, t2.fromCountry, r2);
+      return Pr(d2, e2.ext, r2, t2.formatExtension);
     default:
-      throw new Error('Unknown "format" argument passed to "formatNumber()": "'.concat(e, '"'));
+      throw new Error('Unknown "format" argument passed to "formatNumber()": "'.concat(a2, '"'));
   }
 }
-function Te(r, e, a, t, o) {
-  var i = Dn(t.formats(), r);
-  return i ? Dt(r, i, {
-    useInternationalFormat: a === "INTERNATIONAL",
-    withNationalPrefix: !(i.nationalPrefixIsOptionalWhenFormattingInNationalFormat() && o && o.nationalPrefix === !1),
-    carrierCode: e,
-    metadata: t
-  }) : r;
-}
-function Dn(r, e) {
-  for (var a = Fn(r), t; !(t = a()).done; ) {
-    var o = t.value;
-    if (o.leadingDigitsPatterns().length > 0) {
-      var i = o.leadingDigitsPatterns()[o.leadingDigitsPatterns().length - 1];
-      if (e.search(i) !== 0)
-        continue;
+function Nr(e2, a2, t2, r2, o2) {
+  var i2 = function(e3, a3) {
+    for (var t3, r3 = $r(e3); !(t3 = r3()).done; ) {
+      var o3 = t3.value;
+      if (o3.leadingDigitsPatterns().length > 0) {
+        var i3 = o3.leadingDigitsPatterns()[o3.leadingDigitsPatterns().length - 1];
+        if (0 !== a3.search(i3))
+          continue;
+      }
+      if (pr(a3, o3.pattern()))
+        return o3;
     }
-    if (M(e, o.pattern()))
-      return o;
-  }
+  }(r2.formats(), e2);
+  return i2 ? xr(e2, i2, { useInternationalFormat: "INTERNATIONAL" === t2, withNationalPrefix: !i2.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !o2 || false !== o2.nationalPrefix, carrierCode: a2, metadata: r2 }) : e2;
 }
-function ua(r, e, a, t) {
-  return e ? t(r, e, a) : r;
+function Pr(e2, a2, t2, r2) {
+  return a2 ? r2(e2, a2, t2) : e2;
 }
-function Ln(r, e, a, t, o) {
-  var i = je(t, o.metadata);
-  if (i === a) {
-    var n = Te(r, e, "NATIONAL", o);
-    return a === "1" ? a + " " + n : n;
-  }
-  var l = Bn(t, void 0, o.metadata);
-  if (l)
-    return "".concat(l, " ").concat(a, " ").concat(Te(r, null, "INTERNATIONAL", o));
-}
-function Ar(r, e) {
-  var a = Object.keys(r);
+function Br(e2, a2) {
+  var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
+    var r2 = Object.getOwnPropertySymbols(e2);
+    a2 && (r2 = r2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), t2.push.apply(t2, r2);
   }
-  return a;
+  return t2;
 }
-function Ir(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Ar(Object(a), !0).forEach(function(t) {
-      Un(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Ar(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
+function Or(e2) {
+  for (var a2 = 1; a2 < arguments.length; a2++) {
+    var t2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? Br(Object(t2), true).forEach(function(a3) {
+      Mr(e2, a3, t2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : Br(Object(t2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
     });
   }
-  return r;
+  return e2;
 }
-function Un(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
+function Mr(e2, a2, t2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
 }
-function Gn(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function Sr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+function Rr(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Hn(r, e, a) {
-  return e && Sr(r.prototype, e), a && Sr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var Ka = /* @__PURE__ */ function() {
-  function r(e, a, t) {
-    if (Gn(this, r), !e)
+var Dr = function() {
+  function e2(a3, t3, r3) {
+    if (function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), !a3)
       throw new TypeError("`country` or `countryCallingCode` not passed");
-    if (!a)
+    if (!t3)
       throw new TypeError("`nationalNumber` not passed");
-    if (!t)
+    if (!r3)
       throw new TypeError("`metadata` not passed");
-    var o = jn(e, t), i = o.country, n = o.countryCallingCode;
-    this.country = i, this.countryCallingCode = n, this.nationalNumber = a, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.getMetadata = function() {
-      return t;
+    var o2 = function(e3, a4) {
+      var t4, r4, o3 = new Mt(a4);
+      Tr(e3) ? (t4 = e3, o3.selectNumberingPlan(t4), r4 = o3.countryCallingCode()) : r4 = e3;
+      return { country: t4, countryCallingCode: r4 };
+    }(a3, r3), i2 = o2.country, n2 = o2.countryCallingCode;
+    this.country = i2, this.countryCallingCode = n2, this.nationalNumber = t3, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.getMetadata = function() {
+      return r3;
     };
   }
-  return Hn(r, [{
-    key: "setExt",
-    value: function(a) {
-      this.ext = a;
-    }
-  }, {
-    key: "getPossibleCountries",
-    value: function() {
-      return this.country ? [this.country] : In(this.countryCallingCode, this.nationalNumber, this.getMetadata());
-    }
-  }, {
-    key: "isPossible",
-    value: function() {
-      return _n(this, {
-        v2: !0
-      }, this.getMetadata());
-    }
-  }, {
-    key: "isValid",
-    value: function() {
-      return An(this, {
-        v2: !0
-      }, this.getMetadata());
-    }
-  }, {
-    key: "isNonGeographic",
-    value: function() {
-      var a = new _(this.getMetadata());
-      return a.isNonGeographicCallingCode(this.countryCallingCode);
-    }
-  }, {
-    key: "isEqual",
-    value: function(a) {
-      return this.number === a.number && this.ext === a.ext;
-    }
-    // This function was originally meant to be an equivalent for `validatePhoneNumberLength()`,
-    // but later it was found out that it doesn't include the possible `TOO_SHORT` result
-    // returned from `parsePhoneNumberWithError()` in the original `validatePhoneNumberLength()`,
-    // so eventually I simply commented out this method from the `PhoneNumber` class
-    // and just left the `validatePhoneNumberLength()` function, even though that one would require
-    // and additional step to also validate the actual country / calling code of the phone number.
-    // validateLength() {
-    // 	const metadata = new Metadata(this.getMetadata())
-    // 	metadata.selectNumberingPlan(this.countryCallingCode)
-    // 	const result = checkNumberLength(this.nationalNumber, metadata)
-    // 	if (result !== 'IS_POSSIBLE') {
-    // 		return result
-    // 	}
-    // }
-  }, {
-    key: "getType",
-    value: function() {
-      return Ya(this, {
-        v2: !0
-      }, this.getMetadata());
-    }
-  }, {
-    key: "format",
-    value: function(a, t) {
-      return Mn(this, a, t ? Ir(Ir({}, t), {}, {
-        v2: !0
-      }) : {
-        v2: !0
-      }, this.getMetadata());
-    }
-  }, {
-    key: "formatNational",
-    value: function(a) {
-      return this.format("NATIONAL", a);
-    }
-  }, {
-    key: "formatInternational",
-    value: function(a) {
-      return this.format("INTERNATIONAL", a);
-    }
-  }, {
-    key: "getURI",
-    value: function(a) {
-      return this.format("RFC3966", a);
-    }
-  }]), r;
-}(), Vn = function(e) {
-  return /^[A-Z]{2}$/.test(e);
+  var a2, t2, r2;
+  return a2 = e2, t2 = [{ key: "setExt", value: function(e3) {
+    this.ext = e3;
+  } }, { key: "getPossibleCountries", value: function() {
+    return this.country ? [this.country] : vr(this.countryCallingCode, this.nationalNumber, this.getMetadata());
+  } }, { key: "isPossible", value: function() {
+    return function(e3, a3, t3) {
+      if (void 0 === a3 && (a3 = {}), t3 = new Mt(t3), a3.v2) {
+        if (!e3.countryCallingCode)
+          throw new Error("Invalid phone number object passed");
+        t3.selectNumberingPlan(e3.countryCallingCode);
+      } else {
+        if (!e3.phone)
+          return false;
+        if (e3.country) {
+          if (!t3.hasCountry(e3.country))
+            throw new Error("Unknown country: ".concat(e3.country));
+          t3.country(e3.country);
+        } else {
+          if (!e3.countryCallingCode)
+            throw new Error("Invalid phone number object passed");
+          t3.selectNumberingPlan(e3.countryCallingCode);
+        }
+      }
+      if (t3.possibleLengths())
+        return ur(e3.phone || e3.nationalNumber, t3);
+      if (e3.countryCallingCode && t3.isNonGeographicCallingCode(e3.countryCallingCode))
+        return true;
+      throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
+    }(this, { v2: true }, this.getMetadata());
+  } }, { key: "isValid", value: function() {
+    return function(e3, a3, t3) {
+      return a3 = a3 || {}, (t3 = new Mt(t3)).selectNumberingPlan(e3.country, e3.countryCallingCode), t3.hasTypes() ? void 0 !== zr(e3, a3, t3.metadata) : pr(a3.v2 ? e3.nationalNumber : e3.phone, t3.nationalNumberPattern());
+    }(this, { v2: true }, this.getMetadata());
+  } }, { key: "isNonGeographic", value: function() {
+    return new Mt(this.getMetadata()).isNonGeographicCallingCode(this.countryCallingCode);
+  } }, { key: "isEqual", value: function(e3) {
+    return this.number === e3.number && this.ext === e3.ext;
+  } }, { key: "getType", value: function() {
+    return zr(this, { v2: true }, this.getMetadata());
+  } }, { key: "format", value: function(e3, a3) {
+    return Ar(this, e3, a3 ? Or(Or({}, a3), {}, { v2: true }) : { v2: true }, this.getMetadata());
+  } }, { key: "formatNational", value: function(e3) {
+    return this.format("NATIONAL", e3);
+  } }, { key: "formatInternational", value: function(e3) {
+    return this.format("INTERNATIONAL", e3);
+  } }, { key: "getURI", value: function(e3) {
+    return this.format("RFC3966", e3);
+  } }], t2 && Rr(a2.prototype, t2), r2 && Rr(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+}(), Tr = function(e2) {
+  return /^[A-Z]{2}$/.test(e2);
 };
-function jn(r, e) {
-  var a, t, o = new _(e);
-  return Vn(r) ? (a = r, o.selectNumberingPlan(a), t = o.countryCallingCode()) : t = r, {
-    country: a,
-    countryCallingCode: t
-  };
-}
-var Yn = new RegExp("([" + C + "])");
-function Lt(r, e, a, t) {
-  if (e) {
-    var o = new _(t);
-    o.selectNumberingPlan(e, a);
-    var i = new RegExp(o.IDDPrefix());
-    if (r.search(i) === 0) {
-      r = r.slice(r.match(i)[0].length);
-      var n = r.match(Yn);
-      if (!(n && n[1] != null && n[1].length > 0 && n[1] === "0"))
-        return r;
+var Fr = new RegExp("([" + Ct + "])");
+function Lr(e2, a2, t2, r2) {
+  if (a2) {
+    var o2 = new Mt(r2);
+    o2.selectNumberingPlan(a2, t2);
+    var i2 = new RegExp(o2.IDDPrefix());
+    if (0 === e2.search(i2)) {
+      var n2 = (e2 = e2.slice(e2.match(i2)[0].length)).match(Fr);
+      if (!(n2 && null != n2[1] && n2[1].length > 0 && "0" === n2[1]))
+        return e2;
     }
   }
 }
-function Ca(r, e) {
-  if (r && e.numberingPlan.nationalPrefixForParsing()) {
-    var a = new RegExp("^(?:" + e.numberingPlan.nationalPrefixForParsing() + ")"), t = a.exec(r);
-    if (t) {
-      var o, i, n = t.length - 1, l = n > 0 && t[n];
-      if (e.nationalPrefixTransformRule() && l)
-        o = r.replace(a, e.nationalPrefixTransformRule()), n > 1 && (i = t[1]);
+function jr(e2, a2) {
+  if (e2 && a2.numberingPlan.nationalPrefixForParsing()) {
+    var t2 = new RegExp("^(?:" + a2.numberingPlan.nationalPrefixForParsing() + ")"), r2 = t2.exec(e2);
+    if (r2) {
+      var o2, i2, n2, d2 = r2.length - 1, l2 = d2 > 0 && r2[d2];
+      if (a2.nationalPrefixTransformRule() && l2)
+        o2 = e2.replace(t2, a2.nationalPrefixTransformRule()), d2 > 1 && (i2 = r2[1]);
       else {
-        var d = t[0];
-        o = r.slice(d.length), l && (i = t[1]);
+        var s2 = r2[0];
+        o2 = e2.slice(s2.length), l2 && (i2 = r2[1]);
       }
-      var s;
-      if (l) {
-        var c = r.indexOf(t[1]), p = r.slice(0, c);
-        p === e.numberingPlan.nationalPrefix() && (s = e.numberingPlan.nationalPrefix());
+      if (l2) {
+        var c2 = e2.indexOf(r2[1]);
+        e2.slice(0, c2) === a2.numberingPlan.nationalPrefix() && (n2 = a2.numberingPlan.nationalPrefix());
       } else
-        s = t[0];
-      return {
-        nationalNumber: o,
-        nationalPrefix: s,
-        carrierCode: i
-      };
+        n2 = r2[0];
+      return { nationalNumber: o2, nationalPrefix: n2, carrierCode: i2 };
     }
   }
-  return {
-    nationalNumber: r
-  };
+  return { nationalNumber: e2 };
 }
-function Ea(r, e) {
-  var a = Ca(r, e), t = a.carrierCode, o = a.nationalNumber;
-  if (o !== r) {
-    if (!Kn(r, o, e))
-      return {
-        nationalNumber: r
-      };
-    if (e.possibleLengths() && !Qn(o, e))
-      return {
-        nationalNumber: r
-      };
-  }
-  return {
-    nationalNumber: o,
-    carrierCode: t
-  };
-}
-function Kn(r, e, a) {
-  return !(M(r, a.nationalNumberPattern()) && !M(e, a.nationalNumberPattern()));
-}
-function Qn(r, e) {
-  switch (Ye(r, e)) {
-    case "TOO_SHORT":
-    case "INVALID_LENGTH":
-      return !1;
-    default:
-      return !0;
-  }
-}
-function Ut(r, e, a, t) {
-  var o = e ? je(e, t) : a;
-  if (r.indexOf(o) === 0) {
-    t = new _(t), t.selectNumberingPlan(e, a);
-    var i = r.slice(o.length), n = Ea(i, t), l = n.nationalNumber, d = Ea(r, t), s = d.nationalNumber;
-    if (!M(s, t.nationalNumberPattern()) && M(l, t.nationalNumberPattern()) || Ye(s, t) === "TOO_LONG")
-      return {
-        countryCallingCode: o,
-        number: i
-      };
-  }
-  return {
-    number: r
-  };
-}
-function Gt(r, e, a, t) {
-  if (!r)
-    return {};
-  var o;
-  if (r[0] !== "+") {
-    var i = Lt(r, e, a, t);
-    if (i && i !== r)
-      o = !0, r = "+" + i;
-    else {
-      if (e || a) {
-        var n = Ut(r, e, a, t), l = n.countryCallingCode, d = n.number;
-        if (l)
-          return {
-            countryCallingCodeSource: "FROM_NUMBER_WITHOUT_PLUS_SIGN",
-            countryCallingCode: l,
-            number: d
-          };
+function Ur(e2, a2) {
+  var t2 = jr(e2, a2), r2 = t2.carrierCode, o2 = t2.nationalNumber;
+  if (o2 !== e2) {
+    if (!function(e3, a3, t3) {
+      if (pr(e3, t3.nationalNumberPattern()) && !pr(a3, t3.nationalNumberPattern()))
+        return false;
+      return true;
+    }(e2, o2, a2))
+      return { nationalNumber: e2 };
+    if (a2.possibleLengths() && !function(e3, a3) {
+      switch (cr(e3, a3)) {
+        case "TOO_SHORT":
+        case "INVALID_LENGTH":
+          return false;
+        default:
+          return true;
       }
-      return {
-        // No need to set it to `UNSPECIFIED`. It can be just `undefined`.
-        // countryCallingCodeSource: 'UNSPECIFIED',
-        number: r
-      };
-    }
+    }(o2, a2))
+      return { nationalNumber: e2 };
   }
-  if (r[1] === "0")
+  return { nationalNumber: o2, carrierCode: r2 };
+}
+function Gr(e2, a2, t2, r2) {
+  var o2 = a2 ? Gt(a2, r2) : t2;
+  if (0 === e2.indexOf(o2)) {
+    (r2 = new Mt(r2)).selectNumberingPlan(a2, t2);
+    var i2 = e2.slice(o2.length), n2 = Ur(i2, r2).nationalNumber, d2 = Ur(e2, r2).nationalNumber;
+    if (!pr(d2, r2.nationalNumberPattern()) && pr(n2, r2.nationalNumberPattern()) || "TOO_LONG" === cr(d2, r2))
+      return { countryCallingCode: o2, number: i2 };
+  }
+  return { number: e2 };
+}
+function Vr(e2, a2, t2, r2) {
+  if (!e2)
     return {};
-  t = new _(t);
-  for (var s = 2; s - 1 <= Vi && s <= r.length; ) {
-    var c = r.slice(1, s);
-    if (t.hasCallingCode(c))
-      return t.selectNumberingPlan(c), {
-        countryCallingCodeSource: o ? "FROM_NUMBER_WITH_IDD" : "FROM_NUMBER_WITH_PLUS_SIGN",
-        countryCallingCode: c,
-        number: r.slice(s)
-      };
-    s++;
+  var o2;
+  if ("+" !== e2[0]) {
+    var i2 = Lr(e2, a2, t2, r2);
+    if (!i2 || i2 === e2) {
+      if (a2 || t2) {
+        var n2 = Gr(e2, a2, t2, r2), d2 = n2.countryCallingCode, l2 = n2.number;
+        if (d2)
+          return { countryCallingCodeSource: "FROM_NUMBER_WITHOUT_PLUS_SIGN", countryCallingCode: d2, number: l2 };
+      }
+      return { number: e2 };
+    }
+    o2 = true, e2 = "+" + i2;
+  }
+  if ("0" === e2[1])
+    return {};
+  r2 = new Mt(r2);
+  for (var s2 = 2; s2 - 1 <= _t && s2 <= e2.length; ) {
+    var c2 = e2.slice(1, s2);
+    if (r2.hasCallingCode(c2))
+      return r2.selectNumberingPlan(c2), { countryCallingCodeSource: o2 ? "FROM_NUMBER_WITH_IDD" : "FROM_NUMBER_WITH_PLUS_SIGN", countryCallingCode: c2, number: e2.slice(s2) };
+    s2++;
   }
   return {};
 }
-function Jn(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = qn(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
-    return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
-    };
-  }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function qn(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return Pr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Pr(r, e);
-  }
-}
-function Pr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function Ht(r, e) {
-  var a = e.countries, t = e.defaultCountry, o = e.metadata;
-  o = new _(o);
-  for (var i = [], n = Jn(a), l; !(l = n()).done; ) {
-    var d = l.value;
-    if (o.country(d), o.leadingDigits()) {
-      if (r && r.search(o.leadingDigits()) === 0)
-        return d;
-    } else if (Ya({
-      phone: r,
-      country: d
-    }, void 0, o.metadata))
-      if (t) {
-        if (d === t)
-          return d;
-        i.push(d);
-      } else
-        return d;
-  }
-  if (i.length > 0)
-    return i[0];
-}
-var Wn = !1;
-function Vt(r, e) {
-  var a = e.nationalNumber, t = e.defaultCountry, o = e.metadata;
-  if (Wn && o.isNonGeographicCallingCode(r))
-    return "001";
-  var i = o.getCountryCodesForCallingCode(r);
-  if (i)
-    return i.length === 1 ? i[0] : Ht(a, {
-      countries: i,
-      defaultCountry: t,
-      metadata: o.metadata
-    });
-}
-var jt = "+", Xn = "[\\-\\.\\(\\)]?", Br = "([" + C + "]|" + Xn + ")", Zn = "^\\" + jt + Br + "*[" + C + "]" + Br + "*$", ed = new RegExp(Zn, "g"), Na = C, ad = "[" + Na + "]+((\\-)*[" + Na + "])*", rd = "a-zA-Z", td = "[" + rd + "]+((\\-)*[" + Na + "])*", od = "^(" + ad + "\\.)*" + td + "\\.?$", id = new RegExp(od, "g"), Tr = "tel:", Aa = ";phone-context=", nd = ";isub=";
-function dd(r) {
-  var e = r.indexOf(Aa);
-  if (e < 0)
-    return null;
-  var a = e + Aa.length;
-  if (a >= r.length)
-    return "";
-  var t = r.indexOf(";", a);
-  return t >= 0 ? r.substring(a, t) : r.substring(a);
-}
-function ld(r) {
-  return r === null ? !0 : r.length === 0 ? !1 : ed.test(r) || id.test(r);
-}
-function sd(r, e) {
-  var a = e.extractFormattedPhoneNumber, t = dd(r);
-  if (!ld(t))
-    throw new F("NOT_A_NUMBER");
-  var o;
-  if (t === null)
-    o = a(r) || "";
-  else {
-    o = "", t.charAt(0) === jt && (o += t);
-    var i = r.indexOf(Tr), n;
-    i >= 0 ? n = i + Tr.length : n = 0;
-    var l = r.indexOf(Aa);
-    o += r.substring(n, l);
-  }
-  var d = o.indexOf(nd);
-  if (d > 0 && (o = o.substring(0, d)), o !== "")
-    return o;
-}
-var cd = 250, md = new RegExp("[" + Ge + C + "]"), ud = new RegExp("[^" + C + "#]+$");
-function pd(r, e, a) {
-  if (e = e || {}, a = new _(a), e.defaultCountry && !a.hasCountry(e.defaultCountry))
-    throw e.v2 ? new F("INVALID_COUNTRY") : new Error("Unknown country: ".concat(e.defaultCountry));
-  var t = gd(r, e.v2, e.extract), o = t.number, i = t.ext, n = t.error;
-  if (!o) {
-    if (e.v2)
-      throw n === "TOO_SHORT" ? new F("TOO_SHORT") : new F("NOT_A_NUMBER");
-    return {};
-  }
-  var l = bd(o, e.defaultCountry, e.defaultCallingCode, a), d = l.country, s = l.nationalNumber, c = l.countryCallingCode, p = l.countryCallingCodeSource, m = l.carrierCode;
-  if (!a.hasSelectedNumberingPlan()) {
-    if (e.v2)
-      throw new F("INVALID_COUNTRY");
-    return {};
-  }
-  if (!s || s.length < ja) {
-    if (e.v2)
-      throw new F("TOO_SHORT");
-    return {};
-  }
-  if (s.length > Hi) {
-    if (e.v2)
-      throw new F("TOO_LONG");
-    return {};
-  }
-  if (e.v2) {
-    var u = new Ka(c, s, a.metadata);
-    return d && (u.country = d), m && (u.carrierCode = m), i && (u.ext = i), u.__countryCallingCodeSource = p, u;
-  }
-  var f = (e.extended ? a.hasSelectedNumberingPlan() : d) ? M(s, a.nationalNumberPattern()) : !1;
-  return e.extended ? {
-    country: d,
-    countryCallingCode: c,
-    carrierCode: m,
-    valid: f,
-    possible: f ? !0 : !!(e.extended === !0 && a.possibleLengths() && Rt(s, a)),
-    phone: s,
-    ext: i
-  } : f ? fd(d, s, i) : {};
-}
-function hd(r, e, a) {
-  if (r) {
-    if (r.length > cd) {
-      if (a)
-        throw new F("TOO_LONG");
+function Hr(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
       return;
-    }
-    if (e === !1)
-      return r;
-    var t = r.search(md);
-    if (!(t < 0))
-      return r.slice(t).replace(ud, "");
-  }
-}
-function gd(r, e, a) {
-  var t = sd(r, {
-    extractFormattedPhoneNumber: function(n) {
-      return hd(n, a, e);
-    }
-  });
-  if (!t)
-    return {};
-  if (!pn(t))
-    return hn(t) ? {
-      error: "TOO_SHORT"
-    } : {};
-  var o = gn(t);
-  return o.ext ? o : {
-    number: t
-  };
-}
-function fd(r, e, a) {
-  var t = {
-    country: r,
-    phone: e
-  };
-  return a && (t.ext = a), t;
-}
-function bd(r, e, a, t) {
-  var o = Gt(xr(r), e, a, t.metadata), i = o.countryCallingCodeSource, n = o.countryCallingCode, l = o.number, d;
-  if (n)
-    t.selectNumberingPlan(n);
-  else if (l && (e || a))
-    t.selectNumberingPlan(e, a), e && (d = e), n = a || je(e, t.metadata);
-  else
-    return {};
-  if (!l)
-    return {
-      countryCallingCodeSource: i,
-      countryCallingCode: n
+    if ("string" == typeof e3)
+      return Yr(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return Yr(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
+    return function() {
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
-  var s = Ea(xr(l), t), c = s.nationalNumber, p = s.carrierCode, m = Vt(n, {
-    nationalNumber: c,
-    defaultCountry: e,
-    metadata: t
-  });
-  return m && (d = m, m === "001" || t.country(d)), {
-    country: d,
-    countryCallingCode: n,
-    countryCallingCodeSource: i,
-    nationalNumber: c,
-    carrierCode: p
-  };
-}
-function Fr(r, e) {
-  var a = Object.keys(r);
-  if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
   }
-  return a;
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Rr(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Fr(Object(a), !0).forEach(function(t) {
-      zd(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Fr(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
+function Yr(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function Kr(e2, a2) {
+  var t2 = a2.countries, r2 = a2.defaultCountry, o2 = a2.metadata;
+  o2 = new Mt(o2);
+  for (var i2, n2 = [], d2 = Hr(t2); !(i2 = d2()).done; ) {
+    var l2 = i2.value;
+    if (o2.country(l2), o2.leadingDigits()) {
+      if (e2 && 0 === e2.search(o2.leadingDigits()))
+        return l2;
+    } else if (zr({ phone: e2, country: l2 }, void 0, o2.metadata)) {
+      if (!r2)
+        return l2;
+      if (l2 === r2)
+        return l2;
+      n2.push(l2);
+    }
+  }
+  if (n2.length > 0)
+    return n2[0];
+}
+var Qr = false;
+function Jr(e2, a2) {
+  var t2 = a2.nationalNumber, r2 = a2.defaultCountry, o2 = a2.metadata;
+  if (Qr && o2.isNonGeographicCallingCode(e2))
+    return "001";
+  var i2 = o2.getCountryCodesForCallingCode(e2);
+  return i2 ? 1 === i2.length ? i2[0] : Kr(t2, { countries: i2, defaultCountry: r2, metadata: o2.metadata }) : void 0;
+}
+var qr = "+", Wr = "([" + Ct + "]|[\\-\\.\\(\\)]?)", Zr = new RegExp("^\\" + qr + Wr + "*[" + Ct + "]" + Wr + "*$", "g"), Xr = new RegExp("^(" + ("[" + Ct + "]+((\\-)*[" + Ct + "])*") + "\\.)*" + ("[a-zA-Z]+((\\-)*[" + Ct + "])*") + "\\.?$", "g"), eo = "tel:", ao = ";phone-context=", to = ";isub=";
+function ro(e2, a2) {
+  var t2, r2 = a2.extractFormattedPhoneNumber, o2 = function(e3) {
+    var a3 = e3.indexOf(ao);
+    if (a3 < 0)
+      return null;
+    var t3 = a3 + ao.length;
+    if (t3 >= e3.length)
+      return "";
+    var r3 = e3.indexOf(";", t3);
+    return r3 >= 0 ? e3.substring(t3, r3) : e3.substring(t3);
+  }(e2);
+  if (!function(e3) {
+    return null === e3 || 0 !== e3.length && (Zr.test(e3) || Xr.test(e3));
+  }(o2))
+    throw new xt("NOT_A_NUMBER");
+  if (null === o2)
+    t2 = r2(e2) || "";
+  else {
+    t2 = "", o2.charAt(0) === qr && (t2 += o2);
+    var i2, n2 = e2.indexOf(eo);
+    i2 = n2 >= 0 ? n2 + eo.length : 0;
+    var d2 = e2.indexOf(ao);
+    t2 += e2.substring(i2, d2);
+  }
+  var l2 = t2.indexOf(to);
+  if (l2 > 0 && (t2 = t2.substring(0, l2)), "" !== t2)
+    return t2;
+}
+var oo = 250, io = new RegExp("[+\uFF0B" + Ct + "]"), no = new RegExp("[^" + Ct + "#]+$");
+function lo(e2, a2, t2) {
+  if (a2 = a2 || {}, t2 = new Mt(t2), a2.defaultCountry && !t2.hasCountry(a2.defaultCountry)) {
+    if (a2.v2)
+      throw new xt("INVALID_COUNTRY");
+    throw new Error("Unknown country: ".concat(a2.defaultCountry));
+  }
+  var r2 = function(e3, a3, t3) {
+    var r3 = ro(e3, { extractFormattedPhoneNumber: function(e4) {
+      return function(e5, a4, t4) {
+        if (!e5)
+          return;
+        if (e5.length > oo) {
+          if (t4)
+            throw new xt("TOO_LONG");
+          return;
+        }
+        if (false === a4)
+          return e5;
+        var r4 = e5.search(io);
+        if (r4 < 0)
+          return;
+        return e5.slice(r4).replace(no, "");
+      }(e4, t3, a3);
+    } });
+    if (!r3)
+      return {};
+    if (!function(e4) {
+      return e4.length >= wt && Wt.test(e4);
+    }(r3))
+      return function(e4) {
+        return Jt.test(e4);
+      }(r3) ? { error: "TOO_SHORT" } : {};
+    var o3 = function(e4) {
+      var a4 = e4.search(Zt);
+      if (a4 < 0)
+        return {};
+      for (var t4 = e4.slice(0, a4), r4 = e4.match(Zt), o4 = 1; o4 < r4.length; ) {
+        if (r4[o4])
+          return { number: t4, ext: r4[o4] };
+        o4++;
+      }
+    }(r3);
+    if (o3.ext)
+      return o3;
+    return { number: r3 };
+  }(e2, a2.v2, a2.extract), o2 = r2.number, i2 = r2.ext, n2 = r2.error;
+  if (!o2) {
+    if (a2.v2) {
+      if ("TOO_SHORT" === n2)
+        throw new xt("TOO_SHORT");
+      throw new xt("NOT_A_NUMBER");
+    }
+    return {};
+  }
+  var d2 = function(e3, a3, t3, r3) {
+    var o3, i3 = Vr(nr(e3), a3, t3, r3.metadata), n3 = i3.countryCallingCodeSource, d3 = i3.countryCallingCode, l3 = i3.number;
+    if (d3)
+      r3.selectNumberingPlan(d3);
+    else {
+      if (!l3 || !a3 && !t3)
+        return {};
+      r3.selectNumberingPlan(a3, t3), a3 && (o3 = a3), d3 = t3 || Gt(a3, r3.metadata);
+    }
+    if (!l3)
+      return { countryCallingCodeSource: n3, countryCallingCode: d3 };
+    var s3 = Ur(nr(l3), r3), c3 = s3.nationalNumber, m3 = s3.carrierCode, u3 = Jr(d3, { nationalNumber: c3, defaultCountry: a3, metadata: r3 });
+    u3 && (o3 = u3, "001" === u3 || r3.country(o3));
+    return { country: o3, countryCallingCode: d3, countryCallingCodeSource: n3, nationalNumber: c3, carrierCode: m3 };
+  }(o2, a2.defaultCountry, a2.defaultCallingCode, t2), l2 = d2.country, s2 = d2.nationalNumber, c2 = d2.countryCallingCode, m2 = d2.countryCallingCodeSource, u2 = d2.carrierCode;
+  if (!t2.hasSelectedNumberingPlan()) {
+    if (a2.v2)
+      throw new xt("INVALID_COUNTRY");
+    return {};
+  }
+  if (!s2 || s2.length < wt) {
+    if (a2.v2)
+      throw new xt("TOO_SHORT");
+    return {};
+  }
+  if (s2.length > $t) {
+    if (a2.v2)
+      throw new xt("TOO_LONG");
+    return {};
+  }
+  if (a2.v2) {
+    var p2 = new Dr(c2, s2, t2.metadata);
+    return l2 && (p2.country = l2), u2 && (p2.carrierCode = u2), i2 && (p2.ext = i2), p2.__countryCallingCodeSource = m2, p2;
+  }
+  var h2 = !!(a2.extended ? t2.hasSelectedNumberingPlan() : l2) && pr(s2, t2.nationalNumberPattern());
+  return a2.extended ? { country: l2, countryCallingCode: c2, carrierCode: u2, valid: h2, possible: !!h2 || !(true !== a2.extended || !t2.possibleLengths() || !ur(s2, t2)), phone: s2, ext: i2 } : h2 ? function(e3, a3, t3) {
+    var r3 = { country: e3, phone: a3 };
+    t3 && (r3.ext = t3);
+    return r3;
+  }(l2, s2, i2) : {};
+}
+function so(e2, a2) {
+  var t2 = Object.keys(e2);
+  if (Object.getOwnPropertySymbols) {
+    var r2 = Object.getOwnPropertySymbols(e2);
+    a2 && (r2 = r2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), t2.push.apply(t2, r2);
+  }
+  return t2;
+}
+function co(e2) {
+  for (var a2 = 1; a2 < arguments.length; a2++) {
+    var t2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? so(Object(t2), true).forEach(function(a3) {
+      mo(e2, a3, t2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : so(Object(t2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
     });
   }
-  return r;
+  return e2;
 }
-function zd(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
+function mo(e2, a2, t2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
 }
-function vd(r, e, a) {
-  return pd(r, Rr(Rr({}, e), {}, {
-    v2: !0
-  }), a);
+function uo(e2) {
+  return uo = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+    return typeof e3;
+  } : function(e3) {
+    return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
+  }, uo(e2);
 }
-function Ia(r) {
-  "@babel/helpers - typeof";
-  return Ia = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
-    return typeof e;
-  } : function(e) {
-    return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, Ia(r);
-}
-function Or(r, e) {
-  var a = Object.keys(r);
+function po(e2, a2) {
+  var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
+    var r2 = Object.getOwnPropertySymbols(e2);
+    a2 && (r2 = r2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), t2.push.apply(t2, r2);
   }
-  return a;
+  return t2;
 }
-function yd(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Or(Object(a), !0).forEach(function(t) {
-      kd(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Or(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
-    });
-  }
-  return r;
+function ho(e2, a2, t2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
 }
-function kd(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
-}
-function xd(r, e) {
-  return Cd(r) || _d(r, e) || $d(r, e) || wd();
-}
-function wd() {
-  throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function $d(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return Mr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Mr(r, e);
-  }
-}
-function Mr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function _d(r, e) {
-  var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a != null) {
-    var t = [], o = !0, i = !1, n, l;
+function go(e2, a2) {
+  return function(e3) {
+    if (Array.isArray(e3))
+      return e3;
+  }(e2) || function(e3, a3) {
+    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == t2)
+      return;
+    var r2, o2, i2 = [], n2 = true, d2 = false;
     try {
-      for (a = a.call(r); !(o = (n = a.next()).done) && (t.push(n.value), !(e && t.length === e)); o = !0)
+      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
         ;
-    } catch (d) {
-      i = !0, l = d;
+    } catch (e4) {
+      d2 = true, o2 = e4;
     } finally {
       try {
-        !o && a.return != null && a.return();
+        n2 || null == t2.return || t2.return();
       } finally {
-        if (i)
-          throw l;
+        if (d2)
+          throw o2;
       }
     }
-    return t;
-  }
+    return i2;
+  }(e2, a2) || function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return bo(e3, a3);
+    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
+    if ("Map" === t2 || "Set" === t2)
+      return Array.from(e3);
+    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+      return bo(e3, a3);
+  }(e2, a2) || function() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }();
 }
-function Cd(r) {
-  if (Array.isArray(r))
-    return r;
+function bo(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
 }
-function Ed(r) {
-  var e = Array.prototype.slice.call(r), a = xd(e, 4), t = a[0], o = a[1], i = a[2], n = a[3], l, d, s;
-  if (typeof t == "string")
-    l = t;
-  else
+function zo(e2) {
+  var a2, t2, r2, o2 = go(Array.prototype.slice.call(e2), 4), i2 = o2[0], n2 = o2[1], d2 = o2[2], l2 = o2[3];
+  if ("string" != typeof i2)
     throw new TypeError("A text for parsing must be a string.");
-  if (!o || typeof o == "string")
-    n ? (d = i, s = n) : (d = void 0, s = i), o && (d = yd({
-      defaultCountry: o
-    }, d));
-  else if (Nd(o))
-    i ? (d = o, s = i) : s = o;
-  else
-    throw new Error("Invalid second argument: ".concat(o));
-  return {
-    text: l,
-    options: d,
-    metadata: s
-  };
+  if (a2 = i2, n2 && "string" != typeof n2) {
+    if (!fo(n2))
+      throw new Error("Invalid second argument: ".concat(n2));
+    d2 ? (t2 = n2, r2 = d2) : r2 = n2;
+  } else
+    l2 ? (t2 = d2, r2 = l2) : (t2 = void 0, r2 = d2), n2 && (t2 = function(e3) {
+      for (var a3 = 1; a3 < arguments.length; a3++) {
+        var t3 = null != arguments[a3] ? arguments[a3] : {};
+        a3 % 2 ? po(Object(t3), true).forEach(function(a4) {
+          ho(e3, a4, t3[a4]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e3, Object.getOwnPropertyDescriptors(t3)) : po(Object(t3)).forEach(function(a4) {
+          Object.defineProperty(e3, a4, Object.getOwnPropertyDescriptor(t3, a4));
+        });
+      }
+      return e3;
+    }({ defaultCountry: n2 }, t2));
+  return { text: a2, options: t2, metadata: r2 };
 }
-var Nd = function(e) {
-  return Ia(e) === "object";
+var fo = function(e2) {
+  return "object" === uo(e2);
 };
-function Dr(r, e) {
-  var a = Object.keys(r);
+function vo(e2, a2) {
+  var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var t = Object.getOwnPropertySymbols(r);
-    e && (t = t.filter(function(o) {
-      return Object.getOwnPropertyDescriptor(r, o).enumerable;
-    })), a.push.apply(a, t);
+    var r2 = Object.getOwnPropertySymbols(e2);
+    a2 && (r2 = r2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), t2.push.apply(t2, r2);
   }
-  return a;
+  return t2;
 }
-function Lr(r) {
-  for (var e = 1; e < arguments.length; e++) {
-    var a = arguments[e] != null ? arguments[e] : {};
-    e % 2 ? Dr(Object(a), !0).forEach(function(t) {
-      Ad(r, t, a[t]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(a)) : Dr(Object(a)).forEach(function(t) {
-      Object.defineProperty(r, t, Object.getOwnPropertyDescriptor(a, t));
+function yo(e2) {
+  for (var a2 = 1; a2 < arguments.length; a2++) {
+    var t2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? vo(Object(t2), true).forEach(function(a3) {
+      ko(e2, a3, t2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : vo(Object(t2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
     });
   }
-  return r;
+  return e2;
 }
-function Ad(r, e, a) {
-  return e in r ? Object.defineProperty(r, e, {
-    value: a,
-    enumerable: !0,
-    configurable: !0,
-    writable: !0
-  }) : r[e] = a, r;
+function ko(e2, a2, t2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
 }
-function Id(r, e, a) {
-  e && e.defaultCountry && !nn(e.defaultCountry, a) && (e = Lr(Lr({}, e), {}, {
-    defaultCountry: void 0
-  }));
+function xo(e2, a2, t2) {
+  a2 && a2.defaultCountry && !function(e3, a3) {
+    return a3.countries.hasOwnProperty(e3);
+  }(a2.defaultCountry, t2) && (a2 = yo(yo({}, a2), {}, { defaultCountry: void 0 }));
   try {
-    return vd(r, e, a);
-  } catch (t) {
-    if (!(t instanceof F))
-      throw t;
+    return function(e3, a3, t3) {
+      return lo(e3, co(co({}, a3), {}, { v2: true }), t3);
+    }(e2, a2, t2);
+  } catch (e3) {
+    if (!(e3 instanceof xt))
+      throw e3;
   }
 }
-function Sd() {
-  var r = Ed(arguments), e = r.text, a = r.options, t = r.metadata;
-  return Id(e, a, t);
+function wo() {
+  var e2 = zo(arguments);
+  return xo(e2.text, e2.options, e2.metadata);
 }
-function Pd(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function Ur(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+function $o(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Bd(r, e, a) {
-  return e && Ur(r.prototype, e), a && Ur(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var Td = /* @__PURE__ */ function() {
-  function r(e) {
-    var a = e.onCountryChange, t = e.onCallingCodeChange;
-    Pd(this, r), this.onCountryChange = a, this.onCallingCodeChange = t;
+var _o = function() {
+  function e2(a3) {
+    var t3 = a3.onCountryChange, r3 = a3.onCallingCodeChange;
+    !function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), this.onCountryChange = t3, this.onCallingCodeChange = r3;
   }
-  return Bd(r, [{
-    key: "reset",
-    value: function(a) {
-      var t = a.country, o = a.callingCode;
-      this.international = !1, this.missingPlus = !1, this.IDDPrefix = void 0, this.callingCode = void 0, this.digits = "", this.resetNationalSignificantNumber(), this.initCountryAndCallingCode(t, o);
+  var a2, t2, r2;
+  return a2 = e2, t2 = [{ key: "reset", value: function(e3) {
+    var a3 = e3.country, t3 = e3.callingCode;
+    this.international = false, this.missingPlus = false, this.IDDPrefix = void 0, this.callingCode = void 0, this.digits = "", this.resetNationalSignificantNumber(), this.initCountryAndCallingCode(a3, t3);
+  } }, { key: "resetNationalSignificantNumber", value: function() {
+    this.nationalSignificantNumber = this.getNationalDigits(), this.nationalSignificantNumberMatchesInput = true, this.nationalPrefix = void 0, this.carrierCode = void 0, this.complexPrefixBeforeNationalSignificantNumber = void 0;
+  } }, { key: "update", value: function(e3) {
+    for (var a3 = 0, t3 = Object.keys(e3); a3 < t3.length; a3++) {
+      var r3 = t3[a3];
+      this[r3] = e3[r3];
     }
-  }, {
-    key: "resetNationalSignificantNumber",
-    value: function() {
-      this.nationalSignificantNumber = this.getNationalDigits(), this.nationalSignificantNumberMatchesInput = !0, this.nationalPrefix = void 0, this.carrierCode = void 0, this.complexPrefixBeforeNationalSignificantNumber = void 0;
-    }
-  }, {
-    key: "update",
-    value: function(a) {
-      for (var t = 0, o = Object.keys(a); t < o.length; t++) {
-        var i = o[t];
-        this[i] = a[i];
-      }
-    }
-  }, {
-    key: "initCountryAndCallingCode",
-    value: function(a, t) {
-      this.setCountry(a), this.setCallingCode(t);
-    }
-  }, {
-    key: "setCountry",
-    value: function(a) {
-      this.country = a, this.onCountryChange(a);
-    }
-  }, {
-    key: "setCallingCode",
-    value: function(a) {
-      this.callingCode = a, this.onCallingCodeChange(a, this.country);
-    }
-  }, {
-    key: "startInternationalNumber",
-    value: function(a, t) {
-      this.international = !0, this.initCountryAndCallingCode(a, t);
-    }
-  }, {
-    key: "appendDigits",
-    value: function(a) {
-      this.digits += a;
-    }
-  }, {
-    key: "appendNationalSignificantNumberDigits",
-    value: function(a) {
-      this.nationalSignificantNumber += a;
-    }
-    /**
-     * Returns the part of `this.digits` that corresponds to the national number.
-     * Basically, all digits that have been input by the user, except for the
-     * international prefix and the country calling code part
-     * (if the number is an international one).
-     * @return {string}
-     */
-  }, {
-    key: "getNationalDigits",
-    value: function() {
-      return this.international ? this.digits.slice((this.IDDPrefix ? this.IDDPrefix.length : 0) + (this.callingCode ? this.callingCode.length : 0)) : this.digits;
-    }
-  }, {
-    key: "getDigitsWithoutInternationalPrefix",
-    value: function() {
-      return this.international && this.IDDPrefix ? this.digits.slice(this.IDDPrefix.length) : this.digits;
-    }
-  }]), r;
+  } }, { key: "initCountryAndCallingCode", value: function(e3, a3) {
+    this.setCountry(e3), this.setCallingCode(a3);
+  } }, { key: "setCountry", value: function(e3) {
+    this.country = e3, this.onCountryChange(e3);
+  } }, { key: "setCallingCode", value: function(e3) {
+    this.callingCode = e3, this.onCallingCodeChange(e3, this.country);
+  } }, { key: "startInternationalNumber", value: function(e3, a3) {
+    this.international = true, this.initCountryAndCallingCode(e3, a3);
+  } }, { key: "appendDigits", value: function(e3) {
+    this.digits += e3;
+  } }, { key: "appendNationalSignificantNumberDigits", value: function(e3) {
+    this.nationalSignificantNumber += e3;
+  } }, { key: "getNationalDigits", value: function() {
+    return this.international ? this.digits.slice((this.IDDPrefix ? this.IDDPrefix.length : 0) + (this.callingCode ? this.callingCode.length : 0)) : this.digits;
+  } }, { key: "getDigitsWithoutInternationalPrefix", value: function() {
+    return this.international && this.IDDPrefix ? this.digits.slice(this.IDDPrefix.length) : this.digits;
+  } }], t2 && $o(a2.prototype, t2), r2 && $o(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Fd(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Rd(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
+function Co(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return Eo(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return Eo(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
     return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
   }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Rd(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return Gr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Gr(r, e);
-  }
+function Eo(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
 }
-function Gr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-var A = "x", pa = new RegExp(A);
-function _e(r, e) {
-  if (e < 1)
+var So = "x", Io = new RegExp(So);
+function Ao(e2, a2) {
+  if (a2 < 1)
     return "";
-  for (var a = ""; e > 1; )
-    e & 1 && (a += r), e >>= 1, r += r;
-  return a + r;
+  for (var t2 = ""; a2 > 1; )
+    1 & a2 && (t2 += e2), a2 >>= 1, e2 += e2;
+  return t2 + e2;
 }
-function Hr(r, e) {
-  return r[e] === ")" && e++, Od(r.slice(0, e));
-}
-function Od(r) {
-  for (var e = [], a = 0; a < r.length; )
-    r[a] === "(" ? e.push(a) : r[a] === ")" && e.pop(), a++;
-  var t = 0, o = "";
-  e.push(r.length);
-  for (var i = 0, n = e; i < n.length; i++) {
-    var l = n[i];
-    o += r.slice(t, l), t = l + 1;
-  }
-  return o;
-}
-function Md(r, e, a) {
-  for (var t = Fd(a.split("")), o; !(o = t()).done; ) {
-    var i = o.value;
-    if (r.slice(e + 1).search(pa) < 0)
-      return;
-    e = r.search(pa), r = r.replace(pa, i);
-  }
-  return [r, e];
-}
-function Dd(r, e, a) {
-  var t = a.metadata, o = a.shouldTryNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = new RegExp("^(?:".concat(e.pattern(), ")$"));
-  if (n.test(r.nationalSignificantNumber))
-    return Ud(r, e, {
-      metadata: t,
-      shouldTryNationalPrefixFormattingRule: o,
-      getSeparatorAfterNationalPrefix: i
-    });
-}
-function Ld(r, e) {
-  return Ye(r, e) === "IS_POSSIBLE";
-}
-function Ud(r, e, a) {
-  var t = a.metadata, o = a.shouldTryNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix;
-  if (r.nationalSignificantNumber, r.international, r.nationalPrefix, r.carrierCode, o(e)) {
-    var n = Vr(r, e, {
-      useNationalPrefixFormattingRule: !0,
-      getSeparatorAfterNationalPrefix: i,
-      metadata: t
-    });
-    if (n)
-      return n;
-  }
-  return Vr(r, e, {
-    useNationalPrefixFormattingRule: !1,
-    getSeparatorAfterNationalPrefix: i,
-    metadata: t
-  });
-}
-function Vr(r, e, a) {
-  var t = a.metadata, o = a.useNationalPrefixFormattingRule, i = a.getSeparatorAfterNationalPrefix, n = Dt(r.nationalSignificantNumber, e, {
-    carrierCode: r.carrierCode,
-    useInternationalFormat: r.international,
-    withNationalPrefix: o,
-    metadata: t
-  });
-  if (o || (r.nationalPrefix ? n = r.nationalPrefix + i(e) + n : r.complexPrefixBeforeNationalSignificantNumber && (n = r.complexPrefixBeforeNationalSignificantNumber + " " + n)), Gd(n, r))
-    return n;
-}
-function Gd(r, e) {
-  return Be(r) === e.getNationalDigits();
-}
-function Hd(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function jr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
-  }
-}
-function Vd(r, e, a) {
-  return e && jr(r.prototype, e), a && jr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var jd = /* @__PURE__ */ function() {
-  function r() {
-    Hd(this, r);
-  }
-  return Vd(r, [{
-    key: "parse",
-    value: function(a) {
-      if (this.context = [{
-        or: !0,
-        instructions: []
-      }], this.parsePattern(a), this.context.length !== 1)
-        throw new Error("Non-finalized contexts left when pattern parse ended");
-      var t = this.context[0], o = t.branches, i = t.instructions;
-      if (o)
-        return {
-          op: "|",
-          args: o.concat([ha(i)])
-        };
-      if (i.length === 0)
-        throw new Error("Pattern is required");
-      return i.length === 1 ? i[0] : i;
+function No(e2, a2) {
+  return ")" === e2[a2] && a2++, function(e3) {
+    var a3 = [], t2 = 0;
+    for (; t2 < e3.length; )
+      "(" === e3[t2] ? a3.push(t2) : ")" === e3[t2] && a3.pop(), t2++;
+    var r2 = 0, o2 = "";
+    a3.push(e3.length);
+    for (var i2 = 0, n2 = a3; i2 < n2.length; i2++) {
+      var d2 = n2[i2];
+      o2 += e3.slice(r2, d2), r2 = d2 + 1;
     }
-  }, {
-    key: "startContext",
-    value: function(a) {
-      this.context.push(a);
-    }
-  }, {
-    key: "endContext",
-    value: function() {
-      this.context.pop();
-    }
-  }, {
-    key: "getContext",
-    value: function() {
-      return this.context[this.context.length - 1];
-    }
-  }, {
-    key: "parsePattern",
-    value: function(a) {
-      if (!a)
-        throw new Error("Pattern is required");
-      var t = a.match(Qd);
-      if (!t) {
-        if (Kd.test(a))
-          throw new Error("Illegal characters found in a pattern: ".concat(a));
-        this.getContext().instructions = this.getContext().instructions.concat(a.split(""));
-        return;
+    return o2;
+  }(e2.slice(0, a2));
+}
+function Po(e2, a2, t2) {
+  var r2 = t2.metadata, o2 = t2.shouldTryNationalPrefixFormattingRule, i2 = t2.getSeparatorAfterNationalPrefix;
+  if (new RegExp("^(?:".concat(a2.pattern(), ")$")).test(e2.nationalSignificantNumber))
+    return function(e3, a3, t3) {
+      var r3 = t3.metadata, o3 = t3.shouldTryNationalPrefixFormattingRule, i3 = t3.getSeparatorAfterNationalPrefix;
+      if (e3.nationalSignificantNumber, e3.international, e3.nationalPrefix, e3.carrierCode, o3(a3)) {
+        var n2 = Bo(e3, a3, { useNationalPrefixFormattingRule: true, getSeparatorAfterNationalPrefix: i3, metadata: r3 });
+        if (n2)
+          return n2;
       }
-      var o = t[1], i = a.slice(0, t.index), n = a.slice(t.index + o.length);
-      switch (o) {
+      return Bo(e3, a3, { useNationalPrefixFormattingRule: false, getSeparatorAfterNationalPrefix: i3, metadata: r3 });
+    }(e2, a2, { metadata: r2, shouldTryNationalPrefixFormattingRule: o2, getSeparatorAfterNationalPrefix: i2 });
+}
+function Bo(e2, a2, t2) {
+  var r2 = t2.metadata, o2 = t2.useNationalPrefixFormattingRule, i2 = t2.getSeparatorAfterNationalPrefix, n2 = xr(e2.nationalSignificantNumber, a2, { carrierCode: e2.carrierCode, useInternationalFormat: e2.international, withNationalPrefix: o2, metadata: r2 });
+  if (o2 || (e2.nationalPrefix ? n2 = e2.nationalPrefix + i2(a2) + n2 : e2.complexPrefixBeforeNationalSignificantNumber && (n2 = e2.complexPrefixBeforeNationalSignificantNumber + " " + n2)), function(e3, a3) {
+    return rr(e3) === a3.getNationalDigits();
+  }(n2, e2))
+    return n2;
+}
+function Oo(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  }
+}
+var Mo = function() {
+  function e2() {
+    !function(e3, a3) {
+      if (!(e3 instanceof a3))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2);
+  }
+  var a2, t2, r2;
+  return a2 = e2, (t2 = [{ key: "parse", value: function(e3) {
+    if (this.context = [{ or: true, instructions: [] }], this.parsePattern(e3), 1 !== this.context.length)
+      throw new Error("Non-finalized contexts left when pattern parse ended");
+    var a3 = this.context[0], t3 = a3.branches, r3 = a3.instructions;
+    if (t3)
+      return { op: "|", args: t3.concat([Fo(r3)]) };
+    if (0 === r3.length)
+      throw new Error("Pattern is required");
+    return 1 === r3.length ? r3[0] : r3;
+  } }, { key: "startContext", value: function(e3) {
+    this.context.push(e3);
+  } }, { key: "endContext", value: function() {
+    this.context.pop();
+  } }, { key: "getContext", value: function() {
+    return this.context[this.context.length - 1];
+  } }, { key: "parsePattern", value: function(e3) {
+    if (!e3)
+      throw new Error("Pattern is required");
+    var a3 = e3.match(To);
+    if (a3) {
+      var t3 = a3[1], r3 = e3.slice(0, a3.index), o2 = e3.slice(a3.index + t3.length);
+      switch (t3) {
         case "(?:":
-          i && this.parsePattern(i), this.startContext({
-            or: !0,
-            instructions: [],
-            branches: []
-          });
+          r3 && this.parsePattern(r3), this.startContext({ or: true, instructions: [], branches: [] });
           break;
         case ")":
           if (!this.getContext().or)
             throw new Error('")" operator must be preceded by "(?:" operator');
-          if (i && this.parsePattern(i), this.getContext().instructions.length === 0)
+          if (r3 && this.parsePattern(r3), 0 === this.getContext().instructions.length)
             throw new Error('No instructions found after "|" operator in an "or" group');
-          var l = this.getContext(), d = l.branches;
-          d.push(ha(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({
-            op: "|",
-            args: d
-          });
+          var i2 = this.getContext().branches;
+          i2.push(Fo(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({ op: "|", args: i2 });
           break;
         case "|":
           if (!this.getContext().or)
             throw new Error('"|" operator can only be used inside "or" groups');
-          if (i && this.parsePattern(i), !this.getContext().branches)
-            if (this.context.length === 1)
-              this.getContext().branches = [];
-            else
+          if (r3 && this.parsePattern(r3), !this.getContext().branches) {
+            if (1 !== this.context.length)
               throw new Error('"branches" not found in an "or" group context');
-          this.getContext().branches.push(ha(this.getContext().instructions)), this.getContext().instructions = [];
+            this.getContext().branches = [];
+          }
+          this.getContext().branches.push(Fo(this.getContext().instructions)), this.getContext().instructions = [];
           break;
         case "[":
-          i && this.parsePattern(i), this.startContext({
-            oneOfSet: !0
-          });
+          r3 && this.parsePattern(r3), this.startContext({ oneOfSet: true });
           break;
         case "]":
           if (!this.getContext().oneOfSet)
             throw new Error('"]" operator must be preceded by "[" operator');
-          this.endContext(), this.getContext().instructions.push({
-            op: "[]",
-            args: Yd(i)
-          });
+          this.endContext(), this.getContext().instructions.push({ op: "[]", args: Ro(r3) });
           break;
         default:
-          throw new Error("Unknown operator: ".concat(o));
+          throw new Error("Unknown operator: ".concat(t3));
       }
-      n && this.parsePattern(n);
+      o2 && this.parsePattern(o2);
+    } else {
+      if (Do.test(e3))
+        throw new Error("Illegal characters found in a pattern: ".concat(e3));
+      this.getContext().instructions = this.getContext().instructions.concat(e3.split(""));
     }
-  }]), r;
+  } }]) && Oo(a2.prototype, t2), r2 && Oo(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Yd(r) {
-  for (var e = [], a = 0; a < r.length; ) {
-    if (r[a] === "-") {
-      if (a === 0 || a === r.length - 1)
-        throw new Error("Couldn't parse a one-of set pattern: ".concat(r));
-      for (var t = r[a - 1].charCodeAt(0) + 1, o = r[a + 1].charCodeAt(0) - 1, i = t; i <= o; )
-        e.push(String.fromCharCode(i)), i++;
+function Ro(e2) {
+  for (var a2 = [], t2 = 0; t2 < e2.length; ) {
+    if ("-" === e2[t2]) {
+      if (0 === t2 || t2 === e2.length - 1)
+        throw new Error("Couldn't parse a one-of set pattern: ".concat(e2));
+      for (var r2 = e2[t2 - 1].charCodeAt(0) + 1, o2 = e2[t2 + 1].charCodeAt(0) - 1, i2 = r2; i2 <= o2; )
+        a2.push(String.fromCharCode(i2)), i2++;
     } else
-      e.push(r[a]);
-    a++;
+      a2.push(e2[t2]);
+    t2++;
   }
-  return e;
+  return a2;
 }
-var Kd = /[\(\)\[\]\?\:\|]/, Qd = new RegExp(
-  // any of:
-  "(\\||\\(\\?\\:|\\)|\\[|\\])"
-);
-function ha(r) {
-  return r.length === 1 ? r[0] : r;
+var Do = /[\(\)\[\]\?\:\|]/, To = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
+function Fo(e2) {
+  return 1 === e2.length ? e2[0] : e2;
 }
-function Yr(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Jd(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
+function Lo(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return jo(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return jo(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
     return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
   }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Jd(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return Kr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Kr(r, e);
+function jo(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function Uo(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Kr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function qd(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function Qr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+var Go = function() {
+  function e2(a3) {
+    !function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), this.matchTree = new Mo().parse(a3);
   }
-}
-function Wd(r, e, a) {
-  return e && Qr(r.prototype, e), a && Qr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var Xd = /* @__PURE__ */ function() {
-  function r(e) {
-    qd(this, r), this.matchTree = new jd().parse(e);
-  }
-  return Wd(r, [{
-    key: "match",
-    value: function(a) {
-      var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, o = t.allowOverflow;
-      if (!a)
-        throw new Error("String is required");
-      var i = Sa(a.split(""), this.matchTree, !0);
-      if (i && i.match && delete i.matchedChars, !(i && i.overflow && !o))
-        return i;
-    }
-  }]), r;
+  var a2, t2, r2;
+  return a2 = e2, t2 = [{ key: "match", value: function(e3) {
+    var a3 = (arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}).allowOverflow;
+    if (!e3)
+      throw new Error("String is required");
+    var t3 = Vo(e3.split(""), this.matchTree, true);
+    if (t3 && t3.match && delete t3.matchedChars, !t3 || !t3.overflow || a3)
+      return t3;
+  } }], t2 && Uo(a2.prototype, t2), r2 && Uo(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Sa(r, e, a) {
-  if (typeof e == "string") {
-    var t = r.join("");
-    return e.indexOf(t) === 0 ? r.length === e.length ? {
-      match: !0,
-      matchedChars: r
-    } : {
-      partialMatch: !0
-      // matchedChars: characters
-    } : t.indexOf(e) === 0 ? a && r.length > e.length ? {
-      overflow: !0
-    } : {
-      match: !0,
-      matchedChars: r.slice(0, e.length)
-    } : void 0;
+function Vo(e2, a2, t2) {
+  if ("string" == typeof a2) {
+    var r2 = e2.join("");
+    return 0 === a2.indexOf(r2) ? e2.length === a2.length ? { match: true, matchedChars: e2 } : { partialMatch: true } : 0 === r2.indexOf(a2) ? t2 && e2.length > a2.length ? { overflow: true } : { match: true, matchedChars: e2.slice(0, a2.length) } : void 0;
   }
-  if (Array.isArray(e)) {
-    for (var o = r.slice(), i = 0; i < e.length; ) {
-      var n = e[i], l = Sa(o, n, a && i === e.length - 1);
-      if (l) {
-        if (l.overflow)
-          return l;
-        if (l.match) {
-          if (o = o.slice(l.matchedChars.length), o.length === 0)
-            return i === e.length - 1 ? {
-              match: !0,
-              matchedChars: r
-            } : {
-              partialMatch: !0
-              // matchedChars: characters
-            };
-        } else {
-          if (l.partialMatch)
-            return {
-              partialMatch: !0
-              // matchedChars: characters
-            };
-          throw new Error(`Unsupported match result:
-`.concat(JSON.stringify(l, null, 2)));
-        }
-      } else
+  if (Array.isArray(a2)) {
+    for (var o2 = e2.slice(), i2 = 0; i2 < a2.length; ) {
+      var n2 = Vo(o2, a2[i2], t2 && i2 === a2.length - 1);
+      if (!n2)
         return;
-      i++;
+      if (n2.overflow)
+        return n2;
+      if (!n2.match) {
+        if (n2.partialMatch)
+          return { partialMatch: true };
+        throw new Error("Unsupported match result:\n".concat(JSON.stringify(n2, null, 2)));
+      }
+      if (0 === (o2 = o2.slice(n2.matchedChars.length)).length)
+        return i2 === a2.length - 1 ? { match: true, matchedChars: e2 } : { partialMatch: true };
+      i2++;
     }
-    return a ? {
-      overflow: !0
-    } : {
-      match: !0,
-      matchedChars: r.slice(0, r.length - o.length)
-    };
+    return t2 ? { overflow: true } : { match: true, matchedChars: e2.slice(0, e2.length - o2.length) };
   }
-  switch (e.op) {
+  switch (a2.op) {
     case "|":
-      for (var d, s = Yr(e.args), c; !(c = s()).done; ) {
-        var p = c.value, m = Sa(r, p, a);
-        if (m) {
-          if (m.overflow)
-            return m;
-          if (m.match)
-            return {
-              match: !0,
-              matchedChars: m.matchedChars
-            };
-          if (m.partialMatch)
-            d = !0;
-          else
-            throw new Error(`Unsupported match result:
-`.concat(JSON.stringify(m, null, 2)));
+      for (var d2, l2, s2 = Lo(a2.args); !(l2 = s2()).done; ) {
+        var c2 = Vo(e2, l2.value, t2);
+        if (c2) {
+          if (c2.overflow)
+            return c2;
+          if (c2.match)
+            return { match: true, matchedChars: c2.matchedChars };
+          if (!c2.partialMatch)
+            throw new Error("Unsupported match result:\n".concat(JSON.stringify(c2, null, 2)));
+          d2 = true;
         }
       }
-      return d ? {
-        partialMatch: !0
-        // matchedChars: ...
-      } : void 0;
+      return d2 ? { partialMatch: true } : void 0;
     case "[]":
-      for (var u = Yr(e.args), f; !(f = u()).done; ) {
-        var h = f.value;
-        if (r[0] === h)
-          return r.length === 1 ? {
-            match: !0,
-            matchedChars: r
-          } : a ? {
-            overflow: !0
-          } : {
-            match: !0,
-            matchedChars: [h]
-          };
+      for (var m2, u2 = Lo(a2.args); !(m2 = u2()).done; ) {
+        var p2 = m2.value;
+        if (e2[0] === p2)
+          return 1 === e2.length ? { match: true, matchedChars: e2 } : t2 ? { overflow: true } : { match: true, matchedChars: [p2] };
       }
       return;
     default:
-      throw new Error("Unsupported instruction tree: ".concat(e));
+      throw new Error("Unsupported instruction tree: ".concat(a2));
   }
 }
-function Jr(r, e) {
-  var a = typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a)
-    return (a = a.call(r)).next.bind(a);
-  if (Array.isArray(r) || (a = Zd(r)) || e && r && typeof r.length == "number") {
-    a && (r = a);
-    var t = 0;
+function Ho(e2, a2) {
+  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (t2)
+    return (t2 = t2.call(e2)).next.bind(t2);
+  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return Yo(e3, a3);
+    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
+    if ("Map" === t3 || "Set" === t3)
+      return Array.from(e3);
+    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+      return Yo(e3, a3);
+  }(e2)) || a2 && e2 && "number" == typeof e2.length) {
+    t2 && (e2 = t2);
+    var r2 = 0;
     return function() {
-      return t >= r.length ? {
-        done: !0
-      } : {
-        done: !1,
-        value: r[t++]
-      };
+      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
     };
   }
-  throw new TypeError(`Invalid attempt to iterate non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Zd(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return qr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return qr(r, e);
+function Yo(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function Ko(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function qr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function el(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function Wr(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+var Qo = Ao("9", 15), Jo = /[- ]/, qo = new RegExp("[" + Et + "]*\\$1[" + Et + "]*(\\$\\d[" + Et + "]*)*$"), Wo = function() {
+  function e2(a3) {
+    a3.state;
+    var t3 = a3.metadata;
+    !function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), this.metadata = t3, this.resetFormat();
   }
-}
-function al(r, e, a) {
-  return e && Wr(r.prototype, e), a && Wr(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var Pa = "9", rl = 15, tl = _e(Pa, rl), ol = /[- ]/, il = function() {
-  return /\[([^\[\]])*\]/g;
-}, nl = function() {
-  return /\d(?=[^,}][^,}])/g;
-}, dl = new RegExp("[" + I + "]*\\$1[" + I + "]*(\\$\\d[" + I + "]*)*$"), Xr = 3, ll = /* @__PURE__ */ function() {
-  function r(e) {
-    e.state;
-    var a = e.metadata;
-    el(this, r), this.metadata = a, this.resetFormat();
-  }
-  return al(r, [{
-    key: "resetFormat",
-    value: function() {
-      this.chosenFormat = void 0, this.template = void 0, this.nationalNumberTemplate = void 0, this.populatedNationalNumberTemplate = void 0, this.populatedNationalNumberTemplatePosition = -1;
-    }
-  }, {
-    key: "reset",
-    value: function(a, t) {
-      this.resetFormat(), a ? (this.isNANP = a.callingCode() === "1", this.matchingFormats = a.formats(), t.nationalSignificantNumber && this.narrowDownMatchingFormats(t)) : (this.isNANP = void 0, this.matchingFormats = []);
-    }
-    /**
-     * Formats an updated phone number.
-     * @param  {string} nextDigits — Additional phone number digits.
-     * @param  {object} state — `AsYouType` state.
-     * @return {[string]} Returns undefined if the updated phone number can't be formatted using any of the available formats.
-     */
-  }, {
-    key: "format",
-    value: function(a, t) {
-      var o = this;
-      if (Ld(t.nationalSignificantNumber, this.metadata))
-        for (var i = Jr(this.matchingFormats), n; !(n = i()).done; ) {
-          var l = n.value, d = Dd(t, l, {
-            metadata: this.metadata,
-            shouldTryNationalPrefixFormattingRule: function(c) {
-              return o.shouldTryNationalPrefixFormattingRule(c, {
-                international: t.international,
-                nationalPrefix: t.nationalPrefix
-              });
-            },
-            getSeparatorAfterNationalPrefix: function(c) {
-              return o.getSeparatorAfterNationalPrefix(c);
-            }
-          });
-          if (d)
-            return this.resetFormat(), this.chosenFormat = l, this.setNationalNumberTemplate(d.replace(/\d/g, A), t), this.populatedNationalNumberTemplate = d, this.populatedNationalNumberTemplatePosition = this.template.lastIndexOf(A), d;
-        }
-      return this.formatNationalNumberWithNextDigits(a, t);
-    }
-    // Formats the next phone number digits.
-  }, {
-    key: "formatNationalNumberWithNextDigits",
-    value: function(a, t) {
-      var o = this.chosenFormat, i = this.chooseFormat(t);
-      if (i)
-        return i === o ? this.formatNextNationalNumberDigits(a) : this.formatNextNationalNumberDigits(t.getNationalDigits());
-    }
-  }, {
-    key: "narrowDownMatchingFormats",
-    value: function(a) {
-      var t = this, o = a.nationalSignificantNumber, i = a.nationalPrefix, n = a.international, l = o, d = l.length - Xr;
-      d < 0 && (d = 0), this.matchingFormats = this.matchingFormats.filter(function(s) {
-        return t.formatSuits(s, n, i) && t.formatMatches(s, l, d);
-      }), this.chosenFormat && this.matchingFormats.indexOf(this.chosenFormat) === -1 && this.resetFormat();
-    }
-  }, {
-    key: "formatSuits",
-    value: function(a, t, o) {
-      return !(o && !a.usesNationalPrefix() && // !format.domesticCarrierCodeFormattingRule() &&
-      !a.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !t && !o && a.nationalPrefixIsMandatoryWhenFormattingInNationalFormat());
-    }
-  }, {
-    key: "formatMatches",
-    value: function(a, t, o) {
-      var i = a.leadingDigitsPatterns().length;
-      if (i === 0)
-        return !0;
-      o = Math.min(o, i - 1);
-      var n = a.leadingDigitsPatterns()[o];
-      if (t.length < Xr)
-        try {
-          return new Xd(n).match(t, {
-            allowOverflow: !0
-          }) !== void 0;
-        } catch (l) {
-          return console.error(l), !0;
-        }
-      return new RegExp("^(".concat(n, ")")).test(t);
-    }
-  }, {
-    key: "getFormatFormat",
-    value: function(a, t) {
-      return t ? a.internationalFormat() : a.format();
-    }
-  }, {
-    key: "chooseFormat",
-    value: function(a) {
-      for (var t = this, o = function() {
-        var s = n.value;
-        return t.chosenFormat === s ? "break" : dl.test(t.getFormatFormat(s, a.international)) ? t.createTemplateForFormat(s, a) ? (t.chosenFormat = s, "break") : (t.matchingFormats = t.matchingFormats.filter(function(c) {
-          return c !== s;
-        }), "continue") : "continue";
-      }, i = Jr(this.matchingFormats.slice()), n; !(n = i()).done; ) {
-        var l = o();
-        if (l === "break")
-          break;
+  var a2, t2, r2;
+  return a2 = e2, t2 = [{ key: "resetFormat", value: function() {
+    this.chosenFormat = void 0, this.template = void 0, this.nationalNumberTemplate = void 0, this.populatedNationalNumberTemplate = void 0, this.populatedNationalNumberTemplatePosition = -1;
+  } }, { key: "reset", value: function(e3, a3) {
+    this.resetFormat(), e3 ? (this.isNANP = "1" === e3.callingCode(), this.matchingFormats = e3.formats(), a3.nationalSignificantNumber && this.narrowDownMatchingFormats(a3)) : (this.isNANP = void 0, this.matchingFormats = []);
+  } }, { key: "format", value: function(e3, a3) {
+    var t3 = this;
+    if (function(e4, a4) {
+      return "IS_POSSIBLE" === cr(e4, a4);
+    }(a3.nationalSignificantNumber, this.metadata))
+      for (var r3, o2 = Ho(this.matchingFormats); !(r3 = o2()).done; ) {
+        var i2 = r3.value, n2 = Po(a3, i2, { metadata: this.metadata, shouldTryNationalPrefixFormattingRule: function(e4) {
+          return t3.shouldTryNationalPrefixFormattingRule(e4, { international: a3.international, nationalPrefix: a3.nationalPrefix });
+        }, getSeparatorAfterNationalPrefix: function(e4) {
+          return t3.getSeparatorAfterNationalPrefix(e4);
+        } });
+        if (n2)
+          return this.resetFormat(), this.chosenFormat = i2, this.setNationalNumberTemplate(n2.replace(/\d/g, So), a3), this.populatedNationalNumberTemplate = n2, this.populatedNationalNumberTemplatePosition = this.template.lastIndexOf(So), n2;
       }
-      return this.chosenFormat || this.resetFormat(), this.chosenFormat;
-    }
-  }, {
-    key: "createTemplateForFormat",
-    value: function(a, t) {
-      if (!(a.pattern().indexOf("|") >= 0)) {
-        var o = this.getTemplateForFormat(a, t);
-        if (o)
-          return this.setNationalNumberTemplate(o, t), !0;
-      }
-    }
-  }, {
-    key: "getSeparatorAfterNationalPrefix",
-    value: function(a) {
-      return this.isNANP || a && a.nationalPrefixFormattingRule() && ol.test(a.nationalPrefixFormattingRule()) ? " " : "";
-    }
-  }, {
-    key: "getInternationalPrefixBeforeCountryCallingCode",
-    value: function(a, t) {
-      var o = a.IDDPrefix, i = a.missingPlus;
-      return o ? t && t.spacing === !1 ? o : o + " " : i ? "" : "+";
-    }
-  }, {
-    key: "getTemplate",
-    value: function(a) {
-      if (this.template) {
-        for (var t = -1, o = 0, i = a.international ? this.getInternationalPrefixBeforeCountryCallingCode(a, {
-          spacing: !1
-        }) : ""; o < i.length + a.getDigitsWithoutInternationalPrefix().length; )
-          t = this.template.indexOf(A, t + 1), o++;
-        return Hr(this.template, t + 1);
-      }
-    }
-  }, {
-    key: "setNationalNumberTemplate",
-    value: function(a, t) {
-      this.nationalNumberTemplate = a, this.populatedNationalNumberTemplate = a, this.populatedNationalNumberTemplatePosition = -1, t.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(t).replace(/[\d\+]/g, A) + _e(A, t.callingCode.length) + " " + a : this.template = a;
-    }
-    /**
-     * Generates formatting template for a national phone number,
-     * optionally containing a national prefix, for a format.
-     * @param  {Format} format
-     * @param  {string} nationalPrefix
-     * @return {string}
-     */
-  }, {
-    key: "getTemplateForFormat",
-    value: function(a, t) {
-      var o = t.nationalSignificantNumber, i = t.international, n = t.nationalPrefix, l = t.complexPrefixBeforeNationalSignificantNumber, d = a.pattern();
-      d = d.replace(il(), "\\d").replace(nl(), "\\d");
-      var s = tl.match(d)[0];
-      if (!(o.length > s.length)) {
-        var c = new RegExp("^" + d + "$"), p = o.replace(/\d/g, Pa);
-        c.test(p) && (s = p);
-        var m = this.getFormatFormat(a, i), u;
-        if (this.shouldTryNationalPrefixFormattingRule(a, {
-          international: i,
-          nationalPrefix: n
-        })) {
-          var f = m.replace(Mt, a.nationalPrefixFormattingRule());
-          if (Be(a.nationalPrefixFormattingRule()) === (n || "") + Be("$1") && (m = f, u = !0, n))
-            for (var h = n.length; h > 0; )
-              m = m.replace(/\d/, A), h--;
-        }
-        var y = s.replace(new RegExp(d), m).replace(new RegExp(Pa, "g"), A);
-        return u || (l ? y = _e(A, l.length) + " " + y : n && (y = _e(A, n.length) + this.getSeparatorAfterNationalPrefix(a) + y)), i && (y = Ot(y)), y;
-      }
-    }
-  }, {
-    key: "formatNextNationalNumberDigits",
-    value: function(a) {
-      var t = Md(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition, a);
-      if (!t) {
-        this.resetFormat();
-        return;
-      }
-      return this.populatedNationalNumberTemplate = t[0], this.populatedNationalNumberTemplatePosition = t[1], Hr(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition + 1);
-    }
-  }, {
-    key: "shouldTryNationalPrefixFormattingRule",
-    value: function(a, t) {
-      var o = t.international, i = t.nationalPrefix;
-      if (a.nationalPrefixFormattingRule()) {
-        var n = a.usesNationalPrefix();
-        if (n && i || !n && !o)
-          return !0;
-      }
-    }
-  }]), r;
-}();
-function Yt(r, e) {
-  return ul(r) || ml(r, e) || cl(r, e) || sl();
-}
-function sl() {
-  throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function cl(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return Zr(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return Zr(r, e);
-  }
-}
-function Zr(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function ml(r, e) {
-  var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a != null) {
-    var t = [], o = !0, i = !1, n, l;
-    try {
-      for (a = a.call(r); !(o = (n = a.next()).done) && (t.push(n.value), !(e && t.length === e)); o = !0)
-        ;
-    } catch (d) {
-      i = !0, l = d;
-    } finally {
+    return this.formatNationalNumberWithNextDigits(e3, a3);
+  } }, { key: "formatNationalNumberWithNextDigits", value: function(e3, a3) {
+    var t3 = this.chosenFormat, r3 = this.chooseFormat(a3);
+    if (r3)
+      return r3 === t3 ? this.formatNextNationalNumberDigits(e3) : this.formatNextNationalNumberDigits(a3.getNationalDigits());
+  } }, { key: "narrowDownMatchingFormats", value: function(e3) {
+    var a3 = this, t3 = e3.nationalSignificantNumber, r3 = e3.nationalPrefix, o2 = e3.international, i2 = t3, n2 = i2.length - 3;
+    n2 < 0 && (n2 = 0), this.matchingFormats = this.matchingFormats.filter(function(e4) {
+      return a3.formatSuits(e4, o2, r3) && a3.formatMatches(e4, i2, n2);
+    }), this.chosenFormat && -1 === this.matchingFormats.indexOf(this.chosenFormat) && this.resetFormat();
+  } }, { key: "formatSuits", value: function(e3, a3, t3) {
+    return !(t3 && !e3.usesNationalPrefix() && !e3.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !a3 && !t3 && e3.nationalPrefixIsMandatoryWhenFormattingInNationalFormat());
+  } }, { key: "formatMatches", value: function(e3, a3, t3) {
+    var r3 = e3.leadingDigitsPatterns().length;
+    if (0 === r3)
+      return true;
+    t3 = Math.min(t3, r3 - 1);
+    var o2 = e3.leadingDigitsPatterns()[t3];
+    if (a3.length < 3)
       try {
-        !o && a.return != null && a.return();
-      } finally {
-        if (i)
-          throw l;
+        return void 0 !== new Go(o2).match(a3, { allowOverflow: true });
+      } catch (e4) {
+        return console.error(e4), true;
       }
+    return new RegExp("^(".concat(o2, ")")).test(a3);
+  } }, { key: "getFormatFormat", value: function(e3, a3) {
+    return a3 ? e3.internationalFormat() : e3.format();
+  } }, { key: "chooseFormat", value: function(e3) {
+    for (var a3, t3 = this, r3 = function() {
+      var r4 = a3.value;
+      return t3.chosenFormat === r4 ? "break" : qo.test(t3.getFormatFormat(r4, e3.international)) ? t3.createTemplateForFormat(r4, e3) ? (t3.chosenFormat = r4, "break") : (t3.matchingFormats = t3.matchingFormats.filter(function(e4) {
+        return e4 !== r4;
+      }), "continue") : "continue";
+    }, o2 = Ho(this.matchingFormats.slice()); !(a3 = o2()).done; ) {
+      var i2 = r3();
+      if ("break" === i2)
+        break;
     }
-    return t;
-  }
-}
-function ul(r) {
-  if (Array.isArray(r))
-    return r;
-}
-function pl(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function et(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
-  }
-}
-function hl(r, e, a) {
-  return e && et(r.prototype, e), a && et(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var gl = "[" + I + C + "]+", fl = new RegExp("^" + gl + "$", "i"), bl = "(?:[" + Ge + "][" + I + C + "]*|[" + I + C + "]+)", zl = new RegExp("[^" + I + C + "]+.*$"), vl = /[^\d\[\]]/, yl = /* @__PURE__ */ function() {
-  function r(e) {
-    var a = e.defaultCountry, t = e.defaultCallingCode, o = e.metadata, i = e.onNationalSignificantNumberChange;
-    pl(this, r), this.defaultCountry = a, this.defaultCallingCode = t, this.metadata = o, this.onNationalSignificantNumberChange = i;
-  }
-  return hl(r, [{
-    key: "input",
-    value: function(a, t) {
-      var o = wl(a), i = Yt(o, 2), n = i[0], l = i[1], d = Be(n), s;
-      return l && (t.digits || (t.startInternationalNumber(), d || (s = !0))), d && this.inputDigits(d, t), {
-        digits: d,
-        justLeadingPlus: s
-      };
+    return this.chosenFormat || this.resetFormat(), this.chosenFormat;
+  } }, { key: "createTemplateForFormat", value: function(e3, a3) {
+    if (!(e3.pattern().indexOf("|") >= 0)) {
+      var t3 = this.getTemplateForFormat(e3, a3);
+      return t3 ? (this.setNationalNumberTemplate(t3, a3), true) : void 0;
     }
-    /**
-     * Inputs "next" phone number digits.
-     * @param  {string} digits
-     * @return {string} [formattedNumber] Formatted national phone number (if it can be formatted at this stage). Returning `undefined` means "don't format the national phone number at this stage".
-     */
-  }, {
-    key: "inputDigits",
-    value: function(a, t) {
-      var o = t.digits, i = o.length < 3 && o.length + a.length >= 3;
-      if (t.appendDigits(a), i && this.extractIddPrefix(t), this.isWaitingForCountryCallingCode(t)) {
-        if (!this.extractCountryCallingCode(t))
+  } }, { key: "getSeparatorAfterNationalPrefix", value: function(e3) {
+    return this.isNANP || e3 && e3.nationalPrefixFormattingRule() && Jo.test(e3.nationalPrefixFormattingRule()) ? " " : "";
+  } }, { key: "getInternationalPrefixBeforeCountryCallingCode", value: function(e3, a3) {
+    var t3 = e3.IDDPrefix, r3 = e3.missingPlus;
+    return t3 ? a3 && false === a3.spacing ? t3 : t3 + " " : r3 ? "" : "+";
+  } }, { key: "getTemplate", value: function(e3) {
+    if (this.template) {
+      for (var a3 = -1, t3 = 0, r3 = e3.international ? this.getInternationalPrefixBeforeCountryCallingCode(e3, { spacing: false }) : ""; t3 < r3.length + e3.getDigitsWithoutInternationalPrefix().length; )
+        a3 = this.template.indexOf(So, a3 + 1), t3++;
+      return No(this.template, a3 + 1);
+    }
+  } }, { key: "setNationalNumberTemplate", value: function(e3, a3) {
+    this.nationalNumberTemplate = e3, this.populatedNationalNumberTemplate = e3, this.populatedNationalNumberTemplatePosition = -1, a3.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(a3).replace(/[\d\+]/g, So) + Ao(So, a3.callingCode.length) + " " + e3 : this.template = e3;
+  } }, { key: "getTemplateForFormat", value: function(e3, a3) {
+    var t3 = a3.nationalSignificantNumber, r3 = a3.international, o2 = a3.nationalPrefix, i2 = a3.complexPrefixBeforeNationalSignificantNumber, n2 = e3.pattern();
+    n2 = n2.replace(/\[([^\[\]])*\]/g, "\\d").replace(/\d(?=[^,}][^,}])/g, "\\d");
+    var d2 = Qo.match(n2)[0];
+    if (!(t3.length > d2.length)) {
+      var l2 = new RegExp("^" + n2 + "$"), s2 = t3.replace(/\d/g, "9");
+      l2.test(s2) && (d2 = s2);
+      var c2, m2 = this.getFormatFormat(e3, r3);
+      if (this.shouldTryNationalPrefixFormattingRule(e3, { international: r3, nationalPrefix: o2 })) {
+        var u2 = m2.replace(kr, e3.nationalPrefixFormattingRule());
+        if (rr(e3.nationalPrefixFormattingRule()) === (o2 || "") + rr("$1") && (m2 = u2, c2 = true, o2))
+          for (var p2 = o2.length; p2 > 0; )
+            m2 = m2.replace(/\d/, So), p2--;
+      }
+      var h2 = d2.replace(new RegExp(n2), m2).replace(new RegExp("9", "g"), So);
+      return c2 || (i2 ? h2 = Ao(So, i2.length) + " " + h2 : o2 && (h2 = Ao(So, o2.length) + this.getSeparatorAfterNationalPrefix(e3) + h2)), r3 && (h2 = yr(h2)), h2;
+    }
+  } }, { key: "formatNextNationalNumberDigits", value: function(e3) {
+    var a3 = function(e4, a4, t3) {
+      for (var r3, o2 = Co(t3.split("")); !(r3 = o2()).done; ) {
+        var i2 = r3.value;
+        if (e4.slice(a4 + 1).search(Io) < 0)
           return;
-      } else
-        t.appendNationalSignificantNumberDigits(a);
-      t.international || this.hasExtractedNationalSignificantNumber || this.extractNationalSignificantNumber(t.getNationalDigits(), function(n) {
-        return t.update(n);
-      });
-    }
-  }, {
-    key: "isWaitingForCountryCallingCode",
-    value: function(a) {
-      var t = a.international, o = a.callingCode;
-      return t && !o;
-    }
-    // Extracts a country calling code from a number
-    // being entered in internatonal format.
-  }, {
-    key: "extractCountryCallingCode",
-    value: function(a) {
-      var t = Gt("+" + a.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode, i = t.number;
-      if (o)
-        return a.setCallingCode(o), a.update({
-          nationalSignificantNumber: i
-        }), !0;
-    }
-  }, {
-    key: "reset",
-    value: function(a) {
-      if (a) {
-        this.hasSelectedNumberingPlan = !0;
-        var t = a._nationalPrefixForParsing();
-        this.couldPossiblyExtractAnotherNationalSignificantNumber = t && vl.test(t);
-      } else
-        this.hasSelectedNumberingPlan = void 0, this.couldPossiblyExtractAnotherNationalSignificantNumber = void 0;
-    }
-    /**
-     * Extracts a national (significant) number from user input.
-     * Google's library is different in that it only applies `national_prefix_for_parsing`
-     * and doesn't apply `national_prefix_transform_rule` after that.
-     * https://github.com/google/libphonenumber/blob/a3d70b0487875475e6ad659af404943211d26456/java/libphonenumber/src/com/google/i18n/phonenumbers/AsYouTypeFormatter.java#L539
-     * @return {boolean} [extracted]
-     */
-  }, {
-    key: "extractNationalSignificantNumber",
-    value: function(a, t) {
-      if (this.hasSelectedNumberingPlan) {
-        var o = Ca(a, this.metadata), i = o.nationalPrefix, n = o.nationalNumber, l = o.carrierCode;
-        if (n !== a)
-          return this.onExtractedNationalNumber(i, l, n, a, t), !0;
+        a4 = e4.search(Io), e4 = e4.replace(Io, i2);
       }
+      return [e4, a4];
+    }(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition, e3);
+    if (a3)
+      return this.populatedNationalNumberTemplate = a3[0], this.populatedNationalNumberTemplatePosition = a3[1], No(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition + 1);
+    this.resetFormat();
+  } }, { key: "shouldTryNationalPrefixFormattingRule", value: function(e3, a3) {
+    var t3 = a3.international, r3 = a3.nationalPrefix;
+    if (e3.nationalPrefixFormattingRule()) {
+      var o2 = e3.usesNationalPrefix();
+      if (o2 && r3 || !o2 && !t3)
+        return true;
     }
-    /**
-     * In Google's code this function is called "attempt to extract longer NDD".
-     * "Some national prefixes are a substring of others", they say.
-     * @return {boolean} [result] — Returns `true` if extracting a national prefix produced different results from what they were.
-     */
-  }, {
-    key: "extractAnotherNationalSignificantNumber",
-    value: function(a, t, o) {
-      if (!this.hasExtractedNationalSignificantNumber)
-        return this.extractNationalSignificantNumber(a, o);
-      if (this.couldPossiblyExtractAnotherNationalSignificantNumber) {
-        var i = Ca(a, this.metadata), n = i.nationalPrefix, l = i.nationalNumber, d = i.carrierCode;
-        if (l !== t)
-          return this.onExtractedNationalNumber(n, d, l, a, o), !0;
-      }
-    }
-  }, {
-    key: "onExtractedNationalNumber",
-    value: function(a, t, o, i, n) {
-      var l, d, s = i.lastIndexOf(o);
-      if (s >= 0 && s === i.length - o.length) {
-        d = !0;
-        var c = i.slice(0, s);
-        c !== a && (l = c);
-      }
-      n({
-        nationalPrefix: a,
-        carrierCode: t,
-        nationalSignificantNumber: o,
-        nationalSignificantNumberMatchesInput: d,
-        complexPrefixBeforeNationalSignificantNumber: l
-      }), this.hasExtractedNationalSignificantNumber = !0, this.onNationalSignificantNumberChange();
-    }
-  }, {
-    key: "reExtractNationalSignificantNumber",
-    value: function(a) {
-      if (this.extractAnotherNationalSignificantNumber(a.getNationalDigits(), a.nationalSignificantNumber, function(t) {
-        return a.update(t);
-      }))
-        return !0;
-      if (this.extractIddPrefix(a))
-        return this.extractCallingCodeAndNationalSignificantNumber(a), !0;
-      if (this.fixMissingPlus(a))
-        return this.extractCallingCodeAndNationalSignificantNumber(a), !0;
-    }
-  }, {
-    key: "extractIddPrefix",
-    value: function(a) {
-      var t = a.international, o = a.IDDPrefix, i = a.digits;
-      if (a.nationalSignificantNumber, !(t || o)) {
-        var n = Lt(i, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
-        if (n !== void 0 && n !== i)
-          return a.update({
-            IDDPrefix: i.slice(0, i.length - n.length)
-          }), this.startInternationalNumber(a, {
-            country: void 0,
-            callingCode: void 0
-          }), !0;
-      }
-    }
-  }, {
-    key: "fixMissingPlus",
-    value: function(a) {
-      if (!a.international) {
-        var t = Ut(a.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), o = t.countryCallingCode;
-        if (t.number, o)
-          return a.update({
-            missingPlus: !0
-          }), this.startInternationalNumber(a, {
-            country: a.country,
-            callingCode: o
-          }), !0;
-      }
-    }
-  }, {
-    key: "startInternationalNumber",
-    value: function(a, t) {
-      var o = t.country, i = t.callingCode;
-      a.startInternationalNumber(o, i), a.nationalSignificantNumber && (a.resetNationalSignificantNumber(), this.onNationalSignificantNumberChange(), this.hasExtractedNationalSignificantNumber = void 0);
-    }
-  }, {
-    key: "extractCallingCodeAndNationalSignificantNumber",
-    value: function(a) {
-      this.extractCountryCallingCode(a) && this.extractNationalSignificantNumber(a.getNationalDigits(), function(t) {
-        return a.update(t);
-      });
-    }
-  }]), r;
+  } }], t2 && Ko(a2.prototype, t2), r2 && Ko(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function kl(r) {
-  var e = r.search(bl);
-  if (!(e < 0)) {
-    r = r.slice(e);
-    var a;
-    return r[0] === "+" && (a = !0, r = r.slice(1)), r = r.replace(zl, ""), a && (r = "+" + r), r;
-  }
-}
-function xl(r) {
-  var e = kl(r) || "";
-  return e[0] === "+" ? [e.slice(1), !0] : [e];
-}
-function wl(r) {
-  var e = xl(r), a = Yt(e, 2), t = a[0], o = a[1];
-  return fl.test(t) || (t = ""), [t, o];
-}
-function Ba(r) {
-  "@babel/helpers - typeof";
-  return Ba = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e) {
-    return typeof e;
-  } : function(e) {
-    return e && typeof Symbol == "function" && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
-  }, Ba(r);
-}
-function $l(r, e) {
-  return Nl(r) || El(r, e) || Cl(r, e) || _l();
-}
-function _l() {
-  throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-}
-function Cl(r, e) {
-  if (r) {
-    if (typeof r == "string")
-      return at(r, e);
-    var a = Object.prototype.toString.call(r).slice(8, -1);
-    if (a === "Object" && r.constructor && (a = r.constructor.name), a === "Map" || a === "Set")
-      return Array.from(r);
-    if (a === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a))
-      return at(r, e);
-  }
-}
-function at(r, e) {
-  (e == null || e > r.length) && (e = r.length);
-  for (var a = 0, t = new Array(e); a < e; a++)
-    t[a] = r[a];
-  return t;
-}
-function El(r, e) {
-  var a = r == null ? null : typeof Symbol < "u" && r[Symbol.iterator] || r["@@iterator"];
-  if (a != null) {
-    var t = [], o = !0, i = !1, n, l;
+function Zo(e2, a2) {
+  return function(e3) {
+    if (Array.isArray(e3))
+      return e3;
+  }(e2) || function(e3, a3) {
+    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == t2)
+      return;
+    var r2, o2, i2 = [], n2 = true, d2 = false;
     try {
-      for (a = a.call(r); !(o = (n = a.next()).done) && (t.push(n.value), !(e && t.length === e)); o = !0)
+      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
         ;
-    } catch (d) {
-      i = !0, l = d;
+    } catch (e4) {
+      d2 = true, o2 = e4;
     } finally {
       try {
-        !o && a.return != null && a.return();
+        n2 || null == t2.return || t2.return();
       } finally {
-        if (i)
-          throw l;
+        if (d2)
+          throw o2;
       }
     }
-    return t;
+    return i2;
+  }(e2, a2) || function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return Xo(e3, a3);
+    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
+    if ("Map" === t2 || "Set" === t2)
+      return Array.from(e3);
+    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+      return Xo(e3, a3);
+  }(e2, a2) || function() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }();
+}
+function Xo(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function ei(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
 }
-function Nl(r) {
-  if (Array.isArray(r))
-    return r;
-}
-function Al(r, e) {
-  if (!(r instanceof e))
-    throw new TypeError("Cannot call a class as a function");
-}
-function rt(r, e) {
-  for (var a = 0; a < e.length; a++) {
-    var t = e[a];
-    t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(r, t.key, t);
+var ai = new RegExp("^" + ("[" + Et + Ct + "]+") + "$", "i"), ti = "(?:[+\uFF0B][" + Et + Ct + "]*|[" + Et + Ct + "]+)", ri = new RegExp("[^" + Et + Ct + "]+.*$"), oi = /[^\d\[\]]/, ii = function() {
+  function e2(a3) {
+    var t3 = a3.defaultCountry, r3 = a3.defaultCallingCode, o2 = a3.metadata, i2 = a3.onNationalSignificantNumberChange;
+    !function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), this.defaultCountry = t3, this.defaultCallingCode = r3, this.metadata = o2, this.onNationalSignificantNumberChange = i2;
   }
-}
-function Il(r, e, a) {
-  return e && rt(r.prototype, e), a && rt(r, a), Object.defineProperty(r, "prototype", {
-    writable: !1
-  }), r;
-}
-var Kt = /* @__PURE__ */ function() {
-  function r(e, a) {
-    Al(this, r), this.metadata = new _(a);
-    var t = this.getCountryAndCallingCode(e), o = $l(t, 2), i = o[0], n = o[1];
-    this.defaultCountry = i, this.defaultCallingCode = n, this.reset();
-  }
-  return Il(r, [{
-    key: "getCountryAndCallingCode",
-    value: function(a) {
-      var t, o;
-      return a && (Ba(a) === "object" ? (t = a.defaultCountry, o = a.defaultCallingCode) : t = a), t && !this.metadata.hasCountry(t) && (t = void 0), [t, o];
-    }
-    /**
-     * Inputs "next" phone number characters.
-     * @param  {string} text
-     * @return {string} Formatted phone number characters that have been input so far.
-     */
-  }, {
-    key: "input",
-    value: function(a) {
-      var t = this.parser.input(a, this.state), o = t.digits, i = t.justLeadingPlus;
-      if (i)
-        this.formattedOutput = "+";
-      else if (o) {
-        this.determineTheCountryIfNeeded(), this.state.nationalSignificantNumber && this.formatter.narrowDownMatchingFormats(this.state);
-        var n;
-        if (this.metadata.hasSelectedNumberingPlan() && (n = this.formatter.format(o, this.state)), n === void 0 && this.parser.reExtractNationalSignificantNumber(this.state)) {
-          this.determineTheCountryIfNeeded();
-          var l = this.state.getNationalDigits();
-          l && (n = this.formatter.format(l, this.state));
-        }
-        this.formattedOutput = n ? this.getFullNumber(n) : this.getNonFormattedNumber();
-      }
-      return this.formattedOutput;
-    }
-  }, {
-    key: "reset",
-    value: function() {
-      var a = this;
-      return this.state = new Td({
-        onCountryChange: function(o) {
-          a.country = o;
-        },
-        onCallingCodeChange: function(o, i) {
-          a.metadata.selectNumberingPlan(i, o), a.formatter.reset(a.metadata.numberingPlan, a.state), a.parser.reset(a.metadata.numberingPlan);
-        }
-      }), this.formatter = new ll({
-        state: this.state,
-        metadata: this.metadata
-      }), this.parser = new yl({
-        defaultCountry: this.defaultCountry,
-        defaultCallingCode: this.defaultCallingCode,
-        metadata: this.metadata,
-        state: this.state,
-        onNationalSignificantNumberChange: function() {
-          a.determineTheCountryIfNeeded(), a.formatter.reset(a.metadata.numberingPlan, a.state);
-        }
-      }), this.state.reset({
-        country: this.defaultCountry,
-        callingCode: this.defaultCallingCode
-      }), this.formattedOutput = "", this;
-    }
-    /**
-     * Returns `true` if the phone number is being input in international format.
-     * In other words, returns `true` if and only if the parsed phone number starts with a `"+"`.
-     * @return {boolean}
-     */
-  }, {
-    key: "isInternational",
-    value: function() {
-      return this.state.international;
-    }
-    /**
-     * Returns the "calling code" part of the phone number when it's being input
-     * in an international format.
-     * If no valid calling code has been entered so far, returns `undefined`.
-     * @return {string} [callingCode]
-     */
-  }, {
-    key: "getCallingCode",
-    value: function() {
-      if (this.isInternational())
-        return this.state.callingCode;
-    }
-    // A legacy alias.
-  }, {
-    key: "getCountryCallingCode",
-    value: function() {
-      return this.getCallingCode();
-    }
-    /**
-     * Returns a two-letter country code of the phone number.
-     * Returns `undefined` for "non-geographic" phone numbering plans.
-     * Returns `undefined` if no phone number has been input yet.
-     * @return {string} [country]
-     */
-  }, {
-    key: "getCountry",
-    value: function() {
-      var a = this.state.digits;
-      if (a)
-        return this._getCountry();
-    }
-    /**
-     * Returns a two-letter country code of the phone number.
-     * Returns `undefined` for "non-geographic" phone numbering plans.
-     * @return {string} [country]
-     */
-  }, {
-    key: "_getCountry",
-    value: function() {
-      var a = this.state.country;
-      return a;
-    }
-  }, {
-    key: "determineTheCountryIfNeeded",
-    value: function() {
-      (!this.state.country || this.isCountryCallingCodeAmbiguous()) && this.determineTheCountry();
-    }
-    // Prepends `+CountryCode ` in case of an international phone number
-  }, {
-    key: "getFullNumber",
-    value: function(a) {
-      var t = this;
-      if (this.isInternational()) {
-        var o = function(l) {
-          return t.formatter.getInternationalPrefixBeforeCountryCallingCode(t.state, {
-            spacing: !!l
-          }) + l;
-        }, i = this.state.callingCode;
-        return o(i ? a ? "".concat(i, " ").concat(a) : i : "".concat(this.state.getDigitsWithoutInternationalPrefix()));
-      }
-      return a;
-    }
-  }, {
-    key: "getNonFormattedNationalNumberWithPrefix",
-    value: function() {
-      var a = this.state, t = a.nationalSignificantNumber, o = a.complexPrefixBeforeNationalSignificantNumber, i = a.nationalPrefix, n = t, l = o || i;
-      return l && (n = l + n), n;
-    }
-  }, {
-    key: "getNonFormattedNumber",
-    value: function() {
-      var a = this.state.nationalSignificantNumberMatchesInput;
-      return this.getFullNumber(a ? this.getNonFormattedNationalNumberWithPrefix() : this.state.getNationalDigits());
-    }
-  }, {
-    key: "getNonFormattedTemplate",
-    value: function() {
-      var a = this.getNonFormattedNumber();
-      if (a)
-        return a.replace(/[\+\d]/g, A);
-    }
-  }, {
-    key: "isCountryCallingCodeAmbiguous",
-    value: function() {
-      var a = this.state.callingCode, t = this.metadata.getCountryCodesForCallingCode(a);
-      return t && t.length > 1;
-    }
-    // Determines the country of the phone number
-    // entered so far based on the country phone code
-    // and the national phone number.
-  }, {
-    key: "determineTheCountry",
-    value: function() {
-      this.state.setCountry(Vt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, {
-        nationalNumber: this.state.nationalSignificantNumber,
-        defaultCountry: this.defaultCountry,
-        metadata: this.metadata
-      }));
-    }
-    /**
-     * Returns a E.164 phone number value for the user's input.
-     *
-     * For example, for country `"US"` and input `"(222) 333-4444"`
-     * it will return `"+12223334444"`.
-     *
-     * For international phone number input, it will also auto-correct
-     * some minor errors such as using a national prefix when writing
-     * an international phone number. For example, if the user inputs
-     * `"+44 0 7400 000000"` then it will return an auto-corrected
-     * `"+447400000000"` phone number value.
-     *
-     * Will return `undefined` if no digits have been input,
-     * or when inputting a phone number in national format and no
-     * default country or default "country calling code" have been set.
-     *
-     * @return {string} [value]
-     */
-  }, {
-    key: "getNumberValue",
-    value: function() {
-      var a = this.state, t = a.digits, o = a.callingCode, i = a.country, n = a.nationalSignificantNumber;
-      if (t) {
-        if (this.isInternational())
-          return o ? "+" + o + n : "+" + t;
-        if (i || o) {
-          var l = i ? this.metadata.countryCallingCode() : o;
-          return "+" + l + n;
-        }
-      }
-    }
-    /**
-     * Returns an instance of `PhoneNumber` class.
-     * Will return `undefined` if no national (significant) number
-     * digits have been entered so far, or if no `defaultCountry` has been
-     * set and the user enters a phone number not in international format.
-     */
-  }, {
-    key: "getNumber",
-    value: function() {
-      var a = this.state, t = a.nationalSignificantNumber, o = a.carrierCode, i = a.callingCode, n = this._getCountry();
-      if (t && !(!n && !i)) {
-        if (n && n === this.defaultCountry) {
-          var l = new _(this.metadata.metadata);
-          l.selectNumberingPlan(n);
-          var d = l.numberingPlan.callingCode(), s = this.metadata.getCountryCodesForCallingCode(d);
-          if (s.length > 1) {
-            var c = Ht(t, {
-              countries: s,
-              defaultCountry: this.defaultCountry,
-              metadata: this.metadata.metadata
-            });
-            c && (n = c);
-          }
-        }
-        var p = new Ka(n || i, t, this.metadata.metadata);
-        return o && (p.carrierCode = o), p;
-      }
-    }
-    /**
-     * Returns `true` if the phone number is "possible".
-     * Is just a shortcut for `PhoneNumber.isPossible()`.
-     * @return {boolean}
-     */
-  }, {
-    key: "isPossible",
-    value: function() {
-      var a = this.getNumber();
-      return a ? a.isPossible() : !1;
-    }
-    /**
-     * Returns `true` if the phone number is "valid".
-     * Is just a shortcut for `PhoneNumber.isValid()`.
-     * @return {boolean}
-     */
-  }, {
-    key: "isValid",
-    value: function() {
-      var a = this.getNumber();
-      return a ? a.isValid() : !1;
-    }
-    /**
-     * @deprecated
-     * This method is used in `react-phone-number-input/source/input-control.js`
-     * in versions before `3.0.16`.
-     */
-  }, {
-    key: "getNationalNumber",
-    value: function() {
-      return this.state.nationalSignificantNumber;
-    }
-    /**
-     * Returns the phone number characters entered by the user.
-     * @return {string}
-     */
-  }, {
-    key: "getChars",
-    value: function() {
-      return (this.state.international ? "+" : "") + this.state.digits;
-    }
-    /**
-     * Returns the template for the formatted phone number.
-     * @return {string}
-     */
-  }, {
-    key: "getTemplate",
-    value: function() {
-      return this.formatter.getTemplate(this.state) || this.getNonFormattedTemplate() || "";
-    }
-  }]), r;
-}();
-function Sl(r, e, a) {
-  if (e[r])
-    return new Ka(r, e[r], a);
-}
-function Pl() {
-  return Va(Sd, arguments);
-}
-function Fe(r) {
-  return Kt.call(this, r, At);
-}
-Fe.prototype = Object.create(Kt.prototype, {});
-Fe.prototype.constructor = Fe;
-function Bl() {
-  return Va(je, arguments);
-}
-function Tl() {
-  return Va(Sl, arguments);
-}
-const Qt = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], Fl = Qt.map((r) => r[1].toUpperCase()), Jt = Qt.map((r) => ({
-  name: r[0],
-  iso2: r[1].toUpperCase(),
-  dialCode: r[2],
-  priority: r[3] || 0,
-  areaCodes: r[4] || null
-})), Rl = () => {
-  if (typeof window > "u")
-    return null;
-  const r = window.navigator.userLanguage || window.navigator.language;
-  let e = r ? r.substr(3, 4).toUpperCase() : null;
-  return e === "" && (e = r.substr(0, 2).toUpperCase()), e === "EN" && (e = "US"), e === "JA" && (e = "JP"), e;
-}, Ol = async (r) => {
-  try {
-    if (Fl.includes(r))
-      return !0;
-    throw `MazPhoneNumberInput: The country ${r} is not available`;
-  } catch (e) {
-    throw new Error(e);
-  }
-}, Ml = (r, e) => {
-  const a = r ? Pl(r, e) : null;
-  let t = {
-    countryCode: e,
-    phoneNumber: r,
-    isValid: !1
-  };
-  return a && (t = {
-    ...t,
-    countryCode: a.country,
-    countryCallingCode: a.countryCallingCode,
-    nationalNumber: a.nationalNumber,
-    isValid: a.isValid(),
-    type: a.getType(),
-    formatInternational: a.formatInternational(),
-    formatNational: a.formatNational(),
-    uri: a.getURI(),
-    e164: a.format("E.164")
-  }), t;
-}, tt = (r, e) => r ? e ? new Fe(e).input(r) : r : null, Dl = async () => {
-  try {
-    const a = (await (await fetch("https://ip2c.org/s")).text() || "").toString();
-    if (a && a[0] === "1")
-      return a.substr(2, 2);
-  } catch {
-    return new Error("[MazPhoneNumberInput] Error while fetching country code");
-  }
-}, Ll = {
-  AC: "40123",
-  AD: "312345",
-  AE: "501234567",
-  AF: "701234567",
-  AG: "2684641234",
-  AI: "2642351234",
-  AL: "672123456",
-  AM: "77123456",
-  AO: "923123456",
-  AR: "91123456789",
-  AS: "6847331234",
-  AT: "664123456",
-  AU: "412345678",
-  AW: "5601234",
-  AX: "412345678",
-  AZ: "401234567",
-  BA: "61123456",
-  BB: "2462501234",
-  BD: "1812345678",
-  BE: "470123456",
-  BF: "70123456",
-  BG: "43012345",
-  BH: "36001234",
-  BI: "79561234",
-  BJ: "90011234",
-  BL: "690001234",
-  BM: "4413701234",
-  BN: "7123456",
-  BO: "71234567",
-  BQ: "3181234",
-  BR: "11961234567",
-  BS: "2423591234",
-  BT: "17123456",
-  BW: "71123456",
-  BY: "294911911",
-  BZ: "6221234",
-  CA: "5062345678",
-  CC: "412345678",
-  CD: "991234567",
-  CF: "70012345",
-  CG: "061234567",
-  CH: "781234567",
-  CI: "0123456789",
-  CK: "71234",
-  CL: "221234567",
-  CM: "671234567",
-  CN: "13123456789",
-  CO: "3211234567",
-  CR: "83123456",
-  CU: "51234567",
-  CV: "9911234",
-  CW: "95181234",
-  CX: "412345678",
-  CY: "96123456",
-  CZ: "601123456",
-  DE: "15123456789",
-  DJ: "77831001",
-  DK: "32123456",
-  DM: "7672251234",
-  DO: "8092345678",
-  DZ: "551234567",
-  EC: "991234567",
-  EE: "51234567",
-  EG: "1001234567",
-  EH: "650123456",
-  ER: "7123456",
-  ES: "612345678",
-  ET: "911234567",
-  FI: "412345678",
-  FJ: "7012345",
-  FK: "51234",
-  FM: "3501234",
-  FO: "211234",
-  FR: "612345678",
-  GA: "06031234",
-  GB: "7400123456",
-  GD: "4734031234",
-  GE: "555123456",
-  GF: "694201234",
-  GG: "7781123456",
-  GH: "231234567",
-  GI: "57123456",
-  GL: "221234",
-  GM: "3012345",
-  GN: "601123456",
-  GP: "690001234",
-  GQ: "222123456",
-  GR: "6912345678",
-  GT: "51234567",
-  GU: "6713001234",
-  GW: "955012345",
-  GY: "6091234",
-  HK: "51234567",
-  HN: "91234567",
-  HR: "921234567",
-  HT: "34101234",
-  HU: "201234567",
-  ID: "812345678",
-  IE: "850123456",
-  IL: "502345678",
-  IM: "7924123456",
-  IN: "8123456789",
-  IO: "3801234",
-  IQ: "7912345678",
-  IR: "9123456789",
-  IS: "6111234",
-  IT: "3123456789",
-  JE: "7797712345",
-  JM: "8762101234",
-  JO: "790123456",
-  JP: "9012345678",
-  KE: "712123456",
-  KG: "700123456",
-  KH: "91234567",
-  KI: "72001234",
-  KM: "3212345",
-  KN: "8697652917",
-  KP: "1921234567",
-  KR: "1020000000",
-  KW: "50012345",
-  KY: "3453231234",
-  KZ: "7710009998",
-  LA: "2023123456",
-  LB: "71123456",
-  LC: "7582845678",
-  LI: "660234567",
-  LK: "712345678",
-  LR: "770123456",
-  LS: "50123456",
-  LT: "61234567",
-  LU: "628123456",
-  LV: "21234567",
-  LY: "912345678",
-  MA: "650123456",
-  MC: "612345678",
-  MD: "62112345",
-  ME: "67622901",
-  MF: "690001234",
-  MG: "321234567",
-  MH: "2351234",
-  MK: "72345678",
-  ML: "65012345",
-  MM: "92123456",
-  MN: "88123456",
-  MO: "66123456",
-  MP: "6702345678",
-  MQ: "696201234",
-  MR: "22123456",
-  MS: "6644923456",
-  MT: "96961234",
-  MU: "52512345",
-  MV: "7712345",
-  MW: "991234567",
-  MX: "12221234567",
-  MY: "123456789",
-  MZ: "821234567",
-  NA: "811234567",
-  NC: "751234",
-  NE: "93123456",
-  NF: "381234",
-  NG: "8021234567",
-  NI: "81234567",
-  NL: "612345678",
-  NO: "40612345",
-  NP: "9841234567",
-  NR: "5551234",
-  NU: "8884012",
-  NZ: "211234567",
-  OM: "92123456",
-  PA: "61234567",
-  PE: "912345678",
-  PF: "87123456",
-  PG: "70123456",
-  PH: "9051234567",
-  PK: "3012345678",
-  PL: "512345678",
-  PM: "551234",
-  PR: "7872345678",
-  PS: "599123456",
-  PT: "912345678",
-  PW: "6201234",
-  PY: "961456789",
-  QA: "33123456",
-  RE: "692123456",
-  RO: "712034567",
-  RS: "601234567",
-  RU: "9123456789",
-  RW: "720123456",
-  SA: "512345678",
-  SB: "7421234",
-  SC: "2510123",
-  SD: "911231234",
-  SE: "701234567",
-  SG: "81234567",
-  SH: "51234",
-  SI: "31234567",
-  SJ: "41234567",
-  SK: "912123456",
-  SL: "25123456",
-  SM: "66661212",
-  SN: "701234567",
-  SO: "71123456",
-  SR: "7412345",
-  SS: "977123456",
-  ST: "9812345",
-  SV: "70123456",
-  SX: "7215205678",
-  SY: "944567890",
-  SZ: "76123456",
-  TA: "8999",
-  TC: "6492311234",
-  TD: "63012345",
-  TG: "90112345",
-  TH: "812345678",
-  TJ: "917123456",
-  TK: "7290",
-  TL: "77212345",
-  TM: "66123456",
-  TN: "20123456",
-  TO: "7715123",
-  TR: "5012345678",
-  TT: "8682911234",
-  TV: "901234",
-  TW: "912345678",
-  TZ: "621234567",
-  UA: "501234567",
-  UG: "712345678",
-  US: "2015550123",
-  UY: "94231234",
-  UZ: "912345678",
-  VA: "3123456789",
-  VC: "7844301234",
-  VE: "4121234567",
-  VG: "2843001234",
-  VI: "3406421234",
-  VN: "912345678",
-  VU: "5912345",
-  WF: "821234",
-  WS: "7212345",
-  XK: "43201234",
-  YE: "712345678",
-  YT: "639012345",
-  ZA: "711234567",
-  ZM: "955123456",
-  ZW: "712345678"
-}, Ul = {
-  countrySelectorLabel: "Country code",
-  countrySelectorError: "Choose country",
-  countrySelectorSearchPlaceholder: "Search country",
-  phoneNumberLabel: "Phone number",
-  example: "Example:"
-}, Gl = {
-  name: "MazPhoneNumberInput",
-  components: {
-    MazInput: j,
-    MazSelect: se
-  },
-  mixins: [Ue],
-  props: {
-    value: {
-      validator: (r) => ["string", "number"].includes(typeof r) || r === null,
-      default: null
-    },
-    id: { type: String, default: null },
-    disabled: { type: Boolean, default: !1 },
-    lock: { type: Boolean, default: !1 },
-    // set default phone number (Ex: `default-phone-number="0658585858"`)
-    defaultPhoneNumber: { type: String, default: null },
-    // set default country code (Ex: `default-country-code="FR"`)
-    defaultCountryCode: { type: String, default: null },
-    // Same as MazInput (options: `sm|md|lg`)
-    size: { type: String, default: null },
-    // Countries selected will be at the top of the list - Ex : `preferred-countries="['FR', 'BE', 'DE']`
-    preferredCountries: { type: Array, default: null },
-    // Only countries selected are in list - Ex : `only-countries="['FR', 'BE', 'DE']`
-    onlyCountries: { type: Array, default: null },
-    // Countries seleted are remove from the list - Ex : `ignored-countries="['FR', 'BE', 'DE']`
-    ignoredCountries: { type: Array, default: Array },
-    // Translate text in component - By default `{ countrySelectorLabel: 'Country code', countrySelectorError: 'Choose country', phoneNumberLabel: 'Phone number', example: 'Example:' }`
-    translations: { type: Object, default: null },
-    // Remove the validation UI state (success border color)
-    noValidation: { type: Boolean, default: !1 },
-    // Remove flags in country selector
-    noFlags: { type: Boolean, default: !1 },
-    // Remove the number example from the label input
-    noExample: { type: Boolean, default: !1 },
-    // Remove the search countries functionality
-    noSearch: { type: Boolean, default: !1 },
-    // Change the height of country item in list
-    countriesHeight: { type: Number, default: 30 },
-    // Disable use of browser locale to init the country selector (usefull for Nuxt.JS)
-    noUseBrowserLocale: { type: Boolean, default: !1 },
-    // Fetch country code via https://ip2c.org/s - Network needed - (Do not use it with default-country-code options)
-    fetchCountry: { type: Boolean, default: !1 },
-    // The country selector is not shown, you can validate your phone number with the country code set
-    noCountrySelector: { type: Boolean, default: !1 },
-    // Show the country phone code in the list
-    showCodeOnList: { type: Boolean, default: !1 },
-    // Enable the dark mode
-    dark: { type: Boolean, default: !1 },
-    // Use color
-    color: { type: String, default: "primary" },
-    // Set placholder of phone number input
-    placeholder: { type: String, default: null },
-    // hint message shown on phone number text field
-    hint: { type: String, default: null },
-    // set the position of countries list (ex: `top`, `top right`, `bottom right`)
-    position: { type: String, default: "left bottom" }
-  },
-  data() {
-    return {
-      results: {},
-      countryCode: this.defaultCountryCode,
-      cursorPosition: null,
-      asYouTypeNumber: this.defaultPhoneNumber
-    };
-  },
-  computed: {
-    t() {
-      return {
-        ...Ul,
-        ...this.translations
-      };
-    },
-    callingCode() {
-      const { countryCode: r } = this;
-      return r ? `+${((a) => {
-        const t = this.countriesSorted.find((o) => o.iso2 === a);
-        return t ? t.dialCode : null;
-      })(r) || Bl(r)}` : null;
-    },
-    // input states
-    shouldChooseCountry() {
-      return !this.countryCode && !!this.asYouTypeNumber;
-    },
-    isValid() {
-      return this.results.isValid;
-    },
-    hasEmptyPhone() {
-      const { asYouTypeNumber: r } = this;
-      return r === "" || !r;
-    },
-    // hint values
-    phoneNumberExample() {
-      const { countryCode: r } = this, e = r ? Tl(r, Ll) : null;
-      return e ? e.formatNational() : null;
-    },
-    hintValue() {
-      const { noExample: r, phoneNumberExample: e, hasEmptyPhone: a, isValid: t, t: o } = this;
-      return r || !e || a || t ? null : `${o.example} ${e}`;
-    },
-    // Countries list management
-    countriesList() {
-      return Jt.filter((r) => !this.ignoredCountries.includes(r.iso2));
-    },
-    countriesFiltered() {
-      return (this.onlyCountries || this.preferredCountries).map(
-        (e) => this.countriesList.find((a) => a.iso2.includes(e))
-      );
-    },
-    otherCountries() {
-      return this.countriesList.filter((r) => !this.preferredCountries.includes(r.iso2));
-    },
-    countriesSorted() {
-      return this.preferredCountries ? [...this.countriesFiltered, ...this.otherCountries] : this.onlyCountries ? this.countriesFiltered : this.countriesList;
-    }
-  },
-  watch: {
-    defaultPhoneNumber: {
-      handler(r, e) {
-        r !== e && this.buildResults(r);
-      },
-      immediate: !0
-    },
-    defaultCountryCode: {
-      handler(r, e) {
-        !r || r === e || this.setCountryCode(r);
-      },
-      immediate: !0
-    }
-  },
-  async mounted() {
-    try {
-      const { defaultCountryCode: r, fetchCountry: e, noUseBrowserLocale: a, setCountryCode: t } = this;
-      if (!this.defaultPhoneNumber && this.value && this.buildResults(this.value), r && e)
-        throw new Error(
-          "MazPhoneNumberInput: Do not use 'fetch-country' and 'default-country-code' options in the same time"
-        );
-      if (r && a)
-        throw new Error(
-          "MazPhoneNumberInput: If you use a 'default-country-code', do not use 'no-use-browser-locale' options"
-        );
-      if (r)
+  var a2, t2, r2;
+  return a2 = e2, (t2 = [{ key: "input", value: function(e3, a3) {
+    var t3, r3 = function(e4) {
+      var a4 = function(e5) {
+        var a5 = function(e6) {
+          var a6, t5 = e6.search(ti);
+          if (!(t5 < 0))
+            return "+" === (e6 = e6.slice(t5))[0] && (a6 = true, e6 = e6.slice(1)), e6 = e6.replace(ri, ""), a6 && (e6 = "+" + e6), e6;
+        }(e5) || "";
+        return "+" === a5[0] ? [a5.slice(1), true] : [a5];
+      }(e4), t4 = Zo(a4, 2), r4 = t4[0], o3 = t4[1];
+      return ai.test(r4) || (r4 = ""), [r4, o3];
+    }(e3), o2 = Zo(r3, 2), i2 = o2[0], n2 = o2[1], d2 = rr(i2);
+    return n2 && (a3.digits || (a3.startInternationalNumber(), d2 || (t3 = true))), d2 && this.inputDigits(d2, a3), { digits: d2, justLeadingPlus: t3 };
+  } }, { key: "inputDigits", value: function(e3, a3) {
+    var t3 = a3.digits, r3 = t3.length < 3 && t3.length + e3.length >= 3;
+    if (a3.appendDigits(e3), r3 && this.extractIddPrefix(a3), this.isWaitingForCountryCallingCode(a3)) {
+      if (!this.extractCountryCallingCode(a3))
         return;
-      const o = e ? await Dl() : a ? null : await Rl();
-      o && t(o);
-    } catch (r) {
-      throw new Error(r);
+    } else
+      a3.appendNationalSignificantNumberDigits(e3);
+    a3.international || this.hasExtractedNationalSignificantNumber || this.extractNationalSignificantNumber(a3.getNationalDigits(), function(e4) {
+      return a3.update(e4);
+    });
+  } }, { key: "isWaitingForCountryCallingCode", value: function(e3) {
+    var a3 = e3.international, t3 = e3.callingCode;
+    return a3 && !t3;
+  } }, { key: "extractCountryCallingCode", value: function(e3) {
+    var a3 = Vr("+" + e3.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), t3 = a3.countryCallingCode, r3 = a3.number;
+    if (t3)
+      return e3.setCallingCode(t3), e3.update({ nationalSignificantNumber: r3 }), true;
+  } }, { key: "reset", value: function(e3) {
+    if (e3) {
+      this.hasSelectedNumberingPlan = true;
+      var a3 = e3._nationalPrefixForParsing();
+      this.couldPossiblyExtractAnotherNationalSignificantNumber = a3 && oi.test(a3);
+    } else
+      this.hasSelectedNumberingPlan = void 0, this.couldPossiblyExtractAnotherNationalSignificantNumber = void 0;
+  } }, { key: "extractNationalSignificantNumber", value: function(e3, a3) {
+    if (this.hasSelectedNumberingPlan) {
+      var t3 = jr(e3, this.metadata), r3 = t3.nationalPrefix, o2 = t3.nationalNumber, i2 = t3.carrierCode;
+      if (o2 !== e3)
+        return this.onExtractedNationalNumber(r3, i2, o2, e3, a3), true;
     }
-  },
-  methods: {
-    async buildResults(r, e) {
-      const { countryCode: a, value: t } = this;
-      await this.$nextTick();
-      const o = this.asYouTypeNumber && r && this.asYouTypeNumber.length > r.length;
-      this.results = Ml(r, a);
-      const { isValid: i, e164: n } = this.results, l = this.asYouTypeNumber && this.cursorPosition ? this.cursorPosition + 1 >= this.asYouTypeNumber.length : !0, d = !o && l || i;
-      this.asYouTypeNumber = d ? tt(r, a) : r, !e && this.results && this.results.countryCode && a !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
-      const s = i ? n : this.asYouTypeNumber;
-      !s && s === t || this.$emit("input", s);
-    },
-    onBlur(r) {
-      this.$emit("blur", r), this.countryCode && (this.asYouTypeNumber = tt(this.asYouTypeNumber, this.countryCode));
-    },
-    onKeydown(r) {
-      const e = r.target;
-      this.cursorPosition = e == null ? void 0 : e.selectionStart;
-    },
-    async setCountryCode(r, e) {
-      const { buildResults: a, asYouTypeNumber: t } = this, o = Ol(r);
-      e && (this.focusPhoneNumberInput(), t && t.includes("+") && (this.asYouTypeNumber = null)), o && r && (this.countryCode = r, a(this.asYouTypeNumber, !0));
-    },
-    async focusCountrySelector() {
-      await this.$nextTick(), this.$refs.CountrySelector.$el.querySelector("input").focus();
-    },
-    async focusPhoneNumberInput() {
-      await this.$nextTick(), this.$refs.PhoneNumberInput.$el.querySelector("input").focus();
+  } }, { key: "extractAnotherNationalSignificantNumber", value: function(e3, a3, t3) {
+    if (!this.hasExtractedNationalSignificantNumber)
+      return this.extractNationalSignificantNumber(e3, t3);
+    if (this.couldPossiblyExtractAnotherNationalSignificantNumber) {
+      var r3 = jr(e3, this.metadata), o2 = r3.nationalPrefix, i2 = r3.nationalNumber, n2 = r3.carrierCode;
+      if (i2 !== a3)
+        return this.onExtractedNationalNumber(o2, n2, i2, e3, t3), true;
     }
-  }
-};
-var Hl = function() {
-  var e = this, a = e._self._c;
-  return a("div", { staticClass: "maz-base-component maz-phone-number-input maz-flex", class: [{ "maz-is-dark": e.dark }, `maz-phone-number-input--${e.size}`], attrs: { id: e.id } }, [e.noCountrySelector ? e._e() : a("MazSelect", { ref: "CountrySelector", staticClass: "country-selector", class: {
-    "no-padding-left": e.noFlags || !e.countryCode
-  }, attrs: { value: e.countryCode, options: e.countriesSorted, placeholder: e.t.countrySelectorLabel, search: !e.noSearch, position: e.position, "search-placeholder": e.t.countrySelectorSearchPlaceholder, "items-height": e.countriesHeight, error: e.shouldChooseCountry, hint: e.shouldChooseCountry ? e.t.countrySelectorError : null, size: e.size, success: e.isValid && !e.noValidation, disabled: e.disabled, lock: e.lock, "input-value": e.callingCode, "list-width": 300, config: {
-    labelKey: "dialCode",
-    searchKey: "name",
-    valueKey: "iso2"
-  }, color: e.color }, on: { input: function(t) {
-    return e.setCountryCode(t, !0);
-  } }, scopedSlots: e._u([{ key: "default", fn: function({ option: t }) {
-    return [a("div", { staticClass: "maz-flex maz-align-center" }, [e.noFlags ? e._e() : a("div", { staticClass: "country-selector__flag-container maz-mr-2" }, [a("div", { class: `maz-flag maz-flag-${t.iso2.toLowerCase()}` })]), e.showCodeOnList ? a("span", { staticClass: "country-selector__calling-code maz-flex-fixed maz-text-muted", class: {
-      "maz-text-muted-dark": t.isSelected
-    } }, [e._v(" +" + e._s(t.dialCode) + " ")]) : e._e(), a("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-left maz-text-color", class: {
-      "maz-text-white": t.isSelected
-    } }, [e._v(" " + e._s(t.name) + " ")]), a("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-right maz-text-color", class: {
-      "maz-text-white": t.isSelected
-    }, staticStyle: { "max-width": "60px" } }, [e._v(" +" + e._s(t.dialCode) + " ")])])];
-  } }], null, !1, 664249301) }), e.countryCode && !e.noFlags && !e.noCountrySelector ? a("button", { staticClass: "maz-phone-number-input__country-flag", attrs: { tabindex: "-1" }, on: { click: e.focusCountrySelector } }, [a("div", { class: `maz-flag maz-flag-${e.countryCode.toLowerCase()}` })]) : e._e(), a("MazInput", e._b({ ref: "PhoneNumberInput", staticClass: "input-phone-number maz-flex-1", class: {
-    "has-border-radius": e.noCountrySelector
-  }, attrs: { id: e.uniqueId ? `${e.uniqueId}_phone_number` : null, value: e.asYouTypeNumber, placeholder: e.placeholder || e.t.phoneNumberLabel, hint: e.hint || e.hintValue, disabled: e.disabled, readonly: e.lock, size: e.size, success: e.isValid && !e.noValidation, clearable: "", color: e.color }, on: { keydown: e.onKeydown, focus: function(t) {
-    return e.$emit("focus", t);
-  }, blur: e.onBlur, change: function(t) {
-    return e.$emit("change", t);
-  }, clear: function(t) {
-    return e.$emit("clear", t);
-  }, input: e.buildResults } }, "MazInput", e.$attrs, !1), [e._t("icon-left", null, { slot: "icon-left" }), e._t("icon-right", null, { slot: "icon-right" })], 2)], 1);
-}, Vl = [], jl = /* @__PURE__ */ te(
-  Gl,
-  Hl,
-  Vl,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const Ce = jl.exports;
-Ce.install = (r) => {
-  r.component(Ce.name, Ce);
-};
-function Yl(r, e, a) {
-  return e = Kl(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
+  } }, { key: "onExtractedNationalNumber", value: function(e3, a3, t3, r3, o2) {
+    var i2, n2, d2 = r3.lastIndexOf(t3);
+    if (d2 >= 0 && d2 === r3.length - t3.length) {
+      n2 = true;
+      var l2 = r3.slice(0, d2);
+      l2 !== e3 && (i2 = l2);
+    }
+    o2({ nationalPrefix: e3, carrierCode: a3, nationalSignificantNumber: t3, nationalSignificantNumberMatchesInput: n2, complexPrefixBeforeNationalSignificantNumber: i2 }), this.hasExtractedNationalSignificantNumber = true, this.onNationalSignificantNumberChange();
+  } }, { key: "reExtractNationalSignificantNumber", value: function(e3) {
+    return !!this.extractAnotherNationalSignificantNumber(e3.getNationalDigits(), e3.nationalSignificantNumber, function(a3) {
+      return e3.update(a3);
+    }) || (this.extractIddPrefix(e3) || this.fixMissingPlus(e3) ? (this.extractCallingCodeAndNationalSignificantNumber(e3), true) : void 0);
+  } }, { key: "extractIddPrefix", value: function(e3) {
+    var a3 = e3.international, t3 = e3.IDDPrefix, r3 = e3.digits;
+    if (e3.nationalSignificantNumber, !a3 && !t3) {
+      var o2 = Lr(r3, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
+      return void 0 !== o2 && o2 !== r3 ? (e3.update({ IDDPrefix: r3.slice(0, r3.length - o2.length) }), this.startInternationalNumber(e3, { country: void 0, callingCode: void 0 }), true) : void 0;
+    }
+  } }, { key: "fixMissingPlus", value: function(e3) {
+    if (!e3.international) {
+      var a3 = Gr(e3.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), t3 = a3.countryCallingCode;
+      if (a3.number, t3)
+        return e3.update({ missingPlus: true }), this.startInternationalNumber(e3, { country: e3.country, callingCode: t3 }), true;
+    }
+  } }, { key: "startInternationalNumber", value: function(e3, a3) {
+    var t3 = a3.country, r3 = a3.callingCode;
+    e3.startInternationalNumber(t3, r3), e3.nationalSignificantNumber && (e3.resetNationalSignificantNumber(), this.onNationalSignificantNumberChange(), this.hasExtractedNationalSignificantNumber = void 0);
+  } }, { key: "extractCallingCodeAndNationalSignificantNumber", value: function(e3) {
+    this.extractCountryCallingCode(e3) && this.extractNationalSignificantNumber(e3.getNationalDigits(), function(a3) {
+      return e3.update(a3);
+    });
+  } }]) && ei(a2.prototype, t2), r2 && ei(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+}();
+function ni(e2) {
+  return ni = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+    return typeof e3;
+  } : function(e3) {
+    return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
+  }, ni(e2);
 }
-function Kl(r) {
-  var e = Ql(r, "string");
-  return typeof e == "symbol" ? e : String(e);
-}
-function Ql(r, e) {
-  if (typeof r != "object" || r === null)
-    return r;
-  var a = r[Symbol.toPrimitive];
-  if (a !== void 0) {
-    var t = a.call(r, e || "default");
-    if (typeof t != "object")
-      return t;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (e === "string" ? String : Number)(r);
-}
-const ot = "o21pay-address", Jl = [de, le, j, se, Ce], ql = (r, e = {}) => {
-  Jl.forEach((a) => {
-    r.component(a.name, a);
-  });
-};
-class ve extends O {
-  static get properties() {
-    return {
-      editor: {
-        type: Boolean
-      },
-      size: {
-        type: String
-      },
-      pro: {
-        type: Boolean
-      },
-      icons: {
-        type: Boolean
-      },
-      required: {
-        type: Boolean
-      },
-      optimized: {
-        type: Boolean
-      },
-      primary_color: {
-        type: String,
-        attribute: "primary_color"
-      },
-      data: {
-        type: Object
+function di(e2, a2) {
+  return function(e3) {
+    if (Array.isArray(e3))
+      return e3;
+  }(e2) || function(e3, a3) {
+    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == t2)
+      return;
+    var r2, o2, i2 = [], n2 = true, d2 = false;
+    try {
+      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
+        ;
+    } catch (e4) {
+      d2 = true, o2 = e4;
+    } finally {
+      try {
+        n2 || null == t2.return || t2.return();
+      } finally {
+        if (d2)
+          throw o2;
       }
-    };
+    }
+    return i2;
+  }(e2, a2) || function(e3, a3) {
+    if (!e3)
+      return;
+    if ("string" == typeof e3)
+      return li(e3, a3);
+    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
+    if ("Map" === t2 || "Set" === t2)
+      return Array.from(e3);
+    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+      return li(e3, a3);
+  }(e2, a2) || function() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }();
+}
+function li(e2, a2) {
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
+    r2[t2] = e2[t2];
+  return r2;
+}
+function si(e2, a2) {
+  for (var t2 = 0; t2 < a2.length; t2++) {
+    var r2 = a2[t2];
+    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
   }
-  /**
-   *
-   *
-   */
+}
+var ci = function() {
+  function e2(a3, t3) {
+    !function(e3, a4) {
+      if (!(e3 instanceof a4))
+        throw new TypeError("Cannot call a class as a function");
+    }(this, e2), this.metadata = new Mt(t3);
+    var r3 = di(this.getCountryAndCallingCode(a3), 2), o2 = r3[0], i2 = r3[1];
+    this.defaultCountry = o2, this.defaultCallingCode = i2, this.reset();
+  }
+  var a2, t2, r2;
+  return a2 = e2, t2 = [{ key: "getCountryAndCallingCode", value: function(e3) {
+    var a3, t3;
+    return e3 && ("object" === ni(e3) ? (a3 = e3.defaultCountry, t3 = e3.defaultCallingCode) : a3 = e3), a3 && !this.metadata.hasCountry(a3) && (a3 = void 0), [a3, t3];
+  } }, { key: "input", value: function(e3) {
+    var a3 = this.parser.input(e3, this.state), t3 = a3.digits;
+    if (a3.justLeadingPlus)
+      this.formattedOutput = "+";
+    else if (t3) {
+      var r3;
+      if (this.determineTheCountryIfNeeded(), this.state.nationalSignificantNumber && this.formatter.narrowDownMatchingFormats(this.state), this.metadata.hasSelectedNumberingPlan() && (r3 = this.formatter.format(t3, this.state)), void 0 === r3 && this.parser.reExtractNationalSignificantNumber(this.state)) {
+        this.determineTheCountryIfNeeded();
+        var o2 = this.state.getNationalDigits();
+        o2 && (r3 = this.formatter.format(o2, this.state));
+      }
+      this.formattedOutput = r3 ? this.getFullNumber(r3) : this.getNonFormattedNumber();
+    }
+    return this.formattedOutput;
+  } }, { key: "reset", value: function() {
+    var e3 = this;
+    return this.state = new _o({ onCountryChange: function(a3) {
+      e3.country = a3;
+    }, onCallingCodeChange: function(a3, t3) {
+      e3.metadata.selectNumberingPlan(t3, a3), e3.formatter.reset(e3.metadata.numberingPlan, e3.state), e3.parser.reset(e3.metadata.numberingPlan);
+    } }), this.formatter = new Wo({ state: this.state, metadata: this.metadata }), this.parser = new ii({ defaultCountry: this.defaultCountry, defaultCallingCode: this.defaultCallingCode, metadata: this.metadata, state: this.state, onNationalSignificantNumberChange: function() {
+      e3.determineTheCountryIfNeeded(), e3.formatter.reset(e3.metadata.numberingPlan, e3.state);
+    } }), this.state.reset({ country: this.defaultCountry, callingCode: this.defaultCallingCode }), this.formattedOutput = "", this;
+  } }, { key: "isInternational", value: function() {
+    return this.state.international;
+  } }, { key: "getCallingCode", value: function() {
+    if (this.isInternational())
+      return this.state.callingCode;
+  } }, { key: "getCountryCallingCode", value: function() {
+    return this.getCallingCode();
+  } }, { key: "getCountry", value: function() {
+    if (this.state.digits)
+      return this._getCountry();
+  } }, { key: "_getCountry", value: function() {
+    return this.state.country;
+  } }, { key: "determineTheCountryIfNeeded", value: function() {
+    this.state.country && !this.isCountryCallingCodeAmbiguous() || this.determineTheCountry();
+  } }, { key: "getFullNumber", value: function(e3) {
+    var a3 = this;
+    if (this.isInternational()) {
+      var t3 = function(e4) {
+        return a3.formatter.getInternationalPrefixBeforeCountryCallingCode(a3.state, { spacing: !!e4 }) + e4;
+      }, r3 = this.state.callingCode;
+      return t3(r3 ? e3 ? "".concat(r3, " ").concat(e3) : r3 : "".concat(this.state.getDigitsWithoutInternationalPrefix()));
+    }
+    return e3;
+  } }, { key: "getNonFormattedNationalNumberWithPrefix", value: function() {
+    var e3 = this.state, a3 = e3.nationalSignificantNumber, t3 = e3.complexPrefixBeforeNationalSignificantNumber, r3 = e3.nationalPrefix, o2 = a3, i2 = t3 || r3;
+    return i2 && (o2 = i2 + o2), o2;
+  } }, { key: "getNonFormattedNumber", value: function() {
+    var e3 = this.state.nationalSignificantNumberMatchesInput;
+    return this.getFullNumber(e3 ? this.getNonFormattedNationalNumberWithPrefix() : this.state.getNationalDigits());
+  } }, { key: "getNonFormattedTemplate", value: function() {
+    var e3 = this.getNonFormattedNumber();
+    if (e3)
+      return e3.replace(/[\+\d]/g, So);
+  } }, { key: "isCountryCallingCodeAmbiguous", value: function() {
+    var e3 = this.state.callingCode, a3 = this.metadata.getCountryCodesForCallingCode(e3);
+    return a3 && a3.length > 1;
+  } }, { key: "determineTheCountry", value: function() {
+    this.state.setCountry(Jr(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, { nationalNumber: this.state.nationalSignificantNumber, defaultCountry: this.defaultCountry, metadata: this.metadata }));
+  } }, { key: "getNumberValue", value: function() {
+    var e3 = this.state, a3 = e3.digits, t3 = e3.callingCode, r3 = e3.country, o2 = e3.nationalSignificantNumber;
+    if (a3)
+      return this.isInternational() ? t3 ? "+" + t3 + o2 : "+" + a3 : r3 || t3 ? "+" + (r3 ? this.metadata.countryCallingCode() : t3) + o2 : void 0;
+  } }, { key: "getNumber", value: function() {
+    var e3 = this.state, a3 = e3.nationalSignificantNumber, t3 = e3.carrierCode, r3 = e3.callingCode, o2 = this._getCountry();
+    if (a3 && (o2 || r3)) {
+      if (o2 && o2 === this.defaultCountry) {
+        var i2 = new Mt(this.metadata.metadata);
+        i2.selectNumberingPlan(o2);
+        var n2 = i2.numberingPlan.callingCode(), d2 = this.metadata.getCountryCodesForCallingCode(n2);
+        if (d2.length > 1) {
+          var l2 = Kr(a3, { countries: d2, defaultCountry: this.defaultCountry, metadata: this.metadata.metadata });
+          l2 && (o2 = l2);
+        }
+      }
+      var s2 = new Dr(o2 || r3, a3, this.metadata.metadata);
+      return t3 && (s2.carrierCode = t3), s2;
+    }
+  } }, { key: "isPossible", value: function() {
+    var e3 = this.getNumber();
+    return !!e3 && e3.isPossible();
+  } }, { key: "isValid", value: function() {
+    var e3 = this.getNumber();
+    return !!e3 && e3.isValid();
+  } }, { key: "getNationalNumber", value: function() {
+    return this.state.nationalSignificantNumber;
+  } }, { key: "getChars", value: function() {
+    return (this.state.international ? "+" : "") + this.state.digits;
+  } }, { key: "getTemplate", value: function() {
+    return this.formatter.getTemplate(this.state) || this.getNonFormattedTemplate() || "";
+  } }], t2 && si(a2.prototype, t2), r2 && si(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+}();
+function mi(e2, a2, t2) {
+  if (a2[e2])
+    return new Dr(e2, a2[e2], t2);
+}
+function ui(e2) {
+  return ci.call(this, e2, mt);
+}
+ui.prototype = Object.create(ci.prototype, {}), ui.prototype.constructor = ui;
+const pi = [["Afghanistan (\u202B\u0627\u0641\u063A\u0627\u0646\u0633\u062A\u0627\u0646\u202C\u200E)", "af", "93"], ["Albania (Shqip\xEBri)", "al", "355"], ["Algeria (\u202B\u0627\u0644\u062C\u0632\u0627\u0626\u0631\u202C\u200E)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (\u0540\u0561\u0575\u0561\u057D\u057F\u0561\u0576)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (\xD6sterreich)", "at", "43"], ["Azerbaijan (Az\u0259rbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (\u202B\u0627\u0644\u0628\u062D\u0631\u064A\u0646\u202C\u200E)", "bh", "973"], ["Bangladesh (\u09AC\u09BE\u0982\u09B2\u09BE\u09A6\u09C7\u09B6)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (\u0411\u0435\u043B\u0430\u0440\u0443\u0441\u044C)", "by", "375"], ["Belgium (Belgi\xEB)", "be", "32"], ["Belize", "bz", "501"], ["Benin (B\xE9nin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (\u0F60\u0F56\u0FB2\u0F74\u0F42)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (\u0411\u043E\u0441\u043D\u0430 \u0438 \u0425\u0435\u0440\u0446\u0435\u0433\u043E\u0432\u0438\u043D\u0430)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (\u0411\u044A\u043B\u0433\u0430\u0440\u0438\u044F)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (\u1780\u1798\u17D2\u1796\u17BB\u1787\u17B6)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (R\xE9publique centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (\u4E2D\u56FD)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (\u202B\u062C\u0632\u0631 \u0627\u0644\u0642\u0645\u0631\u202C\u200E)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["C\xF4te d\u2019Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Cura\xE7ao", "cw", "599", 0], ["Cyprus (\u039A\u03CD\u03C0\u03C1\u03BF\u03C2)", "cy", "357"], ["Czech Republic (\u010Cesk\xE1 republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (Rep\xFAblica Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (\u202B\u0645\u0635\u0631\u202C\u200E)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (F\xF8royar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane fran\xE7aise)", "gf", "594"], ["French Polynesia (Polyn\xE9sie fran\xE7aise)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (\u10E1\u10D0\u10E5\u10D0\u10E0\u10D7\u10D5\u10D4\u10DA\u10DD)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (\u0395\u03BB\u03BB\u03AC\u03B4\u03B1)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guin\xE9e)", "gn", "224"], ["Guinea-Bissau (Guin\xE9 Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (\u9999\u6E2F)", "hk", "852"], ["Hungary (Magyarorsz\xE1g)", "hu", "36"], ["Iceland (\xCDsland)", "is", "354"], ["India (\u092D\u093E\u0930\u0924)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (\u202B\u0627\u06CC\u0631\u0627\u0646\u202C\u200E)", "ir", "98"], ["Iraq (\u202B\u0627\u0644\u0639\u0631\u0627\u0642\u202C\u200E)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (\u202B\u05D9\u05E9\u05E8\u05D0\u05DC\u202C\u200E)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (\u65E5\u672C)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (\u202B\u0627\u0644\u0623\u0631\u062F\u0646\u202C\u200E)", "jo", "962"], ["Kazakhstan (\u041A\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043D)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (\u202B\u0627\u0644\u0643\u0648\u064A\u062A\u202C\u200E)", "kw", "965"], ["Kyrgyzstan (\u041A\u044B\u0440\u0433\u044B\u0437\u0441\u0442\u0430\u043D)", "kg", "996"], ["Laos (\u0EA5\u0EB2\u0EA7)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (\u202B\u0644\u0628\u0646\u0627\u0646\u202C\u200E)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (\u202B\u0644\u064A\u0628\u064A\u0627\u202C\u200E)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (\u6FB3\u9580)", "mo", "853"], ["Macedonia (FYROM) (\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0438\u0458\u0430)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (\u202B\u0645\u0648\u0631\u064A\u062A\u0627\u0646\u064A\u0627\u202C\u200E)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (M\xE9xico)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (\u041C\u043E\u043D\u0433\u043E\u043B)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (\u202B\u0627\u0644\u0645\u063A\u0631\u0628\u202C\u200E)", "ma", "212", 0], ["Mozambique (Mo\xE7ambique)", "mz", "258"], ["Myanmar (Burma) (\u1019\u103C\u1014\u103A\u1019\u102C)", "mm", "95"], ["Namibia (Namibi\xEB)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (\u0928\u0947\u092A\u093E\u0932)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Cal\xE9donie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (\uC870\uC120 \uBBFC\uC8FC\uC8FC\uC758 \uC778\uBBFC \uACF5\uD654\uAD6D)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (\u202B\u0639\u064F\u0645\u0627\u0646\u202C\u200E)", "om", "968"], ["Pakistan (\u202B\u067E\u0627\u06A9\u0633\u062A\u0627\u0646\u202C\u200E)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (\u202B\u0641\u0644\u0633\u0637\u064A\u0646\u202C\u200E)", "ps", "970"], ["Panama (Panam\xE1)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Per\xFA)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (\u202B\u0642\u0637\u0631\u202C\u200E)", "qa", "974"], ["R\xE9union (La R\xE9union)", "re", "262", 0], ["Romania (Rom\xE2nia)", "ro", "40"], ["Russia (\u0420\u043E\u0441\u0441\u0438\u044F)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barth\xE9lemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie fran\xE7aise))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["S\xE3o Tom\xE9 and Pr\xEDncipe (S\xE3o Tom\xE9 e Pr\xEDncipe)", "st", "239"], ["Saudi Arabia (\u202B\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629\u202C\u200E)", "sa", "966"], ["Senegal (S\xE9n\xE9gal)", "sn", "221"], ["Serbia (\u0421\u0440\u0431\u0438\u0458\u0430)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (\uB300\uD55C\uBBFC\uAD6D)", "kr", "82"], ["South Sudan (\u202B\u062C\u0646\u0648\u0628 \u0627\u0644\u0633\u0648\u062F\u0627\u0646\u202C\u200E)", "ss", "211"], ["Spain (Espa\xF1a)", "es", "34"], ["Sri Lanka (\u0DC1\u0DCA\u200D\u0DBB\u0DD3 \u0DBD\u0D82\u0D9A\u0DCF\u0DC0)", "lk", "94"], ["Sudan (\u202B\u0627\u0644\u0633\u0648\u062F\u0627\u0646\u202C\u200E)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (\u202B\u0633\u0648\u0631\u064A\u0627\u202C\u200E)", "sy", "963"], ["Taiwan (\u53F0\u7063)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (\u0E44\u0E17\u0E22)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (\u202B\u062A\u0648\u0646\u0633\u202C\u200E)", "tn", "216"], ["Turkey (T\xFCrkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (\u0423\u043A\u0440\u0430\u0457\u043D\u0430)", "ua", "380"], ["United Arab Emirates (\u202B\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062A \u0627\u0644\u0639\u0631\u0628\u064A\u0629 \u0627\u0644\u0645\u062A\u062D\u062F\u0629\u202C\u200E)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (O\u02BBzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Citt\xE0 del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Vi\u1EC7t Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (\u202B\u0627\u0644\u0635\u062D\u0631\u0627\u0621 \u0627\u0644\u063A\u0631\u0628\u064A\u0629\u202C\u200E)", "eh", "212", 1], ["Yemen (\u202B\u0627\u0644\u064A\u0645\u0646\u202C\u200E)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["\xC5land Islands", "ax", "358", 1]], hi = pi.map((e2) => e2[1].toUpperCase()), gi = pi.map((e2) => ({ name: e2[0], iso2: e2[1].toUpperCase(), dialCode: e2[2], priority: e2[3] || 0, areaCodes: e2[4] || null })), bi = (e2, a2) => {
+  const t2 = e2 ? function() {
+    return ut(wo, arguments);
+  }(e2, a2) : null;
+  let r2 = { countryCode: a2, phoneNumber: e2, isValid: false };
+  return t2 && (r2 = { ...r2, countryCode: t2.country, countryCallingCode: t2.countryCallingCode, nationalNumber: t2.nationalNumber, isValid: t2.isValid(), type: t2.getType(), formatInternational: t2.formatInternational(), formatNational: t2.formatNational(), uri: t2.getURI(), e164: t2.format("E.164") }), r2;
+}, zi = (e2, a2) => e2 ? a2 ? new ui(a2).input(e2) : e2 : null, fi = { AC: "40123", AD: "312345", AE: "501234567", AF: "701234567", AG: "2684641234", AI: "2642351234", AL: "672123456", AM: "77123456", AO: "923123456", AR: "91123456789", AS: "6847331234", AT: "664123456", AU: "412345678", AW: "5601234", AX: "412345678", AZ: "401234567", BA: "61123456", BB: "2462501234", BD: "1812345678", BE: "470123456", BF: "70123456", BG: "43012345", BH: "36001234", BI: "79561234", BJ: "90011234", BL: "690001234", BM: "4413701234", BN: "7123456", BO: "71234567", BQ: "3181234", BR: "11961234567", BS: "2423591234", BT: "17123456", BW: "71123456", BY: "294911911", BZ: "6221234", CA: "5062345678", CC: "412345678", CD: "991234567", CF: "70012345", CG: "061234567", CH: "781234567", CI: "0123456789", CK: "71234", CL: "221234567", CM: "671234567", CN: "13123456789", CO: "3211234567", CR: "83123456", CU: "51234567", CV: "9911234", CW: "95181234", CX: "412345678", CY: "96123456", CZ: "601123456", DE: "15123456789", DJ: "77831001", DK: "32123456", DM: "7672251234", DO: "8092345678", DZ: "551234567", EC: "991234567", EE: "51234567", EG: "1001234567", EH: "650123456", ER: "7123456", ES: "612345678", ET: "911234567", FI: "412345678", FJ: "7012345", FK: "51234", FM: "3501234", FO: "211234", FR: "612345678", GA: "06031234", GB: "7400123456", GD: "4734031234", GE: "555123456", GF: "694201234", GG: "7781123456", GH: "231234567", GI: "57123456", GL: "221234", GM: "3012345", GN: "601123456", GP: "690001234", GQ: "222123456", GR: "6912345678", GT: "51234567", GU: "6713001234", GW: "955012345", GY: "6091234", HK: "51234567", HN: "91234567", HR: "921234567", HT: "34101234", HU: "201234567", ID: "812345678", IE: "850123456", IL: "502345678", IM: "7924123456", IN: "8123456789", IO: "3801234", IQ: "7912345678", IR: "9123456789", IS: "6111234", IT: "3123456789", JE: "7797712345", JM: "8762101234", JO: "790123456", JP: "9012345678", KE: "712123456", KG: "700123456", KH: "91234567", KI: "72001234", KM: "3212345", KN: "8697652917", KP: "1921234567", KR: "1020000000", KW: "50012345", KY: "3453231234", KZ: "7710009998", LA: "2023123456", LB: "71123456", LC: "7582845678", LI: "660234567", LK: "712345678", LR: "770123456", LS: "50123456", LT: "61234567", LU: "628123456", LV: "21234567", LY: "912345678", MA: "650123456", MC: "612345678", MD: "62112345", ME: "67622901", MF: "690001234", MG: "321234567", MH: "2351234", MK: "72345678", ML: "65012345", MM: "92123456", MN: "88123456", MO: "66123456", MP: "6702345678", MQ: "696201234", MR: "22123456", MS: "6644923456", MT: "96961234", MU: "52512345", MV: "7712345", MW: "991234567", MX: "12221234567", MY: "123456789", MZ: "821234567", NA: "811234567", NC: "751234", NE: "93123456", NF: "381234", NG: "8021234567", NI: "81234567", NL: "612345678", NO: "40612345", NP: "9841234567", NR: "5551234", NU: "8884012", NZ: "211234567", OM: "92123456", PA: "61234567", PE: "912345678", PF: "87123456", PG: "70123456", PH: "9051234567", PK: "3012345678", PL: "512345678", PM: "551234", PR: "7872345678", PS: "599123456", PT: "912345678", PW: "6201234", PY: "961456789", QA: "33123456", RE: "692123456", RO: "712034567", RS: "601234567", RU: "9123456789", RW: "720123456", SA: "512345678", SB: "7421234", SC: "2510123", SD: "911231234", SE: "701234567", SG: "81234567", SH: "51234", SI: "31234567", SJ: "41234567", SK: "912123456", SL: "25123456", SM: "66661212", SN: "701234567", SO: "71123456", SR: "7412345", SS: "977123456", ST: "9812345", SV: "70123456", SX: "7215205678", SY: "944567890", SZ: "76123456", TA: "8999", TC: "6492311234", TD: "63012345", TG: "90112345", TH: "812345678", TJ: "917123456", TK: "7290", TL: "77212345", TM: "66123456", TN: "20123456", TO: "7715123", TR: "5012345678", TT: "8682911234", TV: "901234", TW: "912345678", TZ: "621234567", UA: "501234567", UG: "712345678", US: "2015550123", UY: "94231234", UZ: "912345678", VA: "3123456789", VC: "7844301234", VE: "4121234567", VG: "2843001234", VI: "3406421234", VN: "912345678", VU: "5912345", WF: "821234", WS: "7212345", XK: "43201234", YE: "712345678", YT: "639012345", ZA: "711234567", ZM: "955123456", ZW: "712345678" }, vi = { countrySelectorLabel: "Country code", countrySelectorError: "Choose country", countrySelectorSearchPlaceholder: "Search country", phoneNumberLabel: "Phone number", example: "Example:" }, yi = { name: "MazPhoneNumberInput", components: { MazInput: dt, MazSelect: ct }, mixins: [rt], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, defaultPhoneNumber: { type: String, default: null }, defaultCountryCode: { type: String, default: null }, size: { type: String, default: null }, preferredCountries: { type: Array, default: null }, onlyCountries: { type: Array, default: null }, ignoredCountries: { type: Array, default: Array }, translations: { type: Object, default: null }, noValidation: { type: Boolean, default: false }, noFlags: { type: Boolean, default: false }, noExample: { type: Boolean, default: false }, noSearch: { type: Boolean, default: false }, countriesHeight: { type: Number, default: 30 }, noUseBrowserLocale: { type: Boolean, default: false }, fetchCountry: { type: Boolean, default: false }, noCountrySelector: { type: Boolean, default: false }, showCodeOnList: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" }, placeholder: { type: String, default: null }, hint: { type: String, default: null }, position: { type: String, default: "left bottom" } }, data() {
+  return { results: {}, countryCode: this.defaultCountryCode, cursorPosition: null, asYouTypeNumber: this.defaultPhoneNumber };
+}, computed: { t() {
+  return { ...vi, ...this.translations };
+}, callingCode() {
+  const { countryCode: e2 } = this;
+  return e2 ? `+${((e3) => {
+    const a2 = this.countriesSorted.find((a3) => a3.iso2 === e3);
+    return a2 ? a2.dialCode : null;
+  })(e2) || function() {
+    return ut(Gt, arguments);
+  }(e2)}` : null;
+}, shouldChooseCountry() {
+  return !this.countryCode && !!this.asYouTypeNumber;
+}, isValid() {
+  return this.results.isValid;
+}, hasEmptyPhone() {
+  const { asYouTypeNumber: e2 } = this;
+  return "" === e2 || !e2;
+}, phoneNumberExample() {
+  const { countryCode: e2 } = this, a2 = e2 ? function() {
+    return ut(mi, arguments);
+  }(e2, fi) : null;
+  return a2 ? a2.formatNational() : null;
+}, hintValue() {
+  const { noExample: e2, phoneNumberExample: a2, hasEmptyPhone: t2, isValid: r2, t: o2 } = this;
+  return e2 || !a2 || t2 || r2 ? null : `${o2.example} ${a2}`;
+}, countriesList() {
+  return gi.filter((e2) => !this.ignoredCountries.includes(e2.iso2));
+}, countriesFiltered() {
+  return (this.onlyCountries || this.preferredCountries).map((e2) => this.countriesList.find((a2) => a2.iso2.includes(e2)));
+}, otherCountries() {
+  return this.countriesList.filter((e2) => !this.preferredCountries.includes(e2.iso2));
+}, countriesSorted() {
+  return this.preferredCountries ? [...this.countriesFiltered, ...this.otherCountries] : this.onlyCountries ? this.countriesFiltered : this.countriesList;
+} }, watch: { defaultPhoneNumber: { handler(e2, a2) {
+  e2 !== a2 && this.buildResults(e2);
+}, immediate: true }, defaultCountryCode: { handler(e2, a2) {
+  e2 && e2 !== a2 && this.setCountryCode(e2);
+}, immediate: true } }, async mounted() {
+  try {
+    const { defaultCountryCode: e2, fetchCountry: a2, noUseBrowserLocale: t2, setCountryCode: r2 } = this;
+    if (!this.defaultPhoneNumber && this.value && this.buildResults(this.value), e2 && a2)
+      throw new Error("MazPhoneNumberInput: Do not use 'fetch-country' and 'default-country-code' options in the same time");
+    if (e2 && t2)
+      throw new Error("MazPhoneNumberInput: If you use a 'default-country-code', do not use 'no-use-browser-locale' options");
+    if (e2)
+      return;
+    const o2 = a2 ? await (async () => {
+      try {
+        const e3 = await fetch("https://ip2c.org/s"), a3 = (await e3.text() || "").toString();
+        if (a3 && "1" === a3[0])
+          return a3.substr(2, 2);
+      } catch (e3) {
+        return new Error("[MazPhoneNumberInput] Error while fetching country code");
+      }
+    })() : t2 ? null : await (() => {
+      if ("undefined" == typeof window)
+        return null;
+      const e3 = window.navigator.userLanguage || window.navigator.language;
+      let a3 = e3 ? e3.substr(3, 4).toUpperCase() : null;
+      return "" === a3 && (a3 = e3.substr(0, 2).toUpperCase()), "EN" === a3 && (a3 = "US"), "JA" === a3 && (a3 = "JP"), a3;
+    })();
+    o2 && r2(o2);
+  } catch (e2) {
+    throw new Error(e2);
+  }
+}, methods: { async buildResults(e2, a2) {
+  const { countryCode: t2, value: r2 } = this;
+  await this.$nextTick();
+  const o2 = this.asYouTypeNumber && e2 && this.asYouTypeNumber.length > e2.length;
+  this.results = bi(e2, t2);
+  const { isValid: i2, e164: n2 } = this.results, d2 = !this.asYouTypeNumber || !this.cursorPosition || this.cursorPosition + 1 >= this.asYouTypeNumber.length, l2 = !o2 && d2 || i2;
+  this.asYouTypeNumber = l2 ? zi(e2, t2) : e2, !a2 && this.results && this.results.countryCode && t2 !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
+  const s2 = i2 ? n2 : this.asYouTypeNumber;
+  (s2 || s2 !== r2) && this.$emit("input", s2);
+}, onBlur(e2) {
+  this.$emit("blur", e2), this.countryCode && (this.asYouTypeNumber = zi(this.asYouTypeNumber, this.countryCode));
+}, onKeydown(e2) {
+  const a2 = e2.target;
+  this.cursorPosition = a2 == null ? void 0 : a2.selectionStart;
+}, async setCountryCode(e2, a2) {
+  const { buildResults: t2, asYouTypeNumber: r2 } = this, o2 = (async (e3) => {
+    try {
+      if (hi.includes(e3))
+        return true;
+      throw `MazPhoneNumberInput: The country ${e3} is not available`;
+    } catch (e4) {
+      throw new Error(e4);
+    }
+  })(e2);
+  a2 && (this.focusPhoneNumberInput(), r2 && r2.includes("+") && (this.asYouTypeNumber = null)), o2 && e2 && (this.countryCode = e2, t2(this.asYouTypeNumber, true));
+}, async focusCountrySelector() {
+  await this.$nextTick(), this.$refs.CountrySelector.$el.querySelector("input").focus();
+}, async focusPhoneNumberInput() {
+  await this.$nextTick(), this.$refs.PhoneNumberInput.$el.querySelector("input").focus();
+} } };
+const ki = at(yi, function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2("div", { staticClass: "maz-base-component maz-phone-number-input maz-flex", class: [{ "maz-is-dark": e2.dark }, `maz-phone-number-input--${e2.size}`], attrs: { id: e2.id } }, [e2.noCountrySelector ? e2._e() : a2("MazSelect", { ref: "CountrySelector", staticClass: "country-selector", class: { "no-padding-left": e2.noFlags || !e2.countryCode }, attrs: { value: e2.countryCode, options: e2.countriesSorted, placeholder: e2.t.countrySelectorLabel, search: !e2.noSearch, position: e2.position, "search-placeholder": e2.t.countrySelectorSearchPlaceholder, "items-height": e2.countriesHeight, error: e2.shouldChooseCountry, hint: e2.shouldChooseCountry ? e2.t.countrySelectorError : null, size: e2.size, success: e2.isValid && !e2.noValidation, disabled: e2.disabled, lock: e2.lock, "input-value": e2.callingCode, "list-width": 300, config: { labelKey: "dialCode", searchKey: "name", valueKey: "iso2" }, color: e2.color }, on: { input: function(a3) {
+    return e2.setCountryCode(a3, true);
+  } }, scopedSlots: e2._u([{ key: "default", fn: function({ option: t2 }) {
+    return [a2("div", { staticClass: "maz-flex maz-align-center" }, [e2.noFlags ? e2._e() : a2("div", { staticClass: "country-selector__flag-container maz-mr-2" }, [a2("div", { class: `maz-flag maz-flag-${t2.iso2.toLowerCase()}` })]), e2.showCodeOnList ? a2("span", { staticClass: "country-selector__calling-code maz-flex-fixed maz-text-muted", class: { "maz-text-muted-dark": t2.isSelected } }, [e2._v(" +" + e2._s(t2.dialCode) + " ")]) : e2._e(), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-left maz-text-color", class: { "maz-text-white": t2.isSelected } }, [e2._v(" " + e2._s(t2.name) + " ")]), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-right maz-text-color", class: { "maz-text-white": t2.isSelected }, staticStyle: { "max-width": "60px" } }, [e2._v(" +" + e2._s(t2.dialCode) + " ")])])];
+  } }], null, false, 664249301) }), !e2.countryCode || e2.noFlags || e2.noCountrySelector ? e2._e() : a2("button", { staticClass: "maz-phone-number-input__country-flag", attrs: { tabindex: "-1" }, on: { click: e2.focusCountrySelector } }, [a2("div", { class: `maz-flag maz-flag-${e2.countryCode.toLowerCase()}` })]), a2("MazInput", e2._b({ ref: "PhoneNumberInput", staticClass: "input-phone-number maz-flex-1", class: { "has-border-radius": e2.noCountrySelector }, attrs: { id: e2.uniqueId ? `${e2.uniqueId}_phone_number` : null, value: e2.asYouTypeNumber, placeholder: e2.placeholder || e2.t.phoneNumberLabel, hint: e2.hint || e2.hintValue, disabled: e2.disabled, readonly: e2.lock, size: e2.size, success: e2.isValid && !e2.noValidation, clearable: "", color: e2.color }, on: { keydown: e2.onKeydown, focus: function(a3) {
+    return e2.$emit("focus", a3);
+  }, blur: e2.onBlur, change: function(a3) {
+    return e2.$emit("change", a3);
+  }, clear: function(a3) {
+    return e2.$emit("clear", a3);
+  }, input: e2.buildResults } }, "MazInput", e2.$attrs, false), [e2._t("icon-left", null, { slot: "icon-left" }), e2._t("icon-right", null, { slot: "icon-right" })], 2)], 1);
+}, [], false, null, null, null, null).exports;
+ki.install = (e2) => {
+  e2.component(ki.name, ki);
+};
+const xi = "o21pay-address", wi = [tt, it, dt, ct, ki];
+class $i extends ie {
+  static get properties() {
+    return { editor: { type: Boolean }, size: { type: String }, pro: { type: Boolean }, icons: { type: Boolean }, required: { type: Boolean }, optimized: { type: Boolean }, primary_color: { type: String, attribute: "primary_color" }, data: { type: Object } };
+  }
   constructor() {
-    super(), this.countries = this.listCountries(), this.pro = !1, this.editor = !1, this.required = !1, this.icons = !1, this.optimized = !1, this.size = "small", this.object = void 0;
-    const e = this;
+    super(), this.countries = this.listCountries(), this.pro = false, this.editor = false, this.required = false, this.icons = false, this.optimized = false, this.size = "small", this.object = void 0;
+    const e2 = this;
     setTimeout(async function() {
-      e.createVue();
+      e2.createVue();
     }, 200);
   }
   init() {
   }
-  /**
-   *
-   *
-   */
   builderProperties() {
-    return [{
-      type: "Switch",
-      title: "Required",
-      value: "required",
-      style: ""
-    }, {
-      type: "Switch",
-      title: "Optimized View",
-      value: "optimized",
-      style: "float: left;margin-bottom: 5px"
-    }, {
-      type: "Switch",
-      title: "Icons",
-      value: "icons",
-      style: "float: left;margin-bottom: 5px"
-    }, {
-      type: "Switch",
-      title: "Address Pro",
-      value: "pro",
-      style: "margin-bottom: 5px"
-    }, {
-      type: "Size"
-    }];
+    return [{ type: "Switch", title: "Required", value: "required", style: "" }, { type: "Switch", title: "Optimized View", value: "optimized", style: "float: left;margin-bottom: 5px" }, { type: "Switch", title: "Icons", value: "icons", style: "float: left;margin-bottom: 5px" }, { type: "Switch", title: "Address Pro", value: "pro", style: "margin-bottom: 5px" }, { type: "Size" }];
   }
-  /**
-   *
-   *
-   */
   validation() {
     if (!this.required)
-      return !0;
-    let e = this.getData();
-    return !(!e || !e.name.length || !e.address.length || !e.zipcode.length || !e.city.length || !e.country.length || !e.phone.length || this.pro && (!e.company.length || !e.duns.length || !e.vat.length));
+      return true;
+    let e2 = this.getData();
+    if (!e2)
+      return false;
+    if (!e2.name.length)
+      return false;
+    if (!e2.address.length)
+      return false;
+    if (!e2.zipcode.length)
+      return false;
+    if (!e2.city.length)
+      return false;
+    if (!e2.country.length)
+      return false;
+    if (!e2.phone.length)
+      return false;
+    if (this.pro) {
+      if (!e2.company.length)
+        return false;
+      if (!e2.duns.length)
+        return false;
+      if (!e2.vat.length)
+        return false;
+    }
+    return true;
   }
-  /**
-   *
-   *
-   */
   getData() {
     if (!this.object)
       return null;
-    let e = this.object.$data;
-    if (!e)
+    let e2 = this.object.$data;
+    if (!e2)
       return null;
-    const a = {
-      name: e.name,
-      address: e.address,
-      zipcode: e.zipcode,
-      city: e.city,
-      country: e.cntry,
-      phone: e.phone
-    };
-    return this.pro && (a.company = e.company, a.duns = e.duns, a.vatnumber = e.vatnumber), a;
+    const a2 = { name: e2.name, address: e2.address, zipcode: e2.zipcode, city: e2.city, country: e2.cntry, phone: e2.phone };
+    return this.pro && (a2.company = e2.company, a2.duns = e2.duns, a2.vatnumber = e2.vatnumber), a2;
   }
-  /**
-   *
-   *
-   */
   setData() {
     if (!this.object)
       return null;
-    let e = this.object.$data;
-    if (!e)
+    let e2 = this.object.$data;
+    if (!e2)
       return null;
-    this.data && (e.name = this.data.name, e.name = this.data.name || "", e.address = this.data.address || "", e.zipcode = this.data.zipcode || "", e.city = this.data.city || "", e.country = this.data.country || "", e.phone = this.data.phone || "", this.pro && (e.company = this.data.company || "", e.duns = this.data.duns || "", e.vatnumber = this.data.vatnumber || ""));
+    this.data && (e2.name = this.data.name, e2.name = this.data.name || "", e2.address = this.data.address || "", e2.zipcode = this.data.zipcode || "", e2.city = this.data.city || "", e2.country = this.data.country || "", e2.phone = this.data.phone || "", this.pro && (e2.company = this.data.company || "", e2.duns = this.data.duns || "", e2.vatnumber = this.data.vatnumber || ""));
   }
-  /* createRenderRoot() {
-    return this
-  }*/
-  /**
-   *
-   *
-   */
-  updated(e) {
-    super.updated(e);
-    const a = this.prepareDataProperties();
-    this.object && (this.object.$data.props = a);
+  updated(e2) {
+    super.updated(e2);
+    const a2 = this.prepareDataProperties();
+    this.object && (this.object.$data.props = a2);
   }
-  /**
-   *
-   *
-   */
   async createVue() {
-    const e = this;
-    if (!e.renderRoot)
+    const e2 = this;
+    if (!e2.renderRoot)
       return;
-    const a = e.renderRoot.querySelector("#app");
-    if (!a)
+    const a2 = e2.renderRoot.querySelector("#app");
+    if (!a2)
       return;
-    ql(Vue), this.object = new Vue({
-      el: a,
-      components: {},
-      data: function() {
-        return {
-          visible: !1,
-          resultPhone: void 0,
-          options: e.countries,
-          company: "",
-          name: "",
-          address: "",
-          zipcode: "",
-          city: "",
-          cntry: "",
-          phone: "",
-          duns: "",
-          vatnumber: "",
-          props: e.prepareDataProperties()
-        };
-      },
-      watch: {
-        name(i, n) {
-          e.getData();
-        }
-      },
-      methods: {
-        __inputValue() {
-          const i = e.validation();
-          e.dispatchEvent(new CustomEvent("o21pay_component", {
-            detail: {
-              instance: e,
-              message: "o21pay_validation",
-              state: i
-            },
-            bubbles: !0,
-            composed: !0
-          }));
-        }
-      }
-    });
-    let t = navigator.language.split("-")[0], o = this.countries.find((i) => i.iso === t);
-    o && (this.object.$data.cntry = o.value), this.setData(), this.object.$data.visible = !0;
-  }
-  /**
-   *
-   *
-   */
-  listCountries() {
-    const e = [];
-    for (const a of Jt)
-      e.push({
-        label: a.name,
-        value: a.name,
-        iso: a.iso2.toLowerCase(),
-        icon: a.iso2.toLowerCase()
+    ((e3, a3 = {}) => {
+      wi.forEach((a4) => {
+        e3.component(a4.name, a4);
       });
-    return e;
+    })(Vue), this.object = new Vue({ el: a2, components: {}, data: function() {
+      return { visible: false, resultPhone: void 0, options: e2.countries, company: "", name: "", address: "", zipcode: "", city: "", cntry: "", phone: "", duns: "", vatnumber: "", props: e2.prepareDataProperties() };
+    }, watch: { name(a3, t3) {
+      e2.getData();
+    } }, methods: { __inputValue() {
+      const a3 = e2.validation();
+      e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_validation", state: a3 }, bubbles: true, composed: true }));
+    } } });
+    let t2 = navigator.language.split("-")[0], r2 = this.countries.find((e3) => e3.iso === t2);
+    r2 && (this.object.$data.cntry = r2.value), this.setData(), this.object.$data.visible = true;
   }
-  /**
-   *
-   *
-   */
-  getIcon(e) {
-    return this.icons ? e === "name" ? "person" : e === "@" ? "home" : e === "company" ? "apartment" : e === "duns" ? "inbox" : e === "vat" ? "123" : "" : "";
+  listCountries() {
+    const e2 = [];
+    for (const a2 of gi)
+      e2.push({ label: a2.name, value: a2.name, iso: a2.iso2.toLowerCase(), icon: a2.iso2.toLowerCase() });
+    return e2;
   }
-  /**
-   *
-   *
-   */
+  getIcon(e2) {
+    return this.icons ? "name" === e2 ? "person" : "@" === e2 ? "home" : "company" === e2 ? "apartment" : "duns" === e2 ? "inbox" : "vat" === e2 ? "123" : "" : "";
+  }
   prepareDataProperties() {
-    let e = {};
-    for (const a in ve.properties) {
-      let t = this[a];
-      if (console.log(a, t), a === "size")
-        t === "small" ? t = "sm" : t === "medium" ? t = void 0 : t === "large" ? t = "lg" : t = "sm";
-      else if (a === "icons") {
-        e.icon_name = this.getIcon("name"), e.icon_addr = this.getIcon("@"), e.icon_company = this.getIcon("company"), e.icon_duns = this.getIcon("duns"), e.icon_vat = this.getIcon("vat");
+    let e2 = {};
+    for (const a2 in $i.properties) {
+      let t2 = this[a2];
+      if (console.log(a2, t2), "size" === a2)
+        t2 = "small" === t2 ? "sm" : "medium" === t2 ? void 0 : "large" === t2 ? "lg" : "sm";
+      else if ("icons" === a2) {
+        e2.icon_name = this.getIcon("name"), e2.icon_addr = this.getIcon("@"), e2.icon_company = this.getIcon("company"), e2.icon_duns = this.getIcon("duns"), e2.icon_vat = this.getIcon("vat");
         continue;
       }
-      e[a] = t;
+      e2[a2] = t2;
     }
-    return e;
+    return e2;
   }
-  /**
-   *
-   *
-   */
   render() {
-    return R` <div>
+    return F` <div>
       <div id="app">
         <div v-if="visible">
           <form>
@@ -17779,189 +14334,87 @@ class ve extends O {
     </div>`;
   }
 }
-Yl(ve, "styles", [Nt, zi]);
-const ga = window.customElements;
-ga && !ga.get(ot) && ga.define(ot, ve);
-const Wl = {
-  getServerUrl: function(r) {
-    let e = "https://o21c.obvious21.com/api/v1/";
-    return r === "development" && (e = "http://localhost:3400/api/v1/"), r === "sandbox" && (e = "https://sandbox-o21c.obvious21.com/api/v1/"), r === "beta" && (e = "https://beta-o21c.obvious21.com/api/v1/"), e;
+!function(e2, a2, t2) {
+  (a2 = function(e3) {
+    var a3 = function(e4, a4) {
+      if ("object" != typeof e4 || null === e4)
+        return e4;
+      var t3 = e4[Symbol.toPrimitive];
+      if (void 0 !== t3) {
+        var r2 = t3.call(e4, a4 || "default");
+        if ("object" != typeof r2)
+          return r2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === a4 ? String : Number)(e4);
+    }(e3, "string");
+    return "symbol" == typeof a3 ? a3 : String(a3);
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+}($i, "styles", [Xa, et]);
+const _i = window.customElements;
+_i && !_i.get(xi) && _i.define(xi, $i);
+const Ci = function(e2) {
+  let a2 = "https://o21c.obvious21.com/api/v1/";
+  return "development" === e2 && (a2 = "http://localhost:3400/api/v1/"), "sandbox" === e2 && (a2 = "https://sandbox-o21c.obvious21.com/api/v1/"), "beta" === e2 && (a2 = "https://beta-o21c.obvious21.com/api/v1/"), a2;
+}, Ei = { name: "OtpInput", props: { id: { type: String, default: "otp" }, digits: { type: Number, default: 5 }, mode: { type: String, default: "separate" }, type: { type: String, default: "number" }, placeholder: { type: String, default: "-" }, radius: { type: Number, default: 5 }, gap: { type: Number, default: 10 }, isDisabled: { type: Boolean, default: false }, isValid: { type: Boolean, default: true }, rtl: { type: Boolean, default: false }, autoFocus: { type: Boolean, default: true }, errorClass: { type: String, default: "" }, separateInputClass: { type: String, default: "" }, separateWrapperClass: { type: String, default: "" }, groupInputClass: { type: String, default: "" }, groupWrapperClass: { type: String, default: "" }, activeInputClass: { type: String, default: "" }, activeWrapperClass: { type: String, default: "" } }, data: () => ({ inputValue: [], joinedValue: "", isInputFocused: false, activeInput: -1 }), mounted() {
+  if (this.autoFocus && !this.isDisabled) {
+    this.onFocus(0), this.$refs.digitInput[0].focus();
+    if (-1 != ["text", "password", "number"].indexOf(this.type))
+      for (let e2 of this.$refs.digitInput)
+        e2.type = this.type;
   }
-}, Xl = {
-  name: "OtpInput",
-  props: {
-    id: {
-      type: String,
-      default: "otp"
-    },
-    digits: {
-      type: Number,
-      default: 5
-    },
-    mode: {
-      type: String,
-      default: "separate"
-    },
-    type: {
-      type: String,
-      default: "number"
-    },
-    placeholder: {
-      type: String,
-      default: "-"
-    },
-    radius: {
-      type: Number,
-      default: 5
-    },
-    gap: {
-      type: Number,
-      default: 10
-    },
-    isDisabled: {
-      type: Boolean,
-      default: !1
-    },
-    isValid: {
-      type: Boolean,
-      default: !0
-    },
-    rtl: {
-      type: Boolean,
-      default: !1
-    },
-    autoFocus: {
-      type: Boolean,
-      default: !0
-    },
-    errorClass: {
-      type: String,
-      default: ""
-    },
-    separateInputClass: {
-      type: String,
-      default: ""
-    },
-    separateWrapperClass: {
-      type: String,
-      default: ""
-    },
-    groupInputClass: {
-      type: String,
-      default: ""
-    },
-    groupWrapperClass: {
-      type: String,
-      default: ""
-    },
-    activeInputClass: {
-      type: String,
-      default: ""
-    },
-    activeWrapperClass: {
-      type: String,
-      default: ""
-    }
-  },
-  data() {
-    return {
-      inputValue: [],
-      joinedValue: "",
-      isInputFocused: !1,
-      activeInput: -1
-    };
-  },
-  mounted() {
-    if (this.autoFocus && !this.isDisabled && (this.onFocus(0), this.$refs.digitInput[0].focus(), ["text", "password", "number"].indexOf(this.type) != -1))
-      for (let e of this.$refs.digitInput)
-        e.type = this.type;
-  },
-  computed: {
-    wrapperStyle() {
-      return {
-        direction: this.rtl ? "rtl" : "ltr",
-        gap: `${this.gap}px`,
-        "border-radius": `${this.radius}px`
-      };
-    },
-    inputStyle() {
-      return {
-        "--border-radius": `${this.radius}px`
-      };
-    },
-    inputClassHandler() {
-      return this.mode === "separate" ? this.isValid ? this.separateInputClass ? this.separateInputClass : "defualt-input-separate" : this.separateInputClass ? this.separateInputClass : "defualt-error-input-separate" : this.mode === "group" ? this.groupInputClass ? this.groupInputClass : "defualt-input-group" : "";
-    },
-    activeInputClassHandler() {
-      return this.mode === "separate" ? this.activeInputClass ? this.activeInputClass : "defualt-active-input" : "";
-    },
-    activeWrapperClassHandler() {
-      return this.mode === "group" ? this.isValid ? this.activeWrapperClass ? this.activeWrapperClass : "defualt-active-wrapper" : this.activeWrapperClass ? this.activeWrapperClass : "defualt-error-wrapper-group" : "";
-    },
-    wrapperClassHandler() {
-      return this.mode === "separate" ? this.separateWrapperClass ? this.separateWrapperClass : "defualt-wrapper-separate" : this.mode === "group" ? this.isValid ? this.groupWrapperClass ? this.groupWrapperClass : "defualt-wrapper-group" : this.groupWrapperClass ? this.groupWrapperClass : "defualt-error-wrapper-group" : "";
-    },
-    errorClassHandler() {
-      return this.errorClass ? this.errorClass : "default-error-class";
-    }
-  },
-  methods: {
-    keydownHandler(r, e) {
-      e.keyCode === 8 && e.target.value === "" && this.$refs.digitInput[Math.max(0, r - 1)].focus();
-    },
-    onInput(r) {
-      const [e, ...a] = this.type === "number" ? this.inputValue[r].replace(/[^0-9]/g, "") : this.inputValue[r];
-      this.inputValue[r] = e ?? "";
-      const t = r === this.digits - 1;
-      e !== void 0 && !t && (this.$refs.digitInput[r + 1].focus(), this.$refs.digitInput[r + 1].value = a.join(""), this.$refs.digitInput[r + 1].dispatchEvent(new Event("input"))), this.joinedValue = this.inputValue.map((i) => i).join(""), this.$emit("value", this.joinedValue), this.joinedValue.length === this.digits && this.onComplete(this.joinedValue);
-    },
-    onFocus(r) {
-      this.activeInput = r, this.isInputFocused = !0;
-    },
-    onBlur() {
-      this.activeInput = -1, this.isInputFocused = !1;
-    },
-    onComplete(r) {
-      this.onBlur(), this.$refs.digitInput[this.digits - 1].blur(), this.type === "password" ? this.$emit("on-complete", r) : this.$emit("on-complete", r);
-    },
-    onChanged(r) {
-      this.$emit("on-changed", this.inputValue[r]);
-    },
-    OnPaste(r) {
-      this.$emit("on-paste", r);
-    }
-  }
-};
-var Zl = function() {
-  var e = this, a = e._self._c;
-  return a("div", { staticClass: "vue-otp-input" }, [a("div", { staticClass: "otp-wrapper", class: e.isInputFocused ? e.activeWrapperClassHandler : e.wrapperClassHandler, style: e.wrapperStyle, attrs: { id: e.id } }, e._l(e.digits, function(t, o) {
-    return a("input", { directives: [{ name: "model", rawName: "v-model", value: e.inputValue[o], expression: "inputValue[index]" }], key: e.id + o, ref: "digitInput", refInFor: !0, staticClass: "otp-input", class: [e.inputClassHandler, e.activeInput === o ? e.activeInputClassHandler : ""], style: e.inputStyle, attrs: { autocomplete: "one-time-code", placeholder: e.placeholder, disabled: e.isDisabled }, domProps: { value: e.inputValue[o] }, on: { focus: function(i) {
-      return e.onFocus(o);
-    }, blur: e.onBlur, paste: e.OnPaste, input: [function(i) {
-      i.target.composing || e.$set(e.inputValue, o, i.target.value);
-    }, function(i) {
-      return e.onInput(o, i);
-    }], change: function(i) {
-      return e.onChanged(o);
-    }, keydown: function(i) {
-      return e.keydownHandler(o, i);
+}, computed: { wrapperStyle() {
+  return { direction: this.rtl ? "rtl" : "ltr", gap: `${this.gap}px`, "border-radius": `${this.radius}px` };
+}, inputStyle() {
+  return { "--border-radius": `${this.radius}px` };
+}, inputClassHandler() {
+  return "separate" === this.mode ? this.isValid ? this.separateInputClass ? this.separateInputClass : "defualt-input-separate" : this.separateInputClass ? this.separateInputClass : "defualt-error-input-separate" : "group" === this.mode ? this.groupInputClass ? this.groupInputClass : "defualt-input-group" : "";
+}, activeInputClassHandler() {
+  return "separate" === this.mode ? this.activeInputClass ? this.activeInputClass : "defualt-active-input" : "";
+}, activeWrapperClassHandler() {
+  return "group" === this.mode ? this.isValid ? this.activeWrapperClass ? this.activeWrapperClass : "defualt-active-wrapper" : this.activeWrapperClass ? this.activeWrapperClass : "defualt-error-wrapper-group" : "";
+}, wrapperClassHandler() {
+  return "separate" === this.mode ? this.separateWrapperClass ? this.separateWrapperClass : "defualt-wrapper-separate" : "group" === this.mode ? this.isValid ? this.groupWrapperClass ? this.groupWrapperClass : "defualt-wrapper-group" : this.groupWrapperClass ? this.groupWrapperClass : "defualt-error-wrapper-group" : "";
+}, errorClassHandler() {
+  return this.errorClass ? this.errorClass : "default-error-class";
+} }, methods: { keydownHandler(e2, a2) {
+  8 === a2.keyCode && "" === a2.target.value && this.$refs.digitInput[Math.max(0, e2 - 1)].focus();
+}, onInput(e2) {
+  const [a2, ...t2] = "number" === this.type ? this.inputValue[e2].replace(/[^0-9]/g, "") : this.inputValue[e2];
+  this.inputValue[e2] = null == a2 ? "" : a2;
+  const r2 = e2 === this.digits - 1;
+  void 0 !== a2 && !r2 && (this.$refs.digitInput[e2 + 1].focus(), this.$refs.digitInput[e2 + 1].value = t2.join(""), this.$refs.digitInput[e2 + 1].dispatchEvent(new Event("input"))), this.joinedValue = this.inputValue.map((e3) => e3).join(""), this.$emit("value", this.joinedValue), this.joinedValue.length === this.digits && this.onComplete(this.joinedValue);
+}, onFocus(e2) {
+  this.activeInput = e2, this.isInputFocused = true;
+}, onBlur() {
+  this.activeInput = -1, this.isInputFocused = false;
+}, onComplete(e2) {
+  this.onBlur(), this.$refs.digitInput[this.digits - 1].blur(), this.type, this.$emit("on-complete", e2);
+}, onChanged(e2) {
+  this.$emit("on-changed", this.inputValue[e2]);
+}, OnPaste(e2) {
+  this.$emit("on-paste", e2);
+} } };
+const Si = at(Ei, function() {
+  var e2 = this, a2 = e2._self._c;
+  return a2("div", { staticClass: "vue-otp-input" }, [a2("div", { staticClass: "otp-wrapper", class: e2.isInputFocused ? e2.activeWrapperClassHandler : e2.wrapperClassHandler, style: e2.wrapperStyle, attrs: { id: e2.id } }, e2._l(e2.digits, function(t2, r2) {
+    return a2("input", { directives: [{ name: "model", rawName: "v-model", value: e2.inputValue[r2], expression: "inputValue[index]" }], key: e2.id + r2, ref: "digitInput", refInFor: true, staticClass: "otp-input", class: [e2.inputClassHandler, e2.activeInput === r2 ? e2.activeInputClassHandler : ""], style: e2.inputStyle, attrs: { autocomplete: "one-time-code", placeholder: e2.placeholder, disabled: e2.isDisabled }, domProps: { value: e2.inputValue[r2] }, on: { focus: function(a3) {
+      return e2.onFocus(r2);
+    }, blur: e2.onBlur, paste: e2.OnPaste, input: [function(a3) {
+      a3.target.composing || e2.$set(e2.inputValue, r2, a3.target.value);
+    }, function(a3) {
+      return e2.onInput(r2, a3);
+    }], change: function(a3) {
+      return e2.onChanged(r2);
+    }, keydown: function(a3) {
+      return e2.keydownHandler(r2, a3);
     } } });
-  }), 0), e.isValid ? e._e() : a("span", { class: e.errorClassHandler }, [e._t("errorMessage")], 2)]);
-}, es = [], as = /* @__PURE__ */ te(
-  Xl,
-  Zl,
-  es,
-  !1,
-  null,
-  null,
-  null,
-  null
-);
-const Ee = as.exports;
-Ee.install = (r) => {
-  r.component(Ee.name, Ee);
+  }), 0), e2.isValid ? e2._e() : a2("span", { class: e2.errorClassHandler }, [e2._t("errorMessage")], 2)]);
+}, [], false, null, null, null, null).exports;
+Si.install = (e2) => {
+  e2.component(Si.name, Si);
 };
-const rs = re`
+const Ii = d`
   div.vue-otp-input {
     width: max-content;
     margin-left: 15 px;
@@ -18064,7 +14517,7 @@ const rs = re`
   input[type='number'] {
     -moz-appearance: textfield;
   }
-`, ts = re`
+`, Ai = d`
   :host {
     --maz-primary: #9bc99d;
     --maz-border-width: 1px;
@@ -18079,191 +14532,82 @@ const rs = re`
     padding: 0;
   }
 `;
-function os(r, e, a) {
-  return e = is(e), e in r ? Object.defineProperty(r, e, { value: a, enumerable: !0, configurable: !0, writable: !0 }) : r[e] = a, r;
-}
-function is(r) {
-  var e = ns(r, "string");
-  return typeof e == "symbol" ? e : String(e);
-}
-function ns(r, e) {
-  if (typeof r != "object" || r === null)
-    return r;
-  var a = r[Symbol.toPrimitive];
-  if (a !== void 0) {
-    var t = a.call(r, e || "default");
-    if (typeof t != "object")
-      return t;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (e === "string" ? String : Number)(r);
-}
-const it = "o21pay-otp", ds = [j, Ee], ls = (r, e = {}) => {
-  ds.forEach((a) => {
-    r.component(a.name, a);
-  });
-};
-class ye extends O {
+const Ni = "o21pay-otp", Pi = [dt, Si];
+class Bi extends ie {
   static get properties() {
-    return {
-      required: {
-        type: Boolean
-      },
-      env: {
-        type: String
-      },
-      editor: {
-        type: Boolean
-      },
-      ticket: {
-        type: String
-      },
-      data: {
-        type: Object
-      }
-    };
+    return { required: { type: Boolean }, env: { type: String }, editor: { type: Boolean }, ticket: { type: String }, data: { type: Object } };
   }
-  /**
-   *
-   *
-   */
   constructor() {
-    super(), this.editor = !1, this.required = !1, this.object = void 0;
-    const e = this;
+    super(), this.editor = false, this.required = false, this.object = void 0;
+    const e2 = this;
     setTimeout(async function() {
-      e.createVue();
+      e2.createVue();
     }, 200);
   }
   init() {
   }
-  /**
-   *
-   *
-   */
   builderProperties() {
-    return [{
-      type: "Switch",
-      title: "Required",
-      value: "required",
-      style: ""
-    }];
+    return [{ type: "Switch", title: "Required", value: "required", style: "" }];
   }
-  /**
-   *
-   *
-   */
   validation() {
-    return this.required ? !!this.getData() : !0;
+    if (!this.required)
+      return true;
+    return !!this.getData();
   }
-  /**
-   *
-   *
-   */
   getData() {
-    return !this.object || !this.object.$data ? null : {};
+    if (!this.object)
+      return null;
+    if (!this.object.$data)
+      return null;
+    return {};
   }
-  /**
-   *
-   *
-   */
   setData() {
-    if (!this.object || !this.object.$data)
+    if (!this.object)
+      return null;
+    if (!this.object.$data)
       return null;
     this.data;
   }
-  /* createRenderRoot() {
-    return this
-  }*/
-  /**
-   *
-   *
-   */
-  updated(e) {
-    super.updated(e);
-    const a = this.prepareDataProperties();
-    this.object && (this.object.$data.props = a);
+  updated(e2) {
+    super.updated(e2);
+    const a2 = this.prepareDataProperties();
+    this.object && (this.object.$data.props = a2);
   }
-  /**
-   *
-   *
-   */
   async createVue() {
-    const e = this;
-    if (!e.renderRoot)
+    const e2 = this;
+    if (!e2.renderRoot)
       return;
-    const a = e.renderRoot.querySelector("#app");
-    a && (ls(Vue), this.object = new Vue({
-      el: a,
-      components: {},
-      data: function() {
-        return {
-          visible: !1,
-          displayOTP: !1,
-          email: "",
-          disabled: !1,
-          isCodeValid: !1,
-          props: e.prepareDataProperties()
-        };
-      },
-      watch: {
-        name(t, o) {
-          e.getData();
-        }
-      },
-      methods: {
-        async _OTP(t, o, i) {
-          let n = Wl.getServerUrl(this.props.env);
-          const l = {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              idTicket: t,
-              key: o,
-              code: i
-            })
-          }, s = await (await fetch(n + "abc", l)).json();
-          return s.data ? s.data.result : null;
-        },
-        async enter() {
-          this.disabled = !0, await this._OTP(this.props.ticket, this.email) && (this.displayOTP = !0), this.disabled = !1;
-        },
-        back() {
-          this.disabled = !1, this.displayOTP = !1;
-        },
-        async onComplete(t) {
-          await this._OTP(this.props.ticket, this.email, t), e.dispatchEvent(new CustomEvent("o21pay_component", {
-            detail: {
-              instance: e,
-              message: "o21pay_next"
-            },
-            bubbles: !0,
-            composed: !0
-          })), this.isCodeValid = !1;
-        }
-      }
-    }), this.setData(), this.object.$data.visible = !0, this.requestUpdate());
+    const a2 = e2.renderRoot.querySelector("#app");
+    a2 && (((e3, a3 = {}) => {
+      Pi.forEach((a4) => {
+        e3.component(a4.name, a4);
+      });
+    })(Vue), this.object = new Vue({ el: a2, components: {}, data: function() {
+      return { visible: false, displayOTP: false, email: "", disabled: false, isCodeValid: false, props: e2.prepareDataProperties() };
+    }, watch: { name(a3, t2) {
+      e2.getData();
+    } }, methods: { async _OTP(e3, a3, t2) {
+      let r2 = Ci(this.props.env);
+      const o2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ idTicket: e3, key: a3, code: t2 }) }, i2 = await fetch(r2 + "abc", o2), n2 = await i2.json();
+      return n2.data ? n2.data.result : null;
+    }, async enter() {
+      this.disabled = true, await this._OTP(this.props.ticket, this.email) && (this.displayOTP = true), this.disabled = false;
+    }, back() {
+      this.disabled = false, this.displayOTP = false;
+    }, async onComplete(a3) {
+      await this._OTP(this.props.ticket, this.email, a3), e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_next" }, bubbles: true, composed: true })), this.isCodeValid = false;
+    } } }), this.setData(), this.object.$data.visible = true, this.requestUpdate());
   }
-  /**
-   *
-   *
-   */
   prepareDataProperties() {
-    let e = {};
-    for (const a in ye.properties) {
-      let t = this[a];
-      e[a] = t;
+    let e2 = {};
+    for (const a2 in Bi.properties) {
+      let t2 = this[a2];
+      e2[a2] = t2;
     }
-    return e;
+    return e2;
   }
-  /**
-   *
-   *
-   */
   render() {
-    return R`
+    return F`
       <div id="app">
         <div v-if="!displayOTP" style="margin: 4px 0;">
           <maz-input
@@ -18297,47 +14641,24 @@ class ye extends O {
     `;
   }
 }
-os(ye, "styles", [Nt, rs, ts]);
-const fa = window.customElements;
-fa && !fa.get(it) && fa.define(it, ye);
-import("https://unpkg.com/vue@2/dist/vue.js");
-window.O21PayComponents = {
-  version: "0.7.13",
-  components: [{
-    name: "O21Pay",
-    component: Ra,
-    img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png",
-    id: "o21pay"
-  }, {
-    name: "O21PayQR",
-    title: "QR-Code",
-    component: Ha,
-    icon: "fa fa-qrcode",
-    id: "o21pay-qr"
-  }, {
-    name: "O21PayDialog",
-    component: Oa
-  }, {
-    name: "O21PayAddress",
-    title: "Address",
-    component: ve,
-    icon: "fa fa-address-card",
-    id: "address"
-  }, {
-    name: "O21PayOTP",
-    title: "OTP",
-    component: ye,
-    icon: "fa fa-key",
-    id: "otp"
-  }],
-  waitLoaded: async function() {
-    return await Promise.allSettled([
-      customElements.whenDefined("o21pay-qr"),
-      customElements.whenDefined("o21pay-dialog"),
-      customElements.whenDefined("o21pay-payment"),
-      //customElements.whenDefined("o21pay-change"),
-      customElements.whenDefined("o21pay-address"),
-      customElements.whenDefined("o21pay-otp")
-    ]), !0;
-  }
-};
+!function(e2, a2, t2) {
+  (a2 = function(e3) {
+    var a3 = function(e4, a4) {
+      if ("object" != typeof e4 || null === e4)
+        return e4;
+      var t3 = e4[Symbol.toPrimitive];
+      if (void 0 !== t3) {
+        var r2 = t3.call(e4, a4 || "default");
+        if ("object" != typeof r2)
+          return r2;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return ("string" === a4 ? String : Number)(e4);
+    }(e3, "string");
+    return "symbol" == typeof a3 ? a3 : String(a3);
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+}(Bi, "styles", [Xa, Ii, Ai]);
+const Oi = window.customElements;
+Oi && !Oi.get(Ni) && Oi.define(Ni, Bi), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.7.20", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Wa, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: $i, icon: "fa fa-address-card", id: "address" }, { name: "O21PayOTP", title: "OTP", component: Bi, icon: "fa fa-key", id: "otp" }], waitLoaded: async function() {
+  return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address"), customElements.whenDefined("o21pay-otp")]), true;
+} };
