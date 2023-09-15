@@ -1,17 +1,17 @@
 import { css as e, svg as a } from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js";
-const t = window, r = t.ShadowRoot && (void 0 === t.ShadyCSS || t.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, o = Symbol(), i = /* @__PURE__ */ new WeakMap();
+const r = window, t = r.ShadowRoot && (void 0 === r.ShadyCSS || r.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, o = Symbol(), i = /* @__PURE__ */ new WeakMap();
 let n = class {
-  constructor(e2, a2, t2) {
-    if (this._$cssResult$ = true, t2 !== o)
+  constructor(e2, a2, r2) {
+    if (this._$cssResult$ = true, r2 !== o)
       throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e2, this.t = a2;
   }
   get styleSheet() {
     let e2 = this.o;
     const a2 = this.t;
-    if (r && void 0 === e2) {
-      const t2 = void 0 !== a2 && 1 === a2.length;
-      t2 && (e2 = i.get(a2)), void 0 === e2 && ((this.o = e2 = new CSSStyleSheet()).replaceSync(this.cssText), t2 && i.set(a2, e2));
+    if (t && void 0 === e2) {
+      const r2 = void 0 !== a2 && 1 === a2.length;
+      r2 && (e2 = i.get(a2)), void 0 === e2 && ((this.o = e2 = new CSSStyleSheet()).replaceSync(this.cssText), r2 && i.set(a2, e2));
     }
     return e2;
   }
@@ -20,18 +20,18 @@ let n = class {
   }
 };
 const d = (e2, ...a2) => {
-  const t2 = 1 === e2.length ? e2[0] : a2.reduce((a3, t3, r2) => a3 + ((e3) => {
+  const r2 = 1 === e2.length ? e2[0] : a2.reduce((a3, r3, t2) => a3 + ((e3) => {
     if (true === e3._$cssResult$)
       return e3.cssText;
     if ("number" == typeof e3)
       return e3;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + e3 + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
-  })(t3) + e2[r2 + 1], e2[0]);
-  return new n(t2, e2, o);
-}, l = r ? (e2) => e2 : (e2) => e2 instanceof CSSStyleSheet ? ((e3) => {
+  })(r3) + e2[t2 + 1], e2[0]);
+  return new n(r2, e2, o);
+}, l = t ? (e2) => e2 : (e2) => e2 instanceof CSSStyleSheet ? ((e3) => {
   let a2 = "";
-  for (const t2 of e3.cssRules)
-    a2 += t2.cssText;
+  for (const r2 of e3.cssRules)
+    a2 += r2.cssText;
   return ((e4) => new n("string" == typeof e4 ? e4 : e4 + "", void 0, o))(a2);
 })(e2) : e2;
 var s;
@@ -46,23 +46,23 @@ const c = window, m = c.trustedTypes, u = m ? m.emptyScript : "", p = c.reactive
   }
   return e2;
 }, fromAttribute(e2, a2) {
-  let t2 = e2;
+  let r2 = e2;
   switch (a2) {
     case Boolean:
-      t2 = null !== e2;
+      r2 = null !== e2;
       break;
     case Number:
-      t2 = null === e2 ? null : Number(e2);
+      r2 = null === e2 ? null : Number(e2);
       break;
     case Object:
     case Array:
       try {
-        t2 = JSON.parse(e2);
+        r2 = JSON.parse(e2);
       } catch (e3) {
-        t2 = null;
+        r2 = null;
       }
   }
-  return t2;
+  return r2;
 } }, g = (e2, a2) => a2 !== e2 && (a2 == a2 || e2 == e2), b = { attribute: true, type: String, converter: h, reflect: false, hasChanged: g }, z = "finalized";
 let f = class extends HTMLElement {
   constructor() {
@@ -75,23 +75,23 @@ let f = class extends HTMLElement {
   static get observedAttributes() {
     this.finalize();
     const e2 = [];
-    return this.elementProperties.forEach((a2, t2) => {
-      const r2 = this._$Ep(t2, a2);
-      void 0 !== r2 && (this._$Ev.set(r2, t2), e2.push(r2));
+    return this.elementProperties.forEach((a2, r2) => {
+      const t2 = this._$Ep(r2, a2);
+      void 0 !== t2 && (this._$Ev.set(t2, r2), e2.push(t2));
     }), e2;
   }
   static createProperty(e2, a2 = b) {
     if (a2.state && (a2.attribute = false), this.finalize(), this.elementProperties.set(e2, a2), !a2.noAccessor && !this.prototype.hasOwnProperty(e2)) {
-      const t2 = "symbol" == typeof e2 ? Symbol() : "__" + e2, r2 = this.getPropertyDescriptor(e2, t2, a2);
-      void 0 !== r2 && Object.defineProperty(this.prototype, e2, r2);
+      const r2 = "symbol" == typeof e2 ? Symbol() : "__" + e2, t2 = this.getPropertyDescriptor(e2, r2, a2);
+      void 0 !== t2 && Object.defineProperty(this.prototype, e2, t2);
     }
   }
-  static getPropertyDescriptor(e2, a2, t2) {
+  static getPropertyDescriptor(e2, a2, r2) {
     return { get() {
       return this[a2];
-    }, set(r2) {
+    }, set(t2) {
       const o2 = this[e2];
-      this[a2] = r2, this.requestUpdate(e2, o2, t2);
+      this[a2] = t2, this.requestUpdate(e2, o2, r2);
     }, configurable: true, enumerable: true };
   }
   static getPropertyOptions(e2) {
@@ -104,32 +104,32 @@ let f = class extends HTMLElement {
     const e2 = Object.getPrototypeOf(this);
     if (e2.finalize(), void 0 !== e2.h && (this.h = [...e2.h]), this.elementProperties = new Map(e2.elementProperties), this._$Ev = /* @__PURE__ */ new Map(), this.hasOwnProperty("properties")) {
       const e3 = this.properties, a2 = [...Object.getOwnPropertyNames(e3), ...Object.getOwnPropertySymbols(e3)];
-      for (const t2 of a2)
-        this.createProperty(t2, e3[t2]);
+      for (const r2 of a2)
+        this.createProperty(r2, e3[r2]);
     }
     return this.elementStyles = this.finalizeStyles(this.styles), true;
   }
   static finalizeStyles(e2) {
     const a2 = [];
     if (Array.isArray(e2)) {
-      const t2 = new Set(e2.flat(1 / 0).reverse());
-      for (const e3 of t2)
+      const r2 = new Set(e2.flat(1 / 0).reverse());
+      for (const e3 of r2)
         a2.unshift(l(e3));
     } else
       void 0 !== e2 && a2.push(l(e2));
     return a2;
   }
   static _$Ep(e2, a2) {
-    const t2 = a2.attribute;
-    return false === t2 ? void 0 : "string" == typeof t2 ? t2 : "string" == typeof e2 ? e2.toLowerCase() : void 0;
+    const r2 = a2.attribute;
+    return false === r2 ? void 0 : "string" == typeof r2 ? r2 : "string" == typeof e2 ? e2.toLowerCase() : void 0;
   }
   _$Eu() {
     var e2;
     this._$E_ = new Promise((e3) => this.enableUpdating = e3), this._$AL = /* @__PURE__ */ new Map(), this._$Eg(), this.requestUpdate(), null === (e2 = this.constructor.h) || void 0 === e2 || e2.forEach((e3) => e3(this));
   }
   addController(e2) {
-    var a2, t2;
-    (null !== (a2 = this._$ES) && void 0 !== a2 ? a2 : this._$ES = []).push(e2), void 0 !== this.renderRoot && this.isConnected && (null === (t2 = e2.hostConnected) || void 0 === t2 || t2.call(e2));
+    var a2, r2;
+    (null !== (a2 = this._$ES) && void 0 !== a2 ? a2 : this._$ES = []).push(e2), void 0 !== this.renderRoot && this.isConnected && (null === (r2 = e2.hostConnected) || void 0 === r2 || r2.call(e2));
   }
   removeController(e2) {
     var a2;
@@ -144,9 +144,9 @@ let f = class extends HTMLElement {
     var e2;
     const a2 = null !== (e2 = this.shadowRoot) && void 0 !== e2 ? e2 : this.attachShadow(this.constructor.shadowRootOptions);
     return ((e3, a3) => {
-      r ? e3.adoptedStyleSheets = a3.map((e4) => e4 instanceof CSSStyleSheet ? e4 : e4.styleSheet) : a3.forEach((a4) => {
-        const r2 = document.createElement("style"), o2 = t.litNonce;
-        void 0 !== o2 && r2.setAttribute("nonce", o2), r2.textContent = a4.cssText, e3.appendChild(r2);
+      t ? e3.adoptedStyleSheets = a3.map((e4) => e4 instanceof CSSStyleSheet ? e4 : e4.styleSheet) : a3.forEach((a4) => {
+        const t2 = document.createElement("style"), o2 = r.litNonce;
+        void 0 !== o2 && t2.setAttribute("nonce", o2), t2.textContent = a4.cssText, e3.appendChild(t2);
       });
     })(a2, this.constructor.elementStyles), a2;
   }
@@ -166,28 +166,28 @@ let f = class extends HTMLElement {
       return null === (a2 = e3.hostDisconnected) || void 0 === a2 ? void 0 : a2.call(e3);
     });
   }
-  attributeChangedCallback(e2, a2, t2) {
-    this._$AK(e2, t2);
+  attributeChangedCallback(e2, a2, r2) {
+    this._$AK(e2, r2);
   }
-  _$EO(e2, a2, t2 = b) {
-    var r2;
-    const o2 = this.constructor._$Ep(e2, t2);
-    if (void 0 !== o2 && true === t2.reflect) {
-      const i2 = (void 0 !== (null === (r2 = t2.converter) || void 0 === r2 ? void 0 : r2.toAttribute) ? t2.converter : h).toAttribute(a2, t2.type);
+  _$EO(e2, a2, r2 = b) {
+    var t2;
+    const o2 = this.constructor._$Ep(e2, r2);
+    if (void 0 !== o2 && true === r2.reflect) {
+      const i2 = (void 0 !== (null === (t2 = r2.converter) || void 0 === t2 ? void 0 : t2.toAttribute) ? r2.converter : h).toAttribute(a2, r2.type);
       this._$El = e2, null == i2 ? this.removeAttribute(o2) : this.setAttribute(o2, i2), this._$El = null;
     }
   }
   _$AK(e2, a2) {
-    var t2;
-    const r2 = this.constructor, o2 = r2._$Ev.get(e2);
+    var r2;
+    const t2 = this.constructor, o2 = t2._$Ev.get(e2);
     if (void 0 !== o2 && this._$El !== o2) {
-      const e3 = r2.getPropertyOptions(o2), i2 = "function" == typeof e3.converter ? { fromAttribute: e3.converter } : void 0 !== (null === (t2 = e3.converter) || void 0 === t2 ? void 0 : t2.fromAttribute) ? e3.converter : h;
+      const e3 = t2.getPropertyOptions(o2), i2 = "function" == typeof e3.converter ? { fromAttribute: e3.converter } : void 0 !== (null === (r2 = e3.converter) || void 0 === r2 ? void 0 : r2.fromAttribute) ? e3.converter : h;
       this._$El = o2, this[o2] = i2.fromAttribute(a2, e3.type), this._$El = null;
     }
   }
-  requestUpdate(e2, a2, t2) {
-    let r2 = true;
-    void 0 !== e2 && (((t2 = t2 || this.constructor.getPropertyOptions(e2)).hasChanged || g)(this[e2], a2) ? (this._$AL.has(e2) || this._$AL.set(e2, a2), true === t2.reflect && this._$El !== e2 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e2, t2))) : r2 = false), !this.isUpdatePending && r2 && (this._$E_ = this._$Ej());
+  requestUpdate(e2, a2, r2) {
+    let t2 = true;
+    void 0 !== e2 && (((r2 = r2 || this.constructor.getPropertyOptions(e2)).hasChanged || g)(this[e2], a2) ? (this._$AL.has(e2) || this._$AL.set(e2, a2), true === r2.reflect && this._$El !== e2 && (void 0 === this._$EC && (this._$EC = /* @__PURE__ */ new Map()), this._$EC.set(e2, r2))) : t2 = false), !this.isUpdatePending && t2 && (this._$E_ = this._$Ej());
   }
   async _$Ej() {
     this.isUpdatePending = true;
@@ -208,16 +208,16 @@ let f = class extends HTMLElement {
       return;
     this.hasUpdated, this._$Ei && (this._$Ei.forEach((e3, a3) => this[a3] = e3), this._$Ei = void 0);
     let a2 = false;
-    const t2 = this._$AL;
+    const r2 = this._$AL;
     try {
-      a2 = this.shouldUpdate(t2), a2 ? (this.willUpdate(t2), null === (e2 = this._$ES) || void 0 === e2 || e2.forEach((e3) => {
+      a2 = this.shouldUpdate(r2), a2 ? (this.willUpdate(r2), null === (e2 = this._$ES) || void 0 === e2 || e2.forEach((e3) => {
         var a3;
         return null === (a3 = e3.hostUpdate) || void 0 === a3 ? void 0 : a3.call(e3);
-      }), this.update(t2)) : this._$Ek();
+      }), this.update(r2)) : this._$Ek();
     } catch (e3) {
       throw a2 = false, this._$Ek(), e3;
     }
-    a2 && this._$AE(t2);
+    a2 && this._$AE(r2);
   }
   willUpdate(e2) {
   }
@@ -250,84 +250,84 @@ let f = class extends HTMLElement {
 };
 var v;
 f[z] = true, f.elementProperties = /* @__PURE__ */ new Map(), f.elementStyles = [], f.shadowRootOptions = { mode: "open" }, null == p || p({ ReactiveElement: f }), (null !== (s = c.reactiveElementVersions) && void 0 !== s ? s : c.reactiveElementVersions = []).push("1.6.3");
-const y = window, k = y.trustedTypes, x = k ? k.createPolicy("lit-html", { createHTML: (e2) => e2 }) : void 0, w = "$lit$", $ = `lit$${(Math.random() + "").slice(9)}$`, _ = "?" + $, C = `<${_}>`, E = document, S = () => E.createComment(""), I = (e2) => null === e2 || "object" != typeof e2 && "function" != typeof e2, A = Array.isArray, N = "[ 	\n\f\r]", P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, B = /-->/g, O = />/g, M = RegExp(`>|${N}(?:([^\\s"'>=/]+)(${N}*=${N}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, D = /"/g, T = /^(?:script|style|textarea|title)$/i, F = ((e2) => (a2, ...t2) => ({ _$litType$: e2, strings: a2, values: t2 }))(1), L = Symbol.for("lit-noChange"), j = Symbol.for("lit-nothing"), U = /* @__PURE__ */ new WeakMap(), G = E.createTreeWalker(E, 129, null, false);
-function V(e2, a2) {
+const y = window, k = y.trustedTypes, x = k ? k.createPolicy("lit-html", { createHTML: (e2) => e2 }) : void 0, w = "$lit$", $ = `lit$${(Math.random() + "").slice(9)}$`, _ = "?" + $, C = `<${_}>`, E = document, A = () => E.createComment(""), S = (e2) => null === e2 || "object" != typeof e2 && "function" != typeof e2, I = Array.isArray, N = "[ 	\n\f\r]", P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, B = /-->/g, M = />/g, O = RegExp(`>|${N}(?:([^\\s"'>=/]+)(${N}*=${N}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, D = /"/g, F = /^(?:script|style|textarea|title)$/i, L = ((e2) => (a2, ...r2) => ({ _$litType$: e2, strings: a2, values: r2 }))(1), T = Symbol.for("lit-noChange"), U = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), j = E.createTreeWalker(E, 129, null, false);
+function Y(e2, a2) {
   if (!Array.isArray(e2) || !e2.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
   return void 0 !== x ? x.createHTML(a2) : a2;
 }
 const H = (e2, a2) => {
-  const t2 = e2.length - 1, r2 = [];
+  const r2 = e2.length - 1, t2 = [];
   let o2, i2 = 2 === a2 ? "<svg>" : "", n2 = P;
-  for (let a3 = 0; a3 < t2; a3++) {
-    const t3 = e2[a3];
+  for (let a3 = 0; a3 < r2; a3++) {
+    const r3 = e2[a3];
     let d2, l2, s2 = -1, c2 = 0;
-    for (; c2 < t3.length && (n2.lastIndex = c2, l2 = n2.exec(t3), null !== l2); )
-      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = O : void 0 !== l2[2] ? (T.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = M) : void 0 !== l2[3] && (n2 = M) : n2 === M ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? M : '"' === l2[3] ? D : R) : n2 === D || n2 === R ? n2 = M : n2 === B || n2 === O ? n2 = P : (n2 = M, o2 = void 0);
-    const m2 = n2 === M && e2[a3 + 1].startsWith("/>") ? " " : "";
-    i2 += n2 === P ? t3 + C : s2 >= 0 ? (r2.push(d2), t3.slice(0, s2) + w + t3.slice(s2) + $ + m2) : t3 + $ + (-2 === s2 ? (r2.push(void 0), a3) : m2);
+    for (; c2 < r3.length && (n2.lastIndex = c2, l2 = n2.exec(r3), null !== l2); )
+      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = M : void 0 !== l2[2] ? (F.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = O) : void 0 !== l2[3] && (n2 = O) : n2 === O ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? O : '"' === l2[3] ? D : R) : n2 === D || n2 === R ? n2 = O : n2 === B || n2 === M ? n2 = P : (n2 = O, o2 = void 0);
+    const m2 = n2 === O && e2[a3 + 1].startsWith("/>") ? " " : "";
+    i2 += n2 === P ? r3 + C : s2 >= 0 ? (t2.push(d2), r3.slice(0, s2) + w + r3.slice(s2) + $ + m2) : r3 + $ + (-2 === s2 ? (t2.push(void 0), a3) : m2);
   }
-  return [V(e2, i2 + (e2[t2] || "<?>") + (2 === a2 ? "</svg>" : "")), r2];
+  return [Y(e2, i2 + (e2[r2] || "<?>") + (2 === a2 ? "</svg>" : "")), t2];
 };
-class Y {
-  constructor({ strings: e2, _$litType$: a2 }, t2) {
-    let r2;
+class V {
+  constructor({ strings: e2, _$litType$: a2 }, r2) {
+    let t2;
     this.parts = [];
     let o2 = 0, i2 = 0;
     const n2 = e2.length - 1, d2 = this.parts, [l2, s2] = H(e2, a2);
-    if (this.el = Y.createElement(l2, t2), G.currentNode = this.el.content, 2 === a2) {
+    if (this.el = V.createElement(l2, r2), j.currentNode = this.el.content, 2 === a2) {
       const e3 = this.el.content, a3 = e3.firstChild;
       a3.remove(), e3.append(...a3.childNodes);
     }
-    for (; null !== (r2 = G.nextNode()) && d2.length < n2; ) {
-      if (1 === r2.nodeType) {
-        if (r2.hasAttributes()) {
+    for (; null !== (t2 = j.nextNode()) && d2.length < n2; ) {
+      if (1 === t2.nodeType) {
+        if (t2.hasAttributes()) {
           const e3 = [];
-          for (const a3 of r2.getAttributeNames())
+          for (const a3 of t2.getAttributeNames())
             if (a3.endsWith(w) || a3.startsWith($)) {
-              const t3 = s2[i2++];
-              if (e3.push(a3), void 0 !== t3) {
-                const e4 = r2.getAttribute(t3.toLowerCase() + w).split($), a4 = /([.?@])?(.*)/.exec(t3);
+              const r3 = s2[i2++];
+              if (e3.push(a3), void 0 !== r3) {
+                const e4 = t2.getAttribute(r3.toLowerCase() + w).split($), a4 = /([.?@])?(.*)/.exec(r3);
                 d2.push({ type: 1, index: o2, name: a4[2], strings: e4, ctor: "." === a4[1] ? W : "?" === a4[1] ? X : "@" === a4[1] ? ee : q });
               } else
                 d2.push({ type: 6, index: o2 });
             }
           for (const a3 of e3)
-            r2.removeAttribute(a3);
+            t2.removeAttribute(a3);
         }
-        if (T.test(r2.tagName)) {
-          const e3 = r2.textContent.split($), a3 = e3.length - 1;
+        if (F.test(t2.tagName)) {
+          const e3 = t2.textContent.split($), a3 = e3.length - 1;
           if (a3 > 0) {
-            r2.textContent = k ? k.emptyScript : "";
-            for (let t3 = 0; t3 < a3; t3++)
-              r2.append(e3[t3], S()), G.nextNode(), d2.push({ type: 2, index: ++o2 });
-            r2.append(e3[a3], S());
+            t2.textContent = k ? k.emptyScript : "";
+            for (let r3 = 0; r3 < a3; r3++)
+              t2.append(e3[r3], A()), j.nextNode(), d2.push({ type: 2, index: ++o2 });
+            t2.append(e3[a3], A());
           }
         }
-      } else if (8 === r2.nodeType)
-        if (r2.data === _)
+      } else if (8 === t2.nodeType)
+        if (t2.data === _)
           d2.push({ type: 2, index: o2 });
         else {
           let e3 = -1;
-          for (; -1 !== (e3 = r2.data.indexOf($, e3 + 1)); )
+          for (; -1 !== (e3 = t2.data.indexOf($, e3 + 1)); )
             d2.push({ type: 7, index: o2 }), e3 += $.length - 1;
         }
       o2++;
     }
   }
   static createElement(e2, a2) {
-    const t2 = E.createElement("template");
-    return t2.innerHTML = e2, t2;
+    const r2 = E.createElement("template");
+    return r2.innerHTML = e2, r2;
   }
 }
-function K(e2, a2, t2 = e2, r2) {
+function K(e2, a2, r2 = e2, t2) {
   var o2, i2, n2, d2;
-  if (a2 === L)
+  if (a2 === T)
     return a2;
-  let l2 = void 0 !== r2 ? null === (o2 = t2._$Co) || void 0 === o2 ? void 0 : o2[r2] : t2._$Cl;
-  const s2 = I(a2) ? void 0 : a2._$litDirective$;
-  return (null == l2 ? void 0 : l2.constructor) !== s2 && (null === (i2 = null == l2 ? void 0 : l2._$AO) || void 0 === i2 || i2.call(l2, false), void 0 === s2 ? l2 = void 0 : (l2 = new s2(e2), l2._$AT(e2, t2, r2)), void 0 !== r2 ? (null !== (n2 = (d2 = t2)._$Co) && void 0 !== n2 ? n2 : d2._$Co = [])[r2] = l2 : t2._$Cl = l2), void 0 !== l2 && (a2 = K(e2, l2._$AS(e2, a2.values), l2, r2)), a2;
+  let l2 = void 0 !== t2 ? null === (o2 = r2._$Co) || void 0 === o2 ? void 0 : o2[t2] : r2._$Cl;
+  const s2 = S(a2) ? void 0 : a2._$litDirective$;
+  return (null == l2 ? void 0 : l2.constructor) !== s2 && (null === (i2 = null == l2 ? void 0 : l2._$AO) || void 0 === i2 || i2.call(l2, false), void 0 === s2 ? l2 = void 0 : (l2 = new s2(e2), l2._$AT(e2, r2, t2)), void 0 !== t2 ? (null !== (n2 = (d2 = r2)._$Co) && void 0 !== n2 ? n2 : d2._$Co = [])[t2] = l2 : r2._$Cl = l2), void 0 !== l2 && (a2 = K(e2, l2._$AS(e2, a2.values), l2, t2)), a2;
 }
 class Q {
   constructor(e2, a2) {
@@ -341,28 +341,28 @@ class Q {
   }
   u(e2) {
     var a2;
-    const { el: { content: t2 }, parts: r2 } = this._$AD, o2 = (null !== (a2 = null == e2 ? void 0 : e2.creationScope) && void 0 !== a2 ? a2 : E).importNode(t2, true);
-    G.currentNode = o2;
-    let i2 = G.nextNode(), n2 = 0, d2 = 0, l2 = r2[0];
+    const { el: { content: r2 }, parts: t2 } = this._$AD, o2 = (null !== (a2 = null == e2 ? void 0 : e2.creationScope) && void 0 !== a2 ? a2 : E).importNode(r2, true);
+    j.currentNode = o2;
+    let i2 = j.nextNode(), n2 = 0, d2 = 0, l2 = t2[0];
     for (; void 0 !== l2; ) {
       if (n2 === l2.index) {
         let a3;
-        2 === l2.type ? a3 = new J(i2, i2.nextSibling, this, e2) : 1 === l2.type ? a3 = new l2.ctor(i2, l2.name, l2.strings, this, e2) : 6 === l2.type && (a3 = new ae(i2, this, e2)), this._$AV.push(a3), l2 = r2[++d2];
+        2 === l2.type ? a3 = new J(i2, i2.nextSibling, this, e2) : 1 === l2.type ? a3 = new l2.ctor(i2, l2.name, l2.strings, this, e2) : 6 === l2.type && (a3 = new ae(i2, this, e2)), this._$AV.push(a3), l2 = t2[++d2];
       }
-      n2 !== (null == l2 ? void 0 : l2.index) && (i2 = G.nextNode(), n2++);
+      n2 !== (null == l2 ? void 0 : l2.index) && (i2 = j.nextNode(), n2++);
     }
-    return G.currentNode = E, o2;
+    return j.currentNode = E, o2;
   }
   v(e2) {
     let a2 = 0;
-    for (const t2 of this._$AV)
-      void 0 !== t2 && (void 0 !== t2.strings ? (t2._$AI(e2, t2, a2), a2 += t2.strings.length - 2) : t2._$AI(e2[a2])), a2++;
+    for (const r2 of this._$AV)
+      void 0 !== r2 && (void 0 !== r2.strings ? (r2._$AI(e2, r2, a2), a2 += r2.strings.length - 2) : r2._$AI(e2[a2])), a2++;
   }
 }
 class J {
-  constructor(e2, a2, t2, r2) {
+  constructor(e2, a2, r2, t2) {
     var o2;
-    this.type = 2, this._$AH = j, this._$AN = void 0, this._$AA = e2, this._$AB = a2, this._$AM = t2, this.options = r2, this._$Cp = null === (o2 = null == r2 ? void 0 : r2.isConnected) || void 0 === o2 || o2;
+    this.type = 2, this._$AH = U, this._$AN = void 0, this._$AA = e2, this._$AB = a2, this._$AM = r2, this.options = t2, this._$Cp = null === (o2 = null == t2 ? void 0 : t2.isConnected) || void 0 === o2 || o2;
   }
   get _$AU() {
     var e2, a2;
@@ -380,7 +380,7 @@ class J {
     return this._$AB;
   }
   _$AI(e2, a2 = this) {
-    e2 = K(this, e2, a2), I(e2) ? e2 === j || null == e2 || "" === e2 ? (this._$AH !== j && this._$AR(), this._$AH = j) : e2 !== this._$AH && e2 !== L && this._(e2) : void 0 !== e2._$litType$ ? this.g(e2) : void 0 !== e2.nodeType ? this.$(e2) : ((e3) => A(e3) || "function" == typeof (null == e3 ? void 0 : e3[Symbol.iterator]))(e2) ? this.T(e2) : this._(e2);
+    e2 = K(this, e2, a2), S(e2) ? e2 === U || null == e2 || "" === e2 ? (this._$AH !== U && this._$AR(), this._$AH = U) : e2 !== this._$AH && e2 !== T && this._(e2) : void 0 !== e2._$litType$ ? this.g(e2) : void 0 !== e2.nodeType ? this.$(e2) : ((e3) => I(e3) || "function" == typeof (null == e3 ? void 0 : e3[Symbol.iterator]))(e2) ? this.T(e2) : this._(e2);
   }
   k(e2) {
     return this._$AA.parentNode.insertBefore(e2, this._$AB);
@@ -389,33 +389,33 @@ class J {
     this._$AH !== e2 && (this._$AR(), this._$AH = this.k(e2));
   }
   _(e2) {
-    this._$AH !== j && I(this._$AH) ? this._$AA.nextSibling.data = e2 : this.$(E.createTextNode(e2)), this._$AH = e2;
+    this._$AH !== U && S(this._$AH) ? this._$AA.nextSibling.data = e2 : this.$(E.createTextNode(e2)), this._$AH = e2;
   }
   g(e2) {
     var a2;
-    const { values: t2, _$litType$: r2 } = e2, o2 = "number" == typeof r2 ? this._$AC(e2) : (void 0 === r2.el && (r2.el = Y.createElement(V(r2.h, r2.h[0]), this.options)), r2);
+    const { values: r2, _$litType$: t2 } = e2, o2 = "number" == typeof t2 ? this._$AC(e2) : (void 0 === t2.el && (t2.el = V.createElement(Y(t2.h, t2.h[0]), this.options)), t2);
     if ((null === (a2 = this._$AH) || void 0 === a2 ? void 0 : a2._$AD) === o2)
-      this._$AH.v(t2);
+      this._$AH.v(r2);
     else {
       const e3 = new Q(o2, this), a3 = e3.u(this.options);
-      e3.v(t2), this.$(a3), this._$AH = e3;
+      e3.v(r2), this.$(a3), this._$AH = e3;
     }
   }
   _$AC(e2) {
-    let a2 = U.get(e2.strings);
-    return void 0 === a2 && U.set(e2.strings, a2 = new Y(e2)), a2;
+    let a2 = G.get(e2.strings);
+    return void 0 === a2 && G.set(e2.strings, a2 = new V(e2)), a2;
   }
   T(e2) {
-    A(this._$AH) || (this._$AH = [], this._$AR());
+    I(this._$AH) || (this._$AH = [], this._$AR());
     const a2 = this._$AH;
-    let t2, r2 = 0;
+    let r2, t2 = 0;
     for (const o2 of e2)
-      r2 === a2.length ? a2.push(t2 = new J(this.k(S()), this.k(S()), this, this.options)) : t2 = a2[r2], t2._$AI(o2), r2++;
-    r2 < a2.length && (this._$AR(t2 && t2._$AB.nextSibling, r2), a2.length = r2);
+      t2 === a2.length ? a2.push(r2 = new J(this.k(A()), this.k(A()), this, this.options)) : r2 = a2[t2], r2._$AI(o2), t2++;
+    t2 < a2.length && (this._$AR(r2 && r2._$AB.nextSibling, t2), a2.length = t2);
   }
   _$AR(e2 = this._$AA.nextSibling, a2) {
-    var t2;
-    for (null === (t2 = this._$AP) || void 0 === t2 || t2.call(this, false, true, a2); e2 && e2 !== this._$AB; ) {
+    var r2;
+    for (null === (r2 = this._$AP) || void 0 === r2 || r2.call(this, false, true, a2); e2 && e2 !== this._$AB; ) {
       const a3 = e2.nextSibling;
       e2.remove(), e2 = a3;
     }
@@ -426,8 +426,8 @@ class J {
   }
 }
 class q {
-  constructor(e2, a2, t2, r2, o2) {
-    this.type = 1, this._$AH = j, this._$AN = void 0, this.element = e2, this.name = a2, this._$AM = r2, this.options = o2, t2.length > 2 || "" !== t2[0] || "" !== t2[1] ? (this._$AH = Array(t2.length - 1).fill(new String()), this.strings = t2) : this._$AH = j;
+  constructor(e2, a2, r2, t2, o2) {
+    this.type = 1, this._$AH = U, this._$AN = void 0, this.element = e2, this.name = a2, this._$AM = t2, this.options = o2, r2.length > 2 || "" !== r2[0] || "" !== r2[1] ? (this._$AH = Array(r2.length - 1).fill(new String()), this.strings = r2) : this._$AH = U;
   }
   get tagName() {
     return this.element.tagName;
@@ -435,21 +435,21 @@ class q {
   get _$AU() {
     return this._$AM._$AU;
   }
-  _$AI(e2, a2 = this, t2, r2) {
+  _$AI(e2, a2 = this, r2, t2) {
     const o2 = this.strings;
     let i2 = false;
     if (void 0 === o2)
-      e2 = K(this, e2, a2, 0), i2 = !I(e2) || e2 !== this._$AH && e2 !== L, i2 && (this._$AH = e2);
+      e2 = K(this, e2, a2, 0), i2 = !S(e2) || e2 !== this._$AH && e2 !== T, i2 && (this._$AH = e2);
     else {
-      const r3 = e2;
+      const t3 = e2;
       let n2, d2;
       for (e2 = o2[0], n2 = 0; n2 < o2.length - 1; n2++)
-        d2 = K(this, r3[t2 + n2], a2, n2), d2 === L && (d2 = this._$AH[n2]), i2 || (i2 = !I(d2) || d2 !== this._$AH[n2]), d2 === j ? e2 = j : e2 !== j && (e2 += (null != d2 ? d2 : "") + o2[n2 + 1]), this._$AH[n2] = d2;
+        d2 = K(this, t3[r2 + n2], a2, n2), d2 === T && (d2 = this._$AH[n2]), i2 || (i2 = !S(d2) || d2 !== this._$AH[n2]), d2 === U ? e2 = U : e2 !== U && (e2 += (null != d2 ? d2 : "") + o2[n2 + 1]), this._$AH[n2] = d2;
     }
-    i2 && !r2 && this.j(e2);
+    i2 && !t2 && this.j(e2);
   }
   j(e2) {
-    e2 === j ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != e2 ? e2 : "");
+    e2 === U ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, null != e2 ? e2 : "");
   }
 }
 class W extends q {
@@ -457,7 +457,7 @@ class W extends q {
     super(...arguments), this.type = 3;
   }
   j(e2) {
-    this.element[this.name] = e2 === j ? void 0 : e2;
+    this.element[this.name] = e2 === U ? void 0 : e2;
   }
 }
 const Z = k ? k.emptyScript : "";
@@ -466,28 +466,28 @@ class X extends q {
     super(...arguments), this.type = 4;
   }
   j(e2) {
-    e2 && e2 !== j ? this.element.setAttribute(this.name, Z) : this.element.removeAttribute(this.name);
+    e2 && e2 !== U ? this.element.setAttribute(this.name, Z) : this.element.removeAttribute(this.name);
   }
 }
 class ee extends q {
-  constructor(e2, a2, t2, r2, o2) {
-    super(e2, a2, t2, r2, o2), this.type = 5;
+  constructor(e2, a2, r2, t2, o2) {
+    super(e2, a2, r2, t2, o2), this.type = 5;
   }
   _$AI(e2, a2 = this) {
-    var t2;
-    if ((e2 = null !== (t2 = K(this, e2, a2, 0)) && void 0 !== t2 ? t2 : j) === L)
+    var r2;
+    if ((e2 = null !== (r2 = K(this, e2, a2, 0)) && void 0 !== r2 ? r2 : U) === T)
       return;
-    const r2 = this._$AH, o2 = e2 === j && r2 !== j || e2.capture !== r2.capture || e2.once !== r2.once || e2.passive !== r2.passive, i2 = e2 !== j && (r2 === j || o2);
-    o2 && this.element.removeEventListener(this.name, this, r2), i2 && this.element.addEventListener(this.name, this, e2), this._$AH = e2;
+    const t2 = this._$AH, o2 = e2 === U && t2 !== U || e2.capture !== t2.capture || e2.once !== t2.once || e2.passive !== t2.passive, i2 = e2 !== U && (t2 === U || o2);
+    o2 && this.element.removeEventListener(this.name, this, t2), i2 && this.element.addEventListener(this.name, this, e2), this._$AH = e2;
   }
   handleEvent(e2) {
-    var a2, t2;
-    "function" == typeof this._$AH ? this._$AH.call(null !== (t2 = null === (a2 = this.options) || void 0 === a2 ? void 0 : a2.host) && void 0 !== t2 ? t2 : this.element, e2) : this._$AH.handleEvent(e2);
+    var a2, r2;
+    "function" == typeof this._$AH ? this._$AH.call(null !== (r2 = null === (a2 = this.options) || void 0 === a2 ? void 0 : a2.host) && void 0 !== r2 ? r2 : this.element, e2) : this._$AH.handleEvent(e2);
   }
 }
 class ae {
-  constructor(e2, a2, t2) {
-    this.element = e2, this.type = 6, this._$AN = void 0, this._$AM = a2, this.options = t2;
+  constructor(e2, a2, r2) {
+    this.element = e2, this.type = 6, this._$AN = void 0, this._$AM = a2, this.options = r2;
   }
   get _$AU() {
     return this._$AM._$AU;
@@ -496,27 +496,27 @@ class ae {
     K(this, e2);
   }
 }
-const te = y.litHtmlPolyfillSupport;
-null == te || te(Y, J), (null !== (v = y.litHtmlVersions) && void 0 !== v ? v : y.litHtmlVersions = []).push("2.8.0");
-var re, oe;
+const re = y.litHtmlPolyfillSupport;
+null == re || re(V, J), (null !== (v = y.litHtmlVersions) && void 0 !== v ? v : y.litHtmlVersions = []).push("2.8.0");
+var te, oe;
 class ie extends f {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
   createRenderRoot() {
     var e2, a2;
-    const t2 = super.createRenderRoot();
-    return null !== (e2 = (a2 = this.renderOptions).renderBefore) && void 0 !== e2 || (a2.renderBefore = t2.firstChild), t2;
+    const r2 = super.createRenderRoot();
+    return null !== (e2 = (a2 = this.renderOptions).renderBefore) && void 0 !== e2 || (a2.renderBefore = r2.firstChild), r2;
   }
   update(e2) {
     const a2 = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e2), this._$Do = ((e3, a3, t2) => {
-      var r2, o2;
-      const i2 = null !== (r2 = null == t2 ? void 0 : t2.renderBefore) && void 0 !== r2 ? r2 : a3;
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(e2), this._$Do = ((e3, a3, r2) => {
+      var t2, o2;
+      const i2 = null !== (t2 = null == r2 ? void 0 : r2.renderBefore) && void 0 !== t2 ? t2 : a3;
       let n2 = i2._$litPart$;
       if (void 0 === n2) {
-        const e4 = null !== (o2 = null == t2 ? void 0 : t2.renderBefore) && void 0 !== o2 ? o2 : null;
-        i2._$litPart$ = n2 = new J(a3.insertBefore(S(), e4), e4, void 0, null != t2 ? t2 : {});
+        const e4 = null !== (o2 = null == r2 ? void 0 : r2.renderBefore) && void 0 !== o2 ? o2 : null;
+        i2._$litPart$ = n2 = new J(a3.insertBefore(A(), e4), e4, void 0, null != r2 ? r2 : {});
       }
       return n2._$AI(e3), n2;
     })(a2, this.renderRoot, this.renderOptions);
@@ -530,10 +530,10 @@ class ie extends f {
     super.disconnectedCallback(), null === (e2 = this._$Do) || void 0 === e2 || e2.setConnected(false);
   }
   render() {
-    return L;
+    return T;
   }
 }
-ie.finalized = true, ie._$litElement$ = true, null === (re = globalThis.litElementHydrateSupport) || void 0 === re || re.call(globalThis, { LitElement: ie });
+ie.finalized = true, ie._$litElement$ = true, null === (te = globalThis.litElementHydrateSupport) || void 0 === te || te.call(globalThis, { LitElement: ie });
 const ne = globalThis.litElementPolyfillSupport;
 null == ne || ne({ LitElement: ie }), (null !== (oe = globalThis.litElementVersions) && void 0 !== oe ? oe : globalThis.litElementVersions = []).push("3.3.3");
 const de = d`
@@ -572,8 +572,8 @@ const de = d`
     box-sizing: border-box;
   }
   .o21pay-button {
-    background-image: url('https://assets.obvious21.com/o21pay-assets/o21pay-button.png');
-    background-repeat: no-repeat;
+    abackground-image: url('https://assets.obvious21.com/o21pay-assets/o21pay-button.png');
+    abackground-repeat: no-repeat;
     background-size: auto 25px;
     background-position: 22px 8px;
     background-color: #68d18d;
@@ -588,6 +588,7 @@ const de = d`
     height: 40px;
     width: 140px;
     border-radius: 20px;
+    margin-bottom: 4px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
@@ -707,7 +708,7 @@ class se extends ie {
     return { merchant_id: { type: String, attribute: "merchant_id" }, survey_id: { type: String, attribute: "survey_id" }, secretkey: { type: String, attribute: "secretkey" }, funnel_id: { type: String, attribute: "funnel_id" }, apiurl: { type: String, attribute: "apiurl" }, form: { type: Boolean, attribute: "form" }, amount: { type: String, attribute: "amount" }, currency: { type: String, attribute: "currency" }, decimals: { type: String, attribute: "decimals" }, order_ref: { type: String, attribute: "order_ref" }, hidden_order_ref: { type: Boolean, attribute: "hidden_order_ref" }, suggestion: { type: String, attribute: "suggestion" }, readonly: { type: Boolean, attribute: "readonly" }, hide_menu: { type: Boolean, attribute: "hide_menu" }, disabled: { type: Boolean, attribute: "disabled" }, qr_size: { type: String, attribute: "qr_size" }, primary_color: { type: String, attribute: "primary_color" }, data: { type: String, attribute: "data" }, lang: { type: String, attribute: "lang" } };
   }
   constructor() {
-    super(), this.form = false, this.url = "", this.amount = "", this.apiurl = "http://localhost:3400/api/v1/", this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", navigator && (this.locale = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en");
+    super(), this.form = false, this.url = "", this.amount = "", this.apiurl = "http://localhost:3400/api/v1/", this.currency = "EUR", this.decimals = 2, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", this.primary_color = "#68d18d", navigator && (this.locale = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en");
     const e2 = this;
     setTimeout(function() {
       e2.dispatchEvent(new CustomEvent("o21pay_init", { detail: { instance: e2 }, bubbles: true, composed: true }));
@@ -715,27 +716,27 @@ class se extends ie {
   }
   init(e2, a2) {
     this.url = "";
-    let t2 = this.renderRoot.querySelector(".o21pay-payment-full");
-    t2.style.removeProperty("height"), this.renderRoot.querySelector(".close").style.visibility = "hidden", this.renderRoot.querySelector(".o21pay-edit").hidden = false, t2 = this.renderRoot.querySelector("#suggestion"), this.suggestion && this.suggestion.length ? t2.style.display = "block" : t2.style.display = "none", t2 = this.renderRoot.querySelector("#page2"), t2.style.display = "none", e2 && (this.amount = e2), this.order_ref = a2 || "";
+    let r2 = this.renderRoot.querySelector(".o21pay-payment-full");
+    r2.style.removeProperty("height"), this.renderRoot.querySelector(".close").style.visibility = "hidden", this.renderRoot.querySelector(".o21pay-edit").hidden = false, r2 = this.renderRoot.querySelector("#suggestion"), this.suggestion && this.suggestion.length ? r2.style.display = "block" : r2.style.display = "none", r2 = this.renderRoot.querySelector("#page2"), r2.style.display = "none", e2 && (this.amount = e2), this.order_ref = a2 || "";
   }
-  async _createPaymentLink(e2, a2, t2, r2, o2, i2) {
-    const n2 = this.apiurl + `merchants/${e2}/paymentlinks`, d2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ secretkey: a2, amount: t2, currency_code: r2, order_ref: o2, type_payment_request: 2, id_survey: i2 }) }, l2 = await fetch(n2, d2), s2 = await l2.json();
+  async _createPaymentLink(e2, a2, r2, t2, o2, i2) {
+    const n2 = this.apiurl + `merchants/${e2}/paymentlinks`, d2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ secretkey: a2, amount: r2, currency_code: t2, order_ref: o2, type_payment_request: 2, id_survey: i2 }) }, l2 = await fetch(n2, d2), s2 = await l2.json();
     return s2.data ? s2.data.url : (console.log(s2), null);
   }
-  async _createPaymentLinkFromFunnel(e2, a2, t2, r2, o2) {
-    const i2 = this.apiurl + `funnels/${e2}/paymentlink`, n2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ amount: a2, currency_code: t2, order_ref: r2, data: o2 }) }, d2 = await fetch(i2, n2), l2 = await d2.json();
+  async _createPaymentLinkFromFunnel(e2, a2, r2, t2, o2) {
+    const i2 = this.apiurl + `funnels/${e2}/paymentlink`, n2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ amount: a2, currency_code: r2, order_ref: t2, data: o2 }) }, d2 = await fetch(i2, n2), l2 = await d2.json();
     return l2.data ? l2.data.url : (console.log(l2), null);
   }
   async _onO21Pay(e2) {
     if (this.disabled)
       return;
-    let a2, t2 = this.renderRoot.querySelector("#amount");
-    if (t2) {
-      let e3 = t2.value;
+    let a2, r2 = this.renderRoot.querySelector("#amount");
+    if (r2) {
+      let e3 = r2.value;
       e3 = e3.replace(",", "."), e3 = e3.replace("€", ""), this.amount = e3;
     }
     if (this.amount && this.amount.length)
-      if (t2 = this.renderRoot.querySelector("#order_ref"), t2 && (this.order_ref = t2.value), this.order_ref && this.order_ref.length) {
+      if (r2 = this.renderRoot.querySelector("#order_ref"), r2 && (this.order_ref = r2.value), this.order_ref && this.order_ref.length) {
         if (this.funnel_id)
           a2 = await this._createPaymentLinkFromFunnel(this.funnel_id, this.amount, this.currency, this.order_ref, this.data);
         else {
@@ -747,13 +748,13 @@ class se extends ie {
           this.url = a2, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.lang && (this.url += `&lang=${this.lang}`.toLowerCase());
           const e3 = { detail: { url: this.url }, bubbles: true, composed: true };
           this.dispatchEvent(new CustomEvent("o21pay_payment_request", e3));
-          let t3 = this.renderRoot.querySelector(".o21pay-payment-full");
+          let r3 = this.renderRoot.querySelector(".o21pay-payment-full");
           if (this.form) {
-            this.renderRoot.querySelector(".o21pay-edit").hidden = true, t3.style.height = "200px", this.renderRoot.querySelector(".close").style.visibility = "visible";
+            this.renderRoot.querySelector(".o21pay-edit").hidden = true, r3.style.height = "200px", this.renderRoot.querySelector(".close").style.visibility = "visible";
             const e4 = this;
-            t3 = e4.renderRoot.querySelector("o21pay-qr"), t3.url = e4.url, t3 = this.renderRoot.querySelector("#suggestion"), t3.style.display = "none", t3 = e4.renderRoot.querySelector("#page2"), t3.style.display = "block";
+            r3 = e4.renderRoot.querySelector("o21pay-qr"), r3.url = e4.url, r3 = this.renderRoot.querySelector("#suggestion"), r3.style.display = "none", r3 = e4.renderRoot.querySelector("#page2"), r3.style.display = "block";
           } else
-            t3 && (t3.style.height = "52px");
+            r3 && (r3.style.height = "52px");
         }
       } else
         alert("Missing order_ref");
@@ -816,7 +817,7 @@ class se extends ie {
     }
   }
   render() {
-    return true === this.form ? F`
+    return true === this.form ? L`
         <div class="o21pay-payment-container">
           <div class="o21pay-payment-full">
             <div class="close" @click=${this.onInit}></div>
@@ -842,14 +843,19 @@ class se extends ie {
                 style="margin-left:10px;"
               />
               &nbsp;
-              <button class="o21pay-button" @click="${this._onO21Pay}" />
+              <button 
+                class="o21pay-button" 
+                style="background-color: ${this.primary_color}"
+                @click="${this._onO21Pay}">
+                <slot name="button_pay" />
+              </button
             </div>
 
             <div
               id="suggestion"
               style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
             >
-              ${this.arraySuggestion.map((e2) => F`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
+              ${this.arraySuggestion.map((e2) => L`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
                   ${parseFloat(e2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" })}
                 </span>`)}
             </div>
@@ -880,7 +886,7 @@ class se extends ie {
             <span>Payment secured and powered by O21Pay</span>
           </div>
         </div>
-      ` : F` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
+      ` : L` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
   }
 }
 var ce, me, ue;
@@ -888,11 +894,11 @@ ce = se, ue = [de], (me = function(e2) {
   var a2 = function(e3, a3) {
     if ("object" != typeof e3 || null === e3)
       return e3;
-    var t2 = e3[Symbol.toPrimitive];
-    if (void 0 !== t2) {
-      var r2 = t2.call(e3, a3 || "default");
-      if ("object" != typeof r2)
-        return r2;
+    var r2 = e3[Symbol.toPrimitive];
+    if (void 0 !== r2) {
+      var t2 = r2.call(e3, a3 || "default");
+      if ("object" != typeof t2)
+        return t2;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
     return ("string" === a3 ? String : Number)(e3);
@@ -1094,29 +1100,29 @@ class be extends ie {
   }
   updated(e2) {
     if (e2.has("events")) {
-      const a2 = e2.get("events"), t2 = this.events;
+      const a2 = e2.get("events"), r2 = this.events;
       a2 && window.removeEventListener("message", a2);
-      const r2 = this;
+      const t2 = this;
       window.addEventListener("message", function(e3) {
         if (e3 && e3.data) {
           const a3 = e3.data;
           if (a3) {
             const e4 = a3.message;
             if ("o21pay_ready" === e4) {
-              const e5 = r2.shadowRoot.getElementById("framePayment");
+              const e5 = t2.shadowRoot.getElementById("framePayment");
               e5 && (e5.style.opacity = 1);
             }
-            t2 && e4 && t2(a3);
+            r2 && e4 && r2(a3);
           }
         }
       });
     }
     super.updated(e2);
   }
-  init(e2, a2, t2, r2 = "dialog") {
+  init(e2, a2, r2, t2 = "dialog") {
     if (!e2 || !e2.length)
       return false;
-    void 0 !== a2 && (this.width = a2, this.width = parseInt(a2) + "px"), void 0 !== t2 && (this.height = t2, this.height = parseInt(t2) + "px"), void 0 !== r2 && (this.mode = r2), this.hideSpinner = false, e2 += `&time=${(/* @__PURE__ */ new Date()).getTime()}`;
+    void 0 !== a2 && (this.width = a2, this.width = parseInt(a2) + "px"), void 0 !== r2 && (this.height = r2, this.height = parseInt(r2) + "px"), void 0 !== t2 && (this.mode = t2), this.hideSpinner = false, e2 += `&time=${(/* @__PURE__ */ new Date()).getTime()}`;
     const o2 = this.renderRoot.querySelector("#framePayment");
     return !!o2 && (o2.style.opacity = 0, -1 !== this.mode.indexOf("drawer") && -1 === e2.indexOf("&close") && (e2 += "&close=1"), -1 === e2.indexOf("&reset") && (e2 += "&reset"), o2.src = e2, true);
   }
@@ -1130,13 +1136,13 @@ class be extends ie {
     this.open = false, this.events && this.events({ message: "o21pay_closed" }), this.reset();
   }
   render() {
-    let e2 = "wrapper" + (this.open ? " open" : ""), a2 = "dialog", t2 = "", r2 = "close", o2 = `width:${this.width}; height:${this.height}`;
-    return "drawer-left" === this.mode ? (a2 = "drawer", t2 = "drawer-header", r2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", t2 = "drawer-header", r2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : r2 = "", F`
+    let e2 = "wrapper" + (this.open ? " open" : ""), a2 = "dialog", r2 = "", t2 = "close", o2 = `width:${this.width}; height:${this.height}`;
+    return "drawer-left" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : t2 = "", L`
       <div class=${e2}>
         <div class="overlay"></div>
         <div class=${a2} style=${o2}>
-          <div class=${t2}></div>
-          <div class=${r2} @click=${this.closeWindow}></div>
+          <div class=${r2}></div>
+          <div class=${t2} @click=${this.closeWindow}></div>
           <iframe id="framePayment" class="obv-frameStyle" allowtransparency="true"></iframe>
           <div class="orbit-spinner-text" style=${this.spinnerStyle()}>
             <span>${this.texts.TXT_CNX}</span>
@@ -1154,22 +1160,22 @@ class be extends ie {
     this.open = false;
   }
 }
-!function(e2, a2, t2) {
+!function(e2, a2, r2) {
   (a2 = function(e3) {
     var a3 = function(e4, a4) {
       if ("object" != typeof e4 || null === e4)
         return e4;
-      var t3 = e4[Symbol.toPrimitive];
-      if (void 0 !== t3) {
-        var r2 = t3.call(e4, a4 || "default");
-        if ("object" != typeof r2)
-          return r2;
+      var r3 = e4[Symbol.toPrimitive];
+      if (void 0 !== r3) {
+        var t2 = r3.call(e4, a4 || "default");
+        if ("object" != typeof t2)
+          return t2;
         throw new TypeError("@@toPrimitive must return a primitive value.");
       }
       return ("string" === a4 ? String : Number)(e4);
     }(e3, "string");
     return "symbol" == typeof a3 ? a3 : String(a3);
-  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(be, "styles", [he]);
 const ze = window.customElements;
 ze && !ze.get(ge) && ze.define(ge, be);
@@ -1235,8 +1241,8 @@ function _e() {
   const a2 = Math.floor(e2 / 8);
   return 1 == (this.buffer[a2] >>> 7 - e2 % 8 & 1);
 }, put: function(e2, a2) {
-  for (let t2 = 0; t2 < a2; t2++)
-    this.putBit(1 == (e2 >>> a2 - t2 - 1 & 1));
+  for (let r2 = 0; r2 < a2; r2++)
+    this.putBit(1 == (e2 >>> a2 - r2 - 1 & 1));
 }, getLengthInBits: function() {
   return this.length;
 }, putBit: function(e2) {
@@ -1249,62 +1255,62 @@ function Ee(e2) {
     throw new Error("BitMatrix size must be defined and greater than 0");
   this.size = e2, this.data = new Uint8Array(e2 * e2), this.reservedBit = new Uint8Array(e2 * e2);
 }
-Ee.prototype.set = function(e2, a2, t2, r2) {
+Ee.prototype.set = function(e2, a2, r2, t2) {
   const o2 = e2 * this.size + a2;
-  this.data[o2] = t2, r2 && (this.reservedBit[o2] = true);
+  this.data[o2] = r2, t2 && (this.reservedBit[o2] = true);
 }, Ee.prototype.get = function(e2, a2) {
   return this.data[e2 * this.size + a2];
-}, Ee.prototype.xor = function(e2, a2, t2) {
-  this.data[e2 * this.size + a2] ^= t2;
+}, Ee.prototype.xor = function(e2, a2, r2) {
+  this.data[e2 * this.size + a2] ^= r2;
 }, Ee.prototype.isReserved = function(e2, a2) {
   return this.reservedBit[e2 * this.size + a2];
 };
-var Se = Ee, Ie = {};
+var Ae = Ee, Se = {};
 !function(e2) {
   const a2 = ye.getSymbolSize;
   e2.getRowColCoords = function(e3) {
     if (1 === e3)
       return [];
-    const t2 = Math.floor(e3 / 7) + 2, r2 = a2(e3), o2 = 145 === r2 ? 26 : 2 * Math.ceil((r2 - 13) / (2 * t2 - 2)), i2 = [r2 - 7];
-    for (let e4 = 1; e4 < t2 - 1; e4++)
+    const r2 = Math.floor(e3 / 7) + 2, t2 = a2(e3), o2 = 145 === t2 ? 26 : 2 * Math.ceil((t2 - 13) / (2 * r2 - 2)), i2 = [t2 - 7];
+    for (let e4 = 1; e4 < r2 - 1; e4++)
       i2[e4] = i2[e4 - 1] - o2;
     return i2.push(6), i2.reverse();
   }, e2.getPositions = function(a3) {
-    const t2 = [], r2 = e2.getRowColCoords(a3), o2 = r2.length;
+    const r2 = [], t2 = e2.getRowColCoords(a3), o2 = t2.length;
     for (let e3 = 0; e3 < o2; e3++)
       for (let a4 = 0; a4 < o2; a4++)
-        0 === e3 && 0 === a4 || 0 === e3 && a4 === o2 - 1 || e3 === o2 - 1 && 0 === a4 || t2.push([r2[e3], r2[a4]]);
-    return t2;
+        0 === e3 && 0 === a4 || 0 === e3 && a4 === o2 - 1 || e3 === o2 - 1 && 0 === a4 || r2.push([t2[e3], t2[a4]]);
+    return r2;
   };
-}(Ie);
-var Ae = {};
+}(Se);
+var Ie = {};
 const Ne = ye.getSymbolSize;
-Ae.getPositions = function(e2) {
+Ie.getPositions = function(e2) {
   const a2 = Ne(e2);
   return [[0, 0], [a2 - 7, 0], [0, a2 - 7]];
 };
 var Pe = {};
 !function(e2) {
   e2.Patterns = { PATTERN000: 0, PATTERN001: 1, PATTERN010: 2, PATTERN011: 3, PATTERN100: 4, PATTERN101: 5, PATTERN110: 6, PATTERN111: 7 };
-  const a2 = 3, t2 = 3, r2 = 40, o2 = 10;
-  function i2(a3, t3, r3) {
+  const a2 = 3, r2 = 3, t2 = 40, o2 = 10;
+  function i2(a3, r3, t3) {
     switch (a3) {
       case e2.Patterns.PATTERN000:
-        return (t3 + r3) % 2 == 0;
+        return (r3 + t3) % 2 == 0;
       case e2.Patterns.PATTERN001:
-        return t3 % 2 == 0;
+        return r3 % 2 == 0;
       case e2.Patterns.PATTERN010:
-        return r3 % 3 == 0;
+        return t3 % 3 == 0;
       case e2.Patterns.PATTERN011:
-        return (t3 + r3) % 3 == 0;
+        return (r3 + t3) % 3 == 0;
       case e2.Patterns.PATTERN100:
-        return (Math.floor(t3 / 2) + Math.floor(r3 / 3)) % 2 == 0;
+        return (Math.floor(r3 / 2) + Math.floor(t3 / 3)) % 2 == 0;
       case e2.Patterns.PATTERN101:
-        return t3 * r3 % 2 + t3 * r3 % 3 == 0;
+        return r3 * t3 % 2 + r3 * t3 % 3 == 0;
       case e2.Patterns.PATTERN110:
-        return (t3 * r3 % 2 + t3 * r3 % 3) % 2 == 0;
+        return (r3 * t3 % 2 + r3 * t3 % 3) % 2 == 0;
       case e2.Patterns.PATTERN111:
-        return (t3 * r3 % 3 + (t3 + r3) % 2) % 2 == 0;
+        return (r3 * t3 % 3 + (r3 + t3) % 2) % 2 == 0;
       default:
         throw new Error("bad maskPattern:" + a3);
     }
@@ -1314,148 +1320,148 @@ var Pe = {};
   }, e2.from = function(a3) {
     return e2.isValid(a3) ? parseInt(a3, 10) : void 0;
   }, e2.getPenaltyN1 = function(e3) {
-    const t3 = e3.size;
-    let r3 = 0, o3 = 0, i3 = 0, n2 = null, d2 = null;
-    for (let l2 = 0; l2 < t3; l2++) {
+    const r3 = e3.size;
+    let t3 = 0, o3 = 0, i3 = 0, n2 = null, d2 = null;
+    for (let l2 = 0; l2 < r3; l2++) {
       o3 = i3 = 0, n2 = d2 = null;
-      for (let s2 = 0; s2 < t3; s2++) {
-        let t4 = e3.get(l2, s2);
-        t4 === n2 ? o3++ : (o3 >= 5 && (r3 += a2 + (o3 - 5)), n2 = t4, o3 = 1), t4 = e3.get(s2, l2), t4 === d2 ? i3++ : (i3 >= 5 && (r3 += a2 + (i3 - 5)), d2 = t4, i3 = 1);
+      for (let s2 = 0; s2 < r3; s2++) {
+        let r4 = e3.get(l2, s2);
+        r4 === n2 ? o3++ : (o3 >= 5 && (t3 += a2 + (o3 - 5)), n2 = r4, o3 = 1), r4 = e3.get(s2, l2), r4 === d2 ? i3++ : (i3 >= 5 && (t3 += a2 + (i3 - 5)), d2 = r4, i3 = 1);
       }
-      o3 >= 5 && (r3 += a2 + (o3 - 5)), i3 >= 5 && (r3 += a2 + (i3 - 5));
+      o3 >= 5 && (t3 += a2 + (o3 - 5)), i3 >= 5 && (t3 += a2 + (i3 - 5));
     }
-    return r3;
+    return t3;
   }, e2.getPenaltyN2 = function(e3) {
     const a3 = e3.size;
-    let r3 = 0;
-    for (let t3 = 0; t3 < a3 - 1; t3++)
+    let t3 = 0;
+    for (let r3 = 0; r3 < a3 - 1; r3++)
       for (let o3 = 0; o3 < a3 - 1; o3++) {
-        const a4 = e3.get(t3, o3) + e3.get(t3, o3 + 1) + e3.get(t3 + 1, o3) + e3.get(t3 + 1, o3 + 1);
-        4 !== a4 && 0 !== a4 || r3++;
+        const a4 = e3.get(r3, o3) + e3.get(r3, o3 + 1) + e3.get(r3 + 1, o3) + e3.get(r3 + 1, o3 + 1);
+        4 !== a4 && 0 !== a4 || t3++;
       }
-    return r3 * t2;
+    return t3 * r2;
   }, e2.getPenaltyN3 = function(e3) {
     const a3 = e3.size;
-    let t3 = 0, o3 = 0, i3 = 0;
-    for (let r3 = 0; r3 < a3; r3++) {
+    let r3 = 0, o3 = 0, i3 = 0;
+    for (let t3 = 0; t3 < a3; t3++) {
       o3 = i3 = 0;
       for (let n2 = 0; n2 < a3; n2++)
-        o3 = o3 << 1 & 2047 | e3.get(r3, n2), n2 >= 10 && (1488 === o3 || 93 === o3) && t3++, i3 = i3 << 1 & 2047 | e3.get(n2, r3), n2 >= 10 && (1488 === i3 || 93 === i3) && t3++;
+        o3 = o3 << 1 & 2047 | e3.get(t3, n2), n2 >= 10 && (1488 === o3 || 93 === o3) && r3++, i3 = i3 << 1 & 2047 | e3.get(n2, t3), n2 >= 10 && (1488 === i3 || 93 === i3) && r3++;
     }
-    return t3 * r2;
+    return r3 * t2;
   }, e2.getPenaltyN4 = function(e3) {
     let a3 = 0;
-    const t3 = e3.data.length;
-    for (let r3 = 0; r3 < t3; r3++)
-      a3 += e3.data[r3];
-    return Math.abs(Math.ceil(100 * a3 / t3 / 5) - 10) * o2;
+    const r3 = e3.data.length;
+    for (let t3 = 0; t3 < r3; t3++)
+      a3 += e3.data[t3];
+    return Math.abs(Math.ceil(100 * a3 / r3 / 5) - 10) * o2;
   }, e2.applyMask = function(e3, a3) {
-    const t3 = a3.size;
-    for (let r3 = 0; r3 < t3; r3++)
-      for (let o3 = 0; o3 < t3; o3++)
-        a3.isReserved(o3, r3) || a3.xor(o3, r3, i2(e3, o3, r3));
-  }, e2.getBestMask = function(a3, t3) {
-    const r3 = Object.keys(e2.Patterns).length;
+    const r3 = a3.size;
+    for (let t3 = 0; t3 < r3; t3++)
+      for (let o3 = 0; o3 < r3; o3++)
+        a3.isReserved(o3, t3) || a3.xor(o3, t3, i2(e3, o3, t3));
+  }, e2.getBestMask = function(a3, r3) {
+    const t3 = Object.keys(e2.Patterns).length;
     let o3 = 0, i3 = 1 / 0;
-    for (let n2 = 0; n2 < r3; n2++) {
-      t3(n2), e2.applyMask(n2, a3);
-      const r4 = e2.getPenaltyN1(a3) + e2.getPenaltyN2(a3) + e2.getPenaltyN3(a3) + e2.getPenaltyN4(a3);
-      e2.applyMask(n2, a3), r4 < i3 && (i3 = r4, o3 = n2);
+    for (let n2 = 0; n2 < t3; n2++) {
+      r3(n2), e2.applyMask(n2, a3);
+      const t4 = e2.getPenaltyN1(a3) + e2.getPenaltyN2(a3) + e2.getPenaltyN3(a3) + e2.getPenaltyN4(a3);
+      e2.applyMask(n2, a3), t4 < i3 && (i3 = t4, o3 = n2);
     }
     return o3;
   };
 }(Pe);
 var Be = {};
-const Oe = $e, Me = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 4, 1, 2, 4, 4, 2, 4, 4, 4, 2, 4, 6, 5, 2, 4, 6, 6, 2, 5, 8, 8, 4, 5, 8, 8, 4, 5, 8, 11, 4, 8, 10, 11, 4, 9, 12, 16, 4, 9, 16, 16, 6, 10, 12, 18, 6, 10, 17, 16, 6, 11, 16, 19, 6, 13, 18, 21, 7, 14, 21, 25, 8, 16, 20, 25, 8, 17, 23, 25, 9, 17, 23, 34, 9, 18, 25, 30, 10, 20, 27, 32, 12, 21, 29, 35, 12, 23, 34, 37, 12, 25, 34, 40, 13, 26, 35, 42, 14, 28, 38, 45, 15, 29, 40, 48, 16, 31, 43, 51, 17, 33, 45, 54, 18, 35, 48, 57, 19, 37, 51, 60, 19, 38, 53, 63, 20, 40, 56, 66, 21, 43, 59, 70, 22, 45, 62, 74, 24, 47, 65, 77, 25, 49, 68, 81], Re = [7, 10, 13, 17, 10, 16, 22, 28, 15, 26, 36, 44, 20, 36, 52, 64, 26, 48, 72, 88, 36, 64, 96, 112, 40, 72, 108, 130, 48, 88, 132, 156, 60, 110, 160, 192, 72, 130, 192, 224, 80, 150, 224, 264, 96, 176, 260, 308, 104, 198, 288, 352, 120, 216, 320, 384, 132, 240, 360, 432, 144, 280, 408, 480, 168, 308, 448, 532, 180, 338, 504, 588, 196, 364, 546, 650, 224, 416, 600, 700, 224, 442, 644, 750, 252, 476, 690, 816, 270, 504, 750, 900, 300, 560, 810, 960, 312, 588, 870, 1050, 336, 644, 952, 1110, 360, 700, 1020, 1200, 390, 728, 1050, 1260, 420, 784, 1140, 1350, 450, 812, 1200, 1440, 480, 868, 1290, 1530, 510, 924, 1350, 1620, 540, 980, 1440, 1710, 570, 1036, 1530, 1800, 570, 1064, 1590, 1890, 600, 1120, 1680, 1980, 630, 1204, 1770, 2100, 660, 1260, 1860, 2220, 720, 1316, 1950, 2310, 750, 1372, 2040, 2430];
+const Me = $e, Oe = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 4, 1, 2, 4, 4, 2, 4, 4, 4, 2, 4, 6, 5, 2, 4, 6, 6, 2, 5, 8, 8, 4, 5, 8, 8, 4, 5, 8, 11, 4, 8, 10, 11, 4, 9, 12, 16, 4, 9, 16, 16, 6, 10, 12, 18, 6, 10, 17, 16, 6, 11, 16, 19, 6, 13, 18, 21, 7, 14, 21, 25, 8, 16, 20, 25, 8, 17, 23, 25, 9, 17, 23, 34, 9, 18, 25, 30, 10, 20, 27, 32, 12, 21, 29, 35, 12, 23, 34, 37, 12, 25, 34, 40, 13, 26, 35, 42, 14, 28, 38, 45, 15, 29, 40, 48, 16, 31, 43, 51, 17, 33, 45, 54, 18, 35, 48, 57, 19, 37, 51, 60, 19, 38, 53, 63, 20, 40, 56, 66, 21, 43, 59, 70, 22, 45, 62, 74, 24, 47, 65, 77, 25, 49, 68, 81], Re = [7, 10, 13, 17, 10, 16, 22, 28, 15, 26, 36, 44, 20, 36, 52, 64, 26, 48, 72, 88, 36, 64, 96, 112, 40, 72, 108, 130, 48, 88, 132, 156, 60, 110, 160, 192, 72, 130, 192, 224, 80, 150, 224, 264, 96, 176, 260, 308, 104, 198, 288, 352, 120, 216, 320, 384, 132, 240, 360, 432, 144, 280, 408, 480, 168, 308, 448, 532, 180, 338, 504, 588, 196, 364, 546, 650, 224, 416, 600, 700, 224, 442, 644, 750, 252, 476, 690, 816, 270, 504, 750, 900, 300, 560, 810, 960, 312, 588, 870, 1050, 336, 644, 952, 1110, 360, 700, 1020, 1200, 390, 728, 1050, 1260, 420, 784, 1140, 1350, 450, 812, 1200, 1440, 480, 868, 1290, 1530, 510, 924, 1350, 1620, 540, 980, 1440, 1710, 570, 1036, 1530, 1800, 570, 1064, 1590, 1890, 600, 1120, 1680, 1980, 630, 1204, 1770, 2100, 660, 1260, 1860, 2220, 720, 1316, 1950, 2310, 750, 1372, 2040, 2430];
 Be.getBlocksCount = function(e2, a2) {
   switch (a2) {
-    case Oe.L:
-      return Me[4 * (e2 - 1) + 0];
-    case Oe.M:
-      return Me[4 * (e2 - 1) + 1];
-    case Oe.Q:
-      return Me[4 * (e2 - 1) + 2];
-    case Oe.H:
-      return Me[4 * (e2 - 1) + 3];
+    case Me.L:
+      return Oe[4 * (e2 - 1) + 0];
+    case Me.M:
+      return Oe[4 * (e2 - 1) + 1];
+    case Me.Q:
+      return Oe[4 * (e2 - 1) + 2];
+    case Me.H:
+      return Oe[4 * (e2 - 1) + 3];
     default:
       return;
   }
 }, Be.getTotalCodewordsCount = function(e2, a2) {
   switch (a2) {
-    case Oe.L:
+    case Me.L:
       return Re[4 * (e2 - 1) + 0];
-    case Oe.M:
+    case Me.M:
       return Re[4 * (e2 - 1) + 1];
-    case Oe.Q:
+    case Me.Q:
       return Re[4 * (e2 - 1) + 2];
-    case Oe.H:
+    case Me.H:
       return Re[4 * (e2 - 1) + 3];
     default:
       return;
   }
 };
-var De = {}, Te = {};
-const Fe = new Uint8Array(512), Le = new Uint8Array(256);
+var De = {}, Fe = {};
+const Le = new Uint8Array(512), Te = new Uint8Array(256);
 !function() {
   let e2 = 1;
   for (let a2 = 0; a2 < 255; a2++)
-    Fe[a2] = e2, Le[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
+    Le[a2] = e2, Te[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
   for (let e3 = 255; e3 < 512; e3++)
-    Fe[e3] = Fe[e3 - 255];
-}(), Te.log = function(e2) {
+    Le[e3] = Le[e3 - 255];
+}(), Fe.log = function(e2) {
   if (e2 < 1)
     throw new Error("log(" + e2 + ")");
+  return Te[e2];
+}, Fe.exp = function(e2) {
   return Le[e2];
-}, Te.exp = function(e2) {
-  return Fe[e2];
-}, Te.mul = function(e2, a2) {
-  return 0 === e2 || 0 === a2 ? 0 : Fe[Le[e2] + Le[a2]];
+}, Fe.mul = function(e2, a2) {
+  return 0 === e2 || 0 === a2 ? 0 : Le[Te[e2] + Te[a2]];
 }, function(e2) {
-  const a2 = Te;
-  e2.mul = function(e3, t2) {
-    const r2 = new Uint8Array(e3.length + t2.length - 1);
+  const a2 = Fe;
+  e2.mul = function(e3, r2) {
+    const t2 = new Uint8Array(e3.length + r2.length - 1);
     for (let o2 = 0; o2 < e3.length; o2++)
-      for (let i2 = 0; i2 < t2.length; i2++)
-        r2[o2 + i2] ^= a2.mul(e3[o2], t2[i2]);
-    return r2;
-  }, e2.mod = function(e3, t2) {
-    let r2 = new Uint8Array(e3);
-    for (; r2.length - t2.length >= 0; ) {
-      const e4 = r2[0];
-      for (let o3 = 0; o3 < t2.length; o3++)
-        r2[o3] ^= a2.mul(t2[o3], e4);
+      for (let i2 = 0; i2 < r2.length; i2++)
+        t2[o2 + i2] ^= a2.mul(e3[o2], r2[i2]);
+    return t2;
+  }, e2.mod = function(e3, r2) {
+    let t2 = new Uint8Array(e3);
+    for (; t2.length - r2.length >= 0; ) {
+      const e4 = t2[0];
+      for (let o3 = 0; o3 < r2.length; o3++)
+        t2[o3] ^= a2.mul(r2[o3], e4);
       let o2 = 0;
-      for (; o2 < r2.length && 0 === r2[o2]; )
+      for (; o2 < t2.length && 0 === t2[o2]; )
         o2++;
-      r2 = r2.slice(o2);
+      t2 = t2.slice(o2);
     }
-    return r2;
-  }, e2.generateECPolynomial = function(t2) {
-    let r2 = new Uint8Array([1]);
-    for (let o2 = 0; o2 < t2; o2++)
-      r2 = e2.mul(r2, new Uint8Array([1, a2.exp(o2)]));
-    return r2;
+    return t2;
+  }, e2.generateECPolynomial = function(r2) {
+    let t2 = new Uint8Array([1]);
+    for (let o2 = 0; o2 < r2; o2++)
+      t2 = e2.mul(t2, new Uint8Array([1, a2.exp(o2)]));
+    return t2;
   };
 }(De);
-const je = De;
-function Ue(e2) {
+const Ue = De;
+function Ge(e2) {
   this.genPoly = void 0, this.degree = e2, this.degree && this.initialize(this.degree);
 }
-Ue.prototype.initialize = function(e2) {
-  this.degree = e2, this.genPoly = je.generateECPolynomial(this.degree);
-}, Ue.prototype.encode = function(e2) {
+Ge.prototype.initialize = function(e2) {
+  this.degree = e2, this.genPoly = Ue.generateECPolynomial(this.degree);
+}, Ge.prototype.encode = function(e2) {
   if (!this.genPoly)
     throw new Error("Encoder not initialized");
   const a2 = new Uint8Array(e2.length + this.degree);
   a2.set(e2);
-  const t2 = je.mod(a2, this.genPoly), r2 = this.degree - t2.length;
-  if (r2 > 0) {
+  const r2 = Ue.mod(a2, this.genPoly), t2 = this.degree - r2.length;
+  if (t2 > 0) {
     const e3 = new Uint8Array(this.degree);
-    return e3.set(t2, r2), e3;
+    return e3.set(r2, t2), e3;
   }
-  return t2;
+  return r2;
 };
-var Ge = Ue, Ve = {}, He = {}, Ye = { isValid: function(e2) {
+var je = Ge, Ye = {}, He = {}, Ve = { isValid: function(e2) {
   return !isNaN(e2) && e2 >= 1 && e2 <= 40;
 } }, Ke = {};
 const Qe = "[0-9]+";
@@ -1471,22 +1477,22 @@ Ke.testKanji = function(e2) {
 }, Ke.testAlphanumeric = function(e2) {
   return Xe.test(e2);
 }, function(e2) {
-  const a2 = Ye, t2 = Ke;
-  e2.NUMERIC = { id: "Numeric", bit: 1, ccBits: [10, 12, 14] }, e2.ALPHANUMERIC = { id: "Alphanumeric", bit: 2, ccBits: [9, 11, 13] }, e2.BYTE = { id: "Byte", bit: 4, ccBits: [8, 16, 16] }, e2.KANJI = { id: "Kanji", bit: 8, ccBits: [8, 10, 12] }, e2.MIXED = { bit: -1 }, e2.getCharCountIndicator = function(e3, t3) {
+  const a2 = Ve, r2 = Ke;
+  e2.NUMERIC = { id: "Numeric", bit: 1, ccBits: [10, 12, 14] }, e2.ALPHANUMERIC = { id: "Alphanumeric", bit: 2, ccBits: [9, 11, 13] }, e2.BYTE = { id: "Byte", bit: 4, ccBits: [8, 16, 16] }, e2.KANJI = { id: "Kanji", bit: 8, ccBits: [8, 10, 12] }, e2.MIXED = { bit: -1 }, e2.getCharCountIndicator = function(e3, r3) {
     if (!e3.ccBits)
       throw new Error("Invalid mode: " + e3);
-    if (!a2.isValid(t3))
-      throw new Error("Invalid version: " + t3);
-    return t3 >= 1 && t3 < 10 ? e3.ccBits[0] : t3 < 27 ? e3.ccBits[1] : e3.ccBits[2];
+    if (!a2.isValid(r3))
+      throw new Error("Invalid version: " + r3);
+    return r3 >= 1 && r3 < 10 ? e3.ccBits[0] : r3 < 27 ? e3.ccBits[1] : e3.ccBits[2];
   }, e2.getBestModeForData = function(a3) {
-    return t2.testNumeric(a3) ? e2.NUMERIC : t2.testAlphanumeric(a3) ? e2.ALPHANUMERIC : t2.testKanji(a3) ? e2.KANJI : e2.BYTE;
+    return r2.testNumeric(a3) ? e2.NUMERIC : r2.testAlphanumeric(a3) ? e2.ALPHANUMERIC : r2.testKanji(a3) ? e2.KANJI : e2.BYTE;
   }, e2.toString = function(e3) {
     if (e3 && e3.id)
       return e3.id;
     throw new Error("Invalid mode");
   }, e2.isValid = function(e3) {
     return e3 && e3.bit && e3.ccBits;
-  }, e2.from = function(a3, t3) {
+  }, e2.from = function(a3, r3) {
     if (e2.isValid(a3))
       return a3;
     try {
@@ -1507,28 +1513,28 @@ Ke.testKanji = function(e2) {
         }
       }(a3);
     } catch (e3) {
-      return t3;
+      return r3;
     }
   };
 }(He), function(e2) {
-  const a2 = ye, t2 = Be, r2 = $e, o2 = He, i2 = Ye, n2 = a2.getBCHDigit(7973);
+  const a2 = ye, r2 = Be, t2 = $e, o2 = He, i2 = Ve, n2 = a2.getBCHDigit(7973);
   function d2(e3, a3) {
     return o2.getCharCountIndicator(e3, a3) + 4;
   }
   function l2(e3, a3) {
-    let t3 = 0;
+    let r3 = 0;
     return e3.forEach(function(e4) {
-      const r3 = d2(e4.mode, a3);
-      t3 += r3 + e4.getBitsLength();
-    }), t3;
+      const t3 = d2(e4.mode, a3);
+      r3 += t3 + e4.getBitsLength();
+    }), r3;
   }
   e2.from = function(e3, a3) {
     return i2.isValid(e3) ? parseInt(e3, 10) : a3;
-  }, e2.getCapacity = function(e3, r3, n3) {
+  }, e2.getCapacity = function(e3, t3, n3) {
     if (!i2.isValid(e3))
       throw new Error("Invalid QR Code version");
     void 0 === n3 && (n3 = o2.BYTE);
-    const l3 = 8 * (a2.getSymbolTotalCodewords(e3) - t2.getTotalCodewordsCount(e3, r3));
+    const l3 = 8 * (a2.getSymbolTotalCodewords(e3) - r2.getTotalCodewordsCount(e3, t3));
     if (n3 === o2.MIXED)
       return l3;
     const s2 = l3 - d2(n3, e3);
@@ -1543,45 +1549,45 @@ Ke.testKanji = function(e2) {
       default:
         return Math.floor(s2 / 8);
     }
-  }, e2.getBestVersionForData = function(a3, t3) {
+  }, e2.getBestVersionForData = function(a3, r3) {
     let i3;
-    const n3 = r2.from(t3, r2.M);
+    const n3 = t2.from(r3, t2.M);
     if (Array.isArray(a3)) {
       if (a3.length > 1)
-        return function(a4, t4) {
-          for (let r3 = 1; r3 <= 40; r3++)
-            if (l2(a4, r3) <= e2.getCapacity(r3, t4, o2.MIXED))
-              return r3;
+        return function(a4, r4) {
+          for (let t3 = 1; t3 <= 40; t3++)
+            if (l2(a4, t3) <= e2.getCapacity(t3, r4, o2.MIXED))
+              return t3;
         }(a3, n3);
       if (0 === a3.length)
         return 1;
       i3 = a3[0];
     } else
       i3 = a3;
-    return function(a4, t4, r3) {
+    return function(a4, r4, t3) {
       for (let o3 = 1; o3 <= 40; o3++)
-        if (t4 <= e2.getCapacity(o3, r3, a4))
+        if (r4 <= e2.getCapacity(o3, t3, a4))
           return o3;
     }(i3.mode, i3.getLength(), n3);
   }, e2.getEncodedBits = function(e3) {
     if (!i2.isValid(e3) || e3 < 7)
       throw new Error("Invalid QR Code version");
-    let t3 = e3 << 12;
-    for (; a2.getBCHDigit(t3) - n2 >= 0; )
-      t3 ^= 7973 << a2.getBCHDigit(t3) - n2;
-    return e3 << 12 | t3;
+    let r3 = e3 << 12;
+    for (; a2.getBCHDigit(r3) - n2 >= 0; )
+      r3 ^= 7973 << a2.getBCHDigit(r3) - n2;
+    return e3 << 12 | r3;
   };
-}(Ve);
+}(Ye);
 var ea = {};
-const aa = ye, ta = aa.getBCHDigit(1335);
+const aa = ye, ra = aa.getBCHDigit(1335);
 ea.getEncodedBits = function(e2, a2) {
-  const t2 = e2.bit << 3 | a2;
-  let r2 = t2 << 10;
-  for (; aa.getBCHDigit(r2) - ta >= 0; )
-    r2 ^= 1335 << aa.getBCHDigit(r2) - ta;
-  return 21522 ^ (t2 << 10 | r2);
+  const r2 = e2.bit << 3 | a2;
+  let t2 = r2 << 10;
+  for (; aa.getBCHDigit(t2) - ra >= 0; )
+    t2 ^= 1335 << aa.getBCHDigit(t2) - ra;
+  return 21522 ^ (r2 << 10 | t2);
 };
-var ra = {};
+var ta = {};
 const oa = He;
 function ia(e2) {
   this.mode = oa.NUMERIC, this.data = e2.toString();
@@ -1593,11 +1599,11 @@ ia.getBitsLength = function(e2) {
 }, ia.prototype.getBitsLength = function() {
   return ia.getBitsLength(this.data.length);
 }, ia.prototype.write = function(e2) {
-  let a2, t2, r2;
+  let a2, r2, t2;
   for (a2 = 0; a2 + 3 <= this.data.length; a2 += 3)
-    t2 = this.data.substr(a2, 3), r2 = parseInt(t2, 10), e2.put(r2, 10);
+    r2 = this.data.substr(a2, 3), t2 = parseInt(r2, 10), e2.put(t2, 10);
   const o2 = this.data.length - a2;
-  o2 > 0 && (t2 = this.data.substr(a2), r2 = parseInt(t2, 10), e2.put(r2, 3 * o2 + 1));
+  o2 > 0 && (r2 = this.data.substr(a2), t2 = parseInt(r2, 10), e2.put(t2, 3 * o2 + 1));
 };
 var na = ia;
 const da = He, la = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
@@ -1613,18 +1619,18 @@ sa.getBitsLength = function(e2) {
 }, sa.prototype.write = function(e2) {
   let a2;
   for (a2 = 0; a2 + 2 <= this.data.length; a2 += 2) {
-    let t2 = 45 * la.indexOf(this.data[a2]);
-    t2 += la.indexOf(this.data[a2 + 1]), e2.put(t2, 11);
+    let r2 = 45 * la.indexOf(this.data[a2]);
+    r2 += la.indexOf(this.data[a2 + 1]), e2.put(r2, 11);
   }
   this.data.length % 2 && e2.put(la.indexOf(this.data[a2]), 6);
 };
 var ca = sa;
 const ma = function(e2) {
-  for (var a2 = [], t2 = e2.length, r2 = 0; r2 < t2; r2++) {
-    var o2 = e2.charCodeAt(r2);
-    if (o2 >= 55296 && o2 <= 56319 && t2 > r2 + 1) {
-      var i2 = e2.charCodeAt(r2 + 1);
-      i2 >= 56320 && i2 <= 57343 && (o2 = 1024 * (o2 - 55296) + i2 - 56320 + 65536, r2 += 1);
+  for (var a2 = [], r2 = e2.length, t2 = 0; t2 < r2; t2++) {
+    var o2 = e2.charCodeAt(t2);
+    if (o2 >= 55296 && o2 <= 56319 && r2 > t2 + 1) {
+      var i2 = e2.charCodeAt(t2 + 1);
+      i2 >= 56320 && i2 <= 57343 && (o2 = 1024 * (o2 - 55296) + i2 - 56320 + 65536, t2 += 1);
     }
     o2 < 128 ? a2.push(o2) : o2 < 2048 ? (a2.push(o2 >> 6 | 192), a2.push(63 & o2 | 128)) : o2 < 55296 || o2 >= 57344 && o2 < 65536 ? (a2.push(o2 >> 12 | 224), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : o2 >= 65536 && o2 <= 1114111 ? (a2.push(o2 >> 18 | 240), a2.push(o2 >> 12 & 63 | 128), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : a2.push(239, 191, 189);
   }
@@ -1640,7 +1646,7 @@ pa.getBitsLength = function(e2) {
 }, pa.prototype.getBitsLength = function() {
   return pa.getBitsLength(this.data.length);
 }, pa.prototype.write = function(e2) {
-  for (let a2 = 0, t2 = this.data.length; a2 < t2; a2++)
+  for (let a2 = 0, r2 = this.data.length; a2 < r2; a2++)
     e2.put(this.data[a2], 8);
 };
 var ha = pa;
@@ -1657,48 +1663,48 @@ za.getBitsLength = function(e2) {
 }, za.prototype.write = function(e2) {
   let a2;
   for (a2 = 0; a2 < this.data.length; a2++) {
-    let t2 = ba.toSJIS(this.data[a2]);
-    if (t2 >= 33088 && t2 <= 40956)
-      t2 -= 33088;
+    let r2 = ba.toSJIS(this.data[a2]);
+    if (r2 >= 33088 && r2 <= 40956)
+      r2 -= 33088;
     else {
-      if (!(t2 >= 57408 && t2 <= 60351))
+      if (!(r2 >= 57408 && r2 <= 60351))
         throw new Error("Invalid SJIS character: " + this.data[a2] + "\nMake sure your charset is UTF-8");
-      t2 -= 49472;
+      r2 -= 49472;
     }
-    t2 = 192 * (t2 >>> 8 & 255) + (255 & t2), e2.put(t2, 13);
+    r2 = 192 * (r2 >>> 8 & 255) + (255 & r2), e2.put(r2, 13);
   }
 };
 var fa = za, va = { exports: {} };
 !function(e2) {
-  var a2 = { single_source_shortest_paths: function(e3, t2, r2) {
+  var a2 = { single_source_shortest_paths: function(e3, r2, t2) {
     var o2 = {}, i2 = {};
-    i2[t2] = 0;
+    i2[r2] = 0;
     var n2, d2, l2, s2, c2, m2, u2, p2 = a2.PriorityQueue.make();
-    for (p2.push(t2, 0); !p2.empty(); )
+    for (p2.push(r2, 0); !p2.empty(); )
       for (l2 in d2 = (n2 = p2.pop()).value, s2 = n2.cost, c2 = e3[d2] || {})
         c2.hasOwnProperty(l2) && (m2 = s2 + c2[l2], u2 = i2[l2], (void 0 === i2[l2] || u2 > m2) && (i2[l2] = m2, p2.push(l2, m2), o2[l2] = d2));
-    if (void 0 !== r2 && void 0 === i2[r2]) {
-      var h2 = ["Could not find a path from ", t2, " to ", r2, "."].join("");
+    if (void 0 !== t2 && void 0 === i2[t2]) {
+      var h2 = ["Could not find a path from ", r2, " to ", t2, "."].join("");
       throw new Error(h2);
     }
     return o2;
   }, extract_shortest_path_from_predecessor_list: function(e3, a3) {
-    for (var t2 = [], r2 = a3; r2; )
-      t2.push(r2), e3[r2], r2 = e3[r2];
-    return t2.reverse(), t2;
-  }, find_path: function(e3, t2, r2) {
-    var o2 = a2.single_source_shortest_paths(e3, t2, r2);
-    return a2.extract_shortest_path_from_predecessor_list(o2, r2);
+    for (var r2 = [], t2 = a3; t2; )
+      r2.push(t2), e3[t2], t2 = e3[t2];
+    return r2.reverse(), r2;
+  }, find_path: function(e3, r2, t2) {
+    var o2 = a2.single_source_shortest_paths(e3, r2, t2);
+    return a2.extract_shortest_path_from_predecessor_list(o2, t2);
   }, PriorityQueue: { make: function(e3) {
-    var t2, r2 = a2.PriorityQueue, o2 = {};
-    for (t2 in e3 = e3 || {}, r2)
-      r2.hasOwnProperty(t2) && (o2[t2] = r2[t2]);
-    return o2.queue = [], o2.sorter = e3.sorter || r2.default_sorter, o2;
+    var r2, t2 = a2.PriorityQueue, o2 = {};
+    for (r2 in e3 = e3 || {}, t2)
+      t2.hasOwnProperty(r2) && (o2[r2] = t2[r2]);
+    return o2.queue = [], o2.sorter = e3.sorter || t2.default_sorter, o2;
   }, default_sorter: function(e3, a3) {
     return e3.cost - a3.cost;
   }, push: function(e3, a3) {
-    var t2 = { value: e3, cost: a3 };
-    this.queue.push(t2), this.queue.sort(this.sorter);
+    var r2 = { value: e3, cost: a3 };
+    this.queue.push(r2), this.queue.sort(this.sorter);
   }, pop: function() {
     return this.queue.shift();
   }, empty: function() {
@@ -1708,22 +1714,22 @@ var fa = za, va = { exports: {} };
 }(va);
 var ya = va.exports;
 !function(e2) {
-  const a2 = He, t2 = na, r2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = ya;
+  const a2 = He, r2 = na, t2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = ya;
   function s2(e3) {
     return unescape(encodeURIComponent(e3)).length;
   }
-  function c2(e3, a3, t3) {
-    const r3 = [];
+  function c2(e3, a3, r3) {
+    const t3 = [];
     let o3;
-    for (; null !== (o3 = e3.exec(t3)); )
-      r3.push({ data: o3[0], index: o3.index, mode: a3, length: o3[0].length });
-    return r3;
+    for (; null !== (o3 = e3.exec(r3)); )
+      t3.push({ data: o3[0], index: o3.index, mode: a3, length: o3[0].length });
+    return t3;
   }
   function m2(e3) {
-    const t3 = c2(n2.NUMERIC, a2.NUMERIC, e3), r3 = c2(n2.ALPHANUMERIC, a2.ALPHANUMERIC, e3);
+    const r3 = c2(n2.NUMERIC, a2.NUMERIC, e3), t3 = c2(n2.ALPHANUMERIC, a2.ALPHANUMERIC, e3);
     let o3, i3;
     d2.isKanjiModeEnabled() ? (o3 = c2(n2.BYTE, a2.BYTE, e3), i3 = c2(n2.KANJI, a2.KANJI, e3)) : (o3 = c2(n2.BYTE_KANJI, a2.BYTE, e3), i3 = []);
-    return t3.concat(r3, o3, i3).sort(function(e4, a3) {
+    return r3.concat(t3, o3, i3).sort(function(e4, a3) {
       return e4.index - a3.index;
     }).map(function(e4) {
       return { data: e4.data, mode: e4.mode, length: e4.length };
@@ -1732,9 +1738,9 @@ var ya = va.exports;
   function u2(e3, n3) {
     switch (n3) {
       case a2.NUMERIC:
-        return t2.getBitsLength(e3);
-      case a2.ALPHANUMERIC:
         return r2.getBitsLength(e3);
+      case a2.ALPHANUMERIC:
+        return t2.getBitsLength(e3);
       case a2.KANJI:
         return i2.getBitsLength(e3);
       case a2.BYTE:
@@ -1748,9 +1754,9 @@ var ya = va.exports;
       throw new Error('"' + e3 + '" cannot be encoded with mode ' + a2.toString(l3) + ".\n Suggested mode is: " + a2.toString(s3));
     switch (l3 !== a2.KANJI || d2.isKanjiModeEnabled() || (l3 = a2.BYTE), l3) {
       case a2.NUMERIC:
-        return new t2(e3);
-      case a2.ALPHANUMERIC:
         return new r2(e3);
+      case a2.ALPHANUMERIC:
+        return new t2(e3);
       case a2.KANJI:
         return new i2(e3);
       case a2.BYTE:
@@ -1761,78 +1767,78 @@ var ya = va.exports;
     return e3.reduce(function(e4, a3) {
       return "string" == typeof a3 ? e4.push(p2(a3, null)) : a3.data && e4.push(p2(a3.data, a3.mode)), e4;
     }, []);
-  }, e2.fromString = function(t3, r3) {
+  }, e2.fromString = function(r3, t3) {
     const o3 = function(e3) {
-      const t4 = [];
-      for (let r4 = 0; r4 < e3.length; r4++) {
-        const o4 = e3[r4];
+      const r4 = [];
+      for (let t4 = 0; t4 < e3.length; t4++) {
+        const o4 = e3[t4];
         switch (o4.mode) {
           case a2.NUMERIC:
-            t4.push([o4, { data: o4.data, mode: a2.ALPHANUMERIC, length: o4.length }, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
+            r4.push([o4, { data: o4.data, mode: a2.ALPHANUMERIC, length: o4.length }, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
             break;
           case a2.ALPHANUMERIC:
-            t4.push([o4, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
+            r4.push([o4, { data: o4.data, mode: a2.BYTE, length: o4.length }]);
             break;
           case a2.KANJI:
-            t4.push([o4, { data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
+            r4.push([o4, { data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
             break;
           case a2.BYTE:
-            t4.push([{ data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
+            r4.push([{ data: o4.data, mode: a2.BYTE, length: s2(o4.data) }]);
         }
       }
-      return t4;
-    }(m2(t3, d2.isKanjiModeEnabled())), i3 = function(e3, t4) {
-      const r4 = {}, o4 = { start: {} };
+      return r4;
+    }(m2(r3, d2.isKanjiModeEnabled())), i3 = function(e3, r4) {
+      const t4 = {}, o4 = { start: {} };
       let i4 = ["start"];
       for (let n4 = 0; n4 < e3.length; n4++) {
         const d3 = e3[n4], l3 = [];
         for (let e4 = 0; e4 < d3.length; e4++) {
           const s3 = d3[e4], c4 = "" + n4 + e4;
-          l3.push(c4), r4[c4] = { node: s3, lastCount: 0 }, o4[c4] = {};
+          l3.push(c4), t4[c4] = { node: s3, lastCount: 0 }, o4[c4] = {};
           for (let e5 = 0; e5 < i4.length; e5++) {
             const n5 = i4[e5];
-            r4[n5] && r4[n5].node.mode === s3.mode ? (o4[n5][c4] = u2(r4[n5].lastCount + s3.length, s3.mode) - u2(r4[n5].lastCount, s3.mode), r4[n5].lastCount += s3.length) : (r4[n5] && (r4[n5].lastCount = s3.length), o4[n5][c4] = u2(s3.length, s3.mode) + 4 + a2.getCharCountIndicator(s3.mode, t4));
+            t4[n5] && t4[n5].node.mode === s3.mode ? (o4[n5][c4] = u2(t4[n5].lastCount + s3.length, s3.mode) - u2(t4[n5].lastCount, s3.mode), t4[n5].lastCount += s3.length) : (t4[n5] && (t4[n5].lastCount = s3.length), o4[n5][c4] = u2(s3.length, s3.mode) + 4 + a2.getCharCountIndicator(s3.mode, r4));
           }
         }
         i4 = l3;
       }
       for (let e4 = 0; e4 < i4.length; e4++)
         o4[i4[e4]].end = 0;
-      return { map: o4, table: r4 };
-    }(o3, r3), n3 = l2.find_path(i3.map, "start", "end"), c3 = [];
+      return { map: o4, table: t4 };
+    }(o3, t3), n3 = l2.find_path(i3.map, "start", "end"), c3 = [];
     for (let e3 = 1; e3 < n3.length - 1; e3++)
       c3.push(i3.table[n3[e3]].node);
     return e2.fromArray(function(e3) {
       return e3.reduce(function(e4, a3) {
-        const t4 = e4.length - 1 >= 0 ? e4[e4.length - 1] : null;
-        return t4 && t4.mode === a3.mode ? (e4[e4.length - 1].data += a3.data, e4) : (e4.push(a3), e4);
+        const r4 = e4.length - 1 >= 0 ? e4[e4.length - 1] : null;
+        return r4 && r4.mode === a3.mode ? (e4[e4.length - 1].data += a3.data, e4) : (e4.push(a3), e4);
       }, []);
     }(c3));
   }, e2.rawSplit = function(a3) {
     return e2.fromArray(m2(a3, d2.isKanjiModeEnabled()));
   };
-}(ra);
-const ka = ye, xa = $e, wa = Ce, $a = Se, _a = Ie, Ca = Ae, Ea = Pe, Sa = Be, Ia = Ge, Aa = Ve, Na = ea, Pa = He, Ba = ra;
-function Oa(e2, a2, t2) {
-  const r2 = e2.size, o2 = Na.getEncodedBits(a2, t2);
+}(ta);
+const ka = ye, xa = $e, wa = Ce, $a = Ae, _a = Se, Ca = Ie, Ea = Pe, Aa = Be, Sa = je, Ia = Ye, Na = ea, Pa = He, Ba = ta;
+function Ma(e2, a2, r2) {
+  const t2 = e2.size, o2 = Na.getEncodedBits(a2, r2);
   let i2, n2;
   for (i2 = 0; i2 < 15; i2++)
-    n2 = 1 == (o2 >> i2 & 1), i2 < 6 ? e2.set(i2, 8, n2, true) : i2 < 8 ? e2.set(i2 + 1, 8, n2, true) : e2.set(r2 - 15 + i2, 8, n2, true), i2 < 8 ? e2.set(8, r2 - i2 - 1, n2, true) : i2 < 9 ? e2.set(8, 15 - i2 - 1 + 1, n2, true) : e2.set(8, 15 - i2 - 1, n2, true);
-  e2.set(r2 - 8, 8, 1, true);
+    n2 = 1 == (o2 >> i2 & 1), i2 < 6 ? e2.set(i2, 8, n2, true) : i2 < 8 ? e2.set(i2 + 1, 8, n2, true) : e2.set(t2 - 15 + i2, 8, n2, true), i2 < 8 ? e2.set(8, t2 - i2 - 1, n2, true) : i2 < 9 ? e2.set(8, 15 - i2 - 1 + 1, n2, true) : e2.set(8, 15 - i2 - 1, n2, true);
+  e2.set(t2 - 8, 8, 1, true);
 }
-function Ma(e2, a2, t2) {
-  const r2 = new wa();
-  t2.forEach(function(a3) {
-    r2.put(a3.mode.bit, 4), r2.put(a3.getLength(), Pa.getCharCountIndicator(a3.mode, e2)), a3.write(r2);
+function Oa(e2, a2, r2) {
+  const t2 = new wa();
+  r2.forEach(function(a3) {
+    t2.put(a3.mode.bit, 4), t2.put(a3.getLength(), Pa.getCharCountIndicator(a3.mode, e2)), a3.write(t2);
   });
-  const o2 = 8 * (ka.getSymbolTotalCodewords(e2) - Sa.getTotalCodewordsCount(e2, a2));
-  for (r2.getLengthInBits() + 4 <= o2 && r2.put(0, 4); r2.getLengthInBits() % 8 != 0; )
-    r2.putBit(0);
-  const i2 = (o2 - r2.getLengthInBits()) / 8;
+  const o2 = 8 * (ka.getSymbolTotalCodewords(e2) - Aa.getTotalCodewordsCount(e2, a2));
+  for (t2.getLengthInBits() + 4 <= o2 && t2.put(0, 4); t2.getLengthInBits() % 8 != 0; )
+    t2.putBit(0);
+  const i2 = (o2 - t2.getLengthInBits()) / 8;
   for (let e3 = 0; e3 < i2; e3++)
-    r2.put(e3 % 2 ? 17 : 236, 8);
-  return function(e3, a3, t3) {
-    const r3 = ka.getSymbolTotalCodewords(a3), o3 = Sa.getTotalCodewordsCount(a3, t3), i3 = r3 - o3, n2 = Sa.getBlocksCount(a3, t3), d2 = r3 % n2, l2 = n2 - d2, s2 = Math.floor(r3 / n2), c2 = Math.floor(i3 / n2), m2 = c2 + 1, u2 = s2 - c2, p2 = new Ia(u2);
+    t2.put(e3 % 2 ? 17 : 236, 8);
+  return function(e3, a3, r3) {
+    const t3 = ka.getSymbolTotalCodewords(a3), o3 = Aa.getTotalCodewordsCount(a3, r3), i3 = t3 - o3, n2 = Aa.getBlocksCount(a3, r3), d2 = t3 % n2, l2 = n2 - d2, s2 = Math.floor(t3 / n2), c2 = Math.floor(i3 / n2), m2 = c2 + 1, u2 = s2 - c2, p2 = new Sa(u2);
     let h2 = 0;
     const g2 = new Array(n2), b2 = new Array(n2);
     let z2 = 0;
@@ -1841,7 +1847,7 @@ function Ma(e2, a2, t2) {
       const a4 = e4 < l2 ? c2 : m2;
       g2[e4] = f2.slice(h2, h2 + a4), b2[e4] = p2.encode(g2[e4]), h2 += a4, z2 = Math.max(z2, a4);
     }
-    const v2 = new Uint8Array(r3);
+    const v2 = new Uint8Array(t3);
     let y2, k2, x2 = 0;
     for (y2 = 0; y2 < z2; y2++)
       for (k2 = 0; k2 < n2; k2++)
@@ -1850,9 +1856,9 @@ function Ma(e2, a2, t2) {
       for (k2 = 0; k2 < n2; k2++)
         v2[x2++] = b2[k2][y2];
     return v2;
-  }(r2, e2, a2);
+  }(t2, e2, a2);
 }
-function Ra(e2, a2, t2, r2) {
+function Ra(e2, a2, r2, t2) {
   let o2;
   if (Array.isArray(e2))
     o2 = Ba.fromArray(e2);
@@ -1860,15 +1866,15 @@ function Ra(e2, a2, t2, r2) {
     if ("string" != typeof e2)
       throw new Error("Invalid data");
     {
-      let r3 = a2;
-      if (!r3) {
+      let t3 = a2;
+      if (!t3) {
         const a3 = Ba.rawSplit(e2);
-        r3 = Aa.getBestVersionForData(a3, t2);
+        t3 = Ia.getBestVersionForData(a3, r2);
       }
-      o2 = Ba.fromString(e2, r3 || 40);
+      o2 = Ba.fromString(e2, t3 || 40);
     }
   }
-  const i2 = Aa.getBestVersionForData(o2, t2);
+  const i2 = Ia.getBestVersionForData(o2, r2);
   if (!i2)
     throw new Error("The amount of data is too big to be stored in a QR Code");
   if (a2) {
@@ -1876,59 +1882,59 @@ function Ra(e2, a2, t2, r2) {
       throw new Error("\nThe chosen QR Code version cannot contain this amount of data.\nMinimum version required to store current data is: " + i2 + ".\n");
   } else
     a2 = i2;
-  const n2 = Ma(a2, t2, o2), d2 = ka.getSymbolSize(a2), l2 = new $a(d2);
+  const n2 = Oa(a2, r2, o2), d2 = ka.getSymbolSize(a2), l2 = new $a(d2);
   return function(e3, a3) {
-    const t3 = e3.size, r3 = Ca.getPositions(a3);
-    for (let a4 = 0; a4 < r3.length; a4++) {
-      const o3 = r3[a4][0], i3 = r3[a4][1];
+    const r3 = e3.size, t3 = Ca.getPositions(a3);
+    for (let a4 = 0; a4 < t3.length; a4++) {
+      const o3 = t3[a4][0], i3 = t3[a4][1];
       for (let a5 = -1; a5 <= 7; a5++)
-        if (!(o3 + a5 <= -1 || t3 <= o3 + a5))
-          for (let r4 = -1; r4 <= 7; r4++)
-            i3 + r4 <= -1 || t3 <= i3 + r4 || (a5 >= 0 && a5 <= 6 && (0 === r4 || 6 === r4) || r4 >= 0 && r4 <= 6 && (0 === a5 || 6 === a5) || a5 >= 2 && a5 <= 4 && r4 >= 2 && r4 <= 4 ? e3.set(o3 + a5, i3 + r4, true, true) : e3.set(o3 + a5, i3 + r4, false, true));
+        if (!(o3 + a5 <= -1 || r3 <= o3 + a5))
+          for (let t4 = -1; t4 <= 7; t4++)
+            i3 + t4 <= -1 || r3 <= i3 + t4 || (a5 >= 0 && a5 <= 6 && (0 === t4 || 6 === t4) || t4 >= 0 && t4 <= 6 && (0 === a5 || 6 === a5) || a5 >= 2 && a5 <= 4 && t4 >= 2 && t4 <= 4 ? e3.set(o3 + a5, i3 + t4, true, true) : e3.set(o3 + a5, i3 + t4, false, true));
     }
   }(l2, a2), function(e3) {
     const a3 = e3.size;
-    for (let t3 = 8; t3 < a3 - 8; t3++) {
-      const a4 = t3 % 2 == 0;
-      e3.set(t3, 6, a4, true), e3.set(6, t3, a4, true);
+    for (let r3 = 8; r3 < a3 - 8; r3++) {
+      const a4 = r3 % 2 == 0;
+      e3.set(r3, 6, a4, true), e3.set(6, r3, a4, true);
     }
   }(l2), function(e3, a3) {
-    const t3 = _a.getPositions(a3);
-    for (let a4 = 0; a4 < t3.length; a4++) {
-      const r3 = t3[a4][0], o3 = t3[a4][1];
+    const r3 = _a.getPositions(a3);
+    for (let a4 = 0; a4 < r3.length; a4++) {
+      const t3 = r3[a4][0], o3 = r3[a4][1];
       for (let a5 = -2; a5 <= 2; a5++)
-        for (let t4 = -2; t4 <= 2; t4++)
-          -2 === a5 || 2 === a5 || -2 === t4 || 2 === t4 || 0 === a5 && 0 === t4 ? e3.set(r3 + a5, o3 + t4, true, true) : e3.set(r3 + a5, o3 + t4, false, true);
+        for (let r4 = -2; r4 <= 2; r4++)
+          -2 === a5 || 2 === a5 || -2 === r4 || 2 === r4 || 0 === a5 && 0 === r4 ? e3.set(t3 + a5, o3 + r4, true, true) : e3.set(t3 + a5, o3 + r4, false, true);
     }
-  }(l2, a2), Oa(l2, t2, 0), a2 >= 7 && function(e3, a3) {
-    const t3 = e3.size, r3 = Aa.getEncodedBits(a3);
+  }(l2, a2), Ma(l2, r2, 0), a2 >= 7 && function(e3, a3) {
+    const r3 = e3.size, t3 = Ia.getEncodedBits(a3);
     let o3, i3, n3;
     for (let a4 = 0; a4 < 18; a4++)
-      o3 = Math.floor(a4 / 3), i3 = a4 % 3 + t3 - 8 - 3, n3 = 1 == (r3 >> a4 & 1), e3.set(o3, i3, n3, true), e3.set(i3, o3, n3, true);
+      o3 = Math.floor(a4 / 3), i3 = a4 % 3 + r3 - 8 - 3, n3 = 1 == (t3 >> a4 & 1), e3.set(o3, i3, n3, true), e3.set(i3, o3, n3, true);
   }(l2, a2), function(e3, a3) {
-    const t3 = e3.size;
-    let r3 = -1, o3 = t3 - 1, i3 = 7, n3 = 0;
-    for (let d3 = t3 - 1; d3 > 0; d3 -= 2)
+    const r3 = e3.size;
+    let t3 = -1, o3 = r3 - 1, i3 = 7, n3 = 0;
+    for (let d3 = r3 - 1; d3 > 0; d3 -= 2)
       for (6 === d3 && d3--; ; ) {
-        for (let t4 = 0; t4 < 2; t4++)
-          if (!e3.isReserved(o3, d3 - t4)) {
-            let r4 = false;
-            n3 < a3.length && (r4 = 1 == (a3[n3] >>> i3 & 1)), e3.set(o3, d3 - t4, r4), i3--, -1 === i3 && (n3++, i3 = 7);
+        for (let r4 = 0; r4 < 2; r4++)
+          if (!e3.isReserved(o3, d3 - r4)) {
+            let t4 = false;
+            n3 < a3.length && (t4 = 1 == (a3[n3] >>> i3 & 1)), e3.set(o3, d3 - r4, t4), i3--, -1 === i3 && (n3++, i3 = 7);
           }
-        if (o3 += r3, o3 < 0 || t3 <= o3) {
-          o3 -= r3, r3 = -r3;
+        if (o3 += t3, o3 < 0 || r3 <= o3) {
+          o3 -= t3, t3 = -t3;
           break;
         }
       }
-  }(l2, n2), isNaN(r2) && (r2 = Ea.getBestMask(l2, Oa.bind(null, l2, t2))), Ea.applyMask(r2, l2), Oa(l2, t2, r2), { modules: l2, version: a2, errorCorrectionLevel: t2, maskPattern: r2, segments: o2 };
+  }(l2, n2), isNaN(t2) && (t2 = Ea.getBestMask(l2, Ma.bind(null, l2, r2))), Ea.applyMask(t2, l2), Ma(l2, r2, t2), { modules: l2, version: a2, errorCorrectionLevel: r2, maskPattern: t2, segments: o2 };
 }
 ve.create = function(e2, a2) {
   if (void 0 === e2 || "" === e2)
     throw new Error("No input text");
-  let t2, r2, o2 = xa.M;
-  return void 0 !== a2 && (o2 = xa.from(a2.errorCorrectionLevel, xa.M), t2 = Aa.from(a2.version), r2 = Ea.from(a2.maskPattern), a2.toSJISFunc && ka.setToSJISFunction(a2.toSJISFunc)), Ra(e2, t2, o2, r2);
+  let r2, t2, o2 = xa.M;
+  return void 0 !== a2 && (o2 = xa.from(a2.errorCorrectionLevel, xa.M), r2 = Ia.from(a2.version), t2 = Ea.from(a2.maskPattern), a2.toSJISFunc && ka.setToSJISFunction(a2.toSJISFunc)), Ra(e2, r2, o2, t2);
 };
-var Da = {}, Ta = {};
+var Da = {}, Fa = {};
 !function(e2) {
   function a2(e3) {
     if ("number" == typeof e3 && (e3 = e3.toString()), "string" != typeof e3)
@@ -1939,34 +1945,34 @@ var Da = {}, Ta = {};
     3 !== a3.length && 4 !== a3.length || (a3 = Array.prototype.concat.apply([], a3.map(function(e4) {
       return [e4, e4];
     }))), 6 === a3.length && a3.push("F", "F");
-    const t2 = parseInt(a3.join(""), 16);
-    return { r: t2 >> 24 & 255, g: t2 >> 16 & 255, b: t2 >> 8 & 255, a: 255 & t2, hex: "#" + a3.slice(0, 6).join("") };
+    const r2 = parseInt(a3.join(""), 16);
+    return { r: r2 >> 24 & 255, g: r2 >> 16 & 255, b: r2 >> 8 & 255, a: 255 & r2, hex: "#" + a3.slice(0, 6).join("") };
   }
   e2.getOptions = function(e3) {
     e3 || (e3 = {}), e3.color || (e3.color = {});
-    const t2 = void 0 === e3.margin || null === e3.margin || e3.margin < 0 ? 4 : e3.margin, r2 = e3.width && e3.width >= 21 ? e3.width : void 0, o2 = e3.scale || 4;
-    return { width: r2, scale: r2 ? 4 : o2, margin: t2, color: { dark: a2(e3.color.dark || "#000000ff"), light: a2(e3.color.light || "#ffffffff") }, type: e3.type, rendererOpts: e3.rendererOpts || {} };
+    const r2 = void 0 === e3.margin || null === e3.margin || e3.margin < 0 ? 4 : e3.margin, t2 = e3.width && e3.width >= 21 ? e3.width : void 0, o2 = e3.scale || 4;
+    return { width: t2, scale: t2 ? 4 : o2, margin: r2, color: { dark: a2(e3.color.dark || "#000000ff"), light: a2(e3.color.light || "#ffffffff") }, type: e3.type, rendererOpts: e3.rendererOpts || {} };
   }, e2.getScale = function(e3, a3) {
     return a3.width && a3.width >= e3 + 2 * a3.margin ? a3.width / (e3 + 2 * a3.margin) : a3.scale;
-  }, e2.getImageWidth = function(a3, t2) {
-    const r2 = e2.getScale(a3, t2);
-    return Math.floor((a3 + 2 * t2.margin) * r2);
-  }, e2.qrToImageData = function(a3, t2, r2) {
-    const o2 = t2.modules.size, i2 = t2.modules.data, n2 = e2.getScale(o2, r2), d2 = Math.floor((o2 + 2 * r2.margin) * n2), l2 = r2.margin * n2, s2 = [r2.color.light, r2.color.dark];
+  }, e2.getImageWidth = function(a3, r2) {
+    const t2 = e2.getScale(a3, r2);
+    return Math.floor((a3 + 2 * r2.margin) * t2);
+  }, e2.qrToImageData = function(a3, r2, t2) {
+    const o2 = r2.modules.size, i2 = r2.modules.data, n2 = e2.getScale(o2, t2), d2 = Math.floor((o2 + 2 * t2.margin) * n2), l2 = t2.margin * n2, s2 = [t2.color.light, t2.color.dark];
     for (let e3 = 0; e3 < d2; e3++)
-      for (let t3 = 0; t3 < d2; t3++) {
-        let c2 = 4 * (e3 * d2 + t3), m2 = r2.color.light;
-        if (e3 >= l2 && t3 >= l2 && e3 < d2 - l2 && t3 < d2 - l2) {
-          m2 = s2[i2[Math.floor((e3 - l2) / n2) * o2 + Math.floor((t3 - l2) / n2)] ? 1 : 0];
+      for (let r3 = 0; r3 < d2; r3++) {
+        let c2 = 4 * (e3 * d2 + r3), m2 = t2.color.light;
+        if (e3 >= l2 && r3 >= l2 && e3 < d2 - l2 && r3 < d2 - l2) {
+          m2 = s2[i2[Math.floor((e3 - l2) / n2) * o2 + Math.floor((r3 - l2) / n2)] ? 1 : 0];
         }
         a3[c2++] = m2.r, a3[c2++] = m2.g, a3[c2++] = m2.b, a3[c2] = m2.a;
       }
   };
-}(Ta), function(e2) {
-  const a2 = Ta;
-  e2.render = function(e3, t2, r2) {
-    let o2 = r2, i2 = t2;
-    void 0 !== o2 || t2 && t2.getContext || (o2 = t2, t2 = void 0), t2 || (i2 = function() {
+}(Fa), function(e2) {
+  const a2 = Fa;
+  e2.render = function(e3, r2, t2) {
+    let o2 = t2, i2 = r2;
+    void 0 !== o2 || r2 && r2.getContext || (o2 = r2, r2 = void 0), r2 || (i2 = function() {
       try {
         return document.createElement("canvas");
       } catch (e4) {
@@ -1974,51 +1980,51 @@ var Da = {}, Ta = {};
       }
     }()), o2 = a2.getOptions(o2);
     const n2 = a2.getImageWidth(e3.modules.size, o2), d2 = i2.getContext("2d"), l2 = d2.createImageData(n2, n2);
-    return a2.qrToImageData(l2.data, e3, o2), function(e4, a3, t3) {
-      e4.clearRect(0, 0, a3.width, a3.height), a3.style || (a3.style = {}), a3.height = t3, a3.width = t3, a3.style.height = t3 + "px", a3.style.width = t3 + "px";
+    return a2.qrToImageData(l2.data, e3, o2), function(e4, a3, r3) {
+      e4.clearRect(0, 0, a3.width, a3.height), a3.style || (a3.style = {}), a3.height = r3, a3.width = r3, a3.style.height = r3 + "px", a3.style.width = r3 + "px";
     }(d2, i2, n2), d2.putImageData(l2, 0, 0), i2;
-  }, e2.renderToDataURL = function(a3, t2, r2) {
-    let o2 = r2;
-    void 0 !== o2 || t2 && t2.getContext || (o2 = t2, t2 = void 0), o2 || (o2 = {});
-    const i2 = e2.render(a3, t2, o2), n2 = o2.type || "image/png", d2 = o2.rendererOpts || {};
+  }, e2.renderToDataURL = function(a3, r2, t2) {
+    let o2 = t2;
+    void 0 !== o2 || r2 && r2.getContext || (o2 = r2, r2 = void 0), o2 || (o2 = {});
+    const i2 = e2.render(a3, r2, o2), n2 = o2.type || "image/png", d2 = o2.rendererOpts || {};
     return i2.toDataURL(n2, d2.quality);
   };
 }(Da);
-var Fa = {};
-const La = Ta;
-function ja(e2, a2) {
-  const t2 = e2.a / 255, r2 = a2 + '="' + e2.hex + '"';
-  return t2 < 1 ? r2 + " " + a2 + '-opacity="' + t2.toFixed(2).slice(1) + '"' : r2;
+var La = {};
+const Ta = Fa;
+function Ua(e2, a2) {
+  const r2 = e2.a / 255, t2 = a2 + '="' + e2.hex + '"';
+  return r2 < 1 ? t2 + " " + a2 + '-opacity="' + r2.toFixed(2).slice(1) + '"' : t2;
 }
-function Ua(e2, a2, t2) {
-  let r2 = e2 + a2;
-  return void 0 !== t2 && (r2 += " " + t2), r2;
+function Ga(e2, a2, r2) {
+  let t2 = e2 + a2;
+  return void 0 !== r2 && (t2 += " " + r2), t2;
 }
-Fa.render = function(e2, a2, t2) {
-  const r2 = La.getOptions(a2), o2 = e2.modules.size, i2 = e2.modules.data, n2 = o2 + 2 * r2.margin, d2 = r2.color.light.a ? "<path " + ja(r2.color.light, "fill") + ' d="M0 0h' + n2 + "v" + n2 + 'H0z"/>' : "", l2 = "<path " + ja(r2.color.dark, "stroke") + ' d="' + function(e3, a3, t3) {
-    let r3 = "", o3 = 0, i3 = false, n3 = 0;
+La.render = function(e2, a2, r2) {
+  const t2 = Ta.getOptions(a2), o2 = e2.modules.size, i2 = e2.modules.data, n2 = o2 + 2 * t2.margin, d2 = t2.color.light.a ? "<path " + Ua(t2.color.light, "fill") + ' d="M0 0h' + n2 + "v" + n2 + 'H0z"/>' : "", l2 = "<path " + Ua(t2.color.dark, "stroke") + ' d="' + function(e3, a3, r3) {
+    let t3 = "", o3 = 0, i3 = false, n3 = 0;
     for (let d3 = 0; d3 < e3.length; d3++) {
       const l3 = Math.floor(d3 % a3), s3 = Math.floor(d3 / a3);
-      l3 || i3 || (i3 = true), e3[d3] ? (n3++, d3 > 0 && l3 > 0 && e3[d3 - 1] || (r3 += i3 ? Ua("M", l3 + t3, 0.5 + s3 + t3) : Ua("m", o3, 0), o3 = 0, i3 = false), l3 + 1 < a3 && e3[d3 + 1] || (r3 += Ua("h", n3), n3 = 0)) : o3++;
+      l3 || i3 || (i3 = true), e3[d3] ? (n3++, d3 > 0 && l3 > 0 && e3[d3 - 1] || (t3 += i3 ? Ga("M", l3 + r3, 0.5 + s3 + r3) : Ga("m", o3, 0), o3 = 0, i3 = false), l3 + 1 < a3 && e3[d3 + 1] || (t3 += Ga("h", n3), n3 = 0)) : o3++;
     }
-    return r3;
-  }(i2, o2, r2.margin) + '"/>', s2 = 'viewBox="0 0 ' + n2 + " " + n2 + '"', c2 = '<svg xmlns="http://www.w3.org/2000/svg" ' + (r2.width ? 'width="' + r2.width + '" height="' + r2.width + '" ' : "") + s2 + ' shape-rendering="crispEdges">' + d2 + l2 + "</svg>\n";
-  return "function" == typeof t2 && t2(null, c2), c2;
+    return t3;
+  }(i2, o2, t2.margin) + '"/>', s2 = 'viewBox="0 0 ' + n2 + " " + n2 + '"', c2 = '<svg xmlns="http://www.w3.org/2000/svg" ' + (t2.width ? 'width="' + t2.width + '" height="' + t2.width + '" ' : "") + s2 + ' shape-rendering="crispEdges">' + d2 + l2 + "</svg>\n";
+  return "function" == typeof r2 && r2(null, c2), c2;
 };
-const Ga = function() {
+const ja = function() {
   return "function" == typeof Promise && Promise.prototype && Promise.prototype.then;
-}, Va = ve, Ha = Da, Ya = Fa;
-function Ka(e2, a2, t2, r2, o2) {
+}, Ya = ve, Ha = Da, Va = La;
+function Ka(e2, a2, r2, t2, o2) {
   const i2 = [].slice.call(arguments, 1), n2 = i2.length, d2 = "function" == typeof i2[n2 - 1];
-  if (!d2 && !Ga())
+  if (!d2 && !ja())
     throw new Error("Callback required as last argument");
   if (!d2) {
     if (n2 < 1)
       throw new Error("Too few arguments provided");
-    return 1 === n2 ? (t2 = a2, a2 = r2 = void 0) : 2 !== n2 || a2.getContext || (r2 = t2, t2 = a2, a2 = void 0), new Promise(function(o3, i3) {
+    return 1 === n2 ? (r2 = a2, a2 = t2 = void 0) : 2 !== n2 || a2.getContext || (t2 = r2, r2 = a2, a2 = void 0), new Promise(function(o3, i3) {
       try {
-        const i4 = Va.create(t2, r2);
-        o3(e2(i4, a2, r2));
+        const i4 = Ya.create(r2, t2);
+        o3(e2(i4, a2, t2));
       } catch (e3) {
         i3(e3);
       }
@@ -2026,50 +2032,50 @@ function Ka(e2, a2, t2, r2, o2) {
   }
   if (n2 < 2)
     throw new Error("Too few arguments provided");
-  2 === n2 ? (o2 = t2, t2 = a2, a2 = r2 = void 0) : 3 === n2 && (a2.getContext && void 0 === o2 ? (o2 = r2, r2 = void 0) : (o2 = r2, r2 = t2, t2 = a2, a2 = void 0));
+  2 === n2 ? (o2 = r2, r2 = a2, a2 = t2 = void 0) : 3 === n2 && (a2.getContext && void 0 === o2 ? (o2 = t2, t2 = void 0) : (o2 = t2, t2 = r2, r2 = a2, a2 = void 0));
   try {
-    const i3 = Va.create(t2, r2);
-    o2(null, e2(i3, a2, r2));
+    const i3 = Ya.create(r2, t2);
+    o2(null, e2(i3, a2, t2));
   } catch (e3) {
     o2(e3);
   }
 }
-fe.create = Va.create, fe.toCanvas = Ka.bind(null, Ha.render), fe.toDataURL = Ka.bind(null, Ha.renderToDataURL), fe.toString = Ka.bind(null, function(e2, a2, t2) {
-  return Ya.render(e2, t2);
+fe.create = Ya.create, fe.toCanvas = Ka.bind(null, Ha.render), fe.toDataURL = Ka.bind(null, Ha.renderToDataURL), fe.toString = Ka.bind(null, function(e2, a2, r2) {
+  return Va.render(e2, r2);
 });
-function Qa(e2, a2, t2) {
+function Qa(e2, a2, r2) {
   if (e2 === a2)
     return false;
-  return (e2 - a2 < 0 ? a2 - e2 : e2 - a2) <= t2 + 0.1;
+  return (e2 - a2 < 0 ? a2 - e2 : e2 - a2) <= r2 + 0.1;
 }
-const Ja = { generate(e2, t2, r2, o2 = "light") {
+const Ja = { generate(e2, r2, t2, o2 = "light") {
   const i2 = "light" === o2 ? "#141414" : "#fff", n2 = "light" === o2 ? "#fff" : "#141414", d2 = [], l2 = function(e3, a2) {
-    const t3 = Array.prototype.slice.call(fe.create(e3, { errorCorrectionLevel: a2 }).modules.data, 0), r3 = Math.sqrt(t3.length);
-    return t3.reduce((e4, a3, t4) => (t4 % r3 == 0 ? e4.push([a3]) : e4[e4.length - 1].push(a3)) && e4, []);
-  }(e2, "Q"), s2 = t2 / l2.length, c2 = [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }];
-  c2.forEach(({ x: e3, y: t3 }) => {
-    const r3 = (l2.length - 7) * s2 * e3, o3 = (l2.length - 7) * s2 * t3;
+    const r3 = Array.prototype.slice.call(fe.create(e3, { errorCorrectionLevel: a2 }).modules.data, 0), t3 = Math.sqrt(r3.length);
+    return r3.reduce((e4, a3, r4) => (r4 % t3 == 0 ? e4.push([a3]) : e4[e4.length - 1].push(a3)) && e4, []);
+  }(e2, "Q"), s2 = r2 / l2.length, c2 = [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }];
+  c2.forEach(({ x: e3, y: r3 }) => {
+    const t3 = (l2.length - 7) * s2 * e3, o3 = (l2.length - 7) * s2 * r3;
     for (let e4 = 0; e4 < c2.length; e4 += 1) {
-      const t4 = s2 * (7 - 2 * e4);
+      const r4 = s2 * (7 - 2 * e4);
       d2.push(a`
             <rect
               fill=${e4 % 2 == 0 ? i2 : n2}
-              height=${t4}
-              rx=${0.32 * t4}
-              ry=${0.32 * t4}
-              width=${t4}
-              x=${r3 + s2 * e4}
+              height=${r4}
+              rx=${0.32 * r4}
+              ry=${0.32 * r4}
+              width=${r4}
+              x=${t3 + s2 * e4}
               y=${o3 + s2 * e4}
             />
           `);
     }
   });
-  const m2 = Math.floor((r2 + 25) / s2), u2 = l2.length / 2 - m2 / 2, p2 = l2.length / 2 + m2 / 2 - 1, h2 = [];
+  const m2 = Math.floor((t2 + 25) / s2), u2 = l2.length / 2 - m2 / 2, p2 = l2.length / 2 + m2 / 2 - 1, h2 = [];
   l2.forEach((e3, a2) => {
-    e3.forEach((e4, t3) => {
-      if (l2[a2][t3] && !(a2 < 7 && t3 < 7 || a2 > l2.length - 8 && t3 < 7 || a2 < 7 && t3 > l2.length - 8 || a2 > u2 && a2 < p2 && t3 > u2 && t3 < p2)) {
-        const e5 = a2 * s2 + s2 / 2, r3 = t3 * s2 + s2 / 2;
-        h2.push([e5, r3]);
+    e3.forEach((e4, r3) => {
+      if (l2[a2][r3] && !(a2 < 7 && r3 < 7 || a2 > l2.length - 8 && r3 < 7 || a2 < 7 && r3 > l2.length - 8 || a2 > u2 && a2 < p2 && r3 > u2 && r3 < p2)) {
+        const e5 = a2 * s2 + s2 / 2, t3 = r3 * s2 + s2 / 2;
+        h2.push([e5, t3]);
       }
     });
   });
@@ -2077,31 +2083,31 @@ const Ja = { generate(e2, t2, r2, o2 = "light") {
   return h2.forEach(([e3, a2]) => {
     g2[e3] ? g2[e3].push(a2) : g2[e3] = [a2];
   }), Object.entries(g2).map(([e3, a2]) => {
-    const t3 = a2.filter((e4) => a2.every((a3) => !Qa(e4, a3, s2)));
-    return [Number(e3), t3];
-  }).forEach(([e3, t3]) => {
-    t3.forEach((t4) => {
-      d2.push(a`<circle cx=${e3} cy=${t4} fill=${i2} r=${s2 / 2.5} />`);
+    const r3 = a2.filter((e4) => a2.every((a3) => !Qa(e4, a3, s2)));
+    return [Number(e3), r3];
+  }).forEach(([e3, r3]) => {
+    r3.forEach((r4) => {
+      d2.push(a`<circle cx=${e3} cy=${r4} fill=${i2} r=${s2 / 2.5} />`);
     });
   }), Object.entries(g2).filter(([e3, a2]) => a2.length > 1).map(([e3, a2]) => {
-    const t3 = a2.filter((e4) => a2.some((a3) => Qa(e4, a3, s2)));
-    return [Number(e3), t3];
+    const r3 = a2.filter((e4) => a2.some((a3) => Qa(e4, a3, s2)));
+    return [Number(e3), r3];
   }).map(([e3, a2]) => {
     a2.sort((e4, a3) => e4 < a3 ? -1 : 1);
-    const t3 = [];
+    const r3 = [];
     for (const e4 of a2) {
-      const a3 = t3.find((a4) => a4.some((a5) => Qa(e4, a5, s2)));
-      a3 ? a3.push(e4) : t3.push([e4]);
+      const a3 = r3.find((a4) => a4.some((a5) => Qa(e4, a5, s2)));
+      a3 ? a3.push(e4) : r3.push([e4]);
     }
-    return [e3, t3.map((e4) => [e4[0], e4[e4.length - 1]])];
-  }).forEach(([e3, t3]) => {
-    t3.forEach(([t4, r3]) => {
+    return [e3, r3.map((e4) => [e4[0], e4[e4.length - 1]])];
+  }).forEach(([e3, r3]) => {
+    r3.forEach(([r4, t3]) => {
       d2.push(a`
               <line
                 x1=${e3}
                 x2=${e3}
-                y1=${t4}
-                y2=${r3}
+                y1=${r4}
+                y2=${t3}
                 stroke=${i2}
                 stroke-width=${s2 / 1.25}
                 stroke-linecap="round"
@@ -2159,48 +2165,48 @@ class Za extends ie {
   render() {
     const e2 = this.url;
     if (!e2 || !e2.length)
-      return F``;
+      return L``;
     this.size = parseInt(this.size) || "320", this.logoSize = this.size / 3.3;
-    const a2 = (this.size - this.logoSize) / 2 + 9, t2 = (this.size - this.logoSize) / 2 + 12, r2 = ((e3) => F`<svg height="${this.size}" width="${this.size}">${e3}</svg>`)(Ja.generate(this.url, this.size, this.size / 4, this.theme));
+    const a2 = (this.size - this.logoSize) / 2 + 9, r2 = (this.size - this.logoSize) / 2 + 12, t2 = ((e3) => L`<svg height="${this.size}" width="${this.size}">${e3}</svg>`)(Ja.generate(this.url, this.size, this.size / 4, this.theme));
     let o2 = `pr-qrcode ${this.theme}-theme`;
-    return this.shadow && (o2 += " shadow"), F`
+    return this.shadow && (o2 += " shadow"), L`
       <div
         id="qrsvg"
         class="${o2}"
         style="width: ${this.size}px;height: ${this.size}px;"
         @click="${this._onClick}"
       >
-        <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${r2}</svg>
+        <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${t2}</svg>
         <img
           class="o21pay-logo"
           height="${this.logoSize}"
-          style="position: absolute; top: ${a2}px; left: ${t2}px;"
+          style="position: absolute; top: ${a2}px; left: ${r2}px;"
           @click="${this._onClick}"
         />
       </div>
     `;
   }
 }
-!function(e2, a2, t2) {
+!function(e2, a2, r2) {
   (a2 = function(e3) {
     var a3 = function(e4, a4) {
       if ("object" != typeof e4 || null === e4)
         return e4;
-      var t3 = e4[Symbol.toPrimitive];
-      if (void 0 !== t3) {
-        var r2 = t3.call(e4, a4 || "default");
-        if ("object" != typeof r2)
-          return r2;
+      var r3 = e4[Symbol.toPrimitive];
+      if (void 0 !== r3) {
+        var t2 = r3.call(e4, a4 || "default");
+        if ("object" != typeof t2)
+          return t2;
         throw new TypeError("@@toPrimitive must return a primitive value.");
       }
       return ("string" === a4 ? String : Number)(e4);
     }(e3, "string");
     return "symbol" == typeof a3 ? a3 : String(a3);
-  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(Za, "styles", [qa]);
 const Xa = window.customElements;
 Xa && !Xa.get(Wa) && Xa.define(Wa, Za);
-const et = d`
+const er = d`
   :host {
     --maz-primary: #1e90ff;
     --maz-primary-darken: #1873cc;
@@ -11555,9 +11561,9 @@ const et = d`
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
-`, at = d`
+`, ar = d`
   :host {
-    --maz-primary: #9bc99d;
+    // --maz-primary: #9bc99d;
     --maz-border-width: 1px;
     --maz-border-radius: 5px;
     --maz-border-color: #dddfe6;
@@ -11581,9 +11587,9 @@ const et = d`
     box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 10px -4px !important;
   }
 `;
-function tt(e2, a2, t2, r2, o2, i2, n2, d2) {
+function rr(e2, a2, r2, t2, o2, i2, n2, d2) {
   var l2, s2 = "function" == typeof e2 ? e2.options : e2;
-  if (a2 && (s2.render = a2, s2.staticRenderFns = t2, s2._compiled = true), r2 && (s2.functional = true), i2 && (s2._scopeId = "data-v-" + i2), n2 ? (l2 = function(e3) {
+  if (a2 && (s2.render = a2, s2.staticRenderFns = r2, s2._compiled = true), t2 && (s2.functional = true), i2 && (s2._scopeId = "data-v-" + i2), n2 ? (l2 = function(e3) {
     (e3 = e3 || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) || "undefined" == typeof __VUE_SSR_CONTEXT__ || (e3 = __VUE_SSR_CONTEXT__), o2 && o2.call(this, e3), e3 && e3._registeredComponents && e3._registeredComponents.add(n2);
   }, s2._ssrRegister = l2) : o2 && (l2 = d2 ? function() {
     o2.call(this, (s2.functional ? this.parent : this).$root.$options.shadowRoot);
@@ -11600,19 +11606,19 @@ function tt(e2, a2, t2, r2, o2, i2, n2, d2) {
     }
   return { exports: e2, options: s2 };
 }
-const rt = tt({ name: "MazSpinner", props: { size: { type: Number, default: 40 }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" } }, computed: { fillColorClass() {
+const tr = rr({ name: "MazSpinner", props: { size: { type: Number, default: 40 }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" } }, computed: { fillColorClass() {
   return `maz-fill-${this.color}`;
 } } }, function() {
   var e2 = this, a2 = e2._self._c;
   return a2("svg", { staticClass: "maz-base-component maz-spinner maz-spinner-anim", class: [{ "spinner-anim__white": e2.dark }, e2.fillColorClass], staticStyle: { "enable-background": "new 0 0 50 50" }, attrs: { width: `${e2.size}px`, height: `${e2.size}px`, version: "1.1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 50 50", "xml:space": "preserve" } }, [a2("path", { attrs: { d: "M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" } })]);
 }, [], false, null, null, null, null).exports;
-rt.install = (e2) => {
-  e2.component(rt.name, rt);
+tr.install = (e2) => {
+  e2.component(tr.name, tr);
 };
-const ot = { data: () => ({ uniqueId: null }), mounted() {
+const or = { data: () => ({ uniqueId: null }), mounted() {
   const e2 = this.id || this.$attrs.id;
   this.uniqueId = e2 ? `${e2}` : `${this.$options.name}-${this._uid}`;
-} }, it = { name: "MazBtn", components: { MazSpinner: rt }, mixins: [ot], inheritAttrs: false, props: { id: { type: String, default: null }, color: { type: String, default: "primary" }, type: { type: String, default: "button" }, size: { type: String, default: "md" }, loading: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, outline: { type: Boolean, default: false }, rounded: { type: Boolean, default: false }, fab: { type: Boolean, default: false }, active: { type: Boolean, default: false }, block: { type: Boolean, default: false }, noShadow: { type: Boolean, default: false }, iconName: { type: String, default: null }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, justifyStart: { type: Boolean, default: false }, justifyEnd: { type: Boolean, default: false } }, computed: { componentType() {
+} }, ir = { name: "MazBtn", components: { MazSpinner: tr }, mixins: [or], inheritAttrs: false, props: { id: { type: String, default: null }, color: { type: String, default: "primary" }, type: { type: String, default: "button" }, size: { type: String, default: "md" }, loading: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, outline: { type: Boolean, default: false }, rounded: { type: Boolean, default: false }, fab: { type: Boolean, default: false }, active: { type: Boolean, default: false }, block: { type: Boolean, default: false }, noShadow: { type: Boolean, default: false }, iconName: { type: String, default: null }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, justifyStart: { type: Boolean, default: false }, justifyEnd: { type: Boolean, default: false } }, computed: { componentType() {
   const { href: e2, to: a2 } = this.$attrs;
   return e2 ? "a" : a2 ? "router-link" : "button";
 }, isLink() {
@@ -11621,8 +11627,8 @@ const ot = { data: () => ({ uniqueId: null }), mounted() {
   const { disabled: e2, loading: a2 } = this;
   return a2 || e2;
 }, classes() {
-  const { color: e2, size: a2, outline: t2, rounded: r2, fab: o2, active: i2, block: n2, noShadow: d2, hasRightIcon: l2, hasLeftIcon: s2, hasIcon: c2, hasSlotDefault: m2 } = this;
-  return [...e2 ? [`maz-btn--${e2}`] : [null], ...a2 ? [`maz-btn--${a2}`] : [null], ...t2 ? ["maz-btn--outline"] : [null], ...r2 ? ["maz-btn--rounded"] : [null], ...n2 ? ["maz-btn--block"] : [null], ...o2 ? ["maz-btn--fab"] : [null], ...i2 ? ["maz-active"] : [null], ...d2 ? ["maz-no-shadow"] : [null], ...s2() ? ["maz-btn--icon--left"] : [null], ...l2() ? ["maz-btn--icon--right"] : [null], ...c2() ? ["maz-btn--icon"] : [null], ...m2() ? [null] : ["maz-btn--no-text"]];
+  const { color: e2, size: a2, outline: r2, rounded: t2, fab: o2, active: i2, block: n2, noShadow: d2, hasRightIcon: l2, hasLeftIcon: s2, hasIcon: c2, hasSlotDefault: m2 } = this;
+  return [...e2 ? [`maz-btn--${e2}`] : [null], ...a2 ? [`maz-btn--${a2}`] : [null], ...r2 ? ["maz-btn--outline"] : [null], ...t2 ? ["maz-btn--rounded"] : [null], ...n2 ? ["maz-btn--block"] : [null], ...o2 ? ["maz-btn--fab"] : [null], ...i2 ? ["maz-active"] : [null], ...d2 ? ["maz-no-shadow"] : [null], ...s2() ? ["maz-btn--icon--left"] : [null], ...l2() ? ["maz-btn--icon--right"] : [null], ...c2() ? ["maz-btn--icon"] : [null], ...m2() ? [null] : ["maz-btn--no-text"]];
 }, textClasses() {
   const { justifyStart: e2, justifyEnd: a2 } = this;
   return [...e2 ? ["maz-justify-start"] : [null], ...a2 ? ["maz-justify-end"] : [null], ...e2 || a2 ? [null] : ["maz-justify-center"]];
@@ -11647,7 +11653,7 @@ const ot = { data: () => ({ uniqueId: null }), mounted() {
 }, emitBlur(e2) {
   this.$emit("blur", e2);
 } } };
-const nt = tt(it, function() {
+const nr = rr(ir, function() {
   var e2 = this, a2 = e2._self._c;
   return a2(e2.componentType, e2._b({ tag: "component", staticClass: "maz-base-component maz-btn maz-inline-flex", class: [e2.classes, { "maz-text-hidden": e2.loading }], attrs: { id: e2.uniqueId, type: e2.isLink ? null : e2.type, disabled: e2.isLink ? null : e2.isDisabled }, on: { click: function(a3) {
     return e2.handleClick(a3);
@@ -11665,10 +11671,10 @@ const nt = tt(it, function() {
     return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.rightIconName))])];
   })], 2) : e2._e()]);
 }, [], false, null, null, null, null).exports;
-nt.install = (e2) => {
-  e2.component(nt.name, nt);
+nr.install = (e2) => {
+  e2.component(nr.name, nr);
 };
-const dt = { name: "MazInput", mixins: [ot], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, placeholder: { type: String, default: "Enter text" }, hint: { type: String, default: null }, size: { type: String, default: null }, type: { type: String, default: "text" }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, error: { type: Boolean, default: false }, warning: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, readonly: { type: Boolean, default: false }, success: { type: Boolean, default: false }, required: { type: Boolean, default: false }, textarea: { type: Boolean, default: false }, loading: { type: Boolean, default: false }, clearable: { type: Boolean, default: false }, noLabel: { type: Boolean, default: false }, noRequiredSymbol: { type: Boolean, default: false }, focus: { type: Boolean, default: false }, color: { type: String, default: "primary" }, debounce: { type: Boolean, default: false } }, data: () => ({ isFocus: false, showPassword: false }), computed: { inputValue: { get() {
+const dr = { name: "MazInput", mixins: [or], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, placeholder: { type: String, default: "Enter text" }, hint: { type: String, default: null }, size: { type: String, default: null }, type: { type: String, default: "text" }, leftIconName: { type: String, default: null }, rightIconName: { type: String, default: null }, error: { type: Boolean, default: false }, warning: { type: Boolean, default: false }, disabled: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, readonly: { type: Boolean, default: false }, success: { type: Boolean, default: false }, required: { type: Boolean, default: false }, textarea: { type: Boolean, default: false }, loading: { type: Boolean, default: false }, clearable: { type: Boolean, default: false }, noLabel: { type: Boolean, default: false }, noRequiredSymbol: { type: Boolean, default: false }, focus: { type: Boolean, default: false }, color: { type: String, default: "primary" }, debounce: { type: Boolean, default: false } }, data: () => ({ isFocus: false, showPassword: false }), computed: { inputValue: { get() {
   return this.value;
 }, set(e2) {
   const a2 = this.hasNumberType ? e2 ? parseInt(e2) : 0 : e2;
@@ -11692,10 +11698,10 @@ const dt = { name: "MazInput", mixins: [ot], props: { value: { validator: (e2) =
 }, leftNumberIcon() {
   return [!!this.hasRightIcon(), !!this.hasClearBtn, !!this.hasPasswordBtn].filter((e2) => e2).length;
 } }, methods: { debounceValue: ((e2, a2) => {
-  let t2;
+  let r2;
   return function() {
-    const r2 = this, o2 = arguments;
-    clearTimeout(t2), t2 = setTimeout(() => e2.apply(r2, o2), a2);
+    const t2 = this, o2 = arguments;
+    clearTimeout(r2), r2 = setTimeout(() => e2.apply(t2, o2), a2);
   };
 })(function(e2) {
   this.$emit("input", e2);
@@ -11724,7 +11730,7 @@ const dt = { name: "MazInput", mixins: [ot], props: { value: { validator: (e2) =
 }, keyDown(e2) {
   this.$emit("keydown", e2);
 } } };
-const lt = tt(dt, function() {
+const lr = rr(dr, function() {
   var e2 = this, a2 = e2._self._c;
   return a2("div", { ref: "parent", staticClass: "maz-base-component maz-input maz-border maz-border-color maz-border-color-hover maz-border-solid maz-border-radius", class: [{ "is-focused": e2.isFocus || e2.focus, "is-valid": e2.success, "has-value": e2.value, "is-textarea": e2.textarea, "has-error": e2.error, "has-warning": e2.warning, "is-disabled": e2.disabled, "maz-is-dark": e2.dark, "has-hint": e2.hint, "has-no-label": !e2.hasLabel && !e2.hint, "has-left-icon": e2.hasLeftIcon() }, `maz-input--${e2.size}`, `has-${e2.leftNumberIcon}-right-icon`, `maz-input--${e2.color}`], on: { click: e2.focusInput } }, [e2.hasLeftIcon() ? a2("div", { staticClass: "maz-input__icon maz-flex left", class: [e2.textarea ? "maz-align-start maz-pt-2" : "maz-align-center"] }, [e2._t("icon-left", function() {
     return [a2("i", { staticClass: "material-icons" }, [e2._v(e2._s(e2.leftIconName))])];
@@ -11743,10 +11749,10 @@ const lt = tt(dt, function() {
   }, e2.onChange], click: function(a3) {
     return e2.$emit("click", a3);
   } } }, "input", e2.$attrs, false)) : a2("input", e2._b({ directives: [{ name: "model", rawName: "v-model", value: e2.inputValue, expression: "inputValue" }], ref: "MazInput", staticClass: "maz-input__input maz-border-radius", class: { "has-right-icon": e2.hasClearBtn || e2.hasPasswordBtn || e2.hasRightIcon() }, attrs: { id: e2.uniqueId, placeholder: e2.placeholderValue, "aria-label": e2.placeholder, disabled: e2.disabled, required: e2.required, readonly: e2.readonly, type: "checkbox" }, domProps: { checked: Array.isArray(e2.inputValue) ? e2._i(e2.inputValue, null) > -1 : e2.inputValue }, on: { keydown: e2.keyDown, keyup: e2.keyUp, focus: e2.onFocus, blur: e2.onBlur, paste: e2.onPaste, change: [function(a3) {
-    var t2 = e2.inputValue, r2 = a3.target, o2 = !!r2.checked;
-    if (Array.isArray(t2)) {
-      var i2 = e2._i(t2, null);
-      r2.checked ? i2 < 0 && (e2.inputValue = t2.concat([null])) : i2 > -1 && (e2.inputValue = t2.slice(0, i2).concat(t2.slice(i2 + 1)));
+    var r2 = e2.inputValue, t2 = a3.target, o2 = !!t2.checked;
+    if (Array.isArray(r2)) {
+      var i2 = e2._i(r2, null);
+      t2.checked ? i2 < 0 && (e2.inputValue = r2.concat([null])) : i2 > -1 && (e2.inputValue = r2.slice(0, i2).concat(r2.slice(i2 + 1)));
     } else
       e2.inputValue = o2;
   }, e2.onChange], click: function(a3) {
@@ -11757,10 +11763,10 @@ const lt = tt(dt, function() {
     e2.showPassword = !e2.showPassword;
   } } }, [a2("i", { staticClass: "maz-input__toggle-btn__icon material-icons" }, [e2._v(" " + e2._s(e2.showPassword ? "visibility_off" : "visibility") + " ")])]) : e2._e()]), e2.loading ? a2("div", { staticClass: "maz-input__loader", class: { textarea: e2.textarea } }, [a2("div", { staticClass: "maz-input__loader__progress-bar" })]) : e2._e()], 1);
 }, [], false, null, null, null, null).exports;
-lt.install = (e2) => {
-  e2.component(lt.name, lt);
+lr.install = (e2) => {
+  e2.component(lr.name, lr);
 };
-const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins: [ot], props: { value: { required: true, validator: (e2) => ["number", "string", "boolean"].includes(typeof e2) || Array.isArray(e2) || null === e2 }, options: { type: Array, required: true }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, itemHeight: { type: Number, default: 35 }, listHeight: { type: Number, default: 260 }, listWidth: { type: [Number, String], default: null }, placeholder: { type: String, default: "Select option" }, noLabel: { type: Boolean, default: false }, multiple: { type: Boolean, default: false }, search: { type: Boolean, default: false }, searchPlaceholder: { type: String, default: "Search in options" }, color: { type: String, default: "primary" }, size: { type: String, default: "md" }, open: { type: Boolean, default: false }, position: { type: String, default: "left bottom" }, config: { type: Object, default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" }) }, inputValue: { type: String, default: null } }, data: () => ({ listIsOpen: false, query: "", tmpValue: null, searchQuery: null, filteredOptions: null }), computed: { hasPositionTop() {
+const sr = { name: "MazSelect", components: { MazInput: lr, MazBtn: nr }, mixins: [or], props: { value: { required: true, validator: (e2) => ["number", "string", "boolean"].includes(typeof e2) || Array.isArray(e2) || null === e2 }, options: { type: Array, required: true }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, itemHeight: { type: Number, default: 35 }, listHeight: { type: Number, default: 260 }, listWidth: { type: [Number, String], default: null }, placeholder: { type: String, default: "Select option" }, noLabel: { type: Boolean, default: false }, multiple: { type: Boolean, default: false }, search: { type: Boolean, default: false }, searchPlaceholder: { type: String, default: "Search in options" }, color: { type: String, default: "primary" }, size: { type: String, default: "md" }, open: { type: Boolean, default: false }, position: { type: String, default: "left bottom" }, config: { type: Object, default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" }) }, inputValue: { type: String, default: null } }, data: () => ({ listIsOpen: false, query: "", tmpValue: null, searchQuery: null, filteredOptions: null }), computed: { hasPositionTop() {
   return this.position.includes("top");
 }, hasPositionRight() {
   return this.position.includes("right");
@@ -11769,8 +11775,8 @@ const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins
 }, hasOpenList() {
   return this.open || this.listIsOpen;
 }, values() {
-  const { multiple: e2, value: a2, options: t2 } = this;
-  if (!t2)
+  const { multiple: e2, value: a2, options: r2 } = this;
+  if (!r2)
     throw new Error("[MazSelect] options should be provide");
   if (e2 && !Array.isArray(a2) && null !== a2)
     throw new Error("[MazSelect] value should be an array or null");
@@ -11780,31 +11786,31 @@ const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins
 }, hasLeftIcon() {
   return this.$attrs.leftIconName || this.$slots["icon-left"];
 }, placeholderShown() {
-  const { placeholder: e2, multiple: a2, values: t2 } = this;
-  return a2 && t2.length ? null : e2;
+  const { placeholder: e2, multiple: a2, values: r2 } = this;
+  return a2 && r2.length ? null : e2;
 }, hasNoLabel() {
   return this.multiple || this.noLabel;
 }, optionHeight() {
   return { height: `${this.itemHeight}px`, flex: `0 0 ${this.itemHeight}px` };
 }, itemListSize() {
-  const { listHeight: e2, listWidth: a2 } = this, t2 = Number.isInteger(a2) ? `${a2}px` : a2;
-  return { maxHeight: `${e2}px`, width: t2, maxWidth: t2 };
+  const { listHeight: e2, listWidth: a2 } = this, r2 = Number.isInteger(a2) ? `${a2}px` : a2;
+  return { maxHeight: `${e2}px`, width: r2, maxWidth: r2 };
 }, tmpValueIndex() {
-  const { config: e2, tmpValue: a2, optionsShown: t2 } = this;
-  return t2.findIndex((t3) => t3[e2.valueKey] === a2);
+  const { config: e2, tmpValue: a2, optionsShown: r2 } = this;
+  return r2.findIndex((r3) => r3[e2.valueKey] === a2);
 }, selectedValueIndex() {
-  const { values: e2, options: a2, config: t2 } = this;
-  return e2.length ? a2.findIndex((a3) => a3[t2.valueKey] === e2[e2.length - 1]) : null;
+  const { values: e2, options: a2, config: r2 } = this;
+  return e2.length ? a2.findIndex((a3) => a3[r2.valueKey] === e2[e2.length - 1]) : null;
 }, valueShown() {
   if (this.inputValue)
     return this.inputValue;
-  const { multiple: e2, options: a2, values: t2, value: r2, config: o2 } = this, i2 = a2.find((e3) => e3[o2.valueKey] === r2);
-  return i2 && i2[o2.valueKey] && !e2 ? i2[o2.labelKey] : t2[0] ? " " : null;
+  const { multiple: e2, options: a2, values: r2, value: t2, config: o2 } = this, i2 = a2.find((e3) => e3[o2.valueKey] === t2);
+  return i2 && i2[o2.valueKey] && !e2 ? i2[o2.labelKey] : r2[0] ? " " : null;
 }, optionsShown() {
   return this.filteredOptions || this.options;
 }, selectedOptions() {
-  const { values: e2, options: a2, config: t2 } = this, r2 = [];
-  return e2.forEach((e3) => r2.push(a2.find((a3) => e3 === a3[t2.valueKey]))), r2;
+  const { values: e2, options: a2, config: r2 } = this, t2 = [];
+  return e2.forEach((e3) => t2.push(a2.find((a3) => e3 === a3[r2.valueKey]))), t2;
 } }, watch: { value: { handler() {
   const { multiple: e2 } = this;
   e2 && this.scrollTags();
@@ -11814,7 +11820,7 @@ const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins
   const { SelectedTags: e2, SelectedTagsContainer: a2 } = this.$refs;
   e2 && (e2.scrollLeft = ((_a2 = a2 == null ? void 0 : a2.$el) == null ? void 0 : _a2.clientWidth) ?? null);
 }, removeOption(e2) {
-  const { values: a2, multiple: t2 } = this, r2 = a2.filter((a3) => a3 !== e2), o2 = r2.length ? t2 ? r2 : r2[0] : null;
+  const { values: a2, multiple: r2 } = this, t2 = a2.filter((a3) => a3 !== e2), o2 = t2.length ? r2 ? t2 : t2[0] : null;
   this.emitValues(o2);
 }, closeList(e2 = {}) {
   if (this.$el.contains(e2.relatedTarget))
@@ -11824,28 +11830,28 @@ const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins
   if (this.lock)
     return;
   this.$emit("focus", e2);
-  const { disabled: a2, search: t2, values: r2 } = this;
+  const { disabled: a2, search: r2, values: t2 } = this;
   if (!a2) {
     if (a2)
       return;
-    this.$emit("open"), this.isFocus = true, this.listIsOpen = true, this.selectFirstValue(), t2 && this.focusSearchInput(), r2.length && this.scrollToSelectedOnFocus(this.selectedValueIndex);
+    this.$emit("open"), this.isFocus = true, this.listIsOpen = true, this.selectFirstValue(), r2 && this.focusSearchInput(), t2.length && this.scrollToSelectedOnFocus(this.selectedValueIndex);
   }
 }, clearSearch() {
   this.searchQuery = null, this.filteredOptions = null;
 }, async reset() {
   this.clearSearch(), this.multiple || this.closeList();
 }, selectFirstValue() {
-  const { multiple: e2, value: a2, options: t2, config: r2 } = this;
+  const { multiple: e2, value: a2, options: r2, config: t2 } = this;
   if (a2 || e2)
     return;
-  const o2 = t2[0][r2.valueKey] || null;
+  const o2 = r2[0][t2.valueKey] || null;
   this.tmpValue = o2, this.emitValues(o2, true);
 }, updateValue(e2) {
-  const { multiple: a2, values: t2, removeOption: r2 } = this;
-  if (t2.includes(e2) && a2)
-    return r2(e2);
-  this.tmpValue = e2, e2 && t2.push(e2);
-  const o2 = a2 && e2 ? t2 : e2;
+  const { multiple: a2, values: r2, removeOption: t2 } = this;
+  if (r2.includes(e2) && a2)
+    return t2(e2);
+  this.tmpValue = e2, e2 && r2.push(e2);
+  const o2 = a2 && e2 ? r2 : e2;
   this.emitValues(o2);
 }, async focusSearchInput() {
   await this.$nextTick();
@@ -11856,41 +11862,41 @@ const st = { name: "MazSelect", components: { MazInput: lt, MazBtn: nt }, mixins
 }, async scrollToSelectedOnFocus(e2) {
   await this.$nextTick(), this.$refs.optionsList.scrollTop = e2 * this.itemHeight - 3 * this.itemHeight;
 }, keyboardNav(e2) {
-  const a2 = e2.keyCode, { hasOpenList: t2, tmpValueIndex: r2, optionsShown: o2, openList: i2, tmpValue: n2, search: d2, config: l2 } = this;
+  const a2 = e2.keyCode, { hasOpenList: r2, tmpValueIndex: t2, optionsShown: o2, openList: i2, tmpValue: n2, search: d2, config: l2 } = this;
   if (40 === a2 || 38 === a2) {
-    e2.preventDefault(), t2 || i2();
-    let n3 = 40 === a2 ? r2 + 1 : r2 - 1;
+    e2.preventDefault(), r2 || i2();
+    let n3 = 40 === a2 ? t2 + 1 : t2 - 1;
     (-1 === n3 || n3 >= o2.length) && (n3 = -1 === n3 ? o2.length - 1 : 0), this.tmpValue = o2[n3][l2.valueKey], this.scrollToSelectedOnFocus(n3);
   } else
-    13 === a2 ? (e2.preventDefault(), t2 ? this.updateValue(n2) : this.openList()) : 27 === a2 ? this.closeList() : d2 || this.searching(e2);
+    13 === a2 ? (e2.preventDefault(), r2 ? this.updateValue(n2) : this.openList()) : 27 === a2 ? this.closeList() : d2 || this.searching(e2);
 }, searching(e2) {
-  const { config: a2, options: t2 } = this, r2 = e2.keyCode;
+  const { config: a2, options: r2 } = this, t2 = e2.keyCode;
   clearTimeout(o2);
   const o2 = setTimeout(() => {
     this.query = "";
-  }, 2e3), i2 = String.fromCharCode(r2);
-  if (8 === r2 && "" !== this.query)
+  }, 2e3), i2 = String.fromCharCode(t2);
+  if (8 === t2 && "" !== this.query)
     this.query = this.query.substring(0, this.query.length - 1);
   else if (/[a-zA-Z-e ]/.test(i2)) {
     this.hasOpenList || this.openList(), this.query += i2.toLowerCase();
-    const e3 = t2.findIndex((e4) => (this.tmpValue = e4[a2.valueKey], e4[a2.searchKey].toLowerCase().includes(this.query)));
+    const e3 = r2.findIndex((e4) => (this.tmpValue = e4[a2.valueKey], e4[a2.searchKey].toLowerCase().includes(this.query)));
     -1 !== e3 && this.scrollToSelectedOnFocus(e3);
   }
 }, searchInOptions(e2) {
-  const { config: a2, options: t2 } = this;
+  const { config: a2, options: r2 } = this;
   if (this.searchQuery = "" === e2 ? null : e2, !this.searchQuery)
-    return this.filteredOptions = t2;
-  const r2 = e2.toLowerCase(), o2 = t2.filter((e3) => e3[a2.valueKey] && e3[a2.searchKey].toLowerCase().includes(r2) || e3[a2.labelKey] && e3[a2.labelKey].includes(r2));
+    return this.filteredOptions = r2;
+  const t2 = e2.toLowerCase(), o2 = r2.filter((e3) => e3[a2.valueKey] && e3[a2.searchKey].toLowerCase().includes(t2) || e3[a2.labelKey] && e3[a2.labelKey].includes(t2));
   this.tmpValue = o2.length ? o2[0][a2.valueKey] : null, this.filteredOptions = o2;
 } } };
-var ct = function() {
+var cr = function() {
   var e2 = this, a2 = e2._self._c;
   return a2("div", { staticClass: "maz-base-component maz-select", class: [{ "has-list-open": e2.hasOpenList, "maz-is-dark": e2.dark }, `maz-select--${e2.color}`, `maz-select--${e2.size}`], on: { "!blur": function(a3) {
     return e2.closeList(a3);
-  } } }, [e2.multiple ? a2("div", { ref: "SelectedTags", staticClass: "maz-select__tags maz-flex maz-align-center", class: { "maz-left-offset": e2.hasLeftIcon } }, [a2("transition-group", { ref: "SelectedTagsContainer", staticClass: "maz-flex maz-align-center maz-h-100", attrs: { tag: "div", name: "maz-tags" } }, e2._l(e2.selectedOptions, function(t2, r2) {
-    return a2("MazBtn", { key: `tags-${r2}`, staticClass: "maz-select__tag maz-flex maz-align-center", attrs: { disabled: e2.disabled, color: e2.color, size: e2.size }, on: { click: function(a3) {
-      return a3.preventDefault(), a3.stopPropagation(), e2.removeOption(t2[e2.config.valueKey]);
-    } } }, [a2("span", { staticClass: "maz-select__tag__text" }, [e2._v(" " + e2._s(t2[e2.config.labelKey]) + " ")]), a2("i", { staticClass: "maz-select__tag__clear material-icons" }, [e2._v(" close ")])]);
+  } } }, [e2.multiple ? a2("div", { ref: "SelectedTags", staticClass: "maz-select__tags maz-flex maz-align-center", class: { "maz-left-offset": e2.hasLeftIcon } }, [a2("transition-group", { ref: "SelectedTagsContainer", staticClass: "maz-flex maz-align-center maz-h-100", attrs: { tag: "div", name: "maz-tags" } }, e2._l(e2.selectedOptions, function(r2, t2) {
+    return a2("MazBtn", { key: `tags-${t2}`, staticClass: "maz-select__tag maz-flex maz-align-center", attrs: { disabled: e2.disabled, color: e2.color, size: e2.size }, on: { click: function(a3) {
+      return a3.preventDefault(), a3.stopPropagation(), e2.removeOption(r2[e2.config.valueKey]);
+    } } }, [a2("span", { staticClass: "maz-select__tag__text" }, [e2._v(" " + e2._s(r2[e2.config.labelKey]) + " ")]), a2("i", { staticClass: "maz-select__tag__clear material-icons" }, [e2._v(" close ")])]);
   }), 1)], 1) : e2._e(), a2("MazInput", e2._b({ ref: "textField", attrs: { value: e2.valueShown, readonly: "", "no-label": e2.hasNoLabel, color: e2.color, size: e2.size, placeholder: e2.placeholderShown, disabled: e2.disabled, focus: e2.hasOpenList }, on: { clear: function(a3) {
     return e2.emitValues(null);
   }, keydown: function(a3) {
@@ -11909,89 +11915,89 @@ var ct = function() {
     return [a2("svg", { staticClass: "maz-select__toggle__arrow", attrs: { mlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" } }, [a2("path", { staticClass: "arrow", attrs: { d: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" } }), a2("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } })])];
   })], 2)]), a2("transition", { attrs: { name: e2.listTransition } }, [a2("div", { directives: [{ name: "show", rawName: "v-show", value: e2.hasOpenList, expression: "hasOpenList" }], staticClass: "maz-select__options-list maz-flex maz-elevation", class: [e2.hasPositionTop ? "maz-select__options-list--top maz-direction-column-reverse" : "maz-direction-column", { "maz-select__options-list--right": e2.hasPositionRight }], style: [e2.itemListSize] }, [e2.search ? a2("MazInput", { ref: "SearchInput", staticClass: "maz-m-1", attrs: { color: e2.color, value: e2.searchQuery, placeholder: e2.searchPlaceholder, size: "sm", "no-label": "", name: "new_search_in_options", autocomplete: "off" }, on: { input: e2.searchInOptions, keydown: [e2.keyboardNav, function(a3) {
     return !a3.type.indexOf("key") && e2._k(a3.keyCode, "esc", 27, a3.key, ["Esc", "Escape"]) ? null : e2.closeList.apply(null, arguments);
-  }] } }) : e2._e(), a2("div", { ref: "optionsList", staticClass: "maz-select__options-list__items maz-flex maz-direction-column" }, [e2._l(e2.optionsShown, function(t2, r2) {
-    return a2("button", { key: r2, staticClass: "maz-select__options-list__item flex maz-align-center maz-text-left", class: [{ selected: e2.values.length && e2.values.includes(t2[e2.config.valueKey]) }, { "keyboard-selected": e2.tmpValue === t2[e2.config.valueKey] }], style: [e2.optionHeight], attrs: { tabindex: "-1", type: "button" }, on: { click: function(a3) {
-      return a3.preventDefault(), a3.stopPropagation(), e2.updateValue(t2[e2.config.valueKey]);
+  }] } }) : e2._e(), a2("div", { ref: "optionsList", staticClass: "maz-select__options-list__items maz-flex maz-direction-column" }, [e2._l(e2.optionsShown, function(r2, t2) {
+    return a2("button", { key: t2, staticClass: "maz-select__options-list__item flex maz-align-center maz-text-left", class: [{ selected: e2.values.length && e2.values.includes(r2[e2.config.valueKey]) }, { "keyboard-selected": e2.tmpValue === r2[e2.config.valueKey] }], style: [e2.optionHeight], attrs: { tabindex: "-1", type: "button" }, on: { click: function(a3) {
+      return a3.preventDefault(), a3.stopPropagation(), e2.updateValue(r2[e2.config.valueKey]);
     } } }, [e2._t("default", function() {
-      return [a2("div", { class: t2.icon ? `maz-flag maz-flag-${t2.icon}` : "" }, [a2("span", { staticClass: "maz-dots-text", class: [{ "maz-flag-after": t2.icon }, { "maz-text-muted": !t2[e2.config.valueKey] }, e2.values.includes(t2[e2.config.valueKey]) ? "maz-text-white" : "maz-text-color"] }, [e2._v(" " + e2._s(t2[e2.config.labelKey]) + " ")])])];
-    }, { option: { ...t2, isSelected: e2.values.includes(t2[e2.config.valueKey]) }, tag: "div" })], 2);
+      return [a2("div", { class: r2.icon ? `maz-flag maz-flag-${r2.icon}` : "" }, [a2("span", { staticClass: "maz-dots-text", class: [{ "maz-flag-after": r2.icon }, { "maz-text-muted": !r2[e2.config.valueKey] }, e2.values.includes(r2[e2.config.valueKey]) ? "maz-text-white" : "maz-text-color"] }, [e2._v(" " + e2._s(r2[e2.config.labelKey]) + " ")])])];
+    }, { option: { ...r2, isSelected: e2.values.includes(r2[e2.config.valueKey]) }, tag: "div" })], 2);
   }), e2.optionsShown.length ? e2._e() : e2._t("no-results", function() {
     return [a2("div", { staticClass: "maz-select__options-list__no-results maz-p-1 maz-flex maz-flex-center" }, [a2("i", { staticClass: "material-icons maz-text-danger" }, [e2._v(" search_off ")])])];
   }, { tag: "div" })], 2)], 1)])], 1);
 };
-const mt = tt(st, ct, [], false, null, null, null, null).exports;
-mt.install = (e2) => {
-  e2.component(mt.name, mt);
+const mr = rr(sr, cr, [], false, null, null, null, null).exports;
+mr.install = (e2) => {
+  e2.component(mr.name, mr);
 };
-const ut = { version: 4, country_calling_codes: { 1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"], 7: ["RU", "KZ"], 20: ["EG"], 27: ["ZA"], 30: ["GR"], 31: ["NL"], 32: ["BE"], 33: ["FR"], 34: ["ES"], 36: ["HU"], 39: ["IT", "VA"], 40: ["RO"], 41: ["CH"], 43: ["AT"], 44: ["GB", "GG", "IM", "JE"], 45: ["DK"], 46: ["SE"], 47: ["NO", "SJ"], 48: ["PL"], 49: ["DE"], 51: ["PE"], 52: ["MX"], 53: ["CU"], 54: ["AR"], 55: ["BR"], 56: ["CL"], 57: ["CO"], 58: ["VE"], 60: ["MY"], 61: ["AU", "CC", "CX"], 62: ["ID"], 63: ["PH"], 64: ["NZ"], 65: ["SG"], 66: ["TH"], 81: ["JP"], 82: ["KR"], 84: ["VN"], 86: ["CN"], 90: ["TR"], 91: ["IN"], 92: ["PK"], 93: ["AF"], 94: ["LK"], 95: ["MM"], 98: ["IR"], 211: ["SS"], 212: ["MA", "EH"], 213: ["DZ"], 216: ["TN"], 218: ["LY"], 220: ["GM"], 221: ["SN"], 222: ["MR"], 223: ["ML"], 224: ["GN"], 225: ["CI"], 226: ["BF"], 227: ["NE"], 228: ["TG"], 229: ["BJ"], 230: ["MU"], 231: ["LR"], 232: ["SL"], 233: ["GH"], 234: ["NG"], 235: ["TD"], 236: ["CF"], 237: ["CM"], 238: ["CV"], 239: ["ST"], 240: ["GQ"], 241: ["GA"], 242: ["CG"], 243: ["CD"], 244: ["AO"], 245: ["GW"], 246: ["IO"], 247: ["AC"], 248: ["SC"], 249: ["SD"], 250: ["RW"], 251: ["ET"], 252: ["SO"], 253: ["DJ"], 254: ["KE"], 255: ["TZ"], 256: ["UG"], 257: ["BI"], 258: ["MZ"], 260: ["ZM"], 261: ["MG"], 262: ["RE", "YT"], 263: ["ZW"], 264: ["NA"], 265: ["MW"], 266: ["LS"], 267: ["BW"], 268: ["SZ"], 269: ["KM"], 290: ["SH", "TA"], 291: ["ER"], 297: ["AW"], 298: ["FO"], 299: ["GL"], 350: ["GI"], 351: ["PT"], 352: ["LU"], 353: ["IE"], 354: ["IS"], 355: ["AL"], 356: ["MT"], 357: ["CY"], 358: ["FI", "AX"], 359: ["BG"], 370: ["LT"], 371: ["LV"], 372: ["EE"], 373: ["MD"], 374: ["AM"], 375: ["BY"], 376: ["AD"], 377: ["MC"], 378: ["SM"], 380: ["UA"], 381: ["RS"], 382: ["ME"], 383: ["XK"], 385: ["HR"], 386: ["SI"], 387: ["BA"], 389: ["MK"], 420: ["CZ"], 421: ["SK"], 423: ["LI"], 500: ["FK"], 501: ["BZ"], 502: ["GT"], 503: ["SV"], 504: ["HN"], 505: ["NI"], 506: ["CR"], 507: ["PA"], 508: ["PM"], 509: ["HT"], 590: ["GP", "BL", "MF"], 591: ["BO"], 592: ["GY"], 593: ["EC"], 594: ["GF"], 595: ["PY"], 596: ["MQ"], 597: ["SR"], 598: ["UY"], 599: ["CW", "BQ"], 670: ["TL"], 672: ["NF"], 673: ["BN"], 674: ["NR"], 675: ["PG"], 676: ["TO"], 677: ["SB"], 678: ["VU"], 679: ["FJ"], 680: ["PW"], 681: ["WF"], 682: ["CK"], 683: ["NU"], 685: ["WS"], 686: ["KI"], 687: ["NC"], 688: ["TV"], 689: ["PF"], 690: ["TK"], 691: ["FM"], 692: ["MH"], 850: ["KP"], 852: ["HK"], 853: ["MO"], 855: ["KH"], 856: ["LA"], 880: ["BD"], 886: ["TW"], 960: ["MV"], 961: ["LB"], 962: ["JO"], 963: ["SY"], 964: ["IQ"], 965: ["KW"], 966: ["SA"], 967: ["YE"], 968: ["OM"], 970: ["PS"], 971: ["AE"], 972: ["IL"], 973: ["BH"], 974: ["QA"], 975: ["BT"], 976: ["MN"], 977: ["NP"], 992: ["TJ"], 993: ["TM"], 994: ["AZ"], 995: ["GE"], 996: ["KG"], 998: ["UZ"] }, countries: { AC: ["247", "00", "(?:[01589]\\d|[46])\\d{4}", [5, 6]], AD: ["376", "00", "(?:1|6\\d)\\d{7}|[135-9]\\d{5}", [6, 8, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["[135-9]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["1"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]]], AE: ["971", "00", "(?:[4-7]\\d|9[0-689])\\d{7}|800\\d{2,9}|[2-4679]\\d{7}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{2,9})", "$1 $2", ["60|8"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[236]|[479][2-8]"], "0$1"], ["(\\d{3})(\\d)(\\d{5})", "$1 $2 $3", ["[479]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"]], "0"], AF: ["93", "00", "[2-7]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"]], "0"], AG: ["1", "011", "(?:268|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([457]\\d{6})$|1", "268$1", 0, "268"], AI: ["1", "011", "(?:264|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2457]\\d{6})$|1", "264$1", 0, "264"], AL: ["355", "00", "(?:700\\d\\d|900)\\d{3}|8\\d{5,7}|(?:[2-5]|6\\d)\\d{7}", [6, 7, 8, 9], [["(\\d{3})(\\d{3,4})", "$1 $2", ["80|9"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["4[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2358][2-5]|4"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["[23578]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["6"], "0$1"]], "0"], AM: ["374", "00", "(?:[1-489]\\d|55|60|77)\\d{6}", [8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[89]0"], "0 $1"], ["(\\d{3})(\\d{5})", "$1 $2", ["2|3[12]"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["1|47"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[3-9]"], "0$1"]], "0"], AO: ["244", "00", "[29]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[29]"]]]], AR: ["54", "00", "(?:11|[89]\\d\\d)\\d{8}|[2368]\\d{9}", [10, 11], [["(\\d{4})(\\d{2})(\\d{4})", "$1 $2-$3", ["2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9])", "2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8]))|2(?:2[24-9]|3[1-59]|47)", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5[56][46]|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|58|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|54(?:4|5[13-7]|6[89])|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:454|85[56])[46]|3(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["1"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[68]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2-$3", ["[23]"], "0$1", 1], ["(\\d)(\\d{4})(\\d{2})(\\d{4})", "$2 15-$3-$4", ["9(?:2[2-469]|3[3-578])", "9(?:2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9]))", "9(?:2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8])))|92(?:2[24-9]|3[1-59]|47)", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5(?:[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|5(?:4(?:4|5[13-7]|6[89])|[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 15-$3-$4", ["91"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d{3})(\\d{3})(\\d{5})", "$1-$2-$3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 15-$3-$4", ["9"], "0$1", 0, "$1 $2 $3-$4"]], "0", 0, "0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|3(?:02?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[2-4]|7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", "9$1"], AS: ["1", "011", "(?:[58]\\d\\d|684|900)\\d{7}", [10], 0, "1", 0, "([267]\\d{6})$|1", "684$1", 0, "684"], AT: ["43", "00", "1\\d{3,12}|2\\d{6,12}|43(?:(?:0\\d|5[02-9])\\d{3,9}|2\\d{4,5}|[3467]\\d{4}|8\\d{4,6}|9\\d{4,7})|5\\d{4,12}|8\\d{7,12}|9\\d{8,12}|(?:[367]\\d|4[0-24-9])\\d{4,11}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3,12})", "$1 $2", ["1(?:11|[2-9])"], "0$1"], ["(\\d{3})(\\d{2})", "$1 $2", ["517"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["5[079]"], "0$1"], ["(\\d{3})(\\d{3,10})", "$1 $2", ["(?:31|4)6|51|6(?:5[0-3579]|[6-9])|7(?:20|32|8)|[89]"], "0$1"], ["(\\d{4})(\\d{3,9})", "$1 $2", ["[2-467]|5[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,7})", "$1 $2 $3", ["5"], "0$1"]], "0"], AU: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{7}(?:\\d(?:\\d{2})?)?|8[0-24-9]\\d{7})|[2-478]\\d{8}|1\\d{4,7}", [5, 6, 7, 8, 9, 10, 12], [["(\\d{2})(\\d{3,4})", "$1 $2", ["16"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,4})", "$1 $2 $3", ["16"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["14|4"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[2378]"], "(0$1)"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:30|[89])"]]], "0", 0, "(183[12])|0", 0, 0, 0, [["(?:(?:2(?:[0-26-9]\\d|3[0-8]|4[02-9]|5[0135-9])|3(?:[0-3589]\\d|4[0-578]|6[1-9]|7[0-35-9])|7(?:[013-57-9]\\d|2[0-8]))\\d{3}|8(?:51(?:0(?:0[03-9]|[12479]\\d|3[2-9]|5[0-8]|6[1-9]|8[0-7])|1(?:[0235689]\\d|1[0-69]|4[0-589]|7[0-47-9])|2(?:0[0-79]|[18][13579]|2[14-9]|3[0-46-9]|[4-6]\\d|7[89]|9[0-4]))|(?:6[0-8]|[78]\\d)\\d{3}|9(?:[02-9]\\d{3}|1(?:(?:[0-58]\\d|6[0135-9])\\d|7(?:0[0-24-9]|[1-9]\\d)|9(?:[0-46-9]\\d|5[0-79])))))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, ["163\\d{2,6}", [5, 6, 7, 8, 9]], ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], AW: ["297", "00", "(?:[25-79]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[25-9]"]]]], AX: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "2\\d{4,9}|35\\d{4,5}|(?:60\\d\\d|800)\\d{4,6}|7\\d{5,11}|(?:[14]\\d|3[0-46-9]|50)\\d{4,8}", [5, 6, 7, 8, 9, 10, 11, 12], 0, "0", 0, 0, 0, 0, "18", 0, "00"], AZ: ["994", "00", "365\\d{6}|(?:[124579]\\d|60|88)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[28]|2|365|46", "1[28]|2|365[45]|46", "1[28]|2|365(?:4|5[02])|46"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[13-9]"], "0$1"]], "0"], BA: ["387", "00", "6\\d{8}|(?:[35689]\\d|49|70)\\d{6}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[1-3]|[7-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2-$3", ["[3-5]|6[56]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["6"], "0$1"]], "0"], BB: ["1", "011", "(?:246|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "246$1", 0, "246"], BD: ["880", "00", "[1-469]\\d{9}|8[0-79]\\d{7,8}|[2-79]\\d{8}|[2-9]\\d{7}|[3-9]\\d{6}|[57-9]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{4,6})", "$1-$2", ["31[5-8]|[459]1"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1-$2", ["3(?:[67]|8[013-9])|4(?:6[168]|7|[89][18])|5(?:6[128]|9)|6(?:[15]|28|4[14])|7[2-589]|8(?:0[014-9]|[12])|9[358]|(?:3[2-5]|4[235]|5[2-578]|6[0389]|76|8[3-7]|9[24])1|(?:44|66)[01346-9]"], "0$1"], ["(\\d{4})(\\d{3,6})", "$1-$2", ["[13-9]|22"], "0$1"], ["(\\d)(\\d{7,8})", "$1-$2", ["2"], "0$1"]], "0"], BE: ["32", "00", "4\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:80|9)0"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[239]|4[23]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[15-8]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4"], "0$1"]], "0"], BF: ["226", "00", "[025-7]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[025-7]"]]]], BG: ["359", "00", "00800\\d{7}|[2-7]\\d{6,7}|[89]\\d{6,8}|2\\d{5}", [6, 7, 8, 9, 12], [["(\\d)(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["43[1-6]|70[1-9]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[356]|4[124-7]|7[1-9]|8[1-6]|9[1-7]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:70|8)0"], "0$1"], ["(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3", ["43[1-7]|7"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[48]|9[08]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"]], "0"], BH: ["973", "00", "[136-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[13679]|8[02-4679]"]]]], BI: ["257", "00", "(?:[267]\\d|31)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2367]"]]]], BJ: ["229", "00", "[24-689]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-689]"]]]], BL: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:2[7-9]|3[3-7]|5[12]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], BM: ["1", "011", "(?:441|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "441$1", 0, "441"], BN: ["673", "00", "[2-578]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-578]"]]]], BO: ["591", "00(?:1\\d)?", "(?:[2-467]\\d\\d|8001)\\d{5}", [8, 9], [["(\\d)(\\d{7})", "$1 $2", ["[23]|4[46]"]], ["(\\d{8})", "$1", ["[67]"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["8"]]], "0", 0, "0(1\\d)?"], BQ: ["599", "00", "(?:[34]1|7\\d)\\d{5}", [7], 0, 0, 0, 0, 0, 0, "[347]"], BR: ["55", "00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)", "(?:[1-46-9]\\d\\d|5(?:[0-46-9]\\d|5[0-46-9]))\\d{8}|[1-9]\\d{9}|[3589]\\d{8}|[34]\\d{7}", [8, 9, 10, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["300|4(?:0[02]|37)", "4(?:02|37)0|[34]00"]], ["(\\d{3})(\\d{2,3})(\\d{4})", "$1 $2 $3", ["(?:[358]|90)0"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["(?:[14689][1-9]|2[12478]|3[1-578]|5[13-5]|7[13-579])[2-57]"], "($1)"], ["(\\d{2})(\\d{5})(\\d{4})", "$1 $2-$3", ["[16][1-9]|[2-57-9]"], "($1)"]], "0", 0, "(?:0|90)(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\\d{10,11}))?", "$2"], BS: ["1", "011", "(?:242|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([3-8]\\d{6})$|1", "242$1", 0, "242"], BT: ["975", "00", "[17]\\d{7}|[2-8]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-68]|7[246]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[67]|7"]]]], BW: ["267", "00", "(?:0800|(?:[37]|800)\\d)\\d{6}|(?:[2-6]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["90"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[24-6]|3[15-9]"]], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37]"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["8"]]]], BY: ["375", "810", "(?:[12]\\d|33|44|902)\\d{7}|8(?:0[0-79]\\d{5,7}|[1-7]\\d{9})|8(?:1[0-489]|[5-79]\\d)\\d{7}|8[1-79]\\d{6,7}|8[0-79]\\d{5}|8\\d{5}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3})", "$1 $2", ["800"], "8 $1"], ["(\\d{3})(\\d{2})(\\d{2,4})", "$1 $2 $3", ["800"], "8 $1"], ["(\\d{4})(\\d{2})(\\d{3})", "$1 $2-$3", ["1(?:5[169]|6[3-5]|7[179])|2(?:1[35]|2[34]|3[3-5])", "1(?:5[169]|6(?:3[1-3]|4|5[125])|7(?:1[3-9]|7[0-24-6]|9[2-7]))|2(?:1[35]|2[34]|3[3-5])"], "8 0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["1(?:[56]|7[467])|2[1-3]"], "8 0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-4]"], "8 0$1"], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[89]"], "8 $1"]], "8", 0, "0|80?", 0, 0, 0, 0, "8~10"], BZ: ["501", "00", "(?:0800\\d|[2-8])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-8]"]], ["(\\d)(\\d{3})(\\d{4})(\\d{3})", "$1-$2-$3-$4", ["0"]]]], CA: ["1", "011", "(?:[2-8]\\d|90)\\d{8}|3\\d{6}", [7, 10], 0, "1", 0, 0, 0, 0, 0, [["(?:2(?:04|[23]6|[48]9|50|63)|3(?:06|43|54|6[578]|82)|4(?:03|1[68]|[26]8|3[178]|50|74)|5(?:06|1[49]|48|79|8[147])|6(?:04|[18]3|39|47|72)|7(?:0[59]|42|53|78|8[02])|8(?:[06]7|19|25|73)|90[25])[2-9]\\d{6}", [10]], ["", [10]], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}", [10]], ["900[2-9]\\d{6}", [10]], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|(?:5(?:00|2[125-9]|33|44|66|77|88)|622)[2-9]\\d{6}", [10]], 0, ["310\\d{4}", [7]], 0, ["600[2-9]\\d{6}", [10]]]], CC: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:02|31|60|89)|1(?:18|76)|223)|91(?:0(?:1[0-2]|29)|1(?:[28]2|50|79)|2(?:10|64)|3(?:[06]8|22)|4[29]8|62\\d|70[23]|959))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CD: ["243", "00", "[189]\\d{8}|[1-68]\\d{6}", [7, 9], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[1-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], CF: ["236", "00", "(?:[27]\\d{3}|8776)\\d{4}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[278]"]]]], CG: ["242", "00", "222\\d{6}|(?:0\\d|80)\\d{7}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[02]"]]]], CH: ["41", "00", "8\\d{11}|[2-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8[047]|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]|81"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["8"], "0$1"]], "0"], CI: ["225", "00", "[02]\\d{9}", [10], [["(\\d{2})(\\d{2})(\\d)(\\d{5})", "$1 $2 $3 $4", ["2"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3 $4", ["0"]]]], CK: ["682", "00", "[2-578]\\d{4}", [5], [["(\\d{2})(\\d{3})", "$1 $2", ["[2-578]"]]]], CL: ["56", "(?:0|1(?:1[0-69]|2[02-5]|5[13-58]|69|7[0167]|8[018]))0", "12300\\d{6}|6\\d{9,10}|[2-9]\\d{8}", [9, 10, 11], [["(\\d{5})(\\d{4})", "$1 $2", ["219", "2196"], "($1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["44"]], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2[1-36]"], "($1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["9[2-9]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["3[2-5]|[47]|5[1-3578]|6[13-57]|8(?:0[1-9]|[1-9])"], "($1)"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["60|8"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{3})(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["60"]]]], CM: ["237", "00", "[26]\\d{8}|88\\d{6,7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["88"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[26]|88"]]]], CN: ["86", "00|1(?:[12]\\d|79)\\d\\d00", "1[127]\\d{8,9}|2\\d{9}(?:\\d{2})?|[12]\\d{6,7}|86\\d{6}|(?:1[03-689]\\d|6)\\d{7,9}|(?:[3-579]\\d|8[0-57-9])\\d{6,9}", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5,6})", "$1 $2", ["(?:10|2[0-57-9])[19]", "(?:10|2[0-57-9])(?:10|9[56])", "10(?:10|9[56])|2[0-57-9](?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["3(?:[157]|35|49|9[1-68])|4(?:[17]|2[179]|6[47-9]|8[23])|5(?:[1357]|2[37]|4[36]|6[1-46]|80)|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])|(?:4[35]|59|85)[1-9]", "(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[1-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))[19]", "85[23](?:10|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:10|9[56])", "85[23](?:100|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["(?:4|80)0"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|2(?:[02-57-9]|1[1-9])", "10|2(?:[02-57-9]|1[1-9])", "10[0-79]|2(?:[02-57-9]|1[1-79])|(?:10|21)8(?:0[1-9]|[1-9])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["3(?:[3-59]|7[02-68])|4(?:[26-8]|3[3-9]|5[2-9])|5(?:3[03-9]|[468]|7[028]|9[2-46-9])|6|7(?:[0-247]|3[04-9]|5[0-4689]|6[2368])|8(?:[1-358]|9[1-7])|9(?:[013479]|5[1-5])|(?:[34]1|55|79|87)[02-9]"], "0$1", 1], ["(\\d{3})(\\d{7,8})", "$1 $2", ["9"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["80"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[3-578]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["1[3-9]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["[12]"], "0$1", 1]], "0", 0, "(1(?:[12]\\d|79)\\d\\d)|0", 0, 0, 0, 0, "00"], CO: ["57", "00(?:4(?:[14]4|56)|[579])", "(?:60\\d\\d|9101)\\d{6}|(?:1\\d|3)\\d{9}", [10, 11], [["(\\d{3})(\\d{7})", "$1 $2", ["6"], "($1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3[0-357]|91"]], ["(\\d)(\\d{3})(\\d{7})", "$1-$2-$3", ["1"], "0$1", 0, "$1 $2 $3"]], "0", 0, "0(4(?:[14]4|56)|[579])?"], CR: ["506", "00", "(?:8\\d|90)\\d{8}|(?:[24-8]\\d{3}|3005)\\d{4}", [8, 10], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[3-9]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[89]"]]], 0, 0, "(19(?:0[0-2468]|1[09]|20|66|77|99))"], CU: ["53", "119", "[27]\\d{6,7}|[34]\\d{5,7}|63\\d{6}|(?:5|8\\d\\d)\\d{7}", [6, 7, 8, 10], [["(\\d{2})(\\d{4,6})", "$1 $2", ["2[1-4]|[34]"], "(0$1)"], ["(\\d)(\\d{6,7})", "$1 $2", ["7"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["[56]"], "0$1"], ["(\\d{3})(\\d{7})", "$1 $2", ["8"], "0$1"]], "0"], CV: ["238", "0", "(?:[2-59]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2-589]"]]]], CW: ["599", "00", "(?:[34]1|60|(?:7|9\\d)\\d)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[3467]"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["9[4-8]"]]], 0, 0, 0, 0, 0, "[69]"], CX: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:01|30|59|88)|1(?:17|46|75)|2(?:22|35))|91(?:00[6-9]|1(?:[28]1|49|78)|2(?:09|63)|3(?:12|26|75)|4(?:56|97)|64\\d|7(?:0[01]|1[0-2])|958))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CY: ["357", "00", "(?:[279]\\d|[58]0)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[257-9]"]]]], CZ: ["420", "00", "(?:[2-578]\\d|60)\\d{7}|9\\d{8,11}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]|9[015-7]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["96"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]]], DE: ["49", "00", "[2579]\\d{5,14}|49(?:[34]0|69|8\\d)\\d\\d?|49(?:37|49|60|7[089]|9\\d)\\d{1,3}|49(?:2[024-9]|3[2-689]|7[1-7])\\d{1,8}|(?:1|[368]\\d|4[0-8])\\d{3,13}|49(?:[015]\\d|2[13]|31|[46][1-8])\\d{1,9}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [["(\\d{2})(\\d{3,13})", "$1 $2", ["3[02]|40|[68]9"], "0$1"], ["(\\d{3})(\\d{3,12})", "$1 $2", ["2(?:0[1-389]|1[124]|2[18]|3[14])|3(?:[35-9][15]|4[015])|906|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1", "2(?:0[1-389]|12[0-8])|3(?:[35-9][15]|4[015])|906|2(?:[13][14]|2[18])|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1"], "0$1"], ["(\\d{4})(\\d{2,11})", "$1 $2", ["[24-6]|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]", "[24-6]|3(?:3(?:0[1-467]|2[127-9]|3[124578]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|4[13578]|9[1346])|5(?:0[14]|2[1-3589]|6[1-4]|7[13468]|8[13568])|6(?:2[1-489]|3[124-6]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|6|7[1467]|8[136])|9(?:0[12479]|2[1358]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]|3[68]4[1347]|3(?:47|60)[1356]|3(?:3[46]|46|5[49])[1246]|3[4579]3[1357]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["138"], "0$1"], ["(\\d{5})(\\d{2,10})", "$1 $2", ["3"], "0$1"], ["(\\d{3})(\\d{5,11})", "$1 $2", ["181"], "0$1"], ["(\\d{3})(\\d)(\\d{4,10})", "$1 $2 $3", ["1(?:3|80)|9"], "0$1"], ["(\\d{3})(\\d{7,8})", "$1 $2", ["1[67]"], "0$1"], ["(\\d{3})(\\d{7,12})", "$1 $2", ["8"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["185", "1850", "18500"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["18[68]"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["15[0568]"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["15[1279]"], "0$1"], ["(\\d{3})(\\d{8})", "$1 $2", ["18"], "0$1"], ["(\\d{3})(\\d{2})(\\d{7,8})", "$1 $2 $3", ["1(?:6[023]|7)"], "0$1"], ["(\\d{4})(\\d{2})(\\d{7})", "$1 $2 $3", ["15[279]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{8})", "$1 $2 $3", ["15"], "0$1"]], "0"], DJ: ["253", "00", "(?:2\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[27]"]]]], DK: ["45", "00", "[2-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-9]"]]]], DM: ["1", "011", "(?:[58]\\d\\d|767|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "767$1", 0, "767"], DO: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "8001|8[024]9"], DZ: ["213", "00", "(?:[1-4]|[5-79]\\d|80)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["9"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-8]"], "0$1"]], "0"], EC: ["593", "00", "1\\d{9,10}|(?:[2-7]|9\\d)\\d{7}", [8, 9, 10, 11], [["(\\d)(\\d{3})(\\d{4})", "$1 $2-$3", ["[2-7]"], "(0$1)", 0, "$1-$2-$3"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1"]]], "0"], EE: ["372", "00", "8\\d{9}|[4578]\\d{7}|(?:[3-8]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[369]|4[3-8]|5(?:[0-2]|5[0-478]|6[45])|7[1-9]|88", "[369]|4[3-8]|5(?:[02]|1(?:[0-8]|95)|5[0-478]|6(?:4[0-4]|5[1-589]))|7[1-9]|88"]], ["(\\d{4})(\\d{3,4})", "$1 $2", ["[45]|8(?:00|[1-49])", "[45]|8(?:00[1-9]|[1-49])"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], EG: ["20", "00", "[189]\\d{8,9}|[24-6]\\d{8}|[135]\\d{7}", [8, 9, 10], [["(\\d)(\\d{7,8})", "$1 $2", ["[23]"], "0$1"], ["(\\d{2})(\\d{6,7})", "$1 $2", ["1[35]|[4-6]|8[2468]|9[235-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{8})", "$1 $2", ["1"], "0$1"]], "0"], EH: ["212", "00", "[5-8]\\d{8}", [9], 0, "0", 0, 0, 0, 0, "528[89]"], ER: ["291", "00", "[178]\\d{6}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[178]"], "0$1"]], "0"], ES: ["34", "00", "[5-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]00"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-9]"]]]], ET: ["251", "00", "(?:11|[2-579]\\d)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-579]"], "0$1"]], "0"], FI: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "[1-35689]\\d{4}|7\\d{10,11}|(?:[124-7]\\d|3[0-46-9])\\d{8}|[1-9]\\d{5,8}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d)(\\d{4,9})", "$1 $2", ["[2568][1-8]|3(?:0[1-9]|[1-9])|9"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[12]00|[368]|70[07-9]"], "0$1"], ["(\\d{2})(\\d{4,8})", "$1 $2", ["[1245]|7[135]"], "0$1"], ["(\\d{2})(\\d{6,10})", "$1 $2", ["7"], "0$1"]], "0", 0, 0, 0, 0, "1[03-79]|[2-9]", 0, "00"], FJ: ["679", "0(?:0|52)", "45\\d{5}|(?:0800\\d|[235-9])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[235-9]|45"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]]], 0, 0, 0, 0, 0, 0, 0, "00"], FK: ["500", "00", "[2-7]\\d{4}", [5]], FM: ["691", "00", "(?:[39]\\d\\d|820)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[389]"]]]], FO: ["298", "00", "[2-9]\\d{5}", [6], [["(\\d{6})", "$1", ["[2-9]"]]], 0, 0, "(10(?:01|[12]0|88))"], FR: ["33", "00", "[1-9]\\d{8}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0 $1"], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[1-79]"], "0$1"]], "0"], GA: ["241", "00", "(?:[067]\\d|11)\\d{6}|[2-7]\\d{6}", [7, 8], [["(\\d)(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-7]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["11|[67]"], "0$1"]], 0, 0, "0(11\\d{6}|60\\d{6}|61\\d{6}|6[256]\\d{6}|7[467]\\d{6})", "$1"], GB: ["44", "00", "[1-357-9]\\d{9}|[18]\\d{8}|8\\d{6}", [7, 9, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["800", "8001", "80011", "800111", "8001111"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["845", "8454", "84546", "845464"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["800"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["1(?:38|5[23]|69|76|94)", "1(?:(?:38|69)7|5(?:24|39)|768|946)", "1(?:3873|5(?:242|39[4-6])|(?:697|768)[347]|9467)"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["1(?:[2-69][02-9]|[78])"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[25]|7(?:0|6[02-9])", "[25]|7(?:0|6(?:[03-9]|2[356]))"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1389]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["(?:1(?:1(?:3(?:[0-58]\\d\\d|73[0235])|4(?:[0-5]\\d\\d|69[7-9]|70[0-79])|(?:(?:5[0-26-9]|[78][0-49])\\d|6(?:[0-4]\\d|50))\\d)|(?:2(?:(?:0[024-9]|2[3-9]|3[3-79]|4[1-689]|[58][02-9]|6[0-47-9]|7[013-9]|9\\d)\\d|1(?:[0-7]\\d|8[0-2]))|(?:3(?:0\\d|1[0-8]|[25][02-9]|3[02-579]|[468][0-46-9]|7[1-35-79]|9[2-578])|4(?:0[03-9]|[137]\\d|[28][02-57-9]|4[02-69]|5[0-8]|[69][0-79])|5(?:0[1-35-9]|[16]\\d|2[024-9]|3[015689]|4[02-9]|5[03-9]|7[0-35-9]|8[0-468]|9[0-57-9])|6(?:0[034689]|1\\d|2[0-35689]|[38][013-9]|4[1-467]|5[0-69]|6[13-9]|7[0-8]|9[0-24578])|7(?:0[0246-9]|2\\d|3[0236-8]|4[03-9]|5[0-46-9]|6[013-9]|7[0-35-9]|8[024-9]|9[02-9])|8(?:0[35-9]|2[1-57-9]|3[02-578]|4[0-578]|5[124-9]|6[2-69]|7\\d|8[02-9]|9[02569])|9(?:0[02-589]|[18]\\d|2[02-689]|3[1-57-9]|4[2-9]|5[0-579]|6[2-47-9]|7[0-24578]|9[2-57]))\\d)\\d)|2(?:0[013478]|3[0189]|4[017]|8[0-46-9]|9[0-2])\\d{3})\\d{4}|1(?:2(?:0(?:46[1-4]|87[2-9])|545[1-79]|76(?:2\\d|3[1-8]|6[1-6])|9(?:7(?:2[0-4]|3[2-5])|8(?:2[2-8]|7[0-47-9]|8[3-5])))|3(?:6(?:38[2-5]|47[23])|8(?:47[04-9]|64[0157-9]))|4(?:044[1-7]|20(?:2[23]|8\\d)|6(?:0(?:30|5[2-57]|6[1-8]|7[2-8])|140)|8(?:052|87[1-3]))|5(?:2(?:4(?:3[2-79]|6\\d)|76\\d)|6(?:26[06-9]|686))|6(?:06(?:4\\d|7[4-79])|295[5-7]|35[34]\\d|47(?:24|61)|59(?:5[08]|6[67]|74)|9(?:55[0-4]|77[23]))|7(?:26(?:6[13-9]|7[0-7])|(?:442|688)\\d|50(?:2[0-3]|[3-68]2|76))|8(?:27[56]\\d|37(?:5[2-5]|8[239])|843[2-58])|9(?:0(?:0(?:6[1-8]|85)|52\\d)|3583|4(?:66[1-8]|9(?:2[01]|81))|63(?:23|3[1-4])|9561))\\d{3}", [9, 10]], ["7(?:457[0-57-9]|700[01]|911[028])\\d{5}|7(?:[1-3]\\d\\d|4(?:[0-46-9]\\d|5[0-689])|5(?:0[0-8]|[13-9]\\d|2[0-35-9])|7(?:0[1-9]|[1-7]\\d|8[02-9]|9[0-689])|8(?:[014-9]\\d|[23][0-8])|9(?:[024-9]\\d|1[02-9]|3[0-689]))\\d{6}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[2-49]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]], 0, " x"], GD: ["1", "011", "(?:473|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "473$1", 0, "473"], GE: ["995", "00", "(?:[3-57]\\d\\d|800)\\d{6}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["32"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[57]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[348]"], "0$1"]], "0"], GF: ["594", "00", "[56]94\\d{6}|(?:80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[56]|9[47]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[89]"], "0$1"]], "0"], GG: ["44", "00", "(?:1481|[357-9]\\d{3})\\d{6}|8\\d{6}(?:\\d{2})?", [7, 9, 10], 0, "0", 0, "([25-9]\\d{5})$|0", "1481$1", 0, 0, [["1481[25-9]\\d{5}", [10]], ["7(?:(?:781|839)\\d|911[17])\\d{5}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[0-3]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]]], GH: ["233", "00", "(?:[235]\\d{3}|800)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[235]"], "0$1"]], "0"], GI: ["350", "00", "(?:[25]\\d|60)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["2"]]]], GL: ["299", "00", "(?:19|[2-689]\\d|70)\\d{4}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["19|[2-9]"]]]], GM: ["220", "00", "[2-9]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], GN: ["224", "00", "722\\d{6}|(?:3|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["3"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[67]"]]]], GP: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0", 0, 0, 0, 0, 0, [["590(?:0[1-68]|[14][0-24-9]|2[0-68]|3[1-9]|5[3-579]|[68][0-689]|7[08]|9\\d)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], GQ: ["240", "00", "222\\d{6}|(?:3\\d|55|[89]0)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235]"]], ["(\\d{3})(\\d{6})", "$1 $2", ["[89]"]]]], GR: ["30", "00", "5005000\\d{3}|8\\d{9,11}|(?:[269]\\d|70)\\d{8}", [10, 11, 12], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["21|7"]], ["(\\d{4})(\\d{6})", "$1 $2", ["2(?:2|3[2-57-9]|4[2-469]|5[2-59]|6[2-9]|7[2-69]|8[2-49])|5"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2689]"]], ["(\\d{3})(\\d{3,4})(\\d{5})", "$1 $2 $3", ["8"]]]], GT: ["502", "00", "(?:1\\d{3}|[2-7])\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], GU: ["1", "011", "(?:[58]\\d\\d|671|900)\\d{7}", [10], 0, "1", 0, "([3-9]\\d{6})$|1", "671$1", 0, "671"], GW: ["245", "00", "[49]\\d{8}|4\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["40"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"]]]], GY: ["592", "001", "9008\\d{3}|(?:[2-467]\\d\\d|510|862)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], HK: ["852", "00(?:30|5[09]|[126-9]?)", "8[0-46-9]\\d{6,7}|9\\d{4,7}|(?:[2-7]|9\\d{3})\\d{7}", [5, 6, 7, 8, 9, 11], [["(\\d{3})(\\d{2,5})", "$1 $2", ["900", "9003"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[1-4]|9(?:0[1-9]|[1-8])"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{3})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]], 0, 0, 0, 0, 0, 0, 0, "00"], HN: ["504", "00", "8\\d{10}|[237-9]\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["[237-9]"]]]], HR: ["385", "00", "(?:[24-69]\\d|3[0-79])\\d{7}|80\\d{5,7}|[1-79]\\d{7}|6\\d{5,6}", [6, 7, 8, 9], [["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["6[01]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{4})(\\d{3})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-5]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"]], "0"], HT: ["509", "00", "(?:[2-489]\\d|55)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[2-589]"]]]], HU: ["36", "00", "[235-7]\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6|8[2-57-9]|9[2-69]"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "06 $1"]], "06"], ID: ["62", "00[89]", "(?:(?:00[1-9]|8\\d)\\d{4}|[1-36])\\d{6}|00\\d{10}|[1-9]\\d{8,10}|[2-9]\\d{7}", [7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["15"]], ["(\\d{2})(\\d{5,9})", "$1 $2", ["2[124]|[36]1"], "(0$1)"], ["(\\d{3})(\\d{5,7})", "$1 $2", ["800"], "0$1"], ["(\\d{3})(\\d{5,8})", "$1 $2", ["[2-79]"], "(0$1)"], ["(\\d{3})(\\d{3,4})(\\d{3})", "$1-$2-$3", ["8[1-35-9]"], "0$1"], ["(\\d{3})(\\d{6,8})", "$1 $2", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["804"], "0$1"], ["(\\d{3})(\\d)(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["80"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1-$2-$3", ["8"], "0$1"]], "0"], IE: ["353", "00", "(?:1\\d|[2569])\\d{6,8}|4\\d{6,9}|7\\d{8}|8\\d{8,9}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["2[24-9]|47|58|6[237-9]|9[35-9]"], "(0$1)"], ["(\\d{3})(\\d{5})", "$1 $2", ["[45]0"], "(0$1)"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2569]|4[1-69]|7[14]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["81"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["4"], "(0$1)"], ["(\\d{2})(\\d)(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], IL: ["972", "0(?:0|1[2-9])", "1\\d{6}(?:\\d{3,5})?|[57]\\d{8}|[1-489]\\d{7}", [7, 8, 9, 10, 11, 12], [["(\\d{4})(\\d{3})", "$1-$2", ["125"]], ["(\\d{4})(\\d{2})(\\d{2})", "$1-$2-$3", ["121"]], ["(\\d)(\\d{3})(\\d{4})", "$1-$2-$3", ["[2-489]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1-$2-$3", ["12"]], ["(\\d{4})(\\d{6})", "$1-$2", ["159"]], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3-$4", ["1[7-9]"]], ["(\\d{3})(\\d{1,2})(\\d{3})(\\d{4})", "$1-$2 $3-$4", ["15"]]], "0"], IM: ["44", "00", "1624\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([25-8]\\d{5})$|0", "1624$1", 0, "74576|(?:16|7[56])24"], IN: ["91", "00", "(?:000800|[2-9]\\d\\d)\\d{7}|1\\d{7,12}", [8, 9, 10, 11, 12, 13], [["(\\d{8})", "$1", ["5(?:0|2[23]|3[03]|[67]1|88)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|888)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|8888)"], 0, 1], ["(\\d{4})(\\d{4,5})", "$1 $2", ["180", "1800"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["140"], 0, 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["11|2[02]|33|4[04]|79[1-7]|80[2-46]", "11|2[02]|33|4[04]|79(?:[1-6]|7[19])|80(?:[2-4]|6[0-589])", "11|2[02]|33|4[04]|79(?:[124-6]|3(?:[02-9]|1[0-24-9])|7(?:1|9[1-6]))|80(?:[2-4]|6[0-589])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1(?:2[0-249]|3[0-25]|4[145]|[68]|7[1257])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|5[12]|[78]1)|6(?:12|[2-4]1|5[17]|6[13]|80)|7(?:12|3[134]|4[47]|61|88)|8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)|(?:43|59|75)[15]|(?:1[59]|29|67|72)[14]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|674|7(?:(?:2[14]|3[34]|5[15])[2-6]|61[346]|88[0-8])|8(?:70[2-6]|84[235-7]|91[3-7])|(?:1(?:29|60|8[06])|261|552|6(?:12|[2-47]1|5[17]|6[13]|80)|7(?:12|31|4[47])|8(?:16|2[014]|3[126]|6[136]|7[78]|83))[2-7]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|6(?:12(?:[2-6]|7[0-8])|74[2-7])|7(?:(?:2[14]|5[15])[2-6]|3171|61[346]|88(?:[2-7]|82))|8(?:70[2-6]|84(?:[2356]|7[19])|91(?:[3-6]|7[19]))|73[134][2-6]|(?:74[47]|8(?:16|2[014]|3[126]|6[136]|7[78]|83))(?:[2-6]|7[19])|(?:1(?:29|60|8[06])|261|552|6(?:[2-4]1|5[17]|6[13]|7(?:1|4[0189])|80)|7(?:12|88[01]))[2-7]"], "0$1", 1], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2[2457-9]|3[2-5]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1[013-9]|28|3[129]|4[1-35689]|5[29]|6[02-5]|70)|807", "1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2(?:[2457]|84|95)|3(?:[2-4]|55)|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1(?:[013-8]|9[6-9])|28[6-8]|3(?:17|2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4|5[0-367])|70[13-7])|807[19]", "1(?:[2-479]|5(?:[0236-9]|5[013-9]))|[2-5]|6(?:2(?:84|95)|355|83)|73179|807(?:1|9[1-3])|(?:1552|6(?:1[1358]|2[2457]|3[2-4]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[124-6])\\d|7(?:1(?:[013-8]\\d|9[6-9])|28[6-8]|3(?:2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]\\d|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4\\d|5[0-367])|70[13-7]))[2-7]"], "0$1", 1], ["(\\d{5})(\\d{5})", "$1 $2", ["[6-9]"], "0$1", 1], ["(\\d{4})(\\d{2,4})(\\d{4})", "$1 $2 $3", ["1(?:6|8[06])", "1(?:6|8[06]0)"], 0, 1], ["(\\d{4})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["18"], 0, 1]], "0"], IO: ["246", "00", "3\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["3"]]]], IQ: ["964", "00", "(?:1|7\\d\\d)\\d{7}|[2-6]\\d{7,8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-6]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], IR: ["98", "00", "[1-9]\\d{9}|(?:[1-8]\\d\\d|9)\\d{3,4}", [4, 5, 6, 7, 10], [["(\\d{4,5})", "$1", ["96"], "0$1"], ["(\\d{2})(\\d{4,5})", "$1 $2", ["(?:1[137]|2[13-68]|3[1458]|4[145]|5[1468]|6[16]|7[1467]|8[13467])[12689]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[1-8]"], "0$1"]], "0"], IS: ["354", "00|1(?:0(?:01|[12]0)|100)", "(?:38\\d|[4-9])\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, 0, "00"], IT: ["39", "00", "0\\d{5,10}|1\\d{8,10}|3(?:[0-8]\\d{7,10}|9\\d{7,8})|(?:55|70)\\d{8}|8\\d{5}(?:\\d{2,4})?", [6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{4,6})", "$1 $2", ["0[26]"]], ["(\\d{3})(\\d{3,6})", "$1 $2", ["0[13-57-9][0159]|8(?:03|4[17]|9[2-5])", "0[13-57-9][0159]|8(?:03|4[17]|9(?:2|3[04]|[45][0-4]))"]], ["(\\d{4})(\\d{2,6})", "$1 $2", ["0(?:[13-579][2-46-8]|8[236-8])"]], ["(\\d{4})(\\d{4})", "$1 $2", ["894"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[26]|5"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1(?:44|[679])|[378]"]], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[13-57-9][0159]|14"]], ["(\\d{2})(\\d{4})(\\d{5})", "$1 $2 $3", ["0[26]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, [["0669[0-79]\\d{1,6}|0(?:1(?:[0159]\\d|[27][1-5]|31|4[1-4]|6[1356]|8[2-57])|2\\d\\d|3(?:[0159]\\d|2[1-4]|3[12]|[48][1-6]|6[2-59]|7[1-7])|4(?:[0159]\\d|[23][1-9]|4[245]|6[1-5]|7[1-4]|81)|5(?:[0159]\\d|2[1-5]|3[2-6]|4[1-79]|6[4-6]|7[1-578]|8[3-8])|6(?:[0-57-9]\\d|6[0-8])|7(?:[0159]\\d|2[12]|3[1-7]|4[2-46]|6[13569]|7[13-6]|8[1-59])|8(?:[0159]\\d|2[3-578]|3[1-356]|[6-8][1-5])|9(?:[0159]\\d|[238][1-5]|4[12]|6[1-8]|7[1-6]))\\d{2,7}"], ["3[1-9]\\d{8}|3[2-9]\\d{7}", [9, 10]], ["80(?:0\\d{3}|3)\\d{3}", [6, 9]], ["(?:0878\\d{3}|89(?:2\\d|3[04]|4(?:[0-4]|[5-9]\\d\\d)|5[0-4]))\\d\\d|(?:1(?:44|6[346])|89(?:38|5[5-9]|9))\\d{6}", [6, 8, 9, 10]], ["1(?:78\\d|99)\\d{6}", [9, 10]], 0, 0, 0, ["55\\d{8}", [10]], ["84(?:[08]\\d{3}|[17])\\d{3}", [6, 9]]]], JE: ["44", "00", "1534\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([0-24-8]\\d{5})$|0", "1534$1", 0, 0, [["1534[0-24-8]\\d{5}"], ["7(?:(?:(?:50|82)9|937)\\d|7(?:00[378]|97[7-9]))\\d{5}"], ["80(?:07(?:35|81)|8901)\\d{4}"], ["(?:8(?:4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|90(?:066[59]|1810|71(?:07|55)))\\d{4}"], ["701511\\d{4}"], 0, ["(?:3(?:0(?:07(?:35|81)|8901)|3\\d{4}|4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|55\\d{4})\\d{4}"], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}"], ["56\\d{8}"]]], JM: ["1", "011", "(?:[58]\\d\\d|658|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "658|876"], JO: ["962", "00", "(?:(?:[2689]|7\\d)\\d|32|53)\\d{6}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2356]|87"], "(0$1)"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["70"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], JP: ["81", "010", "00[1-9]\\d{6,14}|[257-9]\\d{9}|(?:00|[1-9]\\d\\d)\\d{6}", [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], [["(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3", ["(?:12|57|99)0"], "0$1"], ["(\\d{4})(\\d)(\\d{4})", "$1-$2-$3", ["1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|499|5(?:76|97)|746|8(?:3[89]|47|51)|9(?:80|9[16])", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:76|97)9|7468|8(?:3(?:8[7-9]|96)|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:769|979[2-69])|7468|8(?:3(?:8[7-9]|96[2457-9])|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2-$3", ["[36]|4(?:2[09]|7[01])", "[36]|4(?:2(?:0|9[02-69])|7(?:0[019]|1))"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["1(?:1|5[45]|77|88|9[69])|2(?:2[1-37]|3[0-269]|4[59]|5|6[24]|7[1-358]|8[1369]|9[0-38])|4(?:[28][1-9]|3[0-57]|[45]|6[248]|7[2-579]|9[29])|5(?:2|3[0459]|4[0-369]|5[29]|8[02389]|9[0-389])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9[2-6])|8(?:2[124589]|3[26-9]|49|51|6|7[0-468]|8[68]|9[019])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9[1-489])", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2(?:[127]|3[014-9])|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9[19])|62|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|8[1-9]|9[29])|5(?:2|3(?:[045]|9[0-8])|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0-2469])|3(?:[29]|60)|49|51|6(?:[0-24]|36|5[0-3589]|7[23]|9[01459])|7[0-468]|8[68])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9(?:[1289]|3[34]|4[0178]))|(?:264|837)[016-9]|2(?:57|93)[015-9]|(?:25[0468]|422|838)[01]|(?:47[59]|59[89]|8(?:6[68]|9))[019]", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2[127]|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9(?:17|99))|6(?:2|4[016-9])|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|9[29])|5(?:2|3(?:[045]|9(?:[0-58]|6[4-9]|7[0-35689]))|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0169])|3(?:[29]|60|7(?:[017-9]|6[6-8]))|49|51|6(?:[0-24]|36[2-57-9]|5(?:[0-389]|5[23])|6(?:[01]|9[178])|7(?:2[2-468]|3[78])|9[0145])|7[0-468]|8[68])|9(?:4[15]|5[138]|7[156]|8[189]|9(?:[1289]|3(?:31|4[357])|4[0178]))|(?:8294|96)[1-3]|2(?:57|93)[015-9]|(?:223|8699)[014-9]|(?:25[0468]|422|838)[01]|(?:48|8292|9[23])[1-9]|(?:47[59]|59[89]|8(?:68|9))[019]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3", ["[14]|[289][2-9]|5[3-9]|7[2-4679]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["800"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[257-9]"], "0$1"]], "0", 0, "(000[259]\\d{6})$|(?:(?:003768)0?)|0", "$1"], KE: ["254", "000", "(?:[17]\\d\\d|900)\\d{6}|(?:2|80)0\\d{6,7}|[4-6]\\d{6,8}", [7, 8, 9, 10], [["(\\d{2})(\\d{5,7})", "$1 $2", ["[24-6]"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[17]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], KG: ["996", "00", "8\\d{9}|[235-9]\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["3(?:1[346]|[24-79])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235-79]|88"], "0$1"], ["(\\d{3})(\\d{3})(\\d)(\\d{2,3})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], KH: ["855", "00[14-9]", "1\\d{9}|[1-9]\\d{7,8}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], KI: ["686", "00", "(?:[37]\\d|6[0-79])\\d{6}|(?:[2-48]\\d|50)\\d{3}", [5, 8], 0, "0"], KM: ["269", "00", "[3478]\\d{6}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[3478]"]]]], KN: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "869$1", 0, "869"], KP: ["850", "00|99", "85\\d{6}|(?:19\\d|[2-7])\\d{7}", [8, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"]], "0"], KR: ["82", "00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))", "00[1-9]\\d{8,11}|(?:[12]|5\\d{3})\\d{7}|[13-6]\\d{9}|(?:[1-6]\\d|80)\\d{7}|[3-6]\\d{4,5}|(?:00|7)0\\d{8}", [5, 6, 8, 9, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{3,4})", "$1-$2", ["(?:3[1-3]|[46][1-4]|5[1-5])1"], "0$1"], ["(\\d{4})(\\d{4})", "$1-$2", ["1"]], ["(\\d)(\\d{3,4})(\\d{4})", "$1-$2-$3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60|8"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1-$2-$3", ["[1346]|5[1-5]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{2})(\\d{5})(\\d{4})", "$1-$2-$3", ["5"], "0$1"]], "0", 0, "0(8(?:[1-46-8]|5\\d\\d))?"], KW: ["965", "00", "18\\d{5}|(?:[2569]\\d|41)\\d{6}", [7, 8], [["(\\d{4})(\\d{3,4})", "$1 $2", ["[169]|2(?:[235]|4[1-35-9])|52"]], ["(\\d{3})(\\d{5})", "$1 $2", ["[245]"]]]], KY: ["1", "011", "(?:345|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "345$1", 0, "345"], KZ: ["7", "810", "(?:33622|8\\d{8})\\d{5}|[78]\\d{9}", [10, 14], 0, "8", 0, 0, 0, 0, "33|7", 0, "8~10"], LA: ["856", "00", "[23]\\d{9}|3\\d{8}|(?:[235-8]\\d|41)\\d{6}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2[13]|3[14]|[4-8]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["30[013-9]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0"], LB: ["961", "00", "[27-9]\\d{7}|[13-9]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[13-69]|7(?:[2-57]|62|8[0-7]|9[04-9])|8[02-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27-9]"]]], "0"], LC: ["1", "011", "(?:[58]\\d\\d|758|900)\\d{7}", [10], 0, "1", 0, "([2-8]\\d{6})$|1", "758$1", 0, "758"], LI: ["423", "00", "[68]\\d{8}|(?:[2378]\\d|90)\\d{5}", [7, 9], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2379]|8(?:0[09]|7)", "[2379]|8(?:0(?:02|9)|7)"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["69"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]], "0", 0, "(1001)|0"], LK: ["94", "00", "[1-9]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[1-689]"], "0$1"]], "0"], LR: ["231", "00", "(?:[25]\\d|33|77|88)\\d{7}|(?:2\\d|[4-6])\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[4-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23578]"], "0$1"]], "0"], LS: ["266", "00", "(?:[256]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2568]"]]]], LT: ["370", "00", "(?:[3469]\\d|52|[78]0)\\d{6}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["52[0-7]"], "(8-$1)", 1], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[7-9]"], "8 $1", 1], ["(\\d{2})(\\d{6})", "$1 $2", ["37|4(?:[15]|6[1-8])"], "(8-$1)", 1], ["(\\d{3})(\\d{5})", "$1 $2", ["[3-6]"], "(8-$1)", 1]], "8", 0, "[08]"], LU: ["352", "00", "35[013-9]\\d{4,8}|6\\d{8}|35\\d{2,4}|(?:[2457-9]\\d|3[0-46-9])\\d{2,9}", [4, 5, 6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{3})", "$1 $2", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["20[2-689]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4", ["2(?:[0367]|4[3-8])"]], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["80[01]|90[015]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["20"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4 $5", ["2(?:[0367]|4[3-8])"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,5})", "$1 $2 $3 $4", ["[3-57]|8[13-9]|9(?:0[89]|[2-579])|(?:2|80)[2-9]"]]], 0, 0, "(15(?:0[06]|1[12]|[35]5|4[04]|6[26]|77|88|99)\\d)"], LV: ["371", "00", "(?:[268]\\d|90)\\d{6}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[269]|8[01]"]]]], LY: ["218", "00", "[2-9]\\d{8}", [9], [["(\\d{2})(\\d{7})", "$1-$2", ["[2-9]"], "0$1"]], "0"], MA: ["212", "00", "[5-8]\\d{8}", [9], [["(\\d{5})(\\d{4})", "$1-$2", ["5(?:29|38)", "5(?:29[1289]|389)", "529(?:1[1-46-9]|2[013-8]|90)|5(?:298|389)[0-46-9]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5[45]"], "0$1"], ["(\\d{4})(\\d{5})", "$1-$2", ["5(?:2[2-489]|3[5-9]|9)|892", "5(?:2(?:[2-49]|8[235-9])|3[5-9]|9)|892"], "0$1"], ["(\\d{2})(\\d{7})", "$1-$2", ["8"], "0$1"], ["(\\d{3})(\\d{6})", "$1-$2", ["[5-7]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["5293[01]\\d{4}|5(?:2(?:[0-25-7]\\d|3[1-578]|4[02-46-8]|8[0235-7]|9[0-289])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[0189]|9[3-9])|(?:4[067]|5[03])\\d)\\d{5}"], ["(?:6(?:[0-79]\\d|8[0-247-9])|7(?:[017]\\d|2[0-2]|6[0-8]|8[0-3]))\\d{6}"], ["80\\d{7}"], ["89\\d{7}"], 0, 0, 0, 0, ["592(?:4[0-2]|93)\\d{4}"]]], MC: ["377", "00", "(?:[3489]|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[389]"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["6"], "0$1"]], "0"], MD: ["373", "00", "(?:[235-7]\\d|[89]0)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["22|3"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[25-7]"], "0$1"]], "0"], ME: ["382", "00", "(?:20|[3-79]\\d)\\d{6}|80\\d{6,7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "0$1"]], "0"], MF: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:0[079]|[14]3|[27][79]|3[03-7]|5[0-268]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], MG: ["261", "00", "[23]\\d{8}", [9], [["(\\d{2})(\\d{2})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0", 0, "([24-9]\\d{6})$|0", "20$1"], MH: ["692", "011", "329\\d{4}|(?:[256]\\d|45)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-6]"]]], "1"], MK: ["389", "00", "[2-578]\\d{7}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2|34[47]|4(?:[37]7|5[47]|64)"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[347]"], "0$1"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[58]"], "0$1"]], "0"], ML: ["223", "00", "[24-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-9]"]]]], MM: ["95", "00", "1\\d{5,7}|95\\d{6}|(?:[4-7]|9[0-46-9])\\d{6,8}|(?:2|8\\d)\\d{5,8}", [6, 7, 8, 9, 10], [["(\\d)(\\d{2})(\\d{3})", "$1 $2 $3", ["16|2"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["[45]|6(?:0[23]|[1-689]|7[235-7])|7(?:[0-4]|5[2-7])|8[1-6]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[4-7]|8[1-35]"], "0$1"], ["(\\d)(\\d{3})(\\d{4,6})", "$1 $2 $3", ["9(?:2[0-4]|[35-9]|4[137-9])"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["92"], "0$1"], ["(\\d)(\\d{5})(\\d{4})", "$1 $2 $3", ["9"], "0$1"]], "0"], MN: ["976", "001", "[12]\\d{7,9}|[5-9]\\d{7}", [8, 9, 10], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[12]1"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[5-9]"]], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[12]2[1-3]"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["[12](?:27|3[2-8]|4[2-68]|5[1-4689])", "[12](?:27|3[2-8]|4[2-68]|5[1-4689])[0-3]"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["[12]"], "0$1"]], "0"], MO: ["853", "00", "0800\\d{3}|(?:28|[68]\\d)\\d{6}", [7, 8], [["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[268]"]]]], MP: ["1", "011", "[58]\\d{9}|(?:67|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "670$1", 0, "670"], MQ: ["596", "00", "596\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], MR: ["222", "00", "(?:[2-4]\\d\\d|800)\\d{5}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-48]"]]]], MS: ["1", "011", "(?:[58]\\d\\d|664|900)\\d{7}", [10], 0, "1", 0, "([34]\\d{6})$|1", "664$1", 0, "664"], MT: ["356", "00", "3550\\d{4}|(?:[2579]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2357-9]"]]]], MU: ["230", "0(?:0|[24-7]0|3[03])", "(?:[57]|8\\d\\d)\\d{7}|[2-468]\\d{6}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-46]|8[013]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[57]"]], ["(\\d{5})(\\d{5})", "$1 $2", ["8"]]], 0, 0, 0, 0, 0, 0, 0, "020"], MV: ["960", "0(?:0|19)", "(?:800|9[0-57-9]\\d)\\d{7}|[34679]\\d{6}", [7, 10], [["(\\d{3})(\\d{4})", "$1-$2", ["[34679]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], MW: ["265", "00", "(?:[1289]\\d|31|77)\\d{7}|1\\d{6}", [7, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["1[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[137-9]"], "0$1"]], "0"], MX: ["52", "0[09]", "1(?:(?:[27]2|44|99)[1-9]|65[0-689])\\d{7}|(?:1(?:[01]\\d|2[13-9]|[35][1-9]|4[0-35-9]|6[0-46-9]|7[013-9]|8[1-79]|9[1-8])|[2-9]\\d)\\d{8}", [10, 11], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["33|5[56]|81"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-9]"], 0, 1], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 $3 $4", ["1(?:33|5[56]|81)"], 0, 1], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 $3 $4", ["1"], 0, 1]], "01", 0, "0(?:[12]|4[45])|1", 0, 0, 0, 0, "00"], MY: ["60", "00", "1\\d{8,9}|(?:3\\d|[4-9])\\d{7}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1-$2 $3", ["[4-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1-$2 $3", ["1(?:[02469]|[378][1-9]|53)|8", "1(?:[02469]|[37][1-9]|53|8(?:[1-46-9]|5[7-9]))|8"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2 $3", ["3"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3-$4", ["1(?:[367]|80)"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2 $3", ["15"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2 $3", ["1"], "0$1"]], "0"], MZ: ["258", "00", "(?:2|8\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2|8[2-79]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], NA: ["264", "00", "[68]\\d{7,8}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["87"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], NC: ["687", "00", "(?:050|[2-57-9]\\d\\d)\\d{3}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1.$2.$3", ["[02-57-9]"]]]], NE: ["227", "00", "[027-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["08"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[089]|2[013]|7[047]"]]]], NF: ["672", "00", "[13]\\d{5}", [6], [["(\\d{2})(\\d{4})", "$1 $2", ["1[0-3]"]], ["(\\d)(\\d{5})", "$1 $2", ["[13]"]]], 0, 0, "([0-258]\\d{4})$", "3$1"], NG: ["234", "009", "(?:[124-7]|9\\d{3})\\d{6}|[1-9]\\d{7}|[78]\\d{9,13}", [7, 8, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["78"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]|9(?:0[3-9]|[1-9])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[3-7]|8[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[7-9]"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{3})(\\d{5})(\\d{5,6})", "$1 $2 $3", ["[78]"], "0$1"]], "0"], NI: ["505", "00", "(?:1800|[25-8]\\d{3})\\d{4}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[125-8]"]]]], NL: ["31", "00", "(?:[124-7]\\d\\d|3(?:[02-9]\\d|1[0-8]))\\d{6}|8\\d{6,9}|9\\d{6,10}|1\\d{4,5}", [5, 6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{4,7})", "$1 $2", ["[89]0"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["66"], "0$1"], ["(\\d)(\\d{8})", "$1 $2", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["1[16-8]|2[259]|3[124]|4[17-9]|5[124679]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-578]|91"], "0$1"], ["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3", ["9"], "0$1"]], "0"], NO: ["47", "00", "(?:0|[2-9]\\d{3})\\d{4}", [5, 8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]"]]], 0, 0, 0, 0, 0, "[02-689]|7[0-8]"], NP: ["977", "00", "(?:1\\d|9)\\d{9}|[1-9]\\d{7}", [8, 10, 11], [["(\\d)(\\d{7})", "$1-$2", ["1[2-6]"], "0$1"], ["(\\d{2})(\\d{6})", "$1-$2", ["1[01]|[2-8]|9(?:[1-59]|[67][2-6])"], "0$1"], ["(\\d{3})(\\d{7})", "$1-$2", ["9"]]], "0"], NR: ["674", "00", "(?:444|(?:55|8\\d)\\d|666)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-68]"]]]], NU: ["683", "00", "(?:[47]|888\\d)\\d{3}", [4, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["8"]]]], NZ: ["64", "0(?:0|161)", "[1289]\\d{9}|50\\d{5}(?:\\d{2,3})?|[27-9]\\d{7,8}|(?:[34]\\d|6[0-35-9])\\d{6}|8\\d{4,6}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,8})", "$1 $2", ["8[1-79]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["50[036-8]|8|90", "50(?:[0367]|88)|8|90"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["24|[346]|7[2-57-9]|9[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:10|74)|[589]"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1|2[028]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,5})", "$1 $2 $3", ["2(?:[169]|7[0-35-9])|7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "00"], OM: ["968", "00", "(?:1505|[279]\\d{3}|500)\\d{4}|800\\d{5,6}", [7, 8, 9], [["(\\d{3})(\\d{4,6})", "$1 $2", ["[58]"]], ["(\\d{2})(\\d{6})", "$1 $2", ["2"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[179]"]]]], PA: ["507", "00", "(?:00800|8\\d{3})\\d{6}|[68]\\d{7}|[1-57-9]\\d{6}", [7, 8, 10, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[1-57-9]"]], ["(\\d{4})(\\d{4})", "$1-$2", ["[68]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]]], PE: ["51", "00|19(?:1[124]|77|90)00", "(?:[14-8]|9\\d)\\d{7}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["80"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["1"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[4-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"]]], "0", 0, 0, 0, 0, 0, 0, "00", " Anexo "], PF: ["689", "00", "4\\d{5}(?:\\d{2})?|8\\d{7,8}", [6, 8, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["44"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4|8[7-9]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], PG: ["675", "00|140[1-3]", "(?:180|[78]\\d{3})\\d{4}|(?:[2-589]\\d|64)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["18|[2-69]|85"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[78]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], PH: ["63", "00", "(?:[2-7]|9\\d)\\d{8}|2\\d{5}|(?:1800|8)\\d{7,9}", [6, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{5})", "$1 $2", ["2"], "(0$1)"], ["(\\d{4})(\\d{4,6})", "$1 $2", ["3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|544|88[245]|(?:52|64|86)2", "3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))"], "(0$1)"], ["(\\d{5})(\\d{4})", "$1 $2", ["346|4(?:27|9[35])|883", "3469|4(?:279|9(?:30|56))|8834"], "(0$1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|8[2-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{4})(\\d{1,2})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["1"]]], "0"], PK: ["92", "00", "122\\d{6}|[24-8]\\d{10,11}|9(?:[013-9]\\d{8,10}|2(?:[01]\\d\\d|2(?:[06-8]\\d|1[01]))\\d{7})|(?:[2-8]\\d{3}|92(?:[0-7]\\d|8[1-9]))\\d{6}|[24-9]\\d{8}|[89]\\d{7}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,7})", "$1 $2 $3", ["[89]0"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["1"]], ["(\\d{3})(\\d{6,7})", "$1 $2", ["2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:2[2-8]|3[27-9]|4[2-6]|6[3569]|9[25-8])", "9(?:2[3-8]|98)|(?:2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:22|3[27-9]|4[2-6]|6[3569]|9[25-7]))[2-9]"], "(0$1)"], ["(\\d{2})(\\d{7,8})", "$1 $2", ["(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]"], "(0$1)"], ["(\\d{5})(\\d{5})", "$1 $2", ["58"], "(0$1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[24-9]"], "(0$1)"]], "0"], PL: ["48", "00", "(?:6|8\\d\\d)\\d{7}|[1-9]\\d{6}(?:\\d{2})?|[26]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{5})", "$1", ["19"]], ["(\\d{3})(\\d{3})", "$1 $2", ["11|20|64"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])1", "(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])19"]], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["64"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["21|39|45|5[0137]|6[0469]|7[02389]|8(?:0[14]|8)"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[2-8]|[2-7]|8[1-79]|9[145]"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["8"]]]], PM: ["508", "00", "[45]\\d{5}|(?:708|80\\d)\\d{6}", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[45]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], PR: ["1", "011", "(?:[589]\\d\\d|787)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "787|939"], PS: ["970", "00", "[2489]2\\d{6}|(?:1\\d|5)\\d{8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2489]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], PT: ["351", "00", "1693\\d{5}|(?:[26-9]\\d|30)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["2[12]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["16|[236-9]"]]]], PW: ["680", "01[12]", "(?:[24-8]\\d\\d|345|900)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], PY: ["595", "00", "59\\d{4,6}|9\\d{5,10}|(?:[2-46-8]\\d|5[0-8])\\d{4,7}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3,6})", "$1 $2", ["[2-9]0"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[26]1|3[289]|4[1246-8]|7[1-3]|8[1-36]"], "(0$1)"], ["(\\d{3})(\\d{4,5})", "$1 $2", ["2[279]|3[13-5]|4[359]|5|6(?:[34]|7[1-46-8])|7[46-8]|85"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2[14-68]|3[26-9]|4[1246-8]|6(?:1|75)|7[1-35]|8[1-36]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["87"]], ["(\\d{3})(\\d{6})", "$1 $2", ["9(?:[5-79]|8[1-6])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"]]], "0"], QA: ["974", "00", "800\\d{4}|(?:2|800)\\d{6}|(?:0080|[3-7])\\d{7}", [7, 8, 9, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["2[16]|8"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[3-7]"]]]], RE: ["262", "00", "(?:26|[689]\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2689]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["26(?:2\\d\\d|3(?:0\\d|1[0-5]))\\d{4}"], ["69(?:2\\d\\d|3(?:[06][0-6]|1[013]|2[0-2]|3[0-39]|4\\d|5[0-5]|7[0-27]|8[0-8]|9[0-479]))\\d{4}"], ["80\\d{7}"], ["89[1-37-9]\\d{6}"], 0, 0, 0, 0, ["9(?:399[0-3]|479[0-5]|76(?:2[27]|3[0-37]))\\d{4}"], ["8(?:1[019]|2[0156]|84|90)\\d{6}"]]], RO: ["40", "00", "(?:[2378]\\d|90)\\d{7}|[23]\\d{5}", [6, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["2[3-6]", "2[3-6]\\d9"], "0$1"], ["(\\d{2})(\\d{4})", "$1 $2", ["219|31"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23]1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[237-9]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, " int "], RS: ["381", "00", "38[02-9]\\d{6,9}|6\\d{7,9}|90\\d{4,8}|38\\d{5,6}|(?:7\\d\\d|800)\\d{3,9}|(?:[12]\\d|3[0-79])\\d{5,10}", [6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{3,9})", "$1 $2", ["(?:2[389]|39)0|[7-9]"], "0$1"], ["(\\d{2})(\\d{5,10})", "$1 $2", ["[1-36]"], "0$1"]], "0"], RU: ["7", "810", "8\\d{13}|[347-9]\\d{9}", [10, 14], [["(\\d{4})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-8]|2[1-9])", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:1[23]|[2-9]2))", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:13[03-69]|62[013-9]))|72[1-57-9]2"], "8 ($1)", 1], ["(\\d{5})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-68]|2[1-9])", "7(?:1(?:[06][3-6]|[18]|2[35]|[3-5][3-5])|2(?:[13][3-5]|[24-689]|7[457]))", "7(?:1(?:0(?:[356]|4[023])|[18]|2(?:3[013-9]|5)|3[45]|43[013-79]|5(?:3[1-8]|4[1-7]|5)|6(?:3[0-35-9]|[4-6]))|2(?:1(?:3[178]|[45])|[24-689]|3[35]|7[457]))|7(?:14|23)4[0-8]|71(?:33|45)[1-79]"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[349]|8(?:[02-7]|1[1-8])"], "8 ($1)", 1], ["(\\d{4})(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["8"], "8 ($1)"]], "8", 0, 0, 0, 0, "3[04-689]|[489]", 0, "8~10"], RW: ["250", "00", "(?:06|[27]\\d\\d|[89]00)\\d{6}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[7-9]"], "0$1"]], "0"], SA: ["966", "00", "92\\d{7}|(?:[15]|8\\d)\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["9"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["81"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]], "0"], SB: ["677", "0[01]", "(?:[1-6]|[7-9]\\d\\d)\\d{4}", [5, 7], [["(\\d{2})(\\d{5})", "$1 $2", ["7|8[4-9]|9(?:[1-8]|9[0-8])"]]]], SC: ["248", "010|0[0-2]", "800\\d{4}|(?:[249]\\d|64)\\d{5}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[246]|9[57]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], SD: ["249", "00", "[19]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], SE: ["46", "00", "(?:[26]\\d\\d|9)\\d{9}|[1-9]\\d{8}|[1-689]\\d{7}|[1-4689]\\d{6}|2\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["20"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{4})", "$1-$2", ["9(?:00|39|44|9)"], "0$1", 0, "$1 $2"], ["(\\d{2})(\\d{3})(\\d{2})", "$1-$2 $3", ["[12][136]|3[356]|4[0246]|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3"], ["(\\d)(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["1[2457]|2(?:[247-9]|5[0138])|3[0247-9]|4[1357-9]|5[0-35-9]|6(?:[125689]|4[02-57]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{2,3})(\\d{3})", "$1-$2 $3", ["9(?:00|39|44)"], "0$1", 0, "$1 $2 $3"], ["(\\d{2})(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["1[13689]|2[0136]|3[1356]|4[0246]|54|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["10|7"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["[13-5]|2(?:[247-9]|5[0138])|6(?:[124-689]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{3})", "$1-$2 $3 $4", ["9"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4 $5", ["[26]"], "0$1", 0, "$1 $2 $3 $4 $5"]], "0"], SG: ["65", "0[0-3]\\d", "(?:(?:1\\d|8)\\d\\d|7000)\\d{7}|[3689]\\d{7}", [8, 10, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[369]|8(?:0[1-8]|[1-9])"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{4})(\\d{4})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], SH: ["290", "00", "(?:[256]\\d|8)\\d{3}", [4, 5], 0, 0, 0, 0, 0, 0, "[256]"], SI: ["386", "00|10(?:22|66|88|99)", "[1-7]\\d{7}|8\\d{4,7}|90\\d{4,6}", [5, 6, 7, 8], [["(\\d{2})(\\d{3,6})", "$1 $2", ["8[09]|9"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["59|8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37][01]|4[0139]|51|6"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-57]"], "(0$1)"]], "0", 0, 0, 0, 0, 0, 0, "00"], SJ: ["47", "00", "0\\d{4}|(?:[489]\\d|79)\\d{6}", [5, 8], 0, 0, 0, 0, 0, 0, "79"], SK: ["421", "00", "[2-689]\\d{8}|[2-59]\\d{6}|[2-5]\\d{5}", [6, 7, 9], [["(\\d)(\\d{2})(\\d{3,4})", "$1 $2 $3", ["21"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["[3-5][1-8]1", "[3-5][1-8]1[67]"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1/$2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[689]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1/$2 $3 $4", ["[3-5]"], "0$1"]], "0"], SL: ["232", "00", "(?:[237-9]\\d|66)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[236-9]"], "(0$1)"]], "0"], SM: ["378", "00", "(?:0549|[5-7]\\d)\\d{6}", [8, 10], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-7]"]], ["(\\d{4})(\\d{6})", "$1 $2", ["0"]]], 0, 0, "([89]\\d{5})$", "0549$1"], SN: ["221", "00", "(?:[378]\\d|93)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[379]"]]]], SO: ["252", "00", "[346-9]\\d{8}|[12679]\\d{7}|[1-5]\\d{6}|[1348]\\d{5}", [6, 7, 8, 9], [["(\\d{2})(\\d{4})", "$1 $2", ["8[125]"]], ["(\\d{6})", "$1", ["[134]"]], ["(\\d)(\\d{6})", "$1 $2", ["[15]|2[0-79]|3[0-46-8]|4[0-7]"]], ["(\\d)(\\d{7})", "$1 $2", ["(?:2|90)4|[67]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[348]|64|79|90"]], ["(\\d{2})(\\d{5,7})", "$1 $2", ["1|28|6[0-35-9]|77|9[2-9]"]]], "0"], SR: ["597", "00", "(?:[2-5]|68|[78]\\d)\\d{5}", [6, 7], [["(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3", ["56"]], ["(\\d{3})(\\d{3})", "$1-$2", ["[2-5]"]], ["(\\d{3})(\\d{4})", "$1-$2", ["[6-8]"]]]], SS: ["211", "00", "[19]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], ST: ["239", "00", "(?:22|9\\d)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[29]"]]]], SV: ["503", "00", "[267]\\d{7}|[89]00\\d{4}(?:\\d{4})?", [7, 8, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[89]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[267]"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[89]"]]]], SX: ["1", "011", "7215\\d{6}|(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "(5\\d{6})$|1", "721$1", 0, "721"], SY: ["963", "00", "[1-39]\\d{8}|[1-5]\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-5]"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1", 1]], "0"], SZ: ["268", "00", "0800\\d{4}|(?:[237]\\d|900)\\d{6}", [8, 9], [["(\\d{4})(\\d{4})", "$1 $2", ["[0237]"]], ["(\\d{5})(\\d{4})", "$1 $2", ["9"]]]], TA: ["290", "00", "8\\d{3}", [4], 0, 0, 0, 0, 0, 0, "8"], TC: ["1", "011", "(?:[58]\\d\\d|649|900)\\d{7}", [10], 0, "1", 0, "([2-479]\\d{6})$|1", "649$1", 0, "649"], TD: ["235", "00|16", "(?:22|[69]\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2679]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], TG: ["228", "00", "[279]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[279]"]]]], TH: ["66", "00[1-9]", "(?:001800|[2-57]|[689]\\d)\\d{7}|1\\d{7,9}", [8, 9, 10, 13], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[13-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], TJ: ["992", "810", "[0-57-9]\\d{8}", [9], [["(\\d{6})(\\d)(\\d{2})", "$1 $2 $3", ["331", "3317"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["44[04]|[34]7"]], ["(\\d{4})(\\d)(\\d{4})", "$1 $2 $3", ["3[1-5]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[0-57-9]"]]], 0, 0, 0, 0, 0, 0, 0, "8~10"], TK: ["690", "00", "[2-47]\\d{3,6}", [4, 5, 6, 7]], TL: ["670", "00", "7\\d{7}|(?:[2-47]\\d|[89]0)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-489]|70"]], ["(\\d{4})(\\d{4})", "$1 $2", ["7"]]]], TM: ["993", "810", "[1-6]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["12"], "(8 $1)"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-5]"], "(8 $1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["6"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], TN: ["216", "00", "[2-57-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-57-9]"]]]], TO: ["676", "00", "(?:0800|(?:[5-8]\\d\\d|999)\\d)\\d{3}|[2-8]\\d{4}", [5, 7], [["(\\d{2})(\\d{3})", "$1-$2", ["[2-4]|50|6[09]|7[0-24-69]|8[05]"]], ["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[5-9]"]]]], TR: ["90", "00", "4\\d{6}|8\\d{11,12}|(?:[2-58]\\d\\d|900)\\d{7}", [7, 10, 12, 13], [["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["512|8[01589]|90"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5(?:[0-59]|61)", "5(?:[0-59]|616)", "5(?:[0-59]|6161)"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24][1-8]|3[1-9]"], "(0$1)", 1], ["(\\d{3})(\\d{3})(\\d{6,7})", "$1 $2 $3", ["80"], "0$1", 1]], "0"], TT: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-46-8]\\d{6})$|1", "868$1", 0, "868"], TV: ["688", "00", "(?:2|7\\d\\d|90)\\d{4}", [5, 6, 7], [["(\\d{2})(\\d{3})", "$1 $2", ["2"]], ["(\\d{2})(\\d{4})", "$1 $2", ["90"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], TW: ["886", "0(?:0[25-79]|19)", "[2-689]\\d{8}|7\\d{9,10}|[2-8]\\d{7}|2\\d{6}", [7, 8, 9, 10, 11], [["(\\d{2})(\\d)(\\d{4})", "$1 $2 $3", ["202"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[258]0"], "0$1"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[23568]|4(?:0[02-48]|[1-47-9])|7[1-9]", "[23568]|4(?:0[2-48]|[1-47-9])|(?:400|7)[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, "#"], TZ: ["255", "00[056]", "(?:[25-8]\\d|41|90)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[24]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["5"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[67]"], "0$1"]], "0"], UA: ["380", "00", "[89]\\d{9}|[3-9]\\d{8}", [9, 10], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[12][29]|(?:3[1-8]|4[136-8]|5[12457]|6[49])2|(?:56|65)[24]", "6[12][29]|(?:35|4[1378]|5[12457]|6[49])2|(?:56|65)[24]|(?:3[1-46-8]|46)2[013-9]"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6[0135689]|7[4-6])|6(?:[12][3-7]|[459])", "3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6(?:[015689]|3[02389])|7[4-6])|6(?:[12][3-7]|[459])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|89|9[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "0~0"], UG: ["256", "00[057]", "800\\d{6}|(?:[29]0|[347]\\d)\\d{7}", [9], [["(\\d{4})(\\d{5})", "$1 $2", ["202", "2024"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[27-9]|4(?:6[45]|[7-9])"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[34]"], "0$1"]], "0"], US: ["1", "011", "[2-9]\\d{9}|3\\d{6}", [10], [["(\\d{3})(\\d{4})", "$1-$2", ["310"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3", ["[2-9]"], 0, 1, "$1-$2-$3"]], "1", 0, 0, 0, 0, 0, [["5056(?:[0-35-9]\\d|4[46])\\d{4}|(?:4722|505[2-57-9]|983[29])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-589]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[01356]|3[0-24679]|4[167]|5[0-2]|6[014]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|[34][016]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-7]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}"], [""], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}"], ["900[2-9]\\d{6}"], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|5(?:00|2[125-9]|33|44|66|77|88)[2-9]\\d{6}"]]], UY: ["598", "0(?:0|1[3-9]\\d)", "(?:0004|4)\\d{9}|[1249]\\d{7}|(?:[49]\\d|80)\\d{5}", [7, 8, 10, 13], [["(\\d{3})(\\d{4})", "$1 $2", ["405|8|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[124]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["0"]]], "0", 0, 0, 0, 0, 0, 0, "00", " int. "], UZ: ["998", "810", "200\\d{6}|(?:33|[5-79]\\d|88)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[235-9]"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], VA: ["39", "00", "0\\d{5,10}|3[0-8]\\d{7,10}|55\\d{8}|8\\d{5}(?:\\d{2,4})?|(?:1\\d|39)\\d{7,8}", [6, 7, 8, 9, 10, 11], 0, 0, 0, 0, 0, 0, "06698"], VC: ["1", "011", "(?:[58]\\d\\d|784|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "784$1", 0, "784"], VE: ["58", "00", "[68]00\\d{7}|(?:[24]\\d|[59]0)\\d{8}", [10], [["(\\d{3})(\\d{7})", "$1-$2", ["[24-689]"], "0$1"]], "0"], VG: ["1", "011", "(?:284|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-578]\\d{6})$|1", "284$1", 0, "284"], VI: ["1", "011", "[58]\\d{9}|(?:34|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "340$1", 0, "340"], VN: ["84", "00", "[12]\\d{9}|[135-9]\\d{8}|[16]\\d{7}|[16-8]\\d{6}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["80"], "0$1", 1], ["(\\d{4})(\\d{4,6})", "$1 $2", ["1"], 0, 1], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["6"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[357-9]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["2[48]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["2"], "0$1", 1]], "0"], VU: ["678", "00", "[57-9]\\d{6}|(?:[238]\\d|48)\\d{3}", [5, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["[57-9]"]]]], WF: ["681", "00", "(?:40|72)\\d{4}|8\\d{5}(?:\\d{3})?", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[478]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], WS: ["685", "0", "(?:[2-6]|8\\d{5})\\d{4}|[78]\\d{6}|[68]\\d{5}", [5, 6, 7, 10], [["(\\d{5})", "$1", ["[2-5]|6[1-9]"]], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[68]"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], XK: ["383", "00", "[23]\\d{7,8}|(?:4\\d\\d|[89]00)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[23]"], "0$1"]], "0"], YE: ["967", "00", "(?:1|7\\d)\\d{7}|[1-7]\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-6]|7(?:[24-6]|8[0-7])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"], "0$1"]], "0"], YT: ["262", "00", "(?:80|9\\d)\\d{7}|(?:26|63)9\\d{6}", [9], 0, "0", 0, 0, 0, 0, 0, [["269(?:0[0-467]|5[0-4]|6\\d|[78]0)\\d{4}"], ["639(?:0[0-79]|1[019]|[267]\\d|3[09]|40|5[05-9]|9[04-79])\\d{4}"], ["80\\d{7}"], 0, 0, 0, 0, 0, ["9(?:(?:39|47)8[01]|769\\d)\\d{4}"]]], ZA: ["27", "00", "[1-79]\\d{8}|8\\d{4,9}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,4})", "$1 $2", ["8[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["8[1-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["860"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], ZM: ["260", "00", "800\\d{6}|(?:21|63|[79]\\d)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[28]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[79]"], "0$1"]], "0"], ZW: ["263", "00", "2(?:[0-57-9]\\d{6,8}|6[0-24-9]\\d{6,7})|[38]\\d{9}|[35-8]\\d{8}|[3-6]\\d{7}|[1-689]\\d{6}|[1-3569]\\d{5}|[1356]\\d{4}", [5, 6, 7, 8, 9, 10], [["(\\d{3})(\\d{3,5})", "$1 $2", ["2(?:0[45]|2[278]|[49]8)|3(?:[09]8|17)|6(?:[29]8|37|75)|[23][78]|(?:33|5[15]|6[68])[78]"], "0$1"], ["(\\d)(\\d{3})(\\d{2,4})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["80"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["24|8[13-59]|(?:2[05-79]|39|5[45]|6[15-8])2", "2(?:02[014]|4|[56]20|[79]2)|392|5(?:42|525)|6(?:[16-8]21|52[013])|8[13-59]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:1[39]|2[0157]|[378]|[56][14])|3(?:12|29)", "2(?:1[39]|2[0157]|[378]|[56][14])|3(?:123|29)"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["1|2(?:0[0-36-9]|12|29|[56])|3(?:1[0-689]|[24-6])|5(?:[0236-9]|1[2-4])|6(?:[013-59]|7[0-46-9])|(?:33|55|6[68])[0-69]|(?:29|3[09]|62)[0-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["29[013-9]|39|54"], "0$1"], ["(\\d{4})(\\d{3,5})", "$1 $2", ["(?:25|54)8", "258|5483"], "0$1"]], "0"] }, nonGeographic: { 800: ["800", 0, "(?:00|[1-9]\\d)\\d{6}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["\\d"]]], 0, 0, 0, 0, 0, 0, [0, 0, ["(?:00|[1-9]\\d)\\d{6}"]]], 808: ["808", 0, "[1-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[1-9]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, ["[1-9]\\d{7}"]]], 870: ["870", 0, "7\\d{11}|[35-7]\\d{8}", [9, 12], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[35-7]"]]], 0, 0, 0, 0, 0, 0, [0, ["(?:[356]|774[45])\\d{8}|7[6-8]\\d{7}"]]], 878: ["878", 0, "10\\d{10}", [12], [["(\\d{2})(\\d{5})(\\d{5})", "$1 $2 $3", ["1"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["10\\d{10}"]]], 881: ["881", 0, "[0-36-9]\\d{8}", [9], [["(\\d)(\\d{3})(\\d{5})", "$1 $2 $3", ["[0-36-9]"]]], 0, 0, 0, 0, 0, 0, [0, ["[0-36-9]\\d{8}"]]], 882: ["882", 0, "[13]\\d{6}(?:\\d{2,5})?|[19]\\d{7}|(?:[25]\\d\\d|4)\\d{7}(?:\\d{2})?", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5})", "$1 $2", ["16|342"]], ["(\\d{2})(\\d{6})", "$1 $2", ["49"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["1[36]|9"]], ["(\\d{2})(\\d{4})(\\d{3})", "$1 $2 $3", ["3[23]"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["16"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|23|3(?:[15]|4[57])|4|51"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["34"]], ["(\\d{2})(\\d{4,5})(\\d{5})", "$1 $2 $3", ["[1-35]"]]], 0, 0, 0, 0, 0, 0, [0, ["342\\d{4}|(?:337|49)\\d{6}|(?:3(?:2|47|7\\d{3})|50\\d{3})\\d{7}", [7, 8, 9, 10, 12]], 0, 0, 0, 0, 0, 0, ["1(?:3(?:0[0347]|[13][0139]|2[035]|4[013568]|6[0459]|7[06]|8[15-8]|9[0689])\\d{4}|6\\d{5,10})|(?:345\\d|9[89])\\d{6}|(?:10|2(?:3|85\\d)|3(?:[15]|[69]\\d\\d)|4[15-8]|51)\\d{8}"]]], 883: ["883", 0, "(?:[1-4]\\d|51)\\d{6,10}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,8})", "$1 $2 $3", ["[14]|2[24-689]|3[02-689]|51[24-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["510"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["21"]], ["(\\d{4})(\\d{4})(\\d{4})", "$1 $2 $3", ["51[13]"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[235]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["(?:2(?:00\\d\\d|10)|(?:370[1-9]|51\\d0)\\d)\\d{7}|51(?:00\\d{5}|[24-9]0\\d{4,7})|(?:1[013-79]|2[24-689]|3[02-689]|4[0-4])0\\d{5,9}"]]], 888: ["888", 0, "\\d{11}", [11], [["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3"]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, ["\\d{11}"]]], 979: ["979", 0, "[1359]\\d{8}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[1359]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, ["[1359]\\d{8}"]]] } };
-function pt(e2, a2) {
-  var t2 = Array.prototype.slice.call(a2);
-  return t2.push(ut), e2.apply(this, t2);
+const ur = { version: 4, country_calling_codes: { 1: ["US", "AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM", "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI"], 7: ["RU", "KZ"], 20: ["EG"], 27: ["ZA"], 30: ["GR"], 31: ["NL"], 32: ["BE"], 33: ["FR"], 34: ["ES"], 36: ["HU"], 39: ["IT", "VA"], 40: ["RO"], 41: ["CH"], 43: ["AT"], 44: ["GB", "GG", "IM", "JE"], 45: ["DK"], 46: ["SE"], 47: ["NO", "SJ"], 48: ["PL"], 49: ["DE"], 51: ["PE"], 52: ["MX"], 53: ["CU"], 54: ["AR"], 55: ["BR"], 56: ["CL"], 57: ["CO"], 58: ["VE"], 60: ["MY"], 61: ["AU", "CC", "CX"], 62: ["ID"], 63: ["PH"], 64: ["NZ"], 65: ["SG"], 66: ["TH"], 81: ["JP"], 82: ["KR"], 84: ["VN"], 86: ["CN"], 90: ["TR"], 91: ["IN"], 92: ["PK"], 93: ["AF"], 94: ["LK"], 95: ["MM"], 98: ["IR"], 211: ["SS"], 212: ["MA", "EH"], 213: ["DZ"], 216: ["TN"], 218: ["LY"], 220: ["GM"], 221: ["SN"], 222: ["MR"], 223: ["ML"], 224: ["GN"], 225: ["CI"], 226: ["BF"], 227: ["NE"], 228: ["TG"], 229: ["BJ"], 230: ["MU"], 231: ["LR"], 232: ["SL"], 233: ["GH"], 234: ["NG"], 235: ["TD"], 236: ["CF"], 237: ["CM"], 238: ["CV"], 239: ["ST"], 240: ["GQ"], 241: ["GA"], 242: ["CG"], 243: ["CD"], 244: ["AO"], 245: ["GW"], 246: ["IO"], 247: ["AC"], 248: ["SC"], 249: ["SD"], 250: ["RW"], 251: ["ET"], 252: ["SO"], 253: ["DJ"], 254: ["KE"], 255: ["TZ"], 256: ["UG"], 257: ["BI"], 258: ["MZ"], 260: ["ZM"], 261: ["MG"], 262: ["RE", "YT"], 263: ["ZW"], 264: ["NA"], 265: ["MW"], 266: ["LS"], 267: ["BW"], 268: ["SZ"], 269: ["KM"], 290: ["SH", "TA"], 291: ["ER"], 297: ["AW"], 298: ["FO"], 299: ["GL"], 350: ["GI"], 351: ["PT"], 352: ["LU"], 353: ["IE"], 354: ["IS"], 355: ["AL"], 356: ["MT"], 357: ["CY"], 358: ["FI", "AX"], 359: ["BG"], 370: ["LT"], 371: ["LV"], 372: ["EE"], 373: ["MD"], 374: ["AM"], 375: ["BY"], 376: ["AD"], 377: ["MC"], 378: ["SM"], 380: ["UA"], 381: ["RS"], 382: ["ME"], 383: ["XK"], 385: ["HR"], 386: ["SI"], 387: ["BA"], 389: ["MK"], 420: ["CZ"], 421: ["SK"], 423: ["LI"], 500: ["FK"], 501: ["BZ"], 502: ["GT"], 503: ["SV"], 504: ["HN"], 505: ["NI"], 506: ["CR"], 507: ["PA"], 508: ["PM"], 509: ["HT"], 590: ["GP", "BL", "MF"], 591: ["BO"], 592: ["GY"], 593: ["EC"], 594: ["GF"], 595: ["PY"], 596: ["MQ"], 597: ["SR"], 598: ["UY"], 599: ["CW", "BQ"], 670: ["TL"], 672: ["NF"], 673: ["BN"], 674: ["NR"], 675: ["PG"], 676: ["TO"], 677: ["SB"], 678: ["VU"], 679: ["FJ"], 680: ["PW"], 681: ["WF"], 682: ["CK"], 683: ["NU"], 685: ["WS"], 686: ["KI"], 687: ["NC"], 688: ["TV"], 689: ["PF"], 690: ["TK"], 691: ["FM"], 692: ["MH"], 850: ["KP"], 852: ["HK"], 853: ["MO"], 855: ["KH"], 856: ["LA"], 880: ["BD"], 886: ["TW"], 960: ["MV"], 961: ["LB"], 962: ["JO"], 963: ["SY"], 964: ["IQ"], 965: ["KW"], 966: ["SA"], 967: ["YE"], 968: ["OM"], 970: ["PS"], 971: ["AE"], 972: ["IL"], 973: ["BH"], 974: ["QA"], 975: ["BT"], 976: ["MN"], 977: ["NP"], 992: ["TJ"], 993: ["TM"], 994: ["AZ"], 995: ["GE"], 996: ["KG"], 998: ["UZ"] }, countries: { AC: ["247", "00", "(?:[01589]\\d|[46])\\d{4}", [5, 6]], AD: ["376", "00", "(?:1|6\\d)\\d{7}|[135-9]\\d{5}", [6, 8, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["[135-9]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["1"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]]], AE: ["971", "00", "(?:[4-7]\\d|9[0-689])\\d{7}|800\\d{2,9}|[2-4679]\\d{7}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{2,9})", "$1 $2", ["60|8"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[236]|[479][2-8]"], "0$1"], ["(\\d{3})(\\d)(\\d{5})", "$1 $2 $3", ["[479]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"]], "0"], AF: ["93", "00", "[2-7]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"]], "0"], AG: ["1", "011", "(?:268|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([457]\\d{6})$|1", "268$1", 0, "268"], AI: ["1", "011", "(?:264|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2457]\\d{6})$|1", "264$1", 0, "264"], AL: ["355", "00", "(?:700\\d\\d|900)\\d{3}|8\\d{5,7}|(?:[2-5]|6\\d)\\d{7}", [6, 7, 8, 9], [["(\\d{3})(\\d{3,4})", "$1 $2", ["80|9"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["4[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2358][2-5]|4"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["[23578]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["6"], "0$1"]], "0"], AM: ["374", "00", "(?:[1-489]\\d|55|60|77)\\d{6}", [8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[89]0"], "0 $1"], ["(\\d{3})(\\d{5})", "$1 $2", ["2|3[12]"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["1|47"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[3-9]"], "0$1"]], "0"], AO: ["244", "00", "[29]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[29]"]]]], AR: ["54", "00", "(?:11|[89]\\d\\d)\\d{8}|[2368]\\d{9}", [10, 11], [["(\\d{4})(\\d{2})(\\d{4})", "$1 $2-$3", ["2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9])", "2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8]))|2(?:2[24-9]|3[1-59]|47)", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5[56][46]|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|58|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|54(?:4|5[13-7]|6[89])|86[3-6]))|2(?:2[24-9]|3[1-59]|47)|38(?:[58][78]|7[378])|3(?:454|85[56])[46]|3(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["1"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[68]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2-$3", ["[23]"], "0$1", 1], ["(\\d)(\\d{4})(\\d{2})(\\d{4})", "$2 15-$3-$4", ["9(?:2[2-469]|3[3-578])", "9(?:2(?:2[024-9]|3[0-59]|47|6[245]|9[02-8])|3(?:3[28]|4[03-9]|5[2-46-8]|7[1-578]|8[2-9]))", "9(?:2(?:[23]02|6(?:[25]|4[6-8])|9(?:[02356]|4[02568]|72|8[23]))|3(?:3[28]|4(?:[04679]|3[5-8]|5[4-68]|8[2379])|5(?:[2467]|3[237]|8[2-5])|7[1-578]|8(?:[2469]|3[2578]|5[4-8]|7[36-8]|8[5-8])))|92(?:2[24-9]|3[1-59]|47)", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3[78]|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8[23])|7[1-578]|8(?:[2469]|3[278]|5(?:[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4[35][56]|58[45]|8(?:[38]5|54|76))[4-6]", "9(?:2(?:[23]02|6(?:[25]|4(?:64|[78]))|9(?:[02356]|4(?:[0268]|5[2-6])|72|8[23]))|3(?:3[28]|4(?:[04679]|3(?:5(?:4[0-25689]|[56])|[78])|5(?:4[46]|8)|8[2379])|5(?:[2467]|3[237]|8(?:[23]|4(?:[45]|60)|5(?:4[0-39]|5|64)))|7[1-578]|8(?:[2469]|3[278]|5(?:4(?:4|5[13-7]|6[89])|[56][46]|[78])|7[378]|8(?:6[3-6]|[78]))))|92(?:2[24-9]|3[1-59]|47)|93(?:4(?:36|5[56])|8(?:[38]5|76))[4-6]"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 15-$3-$4", ["91"], "0$1", 0, "$1 $2 $3-$4"], ["(\\d{3})(\\d{3})(\\d{5})", "$1-$2-$3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 15-$3-$4", ["9"], "0$1", 0, "$1 $2 $3-$4"]], "0", 0, "0?(?:(11|2(?:2(?:02?|[13]|2[13-79]|4[1-6]|5[2457]|6[124-8]|7[1-4]|8[13-6]|9[1267])|3(?:02?|1[467]|2[03-6]|3[13-8]|[49][2-6]|5[2-8]|[67])|4(?:7[3-578]|9)|6(?:[0136]|2[24-6]|4[6-8]?|5[15-8])|80|9(?:0[1-3]|[19]|2\\d|3[1-6]|4[02568]?|5[2-4]|6[2-46]|72?|8[23]?))|3(?:3(?:2[79]|6|8[2578])|4(?:0[0-24-9]|[12]|3[5-8]?|4[24-7]|5[4-68]?|6[02-9]|7[126]|8[2379]?|9[1-36-8])|5(?:1|2[1245]|3[237]?|4[1-46-9]|6[2-4]|7[1-6]|8[2-5]?)|6[24]|7(?:[069]|1[1568]|2[15]|3[145]|4[13]|5[14-8]|7[2-57]|8[126])|8(?:[01]|2[15-7]|3[2578]?|4[13-6]|5[4-8]?|6[1-357-9]|7[36-8]?|8[5-8]?|9[124])))15)?", "9$1"], AS: ["1", "011", "(?:[58]\\d\\d|684|900)\\d{7}", [10], 0, "1", 0, "([267]\\d{6})$|1", "684$1", 0, "684"], AT: ["43", "00", "1\\d{3,12}|2\\d{6,12}|43(?:(?:0\\d|5[02-9])\\d{3,9}|2\\d{4,5}|[3467]\\d{4}|8\\d{4,6}|9\\d{4,7})|5\\d{4,12}|8\\d{7,12}|9\\d{8,12}|(?:[367]\\d|4[0-24-9])\\d{4,11}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3,12})", "$1 $2", ["1(?:11|[2-9])"], "0$1"], ["(\\d{3})(\\d{2})", "$1 $2", ["517"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["5[079]"], "0$1"], ["(\\d{3})(\\d{3,10})", "$1 $2", ["(?:31|4)6|51|6(?:5[0-3579]|[6-9])|7(?:20|32|8)|[89]"], "0$1"], ["(\\d{4})(\\d{3,9})", "$1 $2", ["[2-467]|5[2-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,7})", "$1 $2 $3", ["5"], "0$1"]], "0"], AU: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{7}(?:\\d(?:\\d{2})?)?|8[0-24-9]\\d{7})|[2-478]\\d{8}|1\\d{4,7}", [5, 6, 7, 8, 9, 10, 12], [["(\\d{2})(\\d{3,4})", "$1 $2", ["16"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,4})", "$1 $2 $3", ["16"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["14|4"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[2378]"], "(0$1)"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:30|[89])"]]], "0", 0, "(183[12])|0", 0, 0, 0, [["(?:(?:2(?:[0-26-9]\\d|3[0-8]|4[02-9]|5[0135-9])|3(?:[0-3589]\\d|4[0-578]|6[1-9]|7[0-35-9])|7(?:[013-57-9]\\d|2[0-8]))\\d{3}|8(?:51(?:0(?:0[03-9]|[12479]\\d|3[2-9]|5[0-8]|6[1-9]|8[0-7])|1(?:[0235689]\\d|1[0-69]|4[0-589]|7[0-47-9])|2(?:0[0-79]|[18][13579]|2[14-9]|3[0-46-9]|[4-6]\\d|7[89]|9[0-4]))|(?:6[0-8]|[78]\\d)\\d{3}|9(?:[02-9]\\d{3}|1(?:(?:[0-58]\\d|6[0135-9])\\d|7(?:0[0-24-9]|[1-9]\\d)|9(?:[0-46-9]\\d|5[0-79])))))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, ["163\\d{2,6}", [5, 6, 7, 8, 9]], ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], AW: ["297", "00", "(?:[25-79]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[25-9]"]]]], AX: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "2\\d{4,9}|35\\d{4,5}|(?:60\\d\\d|800)\\d{4,6}|7\\d{5,11}|(?:[14]\\d|3[0-46-9]|50)\\d{4,8}", [5, 6, 7, 8, 9, 10, 11, 12], 0, "0", 0, 0, 0, 0, "18", 0, "00"], AZ: ["994", "00", "365\\d{6}|(?:[124579]\\d|60|88)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[28]|2|365|46", "1[28]|2|365[45]|46", "1[28]|2|365(?:4|5[02])|46"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[13-9]"], "0$1"]], "0"], BA: ["387", "00", "6\\d{8}|(?:[35689]\\d|49|70)\\d{6}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[1-3]|[7-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2-$3", ["[3-5]|6[56]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["6"], "0$1"]], "0"], BB: ["1", "011", "(?:246|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "246$1", 0, "246"], BD: ["880", "00", "[1-469]\\d{9}|8[0-79]\\d{7,8}|[2-79]\\d{8}|[2-9]\\d{7}|[3-9]\\d{6}|[57-9]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{4,6})", "$1-$2", ["31[5-8]|[459]1"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1-$2", ["3(?:[67]|8[013-9])|4(?:6[168]|7|[89][18])|5(?:6[128]|9)|6(?:[15]|28|4[14])|7[2-589]|8(?:0[014-9]|[12])|9[358]|(?:3[2-5]|4[235]|5[2-578]|6[0389]|76|8[3-7]|9[24])1|(?:44|66)[01346-9]"], "0$1"], ["(\\d{4})(\\d{3,6})", "$1-$2", ["[13-9]|22"], "0$1"], ["(\\d)(\\d{7,8})", "$1-$2", ["2"], "0$1"]], "0"], BE: ["32", "00", "4\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:80|9)0"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[239]|4[23]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[15-8]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4"], "0$1"]], "0"], BF: ["226", "00", "[025-7]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[025-7]"]]]], BG: ["359", "00", "00800\\d{7}|[2-7]\\d{6,7}|[89]\\d{6,8}|2\\d{5}", [6, 7, 8, 9, 12], [["(\\d)(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["43[1-6]|70[1-9]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[356]|4[124-7]|7[1-9]|8[1-6]|9[1-7]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:70|8)0"], "0$1"], ["(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3", ["43[1-7]|7"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[48]|9[08]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"]], "0"], BH: ["973", "00", "[136-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[13679]|8[02-4679]"]]]], BI: ["257", "00", "(?:[267]\\d|31)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2367]"]]]], BJ: ["229", "00", "[24-689]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-689]"]]]], BL: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:2[7-9]|3[3-7]|5[12]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], BM: ["1", "011", "(?:441|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "441$1", 0, "441"], BN: ["673", "00", "[2-578]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-578]"]]]], BO: ["591", "00(?:1\\d)?", "(?:[2-467]\\d\\d|8001)\\d{5}", [8, 9], [["(\\d)(\\d{7})", "$1 $2", ["[23]|4[46]"]], ["(\\d{8})", "$1", ["[67]"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["8"]]], "0", 0, "0(1\\d)?"], BQ: ["599", "00", "(?:[34]1|7\\d)\\d{5}", [7], 0, 0, 0, 0, 0, 0, "[347]"], BR: ["55", "00(?:1[245]|2[1-35]|31|4[13]|[56]5|99)", "(?:[1-46-9]\\d\\d|5(?:[0-46-9]\\d|5[0-46-9]))\\d{8}|[1-9]\\d{9}|[3589]\\d{8}|[34]\\d{7}", [8, 9, 10, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["300|4(?:0[02]|37)", "4(?:02|37)0|[34]00"]], ["(\\d{3})(\\d{2,3})(\\d{4})", "$1 $2 $3", ["(?:[358]|90)0"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2-$3", ["(?:[14689][1-9]|2[12478]|3[1-578]|5[13-5]|7[13-579])[2-57]"], "($1)"], ["(\\d{2})(\\d{5})(\\d{4})", "$1 $2-$3", ["[16][1-9]|[2-57-9]"], "($1)"]], "0", 0, "(?:0|90)(?:(1[245]|2[1-35]|31|4[13]|[56]5|99)(\\d{10,11}))?", "$2"], BS: ["1", "011", "(?:242|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([3-8]\\d{6})$|1", "242$1", 0, "242"], BT: ["975", "00", "[17]\\d{7}|[2-8]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-68]|7[246]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[67]|7"]]]], BW: ["267", "00", "(?:0800|(?:[37]|800)\\d)\\d{6}|(?:[2-6]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["90"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[24-6]|3[15-9]"]], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37]"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["8"]]]], BY: ["375", "810", "(?:[12]\\d|33|44|902)\\d{7}|8(?:0[0-79]\\d{5,7}|[1-7]\\d{9})|8(?:1[0-489]|[5-79]\\d)\\d{7}|8[1-79]\\d{6,7}|8[0-79]\\d{5}|8\\d{5}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3})", "$1 $2", ["800"], "8 $1"], ["(\\d{3})(\\d{2})(\\d{2,4})", "$1 $2 $3", ["800"], "8 $1"], ["(\\d{4})(\\d{2})(\\d{3})", "$1 $2-$3", ["1(?:5[169]|6[3-5]|7[179])|2(?:1[35]|2[34]|3[3-5])", "1(?:5[169]|6(?:3[1-3]|4|5[125])|7(?:1[3-9]|7[0-24-6]|9[2-7]))|2(?:1[35]|2[34]|3[3-5])"], "8 0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["1(?:[56]|7[467])|2[1-3]"], "8 0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-4]"], "8 0$1"], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[89]"], "8 $1"]], "8", 0, "0|80?", 0, 0, 0, 0, "8~10"], BZ: ["501", "00", "(?:0800\\d|[2-8])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-8]"]], ["(\\d)(\\d{3})(\\d{4})(\\d{3})", "$1-$2-$3-$4", ["0"]]]], CA: ["1", "011", "(?:[2-8]\\d|90)\\d{8}|3\\d{6}", [7, 10], 0, "1", 0, 0, 0, 0, 0, [["(?:2(?:04|[23]6|[48]9|50|63)|3(?:06|43|54|6[578]|82)|4(?:03|1[68]|[26]8|3[178]|50|74)|5(?:06|1[49]|48|79|8[147])|6(?:04|[18]3|39|47|72)|7(?:0[59]|42|53|78|8[02])|8(?:[06]7|19|25|73)|90[25])[2-9]\\d{6}", [10]], ["", [10]], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}", [10]], ["900[2-9]\\d{6}", [10]], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|(?:5(?:00|2[125-9]|33|44|66|77|88)|622)[2-9]\\d{6}", [10]], 0, ["310\\d{4}", [7]], 0, ["600[2-9]\\d{6}", [10]]]], CC: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:02|31|60|89)|1(?:18|76)|223)|91(?:0(?:1[0-2]|29)|1(?:[28]2|50|79)|2(?:10|64)|3(?:[06]8|22)|4[29]8|62\\d|70[23]|959))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CD: ["243", "00", "[189]\\d{8}|[1-68]\\d{6}", [7, 9], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[1-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], CF: ["236", "00", "(?:[27]\\d{3}|8776)\\d{4}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[278]"]]]], CG: ["242", "00", "222\\d{6}|(?:0\\d|80)\\d{7}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[02]"]]]], CH: ["41", "00", "8\\d{11}|[2-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8[047]|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]|81"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["8"], "0$1"]], "0"], CI: ["225", "00", "[02]\\d{9}", [10], [["(\\d{2})(\\d{2})(\\d)(\\d{5})", "$1 $2 $3 $4", ["2"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3 $4", ["0"]]]], CK: ["682", "00", "[2-578]\\d{4}", [5], [["(\\d{2})(\\d{3})", "$1 $2", ["[2-578]"]]]], CL: ["56", "(?:0|1(?:1[0-69]|2[02-5]|5[13-58]|69|7[0167]|8[018]))0", "12300\\d{6}|6\\d{9,10}|[2-9]\\d{8}", [9, 10, 11], [["(\\d{5})(\\d{4})", "$1 $2", ["219", "2196"], "($1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["44"]], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2[1-36]"], "($1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["9[2-9]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["3[2-5]|[47]|5[1-3578]|6[13-57]|8(?:0[1-9]|[1-9])"], "($1)"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["60|8"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{3})(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["60"]]]], CM: ["237", "00", "[26]\\d{8}|88\\d{6,7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["88"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[26]|88"]]]], CN: ["86", "00|1(?:[12]\\d|79)\\d\\d00", "1[127]\\d{8,9}|2\\d{9}(?:\\d{2})?|[12]\\d{6,7}|86\\d{6}|(?:1[03-689]\\d|6)\\d{7,9}|(?:[3-579]\\d|8[0-57-9])\\d{6,9}", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5,6})", "$1 $2", ["(?:10|2[0-57-9])[19]", "(?:10|2[0-57-9])(?:10|9[56])", "10(?:10|9[56])|2[0-57-9](?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["3(?:[157]|35|49|9[1-68])|4(?:[17]|2[179]|6[47-9]|8[23])|5(?:[1357]|2[37]|4[36]|6[1-46]|80)|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])|(?:4[35]|59|85)[1-9]", "(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[1-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))[19]", "85[23](?:10|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:10|9[56])", "85[23](?:100|95)|(?:3(?:[157]\\d|35|49|9[1-68])|4(?:[17]\\d|2[179]|[35][1-9]|6[47-9]|8[23])|5(?:[1357]\\d|2[37]|4[36]|6[1-46]|80|9[1-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]\\d|2[248]|3[014-9]|4[3-6]|6[023689])|8(?:1[236-8]|2[5-7]|[37]\\d|5[14-9]|8[36-8]|9[1-8])|9(?:0[1-3689]|1[1-79]|[379]\\d|4[13]|5[1-5]))(?:100|9[56])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["(?:4|80)0"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|2(?:[02-57-9]|1[1-9])", "10|2(?:[02-57-9]|1[1-9])", "10[0-79]|2(?:[02-57-9]|1[1-79])|(?:10|21)8(?:0[1-9]|[1-9])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["3(?:[3-59]|7[02-68])|4(?:[26-8]|3[3-9]|5[2-9])|5(?:3[03-9]|[468]|7[028]|9[2-46-9])|6|7(?:[0-247]|3[04-9]|5[0-4689]|6[2368])|8(?:[1-358]|9[1-7])|9(?:[013479]|5[1-5])|(?:[34]1|55|79|87)[02-9]"], "0$1", 1], ["(\\d{3})(\\d{7,8})", "$1 $2", ["9"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["80"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[3-578]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["1[3-9]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["[12]"], "0$1", 1]], "0", 0, "(1(?:[12]\\d|79)\\d\\d)|0", 0, 0, 0, 0, "00"], CO: ["57", "00(?:4(?:[14]4|56)|[579])", "(?:60\\d\\d|9101)\\d{6}|(?:1\\d|3)\\d{9}", [10, 11], [["(\\d{3})(\\d{7})", "$1 $2", ["6"], "($1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3[0-357]|91"]], ["(\\d)(\\d{3})(\\d{7})", "$1-$2-$3", ["1"], "0$1", 0, "$1 $2 $3"]], "0", 0, "0(4(?:[14]4|56)|[579])?"], CR: ["506", "00", "(?:8\\d|90)\\d{8}|(?:[24-8]\\d{3}|3005)\\d{4}", [8, 10], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[3-9]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["[89]"]]], 0, 0, "(19(?:0[0-2468]|1[09]|20|66|77|99))"], CU: ["53", "119", "[27]\\d{6,7}|[34]\\d{5,7}|63\\d{6}|(?:5|8\\d\\d)\\d{7}", [6, 7, 8, 10], [["(\\d{2})(\\d{4,6})", "$1 $2", ["2[1-4]|[34]"], "(0$1)"], ["(\\d)(\\d{6,7})", "$1 $2", ["7"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["[56]"], "0$1"], ["(\\d{3})(\\d{7})", "$1 $2", ["8"], "0$1"]], "0"], CV: ["238", "0", "(?:[2-59]\\d\\d|800)\\d{4}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2-589]"]]]], CW: ["599", "00", "(?:[34]1|60|(?:7|9\\d)\\d)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[3467]"]], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["9[4-8]"]]], 0, 0, 0, 0, 0, "[69]"], CX: ["61", "001[14-689]|14(?:1[14]|34|4[17]|[56]6|7[47]|88)0011", "1(?:[0-79]\\d{8}(?:\\d{2})?|8[0-24-9]\\d{7})|[148]\\d{8}|1\\d{5,7}", [6, 7, 8, 9, 10, 12], 0, "0", 0, "([59]\\d{7})$|0", "8$1", 0, 0, [["8(?:51(?:0(?:01|30|59|88)|1(?:17|46|75)|2(?:22|35))|91(?:00[6-9]|1(?:[28]1|49|78)|2(?:09|63)|3(?:12|26|75)|4(?:56|97)|64\\d|7(?:0[01]|1[0-2])|958))\\d{3}", [9]], ["4(?:(?:79|94)[01]|83[0-389])\\d{5}|4(?:[0-3]\\d|4[047-9]|5[0-25-9]|6[016-9]|7[02-8]|8[0-24-9]|9[0-37-9])\\d{6}", [9]], ["180(?:0\\d{3}|2)\\d{3}", [7, 10]], ["190[0-26]\\d{6}", [10]], 0, 0, 0, 0, ["14(?:5(?:1[0458]|[23][458])|71\\d)\\d{4}", [9]], ["13(?:00\\d{6}(?:\\d{2})?|45[0-4]\\d{3})|13\\d{4}", [6, 8, 10, 12]]], "0011"], CY: ["357", "00", "(?:[279]\\d|[58]0)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[257-9]"]]]], CZ: ["420", "00", "(?:[2-578]\\d|60)\\d{7}|9\\d{8,11}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]|9[015-7]"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["96"]], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]]], DE: ["49", "00", "[2579]\\d{5,14}|49(?:[34]0|69|8\\d)\\d\\d?|49(?:37|49|60|7[089]|9\\d)\\d{1,3}|49(?:2[024-9]|3[2-689]|7[1-7])\\d{1,8}|(?:1|[368]\\d|4[0-8])\\d{3,13}|49(?:[015]\\d|2[13]|31|[46][1-8])\\d{1,9}", [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [["(\\d{2})(\\d{3,13})", "$1 $2", ["3[02]|40|[68]9"], "0$1"], ["(\\d{3})(\\d{3,12})", "$1 $2", ["2(?:0[1-389]|1[124]|2[18]|3[14])|3(?:[35-9][15]|4[015])|906|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1", "2(?:0[1-389]|12[0-8])|3(?:[35-9][15]|4[015])|906|2(?:[13][14]|2[18])|(?:2[4-9]|4[2-9]|[579][1-9]|[68][1-8])1"], "0$1"], ["(\\d{4})(\\d{2,11})", "$1 $2", ["[24-6]|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]", "[24-6]|3(?:3(?:0[1-467]|2[127-9]|3[124578]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|4[13578]|9[1346])|5(?:0[14]|2[1-3589]|6[1-4]|7[13468]|8[13568])|6(?:2[1-489]|3[124-6]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|6|7[1467]|8[136])|9(?:0[12479]|2[1358]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))|70[2-8]|8(?:0[2-9]|[1-8])|90[7-9]|[79][1-9]|3[68]4[1347]|3(?:47|60)[1356]|3(?:3[46]|46|5[49])[1246]|3[4579]3[1357]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["138"], "0$1"], ["(\\d{5})(\\d{2,10})", "$1 $2", ["3"], "0$1"], ["(\\d{3})(\\d{5,11})", "$1 $2", ["181"], "0$1"], ["(\\d{3})(\\d)(\\d{4,10})", "$1 $2 $3", ["1(?:3|80)|9"], "0$1"], ["(\\d{3})(\\d{7,8})", "$1 $2", ["1[67]"], "0$1"], ["(\\d{3})(\\d{7,12})", "$1 $2", ["8"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["185", "1850", "18500"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["18[68]"], "0$1"], ["(\\d{5})(\\d{6})", "$1 $2", ["15[0568]"], "0$1"], ["(\\d{4})(\\d{7})", "$1 $2", ["15[1279]"], "0$1"], ["(\\d{3})(\\d{8})", "$1 $2", ["18"], "0$1"], ["(\\d{3})(\\d{2})(\\d{7,8})", "$1 $2 $3", ["1(?:6[023]|7)"], "0$1"], ["(\\d{4})(\\d{2})(\\d{7})", "$1 $2 $3", ["15[279]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{8})", "$1 $2 $3", ["15"], "0$1"]], "0"], DJ: ["253", "00", "(?:2\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[27]"]]]], DK: ["45", "00", "[2-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-9]"]]]], DM: ["1", "011", "(?:[58]\\d\\d|767|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "767$1", 0, "767"], DO: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "8001|8[024]9"], DZ: ["213", "00", "(?:[1-4]|[5-79]\\d|80)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["9"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-8]"], "0$1"]], "0"], EC: ["593", "00", "1\\d{9,10}|(?:[2-7]|9\\d)\\d{7}", [8, 9, 10, 11], [["(\\d)(\\d{3})(\\d{4})", "$1 $2-$3", ["[2-7]"], "(0$1)", 0, "$1-$2-$3"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1"]]], "0"], EE: ["372", "00", "8\\d{9}|[4578]\\d{7}|(?:[3-8]\\d|90)\\d{5}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[369]|4[3-8]|5(?:[0-2]|5[0-478]|6[45])|7[1-9]|88", "[369]|4[3-8]|5(?:[02]|1(?:[0-8]|95)|5[0-478]|6(?:4[0-4]|5[1-589]))|7[1-9]|88"]], ["(\\d{4})(\\d{3,4})", "$1 $2", ["[45]|8(?:00|[1-49])", "[45]|8(?:00[1-9]|[1-49])"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], EG: ["20", "00", "[189]\\d{8,9}|[24-6]\\d{8}|[135]\\d{7}", [8, 9, 10], [["(\\d)(\\d{7,8})", "$1 $2", ["[23]"], "0$1"], ["(\\d{2})(\\d{6,7})", "$1 $2", ["1[35]|[4-6]|8[2468]|9[235-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{8})", "$1 $2", ["1"], "0$1"]], "0"], EH: ["212", "00", "[5-8]\\d{8}", [9], 0, "0", 0, 0, 0, 0, "528[89]"], ER: ["291", "00", "[178]\\d{6}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[178]"], "0$1"]], "0"], ES: ["34", "00", "[5-9]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[89]00"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-9]"]]]], ET: ["251", "00", "(?:11|[2-579]\\d)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-579]"], "0$1"]], "0"], FI: ["358", "00|99(?:[01469]|5(?:[14]1|3[23]|5[59]|77|88|9[09]))", "[1-35689]\\d{4}|7\\d{10,11}|(?:[124-7]\\d|3[0-46-9])\\d{8}|[1-9]\\d{5,8}", [5, 6, 7, 8, 9, 10, 11, 12], [["(\\d)(\\d{4,9})", "$1 $2", ["[2568][1-8]|3(?:0[1-9]|[1-9])|9"], "0$1"], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[12]00|[368]|70[07-9]"], "0$1"], ["(\\d{2})(\\d{4,8})", "$1 $2", ["[1245]|7[135]"], "0$1"], ["(\\d{2})(\\d{6,10})", "$1 $2", ["7"], "0$1"]], "0", 0, 0, 0, 0, "1[03-79]|[2-9]", 0, "00"], FJ: ["679", "0(?:0|52)", "45\\d{5}|(?:0800\\d|[235-9])\\d{6}", [7, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[235-9]|45"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]]], 0, 0, 0, 0, 0, 0, 0, "00"], FK: ["500", "00", "[2-7]\\d{4}", [5]], FM: ["691", "00", "(?:[39]\\d\\d|820)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[389]"]]]], FO: ["298", "00", "[2-9]\\d{5}", [6], [["(\\d{6})", "$1", ["[2-9]"]]], 0, 0, "(10(?:01|[12]0|88))"], FR: ["33", "00", "[1-9]\\d{8}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0 $1"], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["[1-79]"], "0$1"]], "0"], GA: ["241", "00", "(?:[067]\\d|11)\\d{6}|[2-7]\\d{6}", [7, 8], [["(\\d)(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-7]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["11|[67]"], "0$1"]], 0, 0, "0(11\\d{6}|60\\d{6}|61\\d{6}|6[256]\\d{6}|7[467]\\d{6})", "$1"], GB: ["44", "00", "[1-357-9]\\d{9}|[18]\\d{8}|8\\d{6}", [7, 9, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["800", "8001", "80011", "800111", "8001111"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["845", "8454", "84546", "845464"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["800"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["1(?:38|5[23]|69|76|94)", "1(?:(?:38|69)7|5(?:24|39)|768|946)", "1(?:3873|5(?:242|39[4-6])|(?:697|768)[347]|9467)"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["1(?:[2-69][02-9]|[78])"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[25]|7(?:0|6[02-9])", "[25]|7(?:0|6(?:[03-9]|2[356]))"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1389]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["(?:1(?:1(?:3(?:[0-58]\\d\\d|73[0235])|4(?:[0-5]\\d\\d|69[7-9]|70[0-79])|(?:(?:5[0-26-9]|[78][0-49])\\d|6(?:[0-4]\\d|50))\\d)|(?:2(?:(?:0[024-9]|2[3-9]|3[3-79]|4[1-689]|[58][02-9]|6[0-47-9]|7[013-9]|9\\d)\\d|1(?:[0-7]\\d|8[0-2]))|(?:3(?:0\\d|1[0-8]|[25][02-9]|3[02-579]|[468][0-46-9]|7[1-35-79]|9[2-578])|4(?:0[03-9]|[137]\\d|[28][02-57-9]|4[02-69]|5[0-8]|[69][0-79])|5(?:0[1-35-9]|[16]\\d|2[024-9]|3[015689]|4[02-9]|5[03-9]|7[0-35-9]|8[0-468]|9[0-57-9])|6(?:0[034689]|1\\d|2[0-35689]|[38][013-9]|4[1-467]|5[0-69]|6[13-9]|7[0-8]|9[0-24578])|7(?:0[0246-9]|2\\d|3[0236-8]|4[03-9]|5[0-46-9]|6[013-9]|7[0-35-9]|8[024-9]|9[02-9])|8(?:0[35-9]|2[1-57-9]|3[02-578]|4[0-578]|5[124-9]|6[2-69]|7\\d|8[02-9]|9[02569])|9(?:0[02-589]|[18]\\d|2[02-689]|3[1-57-9]|4[2-9]|5[0-579]|6[2-47-9]|7[0-24578]|9[2-57]))\\d)\\d)|2(?:0[013478]|3[0189]|4[017]|8[0-46-9]|9[0-2])\\d{3})\\d{4}|1(?:2(?:0(?:46[1-4]|87[2-9])|545[1-79]|76(?:2\\d|3[1-8]|6[1-6])|9(?:7(?:2[0-4]|3[2-5])|8(?:2[2-8]|7[0-47-9]|8[3-5])))|3(?:6(?:38[2-5]|47[23])|8(?:47[04-9]|64[0157-9]))|4(?:044[1-7]|20(?:2[23]|8\\d)|6(?:0(?:30|5[2-57]|6[1-8]|7[2-8])|140)|8(?:052|87[1-3]))|5(?:2(?:4(?:3[2-79]|6\\d)|76\\d)|6(?:26[06-9]|686))|6(?:06(?:4\\d|7[4-79])|295[5-7]|35[34]\\d|47(?:24|61)|59(?:5[08]|6[67]|74)|9(?:55[0-4]|77[23]))|7(?:26(?:6[13-9]|7[0-7])|(?:442|688)\\d|50(?:2[0-3]|[3-68]2|76))|8(?:27[56]\\d|37(?:5[2-5]|8[239])|843[2-58])|9(?:0(?:0(?:6[1-8]|85)|52\\d)|3583|4(?:66[1-8]|9(?:2[01]|81))|63(?:23|3[1-4])|9561))\\d{3}", [9, 10]], ["7(?:457[0-57-9]|700[01]|911[028])\\d{5}|7(?:[1-3]\\d\\d|4(?:[0-46-9]\\d|5[0-689])|5(?:0[0-8]|[13-9]\\d|2[0-35-9])|7(?:0[1-9]|[1-7]\\d|8[02-9]|9[0-689])|8(?:[014-9]\\d|[23][0-8])|9(?:[024-9]\\d|1[02-9]|3[0-689]))\\d{6}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[2-49]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]], 0, " x"], GD: ["1", "011", "(?:473|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "473$1", 0, "473"], GE: ["995", "00", "(?:[3-57]\\d\\d|800)\\d{6}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["32"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[57]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[348]"], "0$1"]], "0"], GF: ["594", "00", "[56]94\\d{6}|(?:80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[56]|9[47]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[89]"], "0$1"]], "0"], GG: ["44", "00", "(?:1481|[357-9]\\d{3})\\d{6}|8\\d{6}(?:\\d{2})?", [7, 9, 10], 0, "0", 0, "([25-9]\\d{5})$|0", "1481$1", 0, 0, [["1481[25-9]\\d{5}", [10]], ["7(?:(?:781|839)\\d|911[17])\\d{5}", [10]], ["80[08]\\d{7}|800\\d{6}|8001111"], ["(?:8(?:4[2-5]|7[0-3])|9(?:[01]\\d|8[0-3]))\\d{7}|845464\\d", [7, 10]], ["70\\d{8}", [10]], 0, ["(?:3[0347]|55)\\d{8}", [10]], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}", [10]], ["56\\d{8}", [10]]]], GH: ["233", "00", "(?:[235]\\d{3}|800)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[235]"], "0$1"]], "0"], GI: ["350", "00", "(?:[25]\\d|60)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["2"]]]], GL: ["299", "00", "(?:19|[2-689]\\d|70)\\d{4}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["19|[2-9]"]]]], GM: ["220", "00", "[2-9]\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], GN: ["224", "00", "722\\d{6}|(?:3|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["3"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[67]"]]]], GP: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0", 0, 0, 0, 0, 0, [["590(?:0[1-68]|[14][0-24-9]|2[0-68]|3[1-9]|5[3-579]|[68][0-689]|7[08]|9\\d)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], GQ: ["240", "00", "222\\d{6}|(?:3\\d|55|[89]0)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235]"]], ["(\\d{3})(\\d{6})", "$1 $2", ["[89]"]]]], GR: ["30", "00", "5005000\\d{3}|8\\d{9,11}|(?:[269]\\d|70)\\d{8}", [10, 11, 12], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["21|7"]], ["(\\d{4})(\\d{6})", "$1 $2", ["2(?:2|3[2-57-9]|4[2-469]|5[2-59]|6[2-9]|7[2-69]|8[2-49])|5"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2689]"]], ["(\\d{3})(\\d{3,4})(\\d{5})", "$1 $2 $3", ["8"]]]], GT: ["502", "00", "(?:1\\d{3}|[2-7])\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], GU: ["1", "011", "(?:[58]\\d\\d|671|900)\\d{7}", [10], 0, "1", 0, "([3-9]\\d{6})$|1", "671$1", 0, "671"], GW: ["245", "00", "[49]\\d{8}|4\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["40"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"]]]], GY: ["592", "001", "9008\\d{3}|(?:[2-467]\\d\\d|510|862)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], HK: ["852", "00(?:30|5[09]|[126-9]?)", "8[0-46-9]\\d{6,7}|9\\d{4,7}|(?:[2-7]|9\\d{3})\\d{7}", [5, 6, 7, 8, 9, 11], [["(\\d{3})(\\d{2,5})", "$1 $2", ["900", "9003"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[2-7]|8[1-4]|9(?:0[1-9]|[1-8])"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{3})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["9"]]], 0, 0, 0, 0, 0, 0, 0, "00"], HN: ["504", "00", "8\\d{10}|[237-9]\\d{7}", [8, 11], [["(\\d{4})(\\d{4})", "$1-$2", ["[237-9]"]]]], HR: ["385", "00", "(?:[24-69]\\d|3[0-79])\\d{7}|80\\d{5,7}|[1-79]\\d{7}|6\\d{5,6}", [6, 7, 8, 9], [["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["6[01]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{4})(\\d{3})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-5]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"]], "0"], HT: ["509", "00", "(?:[2-489]\\d|55)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[2-589]"]]]], HU: ["36", "00", "[235-7]\\d{8}|[1-9]\\d{7}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27][2-9]|3[2-7]|4[24-9]|5[2-79]|6|8[2-57-9]|9[2-69]"], "(06 $1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "06 $1"]], "06"], ID: ["62", "00[89]", "(?:(?:00[1-9]|8\\d)\\d{4}|[1-36])\\d{6}|00\\d{10}|[1-9]\\d{8,10}|[2-9]\\d{7}", [7, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["15"]], ["(\\d{2})(\\d{5,9})", "$1 $2", ["2[124]|[36]1"], "(0$1)"], ["(\\d{3})(\\d{5,7})", "$1 $2", ["800"], "0$1"], ["(\\d{3})(\\d{5,8})", "$1 $2", ["[2-79]"], "(0$1)"], ["(\\d{3})(\\d{3,4})(\\d{3})", "$1-$2-$3", ["8[1-35-9]"], "0$1"], ["(\\d{3})(\\d{6,8})", "$1 $2", ["1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["804"], "0$1"], ["(\\d{3})(\\d)(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["80"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1-$2-$3", ["8"], "0$1"]], "0"], IE: ["353", "00", "(?:1\\d|[2569])\\d{6,8}|4\\d{6,9}|7\\d{8}|8\\d{8,9}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["2[24-9]|47|58|6[237-9]|9[35-9]"], "(0$1)"], ["(\\d{3})(\\d{5})", "$1 $2", ["[45]0"], "(0$1)"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2569]|4[1-69]|7[14]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["70"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["81"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["4"], "(0$1)"], ["(\\d{2})(\\d)(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], IL: ["972", "0(?:0|1[2-9])", "1\\d{6}(?:\\d{3,5})?|[57]\\d{8}|[1-489]\\d{7}", [7, 8, 9, 10, 11, 12], [["(\\d{4})(\\d{3})", "$1-$2", ["125"]], ["(\\d{4})(\\d{2})(\\d{2})", "$1-$2-$3", ["121"]], ["(\\d)(\\d{3})(\\d{4})", "$1-$2-$3", ["[2-489]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1-$2-$3", ["12"]], ["(\\d{4})(\\d{6})", "$1-$2", ["159"]], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3-$4", ["1[7-9]"]], ["(\\d{3})(\\d{1,2})(\\d{3})(\\d{4})", "$1-$2 $3-$4", ["15"]]], "0"], IM: ["44", "00", "1624\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([25-8]\\d{5})$|0", "1624$1", 0, "74576|(?:16|7[56])24"], IN: ["91", "00", "(?:000800|[2-9]\\d\\d)\\d{7}|1\\d{7,12}", [8, 9, 10, 11, 12, 13], [["(\\d{8})", "$1", ["5(?:0|2[23]|3[03]|[67]1|88)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|888)", "5(?:0|2(?:21|3)|3(?:0|3[23])|616|717|8888)"], 0, 1], ["(\\d{4})(\\d{4,5})", "$1 $2", ["180", "1800"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["140"], 0, 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["11|2[02]|33|4[04]|79[1-7]|80[2-46]", "11|2[02]|33|4[04]|79(?:[1-6]|7[19])|80(?:[2-4]|6[0-589])", "11|2[02]|33|4[04]|79(?:[124-6]|3(?:[02-9]|1[0-24-9])|7(?:1|9[1-6]))|80(?:[2-4]|6[0-589])"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1(?:2[0-249]|3[0-25]|4[145]|[68]|7[1257])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|5[12]|[78]1)|6(?:12|[2-4]1|5[17]|6[13]|80)|7(?:12|3[134]|4[47]|61|88)|8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)|(?:43|59|75)[15]|(?:1[59]|29|67|72)[14]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|674|7(?:(?:2[14]|3[34]|5[15])[2-6]|61[346]|88[0-8])|8(?:70[2-6]|84[235-7]|91[3-7])|(?:1(?:29|60|8[06])|261|552|6(?:12|[2-47]1|5[17]|6[13]|80)|7(?:12|31|4[47])|8(?:16|2[014]|3[126]|6[136]|7[78]|83))[2-7]", "1(?:2[0-24]|3[0-25]|4[145]|[59][14]|6[1-9]|7[1257]|8[1-57-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[058]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[0-26-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:1[025]|22|[36][25]|4[28]|[578]1|9[15])|6(?:12(?:[2-6]|7[0-8])|74[2-7])|7(?:(?:2[14]|5[15])[2-6]|3171|61[346]|88(?:[2-7]|82))|8(?:70[2-6]|84(?:[2356]|7[19])|91(?:[3-6]|7[19]))|73[134][2-6]|(?:74[47]|8(?:16|2[014]|3[126]|6[136]|7[78]|83))(?:[2-6]|7[19])|(?:1(?:29|60|8[06])|261|552|6(?:[2-4]1|5[17]|6[13]|7(?:1|4[0189])|80)|7(?:12|88[01]))[2-7]"], "0$1", 1], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2[2457-9]|3[2-5]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1[013-9]|28|3[129]|4[1-35689]|5[29]|6[02-5]|70)|807", "1(?:[2-479]|5[0235-9])|[2-5]|6(?:1[1358]|2(?:[2457]|84|95)|3(?:[2-4]|55)|4[235-7]|5[2-689]|6[24578]|7[235689]|8[1-6])|7(?:1(?:[013-8]|9[6-9])|28[6-8]|3(?:17|2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4|5[0-367])|70[13-7])|807[19]", "1(?:[2-479]|5(?:[0236-9]|5[013-9]))|[2-5]|6(?:2(?:84|95)|355|83)|73179|807(?:1|9[1-3])|(?:1552|6(?:1[1358]|2[2457]|3[2-4]|4[235-7]|5[2-689]|6[24578]|7[235689]|8[124-6])\\d|7(?:1(?:[013-8]\\d|9[6-9])|28[6-8]|3(?:2[0-49]|9[2-57])|4(?:1[2-4]|[29][0-7]|3[0-8]|[56]\\d|8[0-24-7])|5(?:2[1-3]|9[0-6])|6(?:0[5689]|2[5-9]|3[02-8]|4\\d|5[0-367])|70[13-7]))[2-7]"], "0$1", 1], ["(\\d{5})(\\d{5})", "$1 $2", ["[6-9]"], "0$1", 1], ["(\\d{4})(\\d{2,4})(\\d{4})", "$1 $2 $3", ["1(?:6|8[06])", "1(?:6|8[06]0)"], 0, 1], ["(\\d{4})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["18"], 0, 1]], "0"], IO: ["246", "00", "3\\d{6}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["3"]]]], IQ: ["964", "00", "(?:1|7\\d\\d)\\d{7}|[2-6]\\d{7,8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-6]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], IR: ["98", "00", "[1-9]\\d{9}|(?:[1-8]\\d\\d|9)\\d{3,4}", [4, 5, 6, 7, 10], [["(\\d{4,5})", "$1", ["96"], "0$1"], ["(\\d{2})(\\d{4,5})", "$1 $2", ["(?:1[137]|2[13-68]|3[1458]|4[145]|5[1468]|6[16]|7[1467]|8[13467])[12689]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["[1-8]"], "0$1"]], "0"], IS: ["354", "00|1(?:0(?:01|[12]0)|100)", "(?:38\\d|[4-9])\\d{6}", [7, 9], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, 0, "00"], IT: ["39", "00", "0\\d{5,10}|1\\d{8,10}|3(?:[0-8]\\d{7,10}|9\\d{7,8})|(?:55|70)\\d{8}|8\\d{5}(?:\\d{2,4})?", [6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{4,6})", "$1 $2", ["0[26]"]], ["(\\d{3})(\\d{3,6})", "$1 $2", ["0[13-57-9][0159]|8(?:03|4[17]|9[2-5])", "0[13-57-9][0159]|8(?:03|4[17]|9(?:2|3[04]|[45][0-4]))"]], ["(\\d{4})(\\d{2,6})", "$1 $2", ["0(?:[13-579][2-46-8]|8[236-8])"]], ["(\\d{4})(\\d{4})", "$1 $2", ["894"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[26]|5"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["1(?:44|[679])|[378]"]], ["(\\d{3})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["0[13-57-9][0159]|14"]], ["(\\d{2})(\\d{4})(\\d{5})", "$1 $2 $3", ["0[26]"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["0"]], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["3"]]], 0, 0, 0, 0, 0, 0, [["0669[0-79]\\d{1,6}|0(?:1(?:[0159]\\d|[27][1-5]|31|4[1-4]|6[1356]|8[2-57])|2\\d\\d|3(?:[0159]\\d|2[1-4]|3[12]|[48][1-6]|6[2-59]|7[1-7])|4(?:[0159]\\d|[23][1-9]|4[245]|6[1-5]|7[1-4]|81)|5(?:[0159]\\d|2[1-5]|3[2-6]|4[1-79]|6[4-6]|7[1-578]|8[3-8])|6(?:[0-57-9]\\d|6[0-8])|7(?:[0159]\\d|2[12]|3[1-7]|4[2-46]|6[13569]|7[13-6]|8[1-59])|8(?:[0159]\\d|2[3-578]|3[1-356]|[6-8][1-5])|9(?:[0159]\\d|[238][1-5]|4[12]|6[1-8]|7[1-6]))\\d{2,7}"], ["3[1-9]\\d{8}|3[2-9]\\d{7}", [9, 10]], ["80(?:0\\d{3}|3)\\d{3}", [6, 9]], ["(?:0878\\d{3}|89(?:2\\d|3[04]|4(?:[0-4]|[5-9]\\d\\d)|5[0-4]))\\d\\d|(?:1(?:44|6[346])|89(?:38|5[5-9]|9))\\d{6}", [6, 8, 9, 10]], ["1(?:78\\d|99)\\d{6}", [9, 10]], 0, 0, 0, ["55\\d{8}", [10]], ["84(?:[08]\\d{3}|[17])\\d{3}", [6, 9]]]], JE: ["44", "00", "1534\\d{6}|(?:[3578]\\d|90)\\d{8}", [10], 0, "0", 0, "([0-24-8]\\d{5})$|0", "1534$1", 0, 0, [["1534[0-24-8]\\d{5}"], ["7(?:(?:(?:50|82)9|937)\\d|7(?:00[378]|97[7-9]))\\d{5}"], ["80(?:07(?:35|81)|8901)\\d{4}"], ["(?:8(?:4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|90(?:066[59]|1810|71(?:07|55)))\\d{4}"], ["701511\\d{4}"], 0, ["(?:3(?:0(?:07(?:35|81)|8901)|3\\d{4}|4(?:4(?:4(?:05|42|69)|703)|5(?:041|800))|7(?:0002|1206))|55\\d{4})\\d{4}"], ["76(?:464|652)\\d{5}|76(?:0[0-28]|2[356]|34|4[01347]|5[49]|6[0-369]|77|8[14]|9[139])\\d{6}"], ["56\\d{8}"]]], JM: ["1", "011", "(?:[58]\\d\\d|658|900)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "658|876"], JO: ["962", "00", "(?:(?:[2689]|7\\d)\\d|32|53)\\d{6}", [8, 9], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2356]|87"], "(0$1)"], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["70"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["7"], "0$1"]], "0"], JP: ["81", "010", "00[1-9]\\d{6,14}|[257-9]\\d{9}|(?:00|[1-9]\\d\\d)\\d{6}", [8, 9, 10, 11, 12, 13, 14, 15, 16, 17], [["(\\d{3})(\\d{3})(\\d{3})", "$1-$2-$3", ["(?:12|57|99)0"], "0$1"], ["(\\d{4})(\\d)(\\d{4})", "$1-$2-$3", ["1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|499|5(?:76|97)|746|8(?:3[89]|47|51)|9(?:80|9[16])", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:76|97)9|7468|8(?:3(?:8[7-9]|96)|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]", "1(?:267|3(?:7[247]|9[278])|466|5(?:47|58|64)|6(?:3[245]|48|5[4-68]))|499[2468]|5(?:769|979[2-69])|7468|8(?:3(?:8[7-9]|96[2457-9])|477|51[2-9])|9(?:802|9(?:1[23]|69))|1(?:45|58)[67]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2-$3", ["[36]|4(?:2[09]|7[01])", "[36]|4(?:2(?:0|9[02-69])|7(?:0[019]|1))"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["1(?:1|5[45]|77|88|9[69])|2(?:2[1-37]|3[0-269]|4[59]|5|6[24]|7[1-358]|8[1369]|9[0-38])|4(?:[28][1-9]|3[0-57]|[45]|6[248]|7[2-579]|9[29])|5(?:2|3[0459]|4[0-369]|5[29]|8[02389]|9[0-389])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9[2-6])|8(?:2[124589]|3[26-9]|49|51|6|7[0-468]|8[68]|9[019])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9[1-489])", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2(?:[127]|3[014-9])|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9[19])|62|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|8[1-9]|9[29])|5(?:2|3(?:[045]|9[0-8])|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0-2469])|3(?:[29]|60)|49|51|6(?:[0-24]|36|5[0-3589]|7[23]|9[01459])|7[0-468]|8[68])|9(?:[23][1-9]|4[15]|5[138]|6[1-3]|7[156]|8[189]|9(?:[1289]|3[34]|4[0178]))|(?:264|837)[016-9]|2(?:57|93)[015-9]|(?:25[0468]|422|838)[01]|(?:47[59]|59[89]|8(?:6[68]|9))[019]", "1(?:1|5(?:4[018]|5[017])|77|88|9[69])|2(?:2[127]|3[0-269]|4[59]|5(?:[1-3]|5[0-69]|9(?:17|99))|6(?:2|4[016-9])|7(?:[1-35]|8[0189])|8(?:[16]|3[0134]|9[0-5])|9(?:[028]|17))|4(?:2(?:[13-79]|8[014-6])|3[0-57]|[45]|6[248]|7[2-47]|9[29])|5(?:2|3(?:[045]|9(?:[0-58]|6[4-9]|7[0-35689]))|4[0-369]|5[29]|8[02389]|9[0-3])|7(?:2[02-46-9]|34|[58]|6[0249]|7[57]|9(?:[23]|4[0-59]|5[01569]|6[0167]))|8(?:2(?:[1258]|4[0-39]|9[0169])|3(?:[29]|60|7(?:[017-9]|6[6-8]))|49|51|6(?:[0-24]|36[2-57-9]|5(?:[0-389]|5[23])|6(?:[01]|9[178])|7(?:2[2-468]|3[78])|9[0145])|7[0-468]|8[68])|9(?:4[15]|5[138]|7[156]|8[189]|9(?:[1289]|3(?:31|4[357])|4[0178]))|(?:8294|96)[1-3]|2(?:57|93)[015-9]|(?:223|8699)[014-9]|(?:25[0468]|422|838)[01]|(?:48|8292|9[23])[1-9]|(?:47[59]|59[89]|8(?:68|9))[019]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3", ["[14]|[289][2-9]|5[3-9]|7[2-4679]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3", ["800"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[257-9]"], "0$1"]], "0", 0, "(000[259]\\d{6})$|(?:(?:003768)0?)|0", "$1"], KE: ["254", "000", "(?:[17]\\d\\d|900)\\d{6}|(?:2|80)0\\d{6,7}|[4-6]\\d{6,8}", [7, 8, 9, 10], [["(\\d{2})(\\d{5,7})", "$1 $2", ["[24-6]"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[17]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0"], KG: ["996", "00", "8\\d{9}|[235-9]\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["3(?:1[346]|[24-79])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[235-79]|88"], "0$1"], ["(\\d{3})(\\d{3})(\\d)(\\d{2,3})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], KH: ["855", "00[14-9]", "1\\d{9}|[1-9]\\d{7,8}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], KI: ["686", "00", "(?:[37]\\d|6[0-79])\\d{6}|(?:[2-48]\\d|50)\\d{3}", [5, 8], 0, "0"], KM: ["269", "00", "[3478]\\d{6}", [7], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[3478]"]]]], KN: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "869$1", 0, "869"], KP: ["850", "00|99", "85\\d{6}|(?:19\\d|[2-7])\\d{7}", [8, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-7]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"]], "0"], KR: ["82", "00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))", "00[1-9]\\d{8,11}|(?:[12]|5\\d{3})\\d{7}|[13-6]\\d{9}|(?:[1-6]\\d|80)\\d{7}|[3-6]\\d{4,5}|(?:00|7)0\\d{8}", [5, 6, 8, 9, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{3,4})", "$1-$2", ["(?:3[1-3]|[46][1-4]|5[1-5])1"], "0$1"], ["(\\d{4})(\\d{4})", "$1-$2", ["1"]], ["(\\d)(\\d{3,4})(\\d{4})", "$1-$2-$3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1-$2-$3", ["60|8"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1-$2-$3", ["[1346]|5[1-5]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2-$3", ["[57]"], "0$1"], ["(\\d{2})(\\d{5})(\\d{4})", "$1-$2-$3", ["5"], "0$1"]], "0", 0, "0(8(?:[1-46-8]|5\\d\\d))?"], KW: ["965", "00", "18\\d{5}|(?:[2569]\\d|41)\\d{6}", [7, 8], [["(\\d{4})(\\d{3,4})", "$1 $2", ["[169]|2(?:[235]|4[1-35-9])|52"]], ["(\\d{3})(\\d{5})", "$1 $2", ["[245]"]]]], KY: ["1", "011", "(?:345|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "345$1", 0, "345"], KZ: ["7", "810", "(?:33622|8\\d{8})\\d{5}|[78]\\d{9}", [10, 14], 0, "8", 0, 0, 0, 0, "33|7", 0, "8~10"], LA: ["856", "00", "[23]\\d{9}|3\\d{8}|(?:[235-8]\\d|41)\\d{6}", [8, 9, 10], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2[13]|3[14]|[4-8]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["30[013-9]"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0"], LB: ["961", "00", "[27-9]\\d{7}|[13-9]\\d{6}", [7, 8], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[13-69]|7(?:[2-57]|62|8[0-7]|9[04-9])|8[02-9]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[27-9]"]]], "0"], LC: ["1", "011", "(?:[58]\\d\\d|758|900)\\d{7}", [10], 0, "1", 0, "([2-8]\\d{6})$|1", "758$1", 0, "758"], LI: ["423", "00", "[68]\\d{8}|(?:[2378]\\d|90)\\d{5}", [7, 9], [["(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3", ["[2379]|8(?:0[09]|7)", "[2379]|8(?:0(?:02|9)|7)"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["69"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]]], "0", 0, "(1001)|0"], LK: ["94", "00", "[1-9]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[1-689]"], "0$1"]], "0"], LR: ["231", "00", "(?:[25]\\d|33|77|88)\\d{7}|(?:2\\d|[4-6])\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[4-6]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23578]"], "0$1"]], "0"], LS: ["266", "00", "(?:[256]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2568]"]]]], LT: ["370", "00", "(?:[3469]\\d|52|[78]0)\\d{6}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["52[0-7]"], "(8-$1)", 1], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[7-9]"], "8 $1", 1], ["(\\d{2})(\\d{6})", "$1 $2", ["37|4(?:[15]|6[1-8])"], "(8-$1)", 1], ["(\\d{3})(\\d{5})", "$1 $2", ["[3-6]"], "(8-$1)", 1]], "8", 0, "[08]"], LU: ["352", "00", "35[013-9]\\d{4,8}|6\\d{8}|35\\d{2,4}|(?:[2457-9]\\d|3[0-46-9])\\d{2,9}", [4, 5, 6, 7, 8, 9, 10, 11], [["(\\d{2})(\\d{3})", "$1 $2", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["2(?:0[2-689]|[2-9])|[3-57]|8(?:0[2-9]|[13-9])|9(?:0[89]|[2-579])"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["20[2-689]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4", ["2(?:[0367]|4[3-8])"]], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["80[01]|90[015]"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3 $4", ["20"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})", "$1 $2 $3 $4 $5", ["2(?:[0367]|4[3-8])"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{1,5})", "$1 $2 $3 $4", ["[3-57]|8[13-9]|9(?:0[89]|[2-579])|(?:2|80)[2-9]"]]], 0, 0, "(15(?:0[06]|1[12]|[35]5|4[04]|6[26]|77|88|99)\\d)"], LV: ["371", "00", "(?:[268]\\d|90)\\d{6}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[269]|8[01]"]]]], LY: ["218", "00", "[2-9]\\d{8}", [9], [["(\\d{2})(\\d{7})", "$1-$2", ["[2-9]"], "0$1"]], "0"], MA: ["212", "00", "[5-8]\\d{8}", [9], [["(\\d{5})(\\d{4})", "$1-$2", ["5(?:29|38)", "5(?:29[1289]|389)", "529(?:1[1-46-9]|2[013-8]|90)|5(?:298|389)[0-46-9]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5[45]"], "0$1"], ["(\\d{4})(\\d{5})", "$1-$2", ["5(?:2[2-489]|3[5-9]|9)|892", "5(?:2(?:[2-49]|8[235-9])|3[5-9]|9)|892"], "0$1"], ["(\\d{2})(\\d{7})", "$1-$2", ["8"], "0$1"], ["(\\d{3})(\\d{6})", "$1-$2", ["[5-7]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["5293[01]\\d{4}|5(?:2(?:[0-25-7]\\d|3[1-578]|4[02-46-8]|8[0235-7]|9[0-289])|3(?:[0-47]\\d|5[02-9]|6[02-8]|8[0189]|9[3-9])|(?:4[067]|5[03])\\d)\\d{5}"], ["(?:6(?:[0-79]\\d|8[0-247-9])|7(?:[017]\\d|2[0-2]|6[0-8]|8[0-3]))\\d{6}"], ["80\\d{7}"], ["89\\d{7}"], 0, 0, 0, 0, ["592(?:4[0-2]|93)\\d{4}"]]], MC: ["377", "00", "(?:[3489]|6\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[389]"]], ["(\\d)(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4 $5", ["6"], "0$1"]], "0"], MD: ["373", "00", "(?:[235-7]\\d|[89]0)\\d{6}", [8], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["22|3"], "0$1"], ["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["[25-7]"], "0$1"]], "0"], ME: ["382", "00", "(?:20|[3-79]\\d)\\d{6}|80\\d{6,7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[2-9]"], "0$1"]], "0"], MF: ["590", "00", "590\\d{6}|(?:69|80|9\\d)\\d{7}", [9], 0, "0", 0, 0, 0, 0, 0, [["590(?:0[079]|[14]3|[27][79]|3[03-7]|5[0-268]|87)\\d{4}"], ["69(?:0\\d\\d|1(?:2[2-9]|3[0-5]))\\d{4}"], ["80[0-5]\\d{6}"], 0, 0, 0, 0, 0, ["9(?:(?:395|76[018])\\d|475[0-5])\\d{4}"]]], MG: ["261", "00", "[23]\\d{8}", [9], [["(\\d{2})(\\d{2})(\\d{3})(\\d{2})", "$1 $2 $3 $4", ["[23]"], "0$1"]], "0", 0, "([24-9]\\d{6})$|0", "20$1"], MH: ["692", "011", "329\\d{4}|(?:[256]\\d|45)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1-$2", ["[2-6]"]]], "1"], MK: ["389", "00", "[2-578]\\d{7}", [8], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2|34[47]|4(?:[37]7|5[47]|64)"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[347]"], "0$1"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[58]"], "0$1"]], "0"], ML: ["223", "00", "[24-9]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24-9]"]]]], MM: ["95", "00", "1\\d{5,7}|95\\d{6}|(?:[4-7]|9[0-46-9])\\d{6,8}|(?:2|8\\d)\\d{5,8}", [6, 7, 8, 9, 10], [["(\\d)(\\d{2})(\\d{3})", "$1 $2 $3", ["16|2"], "0$1"], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["[45]|6(?:0[23]|[1-689]|7[235-7])|7(?:[0-4]|5[2-7])|8[1-6]"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[4-7]|8[1-35]"], "0$1"], ["(\\d)(\\d{3})(\\d{4,6})", "$1 $2 $3", ["9(?:2[0-4]|[35-9]|4[137-9])"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["92"], "0$1"], ["(\\d)(\\d{5})(\\d{4})", "$1 $2 $3", ["9"], "0$1"]], "0"], MN: ["976", "001", "[12]\\d{7,9}|[5-9]\\d{7}", [8, 9, 10], [["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["[12]1"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[5-9]"]], ["(\\d{3})(\\d{5,6})", "$1 $2", ["[12]2[1-3]"], "0$1"], ["(\\d{4})(\\d{5,6})", "$1 $2", ["[12](?:27|3[2-8]|4[2-68]|5[1-4689])", "[12](?:27|3[2-8]|4[2-68]|5[1-4689])[0-3]"], "0$1"], ["(\\d{5})(\\d{4,5})", "$1 $2", ["[12]"], "0$1"]], "0"], MO: ["853", "00", "0800\\d{3}|(?:28|[68]\\d)\\d{6}", [7, 8], [["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[268]"]]]], MP: ["1", "011", "[58]\\d{9}|(?:67|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "670$1", 0, "670"], MQ: ["596", "00", "596\\d{6}|(?:69|80|9\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[569]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], MR: ["222", "00", "(?:[2-4]\\d\\d|800)\\d{5}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-48]"]]]], MS: ["1", "011", "(?:[58]\\d\\d|664|900)\\d{7}", [10], 0, "1", 0, "([34]\\d{6})$|1", "664$1", 0, "664"], MT: ["356", "00", "3550\\d{4}|(?:[2579]\\d\\d|800)\\d{5}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[2357-9]"]]]], MU: ["230", "0(?:0|[24-7]0|3[03])", "(?:[57]|8\\d\\d)\\d{7}|[2-468]\\d{6}", [7, 8, 10], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-46]|8[013]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[57]"]], ["(\\d{5})(\\d{5})", "$1 $2", ["8"]]], 0, 0, 0, 0, 0, 0, 0, "020"], MV: ["960", "0(?:0|19)", "(?:800|9[0-57-9]\\d)\\d{7}|[34679]\\d{6}", [7, 10], [["(\\d{3})(\\d{4})", "$1-$2", ["[34679]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], MW: ["265", "00", "(?:[1289]\\d|31|77)\\d{7}|1\\d{6}", [7, 9], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["1[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[137-9]"], "0$1"]], "0"], MX: ["52", "0[09]", "1(?:(?:[27]2|44|99)[1-9]|65[0-689])\\d{7}|(?:1(?:[01]\\d|2[13-9]|[35][1-9]|4[0-35-9]|6[0-46-9]|7[013-9]|8[1-79]|9[1-8])|[2-9]\\d)\\d{8}", [10, 11], [["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["33|5[56]|81"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[2-9]"], 0, 1], ["(\\d)(\\d{2})(\\d{4})(\\d{4})", "$2 $3 $4", ["1(?:33|5[56]|81)"], 0, 1], ["(\\d)(\\d{3})(\\d{3})(\\d{4})", "$2 $3 $4", ["1"], 0, 1]], "01", 0, "0(?:[12]|4[45])|1", 0, 0, 0, 0, "00"], MY: ["60", "00", "1\\d{8,9}|(?:3\\d|[4-9])\\d{7}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1-$2 $3", ["[4-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1-$2 $3", ["1(?:[02469]|[378][1-9]|53)|8", "1(?:[02469]|[37][1-9]|53|8(?:[1-46-9]|5[7-9]))|8"], "0$1"], ["(\\d)(\\d{4})(\\d{4})", "$1-$2 $3", ["3"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{4})", "$1-$2-$3-$4", ["1(?:[367]|80)"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1-$2 $3", ["15"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4})", "$1-$2 $3", ["1"], "0$1"]], "0"], MZ: ["258", "00", "(?:2|8\\d)\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2|8[2-79]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["8"]]]], NA: ["264", "00", "[68]\\d{7,8}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["88"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["87"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], NC: ["687", "00", "(?:050|[2-57-9]\\d\\d)\\d{3}", [6], [["(\\d{2})(\\d{2})(\\d{2})", "$1.$2.$3", ["[02-57-9]"]]]], NE: ["227", "00", "[027-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["08"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[089]|2[013]|7[047]"]]]], NF: ["672", "00", "[13]\\d{5}", [6], [["(\\d{2})(\\d{4})", "$1 $2", ["1[0-3]"]], ["(\\d)(\\d{5})", "$1 $2", ["[13]"]]], 0, 0, "([0-258]\\d{4})$", "3$1"], NG: ["234", "009", "(?:[124-7]|9\\d{3})\\d{6}|[1-9]\\d{7}|[78]\\d{9,13}", [7, 8, 10, 11, 12, 13, 14], [["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["78"], "0$1"], ["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[12]|9(?:0[3-9]|[1-9])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["[3-7]|8[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[7-9]"], "0$1"], ["(\\d{3})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["[78]"], "0$1"], ["(\\d{3})(\\d{5})(\\d{5,6})", "$1 $2 $3", ["[78]"], "0$1"]], "0"], NI: ["505", "00", "(?:1800|[25-8]\\d{3})\\d{4}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[125-8]"]]]], NL: ["31", "00", "(?:[124-7]\\d\\d|3(?:[02-9]\\d|1[0-8]))\\d{6}|8\\d{6,9}|9\\d{6,10}|1\\d{4,5}", [5, 6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{4,7})", "$1 $2", ["[89]0"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["66"], "0$1"], ["(\\d)(\\d{8})", "$1 $2", ["6"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["1[16-8]|2[259]|3[124]|4[17-9]|5[124679]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-578]|91"], "0$1"], ["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3", ["9"], "0$1"]], "0"], NO: ["47", "00", "(?:0|[2-9]\\d{3})\\d{4}", [5, 8], [["(\\d{3})(\\d{2})(\\d{3})", "$1 $2 $3", ["8"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2-79]"]]], 0, 0, 0, 0, 0, "[02-689]|7[0-8]"], NP: ["977", "00", "(?:1\\d|9)\\d{9}|[1-9]\\d{7}", [8, 10, 11], [["(\\d)(\\d{7})", "$1-$2", ["1[2-6]"], "0$1"], ["(\\d{2})(\\d{6})", "$1-$2", ["1[01]|[2-8]|9(?:[1-59]|[67][2-6])"], "0$1"], ["(\\d{3})(\\d{7})", "$1-$2", ["9"]]], "0"], NR: ["674", "00", "(?:444|(?:55|8\\d)\\d|666)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[4-68]"]]]], NU: ["683", "00", "(?:[47]|888\\d)\\d{3}", [4, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["8"]]]], NZ: ["64", "0(?:0|161)", "[1289]\\d{9}|50\\d{5}(?:\\d{2,3})?|[27-9]\\d{7,8}|(?:[34]\\d|6[0-35-9])\\d{6}|8\\d{4,6}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,8})", "$1 $2", ["8[1-79]"], "0$1"], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["50[036-8]|8|90", "50(?:[0367]|88)|8|90"], "0$1"], ["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["24|[346]|7[2-57-9]|9[2-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:10|74)|[589]"], "0$1"], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["1|2[028]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,5})", "$1 $2 $3", ["2(?:[169]|7[0-35-9])|7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "00"], OM: ["968", "00", "(?:1505|[279]\\d{3}|500)\\d{4}|800\\d{5,6}", [7, 8, 9], [["(\\d{3})(\\d{4,6})", "$1 $2", ["[58]"]], ["(\\d{2})(\\d{6})", "$1 $2", ["2"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[179]"]]]], PA: ["507", "00", "(?:00800|8\\d{3})\\d{6}|[68]\\d{7}|[1-57-9]\\d{6}", [7, 8, 10, 11], [["(\\d{3})(\\d{4})", "$1-$2", ["[1-57-9]"]], ["(\\d{4})(\\d{4})", "$1-$2", ["[68]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]]], PE: ["51", "00|19(?:1[124]|77|90)00", "(?:[14-8]|9\\d)\\d{7}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["80"], "(0$1)"], ["(\\d)(\\d{7})", "$1 $2", ["1"], "(0$1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["[4-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"]]], "0", 0, 0, 0, 0, 0, 0, "00", " Anexo "], PF: ["689", "00", "4\\d{5}(?:\\d{2})?|8\\d{7,8}", [6, 8, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["44"]], ["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["4|8[7-9]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], PG: ["675", "00|140[1-3]", "(?:180|[78]\\d{3})\\d{4}|(?:[2-589]\\d|64)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["18|[2-69]|85"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[78]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], PH: ["63", "00", "(?:[2-7]|9\\d)\\d{8}|2\\d{5}|(?:1800|8)\\d{7,9}", [6, 8, 9, 10, 11, 12, 13], [["(\\d)(\\d{5})", "$1 $2", ["2"], "(0$1)"], ["(\\d{4})(\\d{4,6})", "$1 $2", ["3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|544|88[245]|(?:52|64|86)2", "3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))"], "(0$1)"], ["(\\d{5})(\\d{4})", "$1 $2", ["346|4(?:27|9[35])|883", "3469|4(?:279|9(?:30|56))|8834"], "(0$1)"], ["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["2"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|8[2-8]"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]], ["(\\d{4})(\\d{1,2})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["1"]]], "0"], PK: ["92", "00", "122\\d{6}|[24-8]\\d{10,11}|9(?:[013-9]\\d{8,10}|2(?:[01]\\d\\d|2(?:[06-8]\\d|1[01]))\\d{7})|(?:[2-8]\\d{3}|92(?:[0-7]\\d|8[1-9]))\\d{6}|[24-9]\\d{8}|[89]\\d{7}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,7})", "$1 $2 $3", ["[89]0"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["1"]], ["(\\d{3})(\\d{6,7})", "$1 $2", ["2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:2[2-8]|3[27-9]|4[2-6]|6[3569]|9[25-8])", "9(?:2[3-8]|98)|(?:2(?:3[2358]|4[2-4]|9[2-8])|45[3479]|54[2-467]|60[468]|72[236]|8(?:2[2-689]|3[23578]|4[3478]|5[2356])|9(?:22|3[27-9]|4[2-6]|6[3569]|9[25-7]))[2-9]"], "(0$1)"], ["(\\d{2})(\\d{7,8})", "$1 $2", ["(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]"], "(0$1)"], ["(\\d{5})(\\d{5})", "$1 $2", ["58"], "(0$1)"], ["(\\d{3})(\\d{7})", "$1 $2", ["3"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91"], "(0$1)"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[24-9]"], "(0$1)"]], "0"], PL: ["48", "00", "(?:6|8\\d\\d)\\d{7}|[1-9]\\d{6}(?:\\d{2})?|[26]\\d{5}", [6, 7, 8, 9, 10], [["(\\d{5})", "$1", ["19"]], ["(\\d{3})(\\d{3})", "$1 $2", ["11|20|64"]], ["(\\d{2})(\\d{2})(\\d{3})", "$1 $2 $3", ["(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])1", "(?:1[2-8]|2[2-69]|3[2-4]|4[1-468]|5[24-689]|6[1-3578]|7[14-7]|8[1-79]|9[145])19"]], ["(\\d{3})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["64"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["21|39|45|5[0137]|6[0469]|7[02389]|8(?:0[14]|8)"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["1[2-8]|[2-7]|8[1-79]|9[145]"]], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["8"]]]], PM: ["508", "00", "[45]\\d{5}|(?:708|80\\d)\\d{6}", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[45]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"], "0$1"]], "0"], PR: ["1", "011", "(?:[589]\\d\\d|787)\\d{7}", [10], 0, "1", 0, 0, 0, 0, "787|939"], PS: ["970", "00", "[2489]2\\d{6}|(?:1\\d|5)\\d{8}", [8, 9, 10], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["[2489]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], PT: ["351", "00", "1693\\d{5}|(?:[26-9]\\d|30)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["2[12]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["16|[236-9]"]]]], PW: ["680", "01[12]", "(?:[24-8]\\d\\d|345|900)\\d{4}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-9]"]]]], PY: ["595", "00", "59\\d{4,6}|9\\d{5,10}|(?:[2-46-8]\\d|5[0-8])\\d{4,7}", [6, 7, 8, 9, 10, 11], [["(\\d{3})(\\d{3,6})", "$1 $2", ["[2-9]0"], "0$1"], ["(\\d{2})(\\d{5})", "$1 $2", ["[26]1|3[289]|4[1246-8]|7[1-3]|8[1-36]"], "(0$1)"], ["(\\d{3})(\\d{4,5})", "$1 $2", ["2[279]|3[13-5]|4[359]|5|6(?:[34]|7[1-46-8])|7[46-8]|85"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2[14-68]|3[26-9]|4[1246-8]|6(?:1|75)|7[1-35]|8[1-36]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["87"]], ["(\\d{3})(\\d{6})", "$1 $2", ["9(?:[5-79]|8[1-6])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-8]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["9"]]], "0"], QA: ["974", "00", "800\\d{4}|(?:2|800)\\d{6}|(?:0080|[3-7])\\d{7}", [7, 8, 9, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["2[16]|8"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[3-7]"]]]], RE: ["262", "00", "(?:26|[689]\\d)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2689]"], "0$1"]], "0", 0, 0, 0, 0, 0, [["26(?:2\\d\\d|3(?:0\\d|1[0-5]))\\d{4}"], ["69(?:2\\d\\d|3(?:[06][0-6]|1[013]|2[0-2]|3[0-39]|4\\d|5[0-5]|7[0-27]|8[0-8]|9[0-479]))\\d{4}"], ["80\\d{7}"], ["89[1-37-9]\\d{6}"], 0, 0, 0, 0, ["9(?:399[0-3]|479[0-5]|76(?:2[27]|3[0-37]))\\d{4}"], ["8(?:1[019]|2[0156]|84|90)\\d{6}"]]], RO: ["40", "00", "(?:[2378]\\d|90)\\d{7}|[23]\\d{5}", [6, 9], [["(\\d{3})(\\d{3})", "$1 $2", ["2[3-6]", "2[3-6]\\d9"], "0$1"], ["(\\d{2})(\\d{4})", "$1 $2", ["219|31"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[23]1"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[237-9]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, " int "], RS: ["381", "00", "38[02-9]\\d{6,9}|6\\d{7,9}|90\\d{4,8}|38\\d{5,6}|(?:7\\d\\d|800)\\d{3,9}|(?:[12]\\d|3[0-79])\\d{5,10}", [6, 7, 8, 9, 10, 11, 12], [["(\\d{3})(\\d{3,9})", "$1 $2", ["(?:2[389]|39)0|[7-9]"], "0$1"], ["(\\d{2})(\\d{5,10})", "$1 $2", ["[1-36]"], "0$1"]], "0"], RU: ["7", "810", "8\\d{13}|[347-9]\\d{9}", [10, 14], [["(\\d{4})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-8]|2[1-9])", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:1[23]|[2-9]2))", "7(?:1(?:[0-356]2|4[29]|7|8[27])|2(?:13[03-69]|62[013-9]))|72[1-57-9]2"], "8 ($1)", 1], ["(\\d{5})(\\d)(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["7(?:1[0-68]|2[1-9])", "7(?:1(?:[06][3-6]|[18]|2[35]|[3-5][3-5])|2(?:[13][3-5]|[24-689]|7[457]))", "7(?:1(?:0(?:[356]|4[023])|[18]|2(?:3[013-9]|5)|3[45]|43[013-79]|5(?:3[1-8]|4[1-7]|5)|6(?:3[0-35-9]|[4-6]))|2(?:1(?:3[178]|[45])|[24-689]|3[35]|7[457]))|7(?:14|23)4[0-8]|71(?:33|45)[1-79]"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "8 ($1)", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[349]|8(?:[02-7]|1[1-8])"], "8 ($1)", 1], ["(\\d{4})(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["8"], "8 ($1)"]], "8", 0, 0, 0, 0, "3[04-689]|[489]", 0, "8~10"], RW: ["250", "00", "(?:06|[27]\\d\\d|[89]00)\\d{6}", [8, 9], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["0"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["2"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[7-9]"], "0$1"]], "0"], SA: ["966", "00", "92\\d{7}|(?:[15]|8\\d)\\d{8}", [9, 10], [["(\\d{4})(\\d{5})", "$1 $2", ["9"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["5"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["81"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]]], "0"], SB: ["677", "0[01]", "(?:[1-6]|[7-9]\\d\\d)\\d{4}", [5, 7], [["(\\d{2})(\\d{5})", "$1 $2", ["7|8[4-9]|9(?:[1-8]|9[0-8])"]]]], SC: ["248", "010|0[0-2]", "800\\d{4}|(?:[249]\\d|64)\\d{5}", [7], [["(\\d)(\\d{3})(\\d{3})", "$1 $2 $3", ["[246]|9[57]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], SD: ["249", "00", "[19]\\d{8}", [9], [["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], SE: ["46", "00", "(?:[26]\\d\\d|9)\\d{9}|[1-9]\\d{8}|[1-689]\\d{7}|[1-4689]\\d{6}|2\\d{5}", [6, 7, 8, 9, 10], [["(\\d{2})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["20"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{4})", "$1-$2", ["9(?:00|39|44|9)"], "0$1", 0, "$1 $2"], ["(\\d{2})(\\d{3})(\\d{2})", "$1-$2 $3", ["[12][136]|3[356]|4[0246]|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3"], ["(\\d)(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2,3})(\\d{2})", "$1-$2 $3", ["1[2457]|2(?:[247-9]|5[0138])|3[0247-9]|4[1357-9]|5[0-35-9]|6(?:[125689]|4[02-57]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3"], ["(\\d{3})(\\d{2,3})(\\d{3})", "$1-$2 $3", ["9(?:00|39|44)"], "0$1", 0, "$1 $2 $3"], ["(\\d{2})(\\d{2,3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["1[13689]|2[0136]|3[1356]|4[0246]|54|6[03]|90[1-9]"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["10|7"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1-$2 $3 $4", ["8"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1-$2 $3 $4", ["[13-5]|2(?:[247-9]|5[0138])|6(?:[124-689]|7[0-2])|9(?:[125-8]|3[02-5]|4[0-3])"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{2})(\\d{3})", "$1-$2 $3 $4", ["9"], "0$1", 0, "$1 $2 $3 $4"], ["(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1-$2 $3 $4 $5", ["[26]"], "0$1", 0, "$1 $2 $3 $4 $5"]], "0"], SG: ["65", "0[0-3]\\d", "(?:(?:1\\d|8)\\d\\d|7000)\\d{7}|[3689]\\d{7}", [8, 10, 11], [["(\\d{4})(\\d{4})", "$1 $2", ["[369]|8(?:0[1-8]|[1-9])"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"]], ["(\\d{4})(\\d{4})(\\d{3})", "$1 $2 $3", ["7"]], ["(\\d{4})(\\d{3})(\\d{4})", "$1 $2 $3", ["1"]]]], SH: ["290", "00", "(?:[256]\\d|8)\\d{3}", [4, 5], 0, 0, 0, 0, 0, 0, "[256]"], SI: ["386", "00|10(?:22|66|88|99)", "[1-7]\\d{7}|8\\d{4,7}|90\\d{4,6}", [5, 6, 7, 8], [["(\\d{2})(\\d{3,6})", "$1 $2", ["8[09]|9"], "0$1"], ["(\\d{3})(\\d{5})", "$1 $2", ["59|8"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[37][01]|4[0139]|51|6"], "0$1"], ["(\\d)(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[1-57]"], "(0$1)"]], "0", 0, 0, 0, 0, 0, 0, "00"], SJ: ["47", "00", "0\\d{4}|(?:[489]\\d|79)\\d{6}", [5, 8], 0, 0, 0, 0, 0, 0, "79"], SK: ["421", "00", "[2-689]\\d{8}|[2-59]\\d{6}|[2-5]\\d{5}", [6, 7, 9], [["(\\d)(\\d{2})(\\d{3,4})", "$1 $2 $3", ["21"], "0$1"], ["(\\d{2})(\\d{2})(\\d{2,3})", "$1 $2 $3", ["[3-5][1-8]1", "[3-5][1-8]1[67]"], "0$1"], ["(\\d)(\\d{3})(\\d{3})(\\d{2})", "$1/$2 $3 $4", ["2"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[689]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1/$2 $3 $4", ["[3-5]"], "0$1"]], "0"], SL: ["232", "00", "(?:[237-9]\\d|66)\\d{6}", [8], [["(\\d{2})(\\d{6})", "$1 $2", ["[236-9]"], "(0$1)"]], "0"], SM: ["378", "00", "(?:0549|[5-7]\\d)\\d{6}", [8, 10], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[5-7]"]], ["(\\d{4})(\\d{6})", "$1 $2", ["0"]]], 0, 0, "([89]\\d{5})$", "0549$1"], SN: ["221", "00", "(?:[378]\\d|93)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[379]"]]]], SO: ["252", "00", "[346-9]\\d{8}|[12679]\\d{7}|[1-5]\\d{6}|[1348]\\d{5}", [6, 7, 8, 9], [["(\\d{2})(\\d{4})", "$1 $2", ["8[125]"]], ["(\\d{6})", "$1", ["[134]"]], ["(\\d)(\\d{6})", "$1 $2", ["[15]|2[0-79]|3[0-46-8]|4[0-7]"]], ["(\\d)(\\d{7})", "$1 $2", ["(?:2|90)4|[67]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[348]|64|79|90"]], ["(\\d{2})(\\d{5,7})", "$1 $2", ["1|28|6[0-35-9]|77|9[2-9]"]]], "0"], SR: ["597", "00", "(?:[2-5]|68|[78]\\d)\\d{5}", [6, 7], [["(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3", ["56"]], ["(\\d{3})(\\d{3})", "$1-$2", ["[2-5]"]], ["(\\d{3})(\\d{4})", "$1-$2", ["[6-8]"]]]], SS: ["211", "00", "[19]\\d{8}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[19]"], "0$1"]], "0"], ST: ["239", "00", "(?:22|9\\d)\\d{5}", [7], [["(\\d{3})(\\d{4})", "$1 $2", ["[29]"]]]], SV: ["503", "00", "[267]\\d{7}|[89]00\\d{4}(?:\\d{4})?", [7, 8, 11], [["(\\d{3})(\\d{4})", "$1 $2", ["[89]"]], ["(\\d{4})(\\d{4})", "$1 $2", ["[267]"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["[89]"]]]], SX: ["1", "011", "7215\\d{6}|(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "(5\\d{6})$|1", "721$1", 0, "721"], SY: ["963", "00", "[1-39]\\d{8}|[1-5]\\d{7}", [8, 9], [["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-5]"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1", 1]], "0"], SZ: ["268", "00", "0800\\d{4}|(?:[237]\\d|900)\\d{6}", [8, 9], [["(\\d{4})(\\d{4})", "$1 $2", ["[0237]"]], ["(\\d{5})(\\d{4})", "$1 $2", ["9"]]]], TA: ["290", "00", "8\\d{3}", [4], 0, 0, 0, 0, 0, 0, "8"], TC: ["1", "011", "(?:[58]\\d\\d|649|900)\\d{7}", [10], 0, "1", 0, "([2-479]\\d{6})$|1", "649$1", 0, "649"], TD: ["235", "00|16", "(?:22|[69]\\d|77)\\d{6}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[2679]"]]], 0, 0, 0, 0, 0, 0, 0, "00"], TG: ["228", "00", "[279]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[279]"]]]], TH: ["66", "00[1-9]", "(?:001800|[2-57]|[689]\\d)\\d{7}|1\\d{7,9}", [8, 9, 10, 13], [["(\\d)(\\d{3})(\\d{4})", "$1 $2 $3", ["2"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[13-9]"], "0$1"], ["(\\d{4})(\\d{3})(\\d{3})", "$1 $2 $3", ["1"]]], "0"], TJ: ["992", "810", "[0-57-9]\\d{8}", [9], [["(\\d{6})(\\d)(\\d{2})", "$1 $2 $3", ["331", "3317"]], ["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["44[04]|[34]7"]], ["(\\d{4})(\\d)(\\d{4})", "$1 $2 $3", ["3[1-5]"]], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[0-57-9]"]]], 0, 0, 0, 0, 0, 0, 0, "8~10"], TK: ["690", "00", "[2-47]\\d{3,6}", [4, 5, 6, 7]], TL: ["670", "00", "7\\d{7}|(?:[2-47]\\d|[89]0)\\d{5}", [7, 8], [["(\\d{3})(\\d{4})", "$1 $2", ["[2-489]|70"]], ["(\\d{4})(\\d{4})", "$1 $2", ["7"]]]], TM: ["993", "810", "[1-6]\\d{7}", [8], [["(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["12"], "(8 $1)"], ["(\\d{3})(\\d)(\\d{2})(\\d{2})", "$1 $2-$3-$4", ["[1-5]"], "(8 $1)"], ["(\\d{2})(\\d{6})", "$1 $2", ["6"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], TN: ["216", "00", "[2-57-9]\\d{7}", [8], [["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-57-9]"]]]], TO: ["676", "00", "(?:0800|(?:[5-8]\\d\\d|999)\\d)\\d{3}|[2-8]\\d{4}", [5, 7], [["(\\d{2})(\\d{3})", "$1-$2", ["[2-4]|50|6[09]|7[0-24-69]|8[05]"]], ["(\\d{4})(\\d{3})", "$1 $2", ["0"]], ["(\\d{3})(\\d{4})", "$1 $2", ["[5-9]"]]]], TR: ["90", "00", "4\\d{6}|8\\d{11,12}|(?:[2-58]\\d\\d|900)\\d{7}", [7, 10, 12, 13], [["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["512|8[01589]|90"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["5(?:[0-59]|61)", "5(?:[0-59]|616)", "5(?:[0-59]|6161)"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[24][1-8]|3[1-9]"], "(0$1)", 1], ["(\\d{3})(\\d{3})(\\d{6,7})", "$1 $2 $3", ["80"], "0$1", 1]], "0"], TT: ["1", "011", "(?:[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-46-8]\\d{6})$|1", "868$1", 0, "868"], TV: ["688", "00", "(?:2|7\\d\\d|90)\\d{4}", [5, 6, 7], [["(\\d{2})(\\d{3})", "$1 $2", ["2"]], ["(\\d{2})(\\d{4})", "$1 $2", ["90"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], TW: ["886", "0(?:0[25-79]|19)", "[2-689]\\d{8}|7\\d{9,10}|[2-8]\\d{7}|2\\d{6}", [7, 8, 9, 10, 11], [["(\\d{2})(\\d)(\\d{4})", "$1 $2 $3", ["202"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[258]0"], "0$1"], ["(\\d)(\\d{3,4})(\\d{4})", "$1 $2 $3", ["[23568]|4(?:0[02-48]|[1-47-9])|7[1-9]", "[23568]|4(?:0[2-48]|[1-47-9])|(?:400|7)[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{2})(\\d{4})(\\d{4,5})", "$1 $2 $3", ["7"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, 0, "#"], TZ: ["255", "00[056]", "(?:[25-8]\\d|41|90)\\d{7}", [9], [["(\\d{3})(\\d{2})(\\d{4})", "$1 $2 $3", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[24]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["5"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[67]"], "0$1"]], "0"], UA: ["380", "00", "[89]\\d{9}|[3-9]\\d{8}", [9, 10], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["6[12][29]|(?:3[1-8]|4[136-8]|5[12457]|6[49])2|(?:56|65)[24]", "6[12][29]|(?:35|4[1378]|5[12457]|6[49])2|(?:56|65)[24]|(?:3[1-46-8]|46)2[013-9]"], "0$1"], ["(\\d{4})(\\d{5})", "$1 $2", ["3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6[0135689]|7[4-6])|6(?:[12][3-7]|[459])", "3[1-8]|4(?:[1367]|[45][6-9]|8[4-6])|5(?:[1-5]|6(?:[015689]|3[02389])|7[4-6])|6(?:[12][3-7]|[459])"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[3-7]|89|9[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[89]"], "0$1"]], "0", 0, 0, 0, 0, 0, 0, "0~0"], UG: ["256", "00[057]", "800\\d{6}|(?:[29]0|[347]\\d)\\d{7}", [9], [["(\\d{4})(\\d{5})", "$1 $2", ["202", "2024"], "0$1"], ["(\\d{3})(\\d{6})", "$1 $2", ["[27-9]|4(?:6[45]|[7-9])"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[34]"], "0$1"]], "0"], US: ["1", "011", "[2-9]\\d{9}|3\\d{6}", [10], [["(\\d{3})(\\d{4})", "$1-$2", ["310"], 0, 1], ["(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3", ["[2-9]"], 0, 1, "$1-$2-$3"]], "1", 0, 0, 0, 0, 0, [["5056(?:[0-35-9]\\d|4[46])\\d{4}|(?:4722|505[2-57-9]|983[29])\\d{6}|(?:2(?:0[1-35-9]|1[02-9]|2[03-589]|3[149]|4[08]|5[1-46]|6[0279]|7[0269]|8[13])|3(?:0[1-57-9]|1[02-9]|2[01356]|3[0-24679]|4[167]|5[0-2]|6[014]|8[056])|4(?:0[124-9]|1[02-579]|2[3-5]|3[0245]|4[023578]|58|6[349]|7[0589]|8[04])|5(?:0[1-47-9]|1[0235-8]|20|3[0149]|4[01]|5[179]|6[1-47]|7[0-5]|8[0256])|6(?:0[1-35-9]|1[024-9]|2[03689]|[34][016]|5[01679]|6[0-279]|78|8[0-29])|7(?:0[1-46-8]|1[2-9]|2[04-7]|3[1247]|4[037]|5[47]|6[02359]|7[0-59]|8[156])|8(?:0[1-68]|1[02-8]|2[068]|3[0-2589]|4[03578]|5[046-9]|6[02-5]|7[028])|9(?:0[1346-9]|1[02-9]|2[0589]|3[0146-8]|4[01357-9]|5[12469]|7[0-389]|8[04-69]))[2-9]\\d{6}"], [""], ["8(?:00|33|44|55|66|77|88)[2-9]\\d{6}"], ["900[2-9]\\d{6}"], ["52(?:3(?:[2-46-9][02-9]\\d|5(?:[02-46-9]\\d|5[0-46-9]))|4(?:[2-478][02-9]\\d|5(?:[034]\\d|2[024-9]|5[0-46-9])|6(?:0[1-9]|[2-9]\\d)|9(?:[05-9]\\d|2[0-5]|49)))\\d{4}|52[34][2-9]1[02-9]\\d{4}|5(?:00|2[125-9]|33|44|66|77|88)[2-9]\\d{6}"]]], UY: ["598", "0(?:0|1[3-9]\\d)", "(?:0004|4)\\d{9}|[1249]\\d{7}|(?:[49]\\d|80)\\d{5}", [7, 8, 10, 13], [["(\\d{3})(\\d{4})", "$1 $2", ["405|8|90"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["9"], "0$1"], ["(\\d{4})(\\d{4})", "$1 $2", ["[124]"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["4"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3 $4", ["0"]]], "0", 0, 0, 0, 0, 0, 0, "00", " int. "], UZ: ["998", "810", "200\\d{6}|(?:33|[5-79]\\d|88)\\d{7}", [9], [["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["[235-9]"], "8 $1"]], "8", 0, 0, 0, 0, 0, 0, "8~10"], VA: ["39", "00", "0\\d{5,10}|3[0-8]\\d{7,10}|55\\d{8}|8\\d{5}(?:\\d{2,4})?|(?:1\\d|39)\\d{7,8}", [6, 7, 8, 9, 10, 11], 0, 0, 0, 0, 0, 0, "06698"], VC: ["1", "011", "(?:[58]\\d\\d|784|900)\\d{7}", [10], 0, "1", 0, "([2-7]\\d{6})$|1", "784$1", 0, "784"], VE: ["58", "00", "[68]00\\d{7}|(?:[24]\\d|[59]0)\\d{8}", [10], [["(\\d{3})(\\d{7})", "$1-$2", ["[24-689]"], "0$1"]], "0"], VG: ["1", "011", "(?:284|[58]\\d\\d|900)\\d{7}", [10], 0, "1", 0, "([2-578]\\d{6})$|1", "284$1", 0, "284"], VI: ["1", "011", "[58]\\d{9}|(?:34|90)0\\d{7}", [10], 0, "1", 0, "([2-9]\\d{6})$|1", "340$1", 0, "340"], VN: ["84", "00", "[12]\\d{9}|[135-9]\\d{8}|[16]\\d{7}|[16-8]\\d{6}", [7, 8, 9, 10], [["(\\d{2})(\\d{5})", "$1 $2", ["80"], "0$1", 1], ["(\\d{4})(\\d{4,6})", "$1 $2", ["1"], 0, 1], ["(\\d{2})(\\d{3})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["6"], "0$1", 1], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[357-9]"], "0$1", 1], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["2[48]"], "0$1", 1], ["(\\d{3})(\\d{4})(\\d{3})", "$1 $2 $3", ["2"], "0$1", 1]], "0"], VU: ["678", "00", "[57-9]\\d{6}|(?:[238]\\d|48)\\d{3}", [5, 7], [["(\\d{3})(\\d{4})", "$1 $2", ["[57-9]"]]]], WF: ["681", "00", "(?:40|72)\\d{4}|8\\d{5}(?:\\d{3})?", [6, 9], [["(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3", ["[478]"]], ["(\\d{3})(\\d{2})(\\d{2})(\\d{2})", "$1 $2 $3 $4", ["8"]]]], WS: ["685", "0", "(?:[2-6]|8\\d{5})\\d{4}|[78]\\d{6}|[68]\\d{5}", [5, 6, 7, 10], [["(\\d{5})", "$1", ["[2-5]|6[1-9]"]], ["(\\d{3})(\\d{3,7})", "$1 $2", ["[68]"]], ["(\\d{2})(\\d{5})", "$1 $2", ["7"]]]], XK: ["383", "00", "[23]\\d{7,8}|(?:4\\d\\d|[89]00)\\d{5}", [8, 9], [["(\\d{3})(\\d{5})", "$1 $2", ["[89]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3})", "$1 $2 $3", ["[2-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[23]"], "0$1"]], "0"], YE: ["967", "00", "(?:1|7\\d)\\d{7}|[1-7]\\d{6}", [7, 8, 9], [["(\\d)(\\d{3})(\\d{3,4})", "$1 $2 $3", ["[1-6]|7(?:[24-6]|8[0-7])"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["7"], "0$1"]], "0"], YT: ["262", "00", "(?:80|9\\d)\\d{7}|(?:26|63)9\\d{6}", [9], 0, "0", 0, 0, 0, 0, 0, [["269(?:0[0-467]|5[0-4]|6\\d|[78]0)\\d{4}"], ["639(?:0[0-79]|1[019]|[267]\\d|3[09]|40|5[05-9]|9[04-79])\\d{4}"], ["80\\d{7}"], 0, 0, 0, 0, 0, ["9(?:(?:39|47)8[01]|769\\d)\\d{4}"]]], ZA: ["27", "00", "[1-79]\\d{8}|8\\d{4,9}", [5, 6, 7, 8, 9, 10], [["(\\d{2})(\\d{3,4})", "$1 $2", ["8[1-4]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{2,3})", "$1 $2 $3", ["8[1-4]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["860"], "0$1"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["[1-9]"], "0$1"], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["8"], "0$1"]], "0"], ZM: ["260", "00", "800\\d{6}|(?:21|63|[79]\\d)\\d{7}", [9], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[28]"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["[79]"], "0$1"]], "0"], ZW: ["263", "00", "2(?:[0-57-9]\\d{6,8}|6[0-24-9]\\d{6,7})|[38]\\d{9}|[35-8]\\d{8}|[3-6]\\d{7}|[1-689]\\d{6}|[1-3569]\\d{5}|[1356]\\d{4}", [5, 6, 7, 8, 9, 10], [["(\\d{3})(\\d{3,5})", "$1 $2", ["2(?:0[45]|2[278]|[49]8)|3(?:[09]8|17)|6(?:[29]8|37|75)|[23][78]|(?:33|5[15]|6[68])[78]"], "0$1"], ["(\\d)(\\d{3})(\\d{2,4})", "$1 $2 $3", ["[49]"], "0$1"], ["(\\d{3})(\\d{4})", "$1 $2", ["80"], "0$1"], ["(\\d{2})(\\d{7})", "$1 $2", ["24|8[13-59]|(?:2[05-79]|39|5[45]|6[15-8])2", "2(?:02[014]|4|[56]20|[79]2)|392|5(?:42|525)|6(?:[16-8]21|52[013])|8[13-59]"], "(0$1)"], ["(\\d{2})(\\d{3})(\\d{4})", "$1 $2 $3", ["7"], "0$1"], ["(\\d{3})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["2(?:1[39]|2[0157]|[378]|[56][14])|3(?:12|29)", "2(?:1[39]|2[0157]|[378]|[56][14])|3(?:123|29)"], "0$1"], ["(\\d{4})(\\d{6})", "$1 $2", ["8"], "0$1"], ["(\\d{2})(\\d{3,5})", "$1 $2", ["1|2(?:0[0-36-9]|12|29|[56])|3(?:1[0-689]|[24-6])|5(?:[0236-9]|1[2-4])|6(?:[013-59]|7[0-46-9])|(?:33|55|6[68])[0-69]|(?:29|3[09]|62)[0-79]"], "0$1"], ["(\\d{2})(\\d{3})(\\d{3,4})", "$1 $2 $3", ["29[013-9]|39|54"], "0$1"], ["(\\d{4})(\\d{3,5})", "$1 $2", ["(?:25|54)8", "258|5483"], "0$1"]], "0"] }, nonGeographic: { 800: ["800", 0, "(?:00|[1-9]\\d)\\d{6}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["\\d"]]], 0, 0, 0, 0, 0, 0, [0, 0, ["(?:00|[1-9]\\d)\\d{6}"]]], 808: ["808", 0, "[1-9]\\d{7}", [8], [["(\\d{4})(\\d{4})", "$1 $2", ["[1-9]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, ["[1-9]\\d{7}"]]], 870: ["870", 0, "7\\d{11}|[35-7]\\d{8}", [9, 12], [["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["[35-7]"]]], 0, 0, 0, 0, 0, 0, [0, ["(?:[356]|774[45])\\d{8}|7[6-8]\\d{7}"]]], 878: ["878", 0, "10\\d{10}", [12], [["(\\d{2})(\\d{5})(\\d{5})", "$1 $2 $3", ["1"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["10\\d{10}"]]], 881: ["881", 0, "[0-36-9]\\d{8}", [9], [["(\\d)(\\d{3})(\\d{5})", "$1 $2 $3", ["[0-36-9]"]]], 0, 0, 0, 0, 0, 0, [0, ["[0-36-9]\\d{8}"]]], 882: ["882", 0, "[13]\\d{6}(?:\\d{2,5})?|[19]\\d{7}|(?:[25]\\d\\d|4)\\d{7}(?:\\d{2})?", [7, 8, 9, 10, 11, 12], [["(\\d{2})(\\d{5})", "$1 $2", ["16|342"]], ["(\\d{2})(\\d{6})", "$1 $2", ["49"]], ["(\\d{2})(\\d{2})(\\d{4})", "$1 $2 $3", ["1[36]|9"]], ["(\\d{2})(\\d{4})(\\d{3})", "$1 $2 $3", ["3[23]"]], ["(\\d{2})(\\d{3,4})(\\d{4})", "$1 $2 $3", ["16"]], ["(\\d{2})(\\d{4})(\\d{4})", "$1 $2 $3", ["10|23|3(?:[15]|4[57])|4|51"]], ["(\\d{3})(\\d{4})(\\d{4})", "$1 $2 $3", ["34"]], ["(\\d{2})(\\d{4,5})(\\d{5})", "$1 $2 $3", ["[1-35]"]]], 0, 0, 0, 0, 0, 0, [0, ["342\\d{4}|(?:337|49)\\d{6}|(?:3(?:2|47|7\\d{3})|50\\d{3})\\d{7}", [7, 8, 9, 10, 12]], 0, 0, 0, 0, 0, 0, ["1(?:3(?:0[0347]|[13][0139]|2[035]|4[013568]|6[0459]|7[06]|8[15-8]|9[0689])\\d{4}|6\\d{5,10})|(?:345\\d|9[89])\\d{6}|(?:10|2(?:3|85\\d)|3(?:[15]|[69]\\d\\d)|4[15-8]|51)\\d{8}"]]], 883: ["883", 0, "(?:[1-4]\\d|51)\\d{6,10}", [8, 9, 10, 11, 12], [["(\\d{3})(\\d{3})(\\d{2,8})", "$1 $2 $3", ["[14]|2[24-689]|3[02-689]|51[24-9]"]], ["(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3", ["510"]], ["(\\d{3})(\\d{3})(\\d{4})", "$1 $2 $3", ["21"]], ["(\\d{4})(\\d{4})(\\d{4})", "$1 $2 $3", ["51[13]"]], ["(\\d{3})(\\d{3})(\\d{3})(\\d{3})", "$1 $2 $3 $4", ["[235]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, ["(?:2(?:00\\d\\d|10)|(?:370[1-9]|51\\d0)\\d)\\d{7}|51(?:00\\d{5}|[24-9]0\\d{4,7})|(?:1[013-79]|2[24-689]|3[02-689]|4[0-4])0\\d{5,9}"]]], 888: ["888", 0, "\\d{11}", [11], [["(\\d{3})(\\d{3})(\\d{5})", "$1 $2 $3"]], 0, 0, 0, 0, 0, 0, [0, 0, 0, 0, 0, 0, ["\\d{11}"]]], 979: ["979", 0, "[1359]\\d{8}", [9], [["(\\d)(\\d{4})(\\d{4})", "$1 $2 $3", ["[1359]"]]], 0, 0, 0, 0, 0, 0, [0, 0, 0, ["[1359]\\d{8}"]]] } };
+function pr(e2, a2) {
+  var r2 = Array.prototype.slice.call(a2);
+  return r2.push(ur), e2.apply(this, r2);
 }
-function ht(e2) {
-  return ht = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+function hr(e2) {
+  return hr = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
     return typeof e3;
   } : function(e3) {
     return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
-  }, ht(e2);
+  }, hr(e2);
 }
-function gt(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+function gr(e2, a2) {
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-function bt(e2) {
-  var a2 = yt();
+function br(e2) {
+  var a2 = yr();
   return function() {
-    var t2, r2 = xt(e2);
+    var r2, t2 = xr(e2);
     if (a2) {
-      var o2 = xt(this).constructor;
-      t2 = Reflect.construct(r2, arguments, o2);
+      var o2 = xr(this).constructor;
+      r2 = Reflect.construct(t2, arguments, o2);
     } else
-      t2 = r2.apply(this, arguments);
+      r2 = t2.apply(this, arguments);
     return function(e3, a3) {
-      if (a3 && ("object" === ht(a3) || "function" == typeof a3))
+      if (a3 && ("object" === hr(a3) || "function" == typeof a3))
         return a3;
       if (void 0 !== a3)
         throw new TypeError("Derived constructors may only return object or undefined");
-      return zt(e3);
-    }(this, t2);
+      return zr(e3);
+    }(this, r2);
   };
 }
-function zt(e2) {
+function zr(e2) {
   if (void 0 === e2)
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   return e2;
 }
-function ft(e2) {
+function fr(e2) {
   var a2 = "function" == typeof Map ? /* @__PURE__ */ new Map() : void 0;
-  return ft = function(e3) {
-    if (null === e3 || (t2 = e3, -1 === Function.toString.call(t2).indexOf("[native code]")))
+  return fr = function(e3) {
+    if (null === e3 || (r2 = e3, -1 === Function.toString.call(r2).indexOf("[native code]")))
       return e3;
-    var t2;
+    var r2;
     if ("function" != typeof e3)
       throw new TypeError("Super expression must either be null or a function");
     if (void 0 !== a2) {
       if (a2.has(e3))
         return a2.get(e3);
-      a2.set(e3, r2);
+      a2.set(e3, t2);
     }
-    function r2() {
-      return vt(e3, arguments, xt(this).constructor);
+    function t2() {
+      return vr(e3, arguments, xr(this).constructor);
     }
-    return r2.prototype = Object.create(e3.prototype, { constructor: { value: r2, enumerable: false, writable: true, configurable: true } }), kt(r2, e3);
-  }, ft(e2);
+    return t2.prototype = Object.create(e3.prototype, { constructor: { value: t2, enumerable: false, writable: true, configurable: true } }), kr(t2, e3);
+  }, fr(e2);
 }
-function vt(e2, a2, t2) {
-  return vt = yt() ? Reflect.construct : function(e3, a3, t3) {
-    var r2 = [null];
-    r2.push.apply(r2, a3);
-    var o2 = new (Function.bind.apply(e3, r2))();
-    return t3 && kt(o2, t3.prototype), o2;
-  }, vt.apply(null, arguments);
+function vr(e2, a2, r2) {
+  return vr = yr() ? Reflect.construct : function(e3, a3, r3) {
+    var t2 = [null];
+    t2.push.apply(t2, a3);
+    var o2 = new (Function.bind.apply(e3, t2))();
+    return r3 && kr(o2, r3.prototype), o2;
+  }, vr.apply(null, arguments);
 }
-function yt() {
+function yr() {
   if ("undefined" == typeof Reflect || !Reflect.construct)
     return false;
   if (Reflect.construct.sham)
@@ -12005,36 +12011,36 @@ function yt() {
     return false;
   }
 }
-function kt(e2, a2) {
-  return kt = Object.setPrototypeOf || function(e3, a3) {
+function kr(e2, a2) {
+  return kr = Object.setPrototypeOf || function(e3, a3) {
     return e3.__proto__ = a3, e3;
-  }, kt(e2, a2);
+  }, kr(e2, a2);
 }
-function xt(e2) {
-  return xt = Object.setPrototypeOf ? Object.getPrototypeOf : function(e3) {
+function xr(e2) {
+  return xr = Object.setPrototypeOf ? Object.getPrototypeOf : function(e3) {
     return e3.__proto__ || Object.getPrototypeOf(e3);
-  }, xt(e2);
+  }, xr(e2);
 }
-var wt = function(e2) {
+var wr = function(e2) {
   !function(e3, a3) {
     if ("function" != typeof a3 && null !== a3)
       throw new TypeError("Super expression must either be null or a function");
-    e3.prototype = Object.create(a3 && a3.prototype, { constructor: { value: e3, writable: true, configurable: true } }), Object.defineProperty(e3, "prototype", { writable: false }), a3 && kt(e3, a3);
-  }(i2, ft(Error));
-  var a2, t2, r2, o2 = bt(i2);
+    e3.prototype = Object.create(a3 && a3.prototype, { constructor: { value: e3, writable: true, configurable: true } }), Object.defineProperty(e3, "prototype", { writable: false }), a3 && kr(e3, a3);
+  }(i2, fr(Error));
+  var a2, r2, t2, o2 = br(i2);
   function i2(e3) {
     var a3;
     return function(e4, a4) {
       if (!(e4 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
-    }(this, i2), a3 = o2.call(this, e3), Object.setPrototypeOf(zt(a3), i2.prototype), a3.name = a3.constructor.name, a3;
+    }(this, i2), a3 = o2.call(this, e3), Object.setPrototypeOf(zr(a3), i2.prototype), a3.name = a3.constructor.name, a3;
   }
-  return a2 = i2, t2 && gt(a2.prototype, t2), r2 && gt(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), a2;
-}(), $t = 2, _t = 17, Ct = 3, Et = "0-9０-９٠-٩۰-۹", St = "".concat("-‐-―−ー－").concat("／/").concat("．.").concat("  ­​⁠　").concat("()（）［］\\[\\]").concat("~⁓∼～");
-function It(e2, a2) {
+  return a2 = i2, r2 && gr(a2.prototype, r2), t2 && gr(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), a2;
+}(), $r = 2, _r = 17, Cr = 3, Er = "0-9０-９٠-٩۰-۹", Ar = "".concat("-‐-―−ー－").concat("／/").concat("．.").concat("  ­​⁠　").concat("()（）［］\\[\\]").concat("~⁓∼～");
+function Sr(e2, a2) {
   e2 = e2.split("-"), a2 = a2.split("-");
-  for (var t2 = e2[0].split("."), r2 = a2[0].split("."), o2 = 0; o2 < 3; o2++) {
-    var i2 = Number(t2[o2]), n2 = Number(r2[o2]);
+  for (var r2 = e2[0].split("."), t2 = a2[0].split("."), o2 = 0; o2 < 3; o2++) {
+    var i2 = Number(r2[o2]), n2 = Number(t2[o2]);
     if (i2 > n2)
       return 1;
     if (n2 > i2)
@@ -12046,36 +12052,36 @@ function It(e2, a2) {
   }
   return e2[1] && a2[1] ? e2[1] > a2[1] ? 1 : e2[1] < a2[1] ? -1 : 0 : !e2[1] && a2[1] ? 1 : e2[1] && !a2[1] ? -1 : 0;
 }
-function At(e2) {
-  return At = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
+function Ir(e2) {
+  return Ir = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
     return typeof e3;
   } : function(e3) {
     return e3 && "function" == typeof Symbol && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
-  }, At(e2);
+  }, Ir(e2);
 }
-function Nt(e2, a2) {
+function Nr(e2, a2) {
   if (!(e2 instanceof a2))
     throw new TypeError("Cannot call a class as a function");
 }
-function Pt(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+function Pr(e2, a2) {
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-function Bt(e2, a2, t2) {
-  return a2 && Pt(e2.prototype, a2), t2 && Pt(e2, t2), Object.defineProperty(e2, "prototype", { writable: false }), e2;
+function Br(e2, a2, r2) {
+  return a2 && Pr(e2.prototype, a2), r2 && Pr(e2, r2), Object.defineProperty(e2, "prototype", { writable: false }), e2;
 }
-var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
+var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   function e2(a2) {
-    Nt(this, e2), function(e3) {
+    Nr(this, e2), function(e3) {
       if (!e3)
         throw new Error("[libphonenumber-js] `metadata` argument not passed. Check your arguments.");
-      if (!Ut(e3) || !Ut(e3.countries))
-        throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(Ut(e3) ? "an object of shape: { " + Object.keys(e3).join(", ") + " }" : "a " + Gt(e3) + ": " + e3, "."));
-    }(a2), this.metadata = a2, Ht.call(this, a2);
+      if (!Gr(e3) || !Gr(e3.countries))
+        throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(Gr(e3) ? "an object of shape: { " + Object.keys(e3).join(", ") + " }" : "a " + jr(e3) + ": " + e3, "."));
+    }(a2), this.metadata = a2, Hr.call(this, a2);
   }
-  return Bt(e2, [{ key: "getCountries", value: function() {
+  return Br(e2, [{ key: "getCountries", value: function() {
     return Object.keys(this.metadata.countries).filter(function(e3) {
       return "001" !== e3;
     });
@@ -12102,14 +12108,14 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
   } }, { key: "country", value: function(e3) {
     return this.selectNumberingPlan(e3);
   } }, { key: "selectNumberingPlan", value: function(e3, a2) {
-    if (e3 && Mt.test(e3) && (a2 = e3, e3 = null), e3 && "001" !== e3) {
+    if (e3 && Or.test(e3) && (a2 = e3, e3 = null), e3 && "001" !== e3) {
       if (!this.hasCountry(e3))
         throw new Error("Unknown country: ".concat(e3));
-      this.numberingPlan = new Dt(this.getCountryMetadata(e3), this);
+      this.numberingPlan = new Dr(this.getCountryMetadata(e3), this);
     } else if (a2) {
       if (!this.hasCallingCode(a2))
         throw new Error("Unknown calling code: ".concat(a2));
-      this.numberingPlan = new Dt(this.getNumberingPlanMetadata(a2), this);
+      this.numberingPlan = new Dr(this.getNumberingPlanMetadata(a2), this);
     } else
       this.numberingPlan = void 0;
     return this;
@@ -12129,12 +12135,12 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
     if (a2)
       return this.getCountryMetadata(a2);
     if (this.nonGeographic()) {
-      var t2 = this.nonGeographic()[e3];
-      if (t2)
-        return t2;
+      var r2 = this.nonGeographic()[e3];
+      if (r2)
+        return r2;
     } else {
-      var r2 = this.countryCallingCodes()[e3];
-      if (r2 && 1 === r2.length && "001" === r2[0])
+      var t2 = this.countryCallingCodes()[e3];
+      if (t2 && 1 === t2.length && "001" === t2[0])
         return this.metadata.countries["001"];
     }
   } }, { key: "countryCallingCode", value: function() {
@@ -12168,11 +12174,11 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
   } }, { key: "hasSelectedNumberingPlan", value: function() {
     return void 0 !== this.numberingPlan;
   } }]), e2;
-}(), Dt = function() {
-  function e2(a2, t2) {
-    Nt(this, e2), this.globalMetadataObject = t2, this.metadata = a2, Ht.call(this, t2.metadata);
+}(), Dr = function() {
+  function e2(a2, r2) {
+    Nr(this, e2), this.globalMetadataObject = r2, this.metadata = a2, Hr.call(this, r2.metadata);
   }
-  return Bt(e2, [{ key: "callingCode", value: function() {
+  return Br(e2, [{ key: "callingCode", value: function() {
     return this.metadata[0];
   } }, { key: "getDefaultCountryMetadataForRegion", value: function() {
     return this.globalMetadataObject.getNumberingPlanMetadata(this.callingCode());
@@ -12192,7 +12198,7 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
   } }, { key: "formats", value: function() {
     var e3 = this, a2 = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
     return a2.map(function(a3) {
-      return new Tt(a3, e3);
+      return new Fr(a3, e3);
     });
   } }, { key: "nationalPrefix", value: function() {
     return this.metadata[this.v1 ? 3 : this.v2 ? 4 : 5];
@@ -12217,16 +12223,16 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
   } }, { key: "hasTypes", value: function() {
     return (!this.types() || 0 !== this.types().length) && !!this.types();
   } }, { key: "type", value: function(e3) {
-    if (this.hasTypes() && jt(this.types(), e3))
-      return new Lt(jt(this.types(), e3), this);
+    if (this.hasTypes() && Ur(this.types(), e3))
+      return new Tr(Ur(this.types(), e3), this);
   } }, { key: "ext", value: function() {
-    return this.v1 || this.v2 ? Ot : this.metadata[13] || Ot;
+    return this.v1 || this.v2 ? Mr : this.metadata[13] || Mr;
   } }]), e2;
-}(), Tt = function() {
-  function e2(a2, t2) {
-    Nt(this, e2), this._format = a2, this.metadata = t2;
+}(), Fr = function() {
+  function e2(a2, r2) {
+    Nr(this, e2), this._format = a2, this.metadata = r2;
   }
-  return Bt(e2, [{ key: "pattern", value: function() {
+  return Br(e2, [{ key: "pattern", value: function() {
     return this._format[0];
   } }, { key: "format", value: function() {
     return this._format[1];
@@ -12239,22 +12245,22 @@ var Ot = " ext. ", Mt = /^\d+$/, Rt = function() {
   } }, { key: "nationalPrefixIsMandatoryWhenFormattingInNationalFormat", value: function() {
     return this.usesNationalPrefix() && !this.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
   } }, { key: "usesNationalPrefix", value: function() {
-    return !(!this.nationalPrefixFormattingRule() || Ft.test(this.nationalPrefixFormattingRule()));
+    return !(!this.nationalPrefixFormattingRule() || Lr.test(this.nationalPrefixFormattingRule()));
   } }, { key: "internationalFormat", value: function() {
     return this._format[5] || this.format();
   } }]), e2;
-}(), Ft = /^\(?\$1\)?$/, Lt = function() {
-  function e2(a2, t2) {
-    Nt(this, e2), this.type = a2, this.metadata = t2;
+}(), Lr = /^\(?\$1\)?$/, Tr = function() {
+  function e2(a2, r2) {
+    Nr(this, e2), this.type = a2, this.metadata = r2;
   }
-  return Bt(e2, [{ key: "pattern", value: function() {
+  return Br(e2, [{ key: "pattern", value: function() {
     return this.metadata.v1 ? this.type : this.type[0];
   } }, { key: "possibleLengths", value: function() {
     if (!this.metadata.v1)
       return this.type[1] || this.metadata.possibleLengths();
   } }]), e2;
 }();
-function jt(e2, a2) {
+function Ur(e2, a2) {
   switch (a2) {
     case "FIXED_LINE":
       return e2[0];
@@ -12278,516 +12284,516 @@ function jt(e2, a2) {
       return e2[9];
   }
 }
-var Ut = function(e2) {
-  return "object" === At(e2);
-}, Gt = function(e2) {
-  return At(e2);
+var Gr = function(e2) {
+  return "object" === Ir(e2);
+}, jr = function(e2) {
+  return Ir(e2);
 };
-function Vt(e2, a2) {
-  if ((a2 = new Rt(a2)).hasCountry(e2))
+function Yr(e2, a2) {
+  if ((a2 = new Rr(a2)).hasCountry(e2))
     return a2.country(e2).countryCallingCode();
   throw new Error("Unknown country: ".concat(e2));
 }
-function Ht(e2) {
+function Hr(e2) {
   var a2 = e2.version;
-  "number" == typeof a2 ? (this.v1 = 1 === a2, this.v2 = 2 === a2, this.v3 = 3 === a2, this.v4 = 4 === a2) : a2 ? -1 === It(a2, "1.2.0") ? this.v2 = true : -1 === It(a2, "1.7.35") ? this.v3 = true : this.v4 = true : this.v1 = true;
+  "number" == typeof a2 ? (this.v1 = 1 === a2, this.v2 = 2 === a2, this.v3 = 3 === a2, this.v4 = 4 === a2) : a2 ? -1 === Sr(a2, "1.2.0") ? this.v2 = true : -1 === Sr(a2, "1.7.35") ? this.v3 = true : this.v4 = true : this.v1 = true;
 }
-var Yt = function(e2) {
-  return "([".concat(Et, "]{1,").concat(e2, "})");
+var Vr = function(e2) {
+  return "([".concat(Er, "]{1,").concat(e2, "})");
 };
-function Kt(e2) {
-  var a2 = "[  \\t,]*", t2 = "[:\\.．]?[  \\t,-]*", r2 = "#?", o2 = "[  \\t]*";
-  return ";ext=" + Yt("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)" + t2 + Yt("20") + r2) + "|" + (a2 + "(?:[xｘ#＃~～]|int|ｉｎｔ)" + t2 + Yt("9") + r2) + "|" + ("[- ]+" + Yt("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + t2 + Yt("15") + r2) + "|" + (o2 + "(?:,)+" + t2 + Yt("9") + r2);
+function Kr(e2) {
+  var a2 = "[  \\t,]*", r2 = "[:\\.．]?[  \\t,-]*", t2 = "#?", o2 = "[  \\t]*";
+  return ";ext=" + Vr("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)" + r2 + Vr("20") + t2) + "|" + (a2 + "(?:[xｘ#＃~～]|int|ｉｎｔ)" + r2 + Vr("9") + t2) + "|" + ("[- ]+" + Vr("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + r2 + Vr("15") + t2) + "|" + (o2 + "(?:,)+" + r2 + Vr("9") + t2);
 }
-var Qt = "[" + Et + "]{" + $t + "}", Jt = "[+＋]{0,1}(?:[" + St + "]*[" + Et + "]){3,}[" + St + Et + "]*", qt = new RegExp("^[+＋]{0,1}(?:[" + St + "]*[" + Et + "]){1,2}$", "i"), Wt = Jt + "(?:" + Kt() + ")?", Zt = new RegExp("^" + Qt + "$|^" + Wt + "$", "i");
-var Xt = new RegExp("(?:" + Kt() + ")$", "i");
-function er(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+var Qr = "[" + Er + "]{" + $r + "}", Jr = "[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){3,}[" + Ar + Er + "]*", qr = new RegExp("^[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){1,2}$", "i"), Wr = Jr + "(?:" + Kr() + ")?", Zr = new RegExp("^" + Qr + "$|^" + Wr + "$", "i");
+var Xr = new RegExp("(?:" + Kr() + ")$", "i");
+function et(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return ar(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return at(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return ar(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return at(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function ar(e2, a2) {
+function at(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
-}
-var tr = { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", "０": "0", "１": "1", "２": "2", "３": "3", "４": "4", "５": "5", "６": "6", "７": "7", "８": "8", "９": "9", "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9", "۰": "0", "۱": "1", "۲": "2", "۳": "3", "۴": "4", "۵": "5", "۶": "6", "۷": "7", "۸": "8", "۹": "9" };
-function rr(e2) {
-  return tr[e2];
-}
-function or(e2) {
-  for (var a2, t2 = "", r2 = er(e2.split("")); !(a2 = r2()).done; ) {
-    var o2 = rr(a2.value);
-    o2 && (t2 += o2);
-  }
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
   return t2;
 }
-function ir(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+var rt = { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", "０": "0", "１": "1", "２": "2", "３": "3", "４": "4", "５": "5", "６": "6", "７": "7", "８": "8", "９": "9", "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9", "۰": "0", "۱": "1", "۲": "2", "۳": "3", "۴": "4", "۵": "5", "۶": "6", "۷": "7", "۸": "8", "۹": "9" };
+function tt(e2) {
+  return rt[e2];
+}
+function ot(e2) {
+  for (var a2, r2 = "", t2 = et(e2.split("")); !(a2 = t2()).done; ) {
+    var o2 = tt(a2.value);
+    o2 && (r2 += o2);
+  }
+  return r2;
+}
+function it(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return nr(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return nt(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return nr(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return nt(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function nr(e2, a2) {
+function nt(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
-}
-function dr(e2) {
-  for (var a2, t2 = "", r2 = ir(e2.split("")); !(a2 = r2()).done; ) {
-    t2 += lr(a2.value, t2) || "";
-  }
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
   return t2;
 }
-function lr(e2, a2) {
+function dt(e2) {
+  for (var a2, r2 = "", t2 = it(e2.split("")); !(a2 = t2()).done; ) {
+    r2 += lt(a2.value, r2) || "";
+  }
+  return r2;
+}
+function lt(e2, a2) {
   if ("+" === e2) {
     if (a2)
       return;
     return "+";
   }
-  return rr(e2);
+  return tt(e2);
 }
-function sr(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+function st(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return cr(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return ct(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return cr(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return ct(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function cr(e2, a2) {
+function ct(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
-function mr(e2, a2) {
-  return ur(e2, void 0, a2);
+function mt(e2, a2) {
+  return ut(e2, void 0, a2);
 }
-function ur(e2, a2, t2) {
-  var r2 = t2.type(a2), o2 = r2 && r2.possibleLengths() || t2.possibleLengths();
+function ut(e2, a2, r2) {
+  var t2 = r2.type(a2), o2 = t2 && t2.possibleLengths() || r2.possibleLengths();
   if (!o2)
     return "IS_POSSIBLE";
   if ("FIXED_LINE_OR_MOBILE" === a2) {
-    if (!t2.type("FIXED_LINE"))
-      return ur(e2, "MOBILE", t2);
-    var i2 = t2.type("MOBILE");
+    if (!r2.type("FIXED_LINE"))
+      return ut(e2, "MOBILE", r2);
+    var i2 = r2.type("MOBILE");
     i2 && (o2 = function(e3, a3) {
-      for (var t3, r3 = e3.slice(), o3 = sr(a3); !(t3 = o3()).done; ) {
-        var i3 = t3.value;
-        e3.indexOf(i3) < 0 && r3.push(i3);
+      for (var r3, t3 = e3.slice(), o3 = st(a3); !(r3 = o3()).done; ) {
+        var i3 = r3.value;
+        e3.indexOf(i3) < 0 && t3.push(i3);
       }
-      return r3.sort(function(e4, a4) {
+      return t3.sort(function(e4, a4) {
         return e4 - a4;
       });
     }(o2, i2.possibleLengths()));
-  } else if (a2 && !r2)
+  } else if (a2 && !t2)
     return "INVALID_LENGTH";
   var n2 = e2.length, d2 = o2[0];
   return d2 === n2 ? "IS_POSSIBLE" : d2 > n2 ? "TOO_SHORT" : o2[o2.length - 1] < n2 ? "TOO_LONG" : o2.indexOf(n2, 1) >= 0 ? "IS_POSSIBLE" : "INVALID_LENGTH";
 }
-function pr(e2, a2) {
-  return "IS_POSSIBLE" === mr(e2, a2);
+function pt(e2, a2) {
+  return "IS_POSSIBLE" === mt(e2, a2);
 }
-function hr(e2, a2) {
+function ht(e2, a2) {
   return e2 = e2 || "", new RegExp("^(?:" + a2 + ")$").test(e2);
 }
-function gr(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+function gt(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return br(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return bt(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return br(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return bt(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function br(e2, a2) {
+function bt(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
-var zr = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
-function fr(e2, a2, t2) {
+var zt = ["MOBILE", "PREMIUM_RATE", "TOLL_FREE", "SHARED_COST", "VOIP", "PERSONAL_NUMBER", "PAGER", "UAN", "VOICEMAIL"];
+function ft(e2, a2, r2) {
   if (a2 = a2 || {}, e2.country) {
-    (t2 = new Rt(t2)).selectNumberingPlan(e2.country, e2.countryCallingCode);
-    var r2 = a2.v2 ? e2.nationalNumber : e2.phone;
-    if (hr(r2, t2.nationalNumberPattern())) {
-      if (vr(r2, "FIXED_LINE", t2))
-        return t2.type("MOBILE") && "" === t2.type("MOBILE").pattern() ? "FIXED_LINE_OR_MOBILE" : t2.type("MOBILE") ? vr(r2, "MOBILE", t2) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE" : "FIXED_LINE_OR_MOBILE";
-      for (var o2, i2 = gr(zr); !(o2 = i2()).done; ) {
+    (r2 = new Rr(r2)).selectNumberingPlan(e2.country, e2.countryCallingCode);
+    var t2 = a2.v2 ? e2.nationalNumber : e2.phone;
+    if (ht(t2, r2.nationalNumberPattern())) {
+      if (vt(t2, "FIXED_LINE", r2))
+        return r2.type("MOBILE") && "" === r2.type("MOBILE").pattern() ? "FIXED_LINE_OR_MOBILE" : r2.type("MOBILE") ? vt(t2, "MOBILE", r2) ? "FIXED_LINE_OR_MOBILE" : "FIXED_LINE" : "FIXED_LINE_OR_MOBILE";
+      for (var o2, i2 = gt(zt); !(o2 = i2()).done; ) {
         var n2 = o2.value;
-        if (vr(r2, n2, t2))
+        if (vt(t2, n2, r2))
           return n2;
       }
     }
   }
 }
-function vr(e2, a2, t2) {
-  return !(!(a2 = t2.type(a2)) || !a2.pattern()) && (!(a2.possibleLengths() && a2.possibleLengths().indexOf(e2.length) < 0) && hr(e2, a2.pattern()));
+function vt(e2, a2, r2) {
+  return !(!(a2 = r2.type(a2)) || !a2.pattern()) && (!(a2.possibleLengths() && a2.possibleLengths().indexOf(e2.length) < 0) && ht(e2, a2.pattern()));
 }
-function yr(e2, a2, t2) {
-  var r2 = new Rt(t2).getCountryCodesForCallingCode(e2);
-  return r2 ? r2.filter(function(e3) {
-    return function(e4, a3, t3) {
-      var r3 = new Rt(t3);
-      if (r3.selectNumberingPlan(a3), r3.numberingPlan.possibleLengths().indexOf(e4.length) >= 0)
+function yt(e2, a2, r2) {
+  var t2 = new Rr(r2).getCountryCodesForCallingCode(e2);
+  return t2 ? t2.filter(function(e3) {
+    return function(e4, a3, r3) {
+      var t3 = new Rr(r3);
+      if (t3.selectNumberingPlan(a3), t3.numberingPlan.possibleLengths().indexOf(e4.length) >= 0)
         return true;
       return false;
-    }(a2, e3, t2);
+    }(a2, e3, r2);
   }) : [];
 }
-function kr(e2) {
-  return e2.replace(new RegExp("[".concat(St, "]+"), "g"), " ").trim();
+function kt(e2) {
+  return e2.replace(new RegExp("[".concat(Ar, "]+"), "g"), " ").trim();
 }
-var xr = /(\$\d)/;
-function wr(e2, a2, t2) {
-  var r2 = t2.useInternationalFormat, o2 = t2.withNationalPrefix;
-  t2.carrierCode, t2.metadata;
-  var i2 = e2.replace(new RegExp(a2.pattern()), r2 ? a2.internationalFormat() : o2 && a2.nationalPrefixFormattingRule() ? a2.format().replace(xr, a2.nationalPrefixFormattingRule()) : a2.format());
-  return r2 ? kr(i2) : i2;
+var xt = /(\$\d)/;
+function wt(e2, a2, r2) {
+  var t2 = r2.useInternationalFormat, o2 = r2.withNationalPrefix;
+  r2.carrierCode, r2.metadata;
+  var i2 = e2.replace(new RegExp(a2.pattern()), t2 ? a2.internationalFormat() : o2 && a2.nationalPrefixFormattingRule() ? a2.format().replace(xt, a2.nationalPrefixFormattingRule()) : a2.format());
+  return t2 ? kt(i2) : i2;
 }
-var $r = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
-function _r(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+var $t = /^[\d]+(?:[~\u2053\u223C\uFF5E][\d]+)?$/;
+function _t(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return Cr(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return Ct(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return Cr(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return Ct(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Cr(e2, a2) {
+function Ct(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
-}
-function Er(e2, a2) {
-  var t2 = Object.keys(e2);
-  if (Object.getOwnPropertySymbols) {
-    var r2 = Object.getOwnPropertySymbols(e2);
-    a2 && (r2 = r2.filter(function(a3) {
-      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
-    })), t2.push.apply(t2, r2);
-  }
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
   return t2;
 }
-function Sr(e2) {
+function Et(e2, a2) {
+  var r2 = Object.keys(e2);
+  if (Object.getOwnPropertySymbols) {
+    var t2 = Object.getOwnPropertySymbols(e2);
+    a2 && (t2 = t2.filter(function(a3) {
+      return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
+    })), r2.push.apply(r2, t2);
+  }
+  return r2;
+}
+function At(e2) {
   for (var a2 = 1; a2 < arguments.length; a2++) {
-    var t2 = null != arguments[a2] ? arguments[a2] : {};
-    a2 % 2 ? Er(Object(t2), true).forEach(function(a3) {
-      Ir(e2, a3, t2[a3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : Er(Object(t2)).forEach(function(a3) {
-      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
+    var r2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? Et(Object(r2), true).forEach(function(a3) {
+      St(e2, a3, r2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(r2)) : Et(Object(r2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(r2, a3));
     });
   }
   return e2;
 }
-function Ir(e2, a2, t2) {
-  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
+function St(e2, a2, r2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
-var Ar = { formatExtension: function(e2, a2, t2) {
-  return "".concat(e2).concat(t2.ext()).concat(a2);
+var It = { formatExtension: function(e2, a2, r2) {
+  return "".concat(e2).concat(r2.ext()).concat(a2);
 } };
-function Nr(e2, a2, t2, r2) {
-  if (t2 = t2 ? Sr(Sr({}, Ar), t2) : Ar, r2 = new Rt(r2), e2.country && "001" !== e2.country) {
-    if (!r2.hasCountry(e2.country))
+function Nt(e2, a2, r2, t2) {
+  if (r2 = r2 ? At(At({}, It), r2) : It, t2 = new Rr(t2), e2.country && "001" !== e2.country) {
+    if (!t2.hasCountry(e2.country))
       throw new Error("Unknown country: ".concat(e2.country));
-    r2.country(e2.country);
+    t2.country(e2.country);
   } else {
     if (!e2.countryCallingCode)
       return e2.phone || "";
-    r2.selectNumberingPlan(e2.countryCallingCode);
+    t2.selectNumberingPlan(e2.countryCallingCode);
   }
-  var o2, i2 = r2.countryCallingCode(), n2 = t2.v2 ? e2.nationalNumber : e2.phone;
+  var o2, i2 = t2.countryCallingCode(), n2 = r2.v2 ? e2.nationalNumber : e2.phone;
   switch (a2) {
     case "NATIONAL":
-      return n2 ? Br(o2 = Pr(n2, e2.carrierCode, "NATIONAL", r2, t2), e2.ext, r2, t2.formatExtension) : "";
+      return n2 ? Bt(o2 = Pt(n2, e2.carrierCode, "NATIONAL", t2, r2), e2.ext, t2, r2.formatExtension) : "";
     case "INTERNATIONAL":
-      return n2 ? (o2 = Pr(n2, null, "INTERNATIONAL", r2, t2), Br(o2 = "+".concat(i2, " ").concat(o2), e2.ext, r2, t2.formatExtension)) : "+".concat(i2);
+      return n2 ? (o2 = Pt(n2, null, "INTERNATIONAL", t2, r2), Bt(o2 = "+".concat(i2, " ").concat(o2), e2.ext, t2, r2.formatExtension)) : "+".concat(i2);
     case "E.164":
       return "+".concat(i2).concat(n2);
     case "RFC3966":
       return function(e3) {
-        var a3 = e3.number, t3 = e3.ext;
+        var a3 = e3.number, r3 = e3.ext;
         if (!a3)
           return "";
         if ("+" !== a3[0])
           throw new Error('"formatRFC3966()" expects "number" to be in E.164 format.');
-        return "tel:".concat(a3).concat(t3 ? ";ext=" + t3 : "");
+        return "tel:".concat(a3).concat(r3 ? ";ext=" + r3 : "");
       }({ number: "+".concat(i2).concat(n2), ext: e2.ext });
     case "IDD":
-      if (!t2.fromCountry)
+      if (!r2.fromCountry)
         return;
-      var d2 = function(e3, a3, t3, r3, o3) {
-        var i3 = Vt(r3, o3.metadata);
-        if (i3 === t3) {
-          var n3 = Pr(e3, a3, "NATIONAL", o3);
-          return "1" === t3 ? t3 + " " + n3 : n3;
+      var d2 = function(e3, a3, r3, t3, o3) {
+        var i3 = Yr(t3, o3.metadata);
+        if (i3 === r3) {
+          var n3 = Pt(e3, a3, "NATIONAL", o3);
+          return "1" === r3 ? r3 + " " + n3 : n3;
         }
-        var d3 = function(e4, a4, t4) {
-          var r4 = new Rt(t4);
-          return r4.selectNumberingPlan(e4, a4), r4.defaultIDDPrefix() ? r4.defaultIDDPrefix() : $r.test(r4.IDDPrefix()) ? r4.IDDPrefix() : void 0;
-        }(r3, void 0, o3.metadata);
+        var d3 = function(e4, a4, r4) {
+          var t4 = new Rr(r4);
+          return t4.selectNumberingPlan(e4, a4), t4.defaultIDDPrefix() ? t4.defaultIDDPrefix() : $t.test(t4.IDDPrefix()) ? t4.IDDPrefix() : void 0;
+        }(t3, void 0, o3.metadata);
         if (d3)
-          return "".concat(d3, " ").concat(t3, " ").concat(Pr(e3, null, "INTERNATIONAL", o3));
-      }(n2, e2.carrierCode, i2, t2.fromCountry, r2);
-      return Br(d2, e2.ext, r2, t2.formatExtension);
+          return "".concat(d3, " ").concat(r3, " ").concat(Pt(e3, null, "INTERNATIONAL", o3));
+      }(n2, e2.carrierCode, i2, r2.fromCountry, t2);
+      return Bt(d2, e2.ext, t2, r2.formatExtension);
     default:
       throw new Error('Unknown "format" argument passed to "formatNumber()": "'.concat(a2, '"'));
   }
 }
-function Pr(e2, a2, t2, r2, o2) {
+function Pt(e2, a2, r2, t2, o2) {
   var i2 = function(e3, a3) {
-    for (var t3, r3 = _r(e3); !(t3 = r3()).done; ) {
-      var o3 = t3.value;
+    for (var r3, t3 = _t(e3); !(r3 = t3()).done; ) {
+      var o3 = r3.value;
       if (o3.leadingDigitsPatterns().length > 0) {
         var i3 = o3.leadingDigitsPatterns()[o3.leadingDigitsPatterns().length - 1];
         if (0 !== a3.search(i3))
           continue;
       }
-      if (hr(a3, o3.pattern()))
+      if (ht(a3, o3.pattern()))
         return o3;
     }
-  }(r2.formats(), e2);
-  return i2 ? wr(e2, i2, { useInternationalFormat: "INTERNATIONAL" === t2, withNationalPrefix: !i2.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !o2 || false !== o2.nationalPrefix, carrierCode: a2, metadata: r2 }) : e2;
+  }(t2.formats(), e2);
+  return i2 ? wt(e2, i2, { useInternationalFormat: "INTERNATIONAL" === r2, withNationalPrefix: !i2.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !o2 || false !== o2.nationalPrefix, carrierCode: a2, metadata: t2 }) : e2;
 }
-function Br(e2, a2, t2, r2) {
-  return a2 ? r2(e2, a2, t2) : e2;
+function Bt(e2, a2, r2, t2) {
+  return a2 ? t2(e2, a2, r2) : e2;
 }
-function Or(e2, a2) {
-  var t2 = Object.keys(e2);
+function Mt(e2, a2) {
+  var r2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var r2 = Object.getOwnPropertySymbols(e2);
-    a2 && (r2 = r2.filter(function(a3) {
+    var t2 = Object.getOwnPropertySymbols(e2);
+    a2 && (t2 = t2.filter(function(a3) {
       return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
-    })), t2.push.apply(t2, r2);
+    })), r2.push.apply(r2, t2);
   }
-  return t2;
+  return r2;
 }
-function Mr(e2) {
+function Ot(e2) {
   for (var a2 = 1; a2 < arguments.length; a2++) {
-    var t2 = null != arguments[a2] ? arguments[a2] : {};
-    a2 % 2 ? Or(Object(t2), true).forEach(function(a3) {
-      Rr(e2, a3, t2[a3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : Or(Object(t2)).forEach(function(a3) {
-      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
+    var r2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? Mt(Object(r2), true).forEach(function(a3) {
+      Rt(e2, a3, r2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(r2)) : Mt(Object(r2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(r2, a3));
     });
   }
   return e2;
 }
-function Rr(e2, a2, t2) {
-  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
+function Rt(e2, a2, r2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
-function Dr(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+function Dt(e2, a2) {
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var Tr = function() {
-  function e2(a3, t3, r3) {
+var Ft = function() {
+  function e2(a3, r3, t3) {
     if (function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
     }(this, e2), !a3)
       throw new TypeError("`country` or `countryCallingCode` not passed");
-    if (!t3)
-      throw new TypeError("`nationalNumber` not passed");
     if (!r3)
+      throw new TypeError("`nationalNumber` not passed");
+    if (!t3)
       throw new TypeError("`metadata` not passed");
     var o2 = function(e3, a4) {
-      var t4, r4, o3 = new Rt(a4);
-      Fr(e3) ? (t4 = e3, o3.selectNumberingPlan(t4), r4 = o3.countryCallingCode()) : r4 = e3;
-      return { country: t4, countryCallingCode: r4 };
-    }(a3, r3), i2 = o2.country, n2 = o2.countryCallingCode;
-    this.country = i2, this.countryCallingCode = n2, this.nationalNumber = t3, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.getMetadata = function() {
-      return r3;
+      var r4, t4, o3 = new Rr(a4);
+      Lt(e3) ? (r4 = e3, o3.selectNumberingPlan(r4), t4 = o3.countryCallingCode()) : t4 = e3;
+      return { country: r4, countryCallingCode: t4 };
+    }(a3, t3), i2 = o2.country, n2 = o2.countryCallingCode;
+    this.country = i2, this.countryCallingCode = n2, this.nationalNumber = r3, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.getMetadata = function() {
+      return t3;
     };
   }
-  var a2, t2, r2;
-  return a2 = e2, t2 = [{ key: "setExt", value: function(e3) {
+  var a2, r2, t2;
+  return a2 = e2, r2 = [{ key: "setExt", value: function(e3) {
     this.ext = e3;
   } }, { key: "getPossibleCountries", value: function() {
-    return this.country ? [this.country] : yr(this.countryCallingCode, this.nationalNumber, this.getMetadata());
+    return this.country ? [this.country] : yt(this.countryCallingCode, this.nationalNumber, this.getMetadata());
   } }, { key: "isPossible", value: function() {
-    return function(e3, a3, t3) {
-      if (void 0 === a3 && (a3 = {}), t3 = new Rt(t3), a3.v2) {
+    return function(e3, a3, r3) {
+      if (void 0 === a3 && (a3 = {}), r3 = new Rr(r3), a3.v2) {
         if (!e3.countryCallingCode)
           throw new Error("Invalid phone number object passed");
-        t3.selectNumberingPlan(e3.countryCallingCode);
+        r3.selectNumberingPlan(e3.countryCallingCode);
       } else {
         if (!e3.phone)
           return false;
         if (e3.country) {
-          if (!t3.hasCountry(e3.country))
+          if (!r3.hasCountry(e3.country))
             throw new Error("Unknown country: ".concat(e3.country));
-          t3.country(e3.country);
+          r3.country(e3.country);
         } else {
           if (!e3.countryCallingCode)
             throw new Error("Invalid phone number object passed");
-          t3.selectNumberingPlan(e3.countryCallingCode);
+          r3.selectNumberingPlan(e3.countryCallingCode);
         }
       }
-      if (t3.possibleLengths())
-        return pr(e3.phone || e3.nationalNumber, t3);
-      if (e3.countryCallingCode && t3.isNonGeographicCallingCode(e3.countryCallingCode))
+      if (r3.possibleLengths())
+        return pt(e3.phone || e3.nationalNumber, r3);
+      if (e3.countryCallingCode && r3.isNonGeographicCallingCode(e3.countryCallingCode))
         return true;
       throw new Error('Missing "possibleLengths" in metadata. Perhaps the metadata has been generated before v1.0.18.');
     }(this, { v2: true }, this.getMetadata());
   } }, { key: "isValid", value: function() {
-    return function(e3, a3, t3) {
-      return a3 = a3 || {}, (t3 = new Rt(t3)).selectNumberingPlan(e3.country, e3.countryCallingCode), t3.hasTypes() ? void 0 !== fr(e3, a3, t3.metadata) : hr(a3.v2 ? e3.nationalNumber : e3.phone, t3.nationalNumberPattern());
+    return function(e3, a3, r3) {
+      return a3 = a3 || {}, (r3 = new Rr(r3)).selectNumberingPlan(e3.country, e3.countryCallingCode), r3.hasTypes() ? void 0 !== ft(e3, a3, r3.metadata) : ht(a3.v2 ? e3.nationalNumber : e3.phone, r3.nationalNumberPattern());
     }(this, { v2: true }, this.getMetadata());
   } }, { key: "isNonGeographic", value: function() {
-    return new Rt(this.getMetadata()).isNonGeographicCallingCode(this.countryCallingCode);
+    return new Rr(this.getMetadata()).isNonGeographicCallingCode(this.countryCallingCode);
   } }, { key: "isEqual", value: function(e3) {
     return this.number === e3.number && this.ext === e3.ext;
   } }, { key: "getType", value: function() {
-    return fr(this, { v2: true }, this.getMetadata());
+    return ft(this, { v2: true }, this.getMetadata());
   } }, { key: "format", value: function(e3, a3) {
-    return Nr(this, e3, a3 ? Mr(Mr({}, a3), {}, { v2: true }) : { v2: true }, this.getMetadata());
+    return Nt(this, e3, a3 ? Ot(Ot({}, a3), {}, { v2: true }) : { v2: true }, this.getMetadata());
   } }, { key: "formatNational", value: function(e3) {
     return this.format("NATIONAL", e3);
   } }, { key: "formatInternational", value: function(e3) {
     return this.format("INTERNATIONAL", e3);
   } }, { key: "getURI", value: function(e3) {
     return this.format("RFC3966", e3);
-  } }], t2 && Dr(a2.prototype, t2), r2 && Dr(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
-}(), Fr = function(e2) {
+  } }], r2 && Dt(a2.prototype, r2), t2 && Dt(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+}(), Lt = function(e2) {
   return /^[A-Z]{2}$/.test(e2);
 };
-var Lr = new RegExp("([" + Et + "])");
-function jr(e2, a2, t2, r2) {
+var Tt = new RegExp("([" + Er + "])");
+function Ut(e2, a2, r2, t2) {
   if (a2) {
-    var o2 = new Rt(r2);
-    o2.selectNumberingPlan(a2, t2);
+    var o2 = new Rr(t2);
+    o2.selectNumberingPlan(a2, r2);
     var i2 = new RegExp(o2.IDDPrefix());
     if (0 === e2.search(i2)) {
-      var n2 = (e2 = e2.slice(e2.match(i2)[0].length)).match(Lr);
+      var n2 = (e2 = e2.slice(e2.match(i2)[0].length)).match(Tt);
       if (!(n2 && null != n2[1] && n2[1].length > 0 && "0" === n2[1]))
         return e2;
     }
   }
 }
-function Ur(e2, a2) {
+function Gt(e2, a2) {
   if (e2 && a2.numberingPlan.nationalPrefixForParsing()) {
-    var t2 = new RegExp("^(?:" + a2.numberingPlan.nationalPrefixForParsing() + ")"), r2 = t2.exec(e2);
-    if (r2) {
-      var o2, i2, n2, d2 = r2.length - 1, l2 = d2 > 0 && r2[d2];
+    var r2 = new RegExp("^(?:" + a2.numberingPlan.nationalPrefixForParsing() + ")"), t2 = r2.exec(e2);
+    if (t2) {
+      var o2, i2, n2, d2 = t2.length - 1, l2 = d2 > 0 && t2[d2];
       if (a2.nationalPrefixTransformRule() && l2)
-        o2 = e2.replace(t2, a2.nationalPrefixTransformRule()), d2 > 1 && (i2 = r2[1]);
+        o2 = e2.replace(r2, a2.nationalPrefixTransformRule()), d2 > 1 && (i2 = t2[1]);
       else {
-        var s2 = r2[0];
-        o2 = e2.slice(s2.length), l2 && (i2 = r2[1]);
+        var s2 = t2[0];
+        o2 = e2.slice(s2.length), l2 && (i2 = t2[1]);
       }
       if (l2) {
-        var c2 = e2.indexOf(r2[1]);
+        var c2 = e2.indexOf(t2[1]);
         e2.slice(0, c2) === a2.numberingPlan.nationalPrefix() && (n2 = a2.numberingPlan.nationalPrefix());
       } else
-        n2 = r2[0];
+        n2 = t2[0];
       return { nationalNumber: o2, nationalPrefix: n2, carrierCode: i2 };
     }
   }
   return { nationalNumber: e2 };
 }
-function Gr(e2, a2) {
-  var t2 = Ur(e2, a2), r2 = t2.carrierCode, o2 = t2.nationalNumber;
+function jt(e2, a2) {
+  var r2 = Gt(e2, a2), t2 = r2.carrierCode, o2 = r2.nationalNumber;
   if (o2 !== e2) {
-    if (!function(e3, a3, t3) {
-      if (hr(e3, t3.nationalNumberPattern()) && !hr(a3, t3.nationalNumberPattern()))
+    if (!function(e3, a3, r3) {
+      if (ht(e3, r3.nationalNumberPattern()) && !ht(a3, r3.nationalNumberPattern()))
         return false;
       return true;
     }(e2, o2, a2))
       return { nationalNumber: e2 };
     if (a2.possibleLengths() && !function(e3, a3) {
-      switch (mr(e3, a3)) {
+      switch (mt(e3, a3)) {
         case "TOO_SHORT":
         case "INVALID_LENGTH":
           return false;
@@ -12797,27 +12803,27 @@ function Gr(e2, a2) {
     }(o2, a2))
       return { nationalNumber: e2 };
   }
-  return { nationalNumber: o2, carrierCode: r2 };
+  return { nationalNumber: o2, carrierCode: t2 };
 }
-function Vr(e2, a2, t2, r2) {
-  var o2 = a2 ? Vt(a2, r2) : t2;
+function Yt(e2, a2, r2, t2) {
+  var o2 = a2 ? Yr(a2, t2) : r2;
   if (0 === e2.indexOf(o2)) {
-    (r2 = new Rt(r2)).selectNumberingPlan(a2, t2);
-    var i2 = e2.slice(o2.length), n2 = Gr(i2, r2).nationalNumber, d2 = Gr(e2, r2).nationalNumber;
-    if (!hr(d2, r2.nationalNumberPattern()) && hr(n2, r2.nationalNumberPattern()) || "TOO_LONG" === mr(d2, r2))
+    (t2 = new Rr(t2)).selectNumberingPlan(a2, r2);
+    var i2 = e2.slice(o2.length), n2 = jt(i2, t2).nationalNumber, d2 = jt(e2, t2).nationalNumber;
+    if (!ht(d2, t2.nationalNumberPattern()) && ht(n2, t2.nationalNumberPattern()) || "TOO_LONG" === mt(d2, t2))
       return { countryCallingCode: o2, number: i2 };
   }
   return { number: e2 };
 }
-function Hr(e2, a2, t2, r2) {
+function Ht(e2, a2, r2, t2) {
   if (!e2)
     return {};
   var o2;
   if ("+" !== e2[0]) {
-    var i2 = jr(e2, a2, t2, r2);
+    var i2 = Ut(e2, a2, r2, t2);
     if (!i2 || i2 === e2) {
-      if (a2 || t2) {
-        var n2 = Vr(e2, a2, t2, r2), d2 = n2.countryCallingCode, l2 = n2.number;
+      if (a2 || r2) {
+        var n2 = Yt(e2, a2, r2, t2), d2 = n2.countryCallingCode, l2 = n2.number;
         if (d2)
           return { countryCallingCodeSource: "FROM_NUMBER_WITHOUT_PLUS_SIGN", countryCallingCode: d2, number: l2 };
       }
@@ -12827,57 +12833,57 @@ function Hr(e2, a2, t2, r2) {
   }
   if ("0" === e2[1])
     return {};
-  r2 = new Rt(r2);
-  for (var s2 = 2; s2 - 1 <= Ct && s2 <= e2.length; ) {
+  t2 = new Rr(t2);
+  for (var s2 = 2; s2 - 1 <= Cr && s2 <= e2.length; ) {
     var c2 = e2.slice(1, s2);
-    if (r2.hasCallingCode(c2))
-      return r2.selectNumberingPlan(c2), { countryCallingCodeSource: o2 ? "FROM_NUMBER_WITH_IDD" : "FROM_NUMBER_WITH_PLUS_SIGN", countryCallingCode: c2, number: e2.slice(s2) };
+    if (t2.hasCallingCode(c2))
+      return t2.selectNumberingPlan(c2), { countryCallingCodeSource: o2 ? "FROM_NUMBER_WITH_IDD" : "FROM_NUMBER_WITH_PLUS_SIGN", countryCallingCode: c2, number: e2.slice(s2) };
     s2++;
   }
   return {};
 }
-function Yr(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+function Vt(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return Kr(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return Kt(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return Kr(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return Kt(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Kr(e2, a2) {
+function Kt(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
-function Qr(e2, a2) {
-  var t2 = a2.countries, r2 = a2.defaultCountry, o2 = a2.metadata;
-  o2 = new Rt(o2);
-  for (var i2, n2 = [], d2 = Yr(t2); !(i2 = d2()).done; ) {
+function Qt(e2, a2) {
+  var r2 = a2.countries, t2 = a2.defaultCountry, o2 = a2.metadata;
+  o2 = new Rr(o2);
+  for (var i2, n2 = [], d2 = Vt(r2); !(i2 = d2()).done; ) {
     var l2 = i2.value;
     if (o2.country(l2), o2.leadingDigits()) {
       if (e2 && 0 === e2.search(o2.leadingDigits()))
         return l2;
-    } else if (fr({ phone: e2, country: l2 }, void 0, o2.metadata)) {
-      if (!r2)
+    } else if (ft({ phone: e2, country: l2 }, void 0, o2.metadata)) {
+      if (!t2)
         return l2;
-      if (l2 === r2)
+      if (l2 === t2)
         return l2;
       n2.push(l2);
     }
@@ -12885,162 +12891,162 @@ function Qr(e2, a2) {
   if (n2.length > 0)
     return n2[0];
 }
-var Jr = false;
-function qr(e2, a2) {
-  var t2 = a2.nationalNumber, r2 = a2.defaultCountry, o2 = a2.metadata;
-  if (Jr && o2.isNonGeographicCallingCode(e2))
+var Jt = false;
+function qt(e2, a2) {
+  var r2 = a2.nationalNumber, t2 = a2.defaultCountry, o2 = a2.metadata;
+  if (Jt && o2.isNonGeographicCallingCode(e2))
     return "001";
   var i2 = o2.getCountryCodesForCallingCode(e2);
-  return i2 ? 1 === i2.length ? i2[0] : Qr(t2, { countries: i2, defaultCountry: r2, metadata: o2.metadata }) : void 0;
+  return i2 ? 1 === i2.length ? i2[0] : Qt(r2, { countries: i2, defaultCountry: t2, metadata: o2.metadata }) : void 0;
 }
-var Wr = "+", Zr = "([" + Et + "]|[\\-\\.\\(\\)]?)", Xr = new RegExp("^\\" + Wr + Zr + "*[" + Et + "]" + Zr + "*$", "g"), eo = new RegExp("^(" + ("[" + Et + "]+((\\-)*[" + Et + "])*") + "\\.)*" + ("[a-zA-Z]+((\\-)*[" + Et + "])*") + "\\.?$", "g"), ao = "tel:", to = ";phone-context=", ro = ";isub=";
+var Wt = "+", Zt = "([" + Er + "]|[\\-\\.\\(\\)]?)", Xt = new RegExp("^\\" + Wt + Zt + "*[" + Er + "]" + Zt + "*$", "g"), eo = new RegExp("^(" + ("[" + Er + "]+((\\-)*[" + Er + "])*") + "\\.)*" + ("[a-zA-Z]+((\\-)*[" + Er + "])*") + "\\.?$", "g"), ao = "tel:", ro = ";phone-context=", to = ";isub=";
 function oo(e2, a2) {
-  var t2, r2 = a2.extractFormattedPhoneNumber, o2 = function(e3) {
-    var a3 = e3.indexOf(to);
+  var r2, t2 = a2.extractFormattedPhoneNumber, o2 = function(e3) {
+    var a3 = e3.indexOf(ro);
     if (a3 < 0)
       return null;
-    var t3 = a3 + to.length;
-    if (t3 >= e3.length)
+    var r3 = a3 + ro.length;
+    if (r3 >= e3.length)
       return "";
-    var r3 = e3.indexOf(";", t3);
-    return r3 >= 0 ? e3.substring(t3, r3) : e3.substring(t3);
+    var t3 = e3.indexOf(";", r3);
+    return t3 >= 0 ? e3.substring(r3, t3) : e3.substring(r3);
   }(e2);
   if (!function(e3) {
-    return null === e3 || 0 !== e3.length && (Xr.test(e3) || eo.test(e3));
+    return null === e3 || 0 !== e3.length && (Xt.test(e3) || eo.test(e3));
   }(o2))
-    throw new wt("NOT_A_NUMBER");
+    throw new wr("NOT_A_NUMBER");
   if (null === o2)
-    t2 = r2(e2) || "";
+    r2 = t2(e2) || "";
   else {
-    t2 = "", o2.charAt(0) === Wr && (t2 += o2);
+    r2 = "", o2.charAt(0) === Wt && (r2 += o2);
     var i2, n2 = e2.indexOf(ao);
     i2 = n2 >= 0 ? n2 + ao.length : 0;
-    var d2 = e2.indexOf(to);
-    t2 += e2.substring(i2, d2);
+    var d2 = e2.indexOf(ro);
+    r2 += e2.substring(i2, d2);
   }
-  var l2 = t2.indexOf(ro);
-  if (l2 > 0 && (t2 = t2.substring(0, l2)), "" !== t2)
-    return t2;
+  var l2 = r2.indexOf(to);
+  if (l2 > 0 && (r2 = r2.substring(0, l2)), "" !== r2)
+    return r2;
 }
-var io = 250, no = new RegExp("[+＋" + Et + "]"), lo = new RegExp("[^" + Et + "#]+$");
-function so(e2, a2, t2) {
-  if (a2 = a2 || {}, t2 = new Rt(t2), a2.defaultCountry && !t2.hasCountry(a2.defaultCountry)) {
+var io = 250, no = new RegExp("[+＋" + Er + "]"), lo = new RegExp("[^" + Er + "#]+$");
+function so(e2, a2, r2) {
+  if (a2 = a2 || {}, r2 = new Rr(r2), a2.defaultCountry && !r2.hasCountry(a2.defaultCountry)) {
     if (a2.v2)
-      throw new wt("INVALID_COUNTRY");
+      throw new wr("INVALID_COUNTRY");
     throw new Error("Unknown country: ".concat(a2.defaultCountry));
   }
-  var r2 = function(e3, a3, t3) {
-    var r3 = oo(e3, { extractFormattedPhoneNumber: function(e4) {
-      return function(e5, a4, t4) {
+  var t2 = function(e3, a3, r3) {
+    var t3 = oo(e3, { extractFormattedPhoneNumber: function(e4) {
+      return function(e5, a4, r4) {
         if (!e5)
           return;
         if (e5.length > io) {
-          if (t4)
-            throw new wt("TOO_LONG");
+          if (r4)
+            throw new wr("TOO_LONG");
           return;
         }
         if (false === a4)
           return e5;
-        var r4 = e5.search(no);
-        if (r4 < 0)
+        var t4 = e5.search(no);
+        if (t4 < 0)
           return;
-        return e5.slice(r4).replace(lo, "");
-      }(e4, t3, a3);
+        return e5.slice(t4).replace(lo, "");
+      }(e4, r3, a3);
     } });
-    if (!r3)
+    if (!t3)
       return {};
     if (!function(e4) {
-      return e4.length >= $t && Zt.test(e4);
-    }(r3))
+      return e4.length >= $r && Zr.test(e4);
+    }(t3))
       return function(e4) {
-        return qt.test(e4);
-      }(r3) ? { error: "TOO_SHORT" } : {};
+        return qr.test(e4);
+      }(t3) ? { error: "TOO_SHORT" } : {};
     var o3 = function(e4) {
-      var a4 = e4.search(Xt);
+      var a4 = e4.search(Xr);
       if (a4 < 0)
         return {};
-      for (var t4 = e4.slice(0, a4), r4 = e4.match(Xt), o4 = 1; o4 < r4.length; ) {
-        if (r4[o4])
-          return { number: t4, ext: r4[o4] };
+      for (var r4 = e4.slice(0, a4), t4 = e4.match(Xr), o4 = 1; o4 < t4.length; ) {
+        if (t4[o4])
+          return { number: r4, ext: t4[o4] };
         o4++;
       }
-    }(r3);
+    }(t3);
     if (o3.ext)
       return o3;
-    return { number: r3 };
-  }(e2, a2.v2, a2.extract), o2 = r2.number, i2 = r2.ext, n2 = r2.error;
+    return { number: t3 };
+  }(e2, a2.v2, a2.extract), o2 = t2.number, i2 = t2.ext, n2 = t2.error;
   if (!o2) {
     if (a2.v2) {
       if ("TOO_SHORT" === n2)
-        throw new wt("TOO_SHORT");
-      throw new wt("NOT_A_NUMBER");
+        throw new wr("TOO_SHORT");
+      throw new wr("NOT_A_NUMBER");
     }
     return {};
   }
-  var d2 = function(e3, a3, t3, r3) {
-    var o3, i3 = Hr(dr(e3), a3, t3, r3.metadata), n3 = i3.countryCallingCodeSource, d3 = i3.countryCallingCode, l3 = i3.number;
+  var d2 = function(e3, a3, r3, t3) {
+    var o3, i3 = Ht(dt(e3), a3, r3, t3.metadata), n3 = i3.countryCallingCodeSource, d3 = i3.countryCallingCode, l3 = i3.number;
     if (d3)
-      r3.selectNumberingPlan(d3);
+      t3.selectNumberingPlan(d3);
     else {
-      if (!l3 || !a3 && !t3)
+      if (!l3 || !a3 && !r3)
         return {};
-      r3.selectNumberingPlan(a3, t3), a3 && (o3 = a3), d3 = t3 || Vt(a3, r3.metadata);
+      t3.selectNumberingPlan(a3, r3), a3 && (o3 = a3), d3 = r3 || Yr(a3, t3.metadata);
     }
     if (!l3)
       return { countryCallingCodeSource: n3, countryCallingCode: d3 };
-    var s3 = Gr(dr(l3), r3), c3 = s3.nationalNumber, m3 = s3.carrierCode, u3 = qr(d3, { nationalNumber: c3, defaultCountry: a3, metadata: r3 });
-    u3 && (o3 = u3, "001" === u3 || r3.country(o3));
+    var s3 = jt(dt(l3), t3), c3 = s3.nationalNumber, m3 = s3.carrierCode, u3 = qt(d3, { nationalNumber: c3, defaultCountry: a3, metadata: t3 });
+    u3 && (o3 = u3, "001" === u3 || t3.country(o3));
     return { country: o3, countryCallingCode: d3, countryCallingCodeSource: n3, nationalNumber: c3, carrierCode: m3 };
-  }(o2, a2.defaultCountry, a2.defaultCallingCode, t2), l2 = d2.country, s2 = d2.nationalNumber, c2 = d2.countryCallingCode, m2 = d2.countryCallingCodeSource, u2 = d2.carrierCode;
-  if (!t2.hasSelectedNumberingPlan()) {
+  }(o2, a2.defaultCountry, a2.defaultCallingCode, r2), l2 = d2.country, s2 = d2.nationalNumber, c2 = d2.countryCallingCode, m2 = d2.countryCallingCodeSource, u2 = d2.carrierCode;
+  if (!r2.hasSelectedNumberingPlan()) {
     if (a2.v2)
-      throw new wt("INVALID_COUNTRY");
+      throw new wr("INVALID_COUNTRY");
     return {};
   }
-  if (!s2 || s2.length < $t) {
+  if (!s2 || s2.length < $r) {
     if (a2.v2)
-      throw new wt("TOO_SHORT");
+      throw new wr("TOO_SHORT");
     return {};
   }
-  if (s2.length > _t) {
+  if (s2.length > _r) {
     if (a2.v2)
-      throw new wt("TOO_LONG");
+      throw new wr("TOO_LONG");
     return {};
   }
   if (a2.v2) {
-    var p2 = new Tr(c2, s2, t2.metadata);
+    var p2 = new Ft(c2, s2, r2.metadata);
     return l2 && (p2.country = l2), u2 && (p2.carrierCode = u2), i2 && (p2.ext = i2), p2.__countryCallingCodeSource = m2, p2;
   }
-  var h2 = !!(a2.extended ? t2.hasSelectedNumberingPlan() : l2) && hr(s2, t2.nationalNumberPattern());
-  return a2.extended ? { country: l2, countryCallingCode: c2, carrierCode: u2, valid: h2, possible: !!h2 || !(true !== a2.extended || !t2.possibleLengths() || !pr(s2, t2)), phone: s2, ext: i2 } : h2 ? function(e3, a3, t3) {
-    var r3 = { country: e3, phone: a3 };
-    t3 && (r3.ext = t3);
-    return r3;
+  var h2 = !!(a2.extended ? r2.hasSelectedNumberingPlan() : l2) && ht(s2, r2.nationalNumberPattern());
+  return a2.extended ? { country: l2, countryCallingCode: c2, carrierCode: u2, valid: h2, possible: !!h2 || !(true !== a2.extended || !r2.possibleLengths() || !pt(s2, r2)), phone: s2, ext: i2 } : h2 ? function(e3, a3, r3) {
+    var t3 = { country: e3, phone: a3 };
+    r3 && (t3.ext = r3);
+    return t3;
   }(l2, s2, i2) : {};
 }
 function co(e2, a2) {
-  var t2 = Object.keys(e2);
+  var r2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var r2 = Object.getOwnPropertySymbols(e2);
-    a2 && (r2 = r2.filter(function(a3) {
+    var t2 = Object.getOwnPropertySymbols(e2);
+    a2 && (t2 = t2.filter(function(a3) {
       return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
-    })), t2.push.apply(t2, r2);
+    })), r2.push.apply(r2, t2);
   }
-  return t2;
+  return r2;
 }
 function mo(e2) {
   for (var a2 = 1; a2 < arguments.length; a2++) {
-    var t2 = null != arguments[a2] ? arguments[a2] : {};
-    a2 % 2 ? co(Object(t2), true).forEach(function(a3) {
-      uo(e2, a3, t2[a3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : co(Object(t2)).forEach(function(a3) {
-      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
+    var r2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? co(Object(r2), true).forEach(function(a3) {
+      uo(e2, a3, r2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(r2)) : co(Object(r2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(r2, a3));
     });
   }
   return e2;
 }
-function uo(e2, a2, t2) {
-  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
+function uo(e2, a2, r2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
 function po(e2) {
   return po = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
@@ -13050,35 +13056,35 @@ function po(e2) {
   }, po(e2);
 }
 function ho(e2, a2) {
-  var t2 = Object.keys(e2);
+  var r2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var r2 = Object.getOwnPropertySymbols(e2);
-    a2 && (r2 = r2.filter(function(a3) {
+    var t2 = Object.getOwnPropertySymbols(e2);
+    a2 && (t2 = t2.filter(function(a3) {
       return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
-    })), t2.push.apply(t2, r2);
+    })), r2.push.apply(r2, t2);
   }
-  return t2;
+  return r2;
 }
-function go(e2, a2, t2) {
-  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
+function go(e2, a2, r2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
 function bo(e2, a2) {
   return function(e3) {
     if (Array.isArray(e3))
       return e3;
   }(e2) || function(e3, a3) {
-    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
-    if (null == t2)
+    var r2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == r2)
       return;
-    var r2, o2, i2 = [], n2 = true, d2 = false;
+    var t2, o2, i2 = [], n2 = true, d2 = false;
     try {
-      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
+      for (r2 = r2.call(e3); !(n2 = (t2 = r2.next()).done) && (i2.push(t2.value), !a3 || i2.length !== a3); n2 = true)
         ;
     } catch (e4) {
       d2 = true, o2 = e4;
     } finally {
       try {
-        n2 || null == t2.return || t2.return();
+        n2 || null == r2.return || r2.return();
       } finally {
         if (d2)
           throw o2;
@@ -13090,11 +13096,11 @@ function bo(e2, a2) {
       return;
     if ("string" == typeof e3)
       return zo(e3, a3);
-    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
-    if ("Map" === t2 || "Set" === t2)
+    var r2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r2 && e3.constructor && (r2 = e3.constructor.name);
+    if ("Map" === r2 || "Set" === r2)
       return Array.from(e3);
-    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+    if ("Arguments" === r2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r2))
       return zo(e3, a3);
   }(e2, a2) || function() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -13102,69 +13108,69 @@ function bo(e2, a2) {
 }
 function zo(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
 function fo(e2) {
-  var a2, t2, r2, o2 = bo(Array.prototype.slice.call(e2), 4), i2 = o2[0], n2 = o2[1], d2 = o2[2], l2 = o2[3];
+  var a2, r2, t2, o2 = bo(Array.prototype.slice.call(e2), 4), i2 = o2[0], n2 = o2[1], d2 = o2[2], l2 = o2[3];
   if ("string" != typeof i2)
     throw new TypeError("A text for parsing must be a string.");
   if (a2 = i2, n2 && "string" != typeof n2) {
     if (!vo(n2))
       throw new Error("Invalid second argument: ".concat(n2));
-    d2 ? (t2 = n2, r2 = d2) : r2 = n2;
+    d2 ? (r2 = n2, t2 = d2) : t2 = n2;
   } else
-    l2 ? (t2 = d2, r2 = l2) : (t2 = void 0, r2 = d2), n2 && (t2 = function(e3) {
+    l2 ? (r2 = d2, t2 = l2) : (r2 = void 0, t2 = d2), n2 && (r2 = function(e3) {
       for (var a3 = 1; a3 < arguments.length; a3++) {
-        var t3 = null != arguments[a3] ? arguments[a3] : {};
-        a3 % 2 ? ho(Object(t3), true).forEach(function(a4) {
-          go(e3, a4, t3[a4]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e3, Object.getOwnPropertyDescriptors(t3)) : ho(Object(t3)).forEach(function(a4) {
-          Object.defineProperty(e3, a4, Object.getOwnPropertyDescriptor(t3, a4));
+        var r3 = null != arguments[a3] ? arguments[a3] : {};
+        a3 % 2 ? ho(Object(r3), true).forEach(function(a4) {
+          go(e3, a4, r3[a4]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e3, Object.getOwnPropertyDescriptors(r3)) : ho(Object(r3)).forEach(function(a4) {
+          Object.defineProperty(e3, a4, Object.getOwnPropertyDescriptor(r3, a4));
         });
       }
       return e3;
-    }({ defaultCountry: n2 }, t2));
-  return { text: a2, options: t2, metadata: r2 };
+    }({ defaultCountry: n2 }, r2));
+  return { text: a2, options: r2, metadata: t2 };
 }
 var vo = function(e2) {
   return "object" === po(e2);
 };
 function yo(e2, a2) {
-  var t2 = Object.keys(e2);
+  var r2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var r2 = Object.getOwnPropertySymbols(e2);
-    a2 && (r2 = r2.filter(function(a3) {
+    var t2 = Object.getOwnPropertySymbols(e2);
+    a2 && (t2 = t2.filter(function(a3) {
       return Object.getOwnPropertyDescriptor(e2, a3).enumerable;
-    })), t2.push.apply(t2, r2);
+    })), r2.push.apply(r2, t2);
   }
-  return t2;
+  return r2;
 }
 function ko(e2) {
   for (var a2 = 1; a2 < arguments.length; a2++) {
-    var t2 = null != arguments[a2] ? arguments[a2] : {};
-    a2 % 2 ? yo(Object(t2), true).forEach(function(a3) {
-      xo(e2, a3, t2[a3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : yo(Object(t2)).forEach(function(a3) {
-      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(t2, a3));
+    var r2 = null != arguments[a2] ? arguments[a2] : {};
+    a2 % 2 ? yo(Object(r2), true).forEach(function(a3) {
+      xo(e2, a3, r2[a3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(r2)) : yo(Object(r2)).forEach(function(a3) {
+      Object.defineProperty(e2, a3, Object.getOwnPropertyDescriptor(r2, a3));
     });
   }
   return e2;
 }
-function xo(e2, a2, t2) {
-  return a2 in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2, e2;
+function xo(e2, a2, r2) {
+  return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
-function wo(e2, a2, t2) {
+function wo(e2, a2, r2) {
   a2 && a2.defaultCountry && !function(e3, a3) {
     return a3.countries.hasOwnProperty(e3);
-  }(a2.defaultCountry, t2) && (a2 = ko(ko({}, a2), {}, { defaultCountry: void 0 }));
+  }(a2.defaultCountry, r2) && (a2 = ko(ko({}, a2), {}, { defaultCountry: void 0 }));
   try {
-    return function(e3, a3, t3) {
-      return so(e3, mo(mo({}, a3), {}, { v2: true }), t3);
-    }(e2, a2, t2);
+    return function(e3, a3, r3) {
+      return so(e3, mo(mo({}, a3), {}, { v2: true }), r3);
+    }(e2, a2, r2);
   } catch (e3) {
-    if (!(e3 instanceof wt))
+    if (!(e3 instanceof wr))
       throw e3;
   }
 }
@@ -13173,29 +13179,29 @@ function $o() {
   return wo(e2.text, e2.options, e2.metadata);
 }
 function _o(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
 var Co = function() {
   function e2(a3) {
-    var t3 = a3.onCountryChange, r3 = a3.onCallingCodeChange;
+    var r3 = a3.onCountryChange, t3 = a3.onCallingCodeChange;
     !function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
-    }(this, e2), this.onCountryChange = t3, this.onCallingCodeChange = r3;
+    }(this, e2), this.onCountryChange = r3, this.onCallingCodeChange = t3;
   }
-  var a2, t2, r2;
-  return a2 = e2, t2 = [{ key: "reset", value: function(e3) {
-    var a3 = e3.country, t3 = e3.callingCode;
-    this.international = false, this.missingPlus = false, this.IDDPrefix = void 0, this.callingCode = void 0, this.digits = "", this.resetNationalSignificantNumber(), this.initCountryAndCallingCode(a3, t3);
+  var a2, r2, t2;
+  return a2 = e2, r2 = [{ key: "reset", value: function(e3) {
+    var a3 = e3.country, r3 = e3.callingCode;
+    this.international = false, this.missingPlus = false, this.IDDPrefix = void 0, this.callingCode = void 0, this.digits = "", this.resetNationalSignificantNumber(), this.initCountryAndCallingCode(a3, r3);
   } }, { key: "resetNationalSignificantNumber", value: function() {
     this.nationalSignificantNumber = this.getNationalDigits(), this.nationalSignificantNumberMatchesInput = true, this.nationalPrefix = void 0, this.carrierCode = void 0, this.complexPrefixBeforeNationalSignificantNumber = void 0;
   } }, { key: "update", value: function(e3) {
-    for (var a3 = 0, t3 = Object.keys(e3); a3 < t3.length; a3++) {
-      var r3 = t3[a3];
-      this[r3] = e3[r3];
+    for (var a3 = 0, r3 = Object.keys(e3); a3 < r3.length; a3++) {
+      var t3 = r3[a3];
+      this[t3] = e3[t3];
     }
   } }, { key: "initCountryAndCallingCode", value: function(e3, a3) {
     this.setCountry(e3), this.setCallingCode(a3);
@@ -13213,84 +13219,84 @@ var Co = function() {
     return this.international ? this.digits.slice((this.IDDPrefix ? this.IDDPrefix.length : 0) + (this.callingCode ? this.callingCode.length : 0)) : this.digits;
   } }, { key: "getDigitsWithoutInternationalPrefix", value: function() {
     return this.international && this.IDDPrefix ? this.digits.slice(this.IDDPrefix.length) : this.digits;
-  } }], t2 && _o(a2.prototype, t2), r2 && _o(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }], r2 && _o(a2.prototype, r2), t2 && _o(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
 function Eo(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return So(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return Ao(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return So(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return Ao(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function So(e2, a2) {
+function Ao(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
-var Io = "x", Ao = new RegExp(Io);
+var So = "x", Io = new RegExp(So);
 function No(e2, a2) {
   if (a2 < 1)
     return "";
-  for (var t2 = ""; a2 > 1; )
-    1 & a2 && (t2 += e2), a2 >>= 1, e2 += e2;
-  return t2 + e2;
+  for (var r2 = ""; a2 > 1; )
+    1 & a2 && (r2 += e2), a2 >>= 1, e2 += e2;
+  return r2 + e2;
 }
 function Po(e2, a2) {
   return ")" === e2[a2] && a2++, function(e3) {
-    var a3 = [], t2 = 0;
-    for (; t2 < e3.length; )
-      "(" === e3[t2] ? a3.push(t2) : ")" === e3[t2] && a3.pop(), t2++;
-    var r2 = 0, o2 = "";
+    var a3 = [], r2 = 0;
+    for (; r2 < e3.length; )
+      "(" === e3[r2] ? a3.push(r2) : ")" === e3[r2] && a3.pop(), r2++;
+    var t2 = 0, o2 = "";
     a3.push(e3.length);
     for (var i2 = 0, n2 = a3; i2 < n2.length; i2++) {
       var d2 = n2[i2];
-      o2 += e3.slice(r2, d2), r2 = d2 + 1;
+      o2 += e3.slice(t2, d2), t2 = d2 + 1;
     }
     return o2;
   }(e2.slice(0, a2));
 }
-function Bo(e2, a2, t2) {
-  var r2 = t2.metadata, o2 = t2.shouldTryNationalPrefixFormattingRule, i2 = t2.getSeparatorAfterNationalPrefix;
+function Bo(e2, a2, r2) {
+  var t2 = r2.metadata, o2 = r2.shouldTryNationalPrefixFormattingRule, i2 = r2.getSeparatorAfterNationalPrefix;
   if (new RegExp("^(?:".concat(a2.pattern(), ")$")).test(e2.nationalSignificantNumber))
-    return function(e3, a3, t3) {
-      var r3 = t3.metadata, o3 = t3.shouldTryNationalPrefixFormattingRule, i3 = t3.getSeparatorAfterNationalPrefix;
+    return function(e3, a3, r3) {
+      var t3 = r3.metadata, o3 = r3.shouldTryNationalPrefixFormattingRule, i3 = r3.getSeparatorAfterNationalPrefix;
       if (e3.nationalSignificantNumber, e3.international, e3.nationalPrefix, e3.carrierCode, o3(a3)) {
-        var n2 = Oo(e3, a3, { useNationalPrefixFormattingRule: true, getSeparatorAfterNationalPrefix: i3, metadata: r3 });
+        var n2 = Mo(e3, a3, { useNationalPrefixFormattingRule: true, getSeparatorAfterNationalPrefix: i3, metadata: t3 });
         if (n2)
           return n2;
       }
-      return Oo(e3, a3, { useNationalPrefixFormattingRule: false, getSeparatorAfterNationalPrefix: i3, metadata: r3 });
-    }(e2, a2, { metadata: r2, shouldTryNationalPrefixFormattingRule: o2, getSeparatorAfterNationalPrefix: i2 });
+      return Mo(e3, a3, { useNationalPrefixFormattingRule: false, getSeparatorAfterNationalPrefix: i3, metadata: t3 });
+    }(e2, a2, { metadata: t2, shouldTryNationalPrefixFormattingRule: o2, getSeparatorAfterNationalPrefix: i2 });
 }
-function Oo(e2, a2, t2) {
-  var r2 = t2.metadata, o2 = t2.useNationalPrefixFormattingRule, i2 = t2.getSeparatorAfterNationalPrefix, n2 = wr(e2.nationalSignificantNumber, a2, { carrierCode: e2.carrierCode, useInternationalFormat: e2.international, withNationalPrefix: o2, metadata: r2 });
+function Mo(e2, a2, r2) {
+  var t2 = r2.metadata, o2 = r2.useNationalPrefixFormattingRule, i2 = r2.getSeparatorAfterNationalPrefix, n2 = wt(e2.nationalSignificantNumber, a2, { carrierCode: e2.carrierCode, useInternationalFormat: e2.international, withNationalPrefix: o2, metadata: t2 });
   if (o2 || (e2.nationalPrefix ? n2 = e2.nationalPrefix + i2(a2) + n2 : e2.complexPrefixBeforeNationalSignificantNumber && (n2 = e2.complexPrefixBeforeNationalSignificantNumber + " " + n2)), function(e3, a3) {
-    return or(e3) === a3.getNationalDigits();
+    return ot(e3) === a3.getNationalDigits();
   }(n2, e2))
     return n2;
 }
-function Mo(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+function Oo(e2, a2) {
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
 var Ro = function() {
@@ -13300,16 +13306,16 @@ var Ro = function() {
         throw new TypeError("Cannot call a class as a function");
     }(this, e2);
   }
-  var a2, t2, r2;
-  return a2 = e2, (t2 = [{ key: "parse", value: function(e3) {
+  var a2, r2, t2;
+  return a2 = e2, (r2 = [{ key: "parse", value: function(e3) {
     if (this.context = [{ or: true, instructions: [] }], this.parsePattern(e3), 1 !== this.context.length)
       throw new Error("Non-finalized contexts left when pattern parse ended");
-    var a3 = this.context[0], t3 = a3.branches, r3 = a3.instructions;
-    if (t3)
-      return { op: "|", args: t3.concat([Lo(r3)]) };
-    if (0 === r3.length)
+    var a3 = this.context[0], r3 = a3.branches, t3 = a3.instructions;
+    if (r3)
+      return { op: "|", args: r3.concat([To(t3)]) };
+    if (0 === t3.length)
       throw new Error("Pattern is required");
-    return 1 === r3.length ? r3[0] : r3;
+    return 1 === t3.length ? t3[0] : t3;
   } }, { key: "startContext", value: function(e3) {
     this.context.push(e3);
   } }, { key: "endContext", value: function() {
@@ -13319,128 +13325,128 @@ var Ro = function() {
   } }, { key: "parsePattern", value: function(e3) {
     if (!e3)
       throw new Error("Pattern is required");
-    var a3 = e3.match(Fo);
+    var a3 = e3.match(Lo);
     if (a3) {
-      var t3 = a3[1], r3 = e3.slice(0, a3.index), o2 = e3.slice(a3.index + t3.length);
-      switch (t3) {
+      var r3 = a3[1], t3 = e3.slice(0, a3.index), o2 = e3.slice(a3.index + r3.length);
+      switch (r3) {
         case "(?:":
-          r3 && this.parsePattern(r3), this.startContext({ or: true, instructions: [], branches: [] });
+          t3 && this.parsePattern(t3), this.startContext({ or: true, instructions: [], branches: [] });
           break;
         case ")":
           if (!this.getContext().or)
             throw new Error('")" operator must be preceded by "(?:" operator');
-          if (r3 && this.parsePattern(r3), 0 === this.getContext().instructions.length)
+          if (t3 && this.parsePattern(t3), 0 === this.getContext().instructions.length)
             throw new Error('No instructions found after "|" operator in an "or" group');
           var i2 = this.getContext().branches;
-          i2.push(Lo(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({ op: "|", args: i2 });
+          i2.push(To(this.getContext().instructions)), this.endContext(), this.getContext().instructions.push({ op: "|", args: i2 });
           break;
         case "|":
           if (!this.getContext().or)
             throw new Error('"|" operator can only be used inside "or" groups');
-          if (r3 && this.parsePattern(r3), !this.getContext().branches) {
+          if (t3 && this.parsePattern(t3), !this.getContext().branches) {
             if (1 !== this.context.length)
               throw new Error('"branches" not found in an "or" group context');
             this.getContext().branches = [];
           }
-          this.getContext().branches.push(Lo(this.getContext().instructions)), this.getContext().instructions = [];
+          this.getContext().branches.push(To(this.getContext().instructions)), this.getContext().instructions = [];
           break;
         case "[":
-          r3 && this.parsePattern(r3), this.startContext({ oneOfSet: true });
+          t3 && this.parsePattern(t3), this.startContext({ oneOfSet: true });
           break;
         case "]":
           if (!this.getContext().oneOfSet)
             throw new Error('"]" operator must be preceded by "[" operator');
-          this.endContext(), this.getContext().instructions.push({ op: "[]", args: Do(r3) });
+          this.endContext(), this.getContext().instructions.push({ op: "[]", args: Do(t3) });
           break;
         default:
-          throw new Error("Unknown operator: ".concat(t3));
+          throw new Error("Unknown operator: ".concat(r3));
       }
       o2 && this.parsePattern(o2);
     } else {
-      if (To.test(e3))
+      if (Fo.test(e3))
         throw new Error("Illegal characters found in a pattern: ".concat(e3));
       this.getContext().instructions = this.getContext().instructions.concat(e3.split(""));
     }
-  } }]) && Mo(a2.prototype, t2), r2 && Mo(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }]) && Oo(a2.prototype, r2), t2 && Oo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
 function Do(e2) {
-  for (var a2 = [], t2 = 0; t2 < e2.length; ) {
-    if ("-" === e2[t2]) {
-      if (0 === t2 || t2 === e2.length - 1)
+  for (var a2 = [], r2 = 0; r2 < e2.length; ) {
+    if ("-" === e2[r2]) {
+      if (0 === r2 || r2 === e2.length - 1)
         throw new Error("Couldn't parse a one-of set pattern: ".concat(e2));
-      for (var r2 = e2[t2 - 1].charCodeAt(0) + 1, o2 = e2[t2 + 1].charCodeAt(0) - 1, i2 = r2; i2 <= o2; )
+      for (var t2 = e2[r2 - 1].charCodeAt(0) + 1, o2 = e2[r2 + 1].charCodeAt(0) - 1, i2 = t2; i2 <= o2; )
         a2.push(String.fromCharCode(i2)), i2++;
     } else
-      a2.push(e2[t2]);
-    t2++;
+      a2.push(e2[r2]);
+    r2++;
   }
   return a2;
 }
-var To = /[\(\)\[\]\?\:\|]/, Fo = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
-function Lo(e2) {
+var Fo = /[\(\)\[\]\?\:\|]/, Lo = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
+function To(e2) {
   return 1 === e2.length ? e2[0] : e2;
 }
-function jo(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+function Uo(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return Uo(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+      return Go(e3, a3);
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
-      return Uo(e3, a3);
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
+      return Go(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Uo(e2, a2) {
-  (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
-}
 function Go(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  (null == a2 || a2 > e2.length) && (a2 = e2.length);
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
+}
+function jo(e2, a2) {
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var Vo = function() {
+var Yo = function() {
   function e2(a3) {
     !function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
     }(this, e2), this.matchTree = new Ro().parse(a3);
   }
-  var a2, t2, r2;
-  return a2 = e2, t2 = [{ key: "match", value: function(e3) {
+  var a2, r2, t2;
+  return a2 = e2, r2 = [{ key: "match", value: function(e3) {
     var a3 = (arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}).allowOverflow;
     if (!e3)
       throw new Error("String is required");
-    var t3 = Ho(e3.split(""), this.matchTree, true);
-    if (t3 && t3.match && delete t3.matchedChars, !t3 || !t3.overflow || a3)
-      return t3;
-  } }], t2 && Go(a2.prototype, t2), r2 && Go(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+    var r3 = Ho(e3.split(""), this.matchTree, true);
+    if (r3 && r3.match && delete r3.matchedChars, !r3 || !r3.overflow || a3)
+      return r3;
+  } }], r2 && jo(a2.prototype, r2), t2 && jo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Ho(e2, a2, t2) {
+function Ho(e2, a2, r2) {
   if ("string" == typeof a2) {
-    var r2 = e2.join("");
-    return 0 === a2.indexOf(r2) ? e2.length === a2.length ? { match: true, matchedChars: e2 } : { partialMatch: true } : 0 === r2.indexOf(a2) ? t2 && e2.length > a2.length ? { overflow: true } : { match: true, matchedChars: e2.slice(0, a2.length) } : void 0;
+    var t2 = e2.join("");
+    return 0 === a2.indexOf(t2) ? e2.length === a2.length ? { match: true, matchedChars: e2 } : { partialMatch: true } : 0 === t2.indexOf(a2) ? r2 && e2.length > a2.length ? { overflow: true } : { match: true, matchedChars: e2.slice(0, a2.length) } : void 0;
   }
   if (Array.isArray(a2)) {
     for (var o2 = e2.slice(), i2 = 0; i2 < a2.length; ) {
-      var n2 = Ho(o2, a2[i2], t2 && i2 === a2.length - 1);
+      var n2 = Ho(o2, a2[i2], r2 && i2 === a2.length - 1);
       if (!n2)
         return;
       if (n2.overflow)
@@ -13454,12 +13460,12 @@ function Ho(e2, a2, t2) {
         return i2 === a2.length - 1 ? { match: true, matchedChars: e2 } : { partialMatch: true };
       i2++;
     }
-    return t2 ? { overflow: true } : { match: true, matchedChars: e2.slice(0, e2.length - o2.length) };
+    return r2 ? { overflow: true } : { match: true, matchedChars: e2.slice(0, e2.length - o2.length) };
   }
   switch (a2.op) {
     case "|":
-      for (var d2, l2, s2 = jo(a2.args); !(l2 = s2()).done; ) {
-        var c2 = Ho(e2, l2.value, t2);
+      for (var d2, l2, s2 = Uo(a2.args); !(l2 = s2()).done; ) {
+        var c2 = Ho(e2, l2.value, r2);
         if (c2) {
           if (c2.overflow)
             return c2;
@@ -13472,101 +13478,101 @@ function Ho(e2, a2, t2) {
       }
       return d2 ? { partialMatch: true } : void 0;
     case "[]":
-      for (var m2, u2 = jo(a2.args); !(m2 = u2()).done; ) {
+      for (var m2, u2 = Uo(a2.args); !(m2 = u2()).done; ) {
         var p2 = m2.value;
         if (e2[0] === p2)
-          return 1 === e2.length ? { match: true, matchedChars: e2 } : t2 ? { overflow: true } : { match: true, matchedChars: [p2] };
+          return 1 === e2.length ? { match: true, matchedChars: e2 } : r2 ? { overflow: true } : { match: true, matchedChars: [p2] };
       }
       return;
     default:
       throw new Error("Unsupported instruction tree: ".concat(a2));
   }
 }
-function Yo(e2, a2) {
-  var t2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
-  if (t2)
-    return (t2 = t2.call(e2)).next.bind(t2);
-  if (Array.isArray(e2) || (t2 = function(e3, a3) {
+function Vo(e2, a2) {
+  var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
+  if (r2)
+    return (r2 = r2.call(e2)).next.bind(r2);
+  if (Array.isArray(e2) || (r2 = function(e3, a3) {
     if (!e3)
       return;
     if ("string" == typeof e3)
       return Ko(e3, a3);
-    var t3 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t3 && e3.constructor && (t3 = e3.constructor.name);
-    if ("Map" === t3 || "Set" === t3)
+    var r3 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
+    if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
-    if ("Arguments" === t3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t3))
+    if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
       return Ko(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
-    t2 && (e2 = t2);
-    var r2 = 0;
+    r2 && (e2 = r2);
+    var t2 = 0;
     return function() {
-      return r2 >= e2.length ? { done: true } : { done: false, value: e2[r2++] };
+      return t2 >= e2.length ? { done: true } : { done: false, value: e2[t2++] };
     };
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function Ko(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
 function Qo(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var Jo = No("9", 15), qo = /[- ]/, Wo = new RegExp("[" + St + "]*\\$1[" + St + "]*(\\$\\d[" + St + "]*)*$"), Zo = function() {
+var Jo = No("9", 15), qo = /[- ]/, Wo = new RegExp("[" + Ar + "]*\\$1[" + Ar + "]*(\\$\\d[" + Ar + "]*)*$"), Zo = function() {
   function e2(a3) {
     a3.state;
-    var t3 = a3.metadata;
+    var r3 = a3.metadata;
     !function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
-    }(this, e2), this.metadata = t3, this.resetFormat();
+    }(this, e2), this.metadata = r3, this.resetFormat();
   }
-  var a2, t2, r2;
-  return a2 = e2, t2 = [{ key: "resetFormat", value: function() {
+  var a2, r2, t2;
+  return a2 = e2, r2 = [{ key: "resetFormat", value: function() {
     this.chosenFormat = void 0, this.template = void 0, this.nationalNumberTemplate = void 0, this.populatedNationalNumberTemplate = void 0, this.populatedNationalNumberTemplatePosition = -1;
   } }, { key: "reset", value: function(e3, a3) {
     this.resetFormat(), e3 ? (this.isNANP = "1" === e3.callingCode(), this.matchingFormats = e3.formats(), a3.nationalSignificantNumber && this.narrowDownMatchingFormats(a3)) : (this.isNANP = void 0, this.matchingFormats = []);
   } }, { key: "format", value: function(e3, a3) {
-    var t3 = this;
+    var r3 = this;
     if (function(e4, a4) {
-      return "IS_POSSIBLE" === mr(e4, a4);
+      return "IS_POSSIBLE" === mt(e4, a4);
     }(a3.nationalSignificantNumber, this.metadata))
-      for (var r3, o2 = Yo(this.matchingFormats); !(r3 = o2()).done; ) {
-        var i2 = r3.value, n2 = Bo(a3, i2, { metadata: this.metadata, shouldTryNationalPrefixFormattingRule: function(e4) {
-          return t3.shouldTryNationalPrefixFormattingRule(e4, { international: a3.international, nationalPrefix: a3.nationalPrefix });
+      for (var t3, o2 = Vo(this.matchingFormats); !(t3 = o2()).done; ) {
+        var i2 = t3.value, n2 = Bo(a3, i2, { metadata: this.metadata, shouldTryNationalPrefixFormattingRule: function(e4) {
+          return r3.shouldTryNationalPrefixFormattingRule(e4, { international: a3.international, nationalPrefix: a3.nationalPrefix });
         }, getSeparatorAfterNationalPrefix: function(e4) {
-          return t3.getSeparatorAfterNationalPrefix(e4);
+          return r3.getSeparatorAfterNationalPrefix(e4);
         } });
         if (n2)
-          return this.resetFormat(), this.chosenFormat = i2, this.setNationalNumberTemplate(n2.replace(/\d/g, Io), a3), this.populatedNationalNumberTemplate = n2, this.populatedNationalNumberTemplatePosition = this.template.lastIndexOf(Io), n2;
+          return this.resetFormat(), this.chosenFormat = i2, this.setNationalNumberTemplate(n2.replace(/\d/g, So), a3), this.populatedNationalNumberTemplate = n2, this.populatedNationalNumberTemplatePosition = this.template.lastIndexOf(So), n2;
       }
     return this.formatNationalNumberWithNextDigits(e3, a3);
   } }, { key: "formatNationalNumberWithNextDigits", value: function(e3, a3) {
-    var t3 = this.chosenFormat, r3 = this.chooseFormat(a3);
-    if (r3)
-      return r3 === t3 ? this.formatNextNationalNumberDigits(e3) : this.formatNextNationalNumberDigits(a3.getNationalDigits());
+    var r3 = this.chosenFormat, t3 = this.chooseFormat(a3);
+    if (t3)
+      return t3 === r3 ? this.formatNextNationalNumberDigits(e3) : this.formatNextNationalNumberDigits(a3.getNationalDigits());
   } }, { key: "narrowDownMatchingFormats", value: function(e3) {
-    var a3 = this, t3 = e3.nationalSignificantNumber, r3 = e3.nationalPrefix, o2 = e3.international, i2 = t3, n2 = i2.length - 3;
+    var a3 = this, r3 = e3.nationalSignificantNumber, t3 = e3.nationalPrefix, o2 = e3.international, i2 = r3, n2 = i2.length - 3;
     n2 < 0 && (n2 = 0), this.matchingFormats = this.matchingFormats.filter(function(e4) {
-      return a3.formatSuits(e4, o2, r3) && a3.formatMatches(e4, i2, n2);
+      return a3.formatSuits(e4, o2, t3) && a3.formatMatches(e4, i2, n2);
     }), this.chosenFormat && -1 === this.matchingFormats.indexOf(this.chosenFormat) && this.resetFormat();
-  } }, { key: "formatSuits", value: function(e3, a3, t3) {
-    return !(t3 && !e3.usesNationalPrefix() && !e3.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !a3 && !t3 && e3.nationalPrefixIsMandatoryWhenFormattingInNationalFormat());
-  } }, { key: "formatMatches", value: function(e3, a3, t3) {
-    var r3 = e3.leadingDigitsPatterns().length;
-    if (0 === r3)
+  } }, { key: "formatSuits", value: function(e3, a3, r3) {
+    return !(r3 && !e3.usesNationalPrefix() && !e3.nationalPrefixIsOptionalWhenFormattingInNationalFormat() || !a3 && !r3 && e3.nationalPrefixIsMandatoryWhenFormattingInNationalFormat());
+  } }, { key: "formatMatches", value: function(e3, a3, r3) {
+    var t3 = e3.leadingDigitsPatterns().length;
+    if (0 === t3)
       return true;
-    t3 = Math.min(t3, r3 - 1);
-    var o2 = e3.leadingDigitsPatterns()[t3];
+    r3 = Math.min(r3, t3 - 1);
+    var o2 = e3.leadingDigitsPatterns()[r3];
     if (a3.length < 3)
       try {
-        return void 0 !== new Vo(o2).match(a3, { allowOverflow: true });
+        return void 0 !== new Yo(o2).match(a3, { allowOverflow: true });
       } catch (e4) {
         return console.error(e4), true;
       }
@@ -13574,59 +13580,59 @@ var Jo = No("9", 15), qo = /[- ]/, Wo = new RegExp("[" + St + "]*\\$1[" + St + "
   } }, { key: "getFormatFormat", value: function(e3, a3) {
     return a3 ? e3.internationalFormat() : e3.format();
   } }, { key: "chooseFormat", value: function(e3) {
-    for (var a3, t3 = this, r3 = function() {
-      var r4 = a3.value;
-      return t3.chosenFormat === r4 ? "break" : Wo.test(t3.getFormatFormat(r4, e3.international)) ? t3.createTemplateForFormat(r4, e3) ? (t3.chosenFormat = r4, "break") : (t3.matchingFormats = t3.matchingFormats.filter(function(e4) {
-        return e4 !== r4;
+    for (var a3, r3 = this, t3 = function() {
+      var t4 = a3.value;
+      return r3.chosenFormat === t4 ? "break" : Wo.test(r3.getFormatFormat(t4, e3.international)) ? r3.createTemplateForFormat(t4, e3) ? (r3.chosenFormat = t4, "break") : (r3.matchingFormats = r3.matchingFormats.filter(function(e4) {
+        return e4 !== t4;
       }), "continue") : "continue";
-    }, o2 = Yo(this.matchingFormats.slice()); !(a3 = o2()).done; ) {
-      var i2 = r3();
+    }, o2 = Vo(this.matchingFormats.slice()); !(a3 = o2()).done; ) {
+      var i2 = t3();
       if ("break" === i2)
         break;
     }
     return this.chosenFormat || this.resetFormat(), this.chosenFormat;
   } }, { key: "createTemplateForFormat", value: function(e3, a3) {
     if (!(e3.pattern().indexOf("|") >= 0)) {
-      var t3 = this.getTemplateForFormat(e3, a3);
-      return t3 ? (this.setNationalNumberTemplate(t3, a3), true) : void 0;
+      var r3 = this.getTemplateForFormat(e3, a3);
+      return r3 ? (this.setNationalNumberTemplate(r3, a3), true) : void 0;
     }
   } }, { key: "getSeparatorAfterNationalPrefix", value: function(e3) {
     return this.isNANP || e3 && e3.nationalPrefixFormattingRule() && qo.test(e3.nationalPrefixFormattingRule()) ? " " : "";
   } }, { key: "getInternationalPrefixBeforeCountryCallingCode", value: function(e3, a3) {
-    var t3 = e3.IDDPrefix, r3 = e3.missingPlus;
-    return t3 ? a3 && false === a3.spacing ? t3 : t3 + " " : r3 ? "" : "+";
+    var r3 = e3.IDDPrefix, t3 = e3.missingPlus;
+    return r3 ? a3 && false === a3.spacing ? r3 : r3 + " " : t3 ? "" : "+";
   } }, { key: "getTemplate", value: function(e3) {
     if (this.template) {
-      for (var a3 = -1, t3 = 0, r3 = e3.international ? this.getInternationalPrefixBeforeCountryCallingCode(e3, { spacing: false }) : ""; t3 < r3.length + e3.getDigitsWithoutInternationalPrefix().length; )
-        a3 = this.template.indexOf(Io, a3 + 1), t3++;
+      for (var a3 = -1, r3 = 0, t3 = e3.international ? this.getInternationalPrefixBeforeCountryCallingCode(e3, { spacing: false }) : ""; r3 < t3.length + e3.getDigitsWithoutInternationalPrefix().length; )
+        a3 = this.template.indexOf(So, a3 + 1), r3++;
       return Po(this.template, a3 + 1);
     }
   } }, { key: "setNationalNumberTemplate", value: function(e3, a3) {
-    this.nationalNumberTemplate = e3, this.populatedNationalNumberTemplate = e3, this.populatedNationalNumberTemplatePosition = -1, a3.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(a3).replace(/[\d\+]/g, Io) + No(Io, a3.callingCode.length) + " " + e3 : this.template = e3;
+    this.nationalNumberTemplate = e3, this.populatedNationalNumberTemplate = e3, this.populatedNationalNumberTemplatePosition = -1, a3.international ? this.template = this.getInternationalPrefixBeforeCountryCallingCode(a3).replace(/[\d\+]/g, So) + No(So, a3.callingCode.length) + " " + e3 : this.template = e3;
   } }, { key: "getTemplateForFormat", value: function(e3, a3) {
-    var t3 = a3.nationalSignificantNumber, r3 = a3.international, o2 = a3.nationalPrefix, i2 = a3.complexPrefixBeforeNationalSignificantNumber, n2 = e3.pattern();
+    var r3 = a3.nationalSignificantNumber, t3 = a3.international, o2 = a3.nationalPrefix, i2 = a3.complexPrefixBeforeNationalSignificantNumber, n2 = e3.pattern();
     n2 = n2.replace(/\[([^\[\]])*\]/g, "\\d").replace(/\d(?=[^,}][^,}])/g, "\\d");
     var d2 = Jo.match(n2)[0];
-    if (!(t3.length > d2.length)) {
-      var l2 = new RegExp("^" + n2 + "$"), s2 = t3.replace(/\d/g, "9");
+    if (!(r3.length > d2.length)) {
+      var l2 = new RegExp("^" + n2 + "$"), s2 = r3.replace(/\d/g, "9");
       l2.test(s2) && (d2 = s2);
-      var c2, m2 = this.getFormatFormat(e3, r3);
-      if (this.shouldTryNationalPrefixFormattingRule(e3, { international: r3, nationalPrefix: o2 })) {
-        var u2 = m2.replace(xr, e3.nationalPrefixFormattingRule());
-        if (or(e3.nationalPrefixFormattingRule()) === (o2 || "") + or("$1") && (m2 = u2, c2 = true, o2))
+      var c2, m2 = this.getFormatFormat(e3, t3);
+      if (this.shouldTryNationalPrefixFormattingRule(e3, { international: t3, nationalPrefix: o2 })) {
+        var u2 = m2.replace(xt, e3.nationalPrefixFormattingRule());
+        if (ot(e3.nationalPrefixFormattingRule()) === (o2 || "") + ot("$1") && (m2 = u2, c2 = true, o2))
           for (var p2 = o2.length; p2 > 0; )
-            m2 = m2.replace(/\d/, Io), p2--;
+            m2 = m2.replace(/\d/, So), p2--;
       }
-      var h2 = d2.replace(new RegExp(n2), m2).replace(new RegExp("9", "g"), Io);
-      return c2 || (i2 ? h2 = No(Io, i2.length) + " " + h2 : o2 && (h2 = No(Io, o2.length) + this.getSeparatorAfterNationalPrefix(e3) + h2)), r3 && (h2 = kr(h2)), h2;
+      var h2 = d2.replace(new RegExp(n2), m2).replace(new RegExp("9", "g"), So);
+      return c2 || (i2 ? h2 = No(So, i2.length) + " " + h2 : o2 && (h2 = No(So, o2.length) + this.getSeparatorAfterNationalPrefix(e3) + h2)), t3 && (h2 = kt(h2)), h2;
     }
   } }, { key: "formatNextNationalNumberDigits", value: function(e3) {
-    var a3 = function(e4, a4, t3) {
-      for (var r3, o2 = Eo(t3.split("")); !(r3 = o2()).done; ) {
-        var i2 = r3.value;
-        if (e4.slice(a4 + 1).search(Ao) < 0)
+    var a3 = function(e4, a4, r3) {
+      for (var t3, o2 = Eo(r3.split("")); !(t3 = o2()).done; ) {
+        var i2 = t3.value;
+        if (e4.slice(a4 + 1).search(Io) < 0)
           return;
-        a4 = e4.search(Ao), e4 = e4.replace(Ao, i2);
+        a4 = e4.search(Io), e4 = e4.replace(Io, i2);
       }
       return [e4, a4];
     }(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition, e3);
@@ -13634,31 +13640,31 @@ var Jo = No("9", 15), qo = /[- ]/, Wo = new RegExp("[" + St + "]*\\$1[" + St + "
       return this.populatedNationalNumberTemplate = a3[0], this.populatedNationalNumberTemplatePosition = a3[1], Po(this.populatedNationalNumberTemplate, this.populatedNationalNumberTemplatePosition + 1);
     this.resetFormat();
   } }, { key: "shouldTryNationalPrefixFormattingRule", value: function(e3, a3) {
-    var t3 = a3.international, r3 = a3.nationalPrefix;
+    var r3 = a3.international, t3 = a3.nationalPrefix;
     if (e3.nationalPrefixFormattingRule()) {
       var o2 = e3.usesNationalPrefix();
-      if (o2 && r3 || !o2 && !t3)
+      if (o2 && t3 || !o2 && !r3)
         return true;
     }
-  } }], t2 && Qo(a2.prototype, t2), r2 && Qo(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }], r2 && Qo(a2.prototype, r2), t2 && Qo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
 function Xo(e2, a2) {
   return function(e3) {
     if (Array.isArray(e3))
       return e3;
   }(e2) || function(e3, a3) {
-    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
-    if (null == t2)
+    var r2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == r2)
       return;
-    var r2, o2, i2 = [], n2 = true, d2 = false;
+    var t2, o2, i2 = [], n2 = true, d2 = false;
     try {
-      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
+      for (r2 = r2.call(e3); !(n2 = (t2 = r2.next()).done) && (i2.push(t2.value), !a3 || i2.length !== a3); n2 = true)
         ;
     } catch (e4) {
       d2 = true, o2 = e4;
     } finally {
       try {
-        n2 || null == t2.return || t2.return();
+        n2 || null == r2.return || r2.return();
       } finally {
         if (d2)
           throw o2;
@@ -13670,11 +13676,11 @@ function Xo(e2, a2) {
       return;
     if ("string" == typeof e3)
       return ei(e3, a3);
-    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
-    if ("Map" === t2 || "Set" === t2)
+    var r2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r2 && e3.constructor && (r2 = e3.constructor.name);
+    if ("Map" === r2 || "Set" === r2)
       return Array.from(e3);
-    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+    if ("Arguments" === r2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r2))
       return ei(e3, a3);
   }(e2, a2) || function() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -13682,41 +13688,41 @@ function Xo(e2, a2) {
 }
 function ei(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
 function ai(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var ti = new RegExp("^" + ("[" + St + Et + "]+") + "$", "i"), ri = "(?:[+＋][" + St + Et + "]*|[" + St + Et + "]+)", oi = new RegExp("[^" + St + Et + "]+.*$"), ii = /[^\d\[\]]/, ni = function() {
+var ri = new RegExp("^" + ("[" + Ar + Er + "]+") + "$", "i"), ti = "(?:[+＋][" + Ar + Er + "]*|[" + Ar + Er + "]+)", oi = new RegExp("[^" + Ar + Er + "]+.*$"), ii = /[^\d\[\]]/, ni = function() {
   function e2(a3) {
-    var t3 = a3.defaultCountry, r3 = a3.defaultCallingCode, o2 = a3.metadata, i2 = a3.onNationalSignificantNumberChange;
+    var r3 = a3.defaultCountry, t3 = a3.defaultCallingCode, o2 = a3.metadata, i2 = a3.onNationalSignificantNumberChange;
     !function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
-    }(this, e2), this.defaultCountry = t3, this.defaultCallingCode = r3, this.metadata = o2, this.onNationalSignificantNumberChange = i2;
+    }(this, e2), this.defaultCountry = r3, this.defaultCallingCode = t3, this.metadata = o2, this.onNationalSignificantNumberChange = i2;
   }
-  var a2, t2, r2;
-  return a2 = e2, (t2 = [{ key: "input", value: function(e3, a3) {
-    var t3, r3 = function(e4) {
+  var a2, r2, t2;
+  return a2 = e2, (r2 = [{ key: "input", value: function(e3, a3) {
+    var r3, t3 = function(e4) {
       var a4 = function(e5) {
         var a5 = function(e6) {
-          var a6, t5 = e6.search(ri);
-          if (!(t5 < 0))
-            return "+" === (e6 = e6.slice(t5))[0] && (a6 = true, e6 = e6.slice(1)), e6 = e6.replace(oi, ""), a6 && (e6 = "+" + e6), e6;
+          var a6, r5 = e6.search(ti);
+          if (!(r5 < 0))
+            return "+" === (e6 = e6.slice(r5))[0] && (a6 = true, e6 = e6.slice(1)), e6 = e6.replace(oi, ""), a6 && (e6 = "+" + e6), e6;
         }(e5) || "";
         return "+" === a5[0] ? [a5.slice(1), true] : [a5];
-      }(e4), t4 = Xo(a4, 2), r4 = t4[0], o3 = t4[1];
-      return ti.test(r4) || (r4 = ""), [r4, o3];
-    }(e3), o2 = Xo(r3, 2), i2 = o2[0], n2 = o2[1], d2 = or(i2);
-    return n2 && (a3.digits || (a3.startInternationalNumber(), d2 || (t3 = true))), d2 && this.inputDigits(d2, a3), { digits: d2, justLeadingPlus: t3 };
+      }(e4), r4 = Xo(a4, 2), t4 = r4[0], o3 = r4[1];
+      return ri.test(t4) || (t4 = ""), [t4, o3];
+    }(e3), o2 = Xo(t3, 2), i2 = o2[0], n2 = o2[1], d2 = ot(i2);
+    return n2 && (a3.digits || (a3.startInternationalNumber(), d2 || (r3 = true))), d2 && this.inputDigits(d2, a3), { digits: d2, justLeadingPlus: r3 };
   } }, { key: "inputDigits", value: function(e3, a3) {
-    var t3 = a3.digits, r3 = t3.length < 3 && t3.length + e3.length >= 3;
-    if (a3.appendDigits(e3), r3 && this.extractIddPrefix(a3), this.isWaitingForCountryCallingCode(a3)) {
+    var r3 = a3.digits, t3 = r3.length < 3 && r3.length + e3.length >= 3;
+    if (a3.appendDigits(e3), t3 && this.extractIddPrefix(a3), this.isWaitingForCountryCallingCode(a3)) {
       if (!this.extractCountryCallingCode(a3))
         return;
     } else
@@ -13725,12 +13731,12 @@ var ti = new RegExp("^" + ("[" + St + Et + "]+") + "$", "i"), ri = "(?:[+＋][" 
       return a3.update(e4);
     });
   } }, { key: "isWaitingForCountryCallingCode", value: function(e3) {
-    var a3 = e3.international, t3 = e3.callingCode;
-    return a3 && !t3;
+    var a3 = e3.international, r3 = e3.callingCode;
+    return a3 && !r3;
   } }, { key: "extractCountryCallingCode", value: function(e3) {
-    var a3 = Hr("+" + e3.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), t3 = a3.countryCallingCode, r3 = a3.number;
-    if (t3)
-      return e3.setCallingCode(t3), e3.update({ nationalSignificantNumber: r3 }), true;
+    var a3 = Ht("+" + e3.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), r3 = a3.countryCallingCode, t3 = a3.number;
+    if (r3)
+      return e3.setCallingCode(r3), e3.update({ nationalSignificantNumber: t3 }), true;
   } }, { key: "reset", value: function(e3) {
     if (e3) {
       this.hasSelectedNumberingPlan = true;
@@ -13740,50 +13746,50 @@ var ti = new RegExp("^" + ("[" + St + Et + "]+") + "$", "i"), ri = "(?:[+＋][" 
       this.hasSelectedNumberingPlan = void 0, this.couldPossiblyExtractAnotherNationalSignificantNumber = void 0;
   } }, { key: "extractNationalSignificantNumber", value: function(e3, a3) {
     if (this.hasSelectedNumberingPlan) {
-      var t3 = Ur(e3, this.metadata), r3 = t3.nationalPrefix, o2 = t3.nationalNumber, i2 = t3.carrierCode;
+      var r3 = Gt(e3, this.metadata), t3 = r3.nationalPrefix, o2 = r3.nationalNumber, i2 = r3.carrierCode;
       if (o2 !== e3)
-        return this.onExtractedNationalNumber(r3, i2, o2, e3, a3), true;
+        return this.onExtractedNationalNumber(t3, i2, o2, e3, a3), true;
     }
-  } }, { key: "extractAnotherNationalSignificantNumber", value: function(e3, a3, t3) {
+  } }, { key: "extractAnotherNationalSignificantNumber", value: function(e3, a3, r3) {
     if (!this.hasExtractedNationalSignificantNumber)
-      return this.extractNationalSignificantNumber(e3, t3);
+      return this.extractNationalSignificantNumber(e3, r3);
     if (this.couldPossiblyExtractAnotherNationalSignificantNumber) {
-      var r3 = Ur(e3, this.metadata), o2 = r3.nationalPrefix, i2 = r3.nationalNumber, n2 = r3.carrierCode;
+      var t3 = Gt(e3, this.metadata), o2 = t3.nationalPrefix, i2 = t3.nationalNumber, n2 = t3.carrierCode;
       if (i2 !== a3)
-        return this.onExtractedNationalNumber(o2, n2, i2, e3, t3), true;
+        return this.onExtractedNationalNumber(o2, n2, i2, e3, r3), true;
     }
-  } }, { key: "onExtractedNationalNumber", value: function(e3, a3, t3, r3, o2) {
-    var i2, n2, d2 = r3.lastIndexOf(t3);
-    if (d2 >= 0 && d2 === r3.length - t3.length) {
+  } }, { key: "onExtractedNationalNumber", value: function(e3, a3, r3, t3, o2) {
+    var i2, n2, d2 = t3.lastIndexOf(r3);
+    if (d2 >= 0 && d2 === t3.length - r3.length) {
       n2 = true;
-      var l2 = r3.slice(0, d2);
+      var l2 = t3.slice(0, d2);
       l2 !== e3 && (i2 = l2);
     }
-    o2({ nationalPrefix: e3, carrierCode: a3, nationalSignificantNumber: t3, nationalSignificantNumberMatchesInput: n2, complexPrefixBeforeNationalSignificantNumber: i2 }), this.hasExtractedNationalSignificantNumber = true, this.onNationalSignificantNumberChange();
+    o2({ nationalPrefix: e3, carrierCode: a3, nationalSignificantNumber: r3, nationalSignificantNumberMatchesInput: n2, complexPrefixBeforeNationalSignificantNumber: i2 }), this.hasExtractedNationalSignificantNumber = true, this.onNationalSignificantNumberChange();
   } }, { key: "reExtractNationalSignificantNumber", value: function(e3) {
     return !!this.extractAnotherNationalSignificantNumber(e3.getNationalDigits(), e3.nationalSignificantNumber, function(a3) {
       return e3.update(a3);
     }) || (this.extractIddPrefix(e3) || this.fixMissingPlus(e3) ? (this.extractCallingCodeAndNationalSignificantNumber(e3), true) : void 0);
   } }, { key: "extractIddPrefix", value: function(e3) {
-    var a3 = e3.international, t3 = e3.IDDPrefix, r3 = e3.digits;
-    if (e3.nationalSignificantNumber, !a3 && !t3) {
-      var o2 = jr(r3, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
-      return void 0 !== o2 && o2 !== r3 ? (e3.update({ IDDPrefix: r3.slice(0, r3.length - o2.length) }), this.startInternationalNumber(e3, { country: void 0, callingCode: void 0 }), true) : void 0;
+    var a3 = e3.international, r3 = e3.IDDPrefix, t3 = e3.digits;
+    if (e3.nationalSignificantNumber, !a3 && !r3) {
+      var o2 = Ut(t3, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata);
+      return void 0 !== o2 && o2 !== t3 ? (e3.update({ IDDPrefix: t3.slice(0, t3.length - o2.length) }), this.startInternationalNumber(e3, { country: void 0, callingCode: void 0 }), true) : void 0;
     }
   } }, { key: "fixMissingPlus", value: function(e3) {
     if (!e3.international) {
-      var a3 = Vr(e3.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), t3 = a3.countryCallingCode;
-      if (a3.number, t3)
-        return e3.update({ missingPlus: true }), this.startInternationalNumber(e3, { country: e3.country, callingCode: t3 }), true;
+      var a3 = Yt(e3.digits, this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), r3 = a3.countryCallingCode;
+      if (a3.number, r3)
+        return e3.update({ missingPlus: true }), this.startInternationalNumber(e3, { country: e3.country, callingCode: r3 }), true;
     }
   } }, { key: "startInternationalNumber", value: function(e3, a3) {
-    var t3 = a3.country, r3 = a3.callingCode;
-    e3.startInternationalNumber(t3, r3), e3.nationalSignificantNumber && (e3.resetNationalSignificantNumber(), this.onNationalSignificantNumberChange(), this.hasExtractedNationalSignificantNumber = void 0);
+    var r3 = a3.country, t3 = a3.callingCode;
+    e3.startInternationalNumber(r3, t3), e3.nationalSignificantNumber && (e3.resetNationalSignificantNumber(), this.onNationalSignificantNumberChange(), this.hasExtractedNationalSignificantNumber = void 0);
   } }, { key: "extractCallingCodeAndNationalSignificantNumber", value: function(e3) {
     this.extractCountryCallingCode(e3) && this.extractNationalSignificantNumber(e3.getNationalDigits(), function(a3) {
       return e3.update(a3);
     });
-  } }]) && ai(a2.prototype, t2), r2 && ai(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }]) && ai(a2.prototype, r2), t2 && ai(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
 function di(e2) {
   return di = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e3) {
@@ -13797,18 +13803,18 @@ function li(e2, a2) {
     if (Array.isArray(e3))
       return e3;
   }(e2) || function(e3, a3) {
-    var t2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
-    if (null == t2)
+    var r2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
+    if (null == r2)
       return;
-    var r2, o2, i2 = [], n2 = true, d2 = false;
+    var t2, o2, i2 = [], n2 = true, d2 = false;
     try {
-      for (t2 = t2.call(e3); !(n2 = (r2 = t2.next()).done) && (i2.push(r2.value), !a3 || i2.length !== a3); n2 = true)
+      for (r2 = r2.call(e3); !(n2 = (t2 = r2.next()).done) && (i2.push(t2.value), !a3 || i2.length !== a3); n2 = true)
         ;
     } catch (e4) {
       d2 = true, o2 = e4;
     } finally {
       try {
-        n2 || null == t2.return || t2.return();
+        n2 || null == r2.return || r2.return();
       } finally {
         if (d2)
           throw o2;
@@ -13820,11 +13826,11 @@ function li(e2, a2) {
       return;
     if ("string" == typeof e3)
       return si(e3, a3);
-    var t2 = Object.prototype.toString.call(e3).slice(8, -1);
-    "Object" === t2 && e3.constructor && (t2 = e3.constructor.name);
-    if ("Map" === t2 || "Set" === t2)
+    var r2 = Object.prototype.toString.call(e3).slice(8, -1);
+    "Object" === r2 && e3.constructor && (r2 = e3.constructor.name);
+    if ("Map" === r2 || "Set" === r2)
       return Array.from(e3);
-    if ("Arguments" === t2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t2))
+    if ("Arguments" === r2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r2))
       return si(e3, a3);
   }(e2, a2) || function() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
@@ -13832,49 +13838,49 @@ function li(e2, a2) {
 }
 function si(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
-  for (var t2 = 0, r2 = new Array(a2); t2 < a2; t2++)
-    r2[t2] = e2[t2];
-  return r2;
+  for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
+    t2[r2] = e2[r2];
+  return t2;
 }
 function ci(e2, a2) {
-  for (var t2 = 0; t2 < a2.length; t2++) {
-    var r2 = a2[t2];
-    r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e2, r2.key, r2);
+  for (var r2 = 0; r2 < a2.length; r2++) {
+    var t2 = a2[r2];
+    t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
 var mi = function() {
-  function e2(a3, t3) {
+  function e2(a3, r3) {
     !function(e3, a4) {
       if (!(e3 instanceof a4))
         throw new TypeError("Cannot call a class as a function");
-    }(this, e2), this.metadata = new Rt(t3);
-    var r3 = li(this.getCountryAndCallingCode(a3), 2), o2 = r3[0], i2 = r3[1];
+    }(this, e2), this.metadata = new Rr(r3);
+    var t3 = li(this.getCountryAndCallingCode(a3), 2), o2 = t3[0], i2 = t3[1];
     this.defaultCountry = o2, this.defaultCallingCode = i2, this.reset();
   }
-  var a2, t2, r2;
-  return a2 = e2, t2 = [{ key: "getCountryAndCallingCode", value: function(e3) {
-    var a3, t3;
-    return e3 && ("object" === di(e3) ? (a3 = e3.defaultCountry, t3 = e3.defaultCallingCode) : a3 = e3), a3 && !this.metadata.hasCountry(a3) && (a3 = void 0), [a3, t3];
+  var a2, r2, t2;
+  return a2 = e2, r2 = [{ key: "getCountryAndCallingCode", value: function(e3) {
+    var a3, r3;
+    return e3 && ("object" === di(e3) ? (a3 = e3.defaultCountry, r3 = e3.defaultCallingCode) : a3 = e3), a3 && !this.metadata.hasCountry(a3) && (a3 = void 0), [a3, r3];
   } }, { key: "input", value: function(e3) {
-    var a3 = this.parser.input(e3, this.state), t3 = a3.digits;
+    var a3 = this.parser.input(e3, this.state), r3 = a3.digits;
     if (a3.justLeadingPlus)
       this.formattedOutput = "+";
-    else if (t3) {
-      var r3;
-      if (this.determineTheCountryIfNeeded(), this.state.nationalSignificantNumber && this.formatter.narrowDownMatchingFormats(this.state), this.metadata.hasSelectedNumberingPlan() && (r3 = this.formatter.format(t3, this.state)), void 0 === r3 && this.parser.reExtractNationalSignificantNumber(this.state)) {
+    else if (r3) {
+      var t3;
+      if (this.determineTheCountryIfNeeded(), this.state.nationalSignificantNumber && this.formatter.narrowDownMatchingFormats(this.state), this.metadata.hasSelectedNumberingPlan() && (t3 = this.formatter.format(r3, this.state)), void 0 === t3 && this.parser.reExtractNationalSignificantNumber(this.state)) {
         this.determineTheCountryIfNeeded();
         var o2 = this.state.getNationalDigits();
-        o2 && (r3 = this.formatter.format(o2, this.state));
+        o2 && (t3 = this.formatter.format(o2, this.state));
       }
-      this.formattedOutput = r3 ? this.getFullNumber(r3) : this.getNonFormattedNumber();
+      this.formattedOutput = t3 ? this.getFullNumber(t3) : this.getNonFormattedNumber();
     }
     return this.formattedOutput;
   } }, { key: "reset", value: function() {
     var e3 = this;
     return this.state = new Co({ onCountryChange: function(a3) {
       e3.country = a3;
-    }, onCallingCodeChange: function(a3, t3) {
-      e3.metadata.selectNumberingPlan(t3, a3), e3.formatter.reset(e3.metadata.numberingPlan, e3.state), e3.parser.reset(e3.metadata.numberingPlan);
+    }, onCallingCodeChange: function(a3, r3) {
+      e3.metadata.selectNumberingPlan(r3, a3), e3.formatter.reset(e3.metadata.numberingPlan, e3.state), e3.parser.reset(e3.metadata.numberingPlan);
     } }), this.formatter = new Zo({ state: this.state, metadata: this.metadata }), this.parser = new ni({ defaultCountry: this.defaultCountry, defaultCallingCode: this.defaultCallingCode, metadata: this.metadata, state: this.state, onNationalSignificantNumberChange: function() {
       e3.determineTheCountryIfNeeded(), e3.formatter.reset(e3.metadata.numberingPlan, e3.state);
     } }), this.state.reset({ country: this.defaultCountry, callingCode: this.defaultCallingCode }), this.formattedOutput = "", this;
@@ -13895,14 +13901,14 @@ var mi = function() {
   } }, { key: "getFullNumber", value: function(e3) {
     var a3 = this;
     if (this.isInternational()) {
-      var t3 = function(e4) {
+      var r3 = function(e4) {
         return a3.formatter.getInternationalPrefixBeforeCountryCallingCode(a3.state, { spacing: !!e4 }) + e4;
-      }, r3 = this.state.callingCode;
-      return t3(r3 ? e3 ? "".concat(r3, " ").concat(e3) : r3 : "".concat(this.state.getDigitsWithoutInternationalPrefix()));
+      }, t3 = this.state.callingCode;
+      return r3(t3 ? e3 ? "".concat(t3, " ").concat(e3) : t3 : "".concat(this.state.getDigitsWithoutInternationalPrefix()));
     }
     return e3;
   } }, { key: "getNonFormattedNationalNumberWithPrefix", value: function() {
-    var e3 = this.state, a3 = e3.nationalSignificantNumber, t3 = e3.complexPrefixBeforeNationalSignificantNumber, r3 = e3.nationalPrefix, o2 = a3, i2 = t3 || r3;
+    var e3 = this.state, a3 = e3.nationalSignificantNumber, r3 = e3.complexPrefixBeforeNationalSignificantNumber, t3 = e3.nationalPrefix, o2 = a3, i2 = r3 || t3;
     return i2 && (o2 = i2 + o2), o2;
   } }, { key: "getNonFormattedNumber", value: function() {
     var e3 = this.state.nationalSignificantNumberMatchesInput;
@@ -13910,30 +13916,30 @@ var mi = function() {
   } }, { key: "getNonFormattedTemplate", value: function() {
     var e3 = this.getNonFormattedNumber();
     if (e3)
-      return e3.replace(/[\+\d]/g, Io);
+      return e3.replace(/[\+\d]/g, So);
   } }, { key: "isCountryCallingCodeAmbiguous", value: function() {
     var e3 = this.state.callingCode, a3 = this.metadata.getCountryCodesForCallingCode(e3);
     return a3 && a3.length > 1;
   } }, { key: "determineTheCountry", value: function() {
-    this.state.setCountry(qr(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, { nationalNumber: this.state.nationalSignificantNumber, defaultCountry: this.defaultCountry, metadata: this.metadata }));
+    this.state.setCountry(qt(this.isInternational() ? this.state.callingCode : this.defaultCallingCode, { nationalNumber: this.state.nationalSignificantNumber, defaultCountry: this.defaultCountry, metadata: this.metadata }));
   } }, { key: "getNumberValue", value: function() {
-    var e3 = this.state, a3 = e3.digits, t3 = e3.callingCode, r3 = e3.country, o2 = e3.nationalSignificantNumber;
+    var e3 = this.state, a3 = e3.digits, r3 = e3.callingCode, t3 = e3.country, o2 = e3.nationalSignificantNumber;
     if (a3)
-      return this.isInternational() ? t3 ? "+" + t3 + o2 : "+" + a3 : r3 || t3 ? "+" + (r3 ? this.metadata.countryCallingCode() : t3) + o2 : void 0;
+      return this.isInternational() ? r3 ? "+" + r3 + o2 : "+" + a3 : t3 || r3 ? "+" + (t3 ? this.metadata.countryCallingCode() : r3) + o2 : void 0;
   } }, { key: "getNumber", value: function() {
-    var e3 = this.state, a3 = e3.nationalSignificantNumber, t3 = e3.carrierCode, r3 = e3.callingCode, o2 = this._getCountry();
-    if (a3 && (o2 || r3)) {
+    var e3 = this.state, a3 = e3.nationalSignificantNumber, r3 = e3.carrierCode, t3 = e3.callingCode, o2 = this._getCountry();
+    if (a3 && (o2 || t3)) {
       if (o2 && o2 === this.defaultCountry) {
-        var i2 = new Rt(this.metadata.metadata);
+        var i2 = new Rr(this.metadata.metadata);
         i2.selectNumberingPlan(o2);
         var n2 = i2.numberingPlan.callingCode(), d2 = this.metadata.getCountryCodesForCallingCode(n2);
         if (d2.length > 1) {
-          var l2 = Qr(a3, { countries: d2, defaultCountry: this.defaultCountry, metadata: this.metadata.metadata });
+          var l2 = Qt(a3, { countries: d2, defaultCountry: this.defaultCountry, metadata: this.metadata.metadata });
           l2 && (o2 = l2);
         }
       }
-      var s2 = new Tr(o2 || r3, a3, this.metadata.metadata);
-      return t3 && (s2.carrierCode = t3), s2;
+      var s2 = new Ft(o2 || t3, a3, this.metadata.metadata);
+      return r3 && (s2.carrierCode = r3), s2;
     }
   } }, { key: "isPossible", value: function() {
     var e3 = this.getNumber();
@@ -13947,23 +13953,23 @@ var mi = function() {
     return (this.state.international ? "+" : "") + this.state.digits;
   } }, { key: "getTemplate", value: function() {
     return this.formatter.getTemplate(this.state) || this.getNonFormattedTemplate() || "";
-  } }], t2 && ci(a2.prototype, t2), r2 && ci(a2, r2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }], r2 && ci(a2.prototype, r2), t2 && ci(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function ui(e2, a2, t2) {
+function ui(e2, a2, r2) {
   if (a2[e2])
-    return new Tr(e2, a2[e2], t2);
+    return new Ft(e2, a2[e2], r2);
 }
 function pi(e2) {
-  return mi.call(this, e2, ut);
+  return mi.call(this, e2, ur);
 }
 pi.prototype = Object.create(mi.prototype, {}), pi.prototype.constructor = pi;
 const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania (Shqipëri)", "al", "355"], ["Algeria (‫الجزائر‬‎)", "dz", "213"], ["American Samoa", "as", "1684"], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1264"], ["Antigua and Barbuda", "ag", "1268"], ["Argentina", "ar", "54"], ["Armenia (Հայաստան)", "am", "374"], ["Aruba", "aw", "297"], ["Australia", "au", "61", 0], ["Austria (Österreich)", "at", "43"], ["Azerbaijan (Azərbaycan)", "az", "994"], ["Bahamas", "bs", "1242"], ["Bahrain (‫البحرين‬‎)", "bh", "973"], ["Bangladesh (বাংলাদেশ)", "bd", "880"], ["Barbados", "bb", "1246"], ["Belarus (Беларусь)", "by", "375"], ["Belgium (België)", "be", "32"], ["Belize", "bz", "501"], ["Benin (Bénin)", "bj", "229"], ["Bermuda", "bm", "1441"], ["Bhutan (འབྲུག)", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia and Herzegovina (Босна и Херцеговина)", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil (Brasil)", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1284"], ["Brunei", "bn", "673"], ["Bulgaria (България)", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi (Uburundi)", "bi", "257"], ["Cambodia (កម្ពុជា)", "kh", "855"], ["Cameroon (Cameroun)", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "289", "306", "343", "365", "387", "403", "416", "418", "431", "437", "438", "450", "506", "514", "519", "548", "579", "581", "587", "604", "613", "639", "647", "672", "705", "709", "742", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde (Kabu Verdi)", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1], ["Cayman Islands", "ky", "1345"], ["Central African Republic (République centrafricaine)", "cf", "236"], ["Chad (Tchad)", "td", "235"], ["Chile", "cl", "56"], ["China (中国)", "cn", "86"], ["Christmas Island", "cx", "61", 2], ["Cocos (Keeling) Islands", "cc", "61", 1], ["Colombia", "co", "57"], ["Comoros (‫جزر القمر‬‎)", "km", "269"], ["Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)", "cd", "243"], ["Congo (Republic) (Congo-Brazzaville)", "cg", "242"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia (Hrvatska)", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus (Κύπρος)", "cy", "357"], ["Czech Republic (Česká republika)", "cz", "420"], ["Denmark (Danmark)", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1767"], ["Dominican Republic (República Dominicana)", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt (‫مصر‬‎)", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea (Guinea Ecuatorial)", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia (Eesti)", "ee", "372"], ["Ethiopia", "et", "251"], ["Falkland Islands (Islas Malvinas)", "fk", "500"], ["Faroe Islands (Føroyar)", "fo", "298"], ["Fiji", "fj", "679"], ["Finland (Suomi)", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana (Guyane française)", "gf", "594"], ["French Polynesia (Polynésie française)", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia (საქართველო)", "ge", "995"], ["Germany (Deutschland)", "de", "49"], ["Ghana (Gaana)", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece (Ελλάδα)", "gr", "30"], ["Greenland (Kalaallit Nunaat)", "gl", "299"], ["Grenada", "gd", "1473"], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1671"], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1], ["Guinea (Guinée)", "gn", "224"], ["Guinea-Bissau (Guiné Bissau)", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong (香港)", "hk", "852"], ["Hungary (Magyarország)", "hu", "36"], ["Iceland (Ísland)", "is", "354"], ["India (भारत)", "in", "91"], ["Indonesia", "id", "62"], ["Iran (‫ایران‬‎)", "ir", "98"], ["Iraq (‫العراق‬‎)", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2], ["Israel (‫ישראל‬‎)", "il", "972"], ["Italy (Italia)", "it", "39", 0], ["Jamaica", "jm", "1876"], ["Japan (日本)", "jp", "81"], ["Jersey", "je", "44", 3], ["Jordan (‫الأردن‬‎)", "jo", "962"], ["Kazakhstan (Казахстан)", "kz", "7", 1], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait (‫الكويت‬‎)", "kw", "965"], ["Kyrgyzstan (Кыргызстан)", "kg", "996"], ["Laos (ລາວ)", "la", "856"], ["Latvia (Latvija)", "lv", "371"], ["Lebanon (‫لبنان‬‎)", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya (‫ليبيا‬‎)", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania (Lietuva)", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau (澳門)", "mo", "853"], ["Macedonia (FYROM) (Македонија)", "mk", "389"], ["Madagascar (Madagasikara)", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania (‫موريتانيا‬‎)", "mr", "222"], ["Mauritius (Moris)", "mu", "230"], ["Mayotte", "yt", "262", 1], ["Mexico (México)", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova (Republica Moldova)", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia (Монгол)", "mn", "976"], ["Montenegro (Crna Gora)", "me", "382"], ["Montserrat", "ms", "1664"], ["Morocco (‫المغرب‬‎)", "ma", "212", 0], ["Mozambique (Moçambique)", "mz", "258"], ["Myanmar (Burma) (မြန်မာ)", "mm", "95"], ["Namibia (Namibië)", "na", "264"], ["Nauru", "nr", "674"], ["Nepal (नेपाल)", "np", "977"], ["Netherlands (Nederland)", "nl", "31"], ["New Caledonia (Nouvelle-Calédonie)", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger (Nijar)", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea (조선 민주주의 인민 공화국)", "kp", "850"], ["Northern Mariana Islands", "mp", "1670"], ["Norway (Norge)", "no", "47", 0], ["Oman (‫عُمان‬‎)", "om", "968"], ["Pakistan (‫پاکستان‬‎)", "pk", "92"], ["Palau", "pw", "680"], ["Palestine (‫فلسطين‬‎)", "ps", "970"], ["Panama (Panamá)", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru (Perú)", "pe", "51"], ["Philippines", "ph", "63"], ["Poland (Polska)", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar (‫قطر‬‎)", "qa", "974"], ["Réunion (La Réunion)", "re", "262", 0], ["Romania (România)", "ro", "40"], ["Russia (Россия)", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Saint Barthélemy", "bl", "590", 1], ["Saint Helena", "sh", "290"], ["Saint Kitts and Nevis", "kn", "1869"], ["Saint Lucia", "lc", "1758"], ["Saint Martin (Saint-Martin (partie française))", "mf", "590", 2], ["Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)", "pm", "508"], ["Saint Vincent and the Grenadines", "vc", "1784"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé and Príncipe (São Tomé e Príncipe)", "st", "239"], ["Saudi Arabia (‫المملكة العربية السعودية‬‎)", "sa", "966"], ["Senegal (Sénégal)", "sn", "221"], ["Serbia (Србија)", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1721"], ["Slovakia (Slovensko)", "sk", "421"], ["Slovenia (Slovenija)", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia (Soomaaliya)", "so", "252"], ["South Africa", "za", "27"], ["South Korea (대한민국)", "kr", "82"], ["South Sudan (‫جنوب السودان‬‎)", "ss", "211"], ["Spain (España)", "es", "34"], ["Sri Lanka (ශ්‍රී ලංකාව)", "lk", "94"], ["Sudan (‫السودان‬‎)", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard and Jan Mayen", "sj", "47", 1], ["Swaziland", "sz", "268"], ["Sweden (Sverige)", "se", "46"], ["Switzerland (Schweiz)", "ch", "41"], ["Syria (‫سوريا‬‎)", "sy", "963"], ["Taiwan (台灣)", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand (ไทย)", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad and Tobago", "tt", "1868"], ["Tunisia (‫تونس‬‎)", "tn", "216"], ["Turkey (Türkiye)", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks and Caicos Islands", "tc", "1649"], ["Tuvalu", "tv", "688"], ["U.S. Virgin Islands", "vi", "1340"], ["Uganda", "ug", "256"], ["Ukraine (Україна)", "ua", "380"], ["United Arab Emirates (‫الإمارات العربية المتحدة‬‎)", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["Uzbekistan (Oʻzbekiston)", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City (Città del Vaticano)", "va", "39", 1], ["Venezuela", "ve", "58"], ["Vietnam (Việt Nam)", "vn", "84"], ["Wallis and Futuna (Wallis-et-Futuna)", "wf", "681"], ["Western Sahara (‫الصحراء الغربية‬‎)", "eh", "212", 1], ["Yemen (‫اليمن‬‎)", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1]], gi = hi.map((e2) => e2[1].toUpperCase()), bi = hi.map((e2) => ({ name: e2[0], iso2: e2[1].toUpperCase(), dialCode: e2[2], priority: e2[3] || 0, areaCodes: e2[4] || null })), zi = (e2, a2) => {
-  const t2 = e2 ? function() {
-    return pt($o, arguments);
+  const r2 = e2 ? function() {
+    return pr($o, arguments);
   }(e2, a2) : null;
-  let r2 = { countryCode: a2, phoneNumber: e2, isValid: false };
-  return t2 && (r2 = { ...r2, countryCode: t2.country, countryCallingCode: t2.countryCallingCode, nationalNumber: t2.nationalNumber, isValid: t2.isValid(), type: t2.getType(), formatInternational: t2.formatInternational(), formatNational: t2.formatNational(), uri: t2.getURI(), e164: t2.format("E.164") }), r2;
-}, fi = (e2, a2) => e2 ? a2 ? new pi(a2).input(e2) : e2 : null, vi = { AC: "40123", AD: "312345", AE: "501234567", AF: "701234567", AG: "2684641234", AI: "2642351234", AL: "672123456", AM: "77123456", AO: "923123456", AR: "91123456789", AS: "6847331234", AT: "664123456", AU: "412345678", AW: "5601234", AX: "412345678", AZ: "401234567", BA: "61123456", BB: "2462501234", BD: "1812345678", BE: "470123456", BF: "70123456", BG: "43012345", BH: "36001234", BI: "79561234", BJ: "90011234", BL: "690001234", BM: "4413701234", BN: "7123456", BO: "71234567", BQ: "3181234", BR: "11961234567", BS: "2423591234", BT: "17123456", BW: "71123456", BY: "294911911", BZ: "6221234", CA: "5062345678", CC: "412345678", CD: "991234567", CF: "70012345", CG: "061234567", CH: "781234567", CI: "0123456789", CK: "71234", CL: "221234567", CM: "671234567", CN: "13123456789", CO: "3211234567", CR: "83123456", CU: "51234567", CV: "9911234", CW: "95181234", CX: "412345678", CY: "96123456", CZ: "601123456", DE: "15123456789", DJ: "77831001", DK: "32123456", DM: "7672251234", DO: "8092345678", DZ: "551234567", EC: "991234567", EE: "51234567", EG: "1001234567", EH: "650123456", ER: "7123456", ES: "612345678", ET: "911234567", FI: "412345678", FJ: "7012345", FK: "51234", FM: "3501234", FO: "211234", FR: "612345678", GA: "06031234", GB: "7400123456", GD: "4734031234", GE: "555123456", GF: "694201234", GG: "7781123456", GH: "231234567", GI: "57123456", GL: "221234", GM: "3012345", GN: "601123456", GP: "690001234", GQ: "222123456", GR: "6912345678", GT: "51234567", GU: "6713001234", GW: "955012345", GY: "6091234", HK: "51234567", HN: "91234567", HR: "921234567", HT: "34101234", HU: "201234567", ID: "812345678", IE: "850123456", IL: "502345678", IM: "7924123456", IN: "8123456789", IO: "3801234", IQ: "7912345678", IR: "9123456789", IS: "6111234", IT: "3123456789", JE: "7797712345", JM: "8762101234", JO: "790123456", JP: "9012345678", KE: "712123456", KG: "700123456", KH: "91234567", KI: "72001234", KM: "3212345", KN: "8697652917", KP: "1921234567", KR: "1020000000", KW: "50012345", KY: "3453231234", KZ: "7710009998", LA: "2023123456", LB: "71123456", LC: "7582845678", LI: "660234567", LK: "712345678", LR: "770123456", LS: "50123456", LT: "61234567", LU: "628123456", LV: "21234567", LY: "912345678", MA: "650123456", MC: "612345678", MD: "62112345", ME: "67622901", MF: "690001234", MG: "321234567", MH: "2351234", MK: "72345678", ML: "65012345", MM: "92123456", MN: "88123456", MO: "66123456", MP: "6702345678", MQ: "696201234", MR: "22123456", MS: "6644923456", MT: "96961234", MU: "52512345", MV: "7712345", MW: "991234567", MX: "12221234567", MY: "123456789", MZ: "821234567", NA: "811234567", NC: "751234", NE: "93123456", NF: "381234", NG: "8021234567", NI: "81234567", NL: "612345678", NO: "40612345", NP: "9841234567", NR: "5551234", NU: "8884012", NZ: "211234567", OM: "92123456", PA: "61234567", PE: "912345678", PF: "87123456", PG: "70123456", PH: "9051234567", PK: "3012345678", PL: "512345678", PM: "551234", PR: "7872345678", PS: "599123456", PT: "912345678", PW: "6201234", PY: "961456789", QA: "33123456", RE: "692123456", RO: "712034567", RS: "601234567", RU: "9123456789", RW: "720123456", SA: "512345678", SB: "7421234", SC: "2510123", SD: "911231234", SE: "701234567", SG: "81234567", SH: "51234", SI: "31234567", SJ: "41234567", SK: "912123456", SL: "25123456", SM: "66661212", SN: "701234567", SO: "71123456", SR: "7412345", SS: "977123456", ST: "9812345", SV: "70123456", SX: "7215205678", SY: "944567890", SZ: "76123456", TA: "8999", TC: "6492311234", TD: "63012345", TG: "90112345", TH: "812345678", TJ: "917123456", TK: "7290", TL: "77212345", TM: "66123456", TN: "20123456", TO: "7715123", TR: "5012345678", TT: "8682911234", TV: "901234", TW: "912345678", TZ: "621234567", UA: "501234567", UG: "712345678", US: "2015550123", UY: "94231234", UZ: "912345678", VA: "3123456789", VC: "7844301234", VE: "4121234567", VG: "2843001234", VI: "3406421234", VN: "912345678", VU: "5912345", WF: "821234", WS: "7212345", XK: "43201234", YE: "712345678", YT: "639012345", ZA: "711234567", ZM: "955123456", ZW: "712345678" }, yi = { countrySelectorLabel: "Country code", countrySelectorError: "Choose country", countrySelectorSearchPlaceholder: "Search country", phoneNumberLabel: "Phone number", example: "Example:" }, ki = { name: "MazPhoneNumberInput", components: { MazInput: lt, MazSelect: mt }, mixins: [ot], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, defaultPhoneNumber: { type: String, default: null }, defaultCountryCode: { type: String, default: null }, size: { type: String, default: null }, preferredCountries: { type: Array, default: null }, onlyCountries: { type: Array, default: null }, ignoredCountries: { type: Array, default: Array }, translations: { type: Object, default: null }, noValidation: { type: Boolean, default: false }, noFlags: { type: Boolean, default: false }, noExample: { type: Boolean, default: false }, noSearch: { type: Boolean, default: false }, countriesHeight: { type: Number, default: 30 }, noUseBrowserLocale: { type: Boolean, default: false }, fetchCountry: { type: Boolean, default: false }, noCountrySelector: { type: Boolean, default: false }, showCodeOnList: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" }, placeholder: { type: String, default: null }, hint: { type: String, default: null }, position: { type: String, default: "left bottom" } }, data() {
+  let t2 = { countryCode: a2, phoneNumber: e2, isValid: false };
+  return r2 && (t2 = { ...t2, countryCode: r2.country, countryCallingCode: r2.countryCallingCode, nationalNumber: r2.nationalNumber, isValid: r2.isValid(), type: r2.getType(), formatInternational: r2.formatInternational(), formatNational: r2.formatNational(), uri: r2.getURI(), e164: r2.format("E.164") }), t2;
+}, fi = (e2, a2) => e2 ? a2 ? new pi(a2).input(e2) : e2 : null, vi = { AC: "40123", AD: "312345", AE: "501234567", AF: "701234567", AG: "2684641234", AI: "2642351234", AL: "672123456", AM: "77123456", AO: "923123456", AR: "91123456789", AS: "6847331234", AT: "664123456", AU: "412345678", AW: "5601234", AX: "412345678", AZ: "401234567", BA: "61123456", BB: "2462501234", BD: "1812345678", BE: "470123456", BF: "70123456", BG: "43012345", BH: "36001234", BI: "79561234", BJ: "90011234", BL: "690001234", BM: "4413701234", BN: "7123456", BO: "71234567", BQ: "3181234", BR: "11961234567", BS: "2423591234", BT: "17123456", BW: "71123456", BY: "294911911", BZ: "6221234", CA: "5062345678", CC: "412345678", CD: "991234567", CF: "70012345", CG: "061234567", CH: "781234567", CI: "0123456789", CK: "71234", CL: "221234567", CM: "671234567", CN: "13123456789", CO: "3211234567", CR: "83123456", CU: "51234567", CV: "9911234", CW: "95181234", CX: "412345678", CY: "96123456", CZ: "601123456", DE: "15123456789", DJ: "77831001", DK: "32123456", DM: "7672251234", DO: "8092345678", DZ: "551234567", EC: "991234567", EE: "51234567", EG: "1001234567", EH: "650123456", ER: "7123456", ES: "612345678", ET: "911234567", FI: "412345678", FJ: "7012345", FK: "51234", FM: "3501234", FO: "211234", FR: "612345678", GA: "06031234", GB: "7400123456", GD: "4734031234", GE: "555123456", GF: "694201234", GG: "7781123456", GH: "231234567", GI: "57123456", GL: "221234", GM: "3012345", GN: "601123456", GP: "690001234", GQ: "222123456", GR: "6912345678", GT: "51234567", GU: "6713001234", GW: "955012345", GY: "6091234", HK: "51234567", HN: "91234567", HR: "921234567", HT: "34101234", HU: "201234567", ID: "812345678", IE: "850123456", IL: "502345678", IM: "7924123456", IN: "8123456789", IO: "3801234", IQ: "7912345678", IR: "9123456789", IS: "6111234", IT: "3123456789", JE: "7797712345", JM: "8762101234", JO: "790123456", JP: "9012345678", KE: "712123456", KG: "700123456", KH: "91234567", KI: "72001234", KM: "3212345", KN: "8697652917", KP: "1921234567", KR: "1020000000", KW: "50012345", KY: "3453231234", KZ: "7710009998", LA: "2023123456", LB: "71123456", LC: "7582845678", LI: "660234567", LK: "712345678", LR: "770123456", LS: "50123456", LT: "61234567", LU: "628123456", LV: "21234567", LY: "912345678", MA: "650123456", MC: "612345678", MD: "62112345", ME: "67622901", MF: "690001234", MG: "321234567", MH: "2351234", MK: "72345678", ML: "65012345", MM: "92123456", MN: "88123456", MO: "66123456", MP: "6702345678", MQ: "696201234", MR: "22123456", MS: "6644923456", MT: "96961234", MU: "52512345", MV: "7712345", MW: "991234567", MX: "12221234567", MY: "123456789", MZ: "821234567", NA: "811234567", NC: "751234", NE: "93123456", NF: "381234", NG: "8021234567", NI: "81234567", NL: "612345678", NO: "40612345", NP: "9841234567", NR: "5551234", NU: "8884012", NZ: "211234567", OM: "92123456", PA: "61234567", PE: "912345678", PF: "87123456", PG: "70123456", PH: "9051234567", PK: "3012345678", PL: "512345678", PM: "551234", PR: "7872345678", PS: "599123456", PT: "912345678", PW: "6201234", PY: "961456789", QA: "33123456", RE: "692123456", RO: "712034567", RS: "601234567", RU: "9123456789", RW: "720123456", SA: "512345678", SB: "7421234", SC: "2510123", SD: "911231234", SE: "701234567", SG: "81234567", SH: "51234", SI: "31234567", SJ: "41234567", SK: "912123456", SL: "25123456", SM: "66661212", SN: "701234567", SO: "71123456", SR: "7412345", SS: "977123456", ST: "9812345", SV: "70123456", SX: "7215205678", SY: "944567890", SZ: "76123456", TA: "8999", TC: "6492311234", TD: "63012345", TG: "90112345", TH: "812345678", TJ: "917123456", TK: "7290", TL: "77212345", TM: "66123456", TN: "20123456", TO: "7715123", TR: "5012345678", TT: "8682911234", TV: "901234", TW: "912345678", TZ: "621234567", UA: "501234567", UG: "712345678", US: "2015550123", UY: "94231234", UZ: "912345678", VA: "3123456789", VC: "7844301234", VE: "4121234567", VG: "2843001234", VI: "3406421234", VN: "912345678", VU: "5912345", WF: "821234", WS: "7212345", XK: "43201234", YE: "712345678", YT: "639012345", ZA: "711234567", ZM: "955123456", ZW: "712345678" }, yi = { countrySelectorLabel: "Country code", countrySelectorError: "Choose country", countrySelectorSearchPlaceholder: "Search country", phoneNumberLabel: "Phone number", example: "Example:" }, ki = { name: "MazPhoneNumberInput", components: { MazInput: lr, MazSelect: mr }, mixins: [or], props: { value: { validator: (e2) => ["string", "number"].includes(typeof e2) || null === e2, default: null }, id: { type: String, default: null }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, defaultPhoneNumber: { type: String, default: null }, defaultCountryCode: { type: String, default: null }, size: { type: String, default: null }, preferredCountries: { type: Array, default: null }, onlyCountries: { type: Array, default: null }, ignoredCountries: { type: Array, default: Array }, translations: { type: Object, default: null }, noValidation: { type: Boolean, default: false }, noFlags: { type: Boolean, default: false }, noExample: { type: Boolean, default: false }, noSearch: { type: Boolean, default: false }, countriesHeight: { type: Number, default: 30 }, noUseBrowserLocale: { type: Boolean, default: false }, fetchCountry: { type: Boolean, default: false }, noCountrySelector: { type: Boolean, default: false }, showCodeOnList: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, color: { type: String, default: "primary" }, placeholder: { type: String, default: null }, hint: { type: String, default: null }, position: { type: String, default: "left bottom" } }, data() {
   return { results: {}, countryCode: this.defaultCountryCode, cursorPosition: null, asYouTypeNumber: this.defaultPhoneNumber };
 }, computed: { t() {
   return { ...yi, ...this.translations };
@@ -13973,7 +13979,7 @@ const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
     const a2 = this.countriesSorted.find((a3) => a3.iso2 === e3);
     return a2 ? a2.dialCode : null;
   })(e2) || function() {
-    return pt(Vt, arguments);
+    return pr(Yr, arguments);
   }(e2)}` : null;
 }, shouldChooseCountry() {
   return !this.countryCode && !!this.asYouTypeNumber;
@@ -13984,12 +13990,12 @@ const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   return "" === e2 || !e2;
 }, phoneNumberExample() {
   const { countryCode: e2 } = this, a2 = e2 ? function() {
-    return pt(ui, arguments);
+    return pr(ui, arguments);
   }(e2, vi) : null;
   return a2 ? a2.formatNational() : null;
 }, hintValue() {
-  const { noExample: e2, phoneNumberExample: a2, hasEmptyPhone: t2, isValid: r2, t: o2 } = this;
-  return e2 || !a2 || t2 || r2 ? null : `${o2.example} ${a2}`;
+  const { noExample: e2, phoneNumberExample: a2, hasEmptyPhone: r2, isValid: t2, t: o2 } = this;
+  return e2 || !a2 || r2 || t2 ? null : `${o2.example} ${a2}`;
 }, countriesList() {
   return bi.filter((e2) => !this.ignoredCountries.includes(e2.iso2));
 }, countriesFiltered() {
@@ -14004,10 +14010,10 @@ const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
   e2 && e2 !== a2 && this.setCountryCode(e2);
 }, immediate: true } }, async mounted() {
   try {
-    const { defaultCountryCode: e2, fetchCountry: a2, noUseBrowserLocale: t2, setCountryCode: r2 } = this;
+    const { defaultCountryCode: e2, fetchCountry: a2, noUseBrowserLocale: r2, setCountryCode: t2 } = this;
     if (!this.defaultPhoneNumber && this.value && this.buildResults(this.value), e2 && a2)
       throw new Error("MazPhoneNumberInput: Do not use 'fetch-country' and 'default-country-code' options in the same time");
-    if (e2 && t2)
+    if (e2 && r2)
       throw new Error("MazPhoneNumberInput: If you use a 'default-country-code', do not use 'no-use-browser-locale' options");
     if (e2)
       return;
@@ -14019,33 +14025,33 @@ const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
       } catch (e3) {
         return new Error("[MazPhoneNumberInput] Error while fetching country code");
       }
-    })() : t2 ? null : await (() => {
+    })() : r2 ? null : await (() => {
       if ("undefined" == typeof window)
         return null;
       const e3 = window.navigator.userLanguage || window.navigator.language;
       let a3 = e3 ? e3.substr(3, 4).toUpperCase() : null;
       return "" === a3 && (a3 = e3.substr(0, 2).toUpperCase()), "EN" === a3 && (a3 = "US"), "JA" === a3 && (a3 = "JP"), a3;
     })();
-    o2 && r2(o2);
+    o2 && t2(o2);
   } catch (e2) {
     throw new Error(e2);
   }
 }, methods: { async buildResults(e2, a2) {
-  const { countryCode: t2, value: r2 } = this;
+  const { countryCode: r2, value: t2 } = this;
   await this.$nextTick();
   const o2 = this.asYouTypeNumber && e2 && this.asYouTypeNumber.length > e2.length;
-  this.results = zi(e2, t2);
+  this.results = zi(e2, r2);
   const { isValid: i2, e164: n2 } = this.results, d2 = !this.asYouTypeNumber || !this.cursorPosition || this.cursorPosition + 1 >= this.asYouTypeNumber.length, l2 = !o2 && d2 || i2;
-  this.asYouTypeNumber = l2 ? fi(e2, t2) : e2, !a2 && this.results && this.results.countryCode && t2 !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
+  this.asYouTypeNumber = l2 ? fi(e2, r2) : e2, !a2 && this.results && this.results.countryCode && r2 !== this.results.countryCode && this.setCountryCode(this.results.countryCode), this.$emit("update", this.results);
   const s2 = i2 ? n2 : this.asYouTypeNumber;
-  (s2 || s2 !== r2) && this.$emit("input", s2);
+  (s2 || s2 !== t2) && this.$emit("input", s2);
 }, onBlur(e2) {
   this.$emit("blur", e2), this.countryCode && (this.asYouTypeNumber = fi(this.asYouTypeNumber, this.countryCode));
 }, onKeydown(e2) {
   const a2 = e2.target;
   this.cursorPosition = a2 == null ? void 0 : a2.selectionStart;
 }, async setCountryCode(e2, a2) {
-  const { buildResults: t2, asYouTypeNumber: r2 } = this, o2 = (async (e3) => {
+  const { buildResults: r2, asYouTypeNumber: t2 } = this, o2 = (async (e3) => {
     try {
       if (gi.includes(e3))
         return true;
@@ -14054,18 +14060,18 @@ const hi = [["Afghanistan (‫افغانستان‬‎)", "af", "93"], ["Albania
       throw new Error(e4);
     }
   })(e2);
-  a2 && (this.focusPhoneNumberInput(), r2 && r2.includes("+") && (this.asYouTypeNumber = null)), o2 && e2 && (this.countryCode = e2, t2(this.asYouTypeNumber, true));
+  a2 && (this.focusPhoneNumberInput(), t2 && t2.includes("+") && (this.asYouTypeNumber = null)), o2 && e2 && (this.countryCode = e2, r2(this.asYouTypeNumber, true));
 }, async focusCountrySelector() {
   await this.$nextTick(), this.$refs.CountrySelector.$el.querySelector("input").focus();
 }, async focusPhoneNumberInput() {
   await this.$nextTick(), this.$refs.PhoneNumberInput.$el.querySelector("input").focus();
 } } };
-const xi = tt(ki, function() {
+const xi = rr(ki, function() {
   var e2 = this, a2 = e2._self._c;
   return a2("div", { staticClass: "maz-base-component maz-phone-number-input maz-flex", class: [{ "maz-is-dark": e2.dark }, `maz-phone-number-input--${e2.size}`], attrs: { id: e2.id } }, [e2.noCountrySelector ? e2._e() : a2("MazSelect", { ref: "CountrySelector", staticClass: "country-selector", class: { "no-padding-left": e2.noFlags || !e2.countryCode }, attrs: { value: e2.countryCode, options: e2.countriesSorted, placeholder: e2.t.countrySelectorLabel, search: !e2.noSearch, position: e2.position, "search-placeholder": e2.t.countrySelectorSearchPlaceholder, "items-height": e2.countriesHeight, error: e2.shouldChooseCountry, hint: e2.shouldChooseCountry ? e2.t.countrySelectorError : null, size: e2.size, success: e2.isValid && !e2.noValidation, disabled: e2.disabled, lock: e2.lock, "input-value": e2.callingCode, "list-width": 300, config: { labelKey: "dialCode", searchKey: "name", valueKey: "iso2" }, color: e2.color }, on: { input: function(a3) {
     return e2.setCountryCode(a3, true);
-  } }, scopedSlots: e2._u([{ key: "default", fn: function({ option: t2 }) {
-    return [a2("div", { staticClass: "maz-flex maz-align-center" }, [e2.noFlags ? e2._e() : a2("div", { staticClass: "country-selector__flag-container maz-mr-2" }, [a2("div", { class: `maz-flag maz-flag-${t2.iso2.toLowerCase()}` })]), e2.showCodeOnList ? a2("span", { staticClass: "country-selector__calling-code maz-flex-fixed maz-text-muted", class: { "maz-text-muted-dark": t2.isSelected } }, [e2._v(" +" + e2._s(t2.dialCode) + " ")]) : e2._e(), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-left maz-text-color", class: { "maz-text-white": t2.isSelected } }, [e2._v(" " + e2._s(t2.name) + " ")]), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-right maz-text-color", class: { "maz-text-white": t2.isSelected }, staticStyle: { "max-width": "60px" } }, [e2._v(" +" + e2._s(t2.dialCode) + " ")])])];
+  } }, scopedSlots: e2._u([{ key: "default", fn: function({ option: r2 }) {
+    return [a2("div", { staticClass: "maz-flex maz-align-center" }, [e2.noFlags ? e2._e() : a2("div", { staticClass: "country-selector__flag-container maz-mr-2" }, [a2("div", { class: `maz-flag maz-flag-${r2.iso2.toLowerCase()}` })]), e2.showCodeOnList ? a2("span", { staticClass: "country-selector__calling-code maz-flex-fixed maz-text-muted", class: { "maz-text-muted-dark": r2.isSelected } }, [e2._v(" +" + e2._s(r2.dialCode) + " ")]) : e2._e(), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-left maz-text-color", class: { "maz-text-white": r2.isSelected } }, [e2._v(" " + e2._s(r2.name) + " ")]), a2("div", { staticClass: "maz-dots-text maz-flex-1 maz-text-right maz-text-color", class: { "maz-text-white": r2.isSelected }, staticStyle: { "max-width": "60px" } }, [e2._v(" +" + e2._s(r2.dialCode) + " ")])])];
   } }], null, false, 664249301) }), !e2.countryCode || e2.noFlags || e2.noCountrySelector ? e2._e() : a2("button", { staticClass: "maz-phone-number-input__country-flag", attrs: { tabindex: "-1" }, on: { click: e2.focusCountrySelector } }, [a2("div", { class: `maz-flag maz-flag-${e2.countryCode.toLowerCase()}` })]), a2("MazInput", e2._b({ ref: "PhoneNumberInput", staticClass: "input-phone-number maz-flex-1", class: { "has-border-radius": e2.noCountrySelector }, attrs: { id: e2.uniqueId ? `${e2.uniqueId}_phone_number` : null, value: e2.asYouTypeNumber, placeholder: e2.placeholder || e2.t.phoneNumberLabel, hint: e2.hint || e2.hintValue, disabled: e2.disabled, readonly: e2.lock, size: e2.size, success: e2.isValid && !e2.noValidation, clearable: "", color: e2.color }, on: { keydown: e2.onKeydown, focus: function(a3) {
     return e2.$emit("focus", a3);
   }, blur: e2.onBlur, change: function(a3) {
@@ -14077,13 +14083,13 @@ const xi = tt(ki, function() {
 xi.install = (e2) => {
   e2.component(xi.name, xi);
 };
-const wi = "o21pay-address", $i = [rt, nt, lt, mt, xi];
+const wi = "o21pay-address", $i = [tr, nr, lr, mr, xi];
 class _i extends ie {
   static get properties() {
     return { editor: { type: Boolean }, size: { type: String }, pro: { type: Boolean }, icons: { type: Boolean }, required: { type: Boolean }, optimized: { type: Boolean }, primary_color: { type: String, attribute: "primary_color" }, data: { type: Object } };
   }
   constructor() {
-    super(), this.countries = this.listCountries(), this.pro = false, this.editor = false, this.required = false, this.icons = false, this.optimized = false, this.size = "small", this.object = void 0;
+    super(), this.countries = this.listCountries(), this.pro = false, this.editor = false, this.required = false, this.icons = false, this.optimized = false, this.size = "small", this.primary_color = "#68d18d", this.object = void 0;
     const e2 = this;
     setTimeout(async function() {
       e2.createVue();
@@ -14142,7 +14148,7 @@ class _i extends ie {
   updated(e2) {
     super.updated(e2);
     const a2 = this.prepareDataProperties();
-    this.object && (this.object.$data.props = a2);
+    this.object && (this.object.$data.props = a2), e2.has("primary_color") && this.requestUpdate();
   }
   async createVue() {
     const e2 = this;
@@ -14157,14 +14163,14 @@ class _i extends ie {
       });
     })(Vue), this.object = new Vue({ el: a2, components: {}, data: function() {
       return { visible: false, resultPhone: void 0, options: e2.countries, company: "", name: "", address: "", zipcode: "", city: "", cntry: "", phone: "", duns: "", vatnumber: "", props: e2.prepareDataProperties() };
-    }, watch: { name(a3, t3) {
+    }, watch: { name(a3, r3) {
       e2.getData();
     } }, methods: { __inputValue() {
       const a3 = e2.validation();
       e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_validation", state: a3 }, bubbles: true, composed: true }));
     } } });
-    let t2 = navigator.language.split("-")[0], r2 = this.countries.find((e3) => e3.iso === t2);
-    r2 && (this.object.$data.cntry = r2.value), this.setData(), this.object.$data.visible = true;
+    let r2 = navigator.language.split("-")[0], t2 = this.countries.find((e3) => e3.iso === r2);
+    t2 && (this.object.$data.cntry = t2.value), this.setData(), this.object.$data.visible = true;
   }
   listCountries() {
     const e2 = [];
@@ -14178,91 +14184,61 @@ class _i extends ie {
   prepareDataProperties() {
     let e2 = {};
     for (const a2 in _i.properties) {
-      let t2 = this[a2];
-      if (console.log(a2, t2), "size" === a2)
-        t2 = "small" === t2 ? "sm" : "medium" === t2 ? void 0 : "large" === t2 ? "lg" : "sm";
+      let r2 = this[a2];
+      if (console.log(a2, r2), "size" === a2)
+        r2 = "small" === r2 ? "sm" : "medium" === r2 ? void 0 : "large" === r2 ? "lg" : "sm";
       else if ("icons" === a2) {
         e2.icon_name = this.getIcon("name"), e2.icon_addr = this.getIcon("@"), e2.icon_company = this.getIcon("company"), e2.icon_duns = this.getIcon("duns"), e2.icon_vat = this.getIcon("vat");
         continue;
       }
-      e2[a2] = t2;
+      e2[a2] = r2;
     }
     return e2;
   }
   render() {
-    return F` <div>
-      <div id="app">
-        <div v-if="visible">
-          <form>
-            <div v-if="props.pro" class="m1">
-              <maz-input
-                v-model="company"
-                placeholder="Company name"
-                :left-icon-name="props.icon_company"
-                :size="props.size"
-                :readonly="props.editor"
-                :required="props.required"
-              />
-            </div>
-            <div class="m1">
-              <maz-input
-                v-model="name"
-                placeholder="Your name"
-                :left-icon-name="props.icon_name"
-                :size="props.size"
-                :readonly="props.editor"
-                :required="props.required"
-                @input="__inputValue"
-              />
-            </div>
-            <div class="m1">
-              <maz-input
-                v-model="address"
-                placeholder="Address"
-                :left-icon-name="props.icon_addr"
-                :size="props.size"
-                :readonly="props.editor"
-                :required="props.required"
-                @input="__inputValue"
-              />
-            </div>
+    return L`<style>
+        :host {
+          --maz-primary: ${this.primary_color} !important;
+        }
+      </style>
+      <div>
+        <div id="app">
+          <div v-if="visible">
+            <form>
+              <div v-if="props.pro" class="m1">
+                <maz-input
+                  v-model="company"
+                  placeholder="Company name"
+                  :left-icon-name="props.icon_company"
+                  :size="props.size"
+                  :readonly="props.editor"
+                  :required="props.required"
+                />
+              </div>
+              <div class="m1">
+                <maz-input
+                  v-model="name"
+                  placeholder="Your name"
+                  :left-icon-name="props.icon_name"
+                  :size="props.size"
+                  :readonly="props.editor"
+                  :required="props.required"
+                  @input="__inputValue"
+                />
+              </div>
+              <div class="m1">
+                <maz-input
+                  v-model="address"
+                  placeholder="Address"
+                  :left-icon-name="props.icon_addr"
+                  :size="props.size"
+                  :readonly="props.editor"
+                  :required="props.required"
+                  @input="__inputValue"
+                />
+              </div>
 
-            <div v-if="props.optimized" class="m1" style="display:flex;">
-              <div class="" style="width: 160px;">
-                <maz-input
-                  v-model="zipcode"
-                  placeholder="Postal Code"
-                  :size="props.size"
-                  :readonly="props.editor"
-                  :required="props.required"
-                  @input="__inputValue"
-                />
-              </div>
-              <div class="" style="padding-left: 5px; width: 40%; ">
-                <maz-input
-                  v-model="city"
-                  placeholder="City"
-                  :size="props.size"
-                  :readonly="props.editor"
-                  :required="props.required"
-                  @input="__inputValue"
-                />
-              </div>
-              <div style="padding-left: 5px; width: 60%;">
-                <maz-select
-                  v-model="cntry"
-                  placeholder="Country"
-                  :size="props.size"
-                  :options="options"
-                  :lock="props.editor"
-                  v-slot="{ option, isSelected, icon }"
-                  autocomplete="country"
-                >
-                </maz-select>
-              </div>
-            </div>
-            <div v-else>
-              <div class="m1" style="display:flex;">
+              <div v-if="props.optimized" class="m1" style="display:flex;">
                 <div class="" style="width: 160px;">
                   <maz-input
                     v-model="zipcode"
@@ -14273,7 +14249,7 @@ class _i extends ie {
                     @input="__inputValue"
                   />
                 </div>
-                <div class="" style="padding-left: 5px; width: 100%">
+                <div class="" style="padding-left: 5px; width: 40%; ">
                   <maz-input
                     v-model="city"
                     placeholder="City"
@@ -14283,384 +14259,112 @@ class _i extends ie {
                     @input="__inputValue"
                   />
                 </div>
+                <div style="padding-left: 5px; width: 60%;">
+                  <maz-select
+                    v-model="cntry"
+                    placeholder="Country"
+                    :size="props.size"
+                    :options="options"
+                    :lock="props.editor"
+                    v-slot="{ option, isSelected, icon }"
+                    autocomplete="country"
+                  >
+                  </maz-select>
+                </div>
               </div>
-              <maz-select
-                class="m1"
-                v-model="cntry"
-                placeholder="Country"
-                :size="props.size"
-                :options="options"
-                :lock="props.editor"
-                v-slot="{ option, isSelected, icon }"
-                autocomplete="country"
-              >
-              </maz-select>
-            </div>
-            <div class="m1">
-              <maz-phone-number-input
-                v-model="phone"
-                no-validation
-                :size="props.size"
-                :required="props.required"
-                :lock="props.editor"
-                @update="resultPhone = $event"
-                @input="__inputValue"
-              />
-            </div>
+              <div v-else>
+                <div class="m1" style="display:flex;">
+                  <div class="" style="width: 160px;">
+                    <maz-input
+                      v-model="zipcode"
+                      placeholder="Postal Code"
+                      :size="props.size"
+                      :readonly="props.editor"
+                      :required="props.required"
+                      @input="__inputValue"
+                    />
+                  </div>
+                  <div class="" style="padding-left: 5px; width: 100%">
+                    <maz-input
+                      v-model="city"
+                      placeholder="City"
+                      :size="props.size"
+                      :readonly="props.editor"
+                      :required="props.required"
+                      @input="__inputValue"
+                    />
+                  </div>
+                </div>
+                <maz-select
+                  class="m1"
+                  v-model="cntry"
+                  placeholder="Country"
+                  :size="props.size"
+                  :options="options"
+                  :lock="props.editor"
+                  v-slot="{ option, isSelected, icon }"
+                  autocomplete="country"
+                >
+                </maz-select>
+              </div>
+              <div class="m1">
+                <maz-phone-number-input
+                  v-model="phone"
+                  no-validation
+                  :size="props.size"
+                  :required="props.required"
+                  :lock="props.editor"
+                  @update="resultPhone = $event"
+                  @input="__inputValue"
+                />
+              </div>
 
-            <div v-if="props.pro" class="m1">
-              <maz-input
-                v-model="duns"
-                placeholder="DUNS Number"
-                :left-icon-name="props.icon_duns"
-                :size="props.size"
-                :readonly="props.editor"
-                :required="props.required"
-                @input="__inputValue"
-              />
-            </div>
-            <div v-if="props.pro" class="m1">
-              <maz-input
-                v-model="vatnumber"
-                placeholder="VAT Number"
-                :left-icon-name="props.icon_vat"
-                :size="props.size"
-                :readonly="props.editor"
-                :required="props.required"
-                @input="__inputValue"
-              />
-            </div>
-          </form>
+              <div v-if="props.pro" class="m1">
+                <maz-input
+                  v-model="duns"
+                  placeholder="DUNS Number"
+                  :left-icon-name="props.icon_duns"
+                  :size="props.size"
+                  :readonly="props.editor"
+                  :required="props.required"
+                  @input="__inputValue"
+                />
+              </div>
+              <div v-if="props.pro" class="m1">
+                <maz-input
+                  v-model="vatnumber"
+                  placeholder="VAT Number"
+                  :left-icon-name="props.icon_vat"
+                  :size="props.size"
+                  :readonly="props.editor"
+                  :required="props.required"
+                  @input="__inputValue"
+                />
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>`;
+      </div>`;
   }
 }
-!function(e2, a2, t2) {
+!function(e2, a2, r2) {
   (a2 = function(e3) {
     var a3 = function(e4, a4) {
       if ("object" != typeof e4 || null === e4)
         return e4;
-      var t3 = e4[Symbol.toPrimitive];
-      if (void 0 !== t3) {
-        var r2 = t3.call(e4, a4 || "default");
-        if ("object" != typeof r2)
-          return r2;
+      var r3 = e4[Symbol.toPrimitive];
+      if (void 0 !== r3) {
+        var t2 = r3.call(e4, a4 || "default");
+        if ("object" != typeof t2)
+          return t2;
         throw new TypeError("@@toPrimitive must return a primitive value.");
       }
       return ("string" === a4 ? String : Number)(e4);
     }(e3, "string");
     return "symbol" == typeof a3 ? a3 : String(a3);
-  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
-}(_i, "styles", [et, at]);
+  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
+}(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i);
-const Ei = function(e2) {
-  let a2 = "https://o21c.obvious21.com/api/v1/";
-  return "development" === e2 && (a2 = "http://localhost:3400/api/v1/"), "sandbox" === e2 && (a2 = "https://sandbox-o21c.obvious21.com/api/v1/"), "beta" === e2 && (a2 = "https://beta-o21c.obvious21.com/api/v1/"), a2;
-}, Si = { name: "OtpInput", props: { id: { type: String, default: "otp" }, digits: { type: Number, default: 5 }, mode: { type: String, default: "separate" }, type: { type: String, default: "number" }, placeholder: { type: String, default: "-" }, radius: { type: Number, default: 5 }, gap: { type: Number, default: 10 }, isDisabled: { type: Boolean, default: false }, isValid: { type: Boolean, default: true }, rtl: { type: Boolean, default: false }, autoFocus: { type: Boolean, default: true }, errorClass: { type: String, default: "" }, separateInputClass: { type: String, default: "" }, separateWrapperClass: { type: String, default: "" }, groupInputClass: { type: String, default: "" }, groupWrapperClass: { type: String, default: "" }, activeInputClass: { type: String, default: "" }, activeWrapperClass: { type: String, default: "" } }, data: () => ({ inputValue: [], joinedValue: "", isInputFocused: false, activeInput: -1 }), mounted() {
-  if (this.autoFocus && !this.isDisabled) {
-    this.onFocus(0), this.$refs.digitInput[0].focus();
-    if (-1 != ["text", "password", "number"].indexOf(this.type))
-      for (let e2 of this.$refs.digitInput)
-        e2.type = this.type;
-  }
-}, computed: { wrapperStyle() {
-  return { direction: this.rtl ? "rtl" : "ltr", gap: `${this.gap}px`, "border-radius": `${this.radius}px` };
-}, inputStyle() {
-  return { "--border-radius": `${this.radius}px` };
-}, inputClassHandler() {
-  return "separate" === this.mode ? this.isValid ? this.separateInputClass ? this.separateInputClass : "defualt-input-separate" : this.separateInputClass ? this.separateInputClass : "defualt-error-input-separate" : "group" === this.mode ? this.groupInputClass ? this.groupInputClass : "defualt-input-group" : "";
-}, activeInputClassHandler() {
-  return "separate" === this.mode ? this.activeInputClass ? this.activeInputClass : "defualt-active-input" : "";
-}, activeWrapperClassHandler() {
-  return "group" === this.mode ? this.isValid ? this.activeWrapperClass ? this.activeWrapperClass : "defualt-active-wrapper" : this.activeWrapperClass ? this.activeWrapperClass : "defualt-error-wrapper-group" : "";
-}, wrapperClassHandler() {
-  return "separate" === this.mode ? this.separateWrapperClass ? this.separateWrapperClass : "defualt-wrapper-separate" : "group" === this.mode ? this.isValid ? this.groupWrapperClass ? this.groupWrapperClass : "defualt-wrapper-group" : this.groupWrapperClass ? this.groupWrapperClass : "defualt-error-wrapper-group" : "";
-}, errorClassHandler() {
-  return this.errorClass ? this.errorClass : "default-error-class";
-} }, methods: { keydownHandler(e2, a2) {
-  8 === a2.keyCode && "" === a2.target.value && this.$refs.digitInput[Math.max(0, e2 - 1)].focus();
-}, onInput(e2) {
-  const [a2, ...t2] = "number" === this.type ? this.inputValue[e2].replace(/[^0-9]/g, "") : this.inputValue[e2];
-  this.inputValue[e2] = null == a2 ? "" : a2;
-  const r2 = e2 === this.digits - 1;
-  void 0 !== a2 && !r2 && (this.$refs.digitInput[e2 + 1].focus(), this.$refs.digitInput[e2 + 1].value = t2.join(""), this.$refs.digitInput[e2 + 1].dispatchEvent(new Event("input"))), this.joinedValue = this.inputValue.map((e3) => e3).join(""), this.$emit("value", this.joinedValue), this.joinedValue.length === this.digits && this.onComplete(this.joinedValue);
-}, onFocus(e2) {
-  this.activeInput = e2, this.isInputFocused = true;
-}, onBlur() {
-  this.activeInput = -1, this.isInputFocused = false;
-}, onComplete(e2) {
-  this.onBlur(), this.$refs.digitInput[this.digits - 1].blur(), this.type, this.$emit("on-complete", e2);
-}, onChanged(e2) {
-  this.$emit("on-changed", this.inputValue[e2]);
-}, OnPaste(e2) {
-  this.$emit("on-paste", e2);
-} } };
-const Ii = tt(Si, function() {
-  var e2 = this, a2 = e2._self._c;
-  return a2("div", { staticClass: "vue-otp-input" }, [a2("div", { staticClass: "otp-wrapper", class: e2.isInputFocused ? e2.activeWrapperClassHandler : e2.wrapperClassHandler, style: e2.wrapperStyle, attrs: { id: e2.id } }, e2._l(e2.digits, function(t2, r2) {
-    return a2("input", { directives: [{ name: "model", rawName: "v-model", value: e2.inputValue[r2], expression: "inputValue[index]" }], key: e2.id + r2, ref: "digitInput", refInFor: true, staticClass: "otp-input", class: [e2.inputClassHandler, e2.activeInput === r2 ? e2.activeInputClassHandler : ""], style: e2.inputStyle, attrs: { autocomplete: "one-time-code", placeholder: e2.placeholder, disabled: e2.isDisabled }, domProps: { value: e2.inputValue[r2] }, on: { focus: function(a3) {
-      return e2.onFocus(r2);
-    }, blur: e2.onBlur, paste: e2.OnPaste, input: [function(a3) {
-      a3.target.composing || e2.$set(e2.inputValue, r2, a3.target.value);
-    }, function(a3) {
-      return e2.onInput(r2, a3);
-    }], change: function(a3) {
-      return e2.onChanged(r2);
-    }, keydown: function(a3) {
-      return e2.keydownHandler(r2, a3);
-    } } });
-  }), 0), e2.isValid ? e2._e() : a2("span", { class: e2.errorClassHandler }, [e2._t("errorMessage")], 2)]);
-}, [], false, null, null, null, null).exports;
-Ii.install = (e2) => {
-  e2.component(Ii.name, Ii);
-};
-const Ai = d`
-  div.vue-otp-input {
-    width: max-content;
-    margin-left: 15 px;
-    width: unset !important;
-    caret-color: transparent;
-  }
-  div.vue-otp-input > div.otp-wrapper {
-    direction: var(--direction);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.3s;
-  }
-  div.vue-otp-input > div.otp-wrapper > input.otp-input {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.3s;
-    border-radius: var(--border-radius);
-  }
-  div.vue-otp-input > div.otp-wrapper > input.otp-input:disabled {
-    background-color: #ececec !important;
-  }
-  /* SINGLE INPUT IN SEPARATE MODE */
-  div.vue-otp-input > div.otp-wrapper > input.defualt-input-separate {
-    text-align: center;
-    font-weight: 300;
-    font-size: 20px;
-    background-color: white;
-    border: solid 2px #dcdfe6;
-    width: 42px;
-    height: 42px;
-  }
-  div.vue-otp-input > div.otp-wrapper > input.defualt-error-input-separate {
-    text-align: center;
-    font-weight: 600;
-    background-color: transparent;
-    border: solid 2px #d50000;
-    width: 3rem;
-    height: 48px;
-  }
-  @media only screen and (max-width: 600px) {
-    div.vue-otp-input > div.otp-wrapper > input.defualt-input-separate {
-      width: 2.5rem;
-      height: 40px;
-    }
-  }
-  /* INPUTS WRAPPER IN SEPARATE MODE */
-  div.vue-otp-input > div.defualt-wrapper-separate {
-    background: transparent;
-  }
-  /* INPUTS WRAPPER IN GROUP MODE */
-  div.vue-otp-input > div.defualt-wrapper-group {
-    border: solid 2px #dcdfe6;
-  }
-  div.vue-otp-input > div.defualt-error-wrapper-group {
-    border: solid 2px #d50000;
-  }
-
-  /* SINGLE INPUT IN GROUP MODE */
-  div.vue-otp-input > div.otp-wrapper > input.defualt-input-group {
-    background-color: transparent;
-    font-weight: 600;
-    border: none;
-    width: 3rem;
-    height: 48px;
-    text-align: center;
-  }
-  @media only screen and (max-width: 600px) {
-    div.vue-otp-input > div.otp-wrapper > input.defualt-input-group {
-      width: 2.5rem;
-      height: 40px;
-    }
-  }
-  div.vue-otp-input > div.otp-wrapper > input.defualt-active-input {
-    border: solid 2px #68d18d;
-  }
-  div.vue-otp-input > div.defualt-active-wrapper {
-    border: solid 2px #68d18d;
-  }
-  div.vue-otp-input > span.default-error-class {
-    color: #d50000;
-    font-weight: bold;
-  }
-  input:focus {
-    outline: 2px solid #68d18d;
-    border: 0px !important;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  /* removing the arrow keys on side of the input area */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-`, Ni = d`
-  :host {
-    --maz-primary: #9bc99d;
-    --maz-border-width: 1px;
-    --maz-border-radius: 5px;
-    --maz-border-color: #dddfe6;
-    --maz-icon-color: lightgray;
-    --maz-placeholder-color: lightgray;
-  }
-
-  .m1 {
-    margin: 4px 0px;
-    padding: 0;
-  }
-`;
-const Pi = "o21pay-otp", Bi = [lt, Ii];
-class Oi extends ie {
-  static get properties() {
-    return { required: { type: Boolean }, env: { type: String }, editor: { type: Boolean }, ticket: { type: String }, data: { type: Object } };
-  }
-  constructor() {
-    super(), this.editor = false, this.required = false, this.object = void 0;
-    const e2 = this;
-    setTimeout(async function() {
-      e2.createVue();
-    }, 200);
-  }
-  init() {
-  }
-  builderProperties() {
-    return [{ type: "Switch", title: "Required", value: "required", style: "" }];
-  }
-  validation() {
-    if (!this.required)
-      return true;
-    return !!this.getData();
-  }
-  getData() {
-    if (!this.object)
-      return null;
-    if (!this.object.$data)
-      return null;
-    return {};
-  }
-  setData() {
-    if (!this.object)
-      return null;
-    if (!this.object.$data)
-      return null;
-    this.data;
-  }
-  updated(e2) {
-    super.updated(e2);
-    const a2 = this.prepareDataProperties();
-    this.object && (this.object.$data.props = a2);
-  }
-  async createVue() {
-    const e2 = this;
-    if (!e2.renderRoot)
-      return;
-    const a2 = e2.renderRoot.querySelector("#app");
-    a2 && (((e3, a3 = {}) => {
-      Bi.forEach((a4) => {
-        e3.component(a4.name, a4);
-      });
-    })(Vue), this.object = new Vue({ el: a2, components: {}, data: function() {
-      return { visible: false, displayOTP: false, email: "", disabled: false, isCodeValid: false, props: e2.prepareDataProperties() };
-    }, watch: { name(a3, t2) {
-      e2.getData();
-    } }, methods: { async _OTP(e3, a3, t2) {
-      let r2 = Ei(this.props.env);
-      const o2 = { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ idTicket: e3, key: a3, code: t2 }) }, i2 = await fetch(r2 + "abc", o2), n2 = await i2.json();
-      return n2.data ? n2.data.result : null;
-    }, async enter() {
-      this.disabled = true, await this._OTP(this.props.ticket, this.email) && (this.displayOTP = true), this.disabled = false;
-    }, back() {
-      this.disabled = false, this.displayOTP = false;
-    }, async onComplete(a3) {
-      await this._OTP(this.props.ticket, this.email, a3), e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_next" }, bubbles: true, composed: true })), this.isCodeValid = false;
-    } } }), this.setData(), this.object.$data.visible = true, this.requestUpdate());
-  }
-  prepareDataProperties() {
-    let e2 = {};
-    for (const a2 in Oi.properties) {
-      let t2 = this[a2];
-      e2[a2] = t2;
-    }
-    return e2;
-  }
-  render() {
-    return F`
-      <div id="app">
-        <div v-if="!displayOTP" style="margin: 4px 0;">
-          <maz-input
-            v-model="email"
-            type="email"
-            id="email"
-            left-icon-name="email"
-            placeholder="Please input email"
-            size="medium"
-            required
-            clearable
-            :disabled="disabled"
-            @change="enter"
-          />
-        </div>
-        <div v-else style="display: flex!important;justify-content: space-between!important;">
-          <i class="material-icons" style="margin-top: 18px" @click="back"> cancel </i>
-          <otp-input
-            ref="otp"
-            type="number"
-            style="margin: 4px 0;"
-            :digits="6"
-            :gap="8"
-            :ais-valid="isCodeValid"
-            placeholder="_"
-            @on-complete="onComplete"
-          >
-          </otp-input>
-        </div>
-      </div>
-    `;
-  }
-}
-!function(e2, a2, t2) {
-  (a2 = function(e3) {
-    var a3 = function(e4, a4) {
-      if ("object" != typeof e4 || null === e4)
-        return e4;
-      var t3 = e4[Symbol.toPrimitive];
-      if (void 0 !== t3) {
-        var r2 = t3.call(e4, a4 || "default");
-        if ("object" != typeof r2)
-          return r2;
-        throw new TypeError("@@toPrimitive must return a primitive value.");
-      }
-      return ("string" === a4 ? String : Number)(e4);
-    }(e3, "string");
-    return "symbol" == typeof a3 ? a3 : String(a3);
-  }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: t2, enumerable: true, configurable: true, writable: true }) : e2[a2] = t2;
-}(Oi, "styles", [et, Ai, Ni]);
-const Mi = window.customElements;
-Mi && !Mi.get(Pi) && Mi.define(Pi, Oi), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.4", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }, { name: "O21PayOTP", title: "OTP", component: Oi, icon: "fa fa-key", id: "otp" }], waitLoaded: async function() {
-  return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address"), customElements.whenDefined("o21pay-otp")]), true;
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.5", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+  return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
