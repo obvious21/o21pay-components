@@ -1094,10 +1094,10 @@ const he = e`
 const ge = "o21pay-dialog";
 class be extends ie {
   static get properties() {
-    return { width: { type: String, attribute: "width" }, height: { type: String, attribute: "height" }, mode: { type: String, attribute: "mode" }, url: { type: String }, open: { type: Boolean }, hideSpinner: { type: Boolean }, texts: { type: Array, attribute: "texts" }, events: { hasChanged: (e2, a2) => true } };
+    return { width: { type: String, attribute: "width" }, height: { type: String, attribute: "height" }, mode: { type: String, attribute: "mode" }, url: { type: String }, open: { type: Boolean }, overlay: { type: Boolean }, hideSpinner: { type: Boolean }, texts: { type: Array, attribute: "texts" }, events: { hasChanged: (e2, a2) => true } };
   }
   constructor() {
-    super(), this.open = false, this.oribitStyle = "borderColor: red; animationDuration: 1000ms;", this.width = "375px", this.height = "560px", this.modal = "dialog", this.texts = { TXT_CNX: "Connection in progress..." };
+    super(), this.open = false, this.oribitStyle = "borderColor: red; animationDuration: 1000ms;", this.width = "375px", this.height = "560px", this.modal = "dialog", this.overlay = false, this.texts = { TXT_CNX: "Connection in progress..." };
   }
   updated(e2) {
     if (e2.has("events")) {
@@ -1130,6 +1130,9 @@ class be extends ie {
   reset() {
     this.shadowRoot.getElementById("framePayment").src = "about:blank";
   }
+  overlayStyle() {
+    return this.overlay ? L`<div class="overlay" />` : L``;
+  }
   spinnerStyle() {
     return "display: " + (this.hideSpinner ? "none" : "block");
   }
@@ -1140,7 +1143,7 @@ class be extends ie {
     let e2 = "wrapper" + (this.open ? " open" : ""), a2 = "dialog", r2 = "", t2 = "close", o2 = `width:${this.width}; height:${this.height}`;
     return "drawer-left" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : t2 = "", L`
       <div class=${e2}>
-        <div class="overlay"></div>
+        ${this.overlayStyle()}
         <div class=${a2} style=${o2}>
           <div class=${r2}></div>
           <div class=${t2} @click=${this.closeWindow}></div>
@@ -14366,6 +14369,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.6", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.8", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
