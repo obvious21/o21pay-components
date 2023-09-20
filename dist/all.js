@@ -887,7 +887,15 @@ class se extends ie {
             <span>Payment secured and powered by O21Pay</span>
           </div>
         </div>
-      ` : T` <button class="o21pay-button" @click="${this._onO21Pay}" /> `;
+      ` : T`
+        <button
+          class="o21pay-button"
+          style="background-color: ${this.primary_color}"
+          @click="${this._onO21Pay}"
+        >
+          <slot name="button_pay" />
+        </button>
+      `;
   }
 }
 var ce, me, ue;
