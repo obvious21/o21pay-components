@@ -257,7 +257,7 @@ function Y(e2, a2) {
     throw Error("invalid template strings array");
   return void 0 !== x ? x.createHTML(a2) : a2;
 }
-const H = (e2, a2) => {
+const V = (e2, a2) => {
   const r2 = e2.length - 1, t2 = [];
   let o2, i2 = 2 === a2 ? "<svg>" : "", n2 = P;
   for (let a3 = 0; a3 < r2; a3++) {
@@ -270,13 +270,13 @@ const H = (e2, a2) => {
   }
   return [Y(e2, i2 + (e2[r2] || "<?>") + (2 === a2 ? "</svg>" : "")), t2];
 };
-class V {
+class H {
   constructor({ strings: e2, _$litType$: a2 }, r2) {
     let t2;
     this.parts = [];
     let o2 = 0, i2 = 0;
-    const n2 = e2.length - 1, d2 = this.parts, [l2, s2] = H(e2, a2);
-    if (this.el = V.createElement(l2, r2), j.currentNode = this.el.content, 2 === a2) {
+    const n2 = e2.length - 1, d2 = this.parts, [l2, s2] = V(e2, a2);
+    if (this.el = H.createElement(l2, r2), j.currentNode = this.el.content, 2 === a2) {
       const e3 = this.el.content, a3 = e3.firstChild;
       a3.remove(), e3.append(...a3.childNodes);
     }
@@ -393,7 +393,7 @@ class J {
   }
   g(e2) {
     var a2;
-    const { values: r2, _$litType$: t2 } = e2, o2 = "number" == typeof t2 ? this._$AC(e2) : (void 0 === t2.el && (t2.el = V.createElement(Y(t2.h, t2.h[0]), this.options)), t2);
+    const { values: r2, _$litType$: t2 } = e2, o2 = "number" == typeof t2 ? this._$AC(e2) : (void 0 === t2.el && (t2.el = H.createElement(Y(t2.h, t2.h[0]), this.options)), t2);
     if ((null === (a2 = this._$AH) || void 0 === a2 ? void 0 : a2._$AD) === o2)
       this._$AH.v(r2);
     else {
@@ -403,7 +403,7 @@ class J {
   }
   _$AC(e2) {
     let a2 = G.get(e2.strings);
-    return void 0 === a2 && G.set(e2.strings, a2 = new V(e2)), a2;
+    return void 0 === a2 && G.set(e2.strings, a2 = new H(e2)), a2;
   }
   T(e2) {
     N(this._$AH) || (this._$AH = [], this._$AR());
@@ -497,7 +497,7 @@ class ae {
   }
 }
 const re = y.litHtmlPolyfillSupport;
-null == re || re(V, J), (null !== (v = y.litHtmlVersions) && void 0 !== v ? v : y.litHtmlVersions = []).push("2.8.0");
+null == re || re(H, J), (null !== (v = y.litHtmlVersions) && void 0 !== v ? v : y.litHtmlVersions = []).push("2.8.0");
 var te, oe;
 class ie extends f {
   constructor() {
@@ -1473,7 +1473,7 @@ Ge.prototype.initialize = function(e2) {
   }
   return r2;
 };
-var je = Ge, Ye = {}, He = {}, Ve = { isValid: function(e2) {
+var je = Ge, Ye = {}, Ve = {}, He = { isValid: function(e2) {
   return !isNaN(e2) && e2 >= 1 && e2 <= 40;
 } }, Ke = {};
 const Qe = "[0-9]+";
@@ -1489,7 +1489,7 @@ Ke.testKanji = function(e2) {
 }, Ke.testAlphanumeric = function(e2) {
   return Xe.test(e2);
 }, function(e2) {
-  const a2 = Ve, r2 = Ke;
+  const a2 = He, r2 = Ke;
   e2.NUMERIC = { id: "Numeric", bit: 1, ccBits: [10, 12, 14] }, e2.ALPHANUMERIC = { id: "Alphanumeric", bit: 2, ccBits: [9, 11, 13] }, e2.BYTE = { id: "Byte", bit: 4, ccBits: [8, 16, 16] }, e2.KANJI = { id: "Kanji", bit: 8, ccBits: [8, 10, 12] }, e2.MIXED = { bit: -1 }, e2.getCharCountIndicator = function(e3, r3) {
     if (!e3.ccBits)
       throw new Error("Invalid mode: " + e3);
@@ -1528,8 +1528,8 @@ Ke.testKanji = function(e2) {
       return r3;
     }
   };
-}(He), function(e2) {
-  const a2 = ye, r2 = Be, t2 = $e, o2 = He, i2 = Ve, n2 = a2.getBCHDigit(7973);
+}(Ve), function(e2) {
+  const a2 = ye, r2 = Be, t2 = $e, o2 = Ve, i2 = He, n2 = a2.getBCHDigit(7973);
   function d2(e3, a3) {
     return o2.getCharCountIndicator(e3, a3) + 4;
   }
@@ -1600,7 +1600,7 @@ ea.getEncodedBits = function(e2, a2) {
   return 21522 ^ (r2 << 10 | t2);
 };
 var ta = {};
-const oa = He;
+const oa = Ve;
 function ia(e2) {
   this.mode = oa.NUMERIC, this.data = e2.toString();
 }
@@ -1618,7 +1618,7 @@ ia.getBitsLength = function(e2) {
   o2 > 0 && (r2 = this.data.substr(a2), t2 = parseInt(r2, 10), e2.put(t2, 3 * o2 + 1));
 };
 var na = ia;
-const da = He, la = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
+const da = Ve, la = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "$", "%", "*", "+", "-", ".", "/", ":"];
 function sa(e2) {
   this.mode = da.ALPHANUMERIC, this.data = e2;
 }
@@ -1647,7 +1647,7 @@ const ma = function(e2) {
     o2 < 128 ? a2.push(o2) : o2 < 2048 ? (a2.push(o2 >> 6 | 192), a2.push(63 & o2 | 128)) : o2 < 55296 || o2 >= 57344 && o2 < 65536 ? (a2.push(o2 >> 12 | 224), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : o2 >= 65536 && o2 <= 1114111 ? (a2.push(o2 >> 18 | 240), a2.push(o2 >> 12 & 63 | 128), a2.push(o2 >> 6 & 63 | 128), a2.push(63 & o2 | 128)) : a2.push(239, 191, 189);
   }
   return new Uint8Array(a2).buffer;
-}, ua = He;
+}, ua = Ve;
 function pa(e2) {
   this.mode = ua.BYTE, "string" == typeof e2 && (e2 = ma(e2)), this.data = new Uint8Array(e2);
 }
@@ -1662,7 +1662,7 @@ pa.getBitsLength = function(e2) {
     e2.put(this.data[a2], 8);
 };
 var ha = pa;
-const ga = He, ba = ye;
+const ga = Ve, ba = ye;
 function za(e2) {
   this.mode = ga.KANJI, this.data = e2;
 }
@@ -1726,7 +1726,7 @@ var fa = za, va = { exports: {} };
 }(va);
 var ya = va.exports;
 !function(e2) {
-  const a2 = He, r2 = na, t2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = ya;
+  const a2 = Ve, r2 = na, t2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = ya;
   function s2(e3) {
     return unescape(encodeURIComponent(e3)).length;
   }
@@ -1830,7 +1830,7 @@ var ya = va.exports;
     return e2.fromArray(m2(a3, d2.isKanjiModeEnabled()));
   };
 }(ta);
-const ka = ye, xa = $e, wa = Ce, $a = Ae, _a = Se, Ca = Ne, Ea = Pe, Aa = Be, Sa = je, Na = Ye, Ia = ea, Pa = He, Ba = ta;
+const ka = ye, xa = $e, wa = Ce, $a = Ae, _a = Se, Ca = Ne, Ea = Pe, Aa = Be, Sa = je, Na = Ye, Ia = ea, Pa = Ve, Ba = ta;
 function Ma(e2, a2, r2) {
   const t2 = e2.size, o2 = Ia.getEncodedBits(a2, r2);
   let i2, n2;
@@ -2025,7 +2025,7 @@ Ta.render = function(e2, a2, r2) {
 };
 const ja = function() {
   return "function" == typeof Promise && Promise.prototype && Promise.prototype.then;
-}, Ya = ve, Ha = La, Va = Ta;
+}, Ya = ve, Va = La, Ha = Ta;
 function Ka(e2, a2, r2, t2, o2) {
   const i2 = [].slice.call(arguments, 1), n2 = i2.length, d2 = "function" == typeof i2[n2 - 1];
   if (!d2 && !ja())
@@ -2052,8 +2052,8 @@ function Ka(e2, a2, r2, t2, o2) {
     o2(e3);
   }
 }
-fe.create = Ya.create, fe.toCanvas = Ka.bind(null, Ha.render), fe.toDataURL = Ka.bind(null, Ha.renderToDataURL), fe.toString = Ka.bind(null, function(e2, a2, r2) {
-  return Va.render(e2, r2);
+fe.create = Ya.create, fe.toCanvas = Ka.bind(null, Va.render), fe.toDataURL = Ka.bind(null, Va.renderToDataURL), fe.toString = Ka.bind(null, function(e2, a2, r2) {
+  return Ha.render(e2, r2);
 });
 function Qa(e2, a2, r2) {
   if (e2 === a2)
@@ -11587,9 +11587,9 @@ const er = d`
     margin: 4px 0px;
     padding: 0;
   }
-  .maz-phone-number-input .maz-input.input-phone-number:not(.has-border-radius) {
+  /* .maz-phone-number-input .maz-input.input-phone-number:not(.has-border-radius) {
     border-left: 0px;
-  }
+  } */
   .maz-select__options-list {
     margin-top: 2px;
     min-width: 100%;
@@ -12091,7 +12091,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
         throw new Error("[libphonenumber-js] `metadata` argument not passed. Check your arguments.");
       if (!Gr(e3) || !Gr(e3.countries))
         throw new Error("[libphonenumber-js] `metadata` argument was passed but it's not a valid metadata. Must be an object having `.countries` child object property. Got ".concat(Gr(e3) ? "an object of shape: { " + Object.keys(e3).join(", ") + " }" : "a " + jr(e3) + ": " + e3, "."));
-    }(a2), this.metadata = a2, Hr.call(this, a2);
+    }(a2), this.metadata = a2, Vr.call(this, a2);
   }
   return Br(e2, [{ key: "getCountries", value: function() {
     return Object.keys(this.metadata.countries).filter(function(e3) {
@@ -12188,7 +12188,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }]), e2;
 }(), Lr = function() {
   function e2(a2, r2) {
-    Ir(this, e2), this.globalMetadataObject = r2, this.metadata = a2, Hr.call(this, r2.metadata);
+    Ir(this, e2), this.globalMetadataObject = r2, this.metadata = a2, Vr.call(this, r2.metadata);
   }
   return Br(e2, [{ key: "callingCode", value: function() {
     return this.metadata[0];
@@ -12306,16 +12306,16 @@ function Yr(e2, a2) {
     return a2.country(e2).countryCallingCode();
   throw new Error("Unknown country: ".concat(e2));
 }
-function Hr(e2) {
+function Vr(e2) {
   var a2 = e2.version;
   "number" == typeof a2 ? (this.v1 = 1 === a2, this.v2 = 2 === a2, this.v3 = 3 === a2, this.v4 = 4 === a2) : a2 ? -1 === Sr(a2, "1.2.0") ? this.v2 = true : -1 === Sr(a2, "1.7.35") ? this.v3 = true : this.v4 = true : this.v1 = true;
 }
-var Vr = function(e2) {
+var Hr = function(e2) {
   return "([".concat(Er, "]{1,").concat(e2, "})");
 };
 function Kr(e2) {
   var a2 = "[  \\t,]*", r2 = "[:\\.．]?[  \\t,-]*", t2 = "#?", o2 = "[  \\t]*";
-  return ";ext=" + Vr("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)" + r2 + Vr("20") + t2) + "|" + (a2 + "(?:[xｘ#＃~～]|int|ｉｎｔ)" + r2 + Vr("9") + t2) + "|" + ("[- ]+" + Vr("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + r2 + Vr("15") + t2) + "|" + (o2 + "(?:,)+" + r2 + Vr("9") + t2);
+  return ";ext=" + Hr("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)" + r2 + Hr("20") + t2) + "|" + (a2 + "(?:[xｘ#＃~～]|int|ｉｎｔ)" + r2 + Hr("9") + t2) + "|" + ("[- ]+" + Hr("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + r2 + Hr("15") + t2) + "|" + (o2 + "(?:,)+" + r2 + Hr("9") + t2);
 }
 var Qr = "[" + Er + "]{" + $r + "}", Jr = "[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){3,}[" + Ar + Er + "]*", qr = new RegExp("^[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){1,2}$", "i"), Wr = Jr + "(?:" + Kr() + ")?", Zr = new RegExp("^" + Qr + "$|^" + Wr + "$", "i");
 var Xr = new RegExp("(?:" + Kr() + ")$", "i");
@@ -12827,7 +12827,7 @@ function Yt(e2, a2, r2, t2) {
   }
   return { number: e2 };
 }
-function Ht(e2, a2, r2, t2) {
+function Vt(e2, a2, r2, t2) {
   if (!e2)
     return {};
   var o2;
@@ -12854,7 +12854,7 @@ function Ht(e2, a2, r2, t2) {
   }
   return {};
 }
-function Vt(e2, a2) {
+function Ht(e2, a2) {
   var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
   if (r2)
     return (r2 = r2.call(e2)).next.bind(r2);
@@ -12887,7 +12887,7 @@ function Kt(e2, a2) {
 function Qt(e2, a2) {
   var r2 = a2.countries, t2 = a2.defaultCountry, o2 = a2.metadata;
   o2 = new Rr(o2);
-  for (var i2, n2 = [], d2 = Vt(r2); !(i2 = d2()).done; ) {
+  for (var i2, n2 = [], d2 = Ht(r2); !(i2 = d2()).done; ) {
     var l2 = i2.value;
     if (o2.country(l2), o2.leadingDigits()) {
       if (e2 && 0 === e2.search(o2.leadingDigits()))
@@ -12996,7 +12996,7 @@ function so(e2, a2, r2) {
     return {};
   }
   var d2 = function(e3, a3, r3, t3) {
-    var o3, i3 = Ht(dt(e3), a3, r3, t3.metadata), n3 = i3.countryCallingCodeSource, d3 = i3.countryCallingCode, l3 = i3.number;
+    var o3, i3 = Vt(dt(e3), a3, r3, t3.metadata), n3 = i3.countryCallingCodeSource, d3 = i3.countryCallingCode, l3 = i3.number;
     if (d3)
       t3.selectNumberingPlan(d3);
     else {
@@ -13446,19 +13446,19 @@ var Yo = function() {
     var a3 = (arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}).allowOverflow;
     if (!e3)
       throw new Error("String is required");
-    var r3 = Ho(e3.split(""), this.matchTree, true);
+    var r3 = Vo(e3.split(""), this.matchTree, true);
     if (r3 && r3.match && delete r3.matchedChars, !r3 || !r3.overflow || a3)
       return r3;
   } }], r2 && jo(a2.prototype, r2), t2 && jo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Ho(e2, a2, r2) {
+function Vo(e2, a2, r2) {
   if ("string" == typeof a2) {
     var t2 = e2.join("");
     return 0 === a2.indexOf(t2) ? e2.length === a2.length ? { match: true, matchedChars: e2 } : { partialMatch: true } : 0 === t2.indexOf(a2) ? r2 && e2.length > a2.length ? { overflow: true } : { match: true, matchedChars: e2.slice(0, a2.length) } : void 0;
   }
   if (Array.isArray(a2)) {
     for (var o2 = e2.slice(), i2 = 0; i2 < a2.length; ) {
-      var n2 = Ho(o2, a2[i2], r2 && i2 === a2.length - 1);
+      var n2 = Vo(o2, a2[i2], r2 && i2 === a2.length - 1);
       if (!n2)
         return;
       if (n2.overflow)
@@ -13477,7 +13477,7 @@ function Ho(e2, a2, r2) {
   switch (a2.op) {
     case "|":
       for (var d2, l2, s2 = Uo(a2.args); !(l2 = s2()).done; ) {
-        var c2 = Ho(e2, l2.value, r2);
+        var c2 = Vo(e2, l2.value, r2);
         if (c2) {
           if (c2.overflow)
             return c2;
@@ -13500,7 +13500,7 @@ function Ho(e2, a2, r2) {
       throw new Error("Unsupported instruction tree: ".concat(a2));
   }
 }
-function Vo(e2, a2) {
+function Ho(e2, a2) {
   var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
   if (r2)
     return (r2 = r2.call(e2)).next.bind(r2);
@@ -13555,7 +13555,7 @@ var Jo = Io("9", 15), qo = /[- ]/, Wo = new RegExp("[" + Ar + "]*\\$1[" + Ar + "
     if (function(e4, a4) {
       return "IS_POSSIBLE" === mt(e4, a4);
     }(a3.nationalSignificantNumber, this.metadata))
-      for (var t3, o2 = Vo(this.matchingFormats); !(t3 = o2()).done; ) {
+      for (var t3, o2 = Ho(this.matchingFormats); !(t3 = o2()).done; ) {
         var i2 = t3.value, n2 = Bo(a3, i2, { metadata: this.metadata, shouldTryNationalPrefixFormattingRule: function(e4) {
           return r3.shouldTryNationalPrefixFormattingRule(e4, { international: a3.international, nationalPrefix: a3.nationalPrefix });
         }, getSeparatorAfterNationalPrefix: function(e4) {
@@ -13597,7 +13597,7 @@ var Jo = Io("9", 15), qo = /[- ]/, Wo = new RegExp("[" + Ar + "]*\\$1[" + Ar + "
       return r3.chosenFormat === t4 ? "break" : Wo.test(r3.getFormatFormat(t4, e3.international)) ? r3.createTemplateForFormat(t4, e3) ? (r3.chosenFormat = t4, "break") : (r3.matchingFormats = r3.matchingFormats.filter(function(e4) {
         return e4 !== t4;
       }), "continue") : "continue";
-    }, o2 = Vo(this.matchingFormats.slice()); !(a3 = o2()).done; ) {
+    }, o2 = Ho(this.matchingFormats.slice()); !(a3 = o2()).done; ) {
       var i2 = t3();
       if ("break" === i2)
         break;
@@ -13746,7 +13746,7 @@ var ri = new RegExp("^" + ("[" + Ar + Er + "]+") + "$", "i"), ti = "(?:[+＋][" 
     var a3 = e3.international, r3 = e3.callingCode;
     return a3 && !r3;
   } }, { key: "extractCountryCallingCode", value: function(e3) {
-    var a3 = Ht("+" + e3.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), r3 = a3.countryCallingCode, t3 = a3.number;
+    var a3 = Vt("+" + e3.getDigitsWithoutInternationalPrefix(), this.defaultCountry, this.defaultCallingCode, this.metadata.metadata), r3 = a3.countryCallingCode, t3 = a3.number;
     if (r3)
       return e3.setCallingCode(r3), e3.update({ nationalSignificantNumber: t3 }), true;
   } }, { key: "reset", value: function(e3) {
@@ -14179,9 +14179,14 @@ class _i extends ie {
       return { visible: false, resultPhone: void 0, options: e2.countries, company: "", name: "", address: "", zipcode: "", city: "", cntry: "", phone: "", email: "", duns: "", vatnumber: "", props: e2.prepareDataProperties() };
     }, watch: { name(a3, r3) {
       e2.getData();
-    } }, methods: { __inputValue() {
-      const a3 = e2.validation();
-      e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_validation", state: a3 }, bubbles: true, composed: true }));
+    } }, methods: { __inputValue(a3) {
+      const r3 = e2.validation();
+      e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_validation", state: r3 }, bubbles: true, composed: true }));
+    }, __changePhone(e3) {
+      if (console.log(JSON.stringify(e3)), e3.isValid && e3.countryCode) {
+        let a3 = e3.countryCode.toLowerCase(), r3 = this.options.find((e4) => e4.iso === a3);
+        r3 && (this.cntry = r3.value);
+      }
     } } });
     let r2 = navigator.language.split("-")[0], t2 = this.countries.find((e3) => e3.iso === r2);
     t2 && (this.object.$data.cntry = t2.value), this.setData(), this.object.$data.visible = true;
@@ -14225,6 +14230,7 @@ class _i extends ie {
               <div v-if="props.typeAddress === 'organization' && props.fields & 0x0001" class="m1">
                 <maz-input
                   v-model="company"
+                  autocomplete="company"
                   :placeholder="props.i18n['Company name']"
                   :left-icon-name="props.icon_company"
                   :size="props.size"
@@ -14235,6 +14241,7 @@ class _i extends ie {
               <div v-if="props.fields & 0x0002" class="m1">
                 <maz-input
                   v-model="name"
+                  autocomplete="name"
                   :placeholder="props.i18n['Your name']"
                   :left-icon-name="props.icon_name"
                   :size="props.size"
@@ -14246,6 +14253,7 @@ class _i extends ie {
               <div v-if="props.fields & 0x0004" class="m1">
                 <maz-input
                   v-model="address"
+                  autocomplete="address"
                   :placeholder="props.i18n['Address']"
                   :left-icon-name="props.icon_addr"
                   :size="props.size"
@@ -14263,6 +14271,7 @@ class _i extends ie {
                 <div class="" style="width: 160px;">
                   <maz-input
                     v-model="zipcode"
+                    autocomplete="postal-code"
                     :placeholder="props.i18n['Postal Code']"
                     :size="props.size"
                     :readonly="props.editor"
@@ -14273,6 +14282,7 @@ class _i extends ie {
                 <div class="" style="padding-left: 5px; width: 40%; ">
                   <maz-input
                     v-model="city"
+                    autocomplete="address-level2"
                     :placeholder="props.i18n['City']"
                     :size="props.size"
                     :readonly="props.editor"
@@ -14283,12 +14293,13 @@ class _i extends ie {
                 <div style="padding-left: 5px; width: 60%;">
                   <maz-select
                     v-model="cntry"
+                    name="country-name"
+                    autocomplete="country-name"
                     :placeholder="props.i18n['Country']"
                     :size="props.size"
                     :options="options"
                     :lock="props.editor"
                     v-slot="{ option, isSelected, icon }"
-                    autocomplete="country"
                   >
                   </maz-select>
                 </div>
@@ -14298,6 +14309,7 @@ class _i extends ie {
                   <div class="" style="width: 160px;">
                     <maz-input
                       v-model="zipcode"
+                      autocomplete="postal-code"
                       :placeholder="props.i18n['Postal Code']"
                       :size="props.size"
                       :readonly="props.editor"
@@ -14308,6 +14320,7 @@ class _i extends ie {
                   <div class="" style="padding-left: 5px; width: 100%">
                     <maz-input
                       v-model="city"
+                      autocomplete="address-level2"
                       :placeholder="props.i18n['City']"
                       :size="props.size"
                       :readonly="props.editor"
@@ -14320,30 +14333,32 @@ class _i extends ie {
                   v-if="props.fields & 0x0004"
                   class="m1"
                   v-model="cntry"
+                  autocomplete="country-name"
                   :placeholder="props.i18n['Country']"
                   :size="props.size"
                   :options="options"
                   :lock="props.editor"
                   v-slot="{ option, isSelected, icon }"
-                  autocomplete="country"
                 >
                 </maz-select>
               </div>
               <div v-if="props.fields & 0x0008" class="m1">
                 <maz-phone-number-input
                   v-model="phone"
+                  autocomplete="phone"
                   :translations="props.i18n"
                   no-validation
                   :size="props.size"
                   :required="props.required"
                   :lock="props.editor"
-                  @update="resultPhone = $event"
-                  @input="__inputValue"
+                  @update="__changePhone($event)"
+                  @input="__inputValue($event)"
                 />
               </div>
               <div v-if="props.fields & 0x0008" class="m1">
                 <maz-input
                   v-model="email"
+                  autocomplete="email"
                   :placeholder="props.i18n['Email']"
                   :left-icon-name="props.icon_mail"
                   :size="props.size"
@@ -14400,6 +14415,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.92", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.93", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
