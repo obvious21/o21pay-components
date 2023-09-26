@@ -14132,12 +14132,12 @@ class _i extends ie {
       return false;
     if (!e2.email.length)
       return false;
-    if ("organization" === this.type) {
+    if ("organization" === e2.typeAddress) {
       if (!e2.company.length)
         return false;
       if (!e2.duns.length)
         return false;
-      if (!e2.vat.length)
+      if (!e2.vatnumber.length)
         return false;
     }
     return true;
@@ -14149,7 +14149,7 @@ class _i extends ie {
     if (!e2)
       return null;
     const a2 = { name: e2.name, address: e2.address, zipcode: e2.zipcode, city: e2.city, country: e2.cntry, phone: e2.phone, email: e2.email };
-    return "all" === this.type && (a2.typeAddress = "personal"), "organization" === this.type && (a2.company = e2.company, a2.duns = e2.duns, a2.vatnumber = e2.vatnumber), a2;
+    return a2.typeAddress = e2.props.typeAddress, "organization" === a2.typeAddress && (a2.company = e2.company, a2.duns = e2.duns, a2.vatnumber = e2.vatnumber), a2;
   }
   setData() {
     if (!this.object)
@@ -14157,12 +14157,13 @@ class _i extends ie {
     let e2 = this.object.$data;
     if (!e2)
       return null;
-    this.data && (e2.name = this.data.name, e2.name = this.data.name || "", e2.address = this.data.address || "", e2.zipcode = this.data.zipcode || "", e2.city = this.data.city || "", e2.country = this.data.country || "", e2.phone = this.data.phone || "", e2.email = this.data.email || "", "organization" === this.type && (e2.company = this.data.company || "", e2.duns = this.data.duns || "", e2.vatnumber = this.data.vatnumber || ""));
+    this.data && (e2.name = this.data.name, e2.name = this.data.name || "", e2.address = this.data.address || "", e2.zipcode = this.data.zipcode || "", e2.city = this.data.city || "", e2.country = this.data.country || "", e2.phone = this.data.phone || "", e2.email = this.data.email || "", e2.props.typeAddress = this.data.typeAddress, "organization" === this.data.typeAddress && (e2.company = this.data.company || "", e2.duns = this.data.duns || "", e2.vatnumber = this.data.vatnumber || ""));
   }
   updated(e2) {
-    super.updated(e2), isNaN(this.fields) && (this.fields = 28671);
-    const a2 = this.prepareDataProperties();
-    e2.has("type") && (a2.typeAddress = this.type, "all" === this.type ? (this.fields |= 32768, a2.typeAddress = "personal") : (this.fields &= -32769, a2.typeAddress = a2.type), a2.fields = this.fields), e2.has("fields") && (a2.fields = this.fields), console.log(JSON.stringify(a2)), this.object && (this.object.$data.props = a2);
+    if (super.updated(e2), isNaN(this.fields) && (this.fields = 28671), e2.has("type") || e2.has("fields")) {
+      const a2 = this.prepareDataProperties();
+      e2.has("type") && (a2.typeAddress = this.type, "all" === this.type ? (this.fields |= 32768, a2.typeAddress = "personal") : (this.fields &= -32769, a2.typeAddress = a2.type), a2.fields = this.fields), e2.has("fields") && (a2.fields = this.fields), this.object && (this.object.$data.props = a2);
+    }
   }
   async createVue() {
     const e2 = this;
@@ -14183,7 +14184,7 @@ class _i extends ie {
       const r3 = e2.validation();
       e2.dispatchEvent(new CustomEvent("o21pay_component", { detail: { instance: e2, message: "o21pay_validation", state: r3 }, bubbles: true, composed: true }));
     }, __changePhone(e3) {
-      if (console.log(JSON.stringify(e3)), e3.isValid && e3.countryCode) {
+      if (e3.isValid && e3.countryCode) {
         let a3 = e3.countryCode.toLowerCase(), r3 = this.options.find((e4) => e4.iso === a3);
         r3 && (this.cntry = r3.value);
       }
@@ -14236,6 +14237,7 @@ class _i extends ie {
                   :size="props.size"
                   :readonly="props.editor"
                   :required="props.required"
+                  @input="__inputValue"
                 />
               </div>
               <div v-if="props.fields & 0x0002" class="m1">
@@ -14415,6 +14417,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.93", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.94", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
