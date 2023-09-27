@@ -251,7 +251,7 @@ let f = class extends HTMLElement {
 var v;
 f[z] = true, f.elementProperties = /* @__PURE__ */ new Map(), f.elementStyles = [], f.shadowRootOptions = { mode: "open" }, null == p || p({ ReactiveElement: f }), (null !== (s = c.reactiveElementVersions) && void 0 !== s ? s : c.reactiveElementVersions = []).push("1.6.3");
 const y = window, k = y.trustedTypes, x = k ? k.createPolicy("lit-html", { createHTML: (e2) => e2 }) : void 0, w = "$lit$", $ = `lit$${(Math.random() + "").slice(9)}$`, _ = "?" + $, C = `<${_}>`, E = document, A = () => E.createComment(""), S = (e2) => null === e2 || "object" != typeof e2 && "function" != typeof e2, N = Array.isArray, I = "[ 	\n\f\r]", P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, B = /-->/g, M = />/g, O = RegExp(`>|${I}(?:([^\\s"'>=/]+)(${I}*=${I}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, L = /"/g, D = /^(?:script|style|textarea|title)$/i, T = ((e2) => (a2, ...r2) => ({ _$litType$: e2, strings: a2, values: r2 }))(1), F = Symbol.for("lit-noChange"), U = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), j = E.createTreeWalker(E, 129, null, false);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, T = /"/g, L = /^(?:script|style|textarea|title)$/i, D = ((e2) => (a2, ...r2) => ({ _$litType$: e2, strings: a2, values: r2 }))(1), F = Symbol.for("lit-noChange"), U = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), j = E.createTreeWalker(E, 129, null, false);
 function Y(e2, a2) {
   if (!Array.isArray(e2) || !e2.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
@@ -264,7 +264,7 @@ const V = (e2, a2) => {
     const r3 = e2[a3];
     let d2, l2, s2 = -1, c2 = 0;
     for (; c2 < r3.length && (n2.lastIndex = c2, l2 = n2.exec(r3), null !== l2); )
-      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = M : void 0 !== l2[2] ? (D.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = O) : void 0 !== l2[3] && (n2 = O) : n2 === O ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? O : '"' === l2[3] ? L : R) : n2 === L || n2 === R ? n2 = O : n2 === B || n2 === M ? n2 = P : (n2 = O, o2 = void 0);
+      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = M : void 0 !== l2[2] ? (L.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = O) : void 0 !== l2[3] && (n2 = O) : n2 === O ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? O : '"' === l2[3] ? T : R) : n2 === T || n2 === R ? n2 = O : n2 === B || n2 === M ? n2 = P : (n2 = O, o2 = void 0);
     const m2 = n2 === O && e2[a3 + 1].startsWith("/>") ? " " : "";
     i2 += n2 === P ? r3 + C : s2 >= 0 ? (t2.push(d2), r3.slice(0, s2) + w + r3.slice(s2) + $ + m2) : r3 + $ + (-2 === s2 ? (t2.push(void 0), a3) : m2);
   }
@@ -296,7 +296,7 @@ class H {
           for (const a3 of e3)
             t2.removeAttribute(a3);
         }
-        if (D.test(t2.tagName)) {
+        if (L.test(t2.tagName)) {
           const e3 = t2.textContent.split($), a3 = e3.length - 1;
           if (a3 > 0) {
             t2.textContent = k ? k.emptyScript : "";
@@ -817,7 +817,7 @@ class se extends ie {
     }
   }
   render() {
-    return true === this.form ? T`
+    return true === this.form ? D`
         <div class="o21pay-payment-container">
           <div class="o21pay-payment-full">
             <div class="close" @click=${this.onInit}></div>
@@ -856,7 +856,7 @@ class se extends ie {
               id="suggestion"
               style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
             >
-              ${this.arraySuggestion.map((e2) => T`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
+              ${this.arraySuggestion.map((e2) => D`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
                   ${parseFloat(e2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" })}
                 </span>`)}
             </div>
@@ -887,7 +887,7 @@ class se extends ie {
             <span>Payment secured and powered by O21Pay</span>
           </div>
         </div>
-      ` : T`
+      ` : D`
         <button
           class="o21pay-button"
           style="background-color: ${this.primary_color}"
@@ -1139,7 +1139,7 @@ class be extends ie {
     this.shadowRoot.getElementById("framePayment").src = "about:blank";
   }
   overlayStyle() {
-    return this.overlay ? T`<div class="overlay" />` : T``;
+    return this.overlay ? D`<div class="overlay" />` : D``;
   }
   spinnerStyle() {
     return "display: " + (this.hideSpinner ? "none" : "block");
@@ -1149,7 +1149,7 @@ class be extends ie {
   }
   render() {
     let e2 = "wrapper" + (this.open ? " open" : ""), a2 = "dialog", r2 = "", t2 = "close", o2 = `width:${this.width}; height:${this.height}`;
-    return "drawer-left" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : t2 = "", T`
+    return "drawer-left" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};left:0;`) : "drawer-right" === this.mode ? (a2 = "drawer", r2 = "drawer-header", t2 = "", o2 = `width:${this.width};right:0;`) : "fullscreen" === this.mode ? o2 = "width:100%;height:100%;border-radius: 0;overflow:hidden;" : t2 = "", D`
       <div class=${e2}>
         ${this.overlayStyle()}
         <div class=${a2} style=${o2}>
@@ -1412,24 +1412,24 @@ Be.getBlocksCount = function(e2, a2) {
       return;
   }
 };
-var Le = {}, De = {};
-const Te = new Uint8Array(512), Fe = new Uint8Array(256);
+var Te = {}, Le = {};
+const De = new Uint8Array(512), Fe = new Uint8Array(256);
 !function() {
   let e2 = 1;
   for (let a2 = 0; a2 < 255; a2++)
-    Te[a2] = e2, Fe[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
+    De[a2] = e2, Fe[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
   for (let e3 = 255; e3 < 512; e3++)
-    Te[e3] = Te[e3 - 255];
-}(), De.log = function(e2) {
+    De[e3] = De[e3 - 255];
+}(), Le.log = function(e2) {
   if (e2 < 1)
     throw new Error("log(" + e2 + ")");
   return Fe[e2];
-}, De.exp = function(e2) {
-  return Te[e2];
-}, De.mul = function(e2, a2) {
-  return 0 === e2 || 0 === a2 ? 0 : Te[Fe[e2] + Fe[a2]];
+}, Le.exp = function(e2) {
+  return De[e2];
+}, Le.mul = function(e2, a2) {
+  return 0 === e2 || 0 === a2 ? 0 : De[Fe[e2] + Fe[a2]];
 }, function(e2) {
-  const a2 = De;
+  const a2 = Le;
   e2.mul = function(e3, r2) {
     const t2 = new Uint8Array(e3.length + r2.length - 1);
     for (let o2 = 0; o2 < e3.length; o2++)
@@ -1454,8 +1454,8 @@ const Te = new Uint8Array(512), Fe = new Uint8Array(256);
       t2 = e2.mul(t2, new Uint8Array([1, a2.exp(o2)]));
     return t2;
   };
-}(Le);
-const Ue = Le;
+}(Te);
+const Ue = Te;
 function Ge(e2) {
   this.genPoly = void 0, this.degree = e2, this.degree && this.initialize(this.degree);
 }
@@ -1946,7 +1946,7 @@ ve.create = function(e2, a2) {
   let r2, t2, o2 = xa.M;
   return void 0 !== a2 && (o2 = xa.from(a2.errorCorrectionLevel, xa.M), r2 = Na.from(a2.version), t2 = Ea.from(a2.maskPattern), a2.toSJISFunc && ka.setToSJISFunction(a2.toSJISFunc)), Ra(e2, r2, o2, t2);
 };
-var La = {}, Da = {};
+var Ta = {}, La = {};
 !function(e2) {
   function a2(e3) {
     if ("number" == typeof e3 && (e3 = e3.toString()), "string" != typeof e3)
@@ -1980,8 +1980,8 @@ var La = {}, Da = {};
         a3[c2++] = m2.r, a3[c2++] = m2.g, a3[c2++] = m2.b, a3[c2] = m2.a;
       }
   };
-}(Da), function(e2) {
-  const a2 = Da;
+}(La), function(e2) {
+  const a2 = La;
   e2.render = function(e3, r2, t2) {
     let o2 = t2, i2 = r2;
     void 0 !== o2 || r2 && r2.getContext || (o2 = r2, r2 = void 0), r2 || (i2 = function() {
@@ -2001,9 +2001,9 @@ var La = {}, Da = {};
     const i2 = e2.render(a3, r2, o2), n2 = o2.type || "image/png", d2 = o2.rendererOpts || {};
     return i2.toDataURL(n2, d2.quality);
   };
-}(La);
-var Ta = {};
-const Fa = Da;
+}(Ta);
+var Da = {};
+const Fa = La;
 function Ua(e2, a2) {
   const r2 = e2.a / 255, t2 = a2 + '="' + e2.hex + '"';
   return r2 < 1 ? t2 + " " + a2 + '-opacity="' + r2.toFixed(2).slice(1) + '"' : t2;
@@ -2012,7 +2012,7 @@ function Ga(e2, a2, r2) {
   let t2 = e2 + a2;
   return void 0 !== r2 && (t2 += " " + r2), t2;
 }
-Ta.render = function(e2, a2, r2) {
+Da.render = function(e2, a2, r2) {
   const t2 = Fa.getOptions(a2), o2 = e2.modules.size, i2 = e2.modules.data, n2 = o2 + 2 * t2.margin, d2 = t2.color.light.a ? "<path " + Ua(t2.color.light, "fill") + ' d="M0 0h' + n2 + "v" + n2 + 'H0z"/>' : "", l2 = "<path " + Ua(t2.color.dark, "stroke") + ' d="' + function(e3, a3, r3) {
     let t3 = "", o3 = 0, i3 = false, n3 = 0;
     for (let d3 = 0; d3 < e3.length; d3++) {
@@ -2025,7 +2025,7 @@ Ta.render = function(e2, a2, r2) {
 };
 const ja = function() {
   return "function" == typeof Promise && Promise.prototype && Promise.prototype.then;
-}, Ya = ve, Va = La, Ha = Ta;
+}, Ya = ve, Va = Ta, Ha = Da;
 function Ka(e2, a2, r2, t2, o2) {
   const i2 = [].slice.call(arguments, 1), n2 = i2.length, d2 = "function" == typeof i2[n2 - 1];
   if (!d2 && !ja())
@@ -2177,11 +2177,11 @@ class Za extends ie {
   render() {
     const e2 = this.url;
     if (!e2 || !e2.length)
-      return T``;
+      return D``;
     this.size = parseInt(this.size) || "320", this.logoSize = this.size / 3.3;
-    const a2 = (this.size - this.logoSize) / 2 + 9, r2 = (this.size - this.logoSize) / 2 + 12, t2 = ((e3) => T`<svg height="${this.size}" width="${this.size}">${e3}</svg>`)(Ja.generate(this.url, this.size, this.size / 4, this.theme));
+    const a2 = (this.size - this.logoSize) / 2 + 9, r2 = (this.size - this.logoSize) / 2 + 12, t2 = ((e3) => D`<svg height="${this.size}" width="${this.size}">${e3}</svg>`)(Ja.generate(this.url, this.size, this.size / 4, this.theme));
     let o2 = `pr-qrcode ${this.theme}-theme`;
-    return this.shadow && (o2 += " shadow"), T`
+    return this.shadow && (o2 += " shadow"), D`
       <div
         id="qrsvg"
         class="${o2}"
@@ -11778,7 +11778,7 @@ const lr = rr(dr, function() {
 lr.install = (e2) => {
   e2.component(lr.name, lr);
 };
-const sr = { name: "MazSelect", components: { MazInput: lr, MazBtn: nr }, mixins: [or], props: { value: { required: true, validator: (e2) => ["number", "string", "boolean"].includes(typeof e2) || Array.isArray(e2) || null === e2 }, options: { type: Array, required: true }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, itemHeight: { type: Number, default: 35 }, listHeight: { type: Number, default: 260 }, listWidth: { type: [Number, String], default: null }, placeholder: { type: String, default: "Select option" }, noLabel: { type: Boolean, default: false }, multiple: { type: Boolean, default: false }, search: { type: Boolean, default: false }, searchPlaceholder: { type: String, default: "Search in options" }, color: { type: String, default: "primary" }, size: { type: String, default: "md" }, open: { type: Boolean, default: false }, position: { type: String, default: "left bottom" }, config: { type: Object, default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" }) }, inputValue: { type: String, default: null } }, data: () => ({ listIsOpen: false, query: "", tmpValue: null, searchQuery: null, filteredOptions: null }), computed: { hasPositionTop() {
+const sr = { name: "MazSelect", components: { MazInput: lr, MazBtn: nr }, mixins: [or], props: { value: { required: true, validator: (e2) => ["number", "string", "boolean"].includes(typeof e2) || Array.isArray(e2) || null === e2 }, options: { type: Array, required: true }, disabled: { type: Boolean, default: false }, lock: { type: Boolean, default: false }, dark: { type: Boolean, default: false }, itemHeight: { type: Number, default: 35 }, listHeight: { type: Number, default: 260 }, listWidth: { type: [Number, String], default: null }, placeholder: { type: String, default: "Select option" }, noLabel: { type: Boolean, default: false }, multiple: { type: Boolean, default: false }, search: { type: Boolean, default: false }, searchPlaceholder: { type: String, default: "Search in options" }, color: { type: String, default: "primary" }, size: { type: String, default: "md" }, open: { type: Boolean, default: false }, position: { type: String, default: "left bottom" }, config: { type: Object, default: () => ({ labelKey: "label", valueKey: "value", searchKey: "label" }) }, inputValue: { type: String, default: null } }, data: () => ({ listIsOpen: false, query: "", queryTimer: void 0, tmpValue: null, searchQuery: null, filteredOptions: null }), computed: { hasPositionTop() {
   return this.position.includes("top");
 }, hasPositionRight() {
   return this.position.includes("right");
@@ -11883,15 +11883,17 @@ const sr = { name: "MazSelect", components: { MazInput: lr, MazBtn: nr }, mixins
     13 === a2 ? (e2.preventDefault(), r2 ? this.updateValue(n2) : this.openList()) : 27 === a2 ? this.closeList() : d2 || this.searching(e2);
 }, searching(e2) {
   const { config: a2, options: r2 } = this, t2 = e2.keyCode;
-  clearTimeout(o2);
-  const o2 = setTimeout(() => {
-    this.query = "";
-  }, 2e3), i2 = String.fromCharCode(t2);
+  this.queryTimer && clearTimeout(this.queryTimer);
+  const o2 = this;
+  this.queryTimer = setTimeout(() => {
+    o2.query = "", o2.queryTimer = void 0;
+  }, 2e3);
+  const i2 = String.fromCharCode(t2);
   if (8 === t2 && "" !== this.query)
     this.query = this.query.substring(0, this.query.length - 1);
   else if (/[a-zA-Z-e ]/.test(i2)) {
     this.hasOpenList || this.openList(), this.query += i2.toLowerCase();
-    const e3 = r2.findIndex((e4) => (this.tmpValue = e4[a2.valueKey], e4[a2.searchKey].toLowerCase().includes(this.query)));
+    const e3 = r2.findIndex((e4) => (this.tmpValue = e4[a2.valueKey], e4[a2.searchKey].toLowerCase().startsWith(this.query)));
     -1 !== e3 && this.scrollToSelectedOnFocus(e3);
   }
 }, searchInOptions(e2) {
@@ -12123,11 +12125,11 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
     if (e3 && Or.test(e3) && (a2 = e3, e3 = null), e3 && "001" !== e3) {
       if (!this.hasCountry(e3))
         throw new Error("Unknown country: ".concat(e3));
-      this.numberingPlan = new Lr(this.getCountryMetadata(e3), this);
+      this.numberingPlan = new Tr(this.getCountryMetadata(e3), this);
     } else if (a2) {
       if (!this.hasCallingCode(a2))
         throw new Error("Unknown calling code: ".concat(a2));
-      this.numberingPlan = new Lr(this.getNumberingPlanMetadata(a2), this);
+      this.numberingPlan = new Tr(this.getNumberingPlanMetadata(a2), this);
     } else
       this.numberingPlan = void 0;
     return this;
@@ -12186,7 +12188,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "hasSelectedNumberingPlan", value: function() {
     return void 0 !== this.numberingPlan;
   } }]), e2;
-}(), Lr = function() {
+}(), Tr = function() {
   function e2(a2, r2) {
     Ir(this, e2), this.globalMetadataObject = r2, this.metadata = a2, Vr.call(this, r2.metadata);
   }
@@ -12210,7 +12212,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "formats", value: function() {
     var e3 = this, a2 = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
     return a2.map(function(a3) {
-      return new Dr(a3, e3);
+      return new Lr(a3, e3);
     });
   } }, { key: "nationalPrefix", value: function() {
     return this.metadata[this.v1 ? 3 : this.v2 ? 4 : 5];
@@ -12240,7 +12242,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "ext", value: function() {
     return this.v1 || this.v2 ? Mr : this.metadata[13] || Mr;
   } }]), e2;
-}(), Dr = function() {
+}(), Lr = function() {
   function e2(a2, r2) {
     Ir(this, e2), this._format = a2, this.metadata = r2;
   }
@@ -12257,11 +12259,11 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "nationalPrefixIsMandatoryWhenFormattingInNationalFormat", value: function() {
     return this.usesNationalPrefix() && !this.nationalPrefixIsOptionalWhenFormattingInNationalFormat();
   } }, { key: "usesNationalPrefix", value: function() {
-    return !(!this.nationalPrefixFormattingRule() || Tr.test(this.nationalPrefixFormattingRule()));
+    return !(!this.nationalPrefixFormattingRule() || Dr.test(this.nationalPrefixFormattingRule()));
   } }, { key: "internationalFormat", value: function() {
     return this._format[5] || this.format();
   } }]), e2;
-}(), Tr = /^\(?\$1\)?$/, Fr = function() {
+}(), Dr = /^\(?\$1\)?$/, Fr = function() {
   function e2(a2, r2) {
     Ir(this, e2), this.type = a2, this.metadata = r2;
   }
@@ -12683,13 +12685,13 @@ function Ot(e2) {
 function Rt(e2, a2, r2) {
   return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
-function Lt(e2, a2) {
+function Tt(e2, a2) {
   for (var r2 = 0; r2 < a2.length; r2++) {
     var t2 = a2[r2];
     t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var Dt = function() {
+var Lt = function() {
   function e2(a3, r3, t3) {
     if (function(e3, a4) {
       if (!(e3 instanceof a4))
@@ -12702,7 +12704,7 @@ var Dt = function() {
       throw new TypeError("`metadata` not passed");
     var o2 = function(e3, a4) {
       var r4, t4, o3 = new Rr(a4);
-      Tt(e3) ? (r4 = e3, o3.selectNumberingPlan(r4), t4 = o3.countryCallingCode()) : t4 = e3;
+      Dt(e3) ? (r4 = e3, o3.selectNumberingPlan(r4), t4 = o3.countryCallingCode()) : t4 = e3;
       return { country: r4, countryCallingCode: t4 };
     }(a3, t3), i2 = o2.country, n2 = o2.countryCallingCode;
     this.country = i2, this.countryCallingCode = n2, this.nationalNumber = r3, this.number = "+" + this.countryCallingCode + this.nationalNumber, this.getMetadata = function() {
@@ -12757,8 +12759,8 @@ var Dt = function() {
     return this.format("INTERNATIONAL", e3);
   } }, { key: "getURI", value: function(e3) {
     return this.format("RFC3966", e3);
-  } }], r2 && Lt(a2.prototype, r2), t2 && Lt(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
-}(), Tt = function(e2) {
+  } }], r2 && Tt(a2.prototype, r2), t2 && Tt(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+}(), Dt = function(e2) {
   return /^[A-Z]{2}$/.test(e2);
 };
 var Ft = new RegExp("([" + Er + "])");
@@ -13026,7 +13028,7 @@ function so(e2, a2, r2) {
     return {};
   }
   if (a2.v2) {
-    var p2 = new Dt(c2, s2, r2.metadata);
+    var p2 = new Lt(c2, s2, r2.metadata);
     return l2 && (p2.country = l2), u2 && (p2.carrierCode = u2), i2 && (p2.ext = i2), p2.__countryCallingCodeSource = m2, p2;
   }
   var h2 = !!(a2.extended ? r2.hasSelectedNumberingPlan() : l2) && ht(s2, r2.nationalNumberPattern());
@@ -13337,7 +13339,7 @@ var Ro = function() {
   } }, { key: "parsePattern", value: function(e3) {
     if (!e3)
       throw new Error("Pattern is required");
-    var a3 = e3.match(To);
+    var a3 = e3.match(Do);
     if (a3) {
       var r3 = a3[1], t3 = e3.slice(0, a3.index), o2 = e3.slice(a3.index + r3.length);
       switch (r3) {
@@ -13368,20 +13370,20 @@ var Ro = function() {
         case "]":
           if (!this.getContext().oneOfSet)
             throw new Error('"]" operator must be preceded by "[" operator');
-          this.endContext(), this.getContext().instructions.push({ op: "[]", args: Lo(t3) });
+          this.endContext(), this.getContext().instructions.push({ op: "[]", args: To(t3) });
           break;
         default:
           throw new Error("Unknown operator: ".concat(r3));
       }
       o2 && this.parsePattern(o2);
     } else {
-      if (Do.test(e3))
+      if (Lo.test(e3))
         throw new Error("Illegal characters found in a pattern: ".concat(e3));
       this.getContext().instructions = this.getContext().instructions.concat(e3.split(""));
     }
   } }]) && Oo(a2.prototype, r2), t2 && Oo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function Lo(e2) {
+function To(e2) {
   for (var a2 = [], r2 = 0; r2 < e2.length; ) {
     if ("-" === e2[r2]) {
       if (0 === r2 || r2 === e2.length - 1)
@@ -13394,7 +13396,7 @@ function Lo(e2) {
   }
   return a2;
 }
-var Do = /[\(\)\[\]\?\:\|]/, To = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
+var Lo = /[\(\)\[\]\?\:\|]/, Do = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
 function Fo(e2) {
   return 1 === e2.length ? e2[0] : e2;
 }
@@ -13950,7 +13952,7 @@ var mi = function() {
           l2 && (o2 = l2);
         }
       }
-      var s2 = new Dt(o2 || t3, a3, this.metadata.metadata);
+      var s2 = new Lt(o2 || t3, a3, this.metadata.metadata);
       return r3 && (s2.carrierCode = r3), s2;
     }
   } }, { key: "isPossible", value: function() {
@@ -13969,7 +13971,7 @@ var mi = function() {
 }();
 function ui(e2, a2, r2) {
   if (a2[e2])
-    return new Dt(e2, a2[e2], r2);
+    return new Lt(e2, a2[e2], r2);
 }
 function pi(e2) {
   return mi.call(this, e2, ur);
@@ -14210,7 +14212,7 @@ class _i extends ie {
     return 8192 & this.fields && (e2.icon_name = this.getIcon("name"), e2.icon_addr = this.getIcon("@"), e2.icon_mail = this.getIcon("mailbox"), e2.icon_company = this.getIcon("company"), e2.icon_duns = this.getIcon("duns"), e2.icon_vat = this.getIcon("vat")), this.i18n[this.locale] ? e2.i18n = this.i18n[this.locale] : e2.i18n = this.i18n.en, "all" === this.type ? e2.typeAddress = "personal" : e2.typeAddress = this.type, e2.addressModel = [{ label: e2.i18n.Personal, value: "personal" }, { label: e2.i18n.Organization, value: "organization" }], e2;
   }
   render() {
-    return T`<style>
+    return D`<style>
         :host {
           --maz-primary: ${this.primary_color} !important;
         }
@@ -14417,6 +14419,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.94", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.95", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
