@@ -827,8 +827,8 @@ class se extends ie {
                 class="o21pay-input"
                 type="number"
                 min="0.00"
-                max="15000.00"
-                step="0.01"
+                max="1000000.00"
+                step="1.00"
                 .value="${this.amount}"
                 .placeholder="${this.placeholder}"
                 @focus=${this.onFocus}
@@ -14419,6 +14419,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.95", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.96", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
