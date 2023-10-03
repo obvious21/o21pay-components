@@ -251,7 +251,7 @@ let f = class extends HTMLElement {
 var v;
 f[z] = true, f.elementProperties = /* @__PURE__ */ new Map(), f.elementStyles = [], f.shadowRootOptions = { mode: "open" }, null == p || p({ ReactiveElement: f }), (null !== (s = c.reactiveElementVersions) && void 0 !== s ? s : c.reactiveElementVersions = []).push("1.6.3");
 const y = window, k = y.trustedTypes, x = k ? k.createPolicy("lit-html", { createHTML: (e2) => e2 }) : void 0, w = "$lit$", $ = `lit$${(Math.random() + "").slice(9)}$`, _ = "?" + $, C = `<${_}>`, E = document, A = () => E.createComment(""), S = (e2) => null === e2 || "object" != typeof e2 && "function" != typeof e2, N = Array.isArray, I = "[ 	\n\f\r]", P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, B = /-->/g, M = />/g, O = RegExp(`>|${I}(?:([^\\s"'>=/]+)(${I}*=${I}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, T = /"/g, L = /^(?:script|style|textarea|title)$/i, D = ((e2) => (a2, ...r2) => ({ _$litType$: e2, strings: a2, values: r2 }))(1), F = Symbol.for("lit-noChange"), U = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), j = E.createTreeWalker(E, 129, null, false);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), R = /'/g, L = /"/g, T = /^(?:script|style|textarea|title)$/i, D = ((e2) => (a2, ...r2) => ({ _$litType$: e2, strings: a2, values: r2 }))(1), F = Symbol.for("lit-noChange"), U = Symbol.for("lit-nothing"), G = /* @__PURE__ */ new WeakMap(), j = E.createTreeWalker(E, 129, null, false);
 function Y(e2, a2) {
   if (!Array.isArray(e2) || !e2.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
@@ -264,7 +264,7 @@ const V = (e2, a2) => {
     const r3 = e2[a3];
     let d2, l2, s2 = -1, c2 = 0;
     for (; c2 < r3.length && (n2.lastIndex = c2, l2 = n2.exec(r3), null !== l2); )
-      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = M : void 0 !== l2[2] ? (L.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = O) : void 0 !== l2[3] && (n2 = O) : n2 === O ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? O : '"' === l2[3] ? T : R) : n2 === T || n2 === R ? n2 = O : n2 === B || n2 === M ? n2 = P : (n2 = O, o2 = void 0);
+      c2 = n2.lastIndex, n2 === P ? "!--" === l2[1] ? n2 = B : void 0 !== l2[1] ? n2 = M : void 0 !== l2[2] ? (T.test(l2[2]) && (o2 = RegExp("</" + l2[2], "g")), n2 = O) : void 0 !== l2[3] && (n2 = O) : n2 === O ? ">" === l2[0] ? (n2 = null != o2 ? o2 : P, s2 = -1) : void 0 === l2[1] ? s2 = -2 : (s2 = n2.lastIndex - l2[2].length, d2 = l2[1], n2 = void 0 === l2[3] ? O : '"' === l2[3] ? L : R) : n2 === L || n2 === R ? n2 = O : n2 === B || n2 === M ? n2 = P : (n2 = O, o2 = void 0);
     const m2 = n2 === O && e2[a3 + 1].startsWith("/>") ? " " : "";
     i2 += n2 === P ? r3 + C : s2 >= 0 ? (t2.push(d2), r3.slice(0, s2) + w + r3.slice(s2) + $ + m2) : r3 + $ + (-2 === s2 ? (t2.push(void 0), a3) : m2);
   }
@@ -296,7 +296,7 @@ class H {
           for (const a3 of e3)
             t2.removeAttribute(a3);
         }
-        if (L.test(t2.tagName)) {
+        if (T.test(t2.tagName)) {
           const e3 = t2.textContent.split($), a3 = e3.length - 1;
           if (a3 > 0) {
             t2.textContent = k ? k.emptyScript : "";
@@ -321,15 +321,15 @@ class H {
     return r2.innerHTML = e2, r2;
   }
 }
-function K(e2, a2, r2 = e2, t2) {
+function Q(e2, a2, r2 = e2, t2) {
   var o2, i2, n2, d2;
   if (a2 === F)
     return a2;
   let l2 = void 0 !== t2 ? null === (o2 = r2._$Co) || void 0 === o2 ? void 0 : o2[t2] : r2._$Cl;
   const s2 = S(a2) ? void 0 : a2._$litDirective$;
-  return (null == l2 ? void 0 : l2.constructor) !== s2 && (null === (i2 = null == l2 ? void 0 : l2._$AO) || void 0 === i2 || i2.call(l2, false), void 0 === s2 ? l2 = void 0 : (l2 = new s2(e2), l2._$AT(e2, r2, t2)), void 0 !== t2 ? (null !== (n2 = (d2 = r2)._$Co) && void 0 !== n2 ? n2 : d2._$Co = [])[t2] = l2 : r2._$Cl = l2), void 0 !== l2 && (a2 = K(e2, l2._$AS(e2, a2.values), l2, t2)), a2;
+  return (null == l2 ? void 0 : l2.constructor) !== s2 && (null === (i2 = null == l2 ? void 0 : l2._$AO) || void 0 === i2 || i2.call(l2, false), void 0 === s2 ? l2 = void 0 : (l2 = new s2(e2), l2._$AT(e2, r2, t2)), void 0 !== t2 ? (null !== (n2 = (d2 = r2)._$Co) && void 0 !== n2 ? n2 : d2._$Co = [])[t2] = l2 : r2._$Cl = l2), void 0 !== l2 && (a2 = Q(e2, l2._$AS(e2, a2.values), l2, t2)), a2;
 }
-class Q {
+class K {
   constructor(e2, a2) {
     this._$AV = [], this._$AN = void 0, this._$AD = e2, this._$AM = a2;
   }
@@ -380,7 +380,7 @@ class J {
     return this._$AB;
   }
   _$AI(e2, a2 = this) {
-    e2 = K(this, e2, a2), S(e2) ? e2 === U || null == e2 || "" === e2 ? (this._$AH !== U && this._$AR(), this._$AH = U) : e2 !== this._$AH && e2 !== F && this._(e2) : void 0 !== e2._$litType$ ? this.g(e2) : void 0 !== e2.nodeType ? this.$(e2) : ((e3) => N(e3) || "function" == typeof (null == e3 ? void 0 : e3[Symbol.iterator]))(e2) ? this.T(e2) : this._(e2);
+    e2 = Q(this, e2, a2), S(e2) ? e2 === U || null == e2 || "" === e2 ? (this._$AH !== U && this._$AR(), this._$AH = U) : e2 !== this._$AH && e2 !== F && this._(e2) : void 0 !== e2._$litType$ ? this.g(e2) : void 0 !== e2.nodeType ? this.$(e2) : ((e3) => N(e3) || "function" == typeof (null == e3 ? void 0 : e3[Symbol.iterator]))(e2) ? this.T(e2) : this._(e2);
   }
   k(e2) {
     return this._$AA.parentNode.insertBefore(e2, this._$AB);
@@ -397,7 +397,7 @@ class J {
     if ((null === (a2 = this._$AH) || void 0 === a2 ? void 0 : a2._$AD) === o2)
       this._$AH.v(r2);
     else {
-      const e3 = new Q(o2, this), a3 = e3.u(this.options);
+      const e3 = new K(o2, this), a3 = e3.u(this.options);
       e3.v(r2), this.$(a3), this._$AH = e3;
     }
   }
@@ -439,12 +439,12 @@ class q {
     const o2 = this.strings;
     let i2 = false;
     if (void 0 === o2)
-      e2 = K(this, e2, a2, 0), i2 = !S(e2) || e2 !== this._$AH && e2 !== F, i2 && (this._$AH = e2);
+      e2 = Q(this, e2, a2, 0), i2 = !S(e2) || e2 !== this._$AH && e2 !== F, i2 && (this._$AH = e2);
     else {
       const t3 = e2;
       let n2, d2;
       for (e2 = o2[0], n2 = 0; n2 < o2.length - 1; n2++)
-        d2 = K(this, t3[r2 + n2], a2, n2), d2 === F && (d2 = this._$AH[n2]), i2 || (i2 = !S(d2) || d2 !== this._$AH[n2]), d2 === U ? e2 = U : e2 !== U && (e2 += (null != d2 ? d2 : "") + o2[n2 + 1]), this._$AH[n2] = d2;
+        d2 = Q(this, t3[r2 + n2], a2, n2), d2 === F && (d2 = this._$AH[n2]), i2 || (i2 = !S(d2) || d2 !== this._$AH[n2]), d2 === U ? e2 = U : e2 !== U && (e2 += (null != d2 ? d2 : "") + o2[n2 + 1]), this._$AH[n2] = d2;
     }
     i2 && !t2 && this.j(e2);
   }
@@ -475,7 +475,7 @@ class ee extends q {
   }
   _$AI(e2, a2 = this) {
     var r2;
-    if ((e2 = null !== (r2 = K(this, e2, a2, 0)) && void 0 !== r2 ? r2 : U) === F)
+    if ((e2 = null !== (r2 = Q(this, e2, a2, 0)) && void 0 !== r2 ? r2 : U) === F)
       return;
     const t2 = this._$AH, o2 = e2 === U && t2 !== U || e2.capture !== t2.capture || e2.once !== t2.once || e2.passive !== t2.passive, i2 = e2 !== U && (t2 === U || o2);
     o2 && this.element.removeEventListener(this.name, this, t2), i2 && this.element.addEventListener(this.name, this, e2), this._$AH = e2;
@@ -493,7 +493,7 @@ class ae {
     return this._$AM._$AU;
   }
   _$AI(e2) {
-    K(this, e2);
+    Q(this, e2);
   }
 }
 const re = y.litHtmlPolyfillSupport;
@@ -550,7 +550,7 @@ const de = d`
     min-width: 372px;
   }
   .o21pay-payment-full {
-    display: inline-block;
+    display: none;
     overflow: hidden;
     position: relative;
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
@@ -591,6 +591,7 @@ const de = d`
     margin-bottom: 4px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
   }
   .o21pay-button:focus {
     outline: 0px solid lightgray !important;
@@ -705,14 +706,10 @@ const de = d`
 const le = "o21pay-payment";
 class se extends ie {
   static get properties() {
-    return { merchant_id: { type: String, attribute: "merchant_id" }, survey_id: { type: String, attribute: "survey_id" }, secretkey: { type: String, attribute: "secretkey" }, funnel_id: { type: String, attribute: "funnel_id" }, apiurl: { type: String, attribute: "apiurl" }, form: { type: Boolean, attribute: "form" }, amount: { type: String, attribute: "amount" }, currency: { type: String, attribute: "currency" }, decimals: { type: String, attribute: "decimals" }, placeholder: { type: String, attribute: "placeholder" }, order_ref: { type: String, attribute: "order_ref" }, hidden_order_ref: { type: Boolean, attribute: "hidden_order_ref" }, suggestion: { type: String, attribute: "suggestion" }, readonly: { type: Boolean, attribute: "readonly" }, hide_menu: { type: Boolean, attribute: "hide_menu" }, disabled: { type: Boolean, attribute: "disabled" }, qr_size: { type: String, attribute: "qr_size" }, primary_color: { type: String, attribute: "primary_color" }, data: { type: String, attribute: "data" }, locale: { type: String, attribute: "locale" } };
+    return { merchant_id: { type: String, attribute: "merchant_id" }, survey_id: { type: String, attribute: "survey_id" }, secretkey: { type: String, attribute: "secretkey" }, funnel_id: { type: String, attribute: "funnel_id" }, apiurl: { type: String, attribute: "apiurl" }, form: { type: Boolean, attribute: "form" }, amount: { type: String, attribute: "amount" }, currency: { type: String, attribute: "currency" }, decimals: { type: String, attribute: "decimals" }, placeholder: { type: String, attribute: "placeholder" }, order_ref: { type: String, attribute: "order_ref" }, hidden_order_ref: { type: Boolean, attribute: "hidden_order_ref" }, hidden_pre_payment: { type: Boolean, attribute: "hidden_pre_payment" }, hidden_ticket: { type: Boolean, attribute: "hidden_ticket" }, suggestion: { type: String, attribute: "suggestion" }, readonly: { type: Boolean, attribute: "readonly" }, hide_menu: { type: Boolean, attribute: "hide_menu" }, disabled: { type: Boolean, attribute: "disabled" }, qr_size: { type: String, attribute: "qr_size" }, primary_color: { type: String, attribute: "primary_color" }, data: { type: String, attribute: "data" }, locale: { type: String, attribute: "locale" } };
   }
   constructor() {
-    super(), this.form = false, this.url = "", this.amount = "", this.apiurl = "http://localhost:3400/api/v1/", this.currency = "EUR", this.decimals = 2, this.placeholder = "Type a number", this.hidden_order_ref = false, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", this.primary_color = "#68d18d", this.locale = "en", navigator && (this.locale = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en");
-    const e2 = this;
-    setTimeout(function() {
-      e2.dispatchEvent(new CustomEvent("o21pay_init", { detail: { instance: e2 }, bubbles: true, composed: true }));
-    }, 500);
+    super(), this.form = true, this.url = "", this.amount = "", this.apiurl = "http://localhost:3400/api/v1/", this.currency = "EUR", this.decimals = 2, this.placeholder = "Type a number", this.hidden_order_ref = false, this.hidden_pre_payment = false, this.hidden_ticket = false, this.suggestion = "", this.arraySuggestion = [], this.qr_size = "180", this.primary_color = "#68d18d", this.locale = "en", navigator && (this.locale = navigator.userLanguage || navigator.languages && navigator.languages.length && navigator.languages[0] || navigator.language || navigator.browserLanguage || navigator.systemLanguage || "en");
   }
   init(e2, a2) {
     this.url = "";
@@ -730,36 +727,32 @@ class se extends ie {
   async _onO21Pay(e2) {
     if (this.disabled)
       return;
-    let a2, r2 = this.renderRoot.querySelector("#amount");
-    if (r2) {
-      let e3 = r2.value;
+    let a2 = this.renderRoot.querySelector("#amount");
+    if (a2) {
+      let e3 = a2.value;
       e3 = e3.replace(",", "."), e3 = e3.replace("€", ""), this.amount = e3;
     }
-    if (this.amount && this.amount.length)
-      if (r2 = this.renderRoot.querySelector("#order_ref"), r2 && (this.order_ref = r2.value), this.order_ref && this.order_ref.length) {
-        if (this.funnel_id)
-          a2 = await this._createPaymentLinkFromFunnel(this.funnel_id, this.amount, this.currency, this.order_ref, this.data);
-        else {
-          if (!this.merchant_id || !this.merchant_id.length)
-            return void alert("Missing merchant_id");
-          a2 = await this._createPaymentLink(this.merchant_id, this.secretkey, this.amount, this.currency, this.order_ref, this.survey_id);
-        }
-        if (a2 && a2.length) {
-          this.url = a2, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.lang && (this.url += `&lang=${this.lang}`.toLowerCase());
-          const e3 = { detail: { url: this.url }, bubbles: true, composed: true };
-          this.dispatchEvent(new CustomEvent("o21pay_payment_request", e3));
-          let r3 = this.renderRoot.querySelector(".o21pay-payment-full");
-          if (this.form) {
-            this.renderRoot.querySelector(".o21pay-edit").hidden = true, r3.style.height = "200px", this.renderRoot.querySelector(".close").style.visibility = "visible";
-            const e4 = this;
-            r3 = e4.renderRoot.querySelector("o21pay-qr"), r3.url = e4.url, r3 = this.renderRoot.querySelector("#suggestion"), r3.style.display = "none", r3 = e4.renderRoot.querySelector("#page2"), r3.style.display = "block";
-          } else
-            r3 && (r3.style.height = "52px");
-        }
-      } else
-        alert("Missing order_ref");
-    else
-      alert("Missing Amount");
+    this.amount && this.amount.length ? (a2 = this.renderRoot.querySelector("#order_ref"), a2 && (this.order_ref = a2.value), this.order_ref && this.order_ref.length ? this.__createO21PayQR() : alert("Missing order_ref")) : alert("Missing Amount");
+  }
+  async __createO21PayQR() {
+    let e2;
+    if (this.funnel_id)
+      e2 = await this._createPaymentLinkFromFunnel(this.funnel_id, this.amount, this.currency, this.order_ref, this.data);
+    else {
+      if (!this.merchant_id || !this.merchant_id.length)
+        return void alert("Missing merchant_id");
+      e2 = await this._createPaymentLink(this.merchant_id, this.secretkey, this.amount, this.currency, this.order_ref, this.survey_id);
+    }
+    if (e2 && e2.length) {
+      this.url = e2, (this.hide_menu || this.funnel_id) && (this.url += "&hm"), this.hidden_ticket && (this.url += "&wot"), this.locale && (this.url += `&lang=${this.locale}`.toLowerCase());
+      const a2 = { detail: { url: this.url }, bubbles: true, composed: true };
+      this.dispatchEvent(new CustomEvent("o21pay_payment_request", a2));
+      let r2 = this.renderRoot.querySelector(".o21pay-payment-full");
+      this.form ? (r2.style.height = "200px", r2 = this.renderRoot.querySelector(".o21pay-edit"), r2 && (r2.hidden = true, this.renderRoot.querySelector(".close").style.visibility = "visible"), r2 = this.renderRoot.querySelector("o21pay-qr"), r2.url = this.url, r2 = this.renderRoot.querySelector("#suggestion"), r2 && (r2.style.display = "none"), r2 = this.renderRoot.querySelector("#page2"), r2.style.display = "block", r2 = this.renderRoot.querySelector(".o21pay-payment-full"), r2 && (r2.style.display = "block"), r2.style.display = "inline-block") : r2 && (r2.style.height = "52px");
+    } else {
+      let e3 = this.renderRoot.querySelector(".o21pay-payment-full");
+      e3 && (e3.style.display = "none");
+    }
   }
   onInit(e2) {
     this.init(this.amount, this.order_ref);
@@ -783,6 +776,16 @@ class se extends ie {
       return;
     let a2 = e2.target.dataset.source;
     a2 && (this.amount = a2);
+  }
+  async firstUpdated(e2) {
+    if (true === this.hidden_pre_payment) {
+      const e3 = this.renderRoot.querySelector(".o21pay-edit");
+      e3 && (e3.hidden = false), this.__createO21PayQR();
+    } else {
+      const e3 = this.renderRoot.querySelector(".o21pay-payment-full");
+      e3 && (e3.style.display = "inline-block");
+    }
+    this.dispatchEvent(new CustomEvent("o21pay_init", { detail: { instance: this }, bubbles: true, composed: true }));
   }
   updated(e2) {
     if (e2.has("amount")) {
@@ -820,46 +823,52 @@ class se extends ie {
     return true === this.form ? D`
         <div class="o21pay-payment-container">
           <div class="o21pay-payment-full">
-            <div class="close" @click=${this.onInit}></div>
-            <div class="o21pay-edit">
-              <input
-                id="amount"
-                class="o21pay-input"
-                type="number"
-                min="0.00"
-                max="1000000.00"
-                step="1.00"
-                .value="${this.amount}"
-                .placeholder="${this.placeholder}"
-                @focus=${this.onFocus}
-                @blur=${this.onBlur}
-              />
-              <input
-                id="order_ref"
-                class="o21pay-input"
-                type="text"
-                .value="${this.order_ref}"
-                placeholder="Your Order Reference"
-                style="margin-left:10px;"
-              />
-              &nbsp;
-              <button
-                class="o21pay-button"
-                style="background-color: ${this.primary_color}"
-                @click="${this._onO21Pay}"
-              >
-                <slot name="button_pay" />
-              </button>
-            </div>
+            ${this.hidden_pre_payment ? D`` : D`
+                  <div class="close" @click=${this.onInit}></div>
+                  <div class="o21pay-edit">
+                    <input
+                      id="amount"
+                      class="o21pay-input"
+                      type="number"
+                      min="0.00"
+                      max="1000000.00"
+                      step="1.00"
+                      .value="${this.amount}"
+                      .placeholder="${this.placeholder}"
+                      @focus=${this.onFocus}
+                      @blur=${this.onBlur}
+                    />
+                    <input
+                      id="order_ref"
+                      class="o21pay-input"
+                      type="text"
+                      .value="${this.order_ref}"
+                      placeholder="Your Order Reference"
+                      style="margin-left:10px;"
+                    />
+                    &nbsp;
+                    <button
+                      class="o21pay-button"
+                      style="background-color: ${this.primary_color}"
+                      @click="${this._onO21Pay}"
+                    >
+                      <slot name="button_pay" />
+                    </button>
+                  </div>
 
-            <div
-              id="suggestion"
-              style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
-            >
-              ${this.arraySuggestion.map((e2) => D`<span class="o21pay-tag" data-source=${e2} @click="${this._onTag}">
-                  ${parseFloat(e2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" })}
-                </span>`)}
-            </div>
+                  <div
+                    id="suggestion"
+                    style="margin-top: 10px;animation: zoom-in-zoom-out 0.8s ease 1;text-align:center;"
+                  >
+                    ${this.arraySuggestion.map((e2) => D`<span
+                        class="o21pay-tag"
+                        data-source=${e2}
+                        @click="${this._onTag}"
+                      >
+                        ${parseFloat(e2).toLocaleString(this.locale, { style: "currency", maximumFractionDigits: this.decimals, minimumFractionDigits: 2, currency: this.currency, currencyDisplay: "symbol" })}
+                      </span>`)}
+                  </div>
+                `}
 
             <div id="page2">
               <o21pay-qr id="o21pay-qr" size="${this.qr_size}" theme="dark" shadow></o21pay-qr>
@@ -868,6 +877,7 @@ class se extends ie {
               </div>
             </div>
           </div>
+
           <div class="o21pay-poweredby">
             <svg
               style="position: relative;top: 2px;"
@@ -1412,7 +1422,7 @@ Be.getBlocksCount = function(e2, a2) {
       return;
   }
 };
-var Te = {}, Le = {};
+var Le = {}, Te = {};
 const De = new Uint8Array(512), Fe = new Uint8Array(256);
 !function() {
   let e2 = 1;
@@ -1420,16 +1430,16 @@ const De = new Uint8Array(512), Fe = new Uint8Array(256);
     De[a2] = e2, Fe[e2] = a2, e2 <<= 1, 256 & e2 && (e2 ^= 285);
   for (let e3 = 255; e3 < 512; e3++)
     De[e3] = De[e3 - 255];
-}(), Le.log = function(e2) {
+}(), Te.log = function(e2) {
   if (e2 < 1)
     throw new Error("log(" + e2 + ")");
   return Fe[e2];
-}, Le.exp = function(e2) {
+}, Te.exp = function(e2) {
   return De[e2];
-}, Le.mul = function(e2, a2) {
+}, Te.mul = function(e2, a2) {
   return 0 === e2 || 0 === a2 ? 0 : De[Fe[e2] + Fe[a2]];
 }, function(e2) {
-  const a2 = Le;
+  const a2 = Te;
   e2.mul = function(e3, r2) {
     const t2 = new Uint8Array(e3.length + r2.length - 1);
     for (let o2 = 0; o2 < e3.length; o2++)
@@ -1454,8 +1464,8 @@ const De = new Uint8Array(512), Fe = new Uint8Array(256);
       t2 = e2.mul(t2, new Uint8Array([1, a2.exp(o2)]));
     return t2;
   };
-}(Te);
-const Ue = Te;
+}(Le);
+const Ue = Le;
 function Ge(e2) {
   this.genPoly = void 0, this.degree = e2, this.degree && this.initialize(this.degree);
 }
@@ -1475,21 +1485,21 @@ Ge.prototype.initialize = function(e2) {
 };
 var je = Ge, Ye = {}, Ve = {}, He = { isValid: function(e2) {
   return !isNaN(e2) && e2 >= 1 && e2 <= 40;
-} }, Ke = {};
-const Qe = "[0-9]+";
+} }, Qe = {};
+const Ke = "[0-9]+";
 let Je = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
 Je = Je.replace(/u/g, "\\u");
 const qe = "(?:(?![A-Z0-9 $%*+\\-./:]|" + Je + ")(?:.|[\r\n]))+";
-Ke.KANJI = new RegExp(Je, "g"), Ke.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g"), Ke.BYTE = new RegExp(qe, "g"), Ke.NUMERIC = new RegExp(Qe, "g"), Ke.ALPHANUMERIC = new RegExp("[A-Z $%*+\\-./:]+", "g");
-const We = new RegExp("^" + Je + "$"), Ze = new RegExp("^" + Qe + "$"), Xe = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
-Ke.testKanji = function(e2) {
+Qe.KANJI = new RegExp(Je, "g"), Qe.BYTE_KANJI = new RegExp("[^A-Z0-9 $%*+\\-./:]+", "g"), Qe.BYTE = new RegExp(qe, "g"), Qe.NUMERIC = new RegExp(Ke, "g"), Qe.ALPHANUMERIC = new RegExp("[A-Z $%*+\\-./:]+", "g");
+const We = new RegExp("^" + Je + "$"), Ze = new RegExp("^" + Ke + "$"), Xe = new RegExp("^[A-Z0-9 $%*+\\-./:]+$");
+Qe.testKanji = function(e2) {
   return We.test(e2);
-}, Ke.testNumeric = function(e2) {
+}, Qe.testNumeric = function(e2) {
   return Ze.test(e2);
-}, Ke.testAlphanumeric = function(e2) {
+}, Qe.testAlphanumeric = function(e2) {
   return Xe.test(e2);
 }, function(e2) {
-  const a2 = He, r2 = Ke;
+  const a2 = He, r2 = Qe;
   e2.NUMERIC = { id: "Numeric", bit: 1, ccBits: [10, 12, 14] }, e2.ALPHANUMERIC = { id: "Alphanumeric", bit: 2, ccBits: [9, 11, 13] }, e2.BYTE = { id: "Byte", bit: 4, ccBits: [8, 16, 16] }, e2.KANJI = { id: "Kanji", bit: 8, ccBits: [8, 10, 12] }, e2.MIXED = { bit: -1 }, e2.getCharCountIndicator = function(e3, r3) {
     if (!e3.ccBits)
       throw new Error("Invalid mode: " + e3);
@@ -1726,7 +1736,7 @@ var fa = za, va = { exports: {} };
 }(va);
 var ya = va.exports;
 !function(e2) {
-  const a2 = Ve, r2 = na, t2 = ca, o2 = ha, i2 = fa, n2 = Ke, d2 = ye, l2 = ya;
+  const a2 = Ve, r2 = na, t2 = ca, o2 = ha, i2 = fa, n2 = Qe, d2 = ye, l2 = ya;
   function s2(e3) {
     return unescape(encodeURIComponent(e3)).length;
   }
@@ -1946,7 +1956,7 @@ ve.create = function(e2, a2) {
   let r2, t2, o2 = xa.M;
   return void 0 !== a2 && (o2 = xa.from(a2.errorCorrectionLevel, xa.M), r2 = Na.from(a2.version), t2 = Ea.from(a2.maskPattern), a2.toSJISFunc && ka.setToSJISFunction(a2.toSJISFunc)), Ra(e2, r2, o2, t2);
 };
-var Ta = {}, La = {};
+var La = {}, Ta = {};
 !function(e2) {
   function a2(e3) {
     if ("number" == typeof e3 && (e3 = e3.toString()), "string" != typeof e3)
@@ -1980,8 +1990,8 @@ var Ta = {}, La = {};
         a3[c2++] = m2.r, a3[c2++] = m2.g, a3[c2++] = m2.b, a3[c2] = m2.a;
       }
   };
-}(La), function(e2) {
-  const a2 = La;
+}(Ta), function(e2) {
+  const a2 = Ta;
   e2.render = function(e3, r2, t2) {
     let o2 = t2, i2 = r2;
     void 0 !== o2 || r2 && r2.getContext || (o2 = r2, r2 = void 0), r2 || (i2 = function() {
@@ -2001,9 +2011,9 @@ var Ta = {}, La = {};
     const i2 = e2.render(a3, r2, o2), n2 = o2.type || "image/png", d2 = o2.rendererOpts || {};
     return i2.toDataURL(n2, d2.quality);
   };
-}(Ta);
+}(La);
 var Da = {};
-const Fa = La;
+const Fa = Ta;
 function Ua(e2, a2) {
   const r2 = e2.a / 255, t2 = a2 + '="' + e2.hex + '"';
   return r2 < 1 ? t2 + " " + a2 + '-opacity="' + r2.toFixed(2).slice(1) + '"' : t2;
@@ -2025,8 +2035,8 @@ Da.render = function(e2, a2, r2) {
 };
 const ja = function() {
   return "function" == typeof Promise && Promise.prototype && Promise.prototype.then;
-}, Ya = ve, Va = Ta, Ha = Da;
-function Ka(e2, a2, r2, t2, o2) {
+}, Ya = ve, Va = La, Ha = Da;
+function Qa(e2, a2, r2, t2, o2) {
   const i2 = [].slice.call(arguments, 1), n2 = i2.length, d2 = "function" == typeof i2[n2 - 1];
   if (!d2 && !ja())
     throw new Error("Callback required as last argument");
@@ -2052,10 +2062,10 @@ function Ka(e2, a2, r2, t2, o2) {
     o2(e3);
   }
 }
-fe.create = Ya.create, fe.toCanvas = Ka.bind(null, Va.render), fe.toDataURL = Ka.bind(null, Va.renderToDataURL), fe.toString = Ka.bind(null, function(e2, a2, r2) {
+fe.create = Ya.create, fe.toCanvas = Qa.bind(null, Va.render), fe.toDataURL = Qa.bind(null, Va.renderToDataURL), fe.toString = Qa.bind(null, function(e2, a2, r2) {
   return Ha.render(e2, r2);
 });
-function Qa(e2, a2, r2) {
+function Ka(e2, a2, r2) {
   if (e2 === a2)
     return false;
   return (e2 - a2 < 0 ? a2 - e2 : e2 - a2) <= r2 + 0.1;
@@ -2095,20 +2105,20 @@ const Ja = { generate(e2, r2, t2, o2 = "light") {
   return h2.forEach(([e3, a2]) => {
     g2[e3] ? g2[e3].push(a2) : g2[e3] = [a2];
   }), Object.entries(g2).map(([e3, a2]) => {
-    const r3 = a2.filter((e4) => a2.every((a3) => !Qa(e4, a3, s2)));
+    const r3 = a2.filter((e4) => a2.every((a3) => !Ka(e4, a3, s2)));
     return [Number(e3), r3];
   }).forEach(([e3, r3]) => {
     r3.forEach((r4) => {
       d2.push(a`<circle cx=${e3} cy=${r4} fill=${i2} r=${s2 / 2.5} />`);
     });
   }), Object.entries(g2).filter(([e3, a2]) => a2.length > 1).map(([e3, a2]) => {
-    const r3 = a2.filter((e4) => a2.some((a3) => Qa(e4, a3, s2)));
+    const r3 = a2.filter((e4) => a2.some((a3) => Ka(e4, a3, s2)));
     return [Number(e3), r3];
   }).map(([e3, a2]) => {
     a2.sort((e4, a3) => e4 < a3 ? -1 : 1);
     const r3 = [];
     for (const e4 of a2) {
-      const a3 = r3.find((a4) => a4.some((a5) => Qa(e4, a5, s2)));
+      const a3 = r3.find((a4) => a4.some((a5) => Ka(e4, a5, s2)));
       a3 ? a3.push(e4) : r3.push([e4]);
     }
     return [e3, r3.map((e4) => [e4[0], e4[e4.length - 1]])];
@@ -2188,12 +2198,11 @@ class Za extends ie {
         style="width: ${this.size}px;height: ${this.size}px;"
         @click="${this._onClick}"
       >
-        <svg height="${this.size}" width="${this.size}" @click="${this._onClick}">${t2}</svg>
+        <svg height="${this.size}" width="${this.size}">${t2}</svg>
         <img
           class="o21pay-logo"
           height="${this.logoSize}"
           style="position: absolute; top: ${a2}px; left: ${r2}px;"
-          @click="${this._onClick}"
         />
       </div>
     `;
@@ -12125,11 +12134,11 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
     if (e3 && Or.test(e3) && (a2 = e3, e3 = null), e3 && "001" !== e3) {
       if (!this.hasCountry(e3))
         throw new Error("Unknown country: ".concat(e3));
-      this.numberingPlan = new Tr(this.getCountryMetadata(e3), this);
+      this.numberingPlan = new Lr(this.getCountryMetadata(e3), this);
     } else if (a2) {
       if (!this.hasCallingCode(a2))
         throw new Error("Unknown calling code: ".concat(a2));
-      this.numberingPlan = new Tr(this.getNumberingPlanMetadata(a2), this);
+      this.numberingPlan = new Lr(this.getNumberingPlanMetadata(a2), this);
     } else
       this.numberingPlan = void 0;
     return this;
@@ -12188,7 +12197,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "hasSelectedNumberingPlan", value: function() {
     return void 0 !== this.numberingPlan;
   } }]), e2;
-}(), Tr = function() {
+}(), Lr = function() {
   function e2(a2, r2) {
     Ir(this, e2), this.globalMetadataObject = r2, this.metadata = a2, Vr.call(this, r2.metadata);
   }
@@ -12212,7 +12221,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "formats", value: function() {
     var e3 = this, a2 = this._getFormats(this.metadata) || this._getFormats(this.getDefaultCountryMetadataForRegion()) || [];
     return a2.map(function(a3) {
-      return new Lr(a3, e3);
+      return new Tr(a3, e3);
     });
   } }, { key: "nationalPrefix", value: function() {
     return this.metadata[this.v1 ? 3 : this.v2 ? 4 : 5];
@@ -12242,7 +12251,7 @@ var Mr = " ext. ", Or = /^\d+$/, Rr = function() {
   } }, { key: "ext", value: function() {
     return this.v1 || this.v2 ? Mr : this.metadata[13] || Mr;
   } }]), e2;
-}(), Lr = function() {
+}(), Tr = function() {
   function e2(a2, r2) {
     Ir(this, e2), this._format = a2, this.metadata = r2;
   }
@@ -12315,12 +12324,12 @@ function Vr(e2) {
 var Hr = function(e2) {
   return "([".concat(Er, "]{1,").concat(e2, "})");
 };
-function Kr(e2) {
+function Qr(e2) {
   var a2 = "[  \\t,]*", r2 = "[:\\.．]?[  \\t,-]*", t2 = "#?", o2 = "[  \\t]*";
   return ";ext=" + Hr("20") + "|" + (a2 + "(?:e?xt(?:ensi(?:ó?|ó))?n?|ｅ?ｘｔｎ?|доб|anexo)" + r2 + Hr("20") + t2) + "|" + (a2 + "(?:[xｘ#＃~～]|int|ｉｎｔ)" + r2 + Hr("9") + t2) + "|" + ("[- ]+" + Hr("6") + "#") + "|" + (o2 + "(?:,{2}|;)" + r2 + Hr("15") + t2) + "|" + (o2 + "(?:,)+" + r2 + Hr("9") + t2);
 }
-var Qr = "[" + Er + "]{" + $r + "}", Jr = "[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){3,}[" + Ar + Er + "]*", qr = new RegExp("^[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){1,2}$", "i"), Wr = Jr + "(?:" + Kr() + ")?", Zr = new RegExp("^" + Qr + "$|^" + Wr + "$", "i");
-var Xr = new RegExp("(?:" + Kr() + ")$", "i");
+var Kr = "[" + Er + "]{" + $r + "}", Jr = "[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){3,}[" + Ar + Er + "]*", qr = new RegExp("^[+＋]{0,1}(?:[" + Ar + "]*[" + Er + "]){1,2}$", "i"), Wr = Jr + "(?:" + Qr() + ")?", Zr = new RegExp("^" + Kr + "$|^" + Wr + "$", "i");
+var Xr = new RegExp("(?:" + Qr() + ")$", "i");
 function et(e2, a2) {
   var r2 = "undefined" != typeof Symbol && e2[Symbol.iterator] || e2["@@iterator"];
   if (r2)
@@ -12685,13 +12694,13 @@ function Ot(e2) {
 function Rt(e2, a2, r2) {
   return a2 in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2, e2;
 }
-function Tt(e2, a2) {
+function Lt(e2, a2) {
   for (var r2 = 0; r2 < a2.length; r2++) {
     var t2 = a2[r2];
     t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
   }
 }
-var Lt = function() {
+var Tt = function() {
   function e2(a3, r3, t3) {
     if (function(e3, a4) {
       if (!(e3 instanceof a4))
@@ -12759,7 +12768,7 @@ var Lt = function() {
     return this.format("INTERNATIONAL", e3);
   } }, { key: "getURI", value: function(e3) {
     return this.format("RFC3966", e3);
-  } }], r2 && Tt(a2.prototype, r2), t2 && Tt(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }], r2 && Lt(a2.prototype, r2), t2 && Lt(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }(), Dt = function(e2) {
   return /^[A-Z]{2}$/.test(e2);
 };
@@ -12864,13 +12873,13 @@ function Ht(e2, a2) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return Kt(e3, a3);
+      return Qt(e3, a3);
     var r3 = Object.prototype.toString.call(e3).slice(8, -1);
     "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
     if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
     if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
-      return Kt(e3, a3);
+      return Qt(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
     r2 && (e2 = r2);
     var t2 = 0;
@@ -12880,13 +12889,13 @@ function Ht(e2, a2) {
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Kt(e2, a2) {
+function Qt(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
   for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
     t2[r2] = e2[r2];
   return t2;
 }
-function Qt(e2, a2) {
+function Kt(e2, a2) {
   var r2 = a2.countries, t2 = a2.defaultCountry, o2 = a2.metadata;
   o2 = new Rr(o2);
   for (var i2, n2 = [], d2 = Ht(r2); !(i2 = d2()).done; ) {
@@ -12911,7 +12920,7 @@ function qt(e2, a2) {
   if (Jt && o2.isNonGeographicCallingCode(e2))
     return "001";
   var i2 = o2.getCountryCodesForCallingCode(e2);
-  return i2 ? 1 === i2.length ? i2[0] : Qt(r2, { countries: i2, defaultCountry: t2, metadata: o2.metadata }) : void 0;
+  return i2 ? 1 === i2.length ? i2[0] : Kt(r2, { countries: i2, defaultCountry: t2, metadata: o2.metadata }) : void 0;
 }
 var Wt = "+", Zt = "([" + Er + "]|[\\-\\.\\(\\)]?)", Xt = new RegExp("^\\" + Wt + Zt + "*[" + Er + "]" + Zt + "*$", "g"), eo = new RegExp("^(" + ("[" + Er + "]+((\\-)*[" + Er + "])*") + "\\.)*" + ("[a-zA-Z]+((\\-)*[" + Er + "])*") + "\\.?$", "g"), ao = "tel:", ro = ";phone-context=", to = ";isub=";
 function oo(e2, a2) {
@@ -13028,7 +13037,7 @@ function so(e2, a2, r2) {
     return {};
   }
   if (a2.v2) {
-    var p2 = new Lt(c2, s2, r2.metadata);
+    var p2 = new Tt(c2, s2, r2.metadata);
     return l2 && (p2.country = l2), u2 && (p2.carrierCode = u2), i2 && (p2.ext = i2), p2.__countryCallingCodeSource = m2, p2;
   }
   var h2 = !!(a2.extended ? r2.hasSelectedNumberingPlan() : l2) && ht(s2, r2.nationalNumberPattern());
@@ -13370,20 +13379,20 @@ var Ro = function() {
         case "]":
           if (!this.getContext().oneOfSet)
             throw new Error('"]" operator must be preceded by "[" operator');
-          this.endContext(), this.getContext().instructions.push({ op: "[]", args: To(t3) });
+          this.endContext(), this.getContext().instructions.push({ op: "[]", args: Lo(t3) });
           break;
         default:
           throw new Error("Unknown operator: ".concat(r3));
       }
       o2 && this.parsePattern(o2);
     } else {
-      if (Lo.test(e3))
+      if (To.test(e3))
         throw new Error("Illegal characters found in a pattern: ".concat(e3));
       this.getContext().instructions = this.getContext().instructions.concat(e3.split(""));
     }
   } }]) && Oo(a2.prototype, r2), t2 && Oo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
-function To(e2) {
+function Lo(e2) {
   for (var a2 = [], r2 = 0; r2 < e2.length; ) {
     if ("-" === e2[r2]) {
       if (0 === r2 || r2 === e2.length - 1)
@@ -13396,7 +13405,7 @@ function To(e2) {
   }
   return a2;
 }
-var Lo = /[\(\)\[\]\?\:\|]/, Do = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
+var To = /[\(\)\[\]\?\:\|]/, Do = new RegExp("(\\||\\(\\?\\:|\\)|\\[|\\])");
 function Fo(e2) {
   return 1 === e2.length ? e2[0] : e2;
 }
@@ -13510,13 +13519,13 @@ function Ho(e2, a2) {
     if (!e3)
       return;
     if ("string" == typeof e3)
-      return Ko(e3, a3);
+      return Qo(e3, a3);
     var r3 = Object.prototype.toString.call(e3).slice(8, -1);
     "Object" === r3 && e3.constructor && (r3 = e3.constructor.name);
     if ("Map" === r3 || "Set" === r3)
       return Array.from(e3);
     if ("Arguments" === r3 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r3))
-      return Ko(e3, a3);
+      return Qo(e3, a3);
   }(e2)) || a2 && e2 && "number" == typeof e2.length) {
     r2 && (e2 = r2);
     var t2 = 0;
@@ -13526,13 +13535,13 @@ function Ho(e2, a2) {
   }
   throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-function Ko(e2, a2) {
+function Qo(e2, a2) {
   (null == a2 || a2 > e2.length) && (a2 = e2.length);
   for (var r2 = 0, t2 = new Array(a2); r2 < a2; r2++)
     t2[r2] = e2[r2];
   return t2;
 }
-function Qo(e2, a2) {
+function Ko(e2, a2) {
   for (var r2 = 0; r2 < a2.length; r2++) {
     var t2 = a2[r2];
     t2.enumerable = t2.enumerable || false, t2.configurable = true, "value" in t2 && (t2.writable = true), Object.defineProperty(e2, t2.key, t2);
@@ -13660,7 +13669,7 @@ var Jo = Io("9", 15), qo = /[- ]/, Wo = new RegExp("[" + Ar + "]*\\$1[" + Ar + "
       if (o2 && t3 || !o2 && !r3)
         return true;
     }
-  } }], r2 && Qo(a2.prototype, r2), t2 && Qo(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
+  } }], r2 && Ko(a2.prototype, r2), t2 && Ko(a2, t2), Object.defineProperty(a2, "prototype", { writable: false }), e2;
 }();
 function Xo(e2, a2) {
   return function(e3) {
@@ -13948,11 +13957,11 @@ var mi = function() {
         i2.selectNumberingPlan(o2);
         var n2 = i2.numberingPlan.callingCode(), d2 = this.metadata.getCountryCodesForCallingCode(n2);
         if (d2.length > 1) {
-          var l2 = Qt(a3, { countries: d2, defaultCountry: this.defaultCountry, metadata: this.metadata.metadata });
+          var l2 = Kt(a3, { countries: d2, defaultCountry: this.defaultCountry, metadata: this.metadata.metadata });
           l2 && (o2 = l2);
         }
       }
-      var s2 = new Lt(o2 || t3, a3, this.metadata.metadata);
+      var s2 = new Tt(o2 || t3, a3, this.metadata.metadata);
       return r3 && (s2.carrierCode = r3), s2;
     }
   } }, { key: "isPossible", value: function() {
@@ -13971,7 +13980,7 @@ var mi = function() {
 }();
 function ui(e2, a2, r2) {
   if (a2[e2])
-    return new Lt(e2, a2[e2], r2);
+    return new Tt(e2, a2[e2], r2);
 }
 function pi(e2) {
   return mi.call(this, e2, ur);
@@ -14419,6 +14428,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.96", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.97", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
