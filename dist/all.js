@@ -14171,7 +14171,7 @@ class _i extends ie {
     this.data && (e2.name = this.data.name, e2.name = this.data.name || "", e2.address = this.data.address || "", e2.zipcode = this.data.zipcode || "", e2.city = this.data.city || "", e2.country = this.data.country || "", e2.phone = this.data.phone || "", e2.email = this.data.email || "", e2.props.typeAddress = this.data.typeAddress, "organization" === this.data.typeAddress && (e2.company = this.data.company || "", e2.duns = this.data.duns || "", e2.vatnumber = this.data.vatnumber || ""));
   }
   updated(e2) {
-    if (super.updated(e2), isNaN(this.fields) && (this.fields = 28671), e2.has("type") || e2.has("fields")) {
+    if (super.updated(e2), isNaN(this.fields) && (this.fields = 28671), e2.has("type") || e2.has("fields") || e2.has("size")) {
       const a2 = this.prepareDataProperties();
       e2.has("type") && (a2.typeAddress = this.type, "all" === this.type ? (this.fields |= 32768, a2.typeAddress = "personal") : (this.fields &= -32769, a2.typeAddress = a2.type), a2.fields = this.fields), e2.has("fields") && (a2.fields = this.fields), this.object && (this.object.$data.props = a2);
     }
@@ -14216,7 +14216,7 @@ class _i extends ie {
     let e2 = {};
     for (const a2 in _i.properties) {
       let r2 = this[a2];
-      "size" === a2 && (r2 = "small" === r2 ? "sm" : "medium" === r2 ? void 0 : "large" === r2 ? "lg" : "sm"), e2[a2] = r2;
+      "size" === a2 && (r2 = "small" === r2 ? "sm" : "medium" === r2 ? void 0 : "large" === r2 ? "lg" : "sm", r2 = this.size || "large"), e2[a2] = r2;
     }
     return 8192 & this.fields && (e2.icon_name = this.getIcon("name"), e2.icon_addr = this.getIcon("@"), e2.icon_mail = this.getIcon("mailbox"), e2.icon_company = this.getIcon("company"), e2.icon_duns = this.getIcon("duns"), e2.icon_vat = this.getIcon("vat")), this.i18n[this.locale] ? e2.i18n = this.i18n[this.locale] : e2.i18n = this.i18n.en, "all" === this.type ? e2.typeAddress = "personal" : e2.typeAddress = this.type, e2.addressModel = [{ label: e2.i18n.Personal, value: "personal" }, { label: e2.i18n.Organization, value: "organization" }], e2;
   }
@@ -14428,6 +14428,6 @@ class _i extends ie {
   }(a2)) in e2 ? Object.defineProperty(e2, a2, { value: r2, enumerable: true, configurable: true, writable: true }) : e2[a2] = r2;
 }(_i, "styles", [er, ar]);
 const Ci = window.customElements;
-Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.97", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
+Ci && !Ci.get(wi) && Ci.define(wi, _i), import("https://unpkg.com/vue@2/dist/vue.js"), window.O21PayComponents = { version: "0.8.98", components: [{ name: "O21Pay", component: se, img: "https://assets.obvious21.com/o21pay-assets/O21-Pay-small.png", id: "o21pay" }, { name: "O21PayQR", title: "QR-Code", component: Za, icon: "fa fa-qrcode", id: "o21pay-qr" }, { name: "O21PayDialog", component: be }, { name: "O21PayAddress", title: "Address", component: _i, icon: "fa fa-address-card", id: "address" }], waitLoaded: async function() {
   return await Promise.allSettled([customElements.whenDefined("o21pay-qr"), customElements.whenDefined("o21pay-dialog"), customElements.whenDefined("o21pay-payment"), customElements.whenDefined("o21pay-address")]), true;
 } };
